@@ -1,0 +1,1 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QSince each transmission line is usually expressed as an equivalent circuit of resistance and inductance, the real part (conductance) of admittance \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q of the transmission line is non-negative, and the imaginary part (susceptance) is non-positive.\\E$"}

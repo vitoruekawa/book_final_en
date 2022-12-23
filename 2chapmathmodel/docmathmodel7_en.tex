@@ -209,168 +209,220 @@ V: volt, A: ampere, $\Omega$: ohm, H: henry, F: farad, rad: radian, s: second, H
 \section{Admittance matrix that expresses the interaction of connected equipment}\label{sec:transadm}
 
 \subsection{Foundation of a power grid model}
-
-
-We derive the \textbf{admittance matrix} of a power grid that shows the interaction of equipment connected to an electrical power system using a basic transmission line model.
-The admittance matrix is derived from Ohm’s law and Kirchhoff’s laws for each bus bar and the transmission lines that connect them.
-Depending on the literature, the bus bar may also be called a \textbf{node} or \textbf{bus}.
-In this book, the bus bar is shown with a thick line in the diagram of an electrical power system.
-The bus bar is a conductor where the end of the transmission line has been collected. The thin line that connects the bus bar represents the transmission line.
+In this section, we introduce the concept of \textbf{admittance matrix} of a
+power grid, which expresses the interaction between the components connected to
+an electrical power system using a basic transmission line model. The admittance
+matrix is derived by applying the Ohm's and Kirchhoff's laws for each bus bar
+and the transmission lines that connect them. Depending on the literature, bus
+bars may also be called \textbf{nodes} or \textbf{buses}. In this book, bus bars
+are represented by a thick lines in the diagram of an electrical power system.
+A bus bar is a conductor to which the ends of the transmission lines are
+connected. The thin lines that connects to bus bars represent transmission
+lines. 
 
 \begin{figure}[t]
-\centering
-\includegraphics[width = .60\linewidth]{figs/3busex}
-\medskip
-\caption{\textbf{\red{Power system model consisting of three bus bars}}}
-\label{fig:3busex}
-\medskip
+  \centering
+  \includegraphics[width = .60\linewidth]{figs/3busex}
+  \medskip
+  \caption{\textbf{Power system model composed of three bus bars}}
+  \label{fig:3busex}
+  \medskip
 \end{figure}
 
 \begin{example}{Admittance matrix of a power grid}\label{ex:derY}
 
-Let us consider a simple electrical power system consisting of three bus bars
-shown in \ref{fig:3busex}.  There is a piece of equipment connected to each bus
-bar.  In this book, the word “equipment” refers to synchronous generators and
-loads.
+Let us consider a simple electrical power system consisting of three bus bars as
+shown in Fig. \ref{fig:3busex}. Assume that to each bus there is a device
+connected. In this book, the word "device" refers to synchronous generators and
+loads. \footnote{In this book, we analyze only load and generators, however,
+when considering solar generators, wind generators and batteries, these are also
+classified as "devices".} In addition, in an electrical power system model
+circuit such as that shown in \ref{fig:3busex}, the connection to ground is
+often omitted for simplification.
 
-\footnote{ This book only assumes load from generators; however, when assuming
-for solar generators, wind power generators, and batteries, these are included
-in “equipment.” }
+Below, the voltage phasor of bus bar $i$ with respect to the ground is expressed
+as $\bm{V}_i \in \mathbb{C}$, and the current phasor flowing from the device to
+the bus bar $i$ is expressed as $\bm{I}_i \in \mathbb{C}$. The voltage and
+current phasors are unknown variables, therefore it is necessary to find an
+equation governed by the power grid that establishes a relationship between the
+current phasor $(\bm{I}_1,\bm{I}_2,\bm{I}_3)$ and the current phasor
+$(\bm{V}_1,\bm{V}_2,\bm{V}_3)$ of the bus bars. For this purpose, we define the
+admittance matrix of the power grid. 
 
-In an electrical power system model circuit such as that shown in
-\ref{fig:3busex}, ground is often omitted for simplification.
+The admittance of a transmission line that connects bus bars $i$ and $j$ is
+expressed as $\bm{y}_{ij}\in \mathbb{C}$, with $y_{ij}$ being known variables
+for every pair of bus bars $ij$. Additionally, the current phasor that flows in
+each transmission line is expressed as $\bm{I}_{ij}\in \mathbb{C}$, where
+$\bm{y}_{ij}$ and $\bm{y}_{ji}$ are equal. In addition, the sign for
+$\bm{I}_{ij}$ is positive for an arbitrarily determined direction, and
+$\bm{I}_{ji} = -\bm{I}_{ij}$ are equal. The current phasor of this transmission
+line is an intermediate variable that describes the physical relationship of the
+current phasor and voltage phasor of the bus bars. Specifically, if the sign of
+the current phasor is defined positive for the direction indicated by the arrows
+in Fig. \ref{fig:3busex}, the following relationship can be obtained by applying
+the Ohm's law:
 
-Below, the voltage phasor of bus bar $i$ with ground potential is expressed as $\bm{V}_i \in \mathbb{C}$, 
-and the current phase of the bus bar to bus bar $i$ that then flows from equipment $i$ is expressed as $\bm{I}_i \in \mathbb{C}$. 
-These are unknown variables. The present objective is to obtain a physical equation stipulated by the power grid that holds between current phasor $(\bm{I}_1,\bm{I}_2,\bm{I}_3)$ and current phasor $(\bm{V}_1,\bm{V}_2,\bm{V}_3)$ of the bus bars. 
-This corresponds to obtaining the admittance matrix of the power grid.
+\begin{equation*}
+  \bm{I}_{12}=\bm{y}_{12}(\bm{V}_{1}-\bm{V}_{2}),\qquad
+  \bm{I}_{32}=\bm{y}_{32}(\bm{V}_{3}-\bm{V}_{2})
+\end{equation*}
 
+The above equations indicate that the current phasor of a transmission line is
+proportional to the difference of the voltage phasor across the bus bar. Indeed,
+the Ohm's law states that the current flowing between two points in an electric
+circuit is proportional to the potential difference between the two points.
 
-The admittance of a transmission line that connects bus bars $i$ and $j$ is expressed as $\bm{y}_{ij}\in \mathbb{C}$, where each one is a known constant.
-In addition, phasor of the current that flows in each transmission line is expressed as $\bm{I}_{ij}\in \mathbb{C}$.
-where $\bm{y}_{ij}$ and $\bm{y}_{ji}$ are equal.
-In addition, the sign for $\bm{I}_{ij}$ is positive for the arbitrarily determined direction, and $\bm{I}_{ji}$ and $-\bm{I}_{ij}$ are equal.
-The current phasor of this transmission line is an intermediate variable that describes the physical relationship of the current phasor and voltage phasor of the bus bars.
-Specifically, as shown with the arrow in \ref{fig:3busex}, if the direction of the current phasor of each transmission line is determined, the following relationship is obtained from Ohm’s law:
-\begin{align*}
-\bm{I}_{12}=\bm{y}_{12}(\bm{V}_{1}-\bm{V}_{2}),\qquad
-\bm{I}_{32}=\bm{y}_{32}(\bm{V}_{3}-\bm{V}_{2})
-\end{align*}
-It indicates that the current phasor of a transmission line is proportional to the difference in the voltage phasor between the bus bar on each end. 
+According to Kirchhoff's first law (current law), since the sum of all current
+on each bus bar is 0, the following relationship is obtained for bus bar 1 to
+bus bar 3.
 
+\begin{equation*}
+  \bm{I}_{1}-\bm{I}_{12}=0,\qquad
+  \bm{I}_{2}+\bm{I}_{12}+\bm{I}_{32}=0,\qquad
+  \bm{I}_{3}-\bm{I}_{32}=0
+\end{equation*}
 
-According to Kirchhoff's first law (current law), since the sum of all current on each bus bar is 0, the following relationship is obtained for bus bar 1 to bus bar 3.
-\begin{align*}
-\bm{I}_{1}-\bm{I}_{12}=0,\qquad
-\bm{I}_{2}+\bm{I}_{12}+\bm{I}_{32}=0,\qquad
-\bm{I}_{3}-\bm{I}_{32}=0
-\end{align*}
-If an intermediate variable, $\bm{I}_{ij}$, is removed from this Equation, the following is obtained as the vectorized Ohm's law of the bus bar, which holds between the voltage phasor and current phasor:
+Note that Kirchhoff's first law states that the sum of inflow currents and the
+sum of outflow currents are equal at the point where an electric circuit
+branches. By replacing the variables $\bm{I}_{ij}$ by the previously calculated
+relationship $\bm{I}_{i} = \bm{y}_{ij}(\bm{V}_{1}-\bm{V}_{2})$, we can find the
+following vectorized version of the Ohm's law:
 
-\begin{align}\label{eq:exY}
-\mat{
-\bm{I}_1\\
-\bm{I}_2\\
-\bm{I}_3\\
-}
-=
-\mat{
-\bm{y}_{12} & -\bm{y}_{12} & 0\\
--\bm{y}_{12} & \bm{y}_{12}+\bm{y}_{32} & -\bm{y}_{32}\\
-0 & -\bm{y}_{32} & \bm{y}_{32}
-}
-\mat{
-\bm{V}_1\\
-\bm{V}_2\\
-\bm{V}_3\\
-}
-\end{align}
-The complex matrix obtained in this manner is the admittance matrix of the power grid.
-Since each transmission line is usually expressed as an equivalent circuit of resistance and inductance, the real part (conductance) of admittance $\bm{y}_{ij}$ of the transmission line is non-negative, and the imaginary part (susceptance) is non-positive.
-Specifically, the imaginary part is usually negative (non-zero).
+\begin{equation}\label{eq:exY}
+  \mat{
+  \bm{I}_1\\
+  \bm{I}_2\\
+  \bm{I}_3\\
+  }
+  =
+  \mat{
+  \bm{y}_{12} & -\bm{y}_{12} & 0\\
+  -\bm{y}_{12} & \bm{y}_{12}+\bm{y}_{32} & -\bm{y}_{32}\\
+  0 & -\bm{y}_{32} & \bm{y}_{32}
+  }
+  \mat{
+  \bm{V}_1\\
+  \bm{V}_2\\
+  \bm{V}_3\\
+  }
+\end{equation}
+
+The complex matrix obtained in this manner is the admittance matrix of the power
+grid. Since each transmission line is usually expressed as a circuit with an
+equivalent resistance and inductance, the real part (conductance) of the
+admittance of the transmission line $\bm{y}_{ij}$ is non-negative, and the
+imaginary part (susceptance) is non-positive. Specifically, the imaginary part
+is usually negative (non-zero).
 \end{example}
 
-Below, we consider an electrical power system connected with $N$ bus bars.
-\begin{align}\label{eq:ohmY}
-\mat{
-  \bm{I}_1\\
-  \vdots\\
-  \bm{I}_N
-}
- =
-\underbrace{
-\mat{
-  \bm{Y}_{11} & \cdots & \bm{Y}_{1N}\\
-  \vdots & \ddots & \vdots\\
-  \bm{Y}_{N1} & \cdots & \bm{Y}_{NN}
-}
-}_{\bm{Y}}
-\mat{
-  \bm{V}_1\\
-  \vdots\\
-  \bm{V}_N
-}
-\end{align}
-At this time, the admittance matrix $\bm{Y} \in \mathbb{C}^{N \times N}$ of the power grid gives the following relationship to the current phasor $(\bm{I}_1,\ldots,\bm{I}_N)$ and voltage phasor $(\bm{V}_1,\ldots,\bm{V}_N)$ of the bus bars.
-Equation \ref{eq:ohmY} is a “mathematical model of the power grid” that expresses interactions related to input and output for equipment connected to the bus bars. 
-Specifically, if we consider voltage phasor $\bm{V}_i$ as an output from equipment $i$ to the electrical power system, and current phasor $\bm{I}_i$ as an input from the electrical power system to equipment $i$, the input to equipment $i$ is expressed as a linear combination of output from other equipment:
- \begin{align*}
- \bm{I}_i = \bm{Y}_{i1}  \bm{V}_1 + \cdots +\bm{Y}_{iN}  \bm{V}_N
- \end{align*}
-The real part and imaginary parts of the admittance matrix are called the \textbf{conductance matrix} and \textbf{susceptance matrix}, respectively.
+Below, we consider an electrical power system connected with $N$ bus bars. Then,
+the admittance matrix $\bm{Y} \in \mathbb{C}^{N \times N}$ of the power grid
+gives the following relationship to the current phasor
+$(\bm{I}_1,\ldots,\bm{I}_N)$ and voltage phasor $(\bm{V}_1,\ldots,\bm{V}_N)$ of
+the bus bars.
+\begin{equation}\label{eq:ohmY}
+  \mat{
+    \bm{I}_1\\
+    \vdots\\
+    \bm{I}_N
+  }
+  =
+  \underbrace{
+  \mat{
+    \bm{Y}_{11} & \cdots & \bm{Y}_{1N}\\
+    \vdots & \ddots & \vdots\\
+    \bm{Y}_{N1} & \cdots & \bm{Y}_{NN}
+  }
+  }_{\bm{Y}}
+  \mat{
+    \bm{V}_1\\
+    \vdots\\
+    \bm{V}_N
+  }
+\end{equation}
+Equation \ref{eq:ohmY} can be considered a mathematical model of the power grid
+that expresses interactions between inputs and outputs of devices connected to a
+bus bar.  Specifically, if we consider the voltage phasor $\bm{V}_i$ as the
+output from the device $i$ to the electrical power system, and current phasor
+$\bm{I}_i$ as the input from the electrical power system to the device $i$,
+$\bm{I}_i$ can be expressed as a linear combination of output from the other
+devices:
 
-The simultaneous equations of Equation \ref{eq:ohmY} provide “a part” of an equation related to the current phasor and voltage phasor of the bus bars, and unknown variables $(\bm{I}_1,\ldots,\bm{I}_N)$ and $(\bm{V}_1,\ldots,\bm{V}_N)$ cannot be uniquely determined.
-To uniquely determine the steady and transient behavior of all current phasors and voltage phasors, the relationship of localized $\bm{I}_i$ and $\bm{V}_i$ that expresses the characteristics of each equipment must be separately determined.
-This localized relationship is “the mathematical model that expresses the input-output relationship of each device.”
-Specific mathematical models of synchronous generators and loads will be described in detail in Section \ref{sec:genmod} and beyond.
+\begin{equation*}
+  \bm{I}_i = \bm{Y}_{i1}  \bm{V}_1 + \cdots +\bm{Y}_{iN}  \bm{V}_N
+\end{equation*}
 
-Determining a model for the power grid model of Equation \ref{eq:ohmY} and a model of the equipment group discussed below is equivalent to determining the mathematical model for the entire electrical power system.
-The structure of the entire electrical power system is shown in \ref{fig:overviewpwmod}.
-The block of “equipment $i$” is the mathematical model that expresses the input-output relationship for each device, while the block of “algebraic equation of power grid” expresses the vectorized Ohm’s law of Equation \ref{eq:ohmY}.
+The real part and imaginary parts of the admittance matrix are called the
+\textbf{conductance matrix} and \textbf{susceptance matrix}, respectively.
 
+The simultaneous equations \ref{eq:ohmY} provide partial information about the
+current and voltage phasors of the bus bars, such that the current and voltage
+phasors of each bus bar, $(\bm{I}_1,\ldots,\bm{I}_N)$ and
+$(\bm{V}_1,\ldots,\bm{V}_N)$, cannot be uniquely determined. To uniquely
+determine the steady and transient behavior of the current and voltage phasors
+of every bus bar, the local relationship between $\bm{I}_i$ and $\bm{V}_i$ of
+each bus bar must be separately determined. This localized relationship
+expresses the characteristics of the devices connected to the bus bars and can
+be considered mathematical models that express the input-output relationship of
+each device. Specific mathematical models of synchronous generators and loads
+will be described in detail in Section \ref{sec:genmod} and beyond.
+
+The model for the entire electrical power system can be obtained by determining
+and combining the model of the power grid given by Equation \ref{eq:ohmY} and
+the model of each individual device group. The structure of an entire electrical
+power system is shown in Fig. \ref{fig:overviewpwmod}. The block of “device $i$”
+is the mathematical model that expresses the input-output relationship for each
+device, while the block of “algebraic equation of power grid” expresses the
+vectorized Ohm's law of Equation \ref{eq:ohmY}.
 
 \begin{figure}[t]
-\centering
-\includegraphics[width = .80\linewidth]{figs/overview}
-\medskip
-\caption{
-\textbf{\red{Schematic diagram of the power system model}}
-}
-\label{fig:overviewpwmod}
-\medskip
+  \centering
+  \includegraphics[width = .80\linewidth]{figs/overview}
+  \medskip
+  \caption{
+  \textbf{Schematic diagram of a power system model}
+  }
+  \label{fig:overviewpwmod}
+  \medskip
 \end{figure}
 
+In addition, in Equation \ref{eq:ohmY}, the current phasor $\bm{I}_i$ can be
+regarded as an output from device $i$ to the electrical power system, and
+current phasor $\bm{V}_i$ as an input from the electrical power system to device
+$i$. In this case, with an appropriate impedance matrix $\bm{Z}\in
+\mathbb{C}^{N\times N}$, Equation \ref{eq:ohmY} can be reformulated as follows:
 
-In Equation \ref{eq:ohmY}, current phasor $\bm{I}_i$ can be considered as an output from equipment $i$ to the electrical power system, and current phasor $\bm{V}_i$ as an input from the electrical power system to equipment $i$.
-In this case, as well, with an appropriate impedance matrix $\bm{Z}\in \mathbb{C}^{N\times N}$, it can be formally expressed as follows:
- \begin{align}\label{eq:ohmZ}
- \mat{
-  \bm{V}_1\\
-  \vdots\\
-  \bm{V}_N
-}
-=
-\underbrace{
-\mat{
-  \bm{Z}_{11} & \cdots & \bm{Z}_{1N}\\
-  \vdots & \ddots & \vdots\\
-  \bm{Z}_{N1} & \cdots & \bm{Z}_{NN}
-}
-}_{\bm{Z}}
-\mat{
-  \bm{I}_1\\
-  \vdots\\
-  \bm{I}_N
-}
-\end{align}
-However, if the admittance matrix $\bm{Y}$ in Equation \ref{eq:ohmY} is nonsingular, $\bm{Z}=\bm{Y}^{-1}$, 
-but $\bm{Y}$ is not always nonsingular. For example, since the admittance matrix of Equation \ref{eq:exY} is not nonsingular, 
-the following holds:
+\begin{equation}\label{eq:ohmZ}
+  \mat{
+    \bm{V}_1\\
+    \vdots\\
+    \bm{V}_N
+  }
+  =
+  \underbrace{
+  \mat{
+    \bm{Z}_{11} & \cdots & \bm{Z}_{1N}\\
+    \vdots & \ddots & \vdots\\
+    \bm{Z}_{N1} & \cdots & \bm{Z}_{NN}
+  }
+  }_{\bm{Z}}
+  \mat{
+    \bm{I}_1\\
+    \vdots\\
+    \bm{I}_N
+  }
+\end{equation}
+If the admittance matrix $\bm{Y}$ in Equation \ref{eq:ohmY} is nonsingular,
+$\bm{Z}=\bm{Y}^{-1}$, however $\bm{Y}$ is not always nonsingular. For example,
+since the admittance matrix of Equation \ref{eq:exY} is not nonsingular, the
+following holds:
+
 \[
-\bm{V}_1=\bm{V}_2=\bm{V}_3
-\qquad  \Longrightarrow \qquad 
-\bm{I}_1=\bm{I}_2=\bm{I}_3=0
+  \bm{V}_1=\bm{V}_2=\bm{V}_3
+  \qquad  \Longrightarrow \qquad 
+  \bm{I}_1=\bm{I}_2=\bm{I}_3=0
 \]
+
 The irregularity of this admittance matrix indicates that “when all current phasors of each bus bar are 0, all voltage phasors are the same; however, the value cannot be uniquely determined.”
 However, within the scope of normal analysis, there is rarely any need to pay attention to whether the admittance matrix is nonsingular.
 
@@ -378,7 +430,7 @@ However, within the scope of normal analysis, there is rarely any need to pay at
 \centering
 \includegraphics[width = .80\linewidth]{figs/overviewPQ}
 \medskip
-\caption{\textbf{Schematic diagram of power system model}}
+\caption{\textbf{Schematic diagram of a power system model}}
 \label{fig:overviewpwmodPQ}
 \medskip
 \end{figure}
