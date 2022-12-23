@@ -1,0 +1,53 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  20 DEC 2022 17:47
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**"/Users/vuekawa/Documents/Tokyo Tech/book_final_en/master_corona_final_en.tex"
+(/Users/vuekawa/Documents/Tokyo Tech/book_final_en/master_corona_final_en.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24> (/usr/local/texlive/2022/texmf-dist/tex/latex/plautopatch/plautopatch.sty
+Package: plautopatch 2021/12/07 v0.9q Automated patches for pLaTeX/upLaTeX
+Package plautopatch Info: This package is meant for pLaTeX/upLaTeX,
+(plautopatch)             you will not need it. on input line 16.
+) (./corona-a5-1.1.cls
+
+./corona-a5-1.1.cls:11: LaTeX Error: This file needs format `pLaTeX2e'
+               but this is `LaTeX2e'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 \NeedsTeXFormat{pLaTeX2e}
+                              
+The current input file will not be processed further,
+because it was written for some other flavor of TeX.
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+)
+
+! LaTeX Error: File `settings_en.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+/Users/vuekawa/Documents/Tokyo Tech/book_final_en/master_corona_final_en.tex:5: Emergency stop.
+<read *> 
+         
+l.5 \input{settings_en}
+                       ^^M
+*** (cannot \read from terminal in nonstop modes)
+
+ 
+Here is how much of TeX's memory you used:
+ 65 strings out of 478268
+ 2079 string characters out of 5846346
+ 289815 words of memory out of 5000000
+ 18364 multiletter control sequences out of 15000+600000
+ 469259 words of font info for 28 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 25i,0n,34p,207b,17s stack positions out of 10000i,1000n,20000p,200000b,200000s
+/Users/vuekawa/Documents/Tokyo Tech/book_final_en/master_corona_final_en.tex:5:  ==> Fatal error occurred, no output PDF file produced!

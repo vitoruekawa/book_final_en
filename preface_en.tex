@@ -1,0 +1,71 @@
+\begin{preface}{May 2022}{Takayuki Ishizaki}
+\red{Translated with DeepL}
+
+In Japan, the Great East Japan Earthquake of 2011 triggered the start of electric power system reform.
+In 2012, the following year, the Ministry of Education, Culture, Sports, Science and Technology (MEXT) launched the "Creation and Integration of Theories and Fundamental Technologies for the Construction of Distributed and Cooperative Energy Management Systems" as a project-type research project by the Japan Science and Technology Agency (JST).
+The authors, Ishizaki and Kawaguchi, are researchers who participated in the project, specializing in systems and control engineering, and were engaged in the research and development of renewable energy as a main power source.
+
+The impetus for writing this book came from our own experience of the "high barriers to entry for power system R\&D" in the above project.
+At the beginning of the project, we were complete amateurs in the field of power systems.
+We started learning the basics of related fields to conduct our research, but we could not understand most of the things that we should have been familiar with in systems and control engineering, such as differential equations and optimization, in the context of power system engineering.
+The reason for this was that power system engineering is a practical academic discipline that emphasizes the reality of power systems, while systems control engineering is a mathematical discipline with its origins in mathematics, and thus has very different academic values and styles.
+This difference in awareness of the underlying issues is also thought to be a factor that hinders practical communication between researchers in systems and control engineering and those in power system engineering.
+As our daily research activities revealed this hindsight, we came to strongly feel the necessity of bridging the gap between the disciplines.
+
+This book is intended for students, researchers, and engineers in the field of systems and control who wish to work on research and development of power systems with the purpose of:
+\begin{itemize}
+\item To be able to understand the structural and mathematical basis of power systems in the language of systems and control engineering
+\item To be able to independently build a numerical simulation environment for power system analysis and control
+\end{itemize}
+Specifically, for the former purpose, the configuration and characteristics of power systems are explained using basic concepts such as equations of state, equilibrium points, stability, and feedback in systems and control engineering.
+The prerequisite knowledge required for this course is linear algebra, dynamical systems theory, and AC circuit theory from liberal arts courses at universities.
+For the latter purpose, in addition to illustrating scripts for running numerical simulations, the fundamentals of object-oriented thinking and programming techniques that describe the entire complex power system as a group of modules divided by function will be explained.
+A power system is not a single mechanical system, but a synthesis of a wide variety of elements and many decision makers.
+Therefore, the numerical simulation environment should be modularized accordingly.
+A distributed development environment structured into a group of modules is also very useful as a common base for aggregating the knowledge of multiple people.
+Although this document assumes implementation in \matlab, the core ideas should be applicable to other programming languages as well.
+
+Finally, it should be noted that all authors have made every effort to ensure that the descriptions throughout this document are as accurate as possible.
+In particular, the author, Kawabe, checked the terminology and wording related to power systems from a professional perspective in power system engineering.
+In addition, students and collaborators in the authors' laboratories pointed out errors and unclear descriptions, and the authors have worked hard to improve the manuscript.
+The authors would like to thank Masahiro Ito, Taku Nishino, Miki Taya, Yota Kimura, Yoshihito Kinoshita, Yoshiyuki Onishi, Taichi Ichimura, Kentaro Oda, and Hirohiro Kawano for their significant contributions in writing and improving the manuscript.
+
+We hope that this book will be a catalyst for new learning for those involved in systems and control engineering and help support the future of electric power systems.
+
+\end{preface}
+
+
+%\begin{preface}{2021年x月}{石崎 孝幸}
+%我が国では，2011年の東日本大震災を機に電力システム改革が始まりました。
+%翌年の2012年には，文部科学省の戦略目標のもと国立研究開発法人科学技術振興機（JST）によるプロジェクト型の研究事業として「分散協調型エネルギー管理システム構築のための理論及び基盤技術の創出と融合展開」が発足しました。
+%著者の石崎と川口は，システム制御工学を専門として当該プロジェクトに参画した研究者であり，再生可能エネルギーの主力電源化に向けた研究開発に従事しました。
+%
+%本書を執筆するに至ったきっかけは，上記のプロジェクトにおいて「電力システム研究開発の高い参入障壁」を私たち自身が実感したことにあります。
+%私たちは，プロジェクトの開始当初は電力システムに関して全くの素人でした。
+%研究遂行のために関連分野の基礎を学び始めましたが，微分方程式や最適化などシステム制御工学で慣れ親しんだはずの表記であっても，電力系統工学の文脈ではそれらの大半を理解することができませんでした。
+%その原因は，電力系統工学が電力システムの現実を重視する実学的な学問分野である一方で，システム制御工学は数学を源流とする数理学的な学問分野であるため，学術的な価値観や流儀が大きく異なる点にありました。
+%この根幹にある相違は，システム制御工学の研究者と電力系統工学の研究者の実践的なコミュニケーションを阻む要因にもなっています。
+%日々の研究活動により，このような後景が見えてくるにしたがって，私たちは分野間を橋渡しすることの必要性を強く感じるようになっていきました。
+%
+%本書は，電力システムの研究開発に取り組もうとする学生や研究者，技術者が
+%\begin{itemize}
+%\item システム制御工学のことばで電力システムの基礎を理解できるようになること
+%\item 電力システムの解析や制御に関する数値シミュレーション環境を構築できるようになること
+%\end{itemize}
+%を目的としています。
+%具体的には，前者の目的のために，システム制御工学における状態方程式や平衡点，安定性，フィードバックなどの基本概念を用いて，電力システムの構成や特性を解説します。
+%ここで必要となる前提知識は，大学教養課程の線形代数や動的システム理論，交流回路理論です。
+%また，後者の目的ために，数値シミュレーションを実行するスクリプトを例示することに加えて，複雑な電力システムの全体を機能ごとに分割されたモジュール群として記述するオブジェクト指向型の思考法やプログラミング技法の基礎を解説します。
+%電力システムは，単一の機械システムではなく，多種多様な要素や多数の意思決定者の総合から成り立つものです。
+%したがって，数値シミュレーション環境も相応にモジュール化されていることが望まれます。
+%モジュール群に構造化された分散開発環境は，複数人の知識を集約する共通基盤としても大いに役立ちます。
+%なお，本書ではMATLABによる実装を前提としていますが，中核をなす考え方は他のプログラミング言語にも通用するはずです。
+%
+%さいごに，本書全体を通して，可能な限り正確な記述となるように著者全員で努めたことを付記します。
+%特に，著者の河辺が電力系統工学の専門的な見地から電力システムに関わる用語と語法を検めました。
+%また，著者らの研究室に所属する学生や共同研究者の方々にも誤記や不明瞭な記述を指摘をいただき推敲を重ねました。
+%原稿の改善に大きく貢献してくださった〇〇君，〇〇君...に感謝の意を表します。
+%
+%本書がシステム制御工学に携わる方々の新たな学びのきっかけとなり，電力システムの未来を支える一助となることを願います。
+%
+%\end{preface}

@@ -1,0 +1,17 @@
+# Fdb version 3
+["pdflatex"] 1668493680 "/Users/vuekawa/Documents/Tokyo Tech/book_final_en/3chapnumsim/docnumsim7_en.tex" "docnumsim7_en.pdf" "docnumsim7_en" 1668493680
+  "../settings.tex" 0 -1 0 ""
+  "/Users/vuekawa/Documents/Tokyo Tech/book_final_en/3chapnumsim/docnumsim7_en.tex" 1656657289 172918 d934bb8bb7ea26279f95aa702ad7e807 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
+  "/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1644269979 29921 d0acc05a38bd4aa3af2017f0b7c137ce ""
+  "/usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf" 1646502317 40171 cdab547de63d26590bebb3baff566530 ""
+  "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1668484045 2826445 cf7d7340e9c2a7d1df78c5cafc645348 ""
+  "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
+  "corona-a5-1.1.cls" 1238035056 170133 feb187e46bea1fbbfad216f783b7d348 ""
+  "docnumsim7_en.aux" 1668493680 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "docnumsim7_en.tex" 1656657289 172918 d934bb8bb7ea26279f95aa702ad7e807 ""
+  (generated)
+  "docnumsim7_en.aux"
+  "docnumsim7_en.log"
+  "docnumsim7_en.pdf"

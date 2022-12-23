@@ -1,0 +1,28 @@
+PWD /Users/vuekawa/Documents/Tokyo Tech/book_final_en
+INPUT /usr/local/texlive/2022/texmf.cnf
+INPUT /usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT /Users/vuekawa/Documents/Tokyo Tech/book_final_en/master_corona_final_en.tex
+OUTPUT master_corona_final_en.log
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/plautopatch/plautopatch.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/plautopatch/plautopatch.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/plautopatch/plautopatch.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/plautopatch/plautopatch.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/plautopatch/plautopatch.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/plautopatch/plautopatch.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/plautopatch/plautopatch.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/plautopatch/plautopatch.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/plautopatch/plautopatch.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/plautopatch/plautopatch.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/plautopatch/plautopatch.sty
+INPUT ./corona-a5-1.1.cls
+INPUT ./corona-a5-1.1.cls
+INPUT corona-a5-1.1.cls
+INPUT ./corona-a5-1.1.cls
+INPUT ./corona-a5-1.1.cls
+INPUT ./corona-a5-1.1.cls
+INPUT ./corona-a5-1.1.cls
+INPUT ./corona-a5-1.1.cls
+INPUT corona-a5-1.1.cls
+INPUT ./corona-a5-1.1.cls
+INPUT corona-a5-1.1.cls

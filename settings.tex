@@ -1,0 +1,163 @@
+% Springer document settings
+\usepackage[bottom]{footmisc}% places footnotes at page bottom
+
+\usepackage{newtxtext}       % 
+\usepackage[varvw]{newtxmath}       % selects Times Roman as basic font
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{cite}
+\usepackage{makeidx}
+\usepackage{ntheorem}
+
+\usepackage{ascmac}
+\usepackage{eclbkbox}
+\usepackage{dsfont}
+
+\usepackage{longtable}
+
+\usepackage{url}
+
+\usepackage{hyperref}
+
+\usepackage{multicol}
+
+%% --川口追加--
+\makeatletter
+\let\MYcaption\@makecaption
+\makeatother
+\usepackage{subcaption}
+\captionsetup{compatibility=false}      % 必要に応じて
+
+\makeatletter
+\let\@makecaption\MYcaption
+\makeatother
+% ----
+
+%%
+\theoremstyle{plain}
+\theoremheaderfont{\bfseries}
+\theorembodyfont{\rmfamily}
+\theoremseparator{\hspace{1ex}}
+\theoremindent0cm
+\theoremnumbering{arabic}
+\theoremprework{\vspace{1ex}\begin{shadebox}\vspace{1ex}}
+\theorempostwork{\vspace{-1ex}\end{shadebox}\vspace{1ex}}
+
+%%
+\theoremclass{theorem}
+
+%%
+\theoremclass{theorem}
+
+%%
+\theoremclass{theorem}
+
+
+%%
+\theoremstyle{break}
+\theoremheaderfont{\bfseries}
+\theorembodyfont{\rmfamily}
+\theoremseparator{}
+\theoremindent0cm
+\theoremnumbering{arabic}
+\theoremprework{\vspace{1.5ex}\begin{breakbox}\vspace{-0.5ex}}
+\theorempostwork{\vspace{-0.5ex}\end{breakbox}\vspace{1.5ex}}
+
+%%
+\theoremstyle{nonumberplain}
+\theoremseparator{\hspace{1ex}}
+
+%%
+\newtheorem{assumption}{Assumption}[section]
+
+%%
+\renewcommand{\theproblem}{}
+
+\renewcommand{\theremark}{}
+
+
+\newcommand{\red}[1]{{\color{red}#1}}
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\newcommand{\green}[1]{{\color{green}#1}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+\newcommand{\sfT}{\mathsf{T}}
+
+\newcommand{\advanced}{$^{\ddag}$}
+
+\DeclareMathOperator{\sfsin}{\mathsf{sin}}
+\DeclareMathOperator{\sfcos}{\mathsf{cos}}
+\DeclareMathOperator{\sftan}{\mathsf{tan}}
+\DeclareMathOperator{\sfarctan}{\mathsf{arctan}}
+
+\DeclareMathOperator{\sfdiag}{\mathsf{diag}}
+\DeclareMathOperator{\sfcol}{\mathsf{col}}
+\DeclareMathOperator{\sfdet}{\mathsf{det}}
+\DeclareMathOperator{\sfadj}{\mathsf{adj}}
+\DeclareMathOperator{\sftrace}{\mathsf{trace}}
+
+\DeclareMathOperator{\real}{\mathsf{Re}}
+
+\DeclareMathOperator{\sfker}{\mathsf{ker}}
+\DeclareMathOperator{\sfim}{\mathsf{im}}
+
+\DeclareMathOperator{\sfdim}{\mathsf{dim}}
+\DeclareMathOperator{\sfspan}{\mathsf{span}}
+
+\DeclareMathOperator{\sfint}{\mathsf{int}}
+
+\DeclareMathOperator*{\sfmin}{\mathsf{min}}
+\DeclareMathOperator*{\sfmax}{\mathsf{max}}
+\DeclareMathOperator*{\sfsup}{\mathsf{sup}}
+
+\DeclareMathOperator{\sfsat}{\mathsf{sat}}
+
+\newcommand{\mat}[1]{\left[\: \begin{matrix} #1 \end{matrix} \:\right]}
+\newcommand{\spliteq}[1]{\begin{split} #1 \end{split}}
+\newcommand{\simode}[1]{\begin{cases}  \begin{split} #1 \end{split} \end{cases}}
+
+\newcommand{\proofend}{\hfill \rule{2mm}{3mm}}
+
+\newcommand{\Xti}{X_i'}
+\newcommand{\Xsi}{X_i}
+
+\newcommand{\Xtone}{X_1'}
+\newcommand{\XtN}{X_N'}
+
+\newcommand{\Xt}{X'}
+\newcommand{\Xs}{X}
+
+\newcommand{\taudi}{\tau_i}
+\newcommand{\taud}{\tau}
+
+\newcommand{\Cgi}{b_i}
+
+
+\newcommand{\Ifd}{I_{\rm field} }
+
+\newcommand{\matlab}{\textsc{Matlab} }
+
+
+
+
+
+%% --川口追加--
+\newcommand{\thshift}{\theta_{12}}
+\newcommand{\thshiftb}{\theta_{32}}
+\newcommand{\Ysa}{\bm y_{12}}
+\newcommand{\bca}{c_{12}}
+\newcommand{\Ysb}{\bm y_{32}}
+\newcommand{\bcb}{c_{32}}
+\newcommand{\bcij}{c_{ij}}
+\newcommand{\Is}{{\bm I}_{12}' }
+\newcommand{\im}{\bm j}
+\newcommand{\tr}{{\sf T}}

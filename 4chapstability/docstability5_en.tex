@@ -1,0 +1,2780 @@
+\documentclass[tombow,dvipdfmx]{corona-a5-1.1}
+% dvipdfmxを追加（川口）
+
+\input{../settings}
+
+\begin{document}
+
+
+\chapter{Small signal stability analysis of the electrical power system model}\label{sec:staana}
+
+In this Chapter, we perform a stability analysis based on the approximate linearization of the electrical power system model.
+The structure of this Chapter is as follows. First, in Section \ref{sec:stalin}, with Kron reduction of generator buses, we derive a linear approximation model for the electrical power system model described by the ordinary differential equation system.
+Next, in Section \ref{sec:numlinsta}, we explain the method to numerically analyze the stability of the derived linear approximation model.
+In addition, with a numerical simulation, we confirm that not only do physical constants of generators, loads, and power grids, but also the way the reference steady power flow distribution is selected, change the stability of the obtained linear approximation model.
+Furthermore, as a developmental topic of Section \ref{sec:linmathana}, we show that the stability of a linear approximation model can be analyzed by using the concept of the passivity of a dynamic system.
+
+
+\begin{COLUMN}
+\noindent \textbf{Derivation of the approximate linear system}:
+The approximate linear system is derived in the following operation. Let us consider a nonlinear system:
+\begin{align*}
+\dot{x}(t) = f\bigl(x(t)\bigr) + Bu(t) 
+\end{align*}
+where $f(0)=0$. The function $f(x)$ is expressed as follows based on the Taylor series expansion:
+\[
+f(x)=f(0) + \frac{\partial f}{\partial x} (0) x + \mbox{Second or higher order term}
+\]
+With the $i$th element of $f(x)$ and $x$ as $f_i(x)$ and $x_i$, $\tfrac{\partial f}{\partial x}(x)$ becomes a \emph{Jacobian matrix} with $\tfrac{\partial f_i}{\partial x_j}(x)$ on the $(i,j)$th element.
+If we define using this Jacobian matrix:
+\[
+A:=\frac{\partial f}{\partial x} (0)
+\]
+when the state $x(t)$ and the size of input $u(t)$ are sufficiently small, the behavior of a nonlinear system can be approximated as a behavior of a linear system obtained by ignoring the terms of the second order or higher of the function $f$:
+
+\begin{align*}
+\dot{x}^{\rm lin}(t) = Ax^{\rm lin}(t) + Bu^{\rm lin}(t) 
+\end{align*}
+However, please note that even if $u(t)$ and $u^{\rm lin}(t)$ are equal, $x(t)$ of a nonlinear system and $x^{\rm lin}(t)$ of an approximate linear system are not strictly consistent.
+\end{COLUMN}
+
+
+
+\section{Stability analysis based on approximate linearization}\label{sec:stalin}
+
+\subsection{Approximate linearization of the electrical power system model}\label{sec:linaproxt}
+
+In this Section, for the equivalent ordinary differential equation system with Kron reduction of generator uses, which was discussed in Section \ref{sec:allgen}, in other words, the electrical power system model with a generator connected to each bus bar, we derive a linear approximation model under a steady power flow distribution.
+The ordinary differential equation system model was obtained as:
+
+\begin{align}\label{eq:krondyn_}
+\simode{
+\dot{\delta}_i&= \omega_0  \Delta \omega_i\\
+M_i   \Delta \dot{\omega}_i&= %\textstyle
+ - D_i \Delta\omega_i   
+ - f_i \left( \delta,E \right)
++P_{{\rm mech}i}
+\\
+\taudi \dot{E}_i & = %\textstyle
+ -  \tfrac{ \Xsi }{ \Xti }  E_i  + \left(
+\Xsi - \Xti
+\right)
+g_i \left( \delta,E \right)
++ V_{{\rm field}i}
+}
+\qquad
+i \in \mathcal{I}_{\rm G}
+\end{align}
+$\delta$ and $E$ are vectors with $\delta_i$ and $E_i$ in columns, presenting the nonlinear terms that express interaction between generators:
+
+\begin{align}\label{eq:figi}
+\spliteq{
+f_i \left( \delta,E \right) &:=
+-E_i \sum_{j=1}^{N}
+ E_j 
+\bigl(
+B_{ij}^{\rm red}
+\sfsin \delta_{ij}
+-
+G_{ij}^{\rm red}
+\sfcos \delta_{ij}
+\bigr), \\
+g_i \left( \delta,E \right) &:=
+-
+\sum_{j=1}^{N}
+E_j \bigl(
+B_{ij}^{\rm red}
+\sfcos \delta_{ij}
++
+G_{ij}^{\rm red}
+\sfsin \delta_{ij}
+\bigr)
+}
+\end{align}
+
+In addition, we defined $\delta_{ij}:= \delta_i - \delta_j$.
+Please note that due to the properties of reduced admittance, reduced conductance and reduced susceptance satisfy:
+
+\[
+G_{ij}^{\rm red}=G_{ji}^{\rm red}, \qquad 
+B_{ij}^{\rm red}=B_{ji}^{\rm red}, \qquad
+\forall (i, j) \in \mathcal{I}_{\rm G} \times \mathcal{I}_{\rm G}
+\]
+as the condition of symmetry.
+To obtain the partial differential related to each variable of these nonlinear functions, the following is defined:
+\begin{align}\label{eq:defkh}
+\spliteq{
+k_{ij}(\delta_{ij}) & :=
+-B_{ij}^{\rm red}
+\sfcos \delta_{ij}
+-
+G_{ij}^{\rm red}
+\sfsin \delta_{ij},
+\\
+h_{ij}(\delta_{ij}) &:= 
+-B_{ij}^{\rm red}
+\sfsin \delta_{ij} 
++
+G_{ij}^{\rm red}
+\sfcos \delta_{ij}
+}
+\end{align}
+At this time, for $f_i$, the following is obtained:
+\begin{align}
+\spliteq{
+\frac{\partial f_i}{\partial \delta_i} &= 
+E_i \sum_{j=1,j\neq i}^{N} E_j k_{ij}(\delta_{ij}), \\
+\frac{\partial f_i}{\partial \delta_j} &=
+- E_i  E_j k_{ij}(\delta_{ij}),
+}
+\quad
+\spliteq{
+\frac{\partial f_i}{\partial E_i} &=
+2E_i h_{ii}(\delta_{ii})   +
+ \sum_{j=1,j\neq i}^{N}
+ E_j h_{ij}(\delta_{ij}), \\
+ \frac{\partial f_i}{\partial E_j} &=
+ E_i h_{ij}(\delta_{ij})
+ }
+\end{align}
+where $j \neq i$.
+Similarly, for $g_i$, the following is obtained:
+\begin{align}
+\spliteq{
+\frac{\partial g_i}{\partial \delta_i} &= 
+- \sum_{j=1,j\neq i}^{N} E_j h_{ij}(\delta_{ij}), 
+\\
+\frac{\partial g_i}{\partial \delta_j} &=
+E_j h_{ij}(\delta_{ij}),
+}
+\quad
+\spliteq{
+\frac{\partial g_i}{\partial E_i} &=
+k_{ii}(\delta_{ii}) , 
+\\
+ \frac{\partial g_i}{\partial E_j} &=
+k_{ij}(\delta_{ij})
+}
+\end{align}
+
+For the differential equation system of Equation \ref{eq:krondyn_}, the steady state of the internal state of the generator $i$ is expressed as $(\delta_{i}^{\star},E^{\star}_i)$, while the steady value of external input is expressed as $(P_{{\rm mech}i}^{\star},V_{{\rm field}i}^{\star})$.
+For all $i \in \mathcal{I}_{\rm G}$, vectors with their values are described with a symbol excluding subscript $i$.
+For example, $\delta^{\star}$ expresses $(\delta_i^{\star})_{i \in \mathcal{I}_{\rm G} }$.
+For these steady values, the following simultaneous equations hold:
+
+\begin{align}\label{eq:kronss}
+\simode{
+0 &= %\textstyle
+ - f_i \left( \delta^{\star} , E^{\star}  \right)
++P_{{\rm mech}i}^{\star}
+\\
+0& = %\textstyle
+ -  \tfrac{ \Xsi }{ \Xti }  E_i^{\star}  + \left(
+\Xsi - \Xti
+\right)
+g_i \left( \delta^{\star} ,E^{\star} \right)
++ V_{{\rm field}i}^{\star}
+}
+\qquad
+i \in \mathcal{I}_{\rm G}
+\end{align}
+Please note that it is assumed that the steady value of frequency deviation $\Delta \omega_i$ in Equation \ref{eq:krondyn_} is 0 for all $i \in \mathcal{I}_{\rm G}$.
+The fact that Equation \ref{eq:kronss} holds is equivalent to the steady value of external input for generators, $(P_{{\rm mech}}^{\star},V_{{\rm field}}^{\star})$, is set to an appropriate value to achieve supply-demand balance.
+If we perform approximate linearization with this steady value as the reference, the linear approximation model is obtained as follows:
+
+\begin{align}\label{eq:lindyn}
+\mat{
+\dot{\delta}^{\rm lin} \\
+M \Delta \dot{\omega}^{\rm lin} \\
+\taud \dot{E}^{\rm lin}
+}
+ =
+\mat{
+0 & \omega_0 I & 0\\
+ -L & -D & -C \\
+ B & 0 & A
+ }
+\mat{
+\delta^{\rm lin} \\
+\Delta \omega^{\rm lin} \\
+ E^{\rm lin}
+}
++
+\mat{
+0 & 0 \\
+I & 0 \\
+0 & I \\
+}
+\mat{
+P_{{\rm mech}}^{\rm lin} \\
+V_{{\rm field}}^{\rm lin}
+}
+\end{align}
+The state and input variables with subscript “$\rm{lin}$” are vectors of micro deviations with the steady value of corresponding variables as the reference, where:
+
+\[
+M:=\sfdiag \left(M_i\right)_{i \in \mathcal{I}_{\rm G} }, \qquad
+D:=\sfdiag(D_i)_{i \in \mathcal{I}_{\rm G} }, \qquad
+\taud :=\sfdiag \left( \taudi \right)_{i \in \mathcal{I}_{\rm G} }
+\]
+
+Furthermore, for functions $k_{ij}$ and $h_{ij}$ of Equation \ref{eq:defkh}, if matrices with:
+
+\begin{align*}
+\spliteq{
+\hat{L}_{ij} & := \left\{
+\begin{array}{cl}
+E_i^{\star} \sum_{j=1, j\neq i}^{N} 
+E_j^{\star} k_{ij}(\delta_{ij}^{\star}), & \quad i=j \\
+-E_i^{\star} E_j^{\star} k_{ij}(\delta_{ij}^{\star}), & \quad i\neq j
+\end{array}
+\right.  \\
+\hat{A}_{ij} &:=  
+\left\{
+\begin{array}{cl}
+k_{ii}(\delta_{ii}^{\star}) - 
+\tfrac{ \Xsi }{ \Xti ( \Xsi- \Xti )}, & \quad i=j \\
+k_{ij}(\delta_{ij}^{\star}), & \quad i\neq j
+\end{array}
+\right.
+\\
+\hat{B}_{ij}  &:= \left\{
+\begin{array}{cl}
+-\sum_{j=1, j\neq i}^{N} 
+E_j^{\star} h_{ij}(\delta_{ij}^{\star}), &\quad i=j \\
+E_j^{\star} h_{ij}(\delta_{ij}^{\star}), & \quad i\neq j
+\end{array}
+\right. \\
+\hat{C}_{ij} &:= \left\{
+\begin{array}{cl}
+\sum_{j=1, j\neq i}^{N} 
+E_j^{\star} h_{ij}(\delta_{ij}^{\star}), & \quad i=j \\
+E_i^{\star} h_{ij}(\delta_{ij}^{\star}), & \quad i\neq j
+\end{array}
+\right.
+}
+\end{align*}
+
+in the $(i,j)$th element are written as $\hat{L}$,$\hat{A}$, $\hat{B}$, and $\hat{C}$, matrices $L$, $A$, $B$, and $C$ are defined by:
+\begin{align}\label{eq:sysmats}
+\spliteq{
+L&:=\hat{L}, \\
+A&:= \sfdiag \left( \Xsi - \Xti \right)_{i \in \mathcal{I}_{\rm G} } \hat{A},  \\
+B&:= \sfdiag \left( \Xsi - \Xti \right)_{i \in \mathcal{I}_{\rm G} } \hat{B},  \\
+C&:= \sfdiag \bigl( 2E_i^{\star}h_{ii}(\delta_{ii}^{\star}) \bigr)_{i \in \mathcal{I}_{\rm G} }+ \hat{C} 
+}
+\end{align}
+where $\delta_{ij}^{\star}:=\delta_{i}^{\star}-\delta_{j}^{\star}$.
+Please note that this system matrix $(L,A,B,C)$ is a function of the steady value $(\delta^{\star},E^{\star})$.
+\FIGref{fig:blocklinsys} shows a block diagram of this linear approximation model.
+Here, $P^{\rm lin}$ is an active power that has been approximate linearized, which is supplied by generators. 
+For all $i$, it is usually $\Xsi > \Xti$.
+
+In electrical power system engineering, the value obtained through partial differentiation of the steady value of the active power of generators by rotor argument is called the \textbf{synchronizing power coefficient}(synchronizing power coefficient).
+In other words, matrix $L$ in the linear approximation model in Equation \ref{eq:lindyn} is equivalent to the synchronizing power coefficient.
+However, in electrical power system engineering, it is usually defined with the single machine infinite bus system model explained in Section \ref{sec:onemachine}; thus, the synchronizing power coefficient becomes a scalar value instead of a matrix.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width = .8\linewidth]{figs/blocklinsys3}
+\medskip
+\caption{\textbf{Block Diagram of Approximate Linear Model}}
+\label{fig:blocklinsys}
+\medskip
+\end{figure}
+
+\subsection{Stability determination for the linear approximation model}
+
+
+\smallskip
+\subsubsection{Stability of the linear approximation model}
+
+In this Section, we consider numerical analysis of the stability of the linear approximation model.
+Whether the linear approximation model of Equation \ref{eq:lindyn} is stable or not characterizes whether the internal state of the generators will recover to a steady state that satisfies simultaneous equations in Equation \ref{eq:kronss} when there is a minute disturbance in an electrical power system.
+Examples of disturbance include mechanical torque and field voltage of generators, load impedance, and current and voltage of transmission lines temporarily fluctuating by a small amount from the reference value such as the steady state.
+In electrical power system engineering, stability against such micro fluctuation is called \textbf{small signal stability}.
+
+Please note that the stability of the linear approximation model in Equation \ref{eq:lindyn} changes by the steady value 
+$(\delta^{\star},E^{\star})$ of the internal state of generators and the way $(P_{{\rm mech}}^{\star},V_{{\rm field}}^{\star})$ is selected.
+In addition, changes in the admittance and impedance of transmission lines change reduced conductance $G^{\rm red}_{ij}$ and reduced susceptance $B^{\rm red}_{ij}$ of Equation \ref{eq:defkh}.
+Therefore, the stability of the linear approximation model changes depending on the various model parameters described above.
+The objective of this Section is to numerically discuss the relationship between the change in these model parameters and the linear approximation model. 
+
+\smallskip
+\subsubsection{Determination of the stability by the eigenvalue of a system matrix}
+For the linear approximation model of Equation \ref{eq:lindyn}, if the steady value of the internal state $(\delta^{\star},E^{\star})$ is used as a parameter for an appropriate determination, the steady value $(P_{{\rm mech}}^{\star},V_{{\rm field}}^{\star})$ of the external input that satisfies the system matrix $(L,A,B,C)$ of Equation \ref{eq:sysmats} and equations of Equation \ref{eq:kronss} is dependently determined.
+Below, let us think about setting all $i \in \mathcal{I}_{\rm G}$ as:
+
+\[
+P_{{\rm mech}i}(t)=P_{{\rm mech}i}^{\star},\qquad
+V_{{\rm field}i}(t)
+=
+V_{{\rm field}i}^{\star},\qquad 
+\forall t\geq 0
+\]
+in a nonlinear differential equation system model of Equation \ref{eq:krondyn_}.
+This means that the following is set for the linear approximation model of Equation \ref{eq:lindyn}:
+
+\[
+P_{{\rm mech}}^{\rm lin}(t)
+=0,\qquad
+V_{{\rm field}}^{\rm lin}(t)
+=0
+,\qquad 
+\forall t\geq 0
+\]
+
+Below, we analyze the stability of the autonomous linear approximation model where input is identically 0 under this assumption:
+
+\begin{align}\label{eq:lindynu0}
+\mat{
+\dot{\delta}^{\rm lin} \\
+ \Delta \dot{\omega}^{\rm lin} \\
+ \dot{E}^{\rm lin}
+}
+ =
+\underbrace{
+\mat{
+0 & \omega_0 I & 0\\
+ -M^{-1}L & -M^{-1}D & -M^{-1}C \\
+\taud^{-1} B & 0 & \taud^{-1} A
+ }
+}_{\Psi}
+\mat{
+\delta^{\rm lin} \\
+\Delta \omega^{\rm lin} \\
+ E^{\rm lin}
+}
+\end{align}
+Specifically, by examining the sign of the real part of the eigenvalue of matrix $\Psi$, the stability of this linear approximation model is determined.
+However, please note that $\Psi$ usually has one zero eigenvalue.
+Actually, from the structure of matrices $L$ and $B$ in Equation \ref{eq:sysmats}, the following is true:
+
+\begin{align}\label{eq:LBker}
+L  \mathds{1} = 0
+,\qquad
+ B  \mathds{1} =0
+\end{align}
+Therefore, for all model parameters, the following is true:
+\[
+\Psi v=0 ,\qquad
+v:=\mat{
+\mathds{1} \\
+0 \\
+0
+}
+\]
+This means that $v$ is the eigenvector for the zero eigenvalue of $\Psi$.
+If the real part of all eigenvalues excluding this zero eigenvalue is negative, for the arbitrary initial value,
+the solution trajectory of Equation \ref{eq:lindynu0} satisfies:
+
+\begin{align}\label{eq:linmconv}
+\lim_{t\rightarrow \infty}\delta^{\rm lin}(t)= c_0  \mathds{1},\qquad
+\lim_{t\rightarrow \infty}\Delta \omega^{\rm lin}(t)=0 ,\qquad
+\lim_{t\rightarrow \infty} E^{\rm lin}(t)=0
+\end{align}
+$c_0$ is a constant determined by the initial value.
+
+Regardless of the value of $c_0$, there is no essential difference in the result of the analysis.
+The reason for this is that, in a differential equation system model of Equation \ref{eq:krondyn_}, the rotor argument $\delta_i$ of generators only has meaning in terms of the difference from rotor argument $\delta_j$ of other generators.
+Specifically, for some $(P_{{\rm mech}}^{\star},V_{{\rm field}}^{\star})$, if $(\delta^{\star},E^{\star})$ satisfies simultaneous equations of Equation \ref{eq:kronss}, $(\delta^{\star}+c_0 \mathds{1},E^{\star})$ also satisfies the same simultaneous equations.
+In other words, $\delta^{\star}$ and $\delta^{\star}+c_0 \mathds{1}$ are essentially equivalent steady values where the rotor argument of generators was equally rotated by $c_0$.
+Equation \ref{eq:linmconv} means an asymptotic convergence of the solution trajectory to the essentially equivalent steady value. 
+
+
+\section{Stability analysis of the linear approximation model by numerical calculations}\label{sec:numlinsta}
+
+\subsection{How to implement approximate linearization using a group of partitioned modules}
+\red{Translated with DeepL}
+This section describes an implementation method for obtaining approximate linear models numerically.
+Specifically, this section explains how to add approximate linearization functions to the programs divided into the module groups described in the \ref{sec:powfcal} and \ref{sec:timerescal} sections.
+
+In the program for the numerical simulation of the power system created in section \ref{sec:timerescal},
+for each device, the differential equation for the state and the algebraic equation for the output are:
+\[
+\dot{x}_i = f_i^{(1)}(x_i, \bm V_i, \bm I_i, u_i)
+,\qquad
+0 = f_i^{(2)} (x_i, \bm V_i, \bm I_i, u_i)
+\]
+%\begin{equation}
+%  \dot{x}_i = f_i(x_i, \bm V_i, \bm I_i, u_i)
+%\end{equation}
+%と出力に関する制約条件
+%\begin{equation}
+%0 = g_i(x_i, \bm V_i, \bm I_i, u_i)
+%\end{equation}
+%\begin{comment}
+%そして,これらの式と系統全体に関する方程式
+%\begin{equation}
+%\bm I = \bm Y\bm V
+%\end{equation}
+%を連立することによって時間応答のシミュレーションを行う。
+%\end{comment}
+In the following, the equilibrium point of the device of interest is $(x_i^\star, \bm V_i^\star, \bm I_i^\star, u_i^\star)$ and an approximate linear model in its neighborhood is derived.
+Specifically, as an approximate linearization for the functions $f_i^{(1)}$ and $f_i^{(2)}$, we get the following 
+set of simultaneous equations for each device and algebraic equations for the entire power system:
+\begin{align}
+\hspace{-1mm}  f_i^{(1)} (x_i, \bm V_i, \bm I_i,u_i) &\approx A_i (x_i-x_i^\star) + B_{u_i}u_i\notag\\
+  &+ B_{\bm{V}_i} \! \mat{
+    \real[\bm V_i-\bm V^\star]\\ \imag[\bm V_i-\bm V^\star]
+  }
+  + 
+  B_{\bm{I}_i} \! \mat{
+    \real[\bm I_i-\bm I_i^\star]\\\imag[\bm I_i-\bm I_i^\star]
+  }\label{eq:f_lin}\\
+\hspace{-1mm} f_i^{(2)} (x_i, \bm V_i, \bm I_i,u_i) &\approx C_i (x_i-x_i^\star) + D_{u_i}u_i\notag\\
+  &+ 
+  D_{\bm{V}_i}  \! \mat{
+    \real[\bm V_i-\bm V^\star]\\ \imag[\bm V_i-\bm V^\star]
+  }
+  + D_{\bm{I}_i}  \! \mat{
+    \real[\bm I_i-\bm I_i^\star]\\\imag[\bm I_i-\bm I_i^\star]\label{eq:g_lin}
+  }
+\end{align}
+\[
+\bm I_i - \bm I_i^\star = \sum_{j=1}^N \bm Y_{ij} (\bm{V}_j -\bm V^\star_j )
+,\qquad
+i \in \{1,\ldots,N\}
+\]
+%\begin{align*}
+%\bm I-\bm I^\star = \bm Y (\bm V-\bm V^\star)
+%\end{align*}
+By eliminating all $\bm V_i -\bm V^\star_i$ and $\bm I_i-\bm I_i^\star$, a representation by a system of ordinary differential equations of the approximate linear model is obtained.
+Note that $\bm{Y}_{ij}$ denotes the $(i,j)$ element of the admittance matrix $\bm{Y}$.
+Let us check its concrete implementation with the following example.
+
+\begin{例}[Approximate linear model implementation]
+\red{Translated with DeepL}
+Since the equations \ref{eq:f_lin} and \ref{eq:g_lin} depend on the dynamic characteristics of the equipment, it is natural that the calculation of coefficient matrices such as $A_i$ and $B_{u_i}$ are implemented for classes of equipment such as generators and loads in the implementation examples in the \ref{sec:powfcal} clause.
+For example, in the generator model, the following result can be found.
+\begin{flalign*}
+&\quad
+A_i = \mat{
+0 & \omega_0 & 0\\
+0 & -\tfrac{D_i}{M_i} & 0\\
+- \tfrac{1}{\tau_i}( \tfrac{X_i}{X_i'}-1)|\bm V_i^\star|\sfsin(\delta_i^\star-\angle\bm V_i^\star) &
+0& - \tfrac{X_i}{\tau_i X'_i}
+}
+&
+\end{flalign*}
+\begin{flalign*}
+&\quad
+B_{u_i} = \mat{
+  0 \\ \tfrac{1}{M_i} \\ 0
+}
+,\qquad
+B_{\bm{V}_i} = \mat{
+  0 & 0\\ - \tfrac{\real [ \bm{I}_i^\star] }{M_i}  & - \tfrac{\imag[ \bm{I}_i^\star] }{M_i}\\
+ \tfrac{1}{\tau_i}( \tfrac{X_i}{X_i'}-1) \sfcos \delta_i^\star& \tfrac{1}{\tau_i}( \tfrac{X_i}{X_i'}-1) \sfsin\delta_i^\star
+}
+&
+\end{flalign*}
+\begin{flalign*}
+&\quad
+B_{\bm{I}_i} = \mat{
+  0 & 0\\ -\tfrac{\real [ \bm{V}_i^\star] }{M_i} & -\tfrac{\imag [ \bm{V}_i^\star] }{M_i}\\
+0 & 0 
+}
+,\qquad
+C_i = \mat{
+E_i^\star\sfcos\delta^\star_i & 0 & \sfsin(\delta_i^\star)\\
+E_i^\star\sfsin\delta^\star_i & 0 & -\sfcos(\delta_i^\star)\\
+}
+&
+\end{flalign*}
+\begin{flalign*}
+&\quad
+D_{u_i} = \mat{0 \\ 0}
+,\qquad
+D_{\bm{V}_i} = \mat{
+  0 & -1\\ 1 & 0
+}
+,\qquad
+D_{\bm{I}_i} =  \begin{bmatrix}
+  -X_i' & 0\\0 & -X_i'
+\end{bmatrix}
+&
+\end{flalign*}
+%
+%\red{---}
+%\begin{align*}
+%A_i &= \mat{
+%0 & \omega_0 & 0\\
+%0 & -\tfrac{D_i}{M_i} & 0\\
+%- \tfrac{1}{\tau_i}( \tfrac{X_i}{X_i'}-1)|\bm V_i^\star|\sfsin(\delta_i^\star-\angle\bm V_i^\star) &
+%0& - \tfrac{X_i}{\tau_i X'_i}
+%}\\
+%B_{u_i} &= \mat{
+%  0 & 1/M_i & 0
+%}^\tr\\
+%B_{V,i} &= \mat{
+%  0 & 0\\ -\real[I_i^\star]/M & -\imag[I_i^\star]/M\\
+%  (X_i/X_i'-1)\sfcos\delta_i^\star/\tau_i&(X_i/X_i'-1)\sfsin\delta_i^\star/\tau_i
+%}\\
+%B_{I,i} &= \mat{
+%  0 & 0\\ -\real[V_i^\star]/M & -\imag[V_i^\star]/M\\
+%0 & 0 
+%}\\
+%C_i &= \mat{
+%E_i^\star\sfcos\delta^\star & 0 & \sfsin(\delta_i^\star)\\
+%E_i^\star\sfsin\delta^\star & 0 & -\sfcos(\delta_i^\star)\\
+%}\\
+%D_{u, i} &= 0\\
+%D_{V,i} &= \mat{
+%  0 & -1\\ 1 & 0
+%}\\
+%D_{I,i} &=  -X_i'I
+%\end{align*}
+If we add the computation of these coefficient matrices to the class \verb|generator| as the method \verb|get_linear_matrix|, we get the program \ref{program:generator_matrix}.
+
+\smallskip
+\begin{PROGRAMA}[count,title={generator.m}]\label{program:generator_matrix}
+\begin{verbatim}
+classdef generator < handle
+  
+  properties
+(Same as lines 4-11 in program 3-23)
+    x_equilibrium
+    V_equilibrium
+    I_equilibrium
+  end
+  
+  methods
+
+(Same as lines 7 through 21 in program 3-34)
+
+    function x_equilibrium = set_equilibrium(obj, V, I, P, Q)
+
+(Same as lines 10 through 23 of program 3-28)
+
+      obj.x_equilibrium = x_equilibrium;
+      obj.V_equilibrium = V;
+      obj.I_equilibrium = I;
+    end
+    
+    function [A, Bu, BV, BI, C, Du, DV, DI] =...
+        get_linear_matrix(obj)
+      
+      X = obj.X;
+      X_prime = obj.X_prime;
+      D = obj.D;
+      M = obj.M;
+      tau = obj.tau;
+      
+      omega0 = obj.omega0;
+      delta = obj.x_equilibrium(1);
+      E = obj.x_equilibrium(3);
+      V = obj.V_equilibrium;
+      Vabs = abs(obj.V_equilibrium);
+      Vangle = angle(obj.V_equilibrium);
+      I = obj.I_equilibrium;
+      A = [0, omega0, 0;
+        0, -D/M, 0;
+        -(X/X_prime-1)*Vabs*sin(delta-Vangle)/tau,...
+        0, -X/X_prime/tau];
+      Bu = [0; 1/M; 0];
+      BV = [0, 0;
+        -real(I)/M, -imag(I)/M;
+        (X/X_prime-1)*cos(delta)/tau,...
+        (X/X_prime-1)*sin(delta)/tau];
+      BI = [0, 0;
+        -real(V)/M, -imag(V)/M;
+        0, 0];
+      C = [E*cos(delta), 0, sin(delta);
+        E*sin(delta), 0, -cos(delta)];
+      Du = [0; 0];
+      DV = [0, -1; 1, 0];
+      DI = -X_prime*eye(2);
+    end
+
+  end
+
+end
+\end{verbatim}
+\end{PROGRAMA}
+
+
+In the Program \ref{program:generator_matrix}, in lines 18 to 20 of the \verb|set_equilibrium| information on the equilibrium points used to compute the approximate linear model is stored.
+
+A similar implementation for the constant impedance load model would be program \ref{program:load_matrix}.
+
+\smallskip
+\begin{PROGRAMA}[count,title={load\_impedance.m}]\label{program:load_matrix}
+\begin{verbatim}
+classdef load_impedance < handle
+  
+  properties
+    z
+    I_equilibrium
+  end
+  
+  methods
+
+(Same as lines 7 through 18 in program 3-35)
+   
+    function x_equilibrium = set_equilibrium(obj, V, I, P, Q)
+      x_equilibrium = [];
+      obj.z = -V/I;
+      obj.I_equilibrium = I;
+    end
+    
+    function [A, Bu, BV, BI, C, Du, DV, DI] =...
+        get_linear_matrix(obj)
+      
+      A = [];
+      Bu = zeros(0, 2);
+      BV = zeros(0, 2);
+      BI = zeros(0, 2);
+      C = zeros(2, 0);
+      I = obj.I_equilibrium;
+      z = obj.z;
+      Du = [real(z)*real(I), imag(z)*imag(I);
+        real(z)*imag(I), imag(z)*real(I)];
+      DV = eye(2);
+      DI = [real(z), -imag(z); imag(z), real(z)];
+    end
+    
+  end
+  
+end
+\end{verbatim}
+\end{PROGRAMA}
+
+With these modified classes of equipment such as generators and loads, functions to obtain approximate linear models can be written as Program \ref{program:linearization}.
+
+\smallskip
+\begin{PROGRAMA}[count,title={get\_linear\_model.m}]\label{program:linearization}
+\begin{verbatim}
+function sys = get_linear_model(a_component, Y)
+
+A = cell(numel(a_component), 1);
+Bu = cell(numel(a_component), 1);
+BV = cell(numel(a_component), 1);
+BI = cell(numel(a_component), 1);
+C = cell(numel(a_component), 1);
+Du = cell(numel(a_component), 1);
+DV = cell(numel(a_component), 1);
+DI = cell(numel(a_component), 1);
+
+for k = 1:numel(a_component)
+  component = a_component{k};
+  [A{k}, Bu{k}, BV{k}, BI{k}, C{k}, Du{k}, DV{k}, DI{k}] =...
+    component.get_linear_matrix();
+end
+
+A = blkdiag(A{:});
+Bu = blkdiag(Bu{:});
+BV = blkdiag(BV{:});
+BI = blkdiag(BI{:});
+C = blkdiag(C{:});
+Du = blkdiag(Du{:});
+DV = blkdiag(DV{:});
+DI = blkdiag(DI{:});
+
+Ymat = zeros(size(Y, 1)*2, size(Y, 2)*2);
+Ymat(1:2:end, 1:2:end) = real(Y);
+Ymat(2:2:end, 1:2:end) = imag(Y);
+Ymat(1:2:end, 2:2:end) = -imag(Y);
+Ymat(2:2:end, 2:2:end) = real(Y);
+
+nx = size(A, 1);
+
+A11 = A;
+A12 = [BV, BI];
+A21 = [C; zeros(size(Ymat, 1), nx)];
+A22 = [DV, DI; Ymat, -eye(size(Ymat))];
+
+B1 = Bu;
+B2 = [Du; zeros(size(Ymat, 1), size(Du, 2))];
+
+
+Aout = A11 - A12/A22*A21;
+Bout = B1 - A12/A22*B2;
+Cout = eye(nx);
+Dout = 0;
+
+sys = ss(Aout, Bout, Cout, Dout);
+
+end
+\end{verbatim}
+\end{PROGRAMA}
+
+In lines 12 to 16 of the Program \ref{program:linearization}, the coefficient matrices of the approximate linear model are obtained from each device.
+By eliminating the voltage and current phasors of all bus bars in lines 27 to 47, a representation of the approximate linear model by a system of ordinary differential equations is obtained.
+
+The approximate linear model using the Program \ref{program:linearization} can be used as follows
+
+\smallskip
+\begin{PROGRAMA}[count,title={load\_impedance.m}]\label{program:main_linearization}
+\begin{verbatim}
+(Same as lines 1 through 23 in Program 3-30)
+
+sys = get_linear_model(a_component, Y);
+
+sys = sys(2, 1);
+nyquist(sys)
+\end{verbatim}
+\end{PROGRAMA}
+
+In this example, an approximate linear model is constructed in line 5 with the generator 1 machine input $P_{{\rm mech}1}$ as input and the generator 1 angular frequency deviation $\Delta\omega_1$ as output.
+The Nyquist diagram is drawn in line 6.
+\end{例}
+
+In the mathematical analysis of the \ref{sec:linaproxt} section, an approximate linear model is derived from a nonlinear system of ordinary differential equations in which all the matrices are Kron reduced. 
+Note, on the other hand, that in the numerical implementation of this section, the nonlinear system of differential-algebraic equations is approximated linearly first, and then the Kron reduction is applied to construct the ordinary differential equation system.
+The reason for this is that power system models with Kron reduction generally have a mixed representation of equipment, bus bar, and transmission line information.
+In order to improve program readability and extensibility, it is important to modularize each element appropriately, as in the implementation in this section.
+
+\subsection{Numerical analysis of small signal stability}
+
+Let us perform a stability analysis based on approximate linearization for an actual electrical power system model consisting of three generators.
+
+%\begin{figure}[t]
+%\centering
+%\includegraphics[width = .5\linewidth]{figs/gen3ex}
+%\medskip
+%\caption{\textbf{3つの発電機からなる電力系統モデル}}
+%\label{fig:3genex}
+%\medskip
+%\end{figure}
+%
+%\begin{figure}[t]
+%  \centering
+%  {
+%  \begin{minipage}{0.49\linewidth}
+%    \centering
+%    \includegraphics[width = 1.0\linewidth]{figs/delta}
+%    \subcaption{ $\delta^{\rm lin}$ }
+%    \medskip
+%  \end{minipage}
+%  \begin{minipage}{0.49\linewidth}
+%    \centering
+%    \includegraphics[width = 1.0\linewidth]{figs/omega}
+%    \subcaption{ $\Delta \omega^{\rm lin}$ }
+%    \medskip
+%  \end{minipage}
+%%  \begin{minipage}{0.32\linewidth}
+%    \centering
+%    \includegraphics[width = .49\linewidth]{figs/E}
+%    \subcaption{ $E^{\rm lin}$ }
+%%  \end{minipage}
+%  }
+%  \medskip
+%  \caption{\textbf{近似線形モデルの初期値応答}}
+%  \label{fig:timeex}
+%\medskip
+%\end{figure}
+
+
+\begin{figure}[t]
+  \centering
+  {
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 1.0\linewidth]{figs/Domegalin}
+    \subcaption{ $\Delta \omega^{\rm lin}$ }
+    \medskip
+  \end{minipage}
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 1.0\linewidth]{figs/deltalin}
+    \subcaption{ $\delta^{\rm lin}$ }
+    \medskip
+  \end{minipage}
+ \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 1.0\linewidth]{figs/Elin}
+    \subcaption{ $E^{\rm lin}$  }
+    \medskip
+  \end{minipage}
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 1.0\linewidth]{figs/Plin}
+    \subcaption{ $P^{\rm lin}$ }
+    \medskip
+  \end{minipage}
+  }
+  \medskip
+  \caption{\textbf{Initial value response of approximate linear model}
+  \\  \centering(Blue: Generator 1, Black: Generator 2, Red: Generator 3)}
+  \label{fig:timeex}
+\medskip
+\end{figure}
+
+
+%\begin{figure}[t!]
+%\centering
+%  {
+%    \centering
+%    \includegraphics[width = .4\linewidth]{figs/gam01}
+%    \subcaption{ $\gamma=0.1$ }
+%    \centering
+%    \includegraphics[width = .4\linewidth]{figs/gam2}
+%    \subcaption{ $\gamma=2$ }
+%    \centering
+%    \includegraphics[width = .4\linewidth]{figs/gam5}
+%    \subcaption{ $\gamma=5$ }
+%  }
+%\caption{近似線形モデルが安定となるパラメータの領域}
+%\label{fig:gamsta}
+%\medskip
+%\end{figure}
+
+
+
+\begin{例}[Numerical stability analysis of linear approximation model]\label{ex:linsyssim}
+Let us consider an electrical power system model consisting of three generators discussed in the Example \ref{ex:Kronode}.
+The constant of the generators and transmission lines are set to the same value as in the Example \ref{ex:Kronode}, and a linear approximation model for Equation \ref{eq:lindynu0} is derived with the approximate of the steady value shown in \ref{table:gensteady}.
+When the initial values are set as follows to correspond to Equation \ref{eq:exdelE0}:
+\begin{align}\label{eq:linmini}
+\delta^{\rm lin}(0)
+ =
+\mat{
+\tfrac{\pi}{6} \\
+0 \\
+0
+},\quad
+\Delta \omega^{\rm lin}(0)
+ =
+\mat{
+0 \\
+0 \\
+0
+},\quad
+E^{\rm lin}(0)
+ =
+\mat{
+0.1 \\
+0 \\
+0
+}
+\end{align}
+the time response is shown in \FIGref{fig:timeex}. The blue line is generator 1,
+the black line is generator 2, and the red line is generator 3. With this
+Figure, we can see that the internal state of the generators is asymptotically
+converging as in Equation \ref{eq:linmconv}. The initial value response of the
+nonlinear model shown in \FIGref{fig:Kron0} is approximately recreated. 
+
+Next, we use the constants and the steady values of the generators and
+transmission lines as parameters and analyze the stability of the obtained
+linear approximation model. The constants of the generators are compared for all
+damping factors being 10 and $0.1$. In other words, we consider the two
+situations:
+\[
+(D_1,D_2,D_3)= (10,10,10), \qquad
+(D_1,D_2,D_3)= \left(0.1,0.1,0.1\right)
+\]
+We set the value of \ref{table:genparams} for other constants. In addition, the
+steady values for the difference in the rotor argument is expressed as below
+using the parameter $\theta_1 \in [0, 1]$:
+\begin{align}
+\delta_{12}^{\star}= - \frac{\pi}{2} \theta_1
+,\qquad
+\delta_{13}^{\star}=  \frac{\pi}{2} \theta_1
+\end{align}
+$\theta_1$ is a parameter that specifies the size of the difference in the rotor argument under a steady state.
+By changing this value, the system matrix of Equation \ref{eq:sysmats} changes.
+The steady value of the internal voltage is not changed from \ref{table:gensteady}.
+
+The admittance matrix is changed as below.
+With the admittance of the transmission line in Equation \ref{eq:defadpara}, $\bm{y}_{12}$,$\bm{y}_{23}$, the admittance matrix of the power grid in Equation \ref{eq:exY} is structured.
+The real part of this admittance matrix, the conductance matrix, is expressed as $G_0$, while the imaginary part, the susceptance matrix is expressed as $B_0$.
+Specifically:
+\begin{align*}
+\spliteq{
+G_0 &=
+\mat{
+1.3652 &  -1.3652 &     0 \\
+-1.3652 &   3.3074 &  -1.9422 \\
+0 &  -1.9422 &  1.9422
+}, \\
+B_0 & =
+\mat{
+ -11.6041  & 11.6041    &    0 \\
+  11.6041 &  -22.1148  &  10.5107 \\
+  0  &  10.5107 &  -10.5107
+}
+}
+\end{align*}
+Using the parameter $\theta_2 \in [0,5]$, the reference admittance matrix is expressed as:
+\begin{align}\label{eq:Y0theta2}
+\bm{Y}_0(\theta_2)
+:=
+\theta_2 G_0
+ +
+\bm{j}  B_0
+\end{align}
+Here, $\theta_2$ is a parameter that specifies the size of the real part
+(conductance matrix). For comparison, we consider two options as the
+parameterized admittance matrix:
+\begin{align*}
+\bm{Y} = \bm{Y}_0(\theta_2)
+,\qquad
+\bm{Y} = \tfrac{\bm{Y}_0(\theta_2)}{100}
+\end{align*}
+This change in the admittance matrix appears in the linear approximation model as a change in the value of the reduced conductance $B^{\rm red}_{ij}$ and reduced susceptance $G^{\rm red}_{ij}$ of Equation \ref{eq:defkh}.
+The parameter settings for comparison are summarized in \ref{table:parasetcom}.
+
+In each of the cases, \TABref{table:parasetcom} (a)-(d), let us change the parameters $(\theta_1,\theta_2)$ and numerically analyze the stability of the linear approximation model.
+Specifically, $\theta_1$ and $\theta_2$ are each changed on a 100-point evenly spaced grid to examine the eigenvalue of $\Psi$ for Equation \ref{eq:lindynu0}.
+In this manner, whether the linear approximation model is stable or not is comprehensively confirmed.
+\FIGref{fig:stacheck} shows the result.
+Blue shows the parameters where the linear approximation model became stable.
+First, the result of (a) shows that when $\theta_1$ is about 0.4 or smaller;
+in other words, when the rotor argument difference under a steady state is about $36^\circ$, independent of the size of the conductance matrix specified by $\theta_2$, the linear approximation model is stable.
+The result is the same when the damping factor of the generators is small (0.1) in (b).  
+
+Next, let us confirm the result of (c) and (d) when the admittance matrix is multiplied by $\tfrac{1}{100}$.
+At this time, if the size of the conductance matrix with $\theta_2$ is around 1, as long as the difference of the rotor argument under a steady state is about $76^\circ$ or below, the linear approximation model is stable.
+If $\theta_2$ exceeds 2, the upper limit of the rotor argument difference for the stable linear approximation model becomes small.
+
+\end{例}
+
+\begin{table}[h]
+\medskip
+ \caption{\textbf{Parameter settings to compare}}
+ \label{table:parasetcom}
+ \centering
+  \begin{tabular}{|c|c|c|c|c|c|c|}
+   \hline
+ &    $D=(10,10,10)$ &   $D=(0.1,0.1,0.1)$ \\
+   \hline 
+ $\bm{Y} =\bm{Y}_0$ & (a) & (b) \\
+   \hline
+ $\bm{Y} = \bm{Y}_0/100  $  & (c) & (d) \\
+   \hline
+  \end{tabular}
+\end{table}
+
+\begin{figure}[t!]
+  \centering
+  {
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 0.90\linewidth]{figs/Y1D1}
+    \subcaption{ $D=(10,10,10)$,$\bm{Y}=\bm{Y}_0$ }
+    \medskip
+  \end{minipage}
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 0.90\linewidth]{figs/Y1D0.01}
+    \subcaption{$D=(\tfrac{1}{10}\tfrac{1}{10},\tfrac{1}{10})$,$\bm{Y}=\bm{Y}_0$ }
+    \medskip
+  \end{minipage}
+}
+  \centering
+  {
+  \begin{minipage}{0.49\linewidth}
+      \centering
+    \includegraphics[width = 0.90\linewidth]{figs/Y0.01D1}
+    \subcaption{$D=(10,10,10)$, $\bm{Y}=\tfrac{\bm{Y}_0}{100}$ }
+    \medskip
+  \end{minipage}
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 0.90\linewidth]{figs/Y0.01D0.01}
+    \subcaption{$D=(\tfrac{1}{10},\tfrac{1}{10},\tfrac{1}{10})$, $\bm{Y}=\tfrac{\bm{Y}_0}{100}$}
+    \medskip
+  \end{minipage}
+}
+% \medskip
+ \caption{\textbf{Area of parameters where the approximate linear model is stable}}
+ \label{fig:stacheck}
+\medskip
+\end{figure}
+
+
+\section{Mathematical stability analysis of the linear approximation model\advanced}\label{sec:linmathana}
+
+\subsection{Small signal stability of the linear approximation model\advanced}
+In this Section, we mathematically analyze the stability of the linear approximation model in Equation \ref{eq:lindynu0}.
+The stability is characterized by the eigenvalue of matrix $\Psi$.
+On the other hand, as discussed in Section \ref{sec:numlinsta}, $\Psi$ is not nonsingular, and the eigenspace for zero eigenvalue is:
+
+\begin{align}\label{eq:eqset}
+\mathcal{M} =
+ \sfspan\left\{
+ \mat{
+ \mathds{1}\\
+ 0\\
+ 0
+ }
+ \right\}
+\end{align}
+%\footnote{
+%正方行列$A$のある固有値$\lambda$に対して
+%\[
+%\mathcal{V}_{\lambda}:= \sfker (\lambda I -A)
+%\]
+%を$\lambda$に対する\emph{固有空間}（eigenspace）と呼ぶ。
+%固有値$\lambda$に対するすべての線形独立な固有ベクトルを$v_1,\ldots,v_k$とするとき
+%\[
+%\mathcal{V}_{\lambda} = \sfspan\{v_1,\ldots,v_k\}
+%\]
+%が成り立つ。
+%すなわち,特定の固有値に対する固有ベクトルが張る線形空間である。
+%}
+%。
+This eigenspace expresses a set of equivalent steady values wherein the argument of all generators change while maintaining a relative value.
+Therefore, on which point among the set of equilibrium points of Equation \ref{eq:eqset} the state of the linear approximation model converges is not an issue.
+Based on this fact, the following definition is given:
+
+\begin{COLUMN}
+\noindent \textbf{The eigenspace of a square matrix}:
+For some eigenvalues $\lambda$ of a square matrix $A$,
+\[
+\mathcal{V}_{\lambda}:= \sfker (\lambda I -A)
+\]
+is called \emph{eigenspace} of $\lambda$. If all linearly independent
+eigenvectors for eigenvalue $\lambda$ are $v_1,\ldots,v_k$, the following is
+true:
+\[
+\mathcal{V}_{\lambda} = \sfspan\{v_1,\ldots,v_k\}
+\]
+In other words, it is a linear space of eigenvectors for a specific eigenvalue.
+\end{COLUMN}
+
+
+\begin{定義}[Small signal stability of the linear approximation model]
+\label{def:stalin}
+Let us consider the linear approximation model of Equation \ref{eq:lindynu0}.
+For an arbitrary initial value, when the internal state converges on one of the points of the equilibrium point set $\mathcal{M}$ of Equation \ref{eq:eqset}, the linear approximation model is said to be \textbf{statically stable}.
+%\footnote{
+%電力系統工学では,微小な外乱に対する電力系統の安定性を近似線形モデルを用いて議論する場合に広く「定態安定性」という用語が用いられる。
+%ただし,定義\ref{def:stalin}のように数学的な定義を導入することは一般的ではない。
+%}。
+\end{定義}
+Small signal stability according to the definition \ref{def:stalin} indicates that Equation \ref{eq:linmconv} is true for an arbitrary initial value.
+Since the value of $c_0$ is arbitrary in Equation \ref{eq:linmconv}, this arbitrary nature is expressed as “converging on one of the points of $\mathcal{M}$”.
+
+In electrical power system engineering, if discussing the stability of an electrical power system against minute disturbances, the word “small signal stability” is widely used.
+However, mathematical definitions, such as definition \ref{def:stalin}, are not typically introduced.
+
+In the discussion below, we assumed that the nuclear space of $\Psi$ in Equation \ref{eq:lindynu0} is one-dimensional, and the following is true:
+\begin{align}\label{eq:nesconker}
+\sfker \Psi = \mathcal{M}
+\end{align}
+The structure of matrix $\Psi$ shows that $\mathcal{M} \subseteq \sfker \Psi $, but here, we assume that $\sfker \Psi$ is one-dimensional and the equal sign holds.
+If this nuclear space is at least two-dimensional, the invariant eigenspace becomes larger than $\mathcal{M}$, and the linear approximation model is not statically stable.
+%\footnote{
+%行列$\Psi$の構造から,$\mathcal{M} \subseteq \sfker \Psi $であることは明らかであるが,ここでは$\sfker \Psi$が1次元であり,等号が成り立つことを仮定している。
+%この核空間が2次元以上であると,不変な固有空間が$\mathcal{M}$よりも大きくなり,近似線形モデルは定態安定とならない。
+%}
+%。
+Therefore, the equation \ref{eq: nesconker} is a necessary condition for the approximate linear model to be stationary and stable.
+Specifically, if $A$ is nonsingular:
+\begin{align}\label{eq:defL0}
+L_0:= L-CA^{-1}B 
+\end{align}
+Thus, this condition is equivalent to Equation \ref{eq:nescon}. 
+\begin{align}\label{eq:nescon}
+\sfker L_0 = \sfspan
+\left\{
+\mathds{1}
+\right\}
+\end{align}
+This matrix $L_0$ plays an important role in the later analysis.
+For the following discussions, let us introduce basic terminology.
+
+\red{Translated with DeepL}
+The relation between Equation\ref{eq:defL0} and Equation\ref{eq:nescon} can be verified as follows.
+Since the $(1,2)$ block of the matrix $\Psi$ is regular
+\begin{align*}%\label{eq:nescon0}
+\sfker \mat{
+-L & -C \\
+B & A
+}
+= \sfspan
+\left\{
+\mat{
+\mathds{1}\\
+0
+}
+\right\}
+\end{align*}
+is a necessary and sufficient condition for the nuclear space of $\Psi$ to be just $\mathcal{M}$.
+In particular, if $A$ is regular, then
+\begin{align*}
+\mat{
+-L & -C \\
+B & A
+}\mat{x\\y}
+=0
+\qquad
+\Longleftrightarrow
+\quad
+L_0 x=0,
+\qquad
+y=-A^{-1}Bx
+\end{align*}
+This is equivalent to Equation \ref{eq:nescon}.
+
+For the purpose of the following discussion, the following basic terms are introduced.
+
+\begin{定義}[Stability of a square matrix]
+\label{def:matsta}
+For a square matrix $A$, if the real part of all eigenvalues is negative, $A$ is \textbf{stable}.
+\end{定義}
+
+\subsection{Passivity of a linear approximation model\advanced}\label{sec:linpasana}
+
+\smallskip
+\subsubsection{Expression with a feedback system of a linear approximation model}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width = .7\linewidth]{figs/FandG}
+\medskip
+\caption{\textbf{Feedback system representation of approximate linear models}}
+\label{fig:GandG}
+\medskip
+\end{figure}
+
+
+Let us consider describing the linear approximation model of Equation \ref{eq:lindynu0} as a feedback system with two subsystems (\FIGref{fig:GandG}).
+The first subsystem is a differential equation system related to frequency deviation.
+\begin{align}\label{eq:Fss}
+F: \simode{
+M \Delta \dot{\omega}^{\rm lin} &= -D \Delta \omega^{\rm lin}
++
+u_F \\
+y_F &= \omega_0 \Delta \omega^{\rm lin}
+}
+\end{align}
+In this book, this subsystem is called a \textbf{mechanical subsystem}.
+A mechanical subsystem is only determined by the physical constants of generators, $(M_i,D_i)_{i\in \mathcal{I}_{\rm G}}$, or reference frequency $\omega_0$, and does not depend on the steady value of the internal state $(\delta^{\star},E^{\star})$.
+
+The second subsystem is a differential equation system related to the rotor argument and internal voltage:
+\begin{align}\label{eq:Gss}
+G: \simode{
+\dot{\delta}^{\rm lin} & = u_G \\
+\taud \dot{E}^{\rm lin} &= A E^{\rm lin} + B \delta^{\rm lin} \\
+y_G &= C E^{\rm lin} + L \delta^{\rm lin}
+}
+\end{align}
+
+This subsystem is called an \textbf{electrical subsystem}.
+\footnote{
+The “mechanical subsystem” and “electrical subsystem” introduced here are terms unique to this book.
+}。
+An electrical subsystem depends not only on the physical constants of generators, $(\taudi)_{i\in \mathcal{I}_{\rm G}}$, but also on the steady value of the internal state $(\delta^{\star},E^{\star})$.
+Actually, the system matrix $(L,A,B,C)$ of Equation \ref{eq:sysmats} is a function of $(\delta^{\star},E^{\star})$.
+If we negative-feedback combine the input and output of these two subsystems:
+\begin{align}\label{eq:nfedcon}
+u_F = -y_G,\qquad
+u_G = y_F
+\end{align}
+the linear approximation model of Equation \ref{eq:lindynu0} is expressed.
+The subsequent solution for the small signal stability is based on the property of the mechanical subsystem and electrical subsystem called passivity.
+It is known that a negative-feedback system of a passive subsystem is stable. 
+
+
+\smallskip
+\subsubsection{Passivity of a mechanical subsystem}
+
+The mechanical subsystem $F$ of Equation \ref{eq:Fss} has a strict passivity defined as follows:
+
+\begin{定義}[Passivity of a linear system]\label{def:passivelin}
+Let us consider a linear system:
+\begin{align}\label{eq:siglin}
+\Sigma: \simode{
+\dot{x} &= Ax + Bu \\
+y &= Cx 
+}
+\end{align}
+Using a symmetric matrix $P$, a function is defined:
+\begin{align}\label{eq:defstlin}
+W(x):= \frac{1}{2}x^{\sf T}Px
+\end{align}
+For arbitrary $u$, if there is a positive semi-definite matrix $P$ that satisfies:
+\begin{align}\label{eq:conpvlin}
+\frac{d}{dt} W\bigl( x(t) \bigr) \leq u^{\sf T}(t) y(t)
+,\qquad
+\forall t \geq 0
+\end{align}
+$\Sigma$ is called \textbf{passive}.
+Specifically, in addition to the above-described positive semi=definite matrix, if there are positive definite numbers $\rho$ that satisfy:
+\begin{align}\label{eq:conosplin}
+\frac{d}{dt} W\bigl( x(t) \bigr) \leq u^{\sf T}(t) y(t) -\rho \left\|y(t) \right\|^2
+,\qquad
+\forall t \geq 0
+\end{align}
+$\Sigma$ is called \textbf{strictly passive}.
+\end{定義}
+
+Function $W(x)$ of Equation \ref{def:passivelin} is usually called the \textbf{storage function}.
+The inequality of Equation \ref{eq:conosplin} has passivity where a type of energy expressed with function $W(x)$ dissipates more for terms that are proportional to the square of the output compared to Equation \ref{eq:conpvlin}.
+Such passivity is strictly called \textbf{output-strict passivity}.
+
+The mechanical subsystem $F$ of Equation\ref{eq:Fss} having strong passivity can be confirmed as follows.
+First, the subsystem is written as below:
+\begin{align}
+F: \simode{
+\dot{x}_F & = A_F x_F + B_F u_F \\
+y_F &= C_F x_F
+}
+\end{align}
+where state $x_F$ expresses $\Delta \omega^{\rm lin}$, and the system matrix is:
+\[
+A_F := -M^{-1}D,\qquad
+B_F := M^{-1},\qquad
+C_F := \omega_0 I
+\]
+Also, the symmetric matrix $P_F$ can be denoted by
+\[
+P_F := \omega_0 M
+\]
+The symmetric matrix $P_F$ is defined as:
+\[
+A^{\sf T}_F P_F + P_F A_F \preceq  
+- \frac{ 2 \sfmin \left\{ D_i \right\}}{\omega_0} C_F^{\sf T} C_F
+,\qquad
+P_F B_F = C_F^{\sf T}
+\]
+Since the matrix $M$ is positive definite, this $P_F$ is positive definite.
+At this time, the following is true:
+\begin{align}\label{eq:WFdef}
+W_F(x_F):= \frac{1}{2}x_F^{\sf T}P_Fx_F
+\end{align}
+The time derivative along the solution trajectory of $F$ can be evaluated as:
+\begin{align}\label{eq:Flyapeq}
+\spliteq{
+\frac{d}{dt} W_F \bigl( x_F (t) \bigr)
+& = 
+\nabla W_F^{\sf T}(x_F) \frac{d x_F}{dt} 
+ \\
+&=  \bigl( P_F x_F(t) \bigr)^{\sf T} \bigl(A_F x_F(t) + B_F u_F(t) \bigr) \\
+ & = y_F^{\sf T}(t) u_F(t)
+ + \frac{1}{2} x_F^{\sf T}(t) \left(A^{\sf T}_F P_F + P_F A_F\right) x_F(t) \\
+& \leq 
+y_F^{\sf T}(t) u_F(t)
+- \tfrac{\sfmin \left\{ D_i \right\}}{\omega_0}
+\|y_F(t) \|^2
+}
+\end{align}
+where, $\nabla W_F(x_F)$ is a gradient function, where $W_F(x_F)$ is partially differentiated with $x_F$ and aligned in a column.
+As such, we can see that the mechanical subsystem $F$ of Equation \ref{eq:Fss} is strictly passive against an arbitrary positive definite number $(M_i,D_i)_{i \in \mathcal{I}_{\rm G}}$.
+This function $W_F(x_F)$ expresses the mechanical kinetic energy of an electrical power system.
+
+\smallskip
+\subsubsection{Passivity of an electrical subsystem}
+Next, let us consider the electrical subsystem of Equation \ref{eq:Gss}.
+Unlike the mechanical subsystem $F$, the electrical subsystem $G$ only has passivity under limited conditions.
+Though this comes out of nowhere, let us consider a case where reduced conductance of Equation \ref{eq:figi} is all 0; in other words:
+\begin{align}\label{eq:Gredcon}
+G^{\rm red}_{ij}=0,\qquad 
+\forall (i, j) \in \mathcal{I}_{\rm G} \times \mathcal{I}_{\rm G}
+\end{align}
+
+Excluding special situations, the conditions of Equation \ref{eq:Gredcon} only hold when the conductance of all transmission lines in an electrical power system is 0; in other words, the resistance of all transmission lines is 0.
+At this time, the following is true for the function $k_{ij}(\delta_{ij})$,$h_{ij}(\delta_{ij})$ of Equation \ref{eq:defkh}:
+\begin{align*}
+k_{ij}(\delta_{ij}^{\star}) =
+k_{ji}(\delta_{ji}^{\star})
+,\qquad
+h_{ij}(\delta_{ij}^{\star}) = 
+- h_{ji}(\delta_{ji}^{\star}),\qquad
+h_{ii}(\delta_{ii}^{\star}) = 0
+\end{align*}
+
+Therefore, the following is true for the system matrix of $(L,A,B,C)$ of Equation \ref{eq:sysmats}.
+\begin{align}\label{eq:sysmatst}
+L=L^{\sf T} ,\qquad
+\hat{A} = \hat{A}^{\sf T},\qquad
+C= -\hat{B}^{\sf T}
+\end{align}
+Below, we analyze the passivity of an electrical subsystem by using a symmetrical structure of a special system matrix. 
+
+First, let us express the electrical subsystem $G$ of Equation \ref{eq:Gss} as follows:
+\begin{align}
+G: \simode{
+\dot{x}_G & = A_G x_G + B_G u_G \\
+y_G &= C_G x_G
+}
+\end{align}
+
+where state $x_G$ is a column vector with ${\delta}^{\rm lin}$ and $ E^{\rm lin} $,
+where a system matrix is expressed as below using a diagonal matrix that is positive definite:
+\[
+ \Omega :=
+\sfdiag \left( \sqrt{\frac{ \Xsi - \Xti }{ \taudi } } \right)_{i \in \mathcal{I}_{\rm G} }
+\]
+The symmetric matrix $P_G$ is defined as:
+\[
+A_G := 
+\mat{
+0 & 0 \\
+ \Omega^2 \hat{B}   &  \Omega^2 \hat{A} 
+},\qquad
+B_G := 
+\mat{
+I \\
+0
+},\qquad
+C_G := 
+\mat{
+L & -\hat{B}^{\sf T}
+}
+\]
+For these matrices, the following is true:
+\begin{align}\label{eq:defPG}
+P_G := 
+\mat{
+L  &  - \hat{B}^{\sf T} \\
+- \hat{B} & -\hat{A}
+}
+\end{align}
+The fact that the left matrix inequality holds can be confirmed as follows:
+\begin{align}\label{eq:lyapinG}
+A^{\sf T}_G P_G + P_G A_G \preceq 
+0
+,\qquad
+P_G B_G = C_G^{\sf T}
+\end{align}
+
+If we calculated the left of the inequality, it can be expressed as follows using a symmetric matrix $\hat{A}_{\Omega} := \Omega \hat{A} \Omega$:
+\[
+\frac{
+A^{\sf T}_G P_G + P_G A_G
+}{2}
+=
+\mat{
+\Omega \hat{B} & 0\\
+0 &\Omega^{-1}
+}^{\sf T}
+\underbrace{
+\mat{
+-I & -\hat{A}_{\Omega} \\
+-\hat{A}_{\Omega} & - \hat{A}_{\Omega}^2
+}
+}_{Y}
+\mat{
+\Omega \hat{B} & 0\\
+0 & \Omega^{-1}
+}
+\]
+
+Since the top left block $- I$ of $Y$ is negative definite and the Schur complement related to $-I$ of $Y$ is 0, $Y$ is negative semi-definite.
+\begin{COLUMN}
+\noindent \textbf{Shur complement}:
+The symmetric matrix $M$ is sorted as follows:
+\[
+M =\mat{
+M_{11} & M_{12} \\
+M_{12}^{\sf T} & M_{22}
+}
+\]
+At this time:
+\[
+M/M_{22} := M_{11} - M_{12} M_{22}^{-1} M_{12}^{\sf T}
+\]
+is called the \textbf{Schur complement} related to $M_{22}$ of $M$.
+Similarly, 
+\[
+M/M_{11} := M_{22} - M_{12}^{\sf T} M_{11}^{-1} M_{12}
+\]
+is called the Schur complement related to $M_{11}$ of $M$.
+When matrix $M_{22}$ is positive definite, the condition necessary for $M$ to be positive semi-definite is for $M/M_{22}$ to be positive semi-definite.
+A similar fact is true for $M/M_{11}$\cite{bernstein2009matrix}.
+In addition, it is true when a positive semi-definite is replaced with a positive definite.
+
+\smallskip
+\noindent \textbf{Properties of semidefinite matrices}:
+For negative semi-definite matrix $Y\in \mathbb{R}^{n\times n}$ and arbitrary matrix $X\in \mathbb{R}^{n\times m}$, $X^{\sf T}YX$ is negative semi-definite.
+This can be confirmed by:
+\[
+v^{\sf T}Yv\geq 0, \quad \forall v\in \mathbb{R}^n
+\qquad
+\Longrightarrow
+\qquad
+(Xw)^{\sf T} Y (Xw) \geq 0, \quad \forall w\in \mathbb{R}^m
+\]
+\end{COLUMN}
+
+Using the relationship of Equation \ref{eq:lyapinG}, the time derivative of the storage function: 
+\begin{align}\label{eq:WGdef}
+W_G(x_G):= \frac{1}{2}x_G^{\sf T}P_Gx_G
+\end{align}
+along with the solution trajectory of $G$ can be assessed as below in the same way as Equation \ref{eq:Flyapeq}: 
+\begin{align}\label{eq:Glyapeq}
+\frac{d}{dt} W_G \bigl( x_G (t) \bigr)
+ \leq 
+y_G^{\sf T}(t) u_G(t)
+\end{align}
+However, to show the passivity of $G$, $P_G$ of Equation \ref{eq:defPG} must be positive semi-definite.
+Here, if the matrix $A$ of Equation \ref{eq:sysmats} is stable:
+\[
+A= S^2 \hat{A}
+\qquad \Longleftrightarrow \qquad S^{-1} A S = S \hat{A} S
+\]
+Thus, eigenvalues of $S \hat{A} S$ are all negative.
+However:
+\[
+S:=\sfdiag \left( \sqrt{ \Xsi -  \Xti }\right)_{i \in \mathcal{I}_{\rm G} } 
+\]
+This means that $ \hat{A} $ is negative definite.
+A condition necessary for $P_G$ of Equation \ref{eq:defPG} to be positive semi-definite is that the Schur complement related to $ -\hat{A} $ is positive semi-definite; in other words, the following is true:
+\begin{align}\label{eq:pdsp}
+L_0 =L_0^{\sf T} \succeq 0
+\end{align}
+However, for $L_0$ of Equation \ref{eq:defL0}, we used the fact that:
+\[
+L_0 = L + \hat{B}^{\sf T} \hat{A}^{-1} \hat{B}
+\]
+from Equation \ref{eq:sysmatst}.
+To summarize the above discussion, the following term is introduced.
+
+\begin{定義}[Passive power transmission conditions]\label{def:passtrans}
+For the system matrix $(L,A,B,C)$ of Equation \ref{eq:sysmats}, the following three conditions are together called \textbf{passive power transmission conditions}.
+\footnote{
+“Passive power transmission conditions” is a term unique to this book.
+}。
+\begin{itemize}
+\item[(i)] Matrix $A$ is stable.
+\item[(ii)] As in Equation \ref{eq:Gredcon}, reduced conductance is all 0.
+\item[(iii)] For the matrix $L_0$ of Equation \ref{eq:defL0}, the matrix inequality of Equation \ref{eq:pdsp} hold. 
+\end{itemize}
+Individually, it may be called a passive power transmission condition (i), and so on.
+\end{定義}
+
+Based on the above discussions, we can see that the passive power transmission conditions describe the conditions necessary for the electrical system $G$ of Equation \ref{eq:Gss} to be passive.
+Furthermore, these conditions are necessary for the linear approximation model to be statically stable for the passivity of an electrical subsystem and arbitrary physical constant.
+The details are discussed in Section \ref{sec:nesconana} and Section \ref{sec:nesconsta}.
+Function $W_G(x_G)$ indicates the electrical potential energy of an electrical power system.
+
+\subsection{Analysis of small signal stability based on passivity\advanced}
+
+\smallskip
+\subsubsection{Stability analysis for a feedback system}
+
+Below, when an electrical subsystem is passive under the passive power transmission conditions of definition \ref{def:passtrans}, the stability of their feedback system, in other words, the small signal stability of the linear approximation model of Equation \ref{eq:lindynu0}, is analyzed.
+Since the inequality of Equation \ref{eq:Flyapeq} and Equation \ref{eq:Glyapeq} holds, the sum is:
+\smallskip
+\begin{align*}
+\spliteq{
+ \frac{d}{dt} \bigl\{ W_F \bigl( x_F (t) \bigr)
+& +
+ W_G \bigl( x_G (t) \bigr)
+ \bigr\} \\
+& \leq 
+\underbrace{
+y_F^{\sf T}(t) u_F(t)
++
+y_G^{\sf T}(t) u_G(t)
+}_{\star}
+- \tfrac{\sfmin \left\{ D_i \right\}}{\omega_0}
+\|y_F(t) \|^2
+}
+\end{align*}
+If the equation of the feedback connection of Equation \ref{eq:nfedcon} is substituted into this inequality,
+the term shown in “$\star$” is cancelled, and as the inequality for the entire feedback system,
+the following is obtained:
+\begin{align}\label{eq:FGlyapeq}
+ \frac{d}{dt} \bigl\{ W_F \bigl( x_F (t) \bigr)
+ +
+ W_G \bigl( x_G (t) \bigr)
+ \bigr\} 
+ \leq 
+- \tfrac{\sfmin \left\{ D_i \right\}}{\omega_0}
+\|y_F(t) \|^2
+\end{align}
+In other words, the sum of function $W_F(x_F)$ and function $W_G(x_G)$ is monotonous non-increasing with the temporal changes along the solution trajectory of the feedback system.
+Since the lower limits of $W_F(x_F)$ and $W_G(x_G)$ are 0, when enough time passes, the sum asymptotically converges to a value.
+This means that the time derivative on the left of Equation \ref{eq:FGlyapeq} asymptotically converges to 0.
+The right side of Equation \ref{eq:FGlyapeq} is negative when $y_F(t)\neq 0$, and 0 only when $y_F(t)=0$; thus, the following is obtained:
+\begin{align}\label{eq:yFlim0}
+\lim_{t\rightarrow \infty} y_F(t)  =0
+\end{align}
+Furthermore, if we focus on the output equation of Equation \ref{eq:Fss}, the output $y_F$ is a constant factor of the internal state $\Delta \omega^{\rm lin}$; 
+thus, the following holds for the mechanical subsystem $F$:
+\begin{align}\label{eq:Fobs}
+y_F(t)  =0,\quad \forall t\geq 0 
+\qquad \Longrightarrow \qquad
+\Delta \omega^{\rm lin}(t)  =0,\quad \forall t\geq 0 
+\end{align}
+This is a property called \textbf{observability} in control systems engineering.
+Therefore, from Equation \ref{eq:yFlim0} and Equation \ref{eq:Fobs}, we can see that the following
+is true for the arbitrary initial value $(\Delta \omega^{\rm lin}(0),\delta^{\rm lin}(0),E^{\rm lin}(0))$ for the linear approximation model of Equation \ref{eq:lindynu0}:
+\begin{align}\label{eq:Delom0}
+\lim_{t\rightarrow \infty} \Delta \omega^{\rm lin}(t)  =0
+\end{align}
+In other words, the internal state of the mechanical subsystem $F$ of Equation \ref{eq:Fss} in a feedback system that asymptotically converges to 0.
+
+\begin{COLUMN}
+\noindent \textbf{Observability}:
+For the linear system $\Sigma$ of Equation \ref{eq:siglin}, if the output $y(t)$ is identically 0 and the internal state $x(t)$ is also identically 0, $\Sigma$ is called \textbf{observable}.
+Conditions necessary for $\Sigma$ to be observable are:
+\begin{align}\label{eq:condobs}
+\sfker \mat{
+C \\
+CA \\
+\vdots \\
+CA^{n-1}
+}
+=\{0\}
+\end{align}
+where $n$ is the dimension of the state.
+By context, a pair of matrices satisfying the Equation \ref{eq:condobs} is called an observable pair $(C,A)$.
+
+\smallskip
+\noindent \textbf{Controllability}:
+For the linear system $\Sigma$ of Equation \ref{eq:siglin}, if there is an input $u(t)$, where $x(T) = 0$ for a certain time $T > 0$ for each and every initial value $x(0)$, $\Sigma$ is called \textbf{controllable}.
+Conditions necessary for $\Sigma$ to be controllable are:
+\begin{align}\label{eq:condcon}
+\sfim \mat{
+B & AB & \cdots &A^{n-1}B
+}
+= \mathbb{R}^n
+\end{align}
+where $n$ is the dimension of the state. $\sfim$ expresses the \textbf{image} of a matrix
+Depending on the context, a pair of matrices satisfying the Equation \ref{eq:condcon} is called a controllable pair $(A,B)$.
+
+\smallskip
+\noindent \textbf{Lyapunov function}:
+Let us consider an observable linear system $\Sigma$ of Equation
+\ref{eq:siglin}. However, the input $u(t)$ is identically 0. In addition, we
+consider a positive semi-definite value function that satisfies $V(x)\geq0$ for
+arbitrary $x$ and $V(x)=0$. If there is a positive definite number $\rho$, and:
+\[
+\frac{d}{dt} V \bigl( x (t) \bigr) 
+=
+\nabla V^{\sf T}(x) \frac{d x}{dt} (t)
+\leq  - \rho \|y(t)\|^2,\qquad
+\forall t \geq0
+\]
+is true for the differential along the solution trajectory of $\Sigma$ of function $V(x)$, the solution trajectory $x(t)$ for the arbitrary initial value asymptotically converges to 0.
+This function $V(x)$ is called the \textbf{Lyapunov function}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width = .35\linewidth]{figs/cone}
+\medskip
+\caption{\textbf{Monotonically decreasing values along the solution trajectory of the Lyapunov function}}
+\label{fig:conelyap}
+\medskip
+\end{figure}
+
+
+The fact that the value of the Lyapunov function monotonically decreases along the solution trajectory of the system can be interpreted as some type of energy dissipating with time (\FIGref{fig:conelyap}).
+Stability analysis based on a similar argument can be applied to a nonlinear system as well.
+
+\end{COLUMN}
+
+On the other hand, the fact that the internal state of the electrical subsystem $G$ of Equation \ref{eq:Gss} asymptotically converges to 0 cannot be derived from the above argument.
+Specifically, the following is derived for the input and output of two subsystems from asymptotic convergence of Equation \ref{eq:Delom0} and the relationship of Equation \ref{eq:nfedcon}:
+\[
+\lim_{t\rightarrow \infty} u_F(t)  =0,\qquad
+\lim_{t\rightarrow \infty} u_G(t)  =0,\qquad
+\lim_{t\rightarrow \infty} y_G(t)  =0
+\]
+However, since the electrical subsystem is not observable, we cannot conclude that its internal system asymptotically converges.
+If we assume that the electrical subsystem is observable, for the arbitrary initial value: 
+\[
+\lim_{t\rightarrow \infty}  \delta^{\rm lin}(t)  =0,\qquad
+\lim_{t\rightarrow \infty}  E^{\rm lin}(t)  =0
+\]
+This means that for Equation \ref{eq:linmconv}, it is always $c_0=0$.
+This fact is inconsistent with the idea that $\Psi$ of Equation \ref{eq:lindynu0} has a zero eigenvalue and is unstable.
+Excluding special situations, the electrical subsystem is controllable.
+
+
+\begin{figure}[t]
+  \centering
+  {
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 1.0\linewidth]{figs/losslessW}
+    \subcaption{If passive transmission condition (ii) is met}
+    \medskip
+  \end{minipage}
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 1.0\linewidth]{figs/lossyW}
+    \subcaption{If passive transmission condition (ii) is not met}
+    \medskip
+  \end{minipage}
+  }
+  \medskip
+  \caption{\textbf{Time variation of the accumulation function according to Example \ref{ex:linsyssim}}
+  \\  \centering(Blue: $W_F$, Red: $W_G$, Black:$W_F+W_G$)}
+  \label{fig:LyapW}
+\medskip
+\end{figure}
+
+
+\begin{例}[Temporal change in accumulated energy]\label{ex:energylin}
+Let us consider the linear approximation model discussed in the first half of the Example \ref{ex:linsyssim}.
+First, let us consider a case where the passive power transmission condition (ii) is satisfied; in other words, the conductance of two transmission lines is 0.
+Specifically, we set the admittance of the transmission line as:
+\begin{align}\label{eq:bothlossless}
+\bm{y}_{12} = - \bm{j} 11.6041, \qquad
+\bm{y}_{23} =  - \bm{j} 10.5107
+\end{align}
+This corresponds to a case where parameter $\theta_2$ is 0 in Equation \ref{eq:Y0theta2}.
+At this time, matrix $A$ is stable. All eigenvalues of $L_0$ in Equation \ref{eq:defL0} become non-negative.
+In other words, this means that passive power transmission conditions (i) and (iii) hold. 
+
+For the time response to the initial value of Equation \ref{eq:linmini}, we calculate the temporal change in the kinetic energy $W_F(x_F)$ of Equation \ref{eq:WFdef} and potential energy $W_G(x_G)$ of Equation \ref{eq:WGdef}.
+The result is shown in \FIGref{fig:LyapW}(a). The solid blue and red lines show $W_F(x_F)$ and $W_G(x_G)$, respectively.
+The broken black line shows their sum. This figure shows that the kinetic and potential energy alternately increase and decrease, while their sum, the total energy of the entire system, monotonically decreases. 
+The decrease of the total energy over time can be interpreted as energy loss via friction by the damping factor.
+
+Next, as a reference, let us look at the result when the passive power transmission condition (ii) is not satisfied.
+Specifically, we set $\bm{Y}_0(1)$ as the admittance matrix $\bm{Y}$ for Equation \ref{eq:Y0theta2}, where $\theta_2$ is 1.
+This is equivalent to calculating the temporal changes in the kinetic and potential energy against the initial response of \FIGref{fig:timeex}.
+If the passive power transmission condition (ii) is not satisfied, $P_G$ of Equation \ref{eq:defPG} is not a symmetric matrix, but potential energy $W_G(x_G)$ is calculated by using the definition of Equation \ref{eq:WGdef} as is.
+The calculation result \FIGref{fig:LyapW}(b) is almost the same as \FIGref{fig:LyapW}(a).
+This fact indicates that even when the conductance of the transmission lines is not 0, the electrical potential energy can be approximated based on the definition of Equation \ref{eq:WGdef}.
+\end{例}
+
+\smallskip
+\subsubsection{Change of basis that separates unobservable state variables}
+
+Let us consider deriving an observable subsystem by removing the common component of the unobservable rotor argument from the electrical subsystem $G$ of Equation \ref{eq:Gss}.
+Specifically, by applying the change of basis to the state $\delta^{\rm lin}$ of Equation \ref{eq:lindyn}, a differential equation system that only describes the deviation of the rotor argument is derived.
+
+\begin{COLUMN}
+\noindent \textbf{Basis transformation of linear systems}:
+The change in basis for a linear system is the following operation.
+For the equation of state:
+\[
+\dot{x}(t)=Ax(t)+Bu(t)
+\]
+each element $x_i(t)$ of the $n$-dimensional state vector $x(t)$ expresses the
+component when expanded by the basis $\{e_1,\ldots,e_n\}$:
+\[
+x(t)
+=
+e_1 x_1(t) + \cdots + e_n x_n(t)
+\]
+where $e_i$ is the $n$-dimensional vector where only the $i$th element has 1.
+This basis is called the \textbf{standard basis}.
+The equation of state expresses the temporal expansion of the “component” when the state vector is expressed with a certain basis.
+Let us consider expressing this state vector $x(t)$ with a different basis $\{v_1,\ldots,v_n\}$;
+in other words:
+\[
+x(t)
+=
+v_1 \xi_1(t) + \cdots + v_n \xi_n(t)
+\]
+where $\xi_i(t)$ is a component of the base vector $v_i$.
+If a matrix with vectors $v_i$ in a row is $V$ and if a vector with $\xi_i(t)$ in a column is $\xi(t)$, it corresponds to a linear transformation called $x(t)=V\xi(t)$.
+At this time, the equation of state is transformed to:
+\[
+\dot{\xi}(t)=V^{-1}AV \xi(t) + V^{-1} Bu(t)
+\]
+This differential equation system describes the temporal expansion of components with the new basis.
+Note that the basis is divided into two parts like $\mathcal{V}_a:=\{v_1,\ldots,v_k\}$, $\mathcal{V}_b:=\{v_{k+1},\ldots,v_n\}$, and so on.
+\[
+x(t)=
+V_{a} \xi_{a}(t) +
+ V_{b} \xi_{b}(t)
+\]
+then the basis-transformed equation of state is:
+\[
+\mat{
+\dot{\xi}_{a}(t) \\
+\dot{\xi}_{b}(t)
+}
+=
+\mat{
+W_{a} A V_{a} & W_{a} A V_{b} \\
+W_{b} A V_{a} & W_{b} A W_{b}
+}
+\mat{
+{\xi}_{a}(t) \\
+{\xi}_{b}(t)
+}
+\]
+However, $V_{a}$ and $V_{b}$ are the matrices of the basis vectors of $\mathcal{V}_a$ and $\mathcal{V}_b$, and $W_{a}$ and $W_{b}$ are:
+\[
+\mat{
+W_{a} \\
+W_{b}
+}
+=\mat{
+V_{a} & V_{b}
+}^{-1}
+\qquad
+\Longleftrightarrow
+\qquad
+\mat{
+V_{a} & V_{b}
+}\mat{
+W_{a} \\
+W_{b}
+}=I
+\]
+In this representation, $\xi_a(t)$ is the component of $x(t)$ with respect to the subspace $\sfspan \mathcal{V}_a$.
+Also, $\xi_b(t)$ is a component with respect to $\sfspan \mathcal{V}_b$.
+\end{COLUMN}
+
+The change of basis explained below can be applied regardless of whether passive power transmission conditions hold.
+$\delta^{\rm lin}$ is expanded using a matrix $W \in \mathbb{R}^{N\times (N-1)}$:
+\begin{align}\label{eq:batrinv}
+\delta^{\rm lin}
+=
+W
+\delta^{\rm lin}_{\rm e} +
+\mathds{1}
+\overline{\delta}^{\rm lin}_{\rm e}
+\end{align}
+Here, $\mathds{1}$ is a base vector that expresses the common component of $\delta^{\rm lin}$, while $W$ is a matrix with base vectors that express other deviation components.
+In other words, the common component of $\delta^{\rm lin}$ is $\overline{\delta}^{\rm lin}_{\rm e}$, and deviation components are $\delta^{\rm lin}_{\rm e}$.
+The common component $\overline{\delta}^{\rm lin}_{\rm e}$ is one-dimensional, while deviation components $\delta^{\rm lin}_{\rm e}$ are $(N-1)$-dimensional.
+
+Next, let us consider the inverse transformation of Equation \ref{eq:batrinv}.
+Specifically, let us consider a matrix $W^{\dagger} \in \mathbb{R}^{(N-1)\times N}$:
+\[
+\delta^{\rm lin}
+=
+\underbrace{
+\mat{
+W & \mathds{1}
+}
+}_{T}
+\mat{
+\delta^{\rm lin}_{\rm e} \\
+\overline{\delta}^{\rm lin}_{\rm e}
+}
+\quad
+\Longleftrightarrow
+\quad
+\mat{
+\delta^{\rm lin}_{\rm e} \\
+\overline{\delta}^{\rm lin}_{\rm e}
+}
+=
+\underbrace{
+\mat{
+W^{\dagger} \\
+\frac{1}{N} \mathds{1}^{\sf T}
+}
+}_{T^{-1}}
+\delta^{\rm lin}
+\]
+For this inverse transformation to exist, the column vector of $W$ must be orthogonal to $\mathds{1}$.
+This can be confirmed as follows. From the relationship of inverse transformation:
+\begin{align*}
+T^{-1}T
+=\mat{
+W^{\dagger}W & W^{\dagger} \mathds{1}\\
+\frac{1}{N} \mathds{1}^{\sf T} W & \frac{1}{N} \mathds{1}^{\sf T} \mathds{1}
+}
+=\mat{
+I & 0\\
+0 & 1
+}
+\end{align*}
+must hold. In other words, $W$ and $W^{\dagger}$ are matrices that satisfy:
+\[
+\mathds{1}^{\sf T} W=0,\qquad
+W^{\dagger}W=I,\qquad
+W^{\dagger} \mathds{1}=0
+\]
+Therefore, from the first equation, we can see that the column vector of $W$ is orthogonal to $\mathds{1}$.
+$W$ and $W^{\dagger}$ can be constructed by using an appropriate matrix, $U\in \mathbb{R}^{N\times (N-1)}$, that satisfies
+\[
+W = U(U^{\sf T}U)^{-1},\qquad
+W^{\dagger}=U^{\sf T}
+\]
+At this time, the product $WW^{\dagger}$ is an orthogonal projection matrix to the orthogonal complement of $\sfspan\{\mathds{1}\}$; thus, this can be expressed as:
+\begin{align}\label{eq:psudinv}
+WW^{\dagger} = I - \frac{1}{N} \mathds{1} \mathds{1}^{\sf T}
+\end{align}
+Such a pseudo inverse matrix of $W$, $W^{\dagger}$, is called a \textbf{Moore-Penrose pseudoinverse}.
+
+The concept of orthogonal projection is shown in \FIGref{fig:orthogonal}.
+The black arrow shows the space of $\sfspan\{\mathds{1}\}$, as the orthogonal complement $\sfspan\{\mathds{1}\}^{\perp}$, a plane that is orthogonal to the space.
+If the vector $v$ is multiplied by orthogonal projection matrix $WW^{\dagger}$, $WW^{\dagger}v$ is obtained as an image projected perpendicular to $\sfspan\{\mathds{1}\}^{\perp}$ from $v$.
+\[
+I-WW^{\dagger}=\tfrac{1}{N}\mathds{1} \mathds{1}^{\sf T}
+\]
+in a complimentary relationship is an orthogonal projection matrix to $\sfspan\{\mathds{1}\}$.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width = .50\linewidth]{figs/orthogonal}
+\medskip
+\caption{\textbf{Conceptual diagram of orthogonal projection}}
+\label{fig:orthogonal}
+\medskip
+\end{figure}
+
+We apply the above-mentioned change of basis to the electrical subsystem $G$ of Equation \ref{eq:Gss}.
+irst, if we substitute Equation \ref{eq:batrinv} into a differential equation related to $\delta^{\rm lin}$, the following is obtained:
+\[
+W
+\dot{\delta}^{\rm lin}_{\rm e} +
+\mathds{1}
+\dot{\overline{\delta}}^{\rm lin}_{\rm e}=u_G
+\]
+If this differential equation is multiplied by $W^{\dagger}$ or $\tfrac{1}{N} \mathds{1}^{\sf T}$ from the left, the following is obtained:
+\[
+\dot{\delta}^{\rm lin}_{\rm e} = W^{\dagger} u_G,\qquad
+\dot{\overline{\delta}}^{\rm lin}_{\rm e} = \frac{1}{N} \mathds{1}^{\sf T} u_G
+\]
+Next, if we pay attention such that the relationship of Equation \ref{eq:LBker} holds for matrices $L$ and $B$, the differential equation and output equation related to $E^{\rm lin}$ can be rewritten as:
+\[
+\taud \dot{E}^{\rm lin} = A E^{\rm lin} + 
+B W {\delta}^{\rm lin}_{\rm e}
+, \qquad
+y_G = C E^{\rm lin} + 
+L W {\delta}^{\rm lin}_{\rm e}
+\]
+Therefore, the electrical subsystem with a changed basis is obtained as:
+\begin{align}\label{eq:Gsstr}
+G: \simode{
+\dot{\overline{\delta}}^{\rm lin}_{\rm e} & = \tfrac{1}{N} \mathds{1}^{\sf T} u_G \\
+\dot{\delta}^{\rm lin}_{\rm e} & = W^{\dagger}u_G \\
+\taud \dot{E}^{\rm lin} &= A E^{\rm lin} + B W {\delta}^{\rm lin}_{\rm e} \\
+y_G &= C E^{\rm lin} + L W {\delta}^{\rm lin}_{\rm e}
+}
+\end{align}
+What we need to focus on in this system expression is that ${\overline{\delta}}^{\rm lin}_{\rm e}$ that expresses the common component of $\delta^{\rm lin}$ is impacted by the input $u_G$, but not the output $y_G$.
+In other words, ${\overline{\delta}}^{\rm lin}_{\rm e}$ is an unobservable state variable.
+
+By removing the differential equation of ${\overline{\delta}}^{\rm lin}_{\rm e}$ from Equation \ref{eq:Gsstr}, $(N-1)$-dimensional controllable and observable subsystem is obtained as:
+\begin{align}\label{eq:Gsstrmin}
+G_{\rm e}: \simode{
+\dot{\delta}^{\rm lin}_{\rm e} & = W^{\dagger} u_G \\
+\taud \dot{E}^{\rm lin} &= A E^{\rm lin} + B W {\delta}^{\rm lin}_{\rm e} \\
+y_G &= C E^{\rm lin} + L W {\delta}^{\rm lin}_{\rm e}
+}
+\end{align}
+Here, please note that from observability of $G_{\rm e}$, the following holds.
+\begin{align}\label{eq:Geobs}
+y_G(t)  =0,\quad \forall t\geq 0 
+\qquad \Longrightarrow \qquad
+\mat{
+{\delta}^{\rm lin}_{\rm e}(t)   \\
+E^{\rm lin}(t)  
+}
+=0
+,\quad 
+\forall t\geq 0 
+\end{align}
+For the analysis of the small signal stability of the linear approximation model of Equation \ref{eq:lindynu0}, this fact is important.
+For reference, \FIGref{fig:GandGe} shows a block diagram of the linear approximation model with a change of basis.
+
+The set $(\taud^{-1}A,\taud^{-1}B)$ being controllable while the set $(C,\taud^{-1}A)$ being observable is the necessary condition for $G_{\rm e}$ to be controllable and observable.
+Below, we assume this controllability and observability in our discussions.
+Strict proof is not easy, but since the rank of $B$ and $C$ is $(N-1)$ or higher except for special situations, such assumptions do not interfere with a realistic analysis.
+
+
+\begin{figure}[t]
+\centering
+\includegraphics[width = .90\linewidth]{figs/FandGe2}
+\medskip
+\caption{\textbf{Basis-transformed approximate linear model}}
+\label{fig:GandGe}
+\medskip
+\end{figure}
+
+
+\smallskip
+\subsubsection{Analysis of small signal stability based on passivity}
+
+Below, we assume the passive power transmission conditions of definition \ref{def:passtrans} and show the passivity of $G_{\rm e}$ of Equation \ref{eq:Gsstrmin} using the same steps as the electrical system $G$ of Equation \ref{eq:Gss}.
+To that end, we used the following expression:
+\begin{align}\label{eq:Gecomdef}
+G_{\rm e}: \simode{
+\dot{x}_{G_{\rm e}} & = A_{G_{\rm e}} x_{G_{\rm e}} + B_{G_{\rm e}} u_G \\
+y_G &= C_{G_{\rm e}} x_{G_{\rm e}}
+}
+\end{align}
+$x_{G_{\rm e}}$ and ${\delta}^{\rm lin}_{\rm e}$ are vectors with $E^{\rm lin}$:
+\[
+A_{G_{\rm e}} := 
+\mat{
+0 & 0 \\
+ \Omega^2 \hat{B} W  &  \Omega^2 \hat{A} 
+},\quad
+B_{G_{\rm e}} := 
+\mat{
+W^{\dagger} \\
+0
+},\quad
+C_{G_{\rm e}} := 
+\mat{
+LW & -\hat{B}^{\sf T}
+}
+\]
+A positive semi-definite matrix $P_{G_{\rm e}}$ is defined as:
+\begin{align}\label{eq:defPGe}
+P_{G_{\rm e}} := 
+\mat{
+W & 0 \\
+0 & I
+}^{\sf T}
+\underbrace{
+\mat{
+L  &  - \hat{B}^{\sf T} \\
+- \hat{B} & -\hat{A}
+}
+}_{P_G}
+\mat{
+W & 0 \\
+0 & I
+}
+\end{align}
+If $P_G$ of Equation \ref{eq:defPG} is positive semi-definite, $P_{G_{\rm e}}$ is also positive semi-definite.
+\begin{align}\label{eq:Gelmi}
+A^{\sf T}_{G_{\rm e}} P_{G_{\rm e}} + P_{G_{\rm e}} A_{G_{\rm e}} \preceq 
+0
+,\qquad
+P_{G_{\rm e}} B_{G_{\rm e}} = C_{G_{\rm e}}^{\sf T}
+\end{align}
+At this time, because of the relationship of Equation \ref{eq:psudinv}, we can see that:
+\[
+\frac{
+A^{\sf T}_{G_{\rm e}} P_{G_{\rm e}} + P_{G_{\rm e}} A_{G_{\rm e}}
+}{2}
+=
+\mat{
+\Omega \hat{B}W &0\\
+0 & \Omega^{-1}
+}^{\sf T}
+\underbrace{
+\mat{
+-I & -\hat{A}_{\Omega} \\
+-\hat{A}_{\Omega} & - \hat{A}_{\Omega}^2
+}
+}_{Y}
+\mat{
+\Omega \hat{B}W  &0\\
+0 & \Omega^{-1}
+}
+\]
+Therefore, the time derivative along the solution trajectory of $G_{\rm e}$ of the storage function:
+\[
+W_{G_{\rm e}}(x_{G_{\rm e}}):= \frac{1}{2}x_{G_{\rm e}}^{\sf T}P_{G_{\rm e}}x_{G_{\rm e}}
+\]
+can be evaluated as:
+\begin{align}\label{eq:Glyapeq2}
+\frac{d}{dt} W_{G_{\rm e}} \bigl( x_{G_{\rm e}} (t) \bigr)
+ \leq 
+y_G^{\sf T}(t) u_G(t)
+\end{align}
+In other words, $G_{\rm e}$ of Equation \ref{eq:Gsstrmin} is passive.
+This inequality and inequality of Equation \ref{eq:Glyapeq} are equivalent, and the following is true for the values of two storage functions:
+\[
+W_{G} \bigl( x_{G} (t) \bigr) =
+W_{G_{\rm e}} \bigl( x_{G_{\rm e}} (t) \bigr),\qquad
+\forall t\geq 0
+\]
+
+By considering the observability of $G_{\rm e}$ shown by Equation \ref{eq:Geobs},
+the following is true for the arbitrary initial value of the solution trajectory of the linear approximation model of Equation \ref{eq:lindynu0}:
+\begin{align}\label{eq:allzero}
+\lim_{t\rightarrow \infty} \Delta \omega^{\rm lin}(t)  =0,\qquad
+\lim_{t\rightarrow \infty} \mat{
+{\delta}^{\rm lin}_{\rm e}(t)   \\
+E^{\rm lin}(t)  
+}
+ =0
+\end{align}
+Therefore, from the relationship of the change of basis of Equation \ref{eq:batrinv}, we can see that Equation \ref{eq:linmconv} holds for the arbitrary initial value.
+In other words, the linear approximation model of Equation \ref{eq:lindynu0} is statically stable.
+Also:
+\[
+c_0 = \lim_{t\rightarrow \infty}\overline{\delta}^{\rm lin}_{\rm e}(t)
+\]
+and state variables $\overline{\delta}^{\rm lin}_{\rm e}$ follow the differential equation of Equation \ref{eq:Gsstr}.
+
+Let us theorize the above discussion in the following Theorem.
+
+\begin{定理}[Small signal stability of the linear approximation model based on passivity]\label{thm:stasufcon}
+For the arbitrary steady value $(\delta^{\star},E^{\star})$ that satisfies the passive power transmission conditions of definition \ref{def:passtrans}, the electrical subsystem $G$ of Equation \ref{eq:Gss} is passive.
+For the arbitrary positive definite numbers $(M_i,D_i,\taudi )_{i \in \mathcal{I}_{\rm G}}$, the linear approximation model of Equation\ref{eq:lindynu0} is statically stable.
+\end{定理}
+
+As discussed in Theorem \ref{thm:stasufcon}, under the passive power transmission conditions, the linear approximation model is statically stable for combinations of all physical constants $(M_i,D_i,\taudi )_{i \in \mathcal{I}_{\rm G}}$.
+Analysis based on passivity allows stability independent of model parameters.
+
+
+%\begin{例}[基底変換による定態安定性の解析]
+%\red{$W$の選び方に依らず等価な解析が可能であることを示す。}
+%\end{例}
+
+\subsection{Necessary conditions for the linear approximation model to be passive\advanced}\label{sec:nesconana}
+
+\smallskip
+\subsubsection{Passivity and positive realness}
+
+Passivity of a linear system is mathematically equivalent to a property called positive realness of a transfer function.
+In this Section, based on this equivalence, the necessity of the passive power transmission conditions of definition \ref{def:passtrans} is discussed from the viewpoint of the passivity of an electrical subsystem.
+
+\begin{COLUMN}
+\noindent \textbf{Transfer function}:
+For a linear system:
+\begin{align*}
+\simode{
+\dot{x}(t) & = Ax(t)+Bu(t) \\
+y(t)&= Cx(t) + Du(t)
+}
+\end{align*}
+its \textbf{transfer function} is defined as:
+\[
+Q(s):=C(sI-A)^{-1}B +D
+\]
+When the Laplace transform of the input $u(t)$ is $U(s)$, and the Laplace transform of the output $y(t)$ is $Y(s)$, there is a relationship, $Y(s)=Q(s)U(s)$, with a transfer function.
+The input/output characteristics of a linear system are characterized by the transfer function.
+\end{COLUMN}
+
+
+The transfer function from the input $u_G$ to output $y_G$ of the electrical subsystem $G$ of Equation
+\ref{eq:Gss} is:
+\begin{align}\label{eq:trGs}
+G(s) :=  - \frac{1}{s} 
+\underbrace{
+\left\{ -C \bigl( \taud s -A \bigr)^{-1} B - L \right\}
+}_{H(s)}
+\end{align}
+Since unobservable state variables are not related to input/output characteristics, please note that the transfer function of $G_{\rm e}$ of Equation \ref{eq:Gsstrmin} is also equal to $G(s)$.
+Below, let us consider a situation where the transfer function $H(s)$ of Equation \ref{eq:trGs} is stable.
+The stability of the transfer function is defined as follows:
+
+\begin{定義}[Stability of a transfer function]\label{def:trsta}
+When the real part of all poles of the transfer function $Q(s)$ is negative, $Q(s)$ is called \textbf{stable}.
+\end{定義}
+
+The pole of a transfer function is the zero point of a denominator polynomial. The fact that $H(s)$ of Equation \ref{eq:trGs} is stable is equivalent to the
+real part of all eigenvalues of the matrix $\taud^{-1}A$ being negative.
+
+\textbf{Positive realness} of a transfer function is defined as follows:
+
+\begin{定義}[Positive realness of a transfer function]\label{def:trpf}
+For a square transfer function $Q(s)$, the following is defined:
+\begin{align}\label{eq:defOm0}
+\Omega_0 := \left\{
+\omega_0 \in \mathbb{R}: 
+\mbox{ 純虚数$\bm{j} \omega_0$が$Q(s)$の極である}
+\right\}
+\end{align}
+When the following three conditions are satisfied, $Q(s)$ is called \textbf{positive real}.
+\begin{itemize}
+\item The real part of all poles of $Q(s)$ is nonpositive.
+\item For all $\omega \in [0,\infty)\setminus \Omega_0$, $Q(\bm{j} \omega) + Q^{\sf T}(-\bm{j} \omega)$ is positive semi-definite.
+\item When there are poles of a pure imaginary number, their multiplicity is 1, and the following is true for the remaining number: 
+\begin{align*}
+\lim_{s \rightarrow \bm{j} \omega_0} (s-\bm{j} \omega_0) Q(s) = \lim_{s\rightarrow \bm{j} \omega_0} \{ (s-\bm{j} \omega_0) Q(s)\}^{\sf *}\succeq 0
+,\qquad
+\forall \omega_0 \in \Omega_0
+\end{align*}
+\end{itemize}
+\end{定義}
+
+
+With definition \ref{def:trpf}, what is especially important is the first and second conditions.
+The first condition shows the stability of a transfer function.
+However, this includes the cases where the real part of the pole is 0.
+The second condition is related to the positive definite nature of the Hermitian part when a transfer function is evaluated on an imaginary axis.
+
+Specifically, when $Q(s)$ is a scalar; in other words, when input and output are both scalar, two conditions show that the real part of $Q(\bm{j}\omega)$ of all $\omega \in [0,\infty)\setminus \Omega_0$ is non-negative.
+But please note that when $Q(s)$ is a matrix, it is usually:
+\begin{align*}
+Q(\bm{j} \omega) + Q^{\sf T}(-\bm{j} \omega) \neq 2 \real\left[ Q(\bm{j} \omega) \right]
+\end{align*}
+For $Q(s)$ with a real number coefficient, $Q^{\sf T}( -\bm{j} \omega)$ is equal to $\{Q(\bm{j} \omega)\}^*$.
+The third condition is exceptions where $Q(s)$ has a pole of a pure imaginary number.
+For example, as in $G(s)$ of Equation \ref{eq:trGs}, it is used to analyze the transfer functions with a pole at the origin.
+
+\begin{COLUMN}
+\noindent \textbf{Complex symmetric and complex skew-symmetric parts of a square matrix}:
+Arbitrary square matrix $M$ can be broken down to
+\[
+M=\frac{M+M^*}{2}+\frac{M-M^*}{2}
+\]
+This $\tfrac{M+M^*}{2}$ is called the \textbf{Hermitian part} of $M$, while $\tfrac{M-M^*}{2}$ is called the \textbf{skew Hermitian part} of $M$.
+\end{COLUMN}
+
+In control systems engineering, it is known that the passivity in definition \ref{def:passivelin} and positive realness of definition \ref{def:trpf} are equivalent.
+%\footnote{
+%証明は\cite[Theorem 5.31]{antoulas2005approximation}や\cite[Theorem 3]{anderson1967system}などを参照されたい。
+%また,\cite{kottenstette2010relationships}では,関連する一連の結果が細かく整理されている。
+%\begin{補題*}
+%安定かつ正方な伝達関数
+%\[
+%Q(s)=C(sI-A)^{-1}B + D
+%\]
+%を考える。
+%ただし,$(A,B)$は可制御であり,$(C,A)$は可観測であるものとする。
+%このとき,$Q(s)$が正実であるための必要十分条件は,
+%ある正定対称行列$P$が存在して
+%\begin{align*}%\label{eq:prlem}
+%\mat{
+%A^{\sf T}P+PA & PB-C^{\sf T} \\
+%B^{\sf T} P -C & -(D+D^{\sf T})
+%}\preceq 0
+%\end{align*}
+%が満たされることである。
+%\end{補題*}
+%}
+%。
+In the discussion in this Section, the necessary condition for $G(s)$ of Equation \ref{eq:trGs} to be positive real is that there is a positive definite matrix $P_{G_{\rm e}}$ that satisfies Equation \ref{eq:allzero} for $G_{\rm e}$ of Equation \ref{eq:Gecomdef}, which is a controllable and observable realization of state space.
+This is equivalent to the passivity of $G_{\rm e}$ defined by the inequality of Equation \ref{eq:Glyapeq2}.
+The fact that $P_{G_{\rm e}}$ of Equation \ref{eq:defPGe} is positive definite is shown by Schur complements related to $-\hat{A}$ and $-\hat{A}$:
+\[
+W^{\sf T} \left(L+\hat{B}^{\sf T} \hat{A}^{-1} \hat{B} \right) W
+=  W^{\sf T} L_0 W
+\]
+being both positive definite.
+However, since $L_0$ of Equation \ref{eq:defL0} satisfies \ref{eq:nescon} and the column vector of $W$ in Equation \ref{eq:batrinv} is orthogonal to $\mathds{1}$, $W^{\sf T} L_0 W$ is nonsingular.
+
+
+
+
+\smallskip
+\subsubsection{Necessary conditions for a transfer function of an electrical subsystem to be positive real}
+
+
+As a mathematical preparation to derive necessary conditions, we introduce \textbf{negative imaginariness} of a transfer function, which is a similar concept to positive realness \cite{petersen2010feedback,xiong2010negative}.
+
+\begin{定義}[Negative imaginariness of a transfer function]
+\label{def:trni}
+For a square transfer function $Q(s)$ without a pole at the origin, we define $\Omega_0$ of Equation \ref{eq:defOm0}.
+When the following three conditions are satisfied, $Q(s)$ is called \textbf{negative imaginary}.
+\begin{itemize}
+\item The real part of all poles of $Q(s)$ is nonpositive.
+\item For all $\omega \in (0,\infty)\setminus \Omega_0$, $\bm{j}\left\{Q(\bm{j} \omega) - Q^{\sf T}(-\bm{j} \omega) \right\}$ is positive semi-definite.
+\item When there is a pole of a pure imaginary number, their multiplicity is 1, and the following holds for the remaining numbers:
+\begin{align*}
+\lim_{s \rightarrow \bm{j} \omega_0} (s-\bm{j} \omega_0) \bm{j} Q(s) = 
+\lim_{s\rightarrow \bm{j} \omega_0} \{ (s-\bm{j} \omega_0) \bm{j} Q(s)\}^{\sf *}\succeq 0
+,\quad
+\forall \omega_0 \in \Omega_0
+\end{align*}
+\end{itemize}
+\end{定義}
+
+While the positive realness of definition \ref{def:trpf} was defined by the positive semi-definite nature related to the Hermitian part of a transfer function, the negative imaginariness of definition \ref{def:trni} is defined by the positive semi-definite nature of the skew Hermitian part of a
+Specifically, when $Q(s)$ is scalar, the following is true:
+\begin{align*}
+\bm{j}\left\{Q(\bm{j} \omega) - Q^{\sf T}(-\bm{j} \omega) \right\}
+= -2 \imag[Q(\bm{j} \omega)]
+\end{align*}
+thus, the second condition shows that for all $\omega \in (0,\infty)\setminus \Omega_0$, the imaginary part of $Q(\bm{j}\omega)$ is nonpositive.
+Definition \ref{def:trni} includes a case where $Q(s)$ has a pole on an imaginary axis to contrast with definition \ref{def:trpf}, but in the following discussion, we need to only focus on the second condition to consider the negative imaginariness of a stable transfer function.
+Similar to positive realness, the negative imaginariness of the transfer function is characterized as a possibility of matrix inequality. 
+For more information, please refer to the supplemental title at the end of the Chapter \ref{lem:nilem}.
+%\footnote{
+%証明は\cite[Lemma 7]{xiong2010negative}などを参照されたい。
+%\begin{補題*}
+%安定かつ正方な伝達関数
+%\[
+%Q(s)=C(sI-A)^{-1}B + D
+%\]
+%を考える。
+%ただし,$(A,B)$は可制御であり,$(C,A)$は可観測であるものとする。
+%このとき,$Q(s)$が負虚であるための必要十分条件は,$D$が対称であり,かつ,
+%ある対称正定行列$P$が存在して
+%\begin{align*}
+%A^{\sf T}P+PA \preceq 0
+%,\qquad
+%-PA^{-1}B = C^{\sf T}
+%\end{align*}
+%が満たされることである。
+%\end{補題*}
+%}
+%。
+%具体的には,式\ref{eq:siglin}の線形システム$\Sigma$の伝達関数が負虚であるための必要十分条件は,
+%\[
+%A^{\sf T} P  + PA \preceq 0 ,\qquad -PA^{-1}B = C^{\sf T}
+%\]
+%を満たす正定対称行列$P$が存在することである。
+%ただし,式\ref{eq:siglin}の$\Sigma$は可制御かつ可観測であるものとする。
+
+
+
+
+\begin{figure}[t]
+  \centering
+  {
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = .65\linewidth]{figs/PRdom}
+    \subcaption{ $\mathcal{D}_{\rm PR}$ }
+    \medskip
+  \end{minipage}
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = .65\linewidth]{figs/NIdom}
+    \subcaption{ $\mathcal{D}_{\rm NI}$ }
+    \medskip
+  \end{minipage}
+  }
+  \medskip
+  \caption{\textbf{Positive realms and negative imaginary realms}}
+  \label{fig:PRandNI}
+\medskip
+\end{figure}
+
+
+\begin{COLUMN}
+\noindent \textbf{Nyquist trajectory}:
+When the trajectory related to $\omega \in \mathbb{R}$ of the frequency response function $Q(\bm{j} \omega)$ is plotted on a complex plane, it is called the \textbf{Nyquist curve}.
+The Nyquist curve is often used for geometrical analysis related to the stability of a feedback system.
+This analytical method is called the \textbf{Nyquist stability criterion}.
+When $Q(s)$ is scalar, and the coefficient of the numerator polynomial and denominator polynomial is a real number, the trajectory of $Q(\bm{j} \omega)$ against negative $\omega$ is symmetrical to the trajectory and the real axis against positive $\omega$.
+\end{COLUMN}
+
+The relationship of positive realness and negative imaginariness is explained with \FIGref{fig:PRandNI}.
+If the transfer function $Q(s)$ is scalar, $Q(s)$ being positive real can be understood as the trajectory related to non-negative $\omega$ of the frequency response function $Q(\bm{j} \omega)$ is included in the range $\mathcal{D}_{\rm PR}$ shown in \ref{fig:PRandNI}(a).
+\[
+\mathcal{D}_{\rm PR} = \bm{j} \mathcal{D}_{\rm NI}
+\]
+and $-\tfrac{1}{\bm{j}}=\bm{j}$ for $G(s)$ and $H(s)$ of Equation \ref{eq:trGs}, the following is derived:
+\[
+G(\bm{j} \omega) \in \mathcal{D}_{\rm PR}, 
+\quad \forall \omega >0
+\qquad
+\Longleftrightarrow
+\qquad
+H(\bm{j} \omega) \in \mathcal{D}_{\rm NI} ,
+\quad \forall \omega >0
+\]
+Therefore, a negative imaginariness analysis of $H(s)$ is equivalent to a positive realness analysis of $G(s)$.
+To be accurate, $G(\bm{j} \omega)$ and $H(\bm{j} \omega)$ are complex matrices; thus, $\mathcal{D}_{\rm PR}$ and $\mathcal{D}_{\rm NI}$ should be redefined with a set of positive semi-definite matrices.
+
+Therefore, a negative imaginariness analysis of $H(s)$ is equivalent to a positive realness analysis of $G(s)$. Based on this fact, the passive power transmission conditions (ii) and (iii) are necessary conditions for $G(s)$ to be positive real.
+
+\begin{定理}[Positive realness of the transfer function of an electrical subsystem]
+\label{thm:EdynNI}
+\red{Translated with DeepL}
+For an arbitrary $(\delta^{\star},E^{\star})$ where the transfer function $H(s)$ of Equation \ref{eq:trGs} becomes stable, a condition necessary for $H(s)$ to be negative imaginary is that the passive power transmission condition (ii) of definition \ref{def:passtrans} holds.
+In addition, a condition necessary for the transfer function $G(s)$ of Equation \ref{eq:trGs} to be positive real is that the passive power transmission conditions (ii) and (iii) hold.
+\end{定理}
+
+\begin{証明}
+First, we show that for any $(\delta^{\star},E^{\star})$ for which $H(s)$ is stable, if $H(s)$ is negative imaginary, then the passive transmission condition (ii), i.e., the Equation \ref{eq:Gredcon}, holds.
+Now
+\[
+\lim_{\omega \rightarrow \infty} \bm{j}
+\left\{
+H(\bm{j}\omega)-H^{\sf T}(-\bm{j}\omega)
+\right\}
+=\bm{j}
+\left(
+-L+L^{\sf T}
+\right) \succeq 0
+\]
+Therefore, $L$ must be symmetric for $H(s)$ to be negative vacuity.
+Thus, we have $K_{IJ}(\delta_{IJ}^{\star}) = K_{JI}(\delta_{JI}^{\star})$.
+In other words
+\[
+G^{\rm red}_{ij} \sfsin \delta_{ij}^{\star} = 0 ,\qquad
+\forall (i, j) \in \mathcal{I}_{\rm G} \times \mathcal{I}_{\rm G}
+\]
+This implies $\delta_{i}^{\star}\neq \delta_{j}^{\star}$ for $(i,j)$ where $G^{\rm red}_{ij}=0$.
+Also, when $\delta_{i}^{\star}= \delta_{j}^{\star}$, continuity regarding parameter variation of eigenvalues for matrices with parameters implies that $\taud^{-1}A$ for $\delta^{\star}+\gamma e_i$ is There exists a sufficiently small $\gamma>0$ such that it is stable.
+However, $e_i$ denotes a vector where only the $i$th $i$-element is 1 and the rest are 0.
+Therefore, there exists a vector
+
+\begin{align}\label{eq:Gij0t}
+G^{\rm red}_{ij}=0, \qquad
+\forall i\neq j
+\end{align}
+Furthermore, if $H(s)$ is negative imaginary, then
+\[
+\lim_{\omega \rightarrow 0} \bm{j}
+\left\{
+H(\bm{j}\omega)-H^{\sf T}(-\bm{j}\omega)
+\right\}
+=\bm{j}
+\left(
+-L_0+L_0^{\sf T}
+\right) \succeq 0
+\]
+Therefore, $L_0$ in equation\ref{eq:defL0} must also be symmetric.
+When the Equation\ref{eq:Gij0t} holds.
+\[
+C = \sfdiag \left(
+2E_i^{\star} G^{\rm red}_{ii}
+\right)  - \hat{B}^{\sf T}
+\]
+Note that $L_0$ is given by:
+\[
+L_0 = \underbrace{ L + \hat{B}^{\sf T} \hat{A}^{-1} \hat{B} }_{L_1}
+-
+\underbrace{ \sfdiag (
+2 E_i^{\star} G^{\rm red}_{ii}
+) \hat{A}^{-1} \hat{B}
+}_{L_2}
+\]
+However, $\hat{A}$ is a symmetric matrix defined by the Equation \ref{eq:sysmats}.
+On the other hand, for $L_2$ to be symmetric for any $E^{\star}$, it must have $G^{\rm red}_{ii}=0$ for all $i$.
+From this, for any $(\delta^{\star},E^{\star})$ for which $H(s)$ is stable, if $H(s)$ is negative imaginary, then the expression \ref{eq:Gredcon} holds.
+
+Next, we show that $H(s)$ is negative imaginary for any $(\delta^{\star},E^{\star})$ for which $H(s)$ is stable if the expression\ref{eq:Gredcon} holds.
+This requires that $L$ is symmetric and:
+\begin{align}\label{eq:cndQ}
+\tilde{A}^{\sf T}P + P\tilde{A} \preceq 0
+,\qquad
+P\tilde{A}^{-1}\tilde{B}=C^{\sf T}
+\end{align}
+It is enough to show that there exists a positive definite matrix $P$ satisfying.
+However, we need to show that there exists a positive definite matrix $P$ such that
+\begin{align*}
+\tilde{A}:= \taud^{-1}A
+,\qquad
+\tilde{B}:= \taud^{-1}B
+\end{align*}
+とする。
+ここで,式\ref{eq:Gredcon}が成り立つならば
+\begin{align*}
+k_{ij}(\delta_{ij}^{\star}) =
+k_{ji}(\delta_{ji}^{\star})
+,\qquad
+h_{ij}(\delta_{ij}^{\star}) = 
+- h_{ji}(\delta_{ji}^{\star}),\qquad
+h_{ii}(\delta_{ii}^{\star}) = 0
+\end{align*}
+Since $L$ is symmetric, it follows that $L$ is symmetric.
+Also, since $H(s)$ is stable
+\begin{align*}
+\tilde{A} = 
+\sfdiag \left( \frac{ \Xsi -  \Xti }{ \taudi } \right)
+\hat{A}
+\end{align*}
+Since $\Xsi > \Xti$, $\hat{A}$ in Equation \ref{eq:sysmats} is negative definite.
+Therefore, we can choose $-\hat{A}$ as the positive definite matrix $P$ satisfying Equation \ref{eq:cndQ}, which shows that $H(s)$ is negative-definite.
+
+
+Next, we show the equivalence for $G(s)$.
+Since $H(s)$ is stable, the only pole on the imaginary axis of $G(s)$ is the origin, and its degree of overlap is 1.
+Therefore, $G(s)$ is
+The necessary and sufficient condition for being positively real is:
+\begin{align}\label{eq:Gpr}
+G(\bm{j}\omega) + G^{\sf T}(-\bm{j}\omega) \succeq 0
+,\qquad \forall \omega \in \mathbb{R}\setminus\{0\}
+\end{align}
+is valid, and the following can be established:
+\begin{align}\label{eq:cndG0}
+\lim_{s\rightarrow 0} s G(s) = \lim_{s\rightarrow 0} \{ s G(s)\}^{\sf T}\succeq 0
+\end{align}
+When the Equation \ref{eq:Gredcon} holds, then the Equation \ref{eq:Gpr} holds.
+\begin{align}\label{eq:NIineq}
+G(\bm{j}\omega) + G^{\sf T}(-\bm{j}\omega)
+=
+\frac{\bm{j}}{\omega} \left\{
+H(\bm{j}\omega) - H^{\sf T}(-\bm{j}\omega)
+\right\}
+,\qquad \forall \omega \in \mathbb{R}\setminus\{0\}
+\end{align}
+It is shown from $H(s)$ that $H(s)$ is negative imaginary.
+And,
+\begin{align*}
+\lim_{s\rightarrow 0} s G(s) =
+L - C\tilde{A}^{-1}\tilde{B} = L - C A^{-1} B
+\end{align*}
+Therefore, the semi-positive definiteness of equation \ref{eq:cndG0} is equivalent to the passive transmission condition (iii), i.e., the condition of equation \ref{eq:pdsp}.
+Note that when the passive transmission condition (ii) holds, $L$ is symmetric and:
+\begin{align*}
+C\tilde{A}^{-1}\tilde{B} = C P^{-1} C^{\sf T}
+\end{align*}
+is also symmetric, which also shows the symmetry of the expression \ref{eq:cndG0}.
+
+Conversely, if the passive power transmission conditions (ii) or (iii) do not hold, then $G(s)$ is not positively real.
+The latter is evident from the fact that the condition in equation \ref{eq:pdsp} is equal to the condition in equation \ref{eq:cndG0}.
+Also, when the passive power transmission condition (ii) does not hold, since $H(s)$ is not negative vacuous, 
+there exists a point $\omega_0\geq 0$ and a sufficiently small $\epsilon >0$ such that:
+\begin{align*}
+\lambda_{\rm min}\left[
+\bm{j}
+\left\{
+H(\bm{j}(\omega_0 + \alpha )) - H^{\sf T}(-\bm{j}(\omega_0 + \alpha ))
+\right\}
+\right] < 0
+,\qquad
+\forall \alpha \in (0,\epsilon] 
+\end{align*}
+where $\lambda_{\rm min}$ denotes the smallest eigenvalue.
+Thus, for all $\omega \in (\omega_0, \omega_0+\epsilon] $ that are not 0, the complex symmetric part of $G(\bm{j} \omega) $ is not semidefinite.
+\end{証明}
+
+\begin{figure}[t]
+  \centering
+  {
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 1.0\linewidth]{figs/eigG}
+    \subcaption{ $\tfrac{G(\bm{j} \omega) + G^{\sf T}(-\bm{j} \omega)}{2} $の固有値}
+    \medskip
+  \end{minipage}
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 1.0\linewidth]{figs/eigH}
+    \subcaption{ $\tfrac{H(\bm{j}\omega) - H^{\sf T}(-\bm{j}\omega)}{2\bm{j}}$の固有値}
+    \medskip
+  \end{minipage}
+  }
+  \medskip
+  \caption{\textbf{$\bm{G(s)}$の正実性と$\bm{H(s)}$の負虚性}
+  \\  \centering(Blue: passive transmission condition (ii) is satisfied, Red: not satisfied)}
+  \label{fig:eigGH}
+\medskip
+\end{figure}
+
+
+Let us confirm the result of Theorem \ref{thm:EdynNI} with an example.
+
+\begin{例}[Transmission loss and positive realness of the transfer function of an electrical subsystemTransmission loss and positive realness of the transfer function of an electrical subsystem]
+For the electrical power system model consisting of three generators discussed in the Example \ref{ex:linsyssim}, let us examine the positive realness of $G(s)$ and negative imaginariness of $H(s)$.
+For comparison, we will calculate a case where the passive power transmission condition (ii) is satisfied, and when it is not satisfied.
+Specifically, similar to the Example \ref{ex:energylin}, we set $\bm{Y}_0(0)$ and $\bm{Y}_0(1)$ as the admittance matrix $\bm{Y}$ of the power grid.
+With the horizontal axis as frequency $\omega$, the eigenvalue of the Hermitian part of $G(\bm{j}\omega)$ is shown in \FIGref{fig:eigGH}(a), while the imaginary part of the eigenvalue of the skew Hermitian part of $H(\bm{j}\omega)$ is shown in \FIGref{fig:eigGH}(b).
+The blue circle indicates when the passive power transmission condition (ii) is satisfied, while red indicates when it is not satisfied.
+With this Figure, we can see that when the conductance of a transmission line is not 0, the Hermitian part of $G(\bm{j}\omega)$ is positive semi-definite in a low frequency band.
+\end{例}
+
+The significance of the passive power transmission condition (iii), which appeared as a condition for $P_G$ of Equation \ref{eq:defPG} to be positive semi-definite, can be explained as follows.
+In the electrical subsystem $G$ of Equation \ref{eq:Gss}, let us look at the equation of state for the internal voltage: 
+\begin{align*}
+\taud
+ \dot{E}^{\rm lin} = 
+A E^{\rm lin} + B \delta^{\rm lin}
+\end{align*}
+With this differential equation, let us consider a limit at which the time constant $( \taudi )_{i \in \mathcal{I}_{\rm G}}$ asymptotically approaches 0.
+This is equivalent to “a limit for which the time it takes for the internal voltage to reach a steady state is sufficiently shorter than the fluctuations in $\delta^{\rm lin}$”.
+At this time, the following approximation holds:
+\begin{align}\label{eq:spa}
+E^{\rm lin}(t) \simeq  -A^{-1} B\delta^{\rm lin}(t)
+,\qquad
+\forall t\geq 0
+\end{align}
+If $A$ is not stable; in other words, if the passive power transmission condition (i) does not hold, state $E^{\rm lin}$ dissipates.
+The method to approximate a differential equation with an algebraic equation using such a difference in the timescale of state variables is called \textbf{singular perturbation approximation} in control systems engineering.
+Actually, the dynamic characteristics of the internal voltage often have smaller time constants compared to the dynamic characteristics of mechanical turbines.
+
+If we assume Equation \ref{eq:spa} establishes an equation and substitutes as an output equation of Equation \ref{eq:Gss}, the following low-dimensional approximation of the electrical system is obtained:
+\begin{align}\label{eq:Gsssp}
+\hat{G}: \simode{
+\dot{\hat{\delta}}^{\rm lin} & = u_G \\
+y_G &= L_0 \hat{\delta}^{\rm lin}
+}
+\end{align}
+To show that it is an approximation, we classified state variables as $\hat{\delta}^{\rm lin}$.
+%また,内部電圧の近似的な値は
+%\begin{align*}
+%\hat{E}^{\rm lin}:=  -A^{-1} B \hat{\delta}^{\rm lin}
+%\end{align*}
+%として与えられる。
+The entire linear approximation model of Equation \ref{eq:lindynu0} is approximated as a differential equation system where the second-order oscillator is combined by this singular perturbation approximation:
+\begin{align}\label{eq:spamodel}
+M \ddot{\hat{\delta}}^{\rm lin}
++ D \dot{\hat{\delta}}^{\rm lin}
++\omega_0 L_0 \hat{\delta}^{\rm lin}=0
+\end{align}
+This result shows that the passive power transmission condition (iii) shows the “positive semi-definite nature of a spring constant matrix” when the time constant is small.
+It can be interpreted as equivalent to a dynamic spring constant of the electrical subsystem $G$ of Equation \ref{eq:Gss}.
+
+\begin{figure}[t]
+  \centering
+  {
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 1.0\linewidth]{figs/Domegaspa}
+    \subcaption{ Solid line: $\Delta \omega^{\rm lin}$, Dotted line: $\Delta \hat{\omega}^{\rm lin}$ }
+    \medskip
+  \end{minipage}
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 1.0\linewidth]{figs/deltaspa}
+    \subcaption{ Solid line:$\delta^{\rm lin}$, Dotted line:${\hat{\delta}}^{\rm lin}$ }
+    \medskip
+  \end{minipage}
+ \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 1.0\linewidth]{figs/Espa}
+    \subcaption{ Solid line:$E^{\rm lin}$, Dotted line:$\hat{E}^{\rm lin}$ }
+    \medskip
+  \end{minipage}
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 1.0\linewidth]{figs/Pspa}
+    \subcaption{ Solid line:$P^{\rm lin}$, Dotted line:$\hat{P}^{\rm lin}$ }
+    \medskip
+  \end{minipage}
+  }
+  \medskip
+  \caption{\textbf{Time response when low-dimensional approximation is applied}
+  \\  \centering(Blue: Generator 1, Black: Generator 2, Red: Generator 3)}
+  \label{fig:timeexsp}
+\medskip
+\end{figure}
+
+
+%\begin{figure}[t]
+%  \centering
+%  {
+%  \begin{minipage}{0.49\linewidth}
+%    \centering
+%    \includegraphics[width = 1.0\linewidth]{figs/deltasp}
+%    \subcaption{ $\hat{\delta}^{\rm lin}$ }
+%    \medskip
+%  \end{minipage}
+%  \begin{minipage}{0.49\linewidth}
+%    \centering
+%    \includegraphics[width = 1.0\linewidth]{figs/omegasp}
+%    \subcaption{ $\Delta \hat{\omega}^{\rm lin}$ }
+%    \medskip
+%  \end{minipage}
+%%  \begin{minipage}{0.32\linewidth}
+%    \centering
+%    \includegraphics[width = .49\linewidth]{figs/Esp}
+%    \subcaption{ $\hat{E}^{\rm lin}$ }
+%%  \end{minipage}
+%  }
+%  \medskip
+%  \caption{\textbf{特異摂動近似モデルの初期値応答}}
+%  \label{fig:timeexsp}
+%\medskip
+%\end{figure}
+
+
+\begin{例}[Singular perturbation approximation of a linear approximation model]
+As a reference, \FIGref{fig:timeexsp} shows the time response of a second-order oscillator system of Equation \ref{eq:spamodel} to the linear approximation model discussed in the Example \ref{ex:linsyssim}.
+The solid line is the response of the original linear approximation model, while the dashed line is the response of a second-order oscillator system after applying the singular perturbation approximation.
+Also:
+\[
+\Delta \hat{\omega}^{\rm lin}:=\omega_0^{-1} \dot{\hat{\delta}}^{\rm lin},\qquad
+\hat{E}^{\rm lin}:=-A^{-1}B\hat{\delta}^{\rm lin},\qquad
+\hat{P}^{\rm lin}:= L \hat{\delta}^{\rm lin} + C \hat{E}^{\rm lin}
+\]
+The initial value of the linear approximation model is given as follows in response to Equation \ref{eq:linmini}:
+\[
+\hat{\delta}^{\rm lin}(0)
+ =
+\mat{
+\tfrac{\pi}{6} \\
+0 \\
+0
+},\qquad
+\Delta \hat{\omega}^{\rm lin}(0)
+ =
+\mat{
+0 \\
+0 \\
+0
+}
+\]
+\FIGref{fig:timeexsp} shows that the time response of both is largely consistent with the peak value of the oscillations and attenuation rate.
+\end{例}
+
+\subsection{Necessary conditions for the linear approximation model to be statically stable\advanced}\label{sec:nesconsta}
+
+Below, we discuss the necessity of the passive power transmission condition (iii) from the viewpoint of small signal stability of the linear approximation model of Equation \ref{eq:lindynu0}.
+Specifically, it shows that the passive power transmission condition (iii) is a necessary condition for the linear approximation model to be statically stable regardless of the physical constants of generators.
+As shown in the discussions of Section \ref{sec:nesconana}, the passive power transmission condition (i) is a necessary condition for the linear approximation model to not be unstable for the time constant $(\taudi)_{i \in \mathcal{I}_{\rm G}}$ at a sufficiently small limit.
+When the matrix $A$ is not stable, this can be confirmed from the dissipation of the internal voltage since the singular perturbation approximation of Equation \ref{eq:spa} cannot be applied. 
+
+When the passive power transmission condition (ii) does not hold, since $L_0$ is usually not symmetrical, we consider generalization of the passive power transmission condition (iii) so that it can be applied to unsymmetrical $L_0$:
+\begin{align}\label{eq:eigreal}
+\bm{\Lambda}(L_0)\subseteq [0,\infty)
+\end{align}
+However, $\bm{\Lambda}(L_0)$ shows a set of eigenvalues of $L_0$.
+The conditions of Equation \ref{eq:eigreal} show that all eigenvalues of $L_0$ are “non-negative real numbers”.
+Below, we call this generalized condition the passive power transmission condition (iii) $'$ of definition \ref{def:passtrans}.
+When $L_0$ is symmetrical, the passive power transmission conditions (iii) and (iii)$'$ are equivalent.
+The following lemma is presented.
+
+\begin{補題}[Necessary condition for the small signal stability of a second-order oscillator system]\label{thm:2ndsys}
+Let us consider a second-order oscillator system of Equation \ref{eq:spamodel}.
+For an arbitrary initial value and arbitrary positive definite number $(M_i,D_i)_{i \in \mathcal{I}_{\rm G}}$, a condition necessary for a certain constant $c_0$ to exist and the following to hold:
+\begin{align}\label{eq:delhat0}
+\lim_{t\rightarrow \infty} \hat{\delta}^{\rm lin}(t)= c_0 \mathds{1}
+\end{align}
+is that the passive power transmission condition (iii)$'$ holds.
+\end{補題}
+
+\begin{証明}
+\red{Translated with DeepL}
+If the passive transmission condition (iii)$'$ does not hold, then there exists a certain positive constant $(M_i,D_i)_{i \in \mathcal{I}_{\rm G}}$ such that the Equation \ref{eq:delhat0}.
+For this purpose, the following two cases will be discussed.
+\begin{itemize}
+\item[(a)] Among the eigenvalues of $L_0$, there exist eigenvalues whose real part is negative or pure imaginary.
+\item[(b)] There exist eigenvalues of $L_0$ whose real part is positive and whose imaginary part is nonzero.
+\end{itemize}
+First, let's consider the case (a).
+In the following, we choose constant matrices as $M=\omega_0 I$ and $D=\omega_0 d I$.
+In this case, the eigen equation of the equation \ref{eq:spamodel} are
+\begin{align*}
+\mat{
+0 & I \\
+-L_0 & -d I
+}
+\mat{v\\w}
+=
+\lambda \mat{v\\w}
+\end{align*}
+If $ w $ is eliminated from this equation by substitution, the following is obtained:
+\begin{align*}
+\left(\lambda^2 I +d \lambda I + L_0
+\right) v =0
+\end{align*}
+This eigenvalue is an eigenvector with $ v $ of $ L_0 $ and for that eigenvalue $ \kappa $, and therefore the following is true.
+\begin{align}\label{eq:lamsq}
+\lambda^2 + d\lambda +\kappa =0
+\qquad
+\Longleftrightarrow
+\qquad
+\lambda = \frac{-d \pm \sqrt{d^2-4\kappa} }{2}
+\end{align}
+Therefore, in the case of (a), it is sufficient to show that the real part of $ \sqrt{d^2--4\kappa} $ is larger than $ d $.
+In general, for any complex number $ \bm{z} $
+\begin{align*}
+\real[\bm{z}] = \sqrt{ \real[\bm{z}^2 ] + (\imag[\bm{z}])^2 }
+\end{align*}
+Since it can be expressed as $ \bm{z} = \sqrt{d^2--4\kappa} $, the following result can be obtained:
+\begin{align*}
+\real \Bigl[
+\sqrt{d^2 - 4\kappa }
+\Bigr]
+=\sqrt{
+d^2 - 4 \real[\kappa]
++
+(\imag[ \bm{z} ])^2
+}
+\end{align*}
+This value is in case (a), that is, when the real part of $ \kappa $ is negative, or the real part of $ \kappa $ is 0 and the imaginary part of $ \kappa $ is non-zero.Must be greater than $ d $.
+Therefore, the secondary oscillator system of the equation \ref{eq: spamodel} is unstable.
+
+Next, consider the case of (b).
+In the following, it is shown that there exists a positive constant $ d $ such that the eigenvalue $ \lambda $ of the expression \ref{eq: lamsq} is a pure imaginary number.
+When $ L_0 $ in the execution column has a complex eigenvalue, there is always something with a negative imaginary part.
+The eigenvalue is expressed as $ \kappa = \alpha + \beta \bm {j} $ using $ \alpha> 0 $ and $ \beta <0 $.
+For this $ \kappa $, there exists $ \omega \neq 0 $ and $ d> 0 $ that satisfy: 
+\[
+-d + \sqrt{d^2-4\kappa}  = \omega \bm{j}
+\]
+If you transfer $ -d $ on the left side and square both sides:
+\[
+-4 (\alpha + \beta \bm{j}) = 2d \omega \bm{j} -\omega^2
+\]
+This equation is satisfied by choosing $ \omega = 2 \sqrt {\alpha} $, $ d =-\tfrac {\beta} {\sqrt {\alpha}} $.
+Therefore, since the secondary oscillator system has a steady-state vibration solution, the equation \ref{eq: delhat0} does not hold.
+\end{証明}
+
+
+Lemma \ref{thm:2ndsys} shows that, for a limit where the time constant of the internal voltage is sufficiently small, the passive power transmission condition (iii)$'$ is a necessary condition for the linear approximation model to be statically stable against the arbitrary physical constants of generators.
+Furthermore, with Theorem \ref{thm:stasufcon}, when the passive power transmission conditions (i)--(iii) hold, the linear approximation model is stable against arbitrary physical constants.
+Based on these facts, the conclusion of this Section is summarized in the following Theorem.
+
+
+\begin{定理}[Small signal stability of the linear approximation model]\label{thm:sync}
+For an arbitrary positive definite number $(M_i,D_i,\taudi)_{i \in \mathcal{I}_{\rm G}}$, a necessary condition for the linear approximation model of Equation \ref{eq:lindynu0} to be statically stable is that the passive power transmission conditions (i) and (iii)$'$ of definition \ref{def:passtrans} hold.
+Specifically, when the passive power transmission condition (ii) holds, the above-mentioned necessary condition for the small signal stability is that the passive power transmission conditions (i) and (iii)$'$ hold.
+\end{定理}
+
+We present an analytical example of the small signal stability of the linear approximate model using Theorem \ref{thm:sync}.
+
+\begin{例}[Small signal stability analysis based on the passive power transmission conditions]\label{ex:linthm}
+Using Theorem \ref{thm:sync}, let us analyze the small signal stability of the linear approximation model consisting of three generators discussed in the Example \ref{ex:linsyssim}.
+The physical constants of generators are set to the same value as Example \ref{ex:linsyssim}.
+Since the passive power transmission condition (i) was satisfied for all parameters, we also plotted the range or parameters where the passive power transmission condition (iii) $'$ is not satisfied in \FIGref{fig:stacheckX}.
+When the eigenvalue of $L_0$ of Equation \ref{eq:defL0} includes those where the real part is negative, it is shown in red.
+When the eigenvalue of complex numbers is included, it is shown with purple.
+This shows when the passive power transmission condition (ii) holds for the range on the horizontal axis where $\theta_2$ is 0.
+
+Theorem \ref{thm:sync} shows that the ranges shown with red and purple are “dangerous parameter ranges where the linear approximation model is always unstable with some physical constant settings”.
+When the passive power transmission condition (ii) holds; in other words, for parameters on the horizontal axis where $\theta_2$ is 0, as long as $\theta_1$ is set to a value that is not red, the linear approximation model has a small signal stability regardless of the value of these constants.
+
+What we need to pay attention to in the result of \FIGref{fig:stacheckX} is that the parameter range shown in red accurately captures some or all of the boundaries with the blue parameter range, where static stability is achieved with the above-described physical constants.
+The necessity of the passive power transmission condition (iii)$'$ shown with Theorem \ref{thm:sync} means that there is at least one setting of physical constants for generators where the linear approximation model is unstable.
+Therefore, for the specific constants set in the Example \ref{ex:linsyssim}, the parameter ranges for static stability cannot always be captured accurately.
+On the other hand, the fact that the some boundaries of the blue range are accurately captured indicates that when the real part of $L_0$ has negative eigenvalues, in many cases, the linear approximation model is unstable.
+
+In the cases of (a) and (b), there is no blue range.
+In other words, for the searched parameters, the eigenvalue of $L_0$ is a real number.
+Generally, as long as $\theta_2$ is not 0, $L_0$ is a non-symmetrical matrix; thus, it is unclear whether only $L_0$ has a real eigenvalue.
+On the other hand, in (c) and (d) where the admittance matrix is multiplied by $\tfrac{1}{100}$, if $\theta_1$ and $\theta_2$ are relatively large, $L_0$ has a complex eigenvalue.
+However, in a realistic setting, it has been confirmed that $L_0$ often only has real eigenvalues.
+%なお,アドミタンス行列はインピーダンス行列と逆行列の関係にあるため,アドミタンス行列の大きさが小さいことは,送電線のレジスタンスやリアクタンスが大きいことを表している。
+\end{例}
+
+
+\begin{figure}[t!]
+  \centering
+  {
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 0.90\linewidth]{figs/Y1D1X}
+    \subcaption{ $D=(10,10,10)$,$\bm{Y}=\bm{Y}_0$ }
+    \medskip
+  \end{minipage}
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 0.90\linewidth]{figs/Y1D0.01X}
+    \subcaption{$D=(0.1,0.1,0.1)$,$\bm{Y}=\bm{Y}_0$ }
+    \medskip
+  \end{minipage}
+}
+  \centering
+  {
+  \begin{minipage}{0.49\linewidth}
+      \centering
+    \includegraphics[width = 0.90\linewidth]{figs/Y0.01D1X}
+    \subcaption{$D=(10,10,10)$,$\bm{Y}=\tfrac{\bm{Y}_0}{100}$ }
+    \medskip
+  \end{minipage}
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width = 0.90\linewidth]{figs/Y0.01D0.01X}
+    \subcaption{$D=(0.1,0.1,0.1)$,$\bm{Y}=\tfrac{\bm{Y}_0}{100}$ }
+    \medskip
+  \end{minipage}
+}
+% \medskip
+ \caption{\textbf{Regions of parameters for which the approximate linear model is stable}}
+ \label{fig:stacheckX}
+\medskip
+\end{figure}
+
+%\bibliographystyle{myjunsrt}		% bib style
+%\bibliography{reference}	% your bib database
+
+
+\section*{Mathematical Supplement}
+\red{Translated with DeepL}
+\begin{補題}\label{lem:prlem}
+Stable and square transfer function
+\[
+Q(s)=C(sI-A)^{-1}B + D
+\]
+を考える。
+ただし,$(A,B)$は可制御であり,$(C,A)$は可観測であるものとする。
+このとき,$Q(s)$が正実であるための必要十分条件は,
+ある正定対称行列$P$が存在して
+\begin{align*}%\label{eq:prlem}
+\mat{
+A^{\sf T}P+PA & PB-C^{\sf T} \\
+B^{\sf T} P -C & -(D+D^{\sf T})
+}\preceq 0
+\end{align*}
+が満たされることである。
+\end{補題}
+
+証明は\cite[Theorem 5.31]{antoulas2005approximation}や\cite[Theorem 3]{anderson1967system}などを参照されたい。
+また,\cite{kottenstette2010relationships}では,関連する一連の結果が細かく整理されている。
+
+\begin{補題}\label{lem:nilem}
+安定かつ正方な伝達関数
+\[
+Q(s)=C(sI-A)^{-1}B + D
+\]
+を考える。
+ただし,$(A,B)$は可制御であり,$(C,A)$は可観測であるものとする。
+このとき,$Q(s)$が負虚であるための必要十分条件は,$D$が対称であり,かつ,
+ある正定対称行列$P$が存在して
+\begin{align*}
+A^{\sf T}P+PA \preceq 0
+,\qquad
+-PA^{-1}B = C^{\sf T}
+\end{align*}
+が満たされることである。
+\end{補題}
+
+証明は\cite[Lemma 7]{xiong2010negative}などを参照されたい。
+
+\end{document}

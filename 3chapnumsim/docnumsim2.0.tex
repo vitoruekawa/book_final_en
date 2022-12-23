@@ -1,0 +1,1194 @@
+\documentclass[tombow,dvipdfmx]{corona-a5}
+% dvipdfmxを追加（川口）
+
+\input{../settings}
+
+
+\begin{document}
+
+\chapter{電力系統モデルの数値シミュレーション}
+
+チャプター概要
+
+\section{潮流計算による定常的な電力系統状態の数値的探索}\label{sec:powflow}
+
+\subsection{潮流計算とは}\label{sec:pfcal}
+
+本節では，定常的な電力系統状態を数値的に探索するために必要な潮流計算の概要を説明する。
+第\ref{ch:model}章では，様々な機器から構成される電力系統の数理モデルを導入した。
+この電力系統モデルの数値シミュレーションを行うためには，モデルパラメータの設定と同時に，各機器によりバスに供給（負の場合はバスで消費）される電力の需給バランスを適切に設定する必要がある。
+この需給バランスの設定は，「どの発電機がどれだけの電力供給を賄うか」を定めることに相当するため，仮に各負荷バスでの消費電力を定めたとしても，各発電機バスへの供給電力は一意には定まらない。
+このことをつぎの例で確認してみよう。
+
+\begin{例}[負荷バスでの消費電力を固定して発電機バスへの供給電力を求めた計算例]\label{ex:pflow}
+\red{発電機2つ，負荷1つとかで，スラックバスを変えると決定される発電量が送電ロスなどで変わることを見せる？}
+\end{例}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width = .25\linewidth]{figs/2busex}
+\caption{2つのバスからなる電力系統\red{（図不要？）}}
+\label{fig:2buspf}
+\end{figure}
+
+\begin{例}[2つのバスで構成される電力系統モデルの潮流計算]\label{ex:2buspf}
+\ref{fig:2buspf}の2つのバスから構成される電力系統を考えよう。
+各バスには何かしらの機器が接続されているものとする。
+ここで，$\bm{y}\in \mathbb{C}$はバスを結ぶ送電線のアドミタンスであり，バスの電圧フェーザと電流フェーザには
+\begin{align}\label{eq:exyIV}
+\mat{
+\bm{I}_1\\
+\bm{I}_2
+}
+=
+\mat{
+\bm{y} & -\bm{y} \\
+-\bm{y} & \bm{y}
+}
+\mat{
+\bm{V}_1\\
+\bm{V}_2
+}
+\end{align}
+の関係が成り立つ。
+いま，式\ref{eq:defPQVIi}に式\ref{eq:exyIV}を代入すれば，有効電力，無効電力，電圧フェーザを用いた等価な連立方程式として
+\begin{subequations}\label{eq:PQpf}
+\begin{align}\label{eq:PQcom}
+\simode{
+P_1 + \bm{j} Q_1 &= 
+\overline{\bm{y}} \left( 
+ |\bm{V}_1|^2 
+-  |\bm{V}_1| |\bm{V}_2| e^{ \bm{j} (\angle \bm{V}_1- \angle \bm{V}_2)}
+\right) \\
+P_2 + \bm{j} Q_2 &= 
+\overline{\bm{y}} \left( 
+ |\bm{V}_2|^2
+ - |\bm{V}_1| |\bm{V}_2| e^{ \bm{j} (\angle \bm{V}_2 - \angle \bm{V}_1)}
+\right)
+}
+\end{align}
+が得られる。
+潮流計算の目的は，この連立方程式を満たす1組の
+\[
+(P_1,P_2,Q_1,Q_2,|\bm{V}_1|,|\bm{V}_2|,\angle \bm{V}_1,\angle \bm{V}_2)
+\]
+を定めることである。
+ここで，式\ref{eq:PQcom}の実部と虚部に関する方程式を考えると
+\begin{align}\label{eq:PQreal}
+\simode{
+P_1 &= \real[\bm{y}] |\bm{V}_1|^2  
+-  |\bm{V}_1| |\bm{V}_2| \bigl\{
+\real[\bm{y}] \sfcos (\angle \bm{V}_1- \angle \bm{V}_2)
++
+\imag[\bm{y}] \sfsin (\angle \bm{V}_1- \angle \bm{V}_2)
+\bigr\}
+\\
+P_2 &= \real[\bm{y}] |\bm{V}_2|^2  
+-  |\bm{V}_1| |\bm{V}_2| \bigl\{
+\real[\bm{y}] \sfcos (\angle \bm{V}_2- \angle \bm{V}_1)
++
+\imag[\bm{y}] \sfsin (\angle \bm{V}_2- \angle \bm{V}_1)
+\bigr\} 
+\\
+Q_1 &= - \imag[\bm{y}] |\bm{V}_1|^2  
++  |\bm{V}_1| |\bm{V}_2| \bigl\{
+\imag[\bm{y}] \sfcos (\angle \bm{V}_1- \angle \bm{V}_2)
+-
+\real[\bm{y}] \sfsin (\angle \bm{V}_1- \angle \bm{V}_2)
+\bigr\}
+\\
+Q_2 &= - \imag[\bm{y}] |\bm{V}_2|^2  
++  |\bm{V}_1| |\bm{V}_2| \bigl\{
+\imag[\bm{y}] \sfcos (\angle \bm{V}_2- \angle \bm{V}_1)
+-
+\real[\bm{y}] \sfsin (\angle \bm{V}_2- \angle \bm{V}_1)
+\bigr\} 
+}
+\end{align}
+という4本の連立方程式が得られる。
+\end{subequations}
+ただし，電圧フェーザの位相は差分のみが意味をもつため，実質的に決定すべき変数は7個であることに注意されたい。
+したがって，式\ref{eq:PQreal}の方程式には3変数分の自由度が存在する。
+
+これらの変数を決定するための最も簡単な方法は，$(|\bm{V}_1|,|\bm{V}_2|,\angle \bm{V}_1-\angle \bm{V}_2)$の3変数を適当な値に指定することである。
+これにより，残りの$(P_1,P_2,Q_1,Q_2)$は式\ref{eq:PQreal}の右辺を計算するだけで決定される。
+しかしながら，この単純な方法では各バスに供給される電力や消費される電力を所望の値に設定することができない。
+現実的な設定で数値シミュレーションを実行するためには，指定した有効電力や無効電力の値を実現するように電圧フェーザの値を適切に定めることがしばしば必要となる。
+
+例えば，$(P_1,P_2)=(1,-1)$を実現する$(|\bm{V}_1|,|\bm{V}_2|,\angle \bm{V}_1-\angle \bm{V}_2)$を求める場合について考えてみよう。
+これは，バス1に接続された機器が供給する有効電力とバス2に接続された機器が消費する有効電力がともに1である場合に，系統全体の電力潮流を実現するような電圧フェーザの分布を求めることに相当する。
+式\ref{eq:PQreal}の$P_1$と$P_2$に関する方程式を足し上げれば，$P_1+P_2=0$であることから
+\begin{align*}
+\spliteq{
+0 &= \real[\bm{y}] \Bigl\{
+ |\bm{V}_1|^2 + |\bm{V}_2|^2 
+- 2 |\bm{V}_1| |\bm{V}_2| \sfcos (\angle \bm{V}_1- \angle \bm{V}_2)
+\Bigr\}\\
+&=
+\real[\bm{y}] \Bigl\{
+\left( |\bm{V}_1| - |\bm{V}_2| \right)^2 
++ 2 |\bm{V}_1| |\bm{V}_2| \bigl( 1-\sfcos (\angle \bm{V}_1- \angle \bm{V}_2) \bigr)
+\Bigr\}
+}
+\end{align*}
+を得る。
+ここで，
+\red{現実的な潮流状態では？}$ \angle \bm{V}_1- \angle \bm{V}_2$の絶対値は$ \frac{\pi}{2} $以下
+であることに注意すると，この方程式は，$\bm{y}$の実部が0でない場合は，
+\begin{align}\label{eq:Vequal}
+|\bm{V}_1| = |\bm{V}_2|,\qquad
+\angle \bm{V}_1 - \angle \bm{V}_2 =0
+\end{align}
+である場合に限り満たされることがわかる。
+しかしながら，式\ref{eq:Vequal}は$P_1=P_2=0$を意味することから，$\bm{y}$の実部が0でない限りは，$(P_1,P_2)=(1,-1)$は実現不可能であることが結論づけられる。
+これは，$\bm{y}$の実部が0でないときには送電線で電力損失が生じるため，電力の需給バランスが系統全体で取れていないことを表している。
+このように，すべての有効電力やすべての無効電力を特定の値に指定してしまうと，式\ref{eq:PQpf}を満たす変数が存在しない場合があることに注意が必要である。
+
+以下では，簡単化のため，$\bm{y}$の実部が0であると仮定しよう。
+また，送電線の対地静電容量は十分に小さく，$\bm{y}$の虚部は非正であると仮定する。
+このとき
+\begin{align*}
+P_1 &= -\imag[\bm{y}]  |\bm{V}_1| |\bm{V}_2| \sfsin (\angle \bm{V}_1- \angle \bm{V}_2), \\
+P_2 & =   \imag[\bm{y}] |\bm{V}_1| |\bm{V}_2| \sfsin (\angle \bm{V}_1- \angle \bm{V}_2)
+\end{align*}
+であることから，いかなる電圧分布に対しても$P_1 = -P_2$が成り立つ。
+例えば，$(P_1,P_2)=(1,-1)$と指定する場合には
+\begin{align*}\textstyle
+\left(
+|\bm{V}_1|, |\bm{V}_2| 
+\right)
+=
+\left(
+\sqrt{
+\frac{2}{|\imag[\bm{y}]|}
+}, 
+\sqrt{
+\frac{2}{|\imag[\bm{y}]|}
+}
+\right)
+\end{align*}
+のように電圧フェーザの絶対値を指定することにより，電圧フェーザの位相差は
+\begin{align*}
+\angle \bm{V}_1- \angle \bm{V}_2 = \frac{\pi}{6}
+\end{align*}
+と定められる。
+既に3変数以上の値が定められているため，無効電力は
+\begin{align*}
+Q_1 = 2 -\sqrt{3},\qquad
+Q_2 = 2 +\sqrt{3}
+\end{align*}
+のように自動的に値が定まる。
+\end{例}
+
+
+
+
+例\ref{ex:2buspf}で示されているように，式\ref{eq:ohmY}の形式で定められた送電網のアドミタンス行列$\bm{Y}$に対して，
+\begin{align}\label{eq:PQVgen}
+\simode{
+P_1 + \bm{j} Q_1 &= 
+\sum_{j=1}^{N} \overline{\bm{Y}}_{1j} |\bm{V}_1| |\bm{V}_j | e^{\bm{j}(\angle \bm{V}_1 - \angle \bm{V}_j )} \\ 
+& \; \;  \vdots \\
+P_N + \bm{j} Q_N &= 
+\sum_{j=1}^{N} \overline{\bm{Y}}_{Nj} |\bm{V}_N| |\bm{V}_j | e^{\bm{j}(\angle \bm{V}_N - \angle \bm{V}_j )}
+}
+\end{align}
+で与えられる$2N$本の連立方程式を満たす，$4N$個の変数の組
+\[
+(P_1,Q_1,|\bm{V}_1 |, \angle \bm{V}_1,\ldots
+P_N,Q_N,|\bm{V}_N |, \angle \bm{V}_N)
+\]
+を1つ定める手続きのことを\emph{潮流計算}と呼ぶ。
+ただし，電圧フェーザの位相は相対的な値のみが意味をもつため，実質的に定めるべき変数は$(4N-1)$個である。
+これは，系統全体で需給をバランスすることが可能な電力系統モデルの定常状態を求める手続きであると解釈できる。
+なお，潮流計算においては，第\ref{sec:genmod}節から第？？節で示されているような各機器の特性は考慮されていないことに注意されたい。
+例えば，第\ref{sec:loadpr}節における負荷の定インピーダンスモデルは，$(P_i,Q_i)$と$|\bm{V}_i|$の間に
+\begin{align*}
+P_i + \bm{j} Q_i = -\frac{1}{\overline{\bm{z}}_{{\rm load}i}} |\bm{V}_i|^2
+\end{align*}
+という代数的な関係を与える。
+すなわち，$\bm{z}_{{\rm load}i}$が所与の定数である場合には，2本の方程式が式\ref{eq:PQVgen}に追加されることを意味している。
+負荷が定電流モデルや定電力モデルで記述されている場合も同様である。
+\red{しかしながら....　なぜそうしない？データシートで与えられているのが普通PQだから？}
+ただし，式\ref{eq:gendynVI}の発電機の定常状態は機械的トルク$P_{{\rm mech}i}$と界磁電圧$V_{{\rm field}i}$という別の2変数にも依存するため，発電機の動特性に由来する方程式を潮流計算で考慮する必要はない。
+このことは第\ref{sec:stagen}節で後述する。
+
+
+
+
+
+式\ref{eq:Ypig}のアドミタンス行列$\bm{Y}$の実部と虚部は対称であることから，それらは必ず
+\begin{align}
+\spliteq{
+\real \left[\bm{Y} \right]
+& =
+\mat{
+  \sum_{j=1}^{N} y^{\rm re}_{1j} & -y^{\rm re}_{12} & \cdots & -y^{\rm re}_{1N}\\
+  -y^{\rm re}_{21} & \sum_{j=1}^{N} y^{\rm re}_{2j} & \cdots & -y^{\rm re}_{2N}\\
+  \vdots & \vdots & \ddots & \vdots\\
+  -y^{\rm re}_{N1} & -y^{\rm re}_{N2} & \cdots & \sum_{j=1}^{N} y^{\rm re}_{Nj}
+},
+\\
+\imag \left[\bm{Y} \right]
+& =
+-\mat{
+  \sum_{j=1}^{N} y^{\rm im}_{1j} & -y^{\rm im}_{12} & \cdots & -y^{\rm im}_{1N}\\
+  -y^{\rm im}_{21} & \sum_{j=1}^{N} y^{\rm im}_{2j} & \cdots & -y^{\rm im}_{2N}\\
+  \vdots & \vdots & \ddots & \vdots\\
+  -y^{\rm im}_{N1} & -y^{\rm im}_{N2} & \cdots & \sum_{j=1}^{N} y^{\rm im}_{Nj}
+}
+}
+\end{align}
+と書き表すことができる。
+ただし，$y^{\rm re}_{ij}=y^{\rm re}_{ji}$，$y^{\rm im}_{ij}=y^{\rm im}_{ji}$である。
+この表現を用いるとつぎの事実が示される。
+
+\begin{定理}\label{thm:PQ}
+式\ref{eq:PQVgen}に対して，系統全体での有効電力と無効電力の送電損失として
+\begin{align}
+L_{P} := P_1 +\cdots P_N
+,\qquad
+L_Q := Q_1 +\cdots Q_N
+\end{align}
+を定義する。
+これらは，任意の$(\bm{V}_1,\ldots,\bm{V}_N)\in \mathbb{C}^N$に対してどちらも非負であり
+\begin{align}
+\spliteq{
+L_P &= \sum_{i=1}^N y^{\rm re}_{ii} |\bm{V}_{i}|^2 \\
+& +
+\sum_{i=1}^N \sum_{j=1}^N
+y^{\rm re}_{ij} \left\{
+\frac{1}{2} \left( |\bm{V}_i| - |\bm{V}_j| \right)^2 
++  |\bm{V}_i| |\bm{V}_j| \bigl( 1-\sfcos (\angle \bm{V}_i- \angle \bm{V}_j) \bigr)
+\right\}
+\\
+L_Q &= \sum_{i=1}^N y^{\rm im}_{ii} |\bm{V}_{i}|^2 \\
+& +
+\sum_{i=1}^N \sum_{j=1}^N
+y^{\rm im}_{ij} \left\{
+\frac{1}{2} \left( |\bm{V}_i| - |\bm{V}_j| \right)^2 
++  |\bm{V}_i| |\bm{V}_j| \bigl( 1-\sfcos (\angle \bm{V}_i- \angle \bm{V}_j) \bigr)
+\right\}
+}
+\end{align}
+で与えられる。
+\end{定理}
+
+
+定理\ref{thm:PQ}は，例\ref{ex:2buspf}で示されている2バスの電力系統における電力損失の議論が，任意の個数のバスから構成される電力系統にも同様に一般化できることを示している。
+ここで，式\ref{eq:Ypig}のアドミタンス行列$\bm{Y}$に対しては
+\begin{align*}
+\sum_{j=1,j\neq i}^N  y^{\rm re}_{ij} =0
+,\qquad
+\sum_{j=1,j\neq i}^N  y^{\rm im}_{ij} =0
+,\qquad
+\forall i \in \{1,\ldots,N\}
+\end{align*}
+が成り立つことに注意すると，各バス$i$について
+\begin{align*}
+y^{\rm re}_{ii}=0,\qquad
+y^{\rm im}_{ii}= - \beta_i
+\end{align*}
+であることがわかる。
+また，$i\neq j$に対して，すべての$y^{\rm re}_{ij} $と$y^{\rm im}_{ij}$は非負である。
+したがって，$y^{\rm re}_{ij}$が0でない限りは，バス$i$とバス$j$の間で有効電力を送電する場合に必ず電力損失が生じる。
+これにより，系統全体での有効電力の送電損失$L_P$は正であることがわかる。
+同様に，$\beta_i$が十分に小さいとき，すなわち，送電線の対地静電容量が十分に小さい場合には，無効電力の送電損失$L_Q$も正であることがわかる。
+
+
+\subsection{潮流状態の数値的な探索手法}
+
+\subsubsection{データシートに基づく方法（？）}
+
+\red{一般に，？？？などの電力系統モデルには，各発電機バスに供給される電力や各負荷バスで消費される電力の標準的な値がデータシートとして与えられている。}
+それらの標準的な値に基づき$2N$個の変数を指定することによって，残りの変数を数値的に求めることができる。
+
+\red{
+データシートには，各負荷バスで消費される有効電力と無効電力の値，および，各発電機バスに供給される有効電力の値とそのバスにおける電圧フェーザの絶対値が与えられているのが一般的である。
+}
+したがって，それらの値を用いることにより，$2N$個の変数をあらかじめ指定することができる。
+しかしながら，例\ref{ex:2buspf}で示されているように，すべてのバスにおける有効電力の値を指定してしまうと，送電網における電力損失の影響によって，残りの変数をいかなる値にしても所望の方程式が満たされない場合がある。
+例えば，一部の負荷バスにおける有効電力や無効電力の値をデータシートとは異なる値に指定すると，発電機バスに供給されるべき有効電力や無効電力の値も変わると同時に，送電網を流れる電力やバス電圧フェーザの値も変化するため，系統全体での送電損失の値も変化する。
+したがって，すべての発電機バスにおける有効電力の値をあらかじめ指定することは方程式の可解性の観点から望ましくない。
+
+この問題を解決する方策のひとつは，\emph{スラックバス}と呼ばれる特別な発電機バスを導入することである。
+スラックバスでは，有効電力を指定する代わりに，電圧フェーザの位相を指定する。
+このとき，各バスにおける電圧フェーザの位相は相対的な値のみが意味をもつため，一般性を失うことなく，スラックバスの位相を0に指定できる。
+結果として，系統全体での送電損失の値に整合するように，スラックバスにおける有効電力を決定することができる。
+以上は，
+\begin{itemize}
+\item[\textbf{(a)}] スラックバスに対して$(|\bm{V}_{i_0}|,\angle \bm{V}_{i_0})$，それ以外の発電機バスに対して$(P_i,|\bm{V}_{i}|)_{i \in \mathcal{I}_{\rm G}\setminus\{i_0\} }$，負荷バスに対して$(P_i,Q_i)_{i \in \mathcal{I}_{\rm L}}$の値をデータシートなどに基づき指定する。
+\item[\textbf{(b)}] その他の変数は式\ref{eq:PQVgen}が満たされるように数値的に探索する。
+\end{itemize}
+という手順にまとめられる。
+ただし，$\mathcal{I}_{\rm G}$は発電機バスの添字集合，$\mathcal{I}_{\rm L}$は負荷バスの添字集合，$i_0 \in \mathcal{I}_{\rm G}$はスラックバスの添字を表す。
+
+\red{数値的な探索手法についても追記？}
+
+\subsubsection{経済費用や系統安定度などを指標とした最適化に基づく方法}
+
+...
+
+\section{所与の潮流状態を定常状態とする各機器のパラメータ設定}\label{sec:paradef}
+
+\subsection{所望の電力供給を実現する発電機モデルの定常状態}\label{sec:stagen}
+
+第\ref{sec:powflow}節では，各バスに対して供給されるべき有効電力や無効電力の値やバスの電圧フェーザの値を求めるための潮流計算手法について説明した。
+これに対して，以下では，潮流計算で定められた有効電力，無効電力，電圧フェーザの値を実現する発電機の定常状態について解析する。
+
+第\ref{sec:genmod}節の電圧フェーザを入力とする発電機モデルを考えよう。
+表記の簡単化のため，添字$i$を省略して
+\begin{align}\label{eq:gendif}
+\simode{
+\dot{\delta}&= \omega_0  \Delta \omega\\
+M   \Delta \dot{\omega}&= 
+ - D \Delta\omega  
+ - P
++P_{{\rm mech}}
+\\
+\tau_{{\rm d}} \dot{E} & = 
+ -\frac{X_{{\rm d}}}{X_{{\rm d}}'}E
++\left(
+\frac{X_{{\rm d}}}{X_{{\rm d}}'}-1
+\right)
+|\bm{V}| \sfcos (\delta - \angle \bm{V} ) 
++ V_{{\rm field}}
+}
+\end{align}
+とする。
+ここで，有効電力と無効電力を出力とする場合には
+\begin{align}\label{eq:PQout}
+\spliteq{
+P &=  \frac{|\bm{V} | E}{X_{{\rm d}}'} \sfsin(\delta -  \angle \bm{V})
+-  
+\left( \frac{1}{X_{{\rm d}}'}  -  \frac{1}{X_{{\rm q}}} \right)
+|\bm{V}|^2 \sfsin( \delta - \angle \bm{V})\sfcos( \delta - \angle \bm{V}), \\
+Q &=  \frac{|\bm{V}|E}{X_{{\rm d}}'} \sfcos (\delta - \angle \bm{V})
+-|\bm{V}|^2 \left( \frac{\sfcos^2 (\delta - \angle \bm{V}) }{X_{{\rm d}}'} 
++ \frac{\sfsin^2 (\delta - \angle \bm{V})}{X_{{\rm q}}} \right)
+}
+\end{align}
+である。
+また，電流フェーザを出力とする場合には
+\begin{align}\label{eq:phVIsincosC2}
+\spliteq{
+ |\bm{I}| \sfcos (\delta -\angle \bm{I}) & =
+\frac{|\bm{V}|}{X_{{\rm q}}}  \sfsin (\delta -\angle \bm{V}) , \\
+|\bm{I}| \sfsin (\delta -\angle \bm{I})
+& = \frac{E - |\bm{V}| \sfcos (\delta -\angle \bm{V}) }{X_{{\rm d}}'} 
+}
+\end{align}
+である。
+第\ref{sec:genmod}節の導出過程から確かめられるように，
+\begin{align}\label{eq:defPQVI}
+P+\bm{j}Q = \bm{V} \overline{\bm{{I}}}
+\end{align}
+の定義のもとで，
+式\ref{eq:PQout}と式\ref{eq:phVIsincosC2}は等価であることに注意されたい。
+
+潮流計算の結果として定められる各バスの変数は，電圧フェーザの絶対値$|\bm{V}|$，位相$\angle \bm{V}$，有効電力$P$，無効電力$Q$である。
+これらの4変数は，発電機モデルにおける入力と出力を表すことに注意されたい。
+したがって，潮流計算で定められたバス変数を実現するためには，対応する入出力を定常的に実現する発電機の内部状態を「逆算的に」求める必要がある。
+また，外部入力に相当する機械的トルク$P_{\rm mech}$や界磁電圧$V_{\rm field}$の値も適切に設定する必要がある。
+このための準備として，つぎの補題を示す。
+
+\begin{補題}\label{lem:delVE}
+式\ref{eq:PQout}を$\delta - \angle \bm{V}$と$E$に関する連立方程式と考えるとき，その解は
+\begin{align}\label{eq:tandelV}
+\spliteq{
+\sftan (\delta - \angle \bm{V}) & = \frac{P}{Q + \frac{ |\bm{V}|^2}{X_{\rm q}} }, \\
+E &=
+\frac{ \frac{X_{\rm d}'}{|\bm{V}| } \left\{ \left( Q + \frac{|\bm{V}|^2}{X_{\rm q}} \right) \left(Q + \frac{|\bm{V}|^2}{X_{\rm d}'} \right) +P^2  \right\} }
+{  \sqrt{ \left( Q + \frac{|\bm{V}|^2}{X_{\rm q}} \right)^2 + P^2 }  }
+}
+\end{align}
+で与えられる。
+ただし，$|\bm{V}|\neq 0$とする。
+逆に，式\ref{eq:tandelV}を$P$と$Q$に関する連立方程式と考えるとき，その解は式\ref{eq:PQout}で与えられる。
+\end{補題}
+
+\begin{証明}
+まず，式\ref{eq:PQout}から式\ref{eq:tandelV}を導く。
+式\ref{eq:PQout}の$P$に$\sfcos (\delta - \angle \bm{V})$を乗じ，
+$Q$に$\sfsin (\delta - \angle \bm{V})$を乗じて差をとれば
+\begin{align*}
+P \sfcos (\delta - \angle \bm{V}) - Q \sfsin (\delta - \angle \bm{V})
+= \frac{|\bm{V}|^2}{X_{\rm q}} \sfsin (\delta - \angle \bm{V}) 
+\end{align*}
+が得られる。
+これにより，式\ref{eq:tandelV}左の関係が得られる。
+つぎに，式\ref{eq:tandelV}右の関係を示す。
+式\ref{eq:defPQVI}を用いて$P$と$Q$を$\bm{I}$で書き直すと，式\ref{eq:PQout}は式\ref{eq:phVIsincosC2}に等価変形される。
+また，これは
+\begin{align}\label{eq:tmpVE}
+|\bm{V}|e^{\bm{j}(\delta - \angle \bm{V})}=E
+-X_{\rm d}' |\bm{I}| \sfsin (\delta - \angle \bm{I})
++ 
+\bm{j} X_{\rm q} 
+|\bm{I}| \sfcos (\delta - \angle \bm{I})
+\end{align}
+と等価である。
+式\ref{eq:tandelV}左の関係を複素数で表現すると
+\begin{align*}
+\frac{ e^{\bm{j}(\delta - \angle \bm{V})} - e^{-\bm{j}(\delta - \angle \bm{V})}}
+{e^{\bm{j}(\delta - \angle \bm{V})} + e^{-\bm{j}(\delta - \angle \bm{V})}}
+= 
+\underbrace{
+\frac{P}{Q + \frac{ |\bm{V}|^2}{X_{\rm q}} }
+}_{\alpha}
+ \bm{j}
+\end{align*}
+であることから
+\begin{align*}
+e^{-\bm{j}(\delta - \angle \bm{V})} = \frac{1-\alpha \bm{j}}{1+\alpha \bm{j}}
+e^{\bm{j}(\delta - \angle \bm{V})}
+\end{align*}
+がわかる。
+したがって，式\ref{eq:defPQVI}を等価変形した
+\begin{align}\label{eq:IVPQ}
+|\bm{I}|e^{\bm{j}(\delta - \angle \bm{I})} = \frac{P+\bm{j}Q}{|\bm{V}|}  
+e^{\bm{j}(\delta - \angle \bm{V})}
+\end{align}
+について，その複素共役を考えることにより
+\begin{align}\label{eq:IVPQc}
+|\bm{I}|e^{-\bm{j}(\delta - \angle \bm{I})} = \frac{P-\bm{j}Q}{|\bm{V}|}  
+\cdot \frac{1-\alpha \bm{j}}{1+\alpha \bm{j}}
+e^{\bm{j}(\delta - \angle \bm{V})}
+\end{align}
+を得る。
+式\ref{eq:IVPQ}と式\ref{eq:IVPQc}から
+\begin{align*}
+|\bm{I}| \sfsin (\delta - \angle \bm{I})
+& =
+\frac{1}{|\bm{V}|} \cdot
+\frac{\alpha P +Q}{ 1+\alpha \bm{j} }e^{\bm{j}(\delta - \angle \bm{V})}, \\
+|\bm{I}| \sfcos (\delta - \angle \bm{I})
+& =
+\frac{1}{|\bm{V}|} \cdot
+\frac{ P - \alpha Q}{ 1+\alpha \bm{j} }e^{\bm{j}(\delta - \angle \bm{V})}
+\end{align*}
+がわかる。
+これらを式\ref{eq:tmpVE}に代入することによって，$\bm{I}$を$P$と$Q$で改めて書き直せば，式\ref{eq:tandelV}左の関係が成り立つとき，式\ref{eq:PQout}が
+\begin{align}\label{eq:Etran}
+E=
+\frac{X_{\rm d}'}{|\bm{V}| } 
+\left\{
+\left(Q + \frac{|\bm{V}|^2}{X_{\rm q}} \right) \left(Q + \frac{|\bm{V}|^2}{X_{\rm d}'} \right) +P^2
+\right\}
+\frac{  Q + \frac{|\bm{V}|^2}{X_{\rm q}} - \bm{j} P }
+{   \left( Q + \frac{|\bm{V}|^2}{X_{\rm q}} \right)^2 + P^2   }
+e^{\bm{j}(\delta - \angle \bm{V})}
+\end{align}
+と等価であることがわかる。
+ここで，式\ref{eq:tandelV}左の関係から
+\begin{align*}
+Q + \frac{|\bm{V}|^2}{X_{\rm q}} - \bm{j} P
+= 
+\left|Q + \frac{|\bm{V}|^2}{X_{\rm q}} - \bm{j} P \right|
+e^{-\bm{j}(\delta - \angle \bm{V})}
+\end{align*}
+がわかる。
+以上より，式\ref{eq:tandelV}右の関係が得られる。
+
+逆の手順をたどって，式\ref{eq:tandelV}から式\ref{eq:PQout}を導く。
+式\ref{eq:tandelV}左の関係を用いると，式\ref{eq:tandelV}右の$E$は式\ref{eq:Etran}の$E$で書き換えられる。
+前述のように，式\ref{eq:tandelV}左の関係が成り立つとき，式\ref{eq:Etran}は式\ref{eq:PQout}と等価である。
+\end{証明}
+
+補題\ref{lem:delVE}は，変数の組$(\delta - \angle \bm{V},E)$と組$(P,Q)$の間に一対一の関係があることを示している。
+特に，発電機の入出力である$(|\bm{V}|,\angle \bm{V})$や$(P,Q)$から，発電機の内部状態である$(\delta,E)$を一意的に逆算できることを示している。
+なお，式\ref{eq:tandelV}の関係は過渡状態においても常に成り立つことに注意されたい。
+つぎの定理は，発電機の定常状態において，入力，出力，および，内部状態の間に成り立つ関係を与える。
+
+
+\begin{定理}\label{thm:stst}
+式\ref{eq:gendif}および式\ref{eq:PQout}の発電機モデルを考える。
+ある実定数$V_0$，$\Delta \omega_0$，$\phi_0$，$P_0$，$Q_0$に対して，機械的トルクと界磁電圧による入力を
+\begin{subequations}\label{eq:allinputs}
+\begin{align}\label{eq:PmVfd}
+\spliteq{
+P_{{\rm mech}}(t) &=   D \Delta \omega_0  + P_0, \\
+ V_{{\rm field}}(t) &=  \frac{ \frac{X_{\rm d}}{ V_0 } \left\{ \left( Q_0 + \frac{V_0^2}{X_{\rm q}} \right) 
+\left(Q_0 + \frac{V_0^2}{X_{\rm d}} \right) +P_0^2  \right\} }
+{  \sqrt{ \left( Q_0 + \frac{V_0^2}{X_{\rm q}} \right)^2 + P_0^2 }  }
+}
+\end{align}
+で与えられる定数とし，バスの電圧フェーザによる入力が
+\begin{align}\label{eq:busvolin}
+|\bm{V}(t)|=V_0,\qquad
+\angle \bm{V}(t) = \omega_0 \Delta \omega_0 t + \phi_0
+\end{align}
+\end{subequations}
+と定められているものとする。
+回転子偏角，周波数偏差，内部電圧の初期値が
+\begin{align}\label{eq:inicon}
+\spliteq{
+\delta (0) &= \phi_0
++ \sfarctan \left( \frac{P_0}{Q_0 + \frac{ V_0^2}{X_{\rm q}} } \right), 
+\\
+\Delta \omega(0) &= \Delta \omega_0,
+\\
+E(0) &= \frac{ \frac{X_{\rm d}'}{ V_0 } \left\{ \left( Q_0 + \frac{V_0^2}{X_{\rm q}} \right) 
+\left(Q_0 + \frac{V_0^2}{X_{\rm d}' } \right) +P_0^2  \right\} }
+{  \sqrt{ \left( Q_0 + \frac{V_0^2}{X_{\rm q}} \right)^2 + P_0^2 }  }
+}
+\end{align}
+であるとき，発電機からバスに供給される有効電力と無効電力の出力は
+\begin{align}\label{eq:PtQt}
+P(t)=P_0,\qquad
+Q(t)=Q_0
+\end{align}
+で与えられる定数となる。
+また，回転子偏角と内部電圧は
+\begin{align}\label{eq:difsol}
+\spliteq{
+\delta (t)  &= \angle \bm{V}(t) 
++ \sfarctan \left( \frac{P_0}{Q_0 + \frac{ V_0^2}{X_{\rm q}} } \right), 
+\\
+E(t) &=   \frac{ \frac{X_{\rm d}'}{ V_0 } \left\{ \left( Q_0 + \frac{V_0^2}{X_{\rm q}} \right) 
+\left(Q_0 + \frac{V_0^2}{X_{\rm d}' } \right) +P_0^2  \right\} }
+{  \sqrt{ \left( Q_0 + \frac{V_0^2}{X_{\rm q}} \right)^2 + P_0^2 }  }
+}
+\end{align}
+となる。
+\end{定理}
+
+\begin{証明}
+まず，式\ref{eq:allinputs}の入力のもとで，式\ref{eq:difsol}が式\ref{eq:gendif}の微分方程式の解であることを仮定した場合に，出力に関して式\ref{eq:PtQt}が成り立つことを示す。
+補題\ref{lem:delVE}で示されているように，式\ref{eq:difsol}を$P_0$と$Q_0$に関する方程式と考えれば，それらの解は
+\begin{align*}
+\spliteq{
+P_0 &=  \frac{V_0 E(t)}{X_{{\rm d}}'} \sfsin\left(\delta(t) -  \angle \bm{V}(t)\right) 
+\\
+& -  
+\left( \frac{1}{X_{{\rm d}}'}  -  \frac{1}{X_{{\rm q}}} \right)
+V_0^2 \sfsin\left( \delta(t) - \angle \bm{V}(t) \right) \sfcos\left( \delta(t) - \angle \bm{V}(t) \right), 
+\\
+Q_0 &=  \frac{V_0 E(t)}{X_{{\rm d}}'} \sfcos \left( \delta(t) - \angle \bm{V}(t) \right)
+\\
+& - V_0^2 \left( \frac{\sfcos^2 \left( \delta(t) - \angle \bm{V}(t) \right) }{X_{{\rm d}}'} 
++ \frac{\sfsin^2 \left( \delta(t) - \angle \bm{V}(t) \right)}{X_{{\rm q}}} \right)
+}
+\end{align*}
+で与えられる。
+これは式\ref{eq:PtQt}を意味している。
+
+つぎに，式\ref{eq:allinputs}の入力のもと，初期値が式\ref{eq:inicon}であるときに，式\ref{eq:difsol}が式\ref{eq:gendif}の微分方程式の解であることを確かめる。
+式\ref{eq:gendif}の$\delta$と$\Delta \omega$に関する微分方程式は
+\begin{align*}
+\frac{M}{\omega_0} \ddot{\delta}(t) + \frac{D}{\omega_0} \dot{\delta}(t)
++ P(t) - P_{{\rm mech}}(t) = 0
+\end{align*}
+と等価である。
+式\ref{eq:PmVfd}の$P_{{\rm mech}}(t)$，式\ref{eq:PtQt}の$P(t)$，式\ref{eq:difsol}の$\delta(t)$を代入すれば，それらがこの微分方程式を満たすことが確かめられる。
+同様に，式\ref{eq:PmVfd}の$V_{{\rm field}}(t)$，式\ref{eq:difsol}の$\delta(t) - \angle \bm{V}(t)$と$E(t)$を代入することにより，式\ref{eq:gendif}の$E$に関する微分方程式が満たされることがわかる。
+ただし
+\begin{align*}
+\sfcos \left( \sfarctan \left( \frac{P_0}{Q_0 + \frac{ V_0^2}{X_{\rm q}} } \right) \right) =
+\frac{ Q_0 + \frac{V_0^2}{X_{\rm q}} }
+{  \sqrt{ \left( Q_0 + \frac{V_0^2}{X_{\rm q}} \right)^2 + P_0^2 }  }
+\end{align*}
+である。
+以上より，求める結果がしたがう。
+\end{証明}
+
+定理\ref{thm:stst}から，潮流計算によって定められたバスの電圧フェーザ，有効電力，無効電力を実現するために必要な機械的トルク$P_{\rm mech}$と界磁電圧$V_{\rm field}$の値，および，そのときの内部状態$\delta$と$E$の定常的な挙動を知ることができる。
+なお，式\ref{eq:busvolin}では電圧フェーザの位相が定数となっていないが，周波数偏差の定常値を表す$\Delta \omega_0$は，特別な理由がない限り0に設定するべきであるため，実用上の意味をもつのは潮流計算で定められる$\phi_0$の値のみである。
+明らかに，$\Delta \omega_0$が0のとき
+\begin{align*}
+P_{{\rm mech}}(t) =    P_0,\qquad
+\delta (t)  = \phi_0
++ \sfarctan \left( \frac{P_0}{Q_0 + \frac{ V_0^2}{X_{\rm q}} } \right)
+\end{align*}
+である。
+以上の議論から，潮流計算において発電機の動特性を考慮することなく$(P_0,Q_0,V_0,\phi_0)$を定めたとしても，それらに整合するような$P_{\rm mech}$や$V_{\rm field}$の値を一意的に逆算できることがわかる。
+
+さらに，つぎの定理は，発電機の定常状態において成り立つ，入出力と内部状態に関する等価関係を与える。
+
+\begin{定理}\label{thm:outst}
+式\ref{eq:gendif}および式\ref{eq:PQout}の発電機モデルに対して
+\begin{align}\label{eq:domdE}
+\frac{d\Delta \omega}{dt}=0
+,\qquad
+\frac{dE}{dt}=0
+,\qquad
+\frac{d P_{\rm mech}}{dt}=0
+,\qquad
+\frac{d V_{\rm field}}{dt}=0
+\end{align}
+であるための必要十分条件は
+\begin{align}\label{eq:dPdQ}
+\frac{dP}{dt}=0
+,\qquad
+\frac{dQ}{dt}=0
+,\qquad
+\frac{d|\bm{V}|}{dt}=0
+,\qquad
+\frac{d^2 \angle \bm{V}}{dt^2}=0
+\end{align}
+である。
+また，式\ref{eq:domdE}または式\ref{eq:dPdQ}が成り立つとき
+\begin{align}\label{eq:frer}
+\Delta \omega(t)= \frac{1}{\omega_0}\frac{d \angle \bm{V}}{dt}
+\end{align}
+であり，これは定数である。
+\end{定理}
+
+\begin{証明}
+まず，式\ref{eq:domdE}が成り立つならば，式\ref{eq:dPdQ}が成り立つことを示す。
+式\ref{eq:gendif}において，$\Delta \omega$，$E$，$P_{\rm mech}$，$V_{\rm field}$はすべて定数であることから，$P$と$|\bm{V}|\sfcos (\delta - \angle \bm{V})$が定数であることがわかる。
+したがって，式\ref{eq:PQout}の2つの方程式から，$Q$と$|\bm{V}|\sfsin (\delta - \angle \bm{V})$も定数であることがわかる。
+また
+\begin{align*}
+|\bm{V}|^2\sfcos^2 (\delta - \angle \bm{V}) +
+|\bm{V}|^2\sfsin^2 (\delta - \angle \bm{V}) = |\bm{V}|^2
+\end{align*}
+であり，左辺が定数であることから$|\bm{V}|$も定数である。
+さらに，式\ref{eq:tandelV}左の関係において，右辺は定数であることから，$\angle \bm{V}$と$\delta$の導関数は任意の次数で等しい。
+したがって
+\begin{align*}
+\frac{d^2 \angle \bm{V}}{dt^2} = \frac{d^2 \delta}{dt^2} = \omega_0 \frac{d\Delta \omega}{dt} =0
+\end{align*}
+が得られる。
+つぎに，式\ref{eq:dPdQ}が成り立つならば，式\ref{eq:domdE}が成り立つことを示す。
+式\ref{eq:tandelV}から，$E$が定数であること，および，$\delta$の2次導関数が$0$であること，すなわち，$\Delta \omega$が定数であることがわかる。
+したがって，式\ref{eq:gendif}において，$P$と$|\bm{V}|\sfcos (\delta - \angle \bm{V})$が定数であることから，$P_{\rm mech}$と$V_{\rm field}$が定数であることがわかる。
+式\ref{eq:frer}は$\angle \bm{V}$と$\delta$の導関数が等しいことから明らかである。
+\end{証明}
+
+定理\ref{thm:outst}は，発電機への外部入力$P_{\rm mech}$，$V_{\rm field}$が定数であり，内部状態$\Delta \omega$，$E$が定常状態にあることと，他の機器との相互作用に関する入出力$P$，$Q$，$|\bm{V}|$，$\angle \bm{V}$が定常状態にあることが等価であることを示している。
+したがって，各バスの有効電力や無効電力，電圧フェーザを決定する潮流計算の手続きは，すべての発電機の内部状態と外部入力が定常状態にあると仮定して，電力系統全体の定常状態，すなわち，電力系統モデルの平衡点の1つを探索するものとみなせる。
+
+\subsection{所望の電力消費を実現する負荷モデルのパラメータ}\label{sec:loadpara}
+
+\red{
+潮流計算では，バスに接続されている負荷の特性を考慮することなく負荷バスの変数が決定される。
+したがって，数値シミュレーションを実行する上では，潮流計算によって定められたバスの電圧フェーザ，有効電力，無効電力の値に整合するように，第\ref{sec:loadpr}節で説明された負荷モデルのパラメータを逆算して設定する必要がある。
+}
+
+%\subsubsection{定インピーダンスモデルの場合}
+
+定インピーダンスモデルは，式\ref{eq:defPQVI}を用いて電流フェーザを消去すると
+\begin{subequations}\label{eq:lmodels}
+\begin{align}
+P + \bm{j} Q = -\frac{1}{\overline{\bm{z}}_{\rm load}} |\bm{V}|^2
+\end{align}
+と書き表される。
+なお，バスの添字$i$は表記の簡単化のため省略した。
+これは電流フェーザ$\bm{V}$を入力，有効電力$P$と無効電力$Q$を出力とした場合の負荷の定インピーダンスモデルと解釈できる。
+このとき，潮流計算により定められた有効電力と無効電力の値を$P_0$と$Q_0$，電圧フェーザの絶対値を$V_0$とするとき，負荷のインピーダンス$\bm{z}_{\rm load}$の実部と虚部はそれぞれ
+\begin{align*}
+\real [\bm{z}_{\rm load}] = - \frac{ P_0}{P_0^2 + Q_0^2}V_0^2
+,\qquad
+\imag [\bm{z}_{\rm load}] = - \frac{ Q_0}{P_0^2 + Q_0^2}V_0^2
+\end{align*}
+と求められる。
+同様に，定電流モデルは
+\begin{align}
+P + \bm{j} Q = \overline{\bm{I}}_{\rm load} \bm{V}
+\end{align}
+と書き表されることから，負荷の電流パラメータの実部と虚部はそれぞれ
+\begin{align*}
+\real [\bm{I}_{\rm load}]
+=\frac{P_0 \sfcos \phi_0 + Q_0 \sfsin \phi_0}{V_0}
+,\qquad
+\imag [\bm{I}_{\rm load}]
+=\frac{P_0 \sfsin \phi_0 - Q_0 \sfcos \phi_0}{V_0}
+\end{align*}
+と求められる。
+ただし，$\phi_0$は潮流計算で定められたバス電圧フェーザの位相である。
+定電力モデルは
+\begin{align}
+P + \bm{j} Q =
+P_{{\rm load}} + \bm{j} Q_{{\rm load}} 
+\end{align}
+\end{subequations}
+であることから，明らかにそのパラメータは
+\begin{align*}
+P_{\rm load}=P_0
+,\qquad
+Q_{\rm load}=Q_0
+\end{align*}
+である。
+
+%\subsubsection{定電流モデルの場合}
+%
+%...
+%
+%\subsubsection{定電力モデルの場合}
+%
+%...
+
+
+\section{発電機の入力が定数である場合の数値シミュレーション}
+
+\subsection{負荷モデルのパラメータ変動に関する応答}
+
+第\ref{sec:powflow}節と第\ref{sec:paradef}節で示された手順によって，すべての発電機の周波数偏差が0となるような定常状態として，電力系統モデルの平衡点が1つ求められる。
+具体的には，潮流計算で定められたバス変数を用いて，各発電機モデルには定理\ref{thm:stst}で示される内部状態の初期値と外部入力の定常値を設定し，各負荷モデルには第\ref{sec:loadpara}節で逆算されたパラメータを設定すれば，微分代数方程式系で表される電力系統モデルは所与の潮流状態で平衡する。
+
+この定常状態にある電力系統モデルに対して，式\ref{eq:lmodels}における負荷モデルのパラメータを1つでも変化させると，一般にすべてのバスにおける電圧フェーザと電流フェーザの値が変化する。
+このとき，一般に系統全体での電力の需給がバランスしなくなるため，機械的トルクや界磁電圧の値を適切に修正しない限りは，各発電機の周波数偏差は0に収束しない。
+このことをつぎの数値例で確認してみよう。
+
+\begin{例}[負荷モデルのパラメータを変化させたときの電力系統モデルの時間応答]\label{ex:loadpv}
+\red{例４と同様の簡単なモデルでシミュレーション？}
+\end{例}
+
+
+\subsection{地絡による応答}
+
+\begin{例}[バス地絡が発生したときの電力系統モデルの時間応答]\label{ex:busflt}
+\red{例４と同様の簡単なモデルでシミュレーション？}
+\end{例}
+
+
+\section{定常潮流状態\red{（？）}における電圧フェーザの同期}\label{sec:phsync}
+
+例\ref{ex:loadpv}と例\ref{ex:busflt}では，電力系統モデルの内部状態が発散することなくある定常状態に落ち着いた場合には，すべての発電機の周波数偏差が同じ値に収束することが観察された。
+本節では，この事実について，送電網のグラフ構造の観点から考察する。
+まず，定理\ref{thm:outst}の結果に基づき，つぎの定義を導入する。
+
+\begin{定義}\label{def:sync}
+式\ref{eq:PQVgen}の連立方程式によって機器群が結合された電力系統モデルを考える。
+すべてのバス$i$に対して
+\begin{align}\label{eq:stapfs}
+\frac{dP_i}{dt}=0
+,\qquad
+\frac{dQ_i}{dt}=0
+,\qquad
+\frac{d|\bm{V}_i|}{dt}=0
+,\qquad
+\frac{d^2 \angle \bm{V}_i }{dt^2}=0
+\end{align}
+が成り立つとき，電力系統は\emph{定常潮流状態}にあると呼ぶ。
+また，電力系統が定常潮流状態にあり，かつ
+\begin{align}\label{eq:defsyn}
+\frac{d \angle \bm{V}_i}{dt} =  \frac{d \angle \bm{V}_j}{dt}
+\end{align}
+が成り立つとき，定常潮流状態でバス$i$とバス$j$は\emph{同期する}と呼ぶ。
+\end{定義}
+
+定理\ref{thm:outst}に示されているように，発電機バスに対しては，式\ref{eq:stapfs}が成り立つことと，発電機の内部状態と外部入力が定常状態にあることは等価である。
+また，任意に選ばれたバスの組$(i,j)$が定義\ref{def:sync}の意味で同期しているのであれば，すべての発電機の周波数偏差が同じ値に収束することが結論づけられる。
+なお，いずれのバスに対しても，式\ref{eq:stapfs}が成り立つことは，電流フェーザ$\bm{I}_i$に対して
+\begin{align*}
+\frac{d|\bm{I}_i|}{dt}=0
+,\qquad
+\frac{d^2 \angle \bm{I}_i }{dt^2}=0
+,\qquad
+\frac{d \angle \bm{I}_i }{dt} = \frac{d \angle \bm{V}_i }{dt} 
+\end{align*}
+が成り立つことを意味する。
+このことは
+\begin{align*}
+|P_i + \bm{j} Q_i| = |\bm{V}_i| |\bm{I}_i|
+,\qquad
+\angle(P_i + \bm{j} Q_i) = \angle \bm{V}_i - \angle \bm{I}_i
+\end{align*}
+であることから簡単に確認することができる。
+
+バス$i$と送電線で結ばれている隣接バスの集合を$\mathcal{N}_i$と表す。
+すなわち
+\begin{align*}
+\bm{Y}_{ij} = 0,\qquad \forall j \in \mathcal{N}_i
+\end{align*}
+であるものとする。
+バス$i$と送電線で結ばれている隣接バスの数は$|\mathcal{N}_i|$であり，このことを「バス$i$の\emph{次数}は$|\mathcal{N}_i|$である」と呼ぶ。
+また，電力系統モデルは定常潮流状態にあることを仮定して
+\begin{align*}
+\angle \bm{V}_i (t) = \Omega_i t +\phi_i
+\end{align*}
+と表す。
+ただし，$\Omega_i$と$\phi_i$は定数である。
+このとき，式\ref{eq:PQVgen}のバス$i$に関する方程式は
+\begin{align}\label{eq:sumcirc}
+\underbrace{
+\frac{1}{|\mathcal{N}_i|}\sum_{j \in \mathcal{N}_i } 
+r_{ij}
+e^{\bm{j} 
+\left\{
+(\Omega_i - \Omega_j)t + 
+\Phi_{ij}
+\right\} }
+}_{\bm{C}_i (t)}
+= \bm{c}_i
+\end{align}
+と変形できる。
+ただし，電力系統モデルが定常潮流状態にあるならば
+\begin{align*}
+r_{ij} &:=|\bm{V}_i| |\bm{V}_j| |\bm{Y}_{ij}|, 
+\\
+\Phi_{ij} &:= \phi_i - \phi_j - \angle \bm{Y}_{ij},
+\\
+\bm{c}_i &:=  \frac{1}{|\mathcal{N}_i|}
+\left\{
+P_i - \real[\bm{Y}_{ii}] |\bm{V}_i|^2
++ \bm{j}
+\left(
+Q_i + \imag [\bm{Y}_{ii}] |\bm{V}_i|^2
+\right)
+\right\}
+\end{align*}
+はすべて定数である。
+以下では，式\ref{eq:sumcirc}の方程式から，隣接するバスとの同期を表す等式として
+\begin{align}\label{eq:alloms}
+\Omega_i = \Omega_{j} 
+,\qquad 
+\forall j\in \mathcal{N}_i
+\end{align}
+を導くことを考える。
+ここで，式\ref{eq:sumcirc}は「原点を中心とする半径$r_i$の円周上を，初期位相$\Phi_{ij}$，角速度$\Omega_i-\Omega_j$で等速運動する$|\mathcal{N}_i|$個の点の重心$\bm{C}_i (t)$が，複素平面上のある点$\bm{c}_i$で不変であること」を表している。
+この事実に注目するとつぎの結果が導ける。
+
+
+\begin{補題}\label{lem:sumc2}
+実定数$r_{ij}$，$\Omega_i$，$\Omega_j$，$\Phi_{ij}$に対して，式\ref{eq:sumcirc}の$\bm{C}_i (t)$を考える。
+ただし，$r_{ij}>0$とする。
+このとき，$|\mathcal{N}_i|=1$であるならば，$\bm{C}_i (t)$が$t$に依らない定数であることは，式\ref{eq:alloms}と等価である。
+また，$|\mathcal{N}_i|=2$であるならば，$\bm{C}_i (t)$が$t$に依らない定数であることは，式\ref{eq:alloms}
+が成り立つこと，または
+\begin{align}\label{eq:N2sing}
+\Omega_{j_1} = \Omega_{j_2}
+,\qquad
+r_{i j_1} = r_{i j_2}
+,\qquad
+|\Phi_{i j_1}-\Phi_{i j_2}| = \pi
+\end{align}
+と等価である。
+ただし，$\mathcal{N}_i = \{j_1,j_2\}$である。
+さらに，$|\mathcal{N}_i|=3$であるならば，$\bm{C}_i (t)$が$t$に依らない定数であることは，式\ref{eq:alloms}が成り立つこと，または，$\Omega_{i} = \Omega_{j_3}$を満たす$j_3 \in \mathcal{N}_i$に対して，式\ref{eq:N2sing}が成り立つことと等価である。
+ただし，$ \mathcal{N}_i \setminus \{j_3\}=\{j_1,j_2\}$である。
+\end{補題}
+
+\begin{証明}
+付録の補題\ref{lem:sumc}を適用することで，$|\mathcal{N}_i|=1$と$|\mathcal{N}_i|=2$の場合の事実を示すことができる。
+したがって，以下では$|\mathcal{N}_i|=3$の場合について考える。
+表記の簡単化のため，$j \in\{1,2,3\}$とし，$r_{ij}$，$\Phi_{ij}$，$\Omega_i$，$\bm{C}_i$をそれぞれ$r_{j}$，$\Phi_{j}$，$\Omega_0$，$\bm{C}_0$と表す。
+まず
+\begin{align}\label{eq:omjeq}
+\Omega_j \neq \Omega_0
+,\qquad \forall j \in \{1,2,3\}
+\end{align}
+であるとき，式\ref{eq:sumcirc}を満たす$\Omega_j$は存在しないことを示す。
+補題\ref{lem:sumc}を適用すると，式\ref{eq:omjeq}が成り立つとき，式\ref{eq:sumcirc}は
+\begin{align*}
+\Omega_1 = \Omega_2 = \Omega_3,\qquad
+\sum_{j=1}^3 
+r_j e^{\bm{j} \Phi_j}=0
+\end{align*}
+と等価であることがわかる。
+しかしながら，$\Omega_1 = \Omega_2 = \Omega_3$である場合には，$|\mathcal{N}_i|=1$のときと同様にして，$\bm{C}_i (t)$が$t$に依らない定数であることと式\ref{eq:alloms}が等価であることが導かれる。
+これは式\ref{eq:omjeq}に矛盾する。
+
+以上から，\ref{eq:omjeq}の否定として，ある$j\in\{1,2,3\}$に対して$\Omega_0=\Omega_j$である場合のみを考えれば良い。
+特に，$j$に関する対称性から，一般性を失うことなく，$\Omega_0=\Omega_3$である場合を考える。
+このとき，
+\begin{align*}
+\bm{C}_0 (t) = \frac{1}{3} \left\{
+r_3 e^{\bm{j} \Phi_3}
++
+\sum_{j=1}^2
+r_{j}
+e^{\bm{j} 
+\left\{
+(\Omega_0 - \Omega_j)t + 
+\Phi_{j}
+\right\} }
+\right\}
+\end{align*}
+であることから，$t$に関する不変性は，$|\mathcal{N}_i|=2$の場合と同様に議論できる。
+したがって，$\bm{C}_0 (t)$が$t$に依らない定数であることは，式\ref{eq:alloms}または
+\begin{align*}
+\Omega_{1} = \Omega_{2}
+,\qquad
+r_{1} = r_{2}
+,\qquad
+|\Phi_{1}-\Phi_{2}| = \pi
+\end{align*}
+と等価である。
+以上より題意が示される。
+\end{証明}
+
+補題\ref{lem:sumc2}は，注目するバスの次数が1のとき，すなわち，\ref{fig:bussync}(a)のような端点のバスについては，そのバスと隣のバスが同期することを示している。
+また，注目するバスの次数が2のとき，すなわち，\ref{fig:bussync}(b)のような鎖状経路にあるバスについては，少なくともその両隣のバスが同期する。
+さらに，注目するバスの次数が3のとき，すなわち，\ref{fig:bussync}(c)のような3本の送電線で結ばれている節のバスについては，隣接するバスのうち少なくとも1つが注目するバスと同期する。
+これは，任意に選ばれた3つのバスのみが同期し，残りの1つのバスは同期しないような状況や，どのバスの組も同期しないような状況は生じないことも意味している。
+
+\begin{figure}[t]
+  \centering
+  {
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width = .60\linewidth]{figs/1degbus}
+    \subcaption{ 次数1のバス}
+    \label{fig:N1} 
+  \end{minipage}
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width = .60\linewidth]{figs/2degbus}
+    \subcaption{ 次数2のバス}
+  \end{minipage}
+  \label{fig:N2}
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width = .60\linewidth]{figs/3degbus}
+    \subcaption{ 次数3のバス }
+  \end{minipage}
+  \caption{バスの次数に応じた隣接バスとの同期（注目するバスを太線で示す）}
+  \label{fig:bussync}
+  }
+\end{figure}
+
+注目するバスの次数が4以上である場合にも同様の解析を行うことは可能である。
+しかしながら，得られる条件が$\Omega_i$や$\Omega_j$に関する高次の方程式になることや，任意に選ばれた一部の隣接バスのみが同期する場合などの複数の組み合わせが存在するため，同期に関する等価条件を書き下すことは一般に煩雑となる。
+ただし，注目するバス$i$とそれに隣接する$|\mathcal{N}_i|$個のバスに対して，いずれかの$|\mathcal{N}_i |-1$個の隣接バスがバス$i$と同期するのであれば，残り1個の隣接バスも同期することは一般に示される。
+
+補題\ref{lem:sumc2}で示されている次数が3以下の条件を組み合わせて用いることによって，次数が4以上のバスが送電網に含まれている場合にも，すべてのバスの同期が示される場合は存在する。
+例えば，つぎの事実を示すことができる。
+
+\begin{定理}\label{thm:tree}
+式\ref{eq:PQVgen}の連立方程式によって機器群が結合された電力系統モデルを考える。
+送電網のグラフが木構造をもつとき，すなわち，送電網が連結でありバスの閉路が存在しないとき，定常潮流状態においてすべてのバスは同期する。
+\end{定理}
+
+\begin{証明}
+\ref{fig:treepr}(a)の太線で示された端点のバスに注目する。
+バスの次数は1であるから，その隣のバスは端点のバスと同期する。
+つぎに，端点の隣のバスが鎖状経路にある場合には，そのバスの次数は2であるため，少なくともその両隣のバスは同期する。
+これを繰り返していくことで，\ref{fig:treepr}(a)のように，端点と次数が3以上の節のバスを結ぶ鎖状経路において，すべてのバスの同期が示される。
+
+同様に，別の端点から次数が3以上の節に存在するすべてのバスは同期するため，\ref{fig:treepr}のように，太線で示される節のバスに連結するすべての鎖状経路のバスはすべて同期することがわかる。
+この議論を繰り返せば，木を構成するすべてのバスが同期することが示される。
+\end{証明}
+
+
+\begin{figure}[t]
+  \centering
+  {
+  \begin{minipage}{0.40\linewidth}
+    \centering
+    \includegraphics[width = .50\linewidth]{figs/treesub}
+    \subcaption{ }
+  \end{minipage}
+  \begin{minipage}{0.40\linewidth}
+    \centering
+    \includegraphics[width = .50\linewidth]{figs/tree}
+    \subcaption{ }
+  \end{minipage}
+  \caption{木構造をもつ送電網におけるバスの同期}
+  \label{fig:treepr}
+  }
+\end{figure}
+
+%\begin{figure}[t]
+%\centering
+%\includegraphics[width = .20\linewidth]{figs/tree}
+%\caption{...}
+%\label{fig:treepr}
+%\end{figure}
+
+定理\ref{thm:tree}に示されている木構造をもつ送電網のバスには次数の制限はない。
+このように，仮に次数が4以上のバスが送電網に含まれていたとしても，グラフ構造の情報だけを用いて，すべてのバスの同期を演繹できる場合がある。
+同様に，つぎの事実を示すことができる。
+
+\begin{定理}\label{thm:circ}
+式\ref{eq:PQVgen}の連立方程式によって機器群が結合された電力系統モデルを考える。
+送電網のグラフが円環構造をもち，かつ，バスの総数が奇数であるとき，定常潮流状態においてすべてのバスは同期する。
+\end{定理}
+
+\begin{証明}
+あるバスに注目するとその両端のバスの同期が示される。
+これを繰り返すことにより，バスの総数が奇数である場合にすべてのバスの同期が示される。
+\end{証明}
+
+\begin{figure}[t]
+  \centering
+  {
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width = .60\linewidth]{figs/honya}
+    \subcaption{  }
+  \end{minipage}
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width = .60\linewidth]{figs/honyb}
+    \subcaption{  }
+  \end{minipage}
+  \begin{minipage}{0.3\linewidth}
+    \centering
+    \includegraphics[width = .60\linewidth]{figs/honyc}
+    \subcaption{  }
+  \end{minipage}
+  \caption{ハニカム構造をもつ送電網におけるバスの同期}
+  \label{fig:hony}
+  }
+\end{figure}
+
+定理\ref{thm:circ}は，円環構造の送電網に対して，バスの総数が奇数である場合は，各送電網のアドミタンスの値などに依らず，すべてのバスが同期することを示している。
+一方で，バスの総数が偶数である場合には，アドミタンスの値などの追加の情報を用いない限りは，円環構造の送電網に対してもすべてのバスの同期を結論づけることはできない。
+後述する例\ref{ex:symbox}では，バスの総数が偶数である場合にも，アドミタンスの値などの一部の情報が与えられるだけで，すべてのバスの同期が示され得ることを示す。
+次数3のバスを含む送電網に補題\ref{lem:sumc2}を適用した例としてつぎを示す。
+
+\begin{例}[ハニカム構造の送電網におけるバスの同期]\label{ex:deg3}
+\ref{fig:hony}(a)に示されるハニカム構造をもつ送電網に対して，定常潮流状態におけるバスの同期を考えよう。
+最下部のバスに注目すると，その両隣のバスの同期がわかる。
+これらの同期するバスを赤で示し，最下部のバスと同期するものを青で示す。
+このとき，補題\ref{lem:sumc2}を各バスに適用していくことによって，同期するすべてのバス群を\ref{fig:hony}(b)のように色分けすることができる。
+しかしながら，この場合には，グラフ構造の情報だけで赤のバス群と青のバス群の同期を結論づけることはできない。
+一方で，\ref{fig:hony}(c)のようにバスが1つ追加された送電網の場合には，その追加されたバスに注目することで，両隣の赤と青のバスの同期が導かれる。
+したがって，\ref{fig:hony}(c)のグラフ構造の場合には，すべてのバスの同期が示される。
+\end{例}
+
+例\ref{ex:deg3}において，一部のグラフ構造の差異により同期するバスの対称性が崩れることで，送電網全体でのバスの同期が演繹されていることは興味深い点である。
+つぎの例では，アドミタンスの値まで考慮した「定量的な送電網の対称性」の観点からバスの同期を考察する。
+
+\begin{figure}[t]
+\centering
+\includegraphics[width = .18\linewidth]{figs/4busbox}
+\caption{4バスからなる円環構造をもつ送電網におけるバスの同期}
+\label{fig:4busbox}
+\end{figure}
+
+
+\begin{例}[4つのバスからなる円環構造の送電網におけるバスの同期]\label{ex:symbox}
+\ref{fig:4busbox}に示される円環構造をもつ送電網に対して，定常潮流状態におけるバスの同期を考えよう。
+バスの数は偶数であるため，定理\ref{thm:circ}のようにグラフ構造の情報だけですべてのバスの同期を示すことはできない。
+ただし，\ref{fig:4busbox}の赤と青で示されているように，少なくとも互い違いのバスがそれぞれ同期することは補題\ref{lem:sumc2}からわかる。
+したがって，すべてのバスの同期を示すためには，少なくとも1つのバスに対して式\ref{eq:N2sing}のいずれかの条件が満たされないことを示せば良い。
+
+バス$i$とバス$j$を結ぶ送電線のアドミタンスを$\bm{y}_{ij}$と表す。
+このとき，各バスに対する式\ref{eq:N2sing}中央の条件は
+\begin{align*}
+|\bm{V}_2||\bm{y}_{12}|&=|\bm{V}_4||\bm{y}_{14}|
+,\qquad
+|\bm{V}_1||\bm{y}_{12}|=|\bm{V}_3||\bm{y}_{23}|,
+\\
+|\bm{V}_2||\bm{y}_{23}|&=|\bm{V}_4||\bm{y}_{34}|
+,\qquad
+|\bm{V}_3||\bm{y}_{34}|=|\bm{V}_1||\bm{y}_{14}|
+\end{align*}
+と書き下すことができる。
+これを行列形式で表現すれば
+\begin{align*}
+\underbrace{
+\mat{
+0 & |\bm{y}_{12}| &  0  & -|\bm{y}_{14}|\\
+-|\bm{y}_{12}| & 0 & |\bm{y}_{23}| & 0\\
+0 & -|\bm{y}_{23}| & 0 & |\bm{y}_{34}|\\
+|\bm{y}_{14}| & 0 & -|\bm{y}_{34}| & 0
+}}_{S}
+\mat{
+|\bm{V}_1|\\
+|\bm{V}_2|\\
+|\bm{V}_3|\\
+|\bm{V}_4|
+}=0
+\end{align*}
+となる。
+この方程式を満たす正のベクトル$(|\bm{V}_1|,\ldots,|\bm{V}_4|)$が存在するための必要条件は，左辺の$S$が正則でないことである。
+%ただし，$S$が正則でない場合にも，正のベクトルがその零空間として存在するとは限らないことに注意されたい。
+ここで，列ベクトルの疎構造から，$S$が非正則であるためには
+\begin{align}\label{eq:ycond}
+|\bm{y}_{12}||\bm{y}_{34}| = |\bm{y}_{14}||\bm{y}_{23}|
+\end{align}
+でなければならない。
+したがって，アドミタンス行列がこの条件を満たさない限り，すべてのバスは同期する。
+なお，式\ref{eq:ycond}が満たされる場合には，所望の電圧フェーザの絶対値を定めることができるため，式\ref{eq:N2sing}中央の条件を満たす$(|\bm{V}_1|,\ldots,|\bm{V}_4|)$が存在するための必要十分条件が，式\ref{eq:ycond}であることも示される。
+
+つぎに，式\ref{eq:N2sing}右の条件は，バス1とバス3に注目すれば
+\begin{align*}
+|\phi_2 - \phi_4 + \angle \bm{y}_{12} - \angle \bm{y}_{14}|=\pi
+,\qquad
+|\phi_2 - \phi_4 + \angle \bm{y}_{23} - \angle \bm{y}_{34}|=\pi
+\end{align*}
+と書き下すことができる。
+同様に，バス2とバス4に注目すれば
+\begin{align*}
+|\phi_1 - \phi_3 + \angle \bm{y}_{12} - \angle \bm{y}_{23}|=\pi
+,\qquad
+|\phi_1 - \phi_3 + \angle \bm{y}_{14} - \angle \bm{y}_{34}|=\pi
+\end{align*}
+が得られる。
+一般に，アドミタンスの実部は非負であり虚部は非正であること，すなわち，$\angle \bm{y}_{ij} \in \left[-\frac{\pi}{2},0 \right]$であることに注意すると，以上の条件を満たす$(\phi_1,\ldots,\phi_4)$が存在するための必要十分条件が
+\begin{align}\label{eq:ycona}
+\angle \bm{y}_{12} - \angle \bm{y}_{14}=
+\angle \bm{y}_{23} - \angle \bm{y}_{34}
+\end{align}
+であることが導ける。
+したがって，アドミタンス行列がこの条件を満たさない限り，すべてのバスは同期する。
+
+以上の議論から，定常潮流状態において同期しないバスの組が1つ以上存在するための必要十分条件は，式\ref{eq:ycond}かつ式\ref{eq:ycona}であることがわかる。
+この2つの条件は，\ref{fig:4busbox}の送電網がアドミタンスの値に関する特異的な対称性をもつときにのみ，互い違いのバスのみが同期するような状況が起こることを示唆している。
+\end{例}
+
+例\ref{ex:symbox}から，式\ref{eq:N2sing}の条件は送電網のアドミタンスの値に関する特異的な対称性を表すことがわかる。
+実応用においては，各バスの次数が高くない疎な送電網に対してすべてのバスが定常潮流状態で同期することは，そのグラフ構造に特異的な対称性が存在しない限りは普遍的な事実であるといえる。
+\red{実際，著者らが知る限りにおいては，現実的な値に設定されたいかなる電力系統モデルのパラメータに対しても，すべてのバスの定常潮流状態における同期が数値的に確かめられている。}
+さいごに，以上の議論から導かれるつぎの事実を示す。
+
+\begin{定理}\label{cor:PQsync}
+式\ref{eq:PQVgen}の連立方程式によって機器群が結合された電力系統モデルを考える。
+電力系統は定常潮流状態にあるものと仮定する。
+このとき，次数2のバス$i$に対して
+\begin{align}\label{eq:PQnot2}
+P_i \neq \real[\bm{Y}_{ii}] |\bm{V}_i|^2
+\qquad
+{\rm または}
+\qquad
+Q_i \neq - \imag [\bm{Y}_{ii}] |\bm{V}_i|^2
+\end{align}
+が成り立つ，もしくは，その隣接バスに対して
+\begin{align}\label{eq:VYnot2}
+\spliteq{
+& |\bm{V}_{j_1}| |\bm{Y}_{ij_1}| \neq 
+|\bm{V}_{j_2}| |\bm{Y}_{ij_2}|
+\qquad
+{\rm または} \\
+& |\angle \bm{V}_{j_1} - \angle \bm{V}_{j_2} - \angle \bm{Y}_{ij_1} + \angle \bm{Y}_{ij_2} | \neq \pi
+}
+\end{align}
+が成り立つならば，式\ref{eq:alloms}が成り立つ。
+ただし，$\mathcal{N}_i = \{j_1,j_2\}$である。
+また，次数3のバス$i$に対して，$\Omega_i = \Omega_{j_3}$を満たす$j_3 \in \mathcal{N}_i$が存在するものとする。
+このとき，バス$i$に対して
+\begin{align}\label{eq:PQnot3}
+\spliteq{
+ P_i  &\neq \real[\bm{Y}_{ii}] |\bm{V}_i|^2 \\
+ & + |\bm{Y}_{ij_3}| |\bm{V}_i| |\bm{V}_{j_3}| 
+\sfcos (\angle \bm{V}_i - \angle \bm{V}_{j_3} - \angle \bm{Y}_{ij_3})
+\qquad {\rm または} 
+\\
+Q_i & \neq - \imag [\bm{Y}_{ii}] |\bm{V}_i|^2 \\
+& + |\bm{Y}_{ij_3}| |\bm{V}_i| |\bm{V}_{j_3}| 
+\sfsin (\angle \bm{V}_i - \angle \bm{V}_{j_3} - \angle \bm{Y}_{ij_3})
+}
+\end{align}
+が成り立つ，もしくは，その隣接バスに対して式\ref{eq:VYnot2}が成り立つならば，式\ref{eq:alloms}が成り立つ。
+ただし，$ \mathcal{N}_i \setminus \{j_3\}=\{j_1,j_2\}$である。
+\end{定理}
+
+\begin{証明}
+次数2のバスに関する題意を対偶により示す。
+すなわち，式\ref{eq:alloms}の否定，すなわち，式\ref{eq:N2sing}が成り立つならば，式\ref{eq:PQnot2}や式\ref{eq:VYnot2}の否定が成り立つことを示す。
+まず，式\ref{eq:VYnot2}の否定は，式\ref{eq:N2sing}の中央と右そのものであることから，後者の含意は明らかである。
+つぎに，式\ref{eq:N2sing}が成り立つとき，式\ref{eq:sumcirc}の$\bm{c}_i$は0であることが導かれる。
+これは，式\ref{eq:PQnot2}の否定，すなわち
+\begin{align*}
+P_i = \real[\bm{Y}_{ii}] |\bm{V}_i|^2
+,\qquad
+Q_i = - \imag [\bm{Y}_{ii}] |\bm{V}_i|^2
+\end{align*}
+を意味する。
+以上より，次数2のバスに関する題意が示される。
+次数3のバスに関する題意も同様に示される。
+\end{証明}
+
+
+系\ref{cor:PQsync}により，有効電力や無効電力，電圧フェーザを実際に計測することによって，グラフ構造だけでは判断できなかったバスの同期を示すことが可能となる。
+例えば，\ref{fig:hony}(b)のハニカム構造をもつ送電網に対して，定常潮流状態において適当なバスの有効電力や無効電力，電圧フェーザを計測し，いずれかの赤と青のバスの同期を示すことができれば，送電網全体でのバスの同期が結論できる。
+
+
+
+\newpage
+\end{document}

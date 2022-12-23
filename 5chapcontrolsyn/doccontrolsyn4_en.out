@@ -1,0 +1,17 @@
+\BOOKMARK [0][-]{chapter.1}{Stabilization control of an electrical power system modelStabilization control of an electrical power system model}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Frequency stabilization controlFrequency stabilization control}{chapter.1}% 2
+\BOOKMARK [2][-]{subsection.1.1.1}{Automatic generation control by a broadcast-type PI controllerAutomatic generation control by a broadcast-type PI controller}{section.1.1}% 3
+\BOOKMARK [2][-]{subsection.1.1.2}{Numerical simulation of frequency stabilization controlNumerical simulation of frequency stabilization control}{section.1.1}% 4
+\BOOKMARK [1][-]{section.1.2}{Mathematical stability analysis of a frequency stabilization control system\202Mathematical stability analysis of a frequency stabilization control system\202}{chapter.1}% 5
+\BOOKMARK [2][-]{subsection.1.2.1}{The target electrical power system model\202The target electrical power system model\202}{section.1.2}% 6
+\BOOKMARK [2][-]{subsection.1.2.2}{Passivity independent of the equilibrium point of the electrical power system\202Passivity independent of the equilibrium point of the electrical power system\202}{section.1.2}% 7
+\BOOKMARK [2][-]{subsection.1.2.3}{Stability analysis of a frequency stabilization control system\202Stability analysis of a frequency stabilization control system\202}{section.1.2}% 8
+\BOOKMARK [1][-]{section.1.3}{Transient stabilization controlTransient stabilization control}{chapter.1}% 9
+\BOOKMARK [2][-]{subsection.1.3.1}{Decentralized control of generators with excitation systemDecentralized control of generators with excitation system}{section.1.3}% 10
+\BOOKMARK [2][-]{subsection.1.3.2}{Standard AVR modelStandard AVR model}{section.1.3}% 11
+\BOOKMARK [2][-]{subsection.1.3.3}{Control effect of AVRControl effect of AVR}{section.1.3}% 12
+\BOOKMARK [2][-]{subsection.1.3.4}{PSSPSS}{section.1.3}% 13
+\BOOKMARK [2][-]{subsection.1.3.5}{Control effect of PSSControl effect of PSS}{section.1.3}% 14
+\BOOKMARK [1][-]{section.1.4}{PSS based on the retrofit control theory\202PSS based on the retrofit control theory\202}{chapter.1}% 15
+\BOOKMARK [2][-]{subsection.1.4.1}{The electrical power system model used to design PSS\202The electrical power system model used to design PSS\202}{section.1.4}% 16
+\BOOKMARK [2][-]{subsection.1.4.2}{PSS design based on the retrofit control theory\202PSS design based on the retrofit control theory\202}{section.1.4}% 17

@@ -1,0 +1,296 @@
+\documentclass[graybox, envcountchap]{svmult}
+\input{../settings}
+
+\begin{document}
+
+\chapter{Introduction}
+
+In this Chapter, the objectives, characteristics and instructions of how to use
+this book will be explained. The mathematical notation used in this book will
+also be summarized.
+
+
+\section{Control of electrical power system}
+
+\subsection{Importance of interdisciplinary integration aimed at power system
+reform}
+
+In Japan, the reformation of the power system began with the Great East Japan
+Earthquake in March 2011, and the full-scale introduction of renewable energy,
+such as solar, wind and geothermal power took place after the full
+liberalization of the electricity retail market in April 2016. Furthermore, in
+October 2020, Japan pledged to achieve carbon neutrality by 2050 as a matter of
+national policy. Thus, improvements to the existing energy supply system and
+maximization of the use of renewable energy are strongly required. To achieve
+such an ambitious goal, technologies related to energy generation, as well as
+digital technologies, such as telecommunications, must be fully utilized to
+create a smart grid that improves the operation of power systems and to control
+supply and demand of renewable energy, where power supply fluctuates with
+weather.
+
+A power system is a large-scale system that consists of the interaction of
+events and phenomena on a wide range of spatio-temporal scales. Specifically,
+the operation of actual power systems is influenced not only by the properties
+of electromechanical devices and facilities, such as generators and transmission
+lines, but also by natural phenomena, such as weather condition and natural
+disasters, and human-related activities, such as electricity demand by the
+consumers, and commercial activities of power generation, transmission and
+distribution companies.
+
+Therefore, the reformation of current power systems should be supported by the
+expertise of various academic fields in addition to energy-related fields. For
+instance, notions of economics are essential for designing a fair market system
+capable of adding value to the planned and observed values of energy supply and
+demand, and at the same time avoiding monopoly formation. In addition, to manage
+the uncertainties of renewable energy generation, it is imperative to develop
+methods to plan supply and demand and to forecast power generation from these
+resources. For this purpose, notions of mathematical optimization and statistics
+are fundamental. Finally, expertise in feedback control methods is essential for
+improving system stability against disturbances such as load fluctuations and
+ground faults. 
+
+In summary, the design and operation of power systems require expertise of
+various research fields. This academic diversity will lead to challenging yet
+attractive research and development topics.
+
+
+\subsection{Objective of this book}
+
+Control systems engineering is an interdisciplinary field that covers many areas
+of science, such as control theory, information theory, data science, systems
+engineering and mathematical optimization, and it is expected to contribute to
+the research and development of power systems. However, since power systems are
+complex systems composed by a wide range of devices and phenomena, it is often
+very challenging for beginners to get an overview of the whole system. This
+difficulty hinders the contribution of experts in other areas in research and
+development of power systems. This book attempts to tackle this problem by
+providing an introduction and an overview of power systems.
+
+By explaining modeling, numerical simulation, control system design and
+mathematical analysis for power systems will be explained from a viewpoint of
+network system analysis and control, this book aims to make students and
+researchers in the field of system control to be able to:
+
+\begin{itemize}
+	\item understand the structure of power systems and mathematical foundation
+	in the language of control systems engineering, and
+	\item build a numerical simulation environment for analysis and control of
+	power systems on their own. 
+\end{itemize}
+
+For this purpose, the structure and characteristics of power systems will be
+explained by using fundamental concepts of control systems engineering, such as
+state-space representation, equilibrium point, stability and feedback control.
+In addition, the numerical simulation enviornment will be conducted based on the
+foundations of object-oriented programming, describing the entire complex power
+system as classes and methods and providing code examples for easier
+understanding.
+
+\subsection{Characteristics of this book}
+\red{Review English in this section}
+There are many good books, both in Japanese and other languages, on electrical
+power systems. Characteristics of this book compared to these books are as
+follows:
+
+\begin{itemize}
+	\item one can follow this book without a background in electromagnetism, and
+	\item the structure and characteristics of power systems as a network system
+	are clearly described.
+\end{itemize}
+
+For example, a standard book on electrical power system engineering assumes that
+one has knowledge on three-phase electric power and electromagnetic induction,
+and focuses on the explanation of electromagnetic phenomena inside of each
+generator and so on. Meanwhile, as far as the authors are aware, there are few
+if any books that clearly explain the dynamic characteristics and structures of
+the whole system when multiple generators are connected via a power grid from
+the viewpoint of control systems engineering.  In addition, while a model in
+which multiple generators are connected in a power grid is used to analyze power
+transmission distribution, known as power flow calculation, in system stability
+discussions, different models are often introduced depending on the topic of
+discussions (e.g., single machine infinite bus system models, models consisting
+of only one generator).  This makes it difficult for novice learners who are
+unfamiliar with electrical power system engineering to see the link between
+explained topics and gain a comprehensive view of the entire power system.
+Considering these situations, this book presents essential basics for students,
+researchers, and technologists in the field of system control to “understand”
+the structure and characteristics of power systems “based on system theory.”
+
+As discussed above, various academic knowledge is required to design and operate
+power systems.  With the help of the information in this book, we hope that
+challenging and attractive research and development targets will be used as one
+of the benchmark models in the field of system control.
+
+\section{How to use this book}
+
+\subsection{Overall structure}
+\red{Review English in this section}
+This book introduces mathematical models of electrical power systems in Chapter
+2, then explains the steps for numerical simulation of the electrical power
+system model in Chapter 3.  This is followed by discussions of the stability of
+the electrical power system model in Chapter 4 and control methods to improve
+the system stability in Chapter 5.  Finally, in Chapter 6, we present the
+results of numerical simulations using a large-scale electrical power system
+model.
+
+This book assumes that readers will follow from Chapter 2 to Chapter 6 in that
+order.  However, readers who aim to perform numerical simulations on their own
+can skip Sections with “\advanced” in the title.  These Sections primarily
+describe development topics that are useful in understanding the mathematical
+structure of the electrical power system model.  Since this book focuses on
+explanations of the basics of electrical power system analysis, topics related
+to new energy, such as solar power, wind power, and batteries are not presented.
+Please refer to \cite{sadamoto2019dynamic} for these topics.
+
+\subsection{Published numerical simulation codes and supplementary material}
+\red{Review English in this section}
+\red{ The numerical simulations described in this document were created with a
+Matlab program called GUILDA (Grid \& Utility Infrastructure Linkage Dynamics
+Analyzer), which is being developed mainly by the authors.
+%(ЈFIGref{fig:guilda}). GUILDA is available on GitHub as open source software
+and can be freely extended by users. The programs used for the numerical
+simulations in this book are also available. For details, please refer to the
+web page of this book by Corona Inc. for more details. Color versions of the
+figures in this book are also provided.  Translated with
+www.DeepL.com/Translator (free version) }
+
+
+%\begin{figure}[t]
+%\centering
+%\includegraphics[width = .30\linewidth]{figs/guilda}
+%\caption{\textbf{GUILDAロゴ}}
+%\label{fig:guilda}
+%\medskip
+%\end{figure}
+
+\subsection{Mathematical notations}
+
+Real numbers and complex numbers are expressed as $\mathbb{R}$ and $\mathbb{C}$,
+respectively. Real vectors with $n$ dimensions are expressed as $\mathbb{R}^n$,
+while real matrices with dimensions $n\times m$  are expressed as
+$\mathbb{R}^{n\times m}$. The same style of notation is used for complex vectors
+and matrices. In addition, the imaginary unit is expressed as $\bm{j}$, and bold
+font is used for complex scalars, vectors and matrices.
+
+A vector in which all elements are one is expressed as $\mathds{1}$. A diagonal
+matrix that has real scalar, $c_1,\ldots,c_n$, as diagonal elements is expressed
+as $(c_i)_{i\in\{1,\ldots, n\}}$. When it is clear from the context, subscripts
+are omitted and the diagonal matrix is simply expressed as $\sfdiag(c_i)$. The
+same applies to complex numbers. In addition, the inverse matrix of a
+nonsingular complex matrix $\bm{Z}$ is expressed as $\bm{Z}^{-1}$.
+
+The transposed matrix of real matrix $A$ is expressed as $A^{\sf T}$. The real
+and imaginary parts of a complex matrix $\bm{Z}$ are expressed as
+$\real[\bm{Z}]$ and $\imag[\bm{Z}]$, respectively. In other words, for an
+arbitrary complex matrix $\bm{Z}$:
+
+\[
+\bm{Z} = \real \left[\bm{Z} \right] + \bm{j} \imag \left[\bm{Z} \right]
+\]
+
+In addition, the conjugate of a complex matrix $\bm{Z}$ is expressed as
+$\overline{\bm{Z}}$, and the conjugate of its transpose is expressed as
+$\bm{Z}^*$. In other words:
+
+\[
+\overline{\bm{Z}} = \real \left[\bm{Z} \right] - \bm{j} \imag \left[\bm{Z} \right]
+,\qquad
+\bm{Z}^* = \left(\real \left[\bm{Z} \right] \right)^{\sf T} - \bm{j} 
+\left( \imag \left[\bm{Z} \right] \right)^{\sf T}
+\]
+
+The absolute value of a complex scalar $\bm{z}$ is expressed as $|\bm{z}|$,
+while its argument is expressed as $\angle \bm{z}$.  In other words, $\bm{z} =
+|\bm{z}|e^{\bm{j} \angle \bm{z}}$.
+
+When complex symmetric matrix $\bm{Z}=\bm{Z}^*$ is positive definite, it is
+written as $\bm{Z}\succ 0$. When $\bm{Z}$ is positive semi-definite, it is
+written as $\bm{Z}\succeq 0$. Similarly, negative definite and negative
+semi-definite are expressed with inequality signs of the opposite direction.
+
+% \footnote{
+% When $\bm{x}^{*} \bm{A} \bm{x} \geq 0$ is true for arbitrary complex vector $\bm{x}$, 
+% square matrix $\bm{A}$ is called \textbf{ positive semi-definite}. 
+% When x*Ax > 0 is true for arbitrary vector $\bm{x}\neq 0$, $\bm{A}$ is called \textbf{positive definite}.
+% This is the same for negative semi-definite and negative definite if the sign is inverted. 
+% The condition necessary for a complex symmetric matrix $\bm{A}$ to be positive semi-definite is that all eigenvalues be non-negative. 
+% Similarly, the condition necessary for $\bm{A}$ to be positive definite is for all eigenvalues to be positive.
+% }
+
+\begin{COLUMN}
+\noindent \textbf{Singularity of matrix}:
+A square matrix $\bm{A}$ is said to be \textbf{regular}(nonsingular) if it has
+an inverse $\bm{A}^{-1}$ such that:
+\[
+\bm{A}\bm{A}^{-1}=I
+\]
+The above condition is true if and only if the determinant of $\bm{A}$ is
+non-zero.
+\smallskip
+
+\noindent \textbf{Positive and negative definiteness of matrices}:
+For a given complex vector $\bm{x}$, a square matrix $\bm{A}$ is said to be
+\textbf{positive semi-definite} if the following relationship is true:
+\[
+\bm{x}^{*} \bm{A} \bm{x} \geq 0
+\]
+
+Additionally, $\bm{A}$ is \textbf{positive definite} if $\bm{x}\neq 0$ and: 
+\[
+\bm{x}^* \bm{A}\bm{x} > 0
+\]
+
+The definition of semi-negative and negative definiteness are similar, with the
+only difference being the sign of the inequality. A necessary and sufficient
+condition for a complex symmetric matrix $\bm{A}$ to be positive semi-definite
+is that all its eigenvalues are non-negative. Similarly, a necessary and
+sufficient condition for $\bm{A}$ to be positive definite is that all its
+eigenvalues are strictly positive.
+
+\end{COLUMN}
+
+The null space of real matrix $A\in \mathbb{R}^{n\times m}$, $\sfker A$, is
+defined as:
+
+\[
+\sfker A:= \left\{
+x\in \mathbb{R}^{m} : Ax =0
+\right\}
+\]
+
+where the symbol “$:=$” means that the term on the right side of the symbol
+defines the term on its left side. The null space of a complex matrix $\bm{Z}
+\in \mathbb{C}^{n\times m}$ is similarly defined as:
+
+\[
+\sfker \bm{Z}:= \left\{
+\bm{x}\in \mathbb{C}^{m} : \bm{Z}\bm{x} =0
+\right\}
+\]
+
+Moreover, given a set of real vectors $v_1,\ldots,v_m\in \mathbb{R}^{n}$, the
+linear space formed by all the vectors that can be written as linear combination
+of vectors $v_1,\ldots,v_m$ is defined as:
+\[
+\sfspan\{v_1,\ldots,v_m\}:=\left\{
+c_1 v_1+\cdots+c_m v_m : 
+(c_1,\ldots,c_m)\in \mathbb{R}\times \cdots \times \mathbb{R}
+\right\}
+\]
+
+Finally, the Euclidean norm of a real vector $x\in \mathbb{R}^n$ is represented
+by $\|x\|$. In other words:
+\[
+\|x\| := \sqrt{|x_1|^2+\cdots+|x_n|^2}
+\]
+where the $x_i$ is thee $i$th element of $x$.
+
+Please note that, in this book, standard symbols in control systems and
+electrical power system engineering might overlap. For example, in control
+systems engineering, “$G$” is often used to represent a system, whereas in
+electrical power system engineering, it is commonly used to express conductance.
+Unless there is a concern about misunderstanding of the context, overlaps
+between these symbols will not be discussed.
+
+\newpage
+\end{document}
