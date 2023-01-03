@@ -84,9 +84,9 @@ terminal voltage and terminal current of each element is presented as follows:
   \item \textbf{Capacitor:} For the capacitor with capacitance $C$~[F] shown in
   \ref{fig:basiccirc}(c), the following relationship holds between the terminal
   voltage and terminal current:
-  \begin{align}
+  \begin{equation}
     i(t) = C \frac{dv}{dt}(t)
-  \end{align}
+  \end{equation}
   where $C\geq 0$.
 \end{enumerate}
 
@@ -142,7 +142,7 @@ expressed by the following equation:
 \begin{figure}[t]
   \centering
   \includegraphics[width = .99\linewidth]{figs/phasorrep}
-  \caption{\textbf{\red{Complex plane representation of AC voltage}}}
+  \caption{\textbf{Complex plane representation of AC voltage}}
   \label{fig:phasorrep}
   \medskip
 \end{figure}
@@ -153,9 +153,9 @@ $\phi$, which can be derived from $\omega t$ and the amplitude $V_{\rm m}$.
 Then, by using the effective value as an expression of the amplitude, we can
 obtain:
 
-\begin{align}\label{eq:Vphasor}
+\begin{equation}\label{eq:Vphasor}
   \bm{V}:= V_{\rm e} e^{\bm{j}\phi}
-\end{align}
+\end{equation}
 
 This is called the \textbf{phasor representation} of voltage. When an electrical
 power system is in a steady state, the phasor $\bm{V}$ is constant. In other
@@ -190,9 +190,10 @@ Please note that the characteristics of components such as synchronous
 generators and power converters may not be expressed using only constant
 impedances.
 
-The real part of impedance is called \textbf{resistance}and the imaginary part
-is called \textbf{reactance}. As a standard symbol, $R$~[$\Omega$] is used for
+The real part of impedance is called \textbf{resistance} and the imaginary part
+is called \textbf{reactance}. As standard symbols, $R$~[$\Omega$] is used for
 resistance and $X$~[$\Omega$] is used for reactance. In other words:
+
 \[
   \bm{Z} = R + \bm{j} X
 \]
@@ -204,21 +205,28 @@ In other words:
 \[
 \bm{Y} = G + \bm{j} B
 \]
-V: volt, A: ampere, $\Omega$: ohm, H: henry, F: farad, rad: radian, s: second, Hz: hertz, and S: siemens.
 
-\section{Admittance matrix that expresses the interaction of connected equipment}\label{sec:transadm}
+The reading of each physical unit presented so far is, V: volt, A: ampere,
+$\Omega$: ohm, H: henry, F: farad, rad: radian, s: second, Hz: hertz, and S:
+siemens.
 
-\subsection{Foundation of a power grid model}
-In this section, we introduce the concept of \textbf{admittance matrix} of a
-power grid, which expresses the interaction between the components connected to
-an electrical power system using a basic transmission line model. The admittance
-matrix is derived by applying the Ohm's and Kirchhoff's laws for each bus bar
-and the transmission lines that connect them. Depending on the literature, bus
-bars may also be called \textbf{nodes} or \textbf{buses}. In this book, bus bars
-are represented by a thick lines in the diagram of an electrical power system.
-A bus bar is a conductor to which the ends of the transmission lines are
-connected. The thin lines that connects to bus bars represent transmission
-lines. 
+\section{Admittance matrix: representation of interaction between connected
+devices}\label{sec:transadm}
+
+\subsection{Fundamentals of modeling of power grids}
+In this section we derive the \textbf{admittance matrix} of a power grid, which
+expresses the interaction between the devices connected to an electrical power
+system 
+
+We derive the \textbf{admittance matrix} of a power grid that shows the
+interaction of equipment connected to an electrical power system using a basic
+transmission line model. The admittance matrix is derived from Ohm's law and
+Kirchhoff's laws for each bus bar and the transmission lines that connect them.
+Depending on the literature, the bus bar may also be called a \textbf{node} or
+\textbf{bus}. In this book, the bus bar is shown with a thick line in the
+diagram of an electrical power system.  The bus bar is a conductor where the end
+of the transmission line has been collected. The thin line that connects the bus
+bar represents the transmission line.
 
 \begin{figure}[t]
   \centering
@@ -229,90 +237,86 @@ lines.
   \medskip
 \end{figure}
 
-\begin{example}{Admittance matrix of a power grid}\label{ex:derY}
+\begin{example}{\textbf{Admittance matrix of a power grid}}\label{ex:derY}
 
-Let us consider a simple electrical power system consisting of three bus bars as
-shown in Fig. \ref{fig:3busex}. Assume that to each bus there is a device
-connected. In this book, the word "device" refers to synchronous generators and
-loads. \footnote{In this book, we analyze only load and generators, however,
-when considering solar generators, wind generators and batteries, these are also
-classified as "devices".} In addition, in an electrical power system model
-circuit such as that shown in \ref{fig:3busex}, the connection to ground is
-often omitted for simplification.
+  Let us consider a simple electrical power system consisting of three bus bars as
+  shown in Fig. \ref{fig:3busex}. Assume that to each bus there is a device
+  connected. In this book, the word "device" refers to synchronous generators and
+  loads. \footnote{In this book, we analyze only load and generators, however,
+  when considering solar generators, wind generators and batteries, these are also
+  classified as "devices".} In addition, in an electrical power system model
+  circuit such as that shown in \ref{fig:3busex}, the connection to ground is
+  often omitted for simplification.
 
-Below, the voltage phasor of bus bar $i$ with respect to the ground is expressed
-as $\bm{V}_i \in \mathbb{C}$, and the current phasor flowing from the device to
-the bus bar $i$ is expressed as $\bm{I}_i \in \mathbb{C}$. The voltage and
-current phasors are unknown variables, therefore it is necessary to find an
-equation governed by the power grid that establishes a relationship between the
-current phasor $(\bm{I}_1,\bm{I}_2,\bm{I}_3)$ and the current phasor
-$(\bm{V}_1,\bm{V}_2,\bm{V}_3)$ of the bus bars. For this purpose, we define the
-admittance matrix of the power grid. 
+  Below, the voltage phasor of bus bar $i$ with respect to the ground is expressed
+  as $\bm{V}_i \in \mathbb{C}$, and the current phasor flowing from the device to
+  the bus bar $i$ is expressed as $\bm{I}_i \in \mathbb{C}$. The voltage and
+  current phasors are unknown variables, therefore it is necessary to find an
+  equation governed by the power grid that establishes a relationship between the
+  current phasor $(\bm{I}_1,\bm{I}_2,\bm{I}_3)$ and the current phasor
+  $(\bm{V}_1,\bm{V}_2,\bm{V}_3)$ of the bus bars. For this purpose, we define the
+  admittance matrix of the power grid. 
 
-The admittance of a transmission line that connects bus bars $i$ and $j$ is
-expressed as $\bm{y}_{ij}\in \mathbb{C}$, with $y_{ij}$ being known variables
-for every pair of bus bars $ij$. Additionally, the current phasor that flows in
-each transmission line is expressed as $\bm{I}_{ij}\in \mathbb{C}$, where
-$\bm{y}_{ij}$ and $\bm{y}_{ji}$ are equal. In addition, the sign for
-$\bm{I}_{ij}$ is positive for an arbitrarily determined direction, and
-$\bm{I}_{ji} = -\bm{I}_{ij}$ are equal. The current phasor of this transmission
-line is an intermediate variable that describes the physical relationship of the
-current phasor and voltage phasor of the bus bars. Specifically, if the sign of
-the current phasor is defined positive for the direction indicated by the arrows
-in Fig. \ref{fig:3busex}, the following relationship can be obtained by applying
-the Ohm's law:
+  The admittance of a transmission line that connects bus bars $i$ and $j$ is
+  expressed as $\bm{y}_{ij}\in \mathbb{C}$, with $y_{ij}$ being known variables
+  for every pair of bus bars $ij$. Additionally, the current phasor that flows in
+  each transmission line is expressed as $\bm{I}_{ij}\in \mathbb{C}$, where
+  $\bm{y}_{ij}$ and $\bm{y}_{ji}$ are equal. In addition, the sign for
+  $\bm{I}_{ij}$ is positive for an arbitrarily determined direction, and
+  $\bm{I}_{ji} = -\bm{I}_{ij}$ are equal. The current phasor of this transmission
+  line is an intermediate variable that describes the physical relationship of the
+  current phasor and voltage phasor of the bus bars. Specifically, if the sign of
+  the current phasor is defined positive for the direction indicated by the arrows
+  in Fig. \ref{fig:3busex}, the following relationship can be obtained by applying
+  the Ohm's law:
 
-\begin{equation*}
+  \begin{equation*}
   \bm{I}_{12}=\bm{y}_{12}(\bm{V}_{1}-\bm{V}_{2}),\qquad
   \bm{I}_{32}=\bm{y}_{32}(\bm{V}_{3}-\bm{V}_{2})
-\end{equation*}
+  \end{equation*}
 
-The above equations indicate that the current phasor of a transmission line is
-proportional to the difference of the voltage phasor across the bus bar. Indeed,
-the Ohm's law states that the current flowing between two points in an electric
-circuit is proportional to the potential difference between the two points.
 
-According to Kirchhoff's first law (current law), since the sum of all current
-on each bus bar is 0, the following relationship is obtained for bus bar 1 to
-bus bar 3.
+  According to Kirchhoff's first law (current law), since the sum of all current
+  on each bus bar is 0, the following relationship is obtained for bus bar 1 to
+  bus bar 3.
 
-\begin{equation*}
+  \begin{equation*}
   \bm{I}_{1}-\bm{I}_{12}=0,\qquad
   \bm{I}_{2}+\bm{I}_{12}+\bm{I}_{32}=0,\qquad
   \bm{I}_{3}-\bm{I}_{32}=0
-\end{equation*}
+  \end{equation*}
 
-Note that Kirchhoff's first law states that the sum of inflow currents and the
-sum of outflow currents are equal at the point where an electric circuit
-branches. By replacing the variables $\bm{I}_{ij}$ by the previously calculated
-relationship $\bm{I}_{i} = \bm{y}_{ij}(\bm{V}_{1}-\bm{V}_{2})$, we can find the
-following vectorized version of the Ohm's law:
+  Note that Kirchhoff's first law states that the sum of inflow currents and the
+  sum of outflow currents are equal at the point where an electric circuit
+  branches. By replacing the variables $\bm{I}_{ij}$ by the previously calculated
+  relationship $\bm{I}_{i} = \bm{y}_{ij}(\bm{V}_{1}-\bm{V}_{2})$, we can find the
+  following vectorized version of the Ohm's law:
 
-\begin{equation}\label{eq:exY}
-  \mat{
-  \bm{I}_1\\
-  \bm{I}_2\\
-  \bm{I}_3\\
-  }
-  =
-  \mat{
-  \bm{y}_{12} & -\bm{y}_{12} & 0\\
-  -\bm{y}_{12} & \bm{y}_{12}+\bm{y}_{32} & -\bm{y}_{32}\\
-  0 & -\bm{y}_{32} & \bm{y}_{32}
-  }
-  \mat{
-  \bm{V}_1\\
-  \bm{V}_2\\
-  \bm{V}_3\\
-  }
-\end{equation}
+  \begin{equation}\label{eq:exY}
+    \mat{
+    \bm{I}_1\\
+    \bm{I}_2\\
+    \bm{I}_3\\
+    }
+    =
+    \mat{
+    \bm{y}_{12} & -\bm{y}_{12} & 0\\
+    -\bm{y}_{12} & \bm{y}_{12}+\bm{y}_{32} & -\bm{y}_{32}\\
+    0 & -\bm{y}_{32} & \bm{y}_{32}
+    }
+    \mat{
+    \bm{V}_1\\
+    \bm{V}_2\\
+    \bm{V}_3\\
+    }
+  \end{equation}
 
-The complex matrix obtained in this manner is the admittance matrix of the power
-grid. Since each transmission line is usually expressed as a circuit with an
-equivalent resistance and inductance, the real part (conductance) of the
-admittance of the transmission line $\bm{y}_{ij}$ is non-negative, and the
-imaginary part (susceptance) is non-positive. Specifically, the imaginary part
-is usually negative (non-zero).
+  The complex matrix obtained in this manner is the admittance matrix of the power
+  grid. Since each transmission line is usually expressed as a circuit with an
+  equivalent resistance and inductance, the real part (conductance) of the
+  admittance of the transmission line $\bm{y}_{ij}$ is non-negative, and the
+  imaginary part (susceptance) is non-positive. Specifically, the imaginary part
+  is usually negative (non-zero).
 \end{example}
 
 Below, we consider an electrical power system connected with $N$ bus bars. Then,
@@ -321,24 +325,24 @@ gives the following relationship to the current phasor
 $(\bm{I}_1,\ldots,\bm{I}_N)$ and voltage phasor $(\bm{V}_1,\ldots,\bm{V}_N)$ of
 the bus bars.
 \begin{equation}\label{eq:ohmY}
-  \mat{
-    \bm{I}_1\\
-    \vdots\\
-    \bm{I}_N
-  }
-  =
-  \underbrace{
-  \mat{
-    \bm{Y}_{11} & \cdots & \bm{Y}_{1N}\\
-    \vdots & \ddots & \vdots\\
-    \bm{Y}_{N1} & \cdots & \bm{Y}_{NN}
-  }
-  }_{\bm{Y}}
-  \mat{
-    \bm{V}_1\\
-    \vdots\\
-    \bm{V}_N
-  }
+\mat{
+  \bm{I}_1\\
+  \vdots\\
+  \bm{I}_N
+}
+ =
+\underbrace{
+\mat{
+  \bm{Y}_{11} & \cdots & \bm{Y}_{1N}\\
+  \vdots & \ddots & \vdots\\
+  \bm{Y}_{N1} & \cdots & \bm{Y}_{NN}
+}
+}_{\bm{Y}}
+\mat{
+  \bm{V}_1\\
+  \vdots\\
+  \bm{V}_N
+}
 \end{equation}
 Equation \ref{eq:ohmY} can be considered a mathematical model of the power grid
 that expresses interactions between inputs and outputs of devices connected to a
@@ -349,7 +353,7 @@ $\bm{I}_i$ can be expressed as a linear combination of output from the other
 devices:
 
 \begin{equation*}
-  \bm{I}_i = \bm{Y}_{i1}  \bm{V}_1 + \cdots +\bm{Y}_{iN}  \bm{V}_N
+ \bm{I}_i = \bm{Y}_{i1}  \bm{V}_1 + \cdots +\bm{Y}_{iN}  \bm{V}_N
 \end{equation*}
 
 The real part and imaginary parts of the admittance matrix are called the
@@ -359,72 +363,64 @@ The simultaneous equations \ref{eq:ohmY} provide partial information about the
 current and voltage phasors of the bus bars, such that the current and voltage
 phasors of each bus bar, $(\bm{I}_1,\ldots,\bm{I}_N)$ and
 $(\bm{V}_1,\ldots,\bm{V}_N)$, cannot be uniquely determined. To uniquely
-determine the steady and transient behavior of the current and voltage phasors
+determine the steady and transient behaviors of the current and voltage phasors
 of every bus bar, the local relationship between $\bm{I}_i$ and $\bm{V}_i$ of
-each bus bar must be separately determined. This localized relationship
-expresses the characteristics of the devices connected to the bus bars and can
-be considered mathematical models that express the input-output relationship of
-each device. Specific mathematical models of synchronous generators and loads
-will be described in detail in Section \ref{sec:genmod} and beyond.
+each bus bar must be separately determined.
 
-The model for the entire electrical power system can be obtained by determining
-and combining the model of the power grid given by Equation \ref{eq:ohmY} and
-the model of each individual device group. The structure of an entire electrical
-power system is shown in Fig. \ref{fig:overviewpwmod}. The block of “device $i$”
-is the mathematical model that expresses the input-output relationship for each
-device, while the block of “algebraic equation of power grid” expresses the
-vectorized Ohm's law of Equation \ref{eq:ohmY}.
+This localized relationship expresses the characteristics of the devices
+connected to the bus bars and can be considered mathematical models that express
+the input-output relationship of each device. Specific mathematical models of
+synchronous generators and loads will be described in detail in Section
+\ref{sec:genmod} and beyond.
 
 \begin{figure}[t]
-  \centering
-  \includegraphics[width = .80\linewidth]{figs/overview}
-  \medskip
-  \caption{
+\centering
+\includegraphics[width = .80\linewidth]{figs/overview}
+\medskip
+\caption{
   \textbf{Schematic diagram of a power system model}
-  }
-  \label{fig:overviewpwmod}
-  \medskip
+}
+\label{fig:overviewpwmod}
+\medskip
 \end{figure}
 
-In addition, in Equation \ref{eq:ohmY}, the current phasor $\bm{I}_i$ can be
-regarded as an output from device $i$ to the electrical power system, and
-current phasor $\bm{V}_i$ as an input from the electrical power system to device
-$i$. In this case, with an appropriate impedance matrix $\bm{Z}\in
-\mathbb{C}^{N\times N}$, Equation \ref{eq:ohmY} can be reformulated as follows:
 
 \begin{equation}\label{eq:ohmZ}
-  \mat{
-    \bm{V}_1\\
-    \vdots\\
-    \bm{V}_N
-  }
-  =
-  \underbrace{
-  \mat{
-    \bm{Z}_{11} & \cdots & \bm{Z}_{1N}\\
-    \vdots & \ddots & \vdots\\
-    \bm{Z}_{N1} & \cdots & \bm{Z}_{NN}
-  }
-  }_{\bm{Z}}
-  \mat{
-    \bm{I}_1\\
-    \vdots\\
-    \bm{I}_N
-  }
+ \mat{
+  \bm{V}_1\\
+  \vdots\\
+  \bm{V}_N
+}
+=
+\underbrace{
+\mat{
+  \bm{Z}_{11} & \cdots & \bm{Z}_{1N}\\
+  \vdots & \ddots & \vdots\\
+  \bm{Z}_{N1} & \cdots & \bm{Z}_{NN}
+}
+}_{\bm{Z}}
+\mat{
+  \bm{I}_1\\
+  \vdots\\
+  \bm{I}_N
+}
 \end{equation}
 If the admittance matrix $\bm{Y}$ in Equation \ref{eq:ohmY} is nonsingular,
 $\bm{Z}=\bm{Y}^{-1}$, however $\bm{Y}$ is not always nonsingular. For example,
-since the admittance matrix of Equation \ref{eq:exY} is not nonsingular, the
+if the admittance matrix of Equation \ref{eq:exY} is not nonsingular, the
 following holds:
 
 \[
-  \bm{V}_1=\bm{V}_2=\bm{V}_3
-  \qquad  \Longrightarrow \qquad 
-  \bm{I}_1=\bm{I}_2=\bm{I}_3=0
+\bm{V}_1=\bm{V}_2=\bm{V}_3
+\qquad  \Longrightarrow \qquad 
+\bm{I}_1=\bm{I}_2=\bm{I}_3=0
 \]
 
-The irregularity of this admittance matrix indicates that “when all current phasors of each bus bar are 0, all voltage phasors are the same; however, the value cannot be uniquely determined.”
-However, within the scope of normal analysis, there is rarely any need to pay attention to whether the admittance matrix is nonsingular.
+The singularity of this admittance matrix indicates that when all current
+phasors of each bus bar are zero, all voltage phasors are the same; however,
+this value cannot be uniquely determined. Nevertheless, there is rarely any need
+to pay attention to the singularity of the admittance matrix within the scope of
+general analysis.
 
 \begin{figure}[t]
 \centering
@@ -435,109 +431,96 @@ However, within the scope of normal analysis, there is rarely any need to pay at
 \medskip
 \end{figure}
 
-In addition, active power $P_i \in \mathbb{R}$ and reactive power $Q_i \in \mathbb{R}$ provided from equipment $i$ to bus bar $i$ are defined by: 
+In addition, active power $P_i \in \mathbb{R}$ and reactive power $Q_i \in
+\mathbb{R}$ provided from device $i$ to bus bar $i$ are defined by: 
+
 \[
-P_i := \real \left[ \bm{V}_i \overline{\bm{{I}} }_i \right], \qquad
-Q_i := \imag \left[ \bm{V}_i \overline{\bm{{I}} }_i \right]
+  P_i := \operatorname{Re} \left[ \bm{V}_i \overline{\bm{{I}} }_i \right], \qquad
+  Q_i := \operatorname{Im} \left[ \bm{V}_i \overline{\bm{{I}} }_i \right]
 \]
-In other words, the following relationship holds between active power, reactive power, bus bar voltage phasor, and bus bar current phasor.
 
-\begin{align}\label{eq:defPQVIi}
-P_i+\bm{j}Q_i = \bm{V}_i \overline{\bm{{I}} }_i
-\end{align}
-With that, by equivalently expressing the power grid model of Equation \ref{eq:ohmY} as follows:
-\begin{align}\label{eq:ohmpf}
-\simode{
-P_i &= \sum_{j=1}^{N}
-\real \left[ \overline{\bm{Y}}_{ij} \bm{V}_i \overline{\bm{V}}_j 
-\right] \\
-Q_i &= \sum_{j=1}^{N}
-\imag \left[
-\overline{\bm{Y}}_{ij} \bm{V}_i \overline{\bm{V}}_j 
-\right]
-}
-\qquad
-i \in \{1,\ldots, N\}
-\end{align}
+In other words, the following relationship holds between active power, reactive
+power, bus bar voltage phasor, and bus bar current phasor.
 
-An electrical power system model that uses active power and reactive power provided to the bus bar as an output of equipment is obtained (\ref{fig:overviewpwmodPQ}).
-Equation \ref{eq:ohmpf} is a simultaneous equation that expresses the electric power flow in each bus bar.
-\ref{fig:overviewpwmod} and \ref{fig:overviewpwmodPQ} are equal electrical power system models, but two models can be used according to the analysis purpose.
+\begin{equation}\label{eq:defPQVIi}
+  P_i+\bm{j}Q_i = \bm{V}_i \overline{\bm{{I}} }_i
+\end{equation}
 
-\subsection{Power grid model that considers capacitance to ground}\label{sec:transmodc}
+Then, by rearranging Equation \ref{eq:ohmY}, it is possible to obtain a power
+system model in which the active and reactive power supplied to the bus bar is
+the output of the device.
 
-In a short transmission lines, the model from the example \ref{ex:derY} is used; however, in mid-distance transmission lines that exceed 50 km, the capacitance to ground (capacitance component) created between the transmission line and the ground cannot be ignored. 
-As a transmission line model that considers the capacitance to ground, the $\pi$t-ype equivalent circuit shown in \ref{fig:lines} is often used.
-However, in \ref{fig:lines}, a transmission line that uses bus bar 1 and bus bar 2 as end points is shown, where $\omega_0$ shows a system frequency and $c_{12}$ shows capacitance that expresses the capacitance to ground.
-The admittance matrix of the power grid, when this transmission line model is used, is obtained as follows: 
+\begin{equation}\label{eq:ohmpf}
+  \simode{
+    P_i &= \sum_{j=1}^{N}
+    \operatorname{Re} \left[ \overline{\bm{Y}}_{ij} \bm{V}_i \overline{\bm{V}}_j 
+    \right] \\
+    Q_i &= \sum_{j=1}^{N}
+    \operatorname{Im} \left[
+    \overline{\bm{Y}}_{ij} \bm{V}_i \overline{\bm{V}}_j 
+    \right]
+  }
+  \qquad
+  i \in \{1,\ldots, N\}
+\end{equation}
+
+Equation \ref{eq:ohmpf} is a simultaneous equation that expresses the electric
+power flow in each bus bar. Figures \ref{fig:overviewpwmod} and
+\ref{fig:overviewpwmodPQ} are equivalent electrical power system models, but
+they can be used alternatively according to the analysis puropse.
+
+\subsection{Power grid model with capacitance to ground}\label{sec:transmodc}
+
+In short transmission lines, the model from the example \ref{ex:derY} can be
+used; however, in medium transmission lines that exceed 50 km, the capacitance
+to ground (capacitance component) created between the transmission lines and the
+ground cannot be ignored. 
+
+When the capacitance to ground, a transmission line is often represented as a
+$\pi$-type equivalent circuit as shown in Figure \ref{fig:lines}. In Figure
+\ref{fig:lines}, a transmission line connecting the bus bars 1 and 2 is shown,
+where $\omega_0$ is the system frequency and $c_{12}$ is the capacitance to
+ground. Using this representation of transmission line, the admittance of the
+power grid is obtained as follows.
 
 \begin{figure}[t]
-\centering
-\includegraphics[width = .85\linewidth]{figs/line_pix3}
-\medskip
-\caption{\textbf{$\pi$-type circuit model of a transmission line with ground-to-ground capacitance}\\
-\centering(Transmission lines with end points at bus bar 1 and bus bar 2)}
-\label{fig:lines} 
-\medskip
+  \centering
+  \includegraphics[width = .85\linewidth]{figs/line_pix3}
+  \medskip
+  \caption{\textbf{$\pi$-type circuit model of a transmission line with ground capacitance}\\
+  \centering(Transmission lines with end points at bus bars 1 and 2)}
+  \label{fig:lines} 
+  \medskip
 \end{figure}
 
-
-%\begin{figure}[t]
-%  \centering
-%  {
-%  \begin{minipage}{0.49\linewidth}
-%    \centering
-%    \includegraphics[width = .99\linewidth]{figs/line_pix}
-%%    \medskip
-%    \subcaption{$\pi$型等価回路}
-%%    \label{fig:line_pi} 
-%  \end{minipage}
-%  \begin{minipage}{0.49\linewidth}
-%    \centering
-%    \includegraphics[width = .99\linewidth]{figs/line_Tx}
-%%    \medskip
-%    \subcaption{T型等価回路}
-%%    \label{fig:lines} 
-%  \end{minipage}
-%  }
-%\medskip
-%\caption{\textbf{対地静電容量を考慮した送電線のモデル}}
-%\label{fig:lines} 
-%\medskip
-%\end{figure}
-
-
-%\begin{figure}[t]
-%  \centering
-%  {
-%    \centering
-%    \includegraphics[width = .55\linewidth]{figs/line_pix}
-%    \subcaption{$\pi$型等価回路}
-%    \label{fig:line_pi} 
-%    \centering
-%    \includegraphics[width = .55\linewidth]{figs/line_Tx}
-%    \subcaption{T型等価回路}
-%  }
-%  \medskip
-%   \caption{\textbf{対地静電容量を考慮した送電線のモデル}}
-%   \label{fig:lines}
-%\medskip
-%\end{figure}
-
-
-\begin{example}{Admittance matrix for the transmission line in a $\pi$-type circuit}\label{ex:pitypeY}
-
-  In an electrical power system similar to the example \ref{ex:derY}, derive the admittance matrix when the transmission line is expressed with a $\pi$-type equivalent circuit. 
-  First, consider the relationship of current phasors $\bm I_{12}$, $\bm I_{21}$, flowing from the bus bar, and voltage phasors $\bm V_1$, $\bm V_2$ of the bus bar on a line that uses bus bar 1 and bus bar 2 of \ref{fig:lines} as end points. 
-  At this time, please note that, unlike the case of example \ref{ex:derY}, $\bm I_{21}$ is different from $-\bm I_{12}$. If the current flowing through the line with the admittance of $\Ysa$ from left to right is expressed as $\Is$, the following holds based on Kirchhoff's laws:
-  \begin{align*}
+\begin{example}{\textbf{Admittance matrix for the transmission line in a
+$\pi$-type circuit}}\label{ex:pitypeY}
+  
+  For an electrical power system similar to Example \ref{ex:derY}, let's derive
+  the admittance matrix when the transmission line is expressed by a $\pi$-type
+  equivalent circuit. First, let's consider the relationship of the current
+  phasors $\bm I_{12}$, $\bm I_{21}$, flowing from the bus bars, and the voltage
+  phasors $\bm V_1$, $\bm V_2$ of the bus bars of a transmission line with bus
+  bars 1 and 2 as end points, as illustrated in Figure \ref{fig:lines}. Then,
+  please note that, unlike in Example \ref{ex:derY}, $\bm I_{21}$ is different
+  from $-\bm I_{12}$. If the current flowing through the transmission line with 
+  admittance $\Ysa$ from left to right is expressed as $\Is$, the following
+  equations are obtained from the Kirchhoff's laws:
+  
+  \begin{equation*}
       \bm I_{12} = \frac{\bm{j} \omega_0 \bca}{2} \bm V_1 + \Is ,\qquad
       \frac{\bm{j} \omega_0 \bca}{2} \bm V_2 = \bm I_{21} + \Is
-  \end{align*}
-  And with Ohm’s law, the following holds: 
-  \begin{align*} \Is = \Ysa(\bm V_1-\bm V_2)\end{align*}
-  By removing $\Is$ and reorganizing, we obtain:
-  \begin{align*}
+  \end{equation*}
+
+  Moreover, by using the Ohm's law: 
+
+  \begin{equation*}
+    \Is = \Ysa(\bm V_1-\bm V_2)
+  \end{equation*}
+
+  By replacing $\Is$ and rearranging the equations, we obtain:
+
+  \begin{equation*}
     \mat{
       \bm I_{12} \\ \bm I_{21}
     } = \mat{
@@ -547,9 +530,12 @@ The admittance matrix of the power grid, when this transmission line model is us
     \mat{
       \bm V_1\\\bm V_2
     }
-  \end{align*}
-  The following is true for the transmission line that uses bus bar 2 and bus bar 3 as end points:
-  \begin{align*}
+  \end{equation*}
+
+  The following is true for the transmission line that uses bus bar 2 and bus
+  bar 3 as end points:
+
+  \begin{equation*}
     \mat{
       \bm I_{32} \\ \bm I_{23}
     } = \mat{
@@ -559,15 +545,19 @@ The admittance matrix of the power grid, when this transmission line model is us
     \mat{
       \bm V_3 \\ \bm V_2
     }
-  \end{align*}
+  \end{equation*}
+
   Therefore, by using:
-  \begin{align*}
+
+  \begin{equation*}
     \bm{I}_{1}-\bm{I}_{12}=0,\qquad
     \bm{I}_{2}-\bm{I}_{21}-\bm{I}_{23}=0,\qquad
     \bm{I}_{3}-\bm{I}_{32}=0
-    \end{align*}
+  \end{equation*}
+
   The admittance matrix of the power grid can be obtained as: 
-  \begin{align*}%\label{eq:Ypitype}
+
+  \begin{equation*}%\label{eq:Ypitype}
     \mat{
     \bm{I}_1\\
     \bm{I}_2\\
@@ -584,56 +574,68 @@ The admittance matrix of the power grid, when this transmission line model is us
     \bm{V}_2\\
     \bm{V}_3\\
     }
-  \end{align*}
+  \end{equation*}
+
  This is consistent with Equation \ref{eq:exY} when $\bca$ and $\bcb$ are zero.
 \end{example}
 
 \subsection{Mathematical properties of the admittance matrix}\label{sec:admathp}
 
-In this book, it is assumed that the power grids are connected; in other words, there is at least one route connecting two arbitrarily chosen bus bars. For unconnected power grids, the connected part(s) can be independently discussed.
-In \ref{fig:congraphab}, the node (circle) corresponds to the bus bars and the edge (black line) corresponds to the transmission lines.
+In this book, we assume power grids that are connected; in other words, there is
+at least one route connecting two arbitrarily chosen bus bar. For unconnected
+power grids, the connected parts can be independently discussed. In Figure
+\ref{fig:congraph}, the nodes (circles) correspond to the bus bars and the edges
+(black lines) correspond to the transmission lines.
 
-In the power grid model of example \ref{ex:derY} where capacitance to ground is ignored, the admittance matrix is specially expressed as $\bm{Y}_0 \in \mathbb{C}^{N\times N}$. 
-The real and imaginary parts of $\bm{Y}_0$; in other words, conductance matrix and susceptance matrix, are expressed as:
+In the power grid model of Example \ref{ex:derY} where the capacitance to ground
+is ignored, the admittance matrix is expressed as $\bm{Y}_0 \in
+\mathbb{C}^{N\times N}$. The real and imaginary parts of $\bm{Y}_0$; in other
+words, the conductance and susceptance matrices, are expressed as:
+
 \[
-G_0:=\real [\bm{Y}_0] ,\qquad
-B_0:=\imag [\bm{Y}_0]
+  G_0:=\operatorname{Re} [\bm{Y}_0] ,\qquad
+  B_0:=\operatorname{Im} [\bm{Y}_0]
 \]
 
-These matrices have the following properties.
-First, the following is true for vectors where all elements are one $\mathds{1}\in \mathbb{R}^N$:
+These matrices have the following properties. First, the sum of elements in all
+row vectors of these matrices is equal to zero. This is expressed by the
+following equations, where $\mathds{1}\in \mathbb{R}^N$ is a vector which all
+elements are equal to one:
+
 \begin{subequations}\label{eq:Y0prop}
-\begin{align}\label{eq:Y0ker}
-\bm{Y}_0 \mathds{1} =0
-\qquad
-\Longleftrightarrow
-\qquad
-G_0\mathds{1} =0,\qquad
-B_0\mathds{1} =0
-\end{align}
-This means that the sum of elements in all row vectors is zero for the conductance and susceptance matrices.
-Furthermore, since conductance is non-negative and susceptance is negative in each transmission line, the conductance matrix is positive semi-definite and the susceptance matrix is negative semi-definite; in other words: 
-\begin{align}\label{eq:Y0}
-G_0 =G_0^{\sfT} \succeq 0,\qquad
-B_0 = B_0^{\sfT} \preceq 0
-\end{align}
-Specifically, based on the fact that the connectivity of the power grid and the susceptance of the transmission line are non-zero, the multiplicity of the zero eigenvalue of $B_0$ is derived to be 1.
-This can also be expressed as:
-\begin{align}\label{eq:Y0eig}
-\sfker B_0 = \sfspan \{ \mathds{1} \}
-\end{align}
-In graph theory terms, $-B_0$ is \textbf{graph Laplacian} of a strongly connected weighted undirected graph.
-The multiplicity of the zero eigenvalue in graph Laplacian being 1 is a requirement for the corresponding undirected graph to be strongly connected \cite{mesbahi2010graph}.
+\begin{equation}\label{eq:Y0ker}
+  \bm{Y}_0 \mathds{1} =0
+  \qquad
+  \Longleftrightarrow
+  \qquad
+  G_0\mathds{1} =0,\qquad
+  B_0\mathds{1} =0
+\end{equation}
 
-%\footnote{
-%%\blue{ \footnotesize（あとで脚注に変更）
-%グラフ理論の用語では, $-B_0$は強連結な重み付き無向グラフの\textbf{グラフラプラシアン}（graph Laplacian）である。
-%グラフラプラシアンの零固有値の重複度が1であることは, 対応する無向グラフが強連結であるための必要十分条件である\cite{mesbahi2010graph}。
-%}
-%。
+Furthermore, since the conductance is non-negative and the susceptance is
+negative in each transmission line, the conductance matrix is positive
+semi-definite and the susceptance matrix is negative semi-definite; in other
+words: 
+
+\begin{equation}\label{eq:Y0}
+  G_0 =G_0^{\sfT} \succeq 0,\qquad
+  B_0 = B_0^{\sfT} \preceq 0
+\end{equation}
+
+Specifically, based on the fact that the connectivity of the power grid and the
+susceptance of the transmission line are non-zero, the multiplicity of the zero
+eigenvalue of $B_0$ is derived to be 1. This can also be expressed as:
+
+\begin{equation}\label{eq:Y0eig}
+  \sfker B_0 = \sfspan \{ \mathds{1} \}
+\end{equation}
+
+Under the graph theory perspective, $-B_0$ is called a \textbf{graph Laplacian}
+of a strongly connected weighted undirected graph. The multiplicity of the zero
+eigenvalue in a graph Laplacian being 1 is a requirement for the corresponding
+undirected graph to be strongly connected \cite{mesbahi2010graph}.
+
 \end{subequations}
-
-
 
 \begin{figure}[t]
   \centering
@@ -654,71 +656,93 @@ The multiplicity of the zero eigenvalue in graph Laplacian being 1 is a requirem
   \end{minipage}
   }
 \medskip
-\caption{\textbf{Connected and disconnected graphs}
-\\
-\centering(Connected graph and unconnected graph)}
+\caption{\textbf{Connected and disconnected graphs} \\ \centering(Connected
+graph and unconnected graph)}
 \label{fig:congraphab} 
 \medskip
 \end{figure}
 
-Furthermore, in the power grid model expressed with the $\pi$-type equivalent circuit in the example \ref{ex:pitypeY}, a non-negative value is added to the diagonal element of the susceptance matrix $B_0$.
-In other words, the admittance matrix for the power grid model in examples \ref{ex:derY} and \ref{ex:pitypeY} can usually be expressed as:
-\begin{align}\label{eq:Ypig}
-\bm{Y} = G_0 + \bm{j} \left( B_0 + \sfdiag( \Cgi )_{i \in \{1,\ldots,N\}} \right)
-\end{align}
-where $ \Cgi $ is a non-negative constant equivalent to capacitance to ground, and the conductance matrix $G_0$ and the susceptance matrix $B_0$ satisfy Equation (\ref{eq:Y0prop}).
+Furthermore, when considering a $\pi$-type equivalent circuit for the
+transmission lines like in Example \ref{ex:pitypeY}, a non-negative value is
+added to the diagonal element of the susceptance matrix $B_0$. In other words,
+the admittance matrix for the power grid model in Examples \ref{ex:derY} and
+\ref{ex:pitypeY} is expressed as:
 
-\section{Mathematical model for synchronous generators}\label{sec:genmod}
+\begin{equation}\label{eq:Ypig}
+  \bm{Y} = G_0 + \bm{j} \left( B_0 + \sfdiag( \Cgi )_{i \in \{1,\ldots,N\}} \right)
+\end{equation}
+where $ \Cgi $ is a non-negative constant equivalent to capacitance to ground,
+and the conductance $G_0$ and the susceptance $B_0$ matrices satisfy Equation
+(\ref{eq:Y0prop}).
 
-\subsection{Division of generator models based on the level of detail}
+\section{Mathematical model of synchronous generators}\label{sec:genmod}
 
-In electrical power system engineering, different synchronous generator models with different levels of detail, such as consideration to field winding and damper winding, have been used to analyze the stability of an electrical power system [4, 5, 8, 9].
-Here, we present four types of models.
+\subsection{Classification of generator models based on the level of detail}
 
-\smallskip
-\subsubsection{Park model}
-
-A model with a high level of detail that considers the change in magnetic flux in the stator, field winding, and damper winding is called a \textbf{Park model} or, at times, called a \textbf{detailed model}.
-It consists of a two-dimensional linear differential equation (oscillation equation) that expresses the mechanical dynamic characteristics of the rotor of a generator, or a five- to seven-dimensional nonlinear differential equation that expresses the magnetic flux changes in the stator, field winding, and damper winding.
-The dimension of the latter differential equation that expresses changes in magnetic flux varies based on the number of windings to consider and the setting of variables.
-The active power and reactive power, which represent the electrical output of a generator, are nonlinear functions for the internal state of the generator.
-The models used in Japanese works consider a type of damper winding on the d-axis and two types of damper windings on the q-axis in addition to field winding on the d-axis [8]. 
-When there is only one type of damper winding on the q-axis, if the constant is set appropriately, there are no issues in terms of practical use.
+In electrical power system engineering, different synchronous generator models
+with different levels of detail, such as the consideration of the field and
+damper windings, have been used to analyze the stability of electrical power
+systems [4, 5, 8, 9]. Here, we present four types of models.
 
 \smallskip
-\subsubsection{Two-axis model}
+\begin{enumerate}[label=(\alph*)]
+  \item \textbf{Park model} The Park model, also called \textbf{complete model},
+  is a model with a high level of details that considers the change in magnetic
+  flux in the stator and field and damper windings.  It consists of a
+  two-dimensional linear differential equation (swing equation) that expresses
+  the mechanical dynamic characteristics of the rotor of the generator, and a
+  five to seven-dimensional nonlinear differential equation that expresses the
+  magnetic flux changes in the stator, field winding, and damper winding.  The
+  dimension of the latter differential equation that expresses changes in
+  magnetic flux varies based on the number of windings to consider and the
+  setting of variables. 
 
-In terms of the dynamic characteristics of magnetic flux change in stators and damper winding, a model that approximates the differential equation to the algebraic equation, assuming that their time constant is sufficiently small, is called the \textbf{two-axis model} [9. Section 5.4].
-It consists of a two-dimensional oscillation equation and a two-dimensional nonlinear differential equation that expresses the magnetic flux change in field winding and damper winding.
-Generally, the dynamic characteristics of magnetic flux change in the stator and damper winding are sufficiently faster than other dynamic characteristics; thus, the behavior of the Park model is generally well approximated.
+  The active and reactive power, which represent the electrical output of a
+  generator, are nonlinear functions of the internal state of the generator. The
+  models used in Japanese works consider a type of damper winding on the d-axis
+  and two types of damper windings on the q-axis in addition to field winding on
+  the d-axis [8].  When there is only one type of damper winding on the q-axis, if
+  the constant is set appropriately, there are no issues in terms of practical
+  use.
+  \bigskip
+  \item \textbf{Two-axis model} It is a model that approximates the differential
+  equations to the algebraic equation, assuming that the time constants of the
+  dynamic response of the magnetic flux change in the stator and damper winding
+  are sufficiently small [9. Section 5.4]. It consists of a two-dimensional
+  swing equation and a two-dimensional nonlinear differential equation
+  expressing the magnetic flux change in the field and damper windings.
+  Generally, the dynamic response of the magnetic flux change in the stator and
+  damper winding are sufficiently fast; thus, the behavior of the Park model is
+  generally well simplified.
+  \bigskip
+  \item \textbf{One-axis model} In contrast to the two-axis model, the one-axis
+  model, also called \textbf{transient model}, is obtained under the assumption
+  that the time constant of the magnetic flux change in the damper winding is
+  sufficiently small [10-12]. It consists of a two-dimensional swing equation
+  and a one-dimensional nonlinear differential equation that expresses the
+  magnetic flux change in the field winding. In this book, we use a one-axis
+  model to perform analysis.The process of deriving a one-axis model from the
+  Park model is explained in \cite[Section 5]{sauer2017power} and \cite[Section
+  4.15]{anderson2008power}.
+  \bigskip
+  \item \textbf{Classical model} It is amodel that ignores the magnetic flux
+  changes in the field and damper windings. It consists of a two-dimensional
+  linear swing equation and the active and reactive power are nonlinear
+  functions of the internal states of the generator. This model is currently
+  widely used to analyze the oscillatory and synchronization phenomena of
+  electrical power systems [10-14].
+\end{enumerate}
 
+\subsection{Mathematical expression of the one-axis model}\label{sec:genfund}
 \smallskip
-\subsubsection{One-axis model}
-
-In contrast to the two-axis model, a model that is obtained by assuming that the time constant of the magnetic flux change in damper winding is 
-sufficiently small is called the \textbf{one-axis model}[10-12], which is at times called a \textbf{transient model}.
-It consists of a two-dimensional oscillation equation and a one-dimensional nonlinear differential equation that expresses the magnetic flux change in the field winding.
-In this book, we use a one-axis model to perform analysis.
-The process of deriving a one-axis model from the Park model is explained in \cite[Section 5]{sauer2017power} and \cite[Section 4.15]{anderson2008power}.
-
-\smallskip
-\subsubsection{Classical model }
-
-A model that ignores magnetic flux changes in the field winding and damper winding is called a \textbf{classical model}.
-In Japanese, it is also called a \textbf{constant back voltage model} \cite{kato2017electric}. 
-The generator itself consists of a linear two-dimensional oscillation equation, but the fact that the active power and reactive power are nonlinear functions of the internal state of the generator is the same.
-It is widely used today as a model that analyzes the oscillatory and synchronization phenomena of electrical power systems [10-14].
-
-\subsection{Mathematical expression of one-axis model}\label{sec:genfund}
-
-\smallskip
-\subsubsection{Relational expression of current and voltage where the internal state of a generator is the intermediate variable}
+\subsubsection{Relational expression of current and voltage where the internal
+state of a generator is the intermediate variable}
 
 If the internal voltage of a generator $i$ connected to a bus bar $i$ is $E_i$, and the rotor argument relative to a coordinate system that rotates with a system frequency $\omega_0$ is $\delta_i$, the following relationship holds for the voltage phasor $\bm{V}_i$ of bus bar $i$ and current phasor $\bm{I}_i$ flowing from the generator to the bus bar $i$:
 \begin{subequations}\label{eq:phVIs}
-\begin{align}\label{eq:phVI}
+\begin{equation}\label{eq:phVI}
 \bm{I}_i  = \frac{1}{ \bm{j} \Xti } \left(E_i e^{\bm{j} \delta_i} - \bm{V}_i \right)
-\end{align}
+\end{equation}
 where $\Xti$ is the transient reactance of the generator.
 The schematic is shown in \ref{fig:generatorbus}.
 The ground is omitted from the Figure.
@@ -738,14 +762,14 @@ In other words, from the perspective of control systems engineering, Equation \r
 Equally, it can be considered that $\bm{V}_i$ is the output and $\bm{I}_i$ is the input.
 Details will be discussed later.
 By multiplying both sides of the Equation \ref{eq:phVI} with $e^{- \bm{j}\delta}$ and considering the equation for the real part and the imaginary part separately, we can see that Equation \ref{eq:phVI} is equivalent to:
-\begin{align}\label{eq:phVIsincos}
+\begin{equation}\label{eq:phVIsincos}
 \spliteq{
 |\bm{V}_i| \sfsin (\delta_i -\angle \bm{V}_i)  &= 
 \Xti |\bm{I}_i| \sfcos (\delta_i -\angle \bm{I}_i), \\
 |\bm{V}_i| \sfcos (\delta_i -\angle \bm{V}_i)  &= 
 E_i - \Xti |\bm{I}_i| \sfsin (\delta_i -\angle \bm{I}_i)
 }
-\end{align}
+\end{equation}
 \end{subequations}
 
 
@@ -775,12 +799,12 @@ Q_i&=\imag \left[ \bm{V}_i \overline{ \bm{I} }_i \right] \\
 }
 \end{align*}
 Thus, if current phasor is cancelled using the Equation \ref{eq:phVIsincos}, the following can be obtained:
-\begin{align}\label{eq:PiQis}
+\begin{equation}\label{eq:PiQis}
 \spliteq{
 P_i & =  \frac{E_i |\bm{V}_i |}{ \Xti } \sfsin(\delta_i -  \angle \bm{V}_i), \\
 Q_i & =  \frac{E_i |\bm{V}_i |}{ \Xti } \sfcos (\delta_i - \angle \bm{V}_i) - \frac{|\bm{V}_i|^2}{ \Xti }
 }
-\end{align}
+\end{equation}
 These expressions indicate that the phase of the bus bar voltage $\angle \bm{V}_i$ contributes to the active and reactive power as the difference of generator rotor argument $\delta_i$.
 In typical electrical power system operation, the difference between $\delta_i$ and $\angle \bm{V}_i$ is small; thus, the following approximation holds:
 \begin{align*}
@@ -791,12 +815,12 @@ This fact indicates that a difference between $\delta_i$ and $\angle \bm{V}_i$ m
 
 When the voltage phasor is the input, Equations (\ref{eq:phVIs}) and \ref{eq:PiQis} can be interpreted as an equivalent deformation of the output equation of the generator under the definition of active power and reactive power in Equation \ref{eq:defPQVIi}.
 Similarly, if the voltage phasor is cancelled, an output equation, when current phasor is the input, is obtained as:
-\begin{align}\label{eq:PiQis2}
+\begin{equation}\label{eq:PiQis2}
 \spliteq{
 P_i &=  E_i |\bm{I}_i|  \sfcos(\delta_i -  \angle \bm{I}_i), \\
 Q_i & = E_i |\bm{I}_i| \sfsin (\delta_i - \angle \bm{I}_i) - \Xti |\bm{I}_i |^2
 }
-\end{align}
+\end{equation}
 
 
 \smallskip
@@ -804,16 +828,16 @@ Q_i & = E_i |\bm{I}_i| \sfsin (\delta_i - \angle \bm{I}_i) - \Xti |\bm{I}_i |^2
 
 An oscillation equation that expresses the mechanical and dynamic characteristics of a rotor of the generator can be obtained with: 
 \begin{subequations}\label{eq:dyngen}
-\begin{align}\label{eq:swing}
+\begin{equation}\label{eq:swing}
 \simode{
 \dot{\delta}_i&= \omega_0  \Delta \omega_i\\
 M_i   \Delta \dot{\omega}_i&= 
  - D_i \Delta\omega_i - P_i +P_{{\rm mech}i} 
 }
-\end{align}
+\end{equation}
 where, $\Delta \omega_i$ is the frequency deviation from the system frequency, $\omega_0$, $M_i$ is the inertia constant, $D_i$ is the damping factor, and $P_{{\rm mech}i}$ is the mechanical torque.
 In addition, as a differential equation that expresses the attenuation of magnetic flux, the dynamic characteristics of a field circuit are given as follows:
-\begin{align}\label{eq:dynEi}
+\begin{equation}\label{eq:dynEi}
 \taudi \dot{E}_i = 
  -\frac{ \Xsi }{ \Xti }E_i
 +\left(
@@ -821,7 +845,7 @@ In addition, as a differential equation that expresses the attenuation of magnet
 \right)
 |\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
 + V_{{\rm field}i}
-\end{align}
+\end{equation}
 \end{subequations}
 where, 
 $\taudi $ is the time constant of the field circuit,
@@ -832,7 +856,7 @@ Generally, $\Xsi > \Xti$ holds.
 
 Summarizing the above, if two variables of voltage phasor $(|\bm{V}_i|, \angle \bm{V}_i)$ are considered an input from the bus bar $i$ to the generator $i$, the following equations become the equation of state that expresses the dynamic characteristics of the generator: 
 \begin{subequations}\label{eq:gendynVI}
-\begin{align}\label{eq:gendynVIst}
+\begin{equation}\label{eq:gendynVIst}
 \simode{
 \dot{\delta}_i&= \omega_0  \Delta \omega_i\\
 M_i   \Delta \dot{\omega}_i&= 
@@ -848,10 +872,10 @@ M_i   \Delta \dot{\omega}_i&=
 |\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
 + V_{{\rm field}i}
 }
-\end{align}
+\end{equation}
 where the expression of Equation \ref{eq:PiQis} is used for active power $P_i$.
 Two variables of current phasor derived from Equation \ref{eq:phVIsincos}:
-\begin{align}\label{eq:Iout}
+\begin{equation}\label{eq:Iout}
 \spliteq{
 |\bm{I}_i| &= \textstyle \sqrt{
 \left\{ \tfrac{|\bm{V}_i|}{ \Xti } \sfsin(\delta_i - \angle \bm{V}_i) \right\}^2
@@ -864,7 +888,7 @@ Two variables of current phasor derived from Equation \ref{eq:phVIsincos}:
 }
 \right)
 }
-\end{align}
+\end{equation}
 become the output from the generator $i$ to the bus bar $i$.
 As discussed above, based on the definition of Equation \ref{eq:defPQVIi}, a set of active power and reactive power of Equation \ref{eq:PiQis}, $(P_i,Q_i)$, can be considered as an output that is mathematically equivalent to $(|\bm{I}_i|,\angle \bm{I}_i)$.
 \end{subequations}
@@ -873,7 +897,7 @@ As discussed above, based on the definition of Equation \ref{eq:defPQVIi}, a set
 \begin{subequations}\label{eq:gendynIV}
 Similarly, two variables of current phasor $(|\bm{I}_i|,\angle \bm{I}_i)$ can be considered an input from the bus bar $i$ to the generator $i$.
 In this case,  
-\begin{align}\label{eq:gendynIVst}
+\begin{equation}\label{eq:gendynIVst}
 \simode{
 \dot{\delta}_i &= \omega_0  \Delta \omega_i\\
 M_i   \Delta \dot{\omega}_i&= \textstyle
@@ -889,11 +913,11 @@ P_i
 |\bm{I}_i| \sfsin (\delta_i - \angle \bm{I}_i ) 
 + V_{{\rm field}i}
 }
-\end{align}
+\end{equation}
 becomes the equation of state that expresses the dynamic characteristics of the generator. 
 where the expression of Equation \ref{eq:PiQis2} is used for active power $P_i$.
 In addition, two variables of the voltage phasor derived from Equation \ref{eq:phVIsincos}:
-\begin{align}\label{eq:Vout}
+\begin{equation}\label{eq:Vout}
 \spliteq{
 |\bm{V}_i| &= \textstyle \sqrt{
 \bigl\{ \Xti |\bm{I}_i| \sfcos(\delta_i - \angle \bm{I}_i) \bigr\}^2
@@ -909,7 +933,7 @@ E_i - \Xti |\bm{I}_i| \sfsin(\delta_i - \angle \bm{I}_i)
 }
 \right)
 }
-\end{align}
+\end{equation}
 become an output from the generator to the bus bar.
 The set of active power and reactive power of Equation \ref{eq:PiQis2}, $(P_i,Q_i)$, can also be considered as an output that is mathematically equivalent to $(|\bm{V}_i|,\angle \bm{V}_i)$.
 \end{subequations}
@@ -1023,7 +1047,7 @@ E_N
 \right)
 \]
 If the current phasor is cancelled using the algebraic equation of the power grid in Equation \ref{eq:ohmY}, and the equation is solved for the voltage phasor, the following is obtained:
-\begin{align}\label{eq:colVi}
+\begin{equation}\label{eq:colVi}
 \mat{
 \bm{V}_1\\
 \vdots \\
@@ -1043,7 +1067,7 @@ E_1  \\
 \vdots \\
 E_N 
 }
-\end{align}
+\end{equation}
 In this manner, voltage phasor $(\bm{V}_i)_{i\in \mathcal{I}_{\rm G}}$ of the bus bars is equivalently expressed by the state variables of generators $(\delta_i,E_i)_{i\in \mathcal{I}_{\rm G}}$.
 
 Next, let us consider step (b).
@@ -1052,7 +1076,7 @@ If the voltage phasor of the bus bar is expressed with a polar form:
 \bm{V}_i = |\bm{V}_i| e^{\bm{j} \angle \bm{V}_i}
 \]
 and the complex conjugate for the whole is taken by multiplying Equation \ref{eq:colVi} with $\sfdiag(\tfrac{e^{- \bm{j} \delta_i} }{ \Xti } )$ from the left, the following is obtained:
-\begin{align}\label{eq:kronGam}
+\begin{equation}\label{eq:kronGam}
 \mat{
 \tfrac{|{\bm{V}_1}|}{ \Xtone } e^{\bm{j} (\delta_1 -\angle \bm{V}_1 )} \\
 \vdots \\
@@ -1071,13 +1095,13 @@ E_1  \\
 \vdots \\
 E_N 
 }
-\end{align}
+\end{equation}
 where $\bm{\itGamma}\in \mathbb{C}^{N \times N}$ is a complex square matrix defined by:
-\begin{align}\label{eq:defGam}
+\begin{equation}\label{eq:defGam}
 \bm{\itGamma}:=
 \sfdiag \left( \Xti \right) 
 -  \bm{j} \sfdiag \left( \Xti \right) \overline{\bm{Y}} \sfdiag \left( \Xti \right)
-\end{align}
+\end{equation}
 In Equation \ref{eq:kronGam}, if the $(i,j)$th element of $\bm{\itGamma}^{-1}$ is expressed as $\bm{\gamma}_{ij}^{-1}$, the following expression is obtained:
 \[
 \sfdiag\left(
@@ -1119,7 +1143,7 @@ G_{ij}^{\rm red}
 }
 \end{align*}
 where reduced conductance and susceptance are defined as:
-\begin{align}\label{eq:GBij}
+\begin{equation}\label{eq:GBij}
 G_{ij}^{\rm red} := 
 \imag \left[
 \bm{\gamma}_{ij}^{-1} 
@@ -1127,19 +1151,19 @@ G_{ij}^{\rm red} :=
 ,\qquad
 B_{ij}^{\rm red} := 
 - \real \left[ \bm{\gamma}_{ij}^{-1}  \right]
-\end{align}
+\end{equation}
 Here, a matrix $\bm{Y}^{\rm red}$ of reduced admittance:
 \[
 \bm{Y}_{ij}^{\rm red}:= G_{ij}^{\rm red} + \bm{j} B_{ij}^{\rm red}
 \]
 is called a \textbf{reduced admittance matrix}.
 This is equal to defining as follows using the above complex matrix $\bm{\itGamma}^{-1} $:
-\begin{align}\label{eq:Yred}
+\begin{equation}\label{eq:Yred}
 \bm{Y}^{\rm red} := - \bm{j} \bm{\itGamma}^{-1} 
-\end{align}
+\end{equation}
 
 By using this reduced admittance matrix, the term that includes voltage phasor variables of the bus bar in a generator model $(|\bm{V}_i|, \angle \bm{V}_i)$ can be rewritten as:
-\begin{align}\label{eq:Vcossin}
+\begin{equation}\label{eq:Vcossin}
 \spliteq{
 \frac{|{\bm{V}_i}|}{ \Xti } \sfcos (\delta_i -\angle \bm{V}_i ) 
 &=
@@ -1163,10 +1187,10 @@ G_{ij}^{\rm red}
 \sfcos(\delta_i -\delta_j)
 \bigr\}
 }
-\end{align}
+\end{equation}
 Please note that the trigonometric function term related to the voltage phasor of the bus bar on the left side is expressed by the rotor argument difference $\delta_i -\delta_j$ and internal voltage $E_i$ of the generators on the right side.
 Therefore, a differential algebraic equation model of an electrical power system, in which the generator model of Equation (\ref{eq:gendynVI}) is combined by the simultaneous equation of Equation \ref{eq:ohmY}, can be equivalently expressed as a simultaneous ordinary differential equation system related to all $i \in \mathcal{I}_{\rm G}$.
-\begin{align}\label{eq:krondyn}
+\begin{equation}\label{eq:krondyn}
 \simode{
 \dot{\delta}_i&= \omega_0  \Delta \omega_i\\
 M_i   \Delta \dot{\omega}_i&= %\textstyle
@@ -1183,9 +1207,9 @@ g_i \left( \delta,E \right)
 }
 \qquad
 i \in \mathcal{I}_{\rm G}
-\end{align}
+\end{equation}
 However, $\delta$ and $E$ are vectors with $\delta_i$ and $E_i$ in columns, expressing a nonlinear term that expresses interaction between generators. 
-\begin{align}\label{eq:eigidef}
+\begin{equation}\label{eq:eigidef}
 \spliteq{
 f_i \left( \delta,E \right) &:=
 -E_i \sum_{j=1}^{N}
@@ -1208,13 +1232,13 @@ G_{ij}^{\rm red}
 \sfsin \delta_{ij}
 \bigr)
 }
-\end{align}
+\end{equation}
 It was defined as $\delta_{ij}:= \delta_i - \delta_j$.
 
 
 
 %
-%\begin{align}\label{eq:krondyn}
+%\begin{equation}\label{eq:krondyn}
 %\simode{
 %\dot{\delta}_i&= \omega_0  \Delta \omega_i\\
 %M_i   \Delta \dot{\omega}_i&= %\textstyle
@@ -1244,7 +1268,7 @@ It was defined as $\delta_{ij}:= \delta_i - \delta_j$.
 %\bigr) 
 %+ V_{{\rm field}i}
 %}
-%\end{align}
+%\end{equation}
 %と等価に表現できる。
 %ただし, $\delta_{ij}:=\delta_i - \delta_j$と定義した。
 
@@ -1318,7 +1342,7 @@ $i$ &  $P_{{\rm mech}i}^{\star}$~[pu] & $V_{{\rm filed}i}^{\star}$~[pu] & $\delt
 \end{table}
 
 
-\begin{example}{Behavior of an electrical power system model where a generator bus is reduced}\label{ex:Kronode}
+\begin{example}{\textbf{Behavior of an electrical power system model where a generator bus is reduced}}\label{ex:Kronode}
 Let us consider an electrical power system model consisting of three bus bars as discussed in Example \ref{ex:derY}. 
 Here, the one-axis generator model that was explained in Section \ref{sec:genfund} is connected to each bus bar. 
 In other words, the electrical power system model can be drawn as shown in the left image in \ref{fig:krongen}. 
@@ -1327,10 +1351,10 @@ Since the system frequency is set to 60 [Hz], the value of $\omega_0$ is $120\pi
 
 
 The admittance of the two transmission lines is set as:
-\begin{align}\label{eq:defadpara}
+\begin{equation}\label{eq:defadpara}
 \bm{y}_{12} = 1.3652 - \bm{j} 11.6041, \qquad
 \bm{y}_{23} = 1.9422 - \bm{j} 10.5107
-\end{align}
+\end{equation}
 In this manner, the admittance matrix of the power grid in Equation \ref{eq:exY} is obtained.
 In addition, if we calculate the real part (reduced conductance matrix) and the imaginary part (reduced susceptance matrix) of the reduced admittance matrix $\bm{Y}^{\rm red}$ of Equation \ref{eq:Yred}, 
 the following is obtained:
@@ -1462,7 +1486,7 @@ Functions $f_i$ and $g_i$ are defined by Equation \ref{eq:figidef}.
 
 First, let us consider a situation where the steady value is perturbed to set the initial value.
 Specifically:
-\begin{align}\label{eq:exdelE0}
+\begin{equation}\label{eq:exdelE0}
 \mat{
 \delta_1(0) \\
 \delta_2(0) \\
@@ -1496,7 +1520,7 @@ E^{\star}_1 +0.1 \\
 E^{\star}_2 \\
 E^{\star}_3 
 }
-\end{align}
+\end{equation}
 where the initial value of the frequency deviation is 0. The time response of the electrical power system model at this time is shown in \ref{fig:Kron0}.
 This figure shows that, after frequency deviation and rotor argument were perturbed for about 15 seconds, they asymptotically converge to the original steady state.
 However, since only the relative difference among generators is meaningful in the rotor argument, the convergence value of the rotor argument shifts by a constant from the original steady value.
@@ -1666,7 +1690,7 @@ By applying Kron reduction of generator bus to the classical model explained in 
 %。
 Specifically, if we assume that the value of synchronous reactance $\Xsi$ and transient reactance $\Xti$ are equal, and field voltage $V_{{\rm field}i}$ is constant at $V_i^{\star}$, the internal voltage $E_i$ becomes $V_i^{\star}$ and is constant.
 Therefore, the electrical power system model in which a generator is connected to each bus bar is expressed with a differential equation system model. 
-\begin{align}\label{eq:clamod}
+\begin{equation}\label{eq:clamod}
 \simode{
 \dot{\delta}_i&= \omega_0  \Delta \omega_i\\
 M_i   \Delta \dot{\omega}_i&= 
@@ -1675,7 +1699,7 @@ M_i   \Delta \dot{\omega}_i&=
 +P_{{\rm mech}i} 
 }\qquad
 i\in \mathcal{I}_{\rm G}
-\end{align}
+\end{equation}
 However, the nonlinear term is given by:
 \[
 \hat{f}_i (\delta):=
@@ -1826,10 +1850,10 @@ Below, we mathematically discuss the existence and definiteness of the reduced a
 Let us remember that with the admittance matrix $\bm{Y}_0$ when the capacitance to ground of Equation (\ref{eq:Y0prop}) can be ignored, the real part of the conductance matrix $G_0$ is positive semi-definite and the imaginary part of the susceptance matrix $B_0$ is negative definite.
 The reduced admittance matrix also has a similar definiteness.
 Below, the reduced conductance matrix and reduced susceptance matrix, the real and imaginary parts of $\bm{Y}^{\rm red}$, are expressed as follows:
-\begin{align}\label{eq:GredBred}
+\begin{equation}\label{eq:GredBred}
 G^{\rm red} :=\real\bigl[\bm{Y}^{\rm red}\bigr] ,\qquad
 B^{\rm red} :=\imag\bigl[\bm{Y}^{\rm red}\bigr] 
-\end{align}
+\end{equation}
 
 At this time, the following facts are indicated.
 
@@ -1837,10 +1861,10 @@ At this time, the following facts are indicated.
 \begin{theorem}[existence and definiteness of the reduced admittance matrix]
 \label{thm:redadmat}
 If the following is true for the admittance matrix $\bm{Y}\in \mathbb{C}^{N\times N}$ of Equation \ref{eq:Ypig}:
-\begin{align}\label{eq:Xbeta}
+\begin{equation}\label{eq:Xbeta}
 \Cgi \Xti \leq 1
 ,\qquad \forall i \in \mathcal{I}_G
-\end{align}
+\end{equation}
 And the inequality holds exactly for Equation \ref{eq:Xbeta} for at least one generator bus at the same time, $\bm{\itGamma}$ of Equation \ref{eq:defGam} is nonsingular.
 At this time, for the admittance matrix $\bm{Y}^{\rm red}$ of Equation \ref{eq:Yred}, the reduced conductance matrix $G^{\rm red}$ is positive semi-definite, and the reduced susceptance matrix $B^{\rm red}$ is negative definite.
 \end{theorem}
@@ -1883,19 +1907,19 @@ For this reason, the definiteness of the admittance matrix is invariable to the 
 
 Let us look at a salient pole generator model that incorporates the difference in the reactance of the d-axis and q-axis.
 Specifically, let us consider a situation where Equation \ref{eq:phVIsincos} is as follows:
-\begin{align}\label{eq:phVIsincosC_}
+\begin{equation}\label{eq:phVIsincosC_}
 \spliteq{
 |\bm{V}_i| \sfsin (\delta_i -\angle \bm{V}_i)  &= 
 X_{{\rm q}i} |\bm{I}_i| \sfcos (\delta_i -\angle \bm{I}_i),\\
 |\bm{V}_i| \sfcos (\delta_i -\angle \bm{V}_i)  & = E_i - 
 X_{{\rm d}i}' |\bm{I}_i| \sfsin (\delta_i -\angle \bm{I}_i)
 }
-\end{align}
+\end{equation}
 $X_{{\rm d}i}'$ is the transient reactance of the d-axis.
 If $X_{{\rm d}i}'$ and $X_{{\rm q}i}$ are equal $\Xti$, Equation \ref{eq:phVIsincosC_} is consistent with Equation \ref{eq:phVIsincos}.
 
 When cancelling the current phasor using Equation \ref{eq:phVIsincosC_}, the active and reactive power are expressed as:
-\begin{align}\label{eq:PQV_}
+\begin{equation}\label{eq:PQV_}
 \spliteq{
 P_i &=  \frac{|\bm{V}_i | E_i}{X_{{\rm d}i}'} \sfsin(\delta_i -  \angle \bm{V}_i) \\
   & \hspace{2em}-  
@@ -1905,9 +1929,9 @@ Q_i &=  \frac{|\bm{V}_i|E_i}{X_{{\rm d}i}'} \sfcos (\delta_i - \angle \bm{V}_i) 
  & \hspace{2em} -|\bm{V}_i|^2 \left( \frac{\sfcos^2 (\delta_i - \angle \bm{V}_i) }{X_{{\rm d}i}'} 
 + \frac{\sfsin^2 (\delta_i - \angle \bm{V}_i)}{X_{{\rm q}i}} \right)
 }
-\end{align}
+\end{equation}
 Similarly, if the voltage phasor is cancelled, the following is obtained:
-\begin{align}\label{eq:PQI}
+\begin{equation}\label{eq:PQI}
 \spliteq{
 P_i &=  E_i |\bm{I}|  \sfcos(\delta_i -  \angle \bm{I}_i) \\
  & \hspace{2em} - (X_{{\rm d}i}' -X_{{\rm q}i}) |\bm{I}_i|^2  \sfsin(\delta_i -  \angle \bm{I}_i)\sfcos(\delta_i -  \angle \bm{I}_i), \\
@@ -1917,11 +1941,11 @@ X_{{\rm d}i}'  \sfsin^2  (\delta_i - \angle \bm{I}_i)
 + X_{{\rm q}i} \sfcos^2  (\delta_i - \angle \bm{I}_i)  
 \right\}
 }
-\end{align}
+\end{equation}
 
 The oscillation equation and dynamic characteristics of generators combined with magnetic flux attenuation are given with the following in the same manner as Equation (\ref{eq:gendynVI}):
 \begin{subequations}\label{eq:gendynVI_}
-\begin{align}\label{eq:gendynVIst_}
+\begin{equation}\label{eq:gendynVIst_}
 \simode{
 \dot{\delta}_i&= \omega_0  \Delta \omega_i\\
 M_i   \Delta \dot{\omega}_i&= 
@@ -1937,12 +1961,12 @@ M_i   \Delta \dot{\omega}_i&=
 |\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
 + V_{{\rm field}i}
 }
-\end{align}
+\end{equation}
 However, for active power $P_i$, the expression of Equation \ref{eq:PQV_} is used.
 Here, the voltage phasor is considered an input from the electrical power system to the generator $i$.
 In addition, the current phasor becomes an output from the generator to the electrical power system:
 
-\begin{align}\label{eq:Iout_}
+\begin{equation}\label{eq:Iout_}
 \spliteq{
 |\bm{I}_i| &= \textstyle \sqrt{
 \left\{ \tfrac{|\bm{V}_i|}{X_{{\rm q}i}} \sfsin(\delta_i - \angle \bm{V}_i) \right\}^2
@@ -1955,12 +1979,12 @@ In addition, the current phasor becomes an output from the generator to the elec
 }
 \right)
 }
-\end{align}
+\end{equation}
 \end{subequations}
 This is derived from Equation \ref{eq:phVIsincosC_}.
 \begin{subequations}\label{eq:gendynIV_}
 Similarly, if current phasor is considered as an input from the electrical power system to the generator $i$, the following becomes the equation of state that expresses the dynamic characteristics of the generator:
-\begin{align}\label{eq:gendynIVst_}
+\begin{equation}\label{eq:gendynIVst_}
 \simode{
 \dot{\delta}_i &= \omega_0  \Delta \omega_i\\
 M_i   \Delta \dot{\omega}_i&= \textstyle
@@ -1976,10 +2000,10 @@ X_{{\rm d}i} - X_{{\rm d}i}'
 |\bm{I}_i| \sfsin (\delta_i - \angle \bm{I}_i ) 
 + V_{{\rm field}i}
 }
-\end{align}
+\end{equation}
 For active power $P_i$, the expression of Equation \ref{eq:PQI} is used.
 The voltage phasor obtained from: 
-\begin{align}\label{eq:Vout_}
+\begin{equation}\label{eq:Vout_}
 \spliteq{
 |\bm{V}_i| &= \textstyle \sqrt{
 \bigl\{ X_{{\rm q}i} |\bm{I}_i| \sfcos(\delta_i - \angle \bm{I}_i) \bigr\}^2
@@ -1995,7 +2019,7 @@ E_i - X_{{\rm d}i}' |\bm{I}_i| \sfsin(\delta_i - \angle \bm{I}_i)
 }
 \right)
 }
-\end{align}
+\end{equation}
 which is derived from Equation \ref{eq:phVIsincosC_}, is an output from the generator to the electrical power system. 
 \end{subequations}
 This salient pole generators model assumes that $X_{{\rm d}i}'$ and $X_{{\rm q}i}$ are equal and $\Xti$, and if $X_{{\rm d}i}$ is substituted with $\Xsi$, it becomes consistent with the generator model discussed in Section \ref{sec:genfund}.
@@ -2150,9 +2174,9 @@ These are all static models described by algebraic equations related to the curr
 Let us assume that voltage phasor of a bus bar $i$ connected with a load is $\bm{V}_i$ and the current phase flowing from the load to the bus bar is $\bm{I}_i$ (\ref{fig:loadbus}).
 At this time, the constant impedance model gives the following relationship:
 \begin{subequations}\label{eq:ldynVI}
-\begin{align}\label{eq:cimp}
+\begin{equation}\label{eq:cimp}
 \bm{I}_i= - \frac{ \bm{V}_i}{\bm{z}_{{\rm load}i}^{\star}}
-\end{align}
+\end{equation}
 where, $\bm{z}_{{\rm load}i}^{\star} \in \mathbb{C}$ is a constant that expresses the impedance of the load.
 Here, the reason that there is a negative sign on the right side of Equation \ref{eq:cimp} is that the equipment that is equivalent to the load is grounded, and the direction of the flow from the load to the bus bar $i$ is defined as positive sign of the current phasor $\bm{I}_i$.
 Specifically:
@@ -2162,18 +2186,18 @@ Specifically:
 Incandescent lamps and electric heaters are expressed as the constant impedance model.
 
 The constant current model gives the following relationship with the constant that represents the fixed current phasor as $\bm{I}_{{\rm load}i}^{\star} \in \mathbb{C}$:
-\begin{align}\label{eq:ccrt}
+\begin{equation}\label{eq:ccrt}
 \bm{I}_i = \bm{I}_{{\rm load}i}^{\star} e^{\bm{j} \angle \bm{V}_i }
-\end{align}
+\end{equation}
 In other words, the following is true for the absolute value $|\bm{I}_{{\rm load}i}^{\star}|$ and phase $\angle \bm{I}_{{\rm load}i}^{\star}$:
 \[
 |\bm{I}_i| = |\bm{I}_{{\rm load}i}^{\star}|,\qquad
 \angle \bm{I}_i = \angle \bm{I}_{{\rm load}i}^{\star} + \angle \bm{V}_i
 \]
 The constant power model gives the following relationship:
-\begin{align}\label{eq:cpw}
+\begin{equation}\label{eq:cpw}
 \bm{I}_i = \frac{P_{{\rm load}i}^{\star} - \bm{j} Q_{{\rm load}i}^{\star} }{\overline{\bm{V}}_i}
-\end{align}
+\end{equation}
 \end{subequations}
 where $P_{{\rm load}i}^{\star} \in \mathbb{R}$ and $Q_{{\rm load}i}^{\star} \in \mathbb{R}$ are constants that express the active and reactive power supplied to the bus bar $i$.
 This is derived by considering the complex conjugate of:
@@ -2203,7 +2227,7 @@ If $\bm{z}_{{\rm load}3}^{\star}$ is the impedance of the load, the following Eq
 \bm{I}_3 = -\frac{ \bm{V}_3}{\bm{z}_{{\rm load}3}^{\star}}
 \]
 If this is substituted into Equation \ref{eq:exY} to cancel $\bm{I}_3$, the following is obtained:
-\begin{align}\label{eq:exYcimp}
+\begin{equation}\label{eq:exYcimp}
 \mat{
 \bm{I}_1\\
 \bm{I}_2\\
@@ -2220,7 +2244,7 @@ If this is substituted into Equation \ref{eq:exY} to cancel $\bm{I}_3$, the foll
 \bm{V}_2\\
 \bm{V}_3\\
 }
-\end{align}
+\end{equation}
 Please note that, with the Equation on the third row, voltage phasor $\bm{V}_3$ of the load bus bar is replaced by voltage phasor $\bm{V}_2$ of the generator bus.
 Specifically, it can be expressed as:
 \begin{align*}
@@ -2350,7 +2374,7 @@ The definition stipulates that $n+m$ is equal to the total number of bus bars $N
 A vector with current phasors of all generator buses is $\bm{I}_{\rm G} \in \mathbb{C}^{n}$ and a vector with voltage phasors of all generator buses is $\bm{V}_{\rm G} \in \mathbb{C}^{n}$.
 Similarly, a vector with current phasors of all load bus bars is $\bm{I}_{\rm L}\in \mathbb{C}^{m}$ and a vector of voltage phasors of all load bus bars is $\bm{V}_{\rm L} \in \mathbb{C}^{m}$.
 At this time, the relationship between all current phasors and voltage phasors related to the admittance matrix of power grids $\bm{Y}\in \mathbb{C}^{N\times N}$ can be expressed as:
-\begin{align}\label{eq:YGL}
+\begin{equation}\label{eq:YGL}
 \mat{
 \bm{I}_{\rm G}\\
 \bm{I}_{\rm L}
@@ -2366,14 +2390,14 @@ At this time, the relationship between all current phasors and voltage phasors r
 \bm{V}_{\rm G}\\
 \bm{V}_{\rm L}
 }
-\end{align}
+\end{equation}
 The relationship between the current phasor and voltage phasor determined by the load of the constant impedance model can be expressed as follows by using the admittance, which is a reciprocal of the impedance:
 \begin{align*}
 \bm{I}_{\rm L}=- \sfdiag(\bm{y}_{{\rm load}i}^{\star} )_{i \in \mathcal{I}_{\rm L}}\bm{V}_{\rm L}
 \end{align*}
 Though $\bm{y}_{{\rm load}i}^{\star}$ defined as a reciprocal of $\bm{z}_{{\rm load}i}^{\star}$ of Equation \ref{eq:cimp} must have a non-zero value, since this is an expression of bus bars with no equipment connected, formally, $\bm{y}_{{\rm load}i}^{\star}$ is allowed to be 0.
 If this is substituted into Equation \ref{eq:YGL} to cancel $\bm{V}_{\rm L}$:
-\begin{align}\label{eq:Kron}
+\begin{equation}\label{eq:Kron}
 \bm{I}_{\rm G} = 
 \Bigl\{ 
 \underbrace{
@@ -2383,15 +2407,15 @@ If this is substituted into Equation \ref{eq:YGL} to cancel $\bm{V}_{\rm L}$:
 }_{\bm{Y}_{\rm Kron}}
 \Bigr\}
 \bm{V}_{\rm G}
-\end{align}
+\end{equation}
 is obtained.
 Note that, generally, when a load consumes active power and reactive power in terms of the admittances of the load, similar to a transmission line, the following is established: 
-\begin{align}\label{eq:loadys}
+\begin{equation}\label{eq:loadys}
 \real[\bm{y}_{{\rm load}i}^{\star} ] \geq 0 ,\qquad
 \imag[\bm{y}_{{\rm load}i}^{\star} ] \leq 0
 ,\qquad
 \forall i \in \mathcal{I}_{\rm L}
-\end{align}
+\end{equation}
 The conductance and susceptance matrices, where the load bus bar, which is the real and imaginary part of $\bm{Y}_{\rm Kron}$, is reduced, are expressed as:
 \[
 G_{\rm Kron} := \real \bigl[  \bm{Y}_{\rm Kron}  \bigr] ,\qquad
@@ -2408,17 +2432,17 @@ The admittance $\bm{y}_{{\rm load}i}^{\star} $ of each load satisfies Equation \
 At this point, the reduced conductance matrix $G_{\rm Kron}$ is positive semi-definite, while the reduced susceptance matrix 
 $B_{\rm Kron}$ is symmetric. If the following is true for generator buses:
 \begin{subequations}\label{eq:betas}
-\begin{align}\label{eq:betag}
+\begin{equation}\label{eq:betag}
 \Cgi = 0
 ,\qquad
 \forall i \in \mathcal{I}_{\rm G}
-\end{align}
+\end{equation}
 And the following is true for load bus bars:
-\begin{align}\label{eq:betay}
+\begin{equation}\label{eq:betay}
 \imag[\bm{y}_{{\rm load}i}^{\star} ] + \Cgi \leq 0
 ,\qquad
 \forall i \in \mathcal{I}_{\rm L}
-\end{align}
+\end{equation}
 \end{subequations}
 $B_{\rm Kron}$ is negative semi-definite.
 where $\Cgi$ is a non-negative constant equivalent to the capacitance to ground of Equation \ref{eq:Ypig}. 
@@ -2554,7 +2578,7 @@ The necessary and sufficient condition for $M+ \bm{j} N$ to be regular for a run
 \begin{proof}
 First, the fact that $M+ \bm{j} N$ is regular is equivalent to the fact that there exist certain real square matrices $P$ and $Q$ such that $(M+ \bm{j} N)(P+ \bm{j} Q)=I$.
 If we rearrange these two equations for the real and imaginary parts, we get
-\begin{align}\label{eq:MNinv}
+\begin{equation}\label{eq:MNinv}
 \underbrace{
 \mat{
 M & -N\\
@@ -2566,7 +2590,7 @@ P & -Q\\
 Q & P
 }
 =I
-\end{align}
+\end{equation}
 This means that the regularity of $M+ \bm{j} N$ is equivalent to the regularity of $L$.
 Furthermore, from the properties of the determinant of the block matrix:
 \begin{align*}
@@ -2640,7 +2664,7 @@ From the above, the subject follows.
 \red{Translated with DeepL}
 Consider symmetric running matrices $M$ and $N$.
 They are partitioned into block matrices
-\begin{align}\label{eq:defbmZ}
+\begin{equation}\label{eq:defbmZ}
 \mat{
 \bm{Z}_{11} & \bm{Z}_{12} \\
 \bm{Z}_{21} & \bm{Z}_{22}
@@ -2659,7 +2683,7 @@ N_{11} & N_{12} \\
 N_{12}^{\sfT} & N_{22}
 }
 }_{N}
-\end{align}
+\end{equation}
 For $\bm{Z}_{11} - \bm{Z}_{12}\bm{Z}_{22}^{-1}\bm{Z}_{21}$ denote $\bm{Z}_{\rm S}$.
 Also assume that $M$ is semi-definite and that $M_{22}$ is positive definite.
 In this case, the real part of $\bm{Z}_{\rm S}$ is semipositive definite and the imaginary part is symmetric.
@@ -2764,15 +2788,15 @@ x^{\sf T} \imag [\bm{Z}_{\rm S}] x + x^{\sf T} \imag[\Delta(\epsilon_0)]x \geq 0
 \end{align*}
 is derived.
 This leads to the following for all $x \notin \mathcal{X}$, 
-\begin{align}\label{eq:xZxgeq}
+\begin{equation}\label{eq:xZxgeq}
 x^{\sf T}\imag[\bm{Z}_{\rm S}] x \geq 0
-\end{align}
+\end{equation}
 
 Furthermore, if the imaginary part of $ \bm{Z}_{\rm S}^{+} $ is semi-positive definite, we show by contraposition that the expression \ref{eq:xZxgeq} holds for all $x \in \mathcal{X}$.
 That is, for some $x \in \mathcal{X}$, we have
-\begin{align}\label{eq:xZxleq}
+\begin{equation}\label{eq:xZxleq}
 x^{\sf T} \imag[\bm{Z}_{\rm S}] x < 0
-\end{align}
+\end{equation}
 then the imaginary part of $ \bm{Z}_{\rm S}^{+} $ is not semidefinite.
 Now, noting that the imaginary part of $\Delta(\epsilon)$ asymptotes to 0 in the limit of $\epsilon \rightarrow 0$, if for some $x \in \mathcal{X}$ the expression\ref{eq:xZxleq}
 \begin{align*}
