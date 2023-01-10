@@ -451,7 +451,7 @@ system model in which the active and reactive power supplied to the bus bar is
 the output of the device.
 
 \begin{equation}\label{eq:ohmpf}
-  \simode{
+  \begin{aligned}
     P_i &= \sum_{j=1}^{N}
     \operatorname{Re} \left[ \overline{\bm{Y}}_{ij} \bm{V}_i \overline{\bm{V}}_j 
     \right] \\
@@ -459,7 +459,7 @@ the output of the device.
     \operatorname{Im} \left[
     \overline{\bm{Y}}_{ij} \bm{V}_i \overline{\bm{V}}_j 
     \right]
-  }
+  \end{aligned}
   \qquad
   i \in \{1,\ldots, N\}
 \end{equation}
@@ -685,7 +685,7 @@ damper windings, have been used to analyze the stability of electrical power
 systems [4, 5, 8, 9]. Here, we present four types of models.
 
 \smallskip
-\begin{enumerate}[label=(\alph*)]
+\begin{enumerate}[label=\textbf{(\alph*)}]
   \item \textbf{Park model} The Park model, also called \textbf{complete model},
   is a model with a high level of details that considers the change in magnetic
   flux in the stator and field and damper windings.  It consists of a
@@ -735,229 +735,284 @@ systems [4, 5, 8, 9]. Here, we present four types of models.
 
 \subsection{Mathematical expression of the one-axis model}\label{sec:genfund}
 \smallskip
-\subsubsection{Relational expression of current and voltage where the internal
-state of a generator is the intermediate variable}
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+  \item \textbf{Expressing the relationship of current and voltage with the
+  internal state of the generator as an intermediate variable}
 
-If the internal voltage of a generator $i$ connected to a bus bar $i$ is $E_i$, and the rotor argument relative to a coordinate system that rotates with a system frequency $\omega_0$ is $\delta_i$, the following relationship holds for the voltage phasor $\bm{V}_i$ of bus bar $i$ and current phasor $\bm{I}_i$ flowing from the generator to the bus bar $i$:
-\begin{subequations}\label{eq:phVIs}
-\begin{equation}\label{eq:phVI}
-\bm{I}_i  = \frac{1}{ \bm{j} \Xti } \left(E_i e^{\bm{j} \delta_i} - \bm{V}_i \right)
-\end{equation}
-where $\Xti$ is the transient reactance of the generator.
-The schematic is shown in \ref{fig:generatorbus}.
-The ground is omitted from the Figure.
+  If the interval voltage of a generator $i$ connected to a bus bar $i$ is
+  $E_i$, and the rotor angle relative to a coordinate system that rotates with
+  angular speed $\omega_0$ is $\delta_i$, the following relationship holds for
+  the voltage phasor $\bm{V}_i$ of the bus bar $i$ and for the current phasor
+  $\bm{I}_i$ flowing from the generator to the bus bar $i$:
+  \begin{subequations}\label{eq:phVIs}
+    \begin{equation}\label{eq:phVI}
+      \bm{I}_i  = \frac{1}{ \bm{j} \Xti } \left(E_i e^{\bm{j} \delta_i} - \bm{V}_i \right)
+    \end{equation}
+    \begin{figure}[t]
+    \centering
+    \includegraphics[width = .25\linewidth]{figs/generatorbus}
+    \medskip
+    \caption{\textbf{Generator connected to bus bar}}
+    \label{fig:generatorbus}
+    \medskip
+    \end{figure}
+    where $\Xti$ is the transient reactance of the generator.
+    Figure \ref{fig:generatorbus} illustrates the bus bar and current and voltage
+    phasors. The connection to ground is omitted from the figure.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width = .25\linewidth]{figs/generatorbus}
-\medskip
-\caption{\textbf{Generator connected to bus bar}}
-\label{fig:generatorbus}
-\medskip
-\end{figure}
+  $\delta_i$ and $E_i$ in Equation \ref{eq:phVI} are intermediate variables
+  representing the internal state of the generator $i$, and they provide with a
+  dynamic relationship between $\bm{I}_i$ and $\bm{V}_i$.  In other words, from
+  the perspective of control systems engineering, Equation \ref{eq:phVI} uses
+  $\delta_i$ and $E_i$ as internal states, and can be interpreted as an “output
+  equation” of a generator $i$, when $\bm{I}_i$ is the output from the generator
+  to the electrical power system and $\bm{V}_i$ is the input from the electrical
+  power system to the generator. Alternatively, we can consider $\bm{V}_i$ as
+  the output and $\bm{I}_i$ as the input. Details will be discussed later. By
+  multiplying both sides of the Equation \ref{eq:phVI} with $e^{- \bm{j}\delta}$
+  and evaluating its real and imaginary parts separately, we find:
+    \begin{equation}\label{eq:phVIsincos}
+      \spliteq{
+        |\bm{V}_i| \sfsin (\delta_i -\angle \bm{V}_i)  &= 
+        \Xti |\bm{I}_i| \sfcos (\delta_i -\angle \bm{I}_i), \\
+        |\bm{V}_i| \sfcos (\delta_i -\angle \bm{V}_i)  &= 
+        E_i - \Xti |\bm{I}_i| \sfsin (\delta_i -\angle \bm{I}_i)
+      }
+    \end{equation}
+  \end{subequations}
 
+  Active power $P_i$ provided from the generator $i$ to the bus bar $i$ and can
+  be expressed as:
 
-$\delta_i$ and $E_i$ in Equation \ref{eq:phVI} are intermediate variables that express the internal state of the generator $i$, which give a dynamic relationship between $\bm{I}_i$ and $\bm{V}_i$.
-In other words, from the perspective of control systems engineering, Equation \ref{eq:phVI} uses $\delta_i$ and $E_i$ as the internal state, and can be interpreted as an “output equation” of a generator $i$, when $\bm{I}_i$ is the output from the generator to the electrical power system and $\bm{V}_i$ is the input from the electrical power system to the generator.
-Equally, it can be considered that $\bm{V}_i$ is the output and $\bm{I}_i$ is the input.
-Details will be discussed later.
-By multiplying both sides of the Equation \ref{eq:phVI} with $e^{- \bm{j}\delta}$ and considering the equation for the real part and the imaginary part separately, we can see that Equation \ref{eq:phVI} is equivalent to:
-\begin{equation}\label{eq:phVIsincos}
-\spliteq{
-|\bm{V}_i| \sfsin (\delta_i -\angle \bm{V}_i)  &= 
-\Xti |\bm{I}_i| \sfcos (\delta_i -\angle \bm{I}_i), \\
-|\bm{V}_i| \sfcos (\delta_i -\angle \bm{V}_i)  &= 
-E_i - \Xti |\bm{I}_i| \sfsin (\delta_i -\angle \bm{I}_i)
-}
-\end{equation}
-\end{subequations}
+  \begin{equation*}
+    \spliteq{
+      P_i&=\real \left[ \bm{V}_i \overline{ \bm{I} }_i \right]  
+      \\
+      &= 
+      \real \left[ |\bm{V}_i|e^{ -\bm{j} (\delta_i -\angle \bm{V}_i )} \overline{|\bm{I}_i | e^{ -\bm{j} ( \delta_i - \angle \bm{I}_i)} } \right]
+      \\
+      &=
+      |\bm{V}_i| |\bm{I}_i| 
+      \sfcos(\delta_i -\angle \bm{V}_i) \sfcos(\delta_i -\angle \bm{I}_i) \\
+      & \hspace{10em} +|\bm{V}_i| |\bm{I}_i|
+      \sfsin(\delta_i -\angle \bm{V}_i) \sfsin(\delta_i -\angle \bm{I}_i)
+    }
+  \end{equation*}
 
+  Similarly, reactive power $Q_i$ can be expressed as:
 
+  \begin{equation*}
+  \spliteq{
+    Q_i&=\imag \left[ \bm{V}_i \overline{ \bm{I} }_i \right] \\
+    &=
+    |\bm{V}_i| |\bm{I}_i | \sfcos(\delta_i -\angle \bm{V}_i ) \sfsin(\delta_i -\angle \bm{I}_i) \\
+    & \hspace{10em} - |\bm{V}_i| |\bm{I}_i| \sfsin(\delta_i -\angle \bm{V}_i ) \sfcos(\delta_i -\angle \bm{I}_i)
+  }
+  \end{equation*}
 
-Active power $P_i$ provided from the generator $i$ to the bus bar $i$ and can be expressed as:
-\begin{align*}
-\spliteq{
-P_i&=\real \left[ \bm{V}_i \overline{ \bm{I} }_i \right]  
-\\
-&= 
-\real \left[ |\bm{V}_i|e^{ -\bm{j} (\delta_i -\angle \bm{V}_i )} \overline{|\bm{I}_i | e^{ -\bm{j} ( \delta_i - \angle \bm{I}_i)} } \right]
-\\
-&=
-|\bm{V}_i| |\bm{I}_i| 
-\sfcos(\delta_i -\angle \bm{V}_i) \sfcos(\delta_i -\angle \bm{I}_i) \\
- & \hspace{10em} +|\bm{V}_i| |\bm{I}_i|
-\sfsin(\delta_i -\angle \bm{V}_i) \sfsin(\delta_i -\angle \bm{I}_i)
-}
-\end{align*}
-Similarly, reactive power $Q_i$ can be expressed as:
-\begin{align*}
-\spliteq{
-Q_i&=\imag \left[ \bm{V}_i \overline{ \bm{I} }_i \right] \\
-&=
-|\bm{V}_i| |\bm{I}_i | \sfcos(\delta_i -\angle \bm{V}_i ) \sfsin(\delta_i -\angle \bm{I}_i) \\
- & \hspace{10em} - |\bm{V}_i| |\bm{I}_i| \sfsin(\delta_i -\angle \bm{V}_i ) \sfcos(\delta_i -\angle \bm{I}_i)
-}
-\end{align*}
-Thus, if current phasor is cancelled using the Equation \ref{eq:phVIsincos}, the following can be obtained:
-\begin{equation}\label{eq:PiQis}
-\spliteq{
-P_i & =  \frac{E_i |\bm{V}_i |}{ \Xti } \sfsin(\delta_i -  \angle \bm{V}_i), \\
-Q_i & =  \frac{E_i |\bm{V}_i |}{ \Xti } \sfcos (\delta_i - \angle \bm{V}_i) - \frac{|\bm{V}_i|^2}{ \Xti }
-}
-\end{equation}
-These expressions indicate that the phase of the bus bar voltage $\angle \bm{V}_i$ contributes to the active and reactive power as the difference of generator rotor argument $\delta_i$.
-In typical electrical power system operation, the difference between $\delta_i$ and $\angle \bm{V}_i$ is small; thus, the following approximation holds:
-\begin{align*}
-P_i  \simeq  \frac{E_i |\bm{V}_i |}{ \Xti } (\delta_i -  \angle \bm{V}_i), \qquad
-Q_i  \simeq  \frac{|\bm{V}_i |}{ \Xti } (E_i - |\bm{V}_i|)
-\end{align*}
-This fact indicates that a difference between $\delta_i$ and $\angle \bm{V}_i$ mainly contributes to the active power, while a difference between $E_i $ and $|\bm{V}_i|$ contributes to the reactive power.
+  Thus, by replacing the current phasor using the Equation \ref{eq:phVIsincos},
+  the following can be obtained:
 
-When the voltage phasor is the input, Equations (\ref{eq:phVIs}) and \ref{eq:PiQis} can be interpreted as an equivalent deformation of the output equation of the generator under the definition of active power and reactive power in Equation \ref{eq:defPQVIi}.
-Similarly, if the voltage phasor is cancelled, an output equation, when current phasor is the input, is obtained as:
-\begin{equation}\label{eq:PiQis2}
-\spliteq{
-P_i &=  E_i |\bm{I}_i|  \sfcos(\delta_i -  \angle \bm{I}_i), \\
-Q_i & = E_i |\bm{I}_i| \sfsin (\delta_i - \angle \bm{I}_i) - \Xti |\bm{I}_i |^2
-}
-\end{equation}
+  \begin{equation}\label{eq:PiQis}
+    \spliteq{
+      P_i & =  \frac{E_i |\bm{V}_i |}{ \Xti } \sfsin(\delta_i -  \angle \bm{V}_i), \\
+      Q_i & =  \frac{E_i |\bm{V}_i |}{ \Xti } \sfcos (\delta_i - \angle \bm{V}_i) - \frac{|\bm{V}_i|^2}{ \Xti }
+    }
+  \end{equation}
+  
+  These expressions indicate that the active and reactive power are function of
+  the difference between the rotor angle $\delta_i$ and the voltage angle
+  $\angle\bm{V}_i$ of the bus bar. In typical electrical power system operation,
+  the difference between $\delta_i$ and $\angle \bm{V}_i$ is small; thus, the
+  following approximation holds:
 
+  \begin{equation*}
+    P_i  \simeq  \frac{E_i |\bm{V}_i |}{ \Xti } (\delta_i -  \angle \bm{V}_i), \qquad
+    Q_i  \simeq  \frac{|\bm{V}_i |}{ \Xti } (E_i - |\bm{V}_i|)
+  \end{equation*}
 
-\smallskip
-\subsubsection{Relational expression of current and voltage in dynamic characteristics of a generator}\label{sec:gendyn}
+  The above equations indicate that a difference between $\delta_i$ and $\angle
+  \bm{V}_i$ mainly contributes to the active power, while a difference between
+  $E_i $ and $|\bm{V}_i|$ contributes to the reactive power.
 
-An oscillation equation that expresses the mechanical and dynamic characteristics of a rotor of the generator can be obtained with: 
-\begin{subequations}\label{eq:dyngen}
-\begin{equation}\label{eq:swing}
-\simode{
-\dot{\delta}_i&= \omega_0  \Delta \omega_i\\
-M_i   \Delta \dot{\omega}_i&= 
- - D_i \Delta\omega_i - P_i +P_{{\rm mech}i} 
-}
-\end{equation}
-where, $\Delta \omega_i$ is the frequency deviation from the system frequency, $\omega_0$, $M_i$ is the inertia constant, $D_i$ is the damping factor, and $P_{{\rm mech}i}$ is the mechanical torque.
-In addition, as a differential equation that expresses the attenuation of magnetic flux, the dynamic characteristics of a field circuit are given as follows:
-\begin{equation}\label{eq:dynEi}
-\taudi \dot{E}_i = 
- -\frac{ \Xsi }{ \Xti }E_i
-+\left(
-\frac{ \Xsi }{ \Xti }-1
-\right)
-|\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
-+ V_{{\rm field}i}
-\end{equation}
-\end{subequations}
-where, 
-$\taudi $ is the time constant of the field circuit,
-$\Xsi$ is the synchronous reactance, and 
-$V_{{\rm field}i}$ is the field voltage.
-From the viewpoint of generator control, mechanical torque $P_{{\rm mech}i}$ and field voltage $V_{{\rm field}i}$ become external inputs.
-Generally, $\Xsi > \Xti$ holds.
+  When the voltage phasor is the input, Equations (\ref{eq:phVIs}) and
+  \ref{eq:PiQis} can be interpreted as an equivalent deformation of the output
+  equation of the generator under the definition of active power and reactive
+  power in Equation \ref{eq:defPQVIi}. Similarly, if the voltage phasor is
+  cancelled, an output equation, when current phasor is the input, is obtained
+  as:
+  \begin{equation}\label{eq:PiQis2}
+    \spliteq{
+      P_i &=  E_i |\bm{I}_i|  \sfcos(\delta_i -  \angle \bm{I}_i), \\
+      Q_i & = E_i |\bm{I}_i| \sfsin (\delta_i - \angle \bm{I}_i) - \Xti |\bm{I}_i |^2
+    }
+  \end{equation}
 
-Summarizing the above, if two variables of voltage phasor $(|\bm{V}_i|, \angle \bm{V}_i)$ are considered an input from the bus bar $i$ to the generator $i$, the following equations become the equation of state that expresses the dynamic characteristics of the generator: 
-\begin{subequations}\label{eq:gendynVI}
-\begin{equation}\label{eq:gendynVIst}
-\simode{
-\dot{\delta}_i&= \omega_0  \Delta \omega_i\\
-M_i   \Delta \dot{\omega}_i&= 
- - D_i \Delta\omega_i  
- - P_i 
-+P_{{\rm mech}i} 
-\\
-\taudi \dot{E}_i & = 
-- \tfrac{ \Xsi }{ \Xti }E_i
-+\left(
-\tfrac{ \Xsi }{ \Xti } -1
-\right)
-|\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
-+ V_{{\rm field}i}
-}
-\end{equation}
-where the expression of Equation \ref{eq:PiQis} is used for active power $P_i$.
-Two variables of current phasor derived from Equation \ref{eq:phVIsincos}:
-\begin{equation}\label{eq:Iout}
-\spliteq{
-|\bm{I}_i| &= \textstyle \sqrt{
-\left\{ \tfrac{|\bm{V}_i|}{ \Xti } \sfsin(\delta_i - \angle \bm{V}_i) \right\}^2
-+\left\{ \tfrac{E_i}{ \Xti } - \tfrac{|\bm{V}_i|}{ \Xti } \sfcos(\delta_i - \angle \bm{V}_i) \right\}^2
-},  \\
-\angle \bm{I}_i &= %\textstyle 
-\delta_i - \sfarctan \left(
-\frac{ E_i - |\bm{V}_i| \sfcos(\delta_i - \angle \bm{V}_i)}{
-|\bm{V}_i|  \sfsin(\delta_i - \angle \bm{V}_i)
-}
-\right)
-}
-\end{equation}
-become the output from the generator $i$ to the bus bar $i$.
-As discussed above, based on the definition of Equation \ref{eq:defPQVIi}, a set of active power and reactive power of Equation \ref{eq:PiQis}, $(P_i,Q_i)$, can be considered as an output that is mathematically equivalent to $(|\bm{I}_i|,\angle \bm{I}_i)$.
-\end{subequations}
+  \bigskip
+  \item \textbf{Relational expression of current and voltage in dynamic
+  characteristics of a generator}\label{sec:gendyn}
 
+  The swing equation that describes the mechanical dynamics of a synchronous
+  generator is given as follows:
+  \begin{subequations}\label{eq:dyngen}
+    \begin{equation}\label{eq:swing}
+      \begin{cases}
+        \dot{\delta}_i&= \omega_0  \Delta \omega_i\\
+        M_i   \Delta \dot{\omega}_i&= 
+        - D_i \Delta\omega_i - P_i +P_{{\rm mech}i} 
+      \end{cases}
+    \end{equation}
+    where, $\Delta \omega_i$ is the frequency deviation from the system frequency,
+    $\omega_0$, $M_i$ is the inertia coefficient, $D_i$ is the damping factor, and
+    $P_{{\rm mech}i}$ is the mechanical torque.
 
-\begin{subequations}\label{eq:gendynIV}
-Similarly, two variables of current phasor $(|\bm{I}_i|,\angle \bm{I}_i)$ can be considered an input from the bus bar $i$ to the generator $i$.
-In this case,  
-\begin{equation}\label{eq:gendynIVst}
-\simode{
-\dot{\delta}_i &= \omega_0  \Delta \omega_i\\
-M_i   \Delta \dot{\omega}_i&= \textstyle
- - D_i \Delta\omega_i  - 
-P_i
-+P_{{\rm mech}i}
-\\
-\taudi \dot{E}_i & = \textstyle
- - E_i
--(
-\Xsi - \Xti
-)
-|\bm{I}_i| \sfsin (\delta_i - \angle \bm{I}_i ) 
-+ V_{{\rm field}i}
-}
-\end{equation}
-becomes the equation of state that expresses the dynamic characteristics of the generator. 
-where the expression of Equation \ref{eq:PiQis2} is used for active power $P_i$.
-In addition, two variables of the voltage phasor derived from Equation \ref{eq:phVIsincos}:
-\begin{equation}\label{eq:Vout}
-\spliteq{
-|\bm{V}_i| &= \textstyle \sqrt{
-\bigl\{ \Xti |\bm{I}_i| \sfcos(\delta_i - \angle \bm{I}_i) \bigr\}^2
-+\left\{ E_i - \Xti |\bm{I}_i| \sfsin(\delta_i - \angle \bm{I}_i) \right\}^2
-}, \\
-\angle \bm{V}_i &= %\textstyle 
-\delta_i - \sfarctan \left(
-\frac{
-\Xti |\bm{I}_i| \sfcos(\delta_i - \angle \bm{I}_i)
-}
-{
-E_i - \Xti |\bm{I}_i| \sfsin(\delta_i - \angle \bm{I}_i)
-}
-\right)
-}
-\end{equation}
-become an output from the generator to the bus bar.
-The set of active power and reactive power of Equation \ref{eq:PiQis2}, $(P_i,Q_i)$, can also be considered as an output that is mathematically equivalent to $(|\bm{V}_i|,\angle \bm{V}_i)$.
-\end{subequations}
+    In addition, as a differential equation that expresses the attenuation of
+    magnetic flux, the electromagnetic dynamics of the synchronous generator are
+    given as follows:
+    \begin{equation}\label{eq:dynEi}
+      \taudi \dot{E}_i = 
+      -\frac{ \Xsi }{ \Xti }E_i
+      +\left(
+      \frac{ \Xsi }{ \Xti }-1
+      \right)
+      |\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
+      + V_{{\rm field}i}
+    \end{equation}
+  \end{subequations}
+  where, $\taudi $ is the time constant of the field circuit, $\Xsi$ is the
+  synchronous reactance, and $V_{{\rm field}i}$ is the field voltage.  From the
+  viewpoint of system control, mechanical torque $P_{{\rm mech}i}$ and field
+  voltage $V_{{\rm field}i}$ become external inputs. Generally, $\Xsi > \Xti$
+  holds.
 
-The unit of each variable is as follows:
-The unit for rotor argument $\delta_i$, phase for voltage phasor $\angle \bm{V}_i$, and phase of current phasor $\angle \bm{I}_i$ of the bus bar is [rad].
-Sine frequency deviation $\Delta \omega_i$, internal voltage $E_i$, absolute value of voltage phasor $|\bm{V}_i|$, absolute value of current phasor $|\bm{I}_i|$, active power $P_i$, active power $Q_i$, mechanical torque $P_{{\rm mech}i}$, and field voltage $V_{{\rm field}i}$ are dimensionless values divided by their reference value, and their unit is [pu].
-This means “per unit.”
-If system frequency $\omega_0$ is 50 [Hz], its value is set as $100\pi$.
-Therefore, unit of $\omega_0 \Delta \omega_i$ is [rad/s].
+  Summarizing the above, if the voltage magnitude and angle $(|\bm{V}_i|, \angle
+  \bm{V}_i)$ are considered inputs from the bus bar $i$ to the generator $i$,
+  the following equations become the state-space equation that expresses the
+  dynamic characteristics of the generator: 
+  \begin{subequations}\label{eq:gendynVI}
+    \begin{equation}\label{eq:gendynVIst}
+      \begin{cases}
+        \dot{\delta}_i&= \omega_0  \Delta \omega_i\\
+        M_i   \Delta \dot{\omega}_i&= 
+        - D_i \Delta\omega_i  
+        - P_i 
+        +P_{{\rm mech}i} 
+        \\
+        \taudi \dot{E}_i & = 
+        - \tfrac{ \Xsi }{ \Xti }E_i
+        +\left(
+        \tfrac{ \Xsi }{ \Xti } -1
+        \right)
+        |\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i) 
+        + V_{{\rm field}i}
+      \end{cases}
+    \end{equation}
 
-\smallskip
-\subsubsection{Relationship with the classical model}
+    and the active power $P_i$ is given by Equation \ref{eq:PiQis}. The
+    magnitude and angle of the current phasor can be derived from Equation
+    \ref{eq:phVIsincos} as follows:
 
-With the above one-axis model, the dynamic characteristics of the internal voltage of the generator $E_i$ are taken into consideration. However, in the classical model, this internal voltage is assumed to be constant.
-Specifically, the following is assumed for the differential equation of internal voltage $E_i$ in Equations (\ref{eq:dyngen}) and (\ref{eq:gendynVI}):
-\begin{itemize}
-	\item Synchronous reactance $\Xsi$ and transient reactance $\Xti$ are equal, and
-	\item field voltage $V_{{\rm field}i}$ is constant.
-\end{itemize}
-At this time, if constant of the field voltage is expressed as $V_i^{\star}$, the steady solution for the differential equation of Equation \ref{eq:dynEi} is $E_i(t)=V_i^{\star}$.
-In other words, internal voltage $E_i$ becomes $V_i^{\star}$, which is constant.
-For the significance and concern of the classical model in an electrical power system analysis, please refer to \cite[Section 2.11]{anderson2008power}.
+    \begin{equation}\label{eq:Iout}
+      \spliteq{
+      |\bm{I}_i| &= \textstyle \sqrt{
+      \left\{ \tfrac{|\bm{V}_i|}{ \Xti } \sfsin(\delta_i - \angle \bm{V}_i) \right\}^2
+      +\left\{ \tfrac{E_i}{ \Xti } - \tfrac{|\bm{V}_i|}{ \Xti } \sfcos(\delta_i - \angle \bm{V}_i) \right\}^2
+      },  \\
+      \angle \bm{I}_i &= %\textstyle 
+      \delta_i - \sfarctan \left(
+      \frac{ E_i - |\bm{V}_i| \sfcos(\delta_i - \angle \bm{V}_i)}{
+      |\bm{V}_i|  \sfsin(\delta_i - \angle \bm{V}_i)
+      }
+      \right)
+      }
+    \end{equation}
+    At this time, the current phasor is considered the output from generator $i$
+    to the bus bar $i$. As discussed above, based on the definition of Equation
+    \ref{eq:defPQVIi}, a set of active power and reactive power of Equation
+    \ref{eq:PiQis}, $(P_i,Q_i)$, can be considered as an output that is
+    mathematically equivalent to $(|\bm{I}_i|,\angle \bm{I}_i)$.
+  \end{subequations}
 
+  \begin{subequations}\label{eq:gendynIV}
+    Similarly, the magnitude and angle of the current phasor can be considered
+    inputs from the bus bar $i$ to the generator $i$. In this case, the
+    following equation becomes the state-space equation that expresses the
+    dynamic characteristics of the generator.
+    \begin{equation}\label{eq:gendynIVst}
+      \begin{cases}
+        \dot{\delta}_i &= \omega_0  \Delta \omega_i\\
+        M_i   \Delta \dot{\omega}_i&= \textstyle
+        - D_i \Delta\omega_i  - 
+        P_i
+        +P_{{\rm mech}i}
+        \\
+        \taudi \dot{E}_i & = \textstyle
+        - E_i
+        -(
+        \Xsi - \Xti
+        )
+        |\bm{I}_i| \sfsin (\delta_i - \angle \bm{I}_i ) 
+        + V_{{\rm field}i}
+      \end{cases}
+    \end{equation}
+    where the active power $P_i$ is expressed as in Equation \ref{eq:PiQis2}. In
+    addition, the magnitude and angle of the voltage phasor can be derived from
+    Equation \ref{eq:phVIsincos} as follows:
+    \begin{equation}\label{eq:Vout}
+      \spliteq{
+        |\bm{V}_i| &= \textstyle \sqrt{
+        \bigl\{ \Xti |\bm{I}_i| \sfcos(\delta_i - \angle \bm{I}_i) \bigr\}^2
+        +\left\{ E_i - \Xti |\bm{I}_i| \sfsin(\delta_i - \angle \bm{I}_i) \right\}^2
+        }, \\
+        \angle \bm{V}_i &= %\textstyle 
+        \delta_i - \sfarctan \left(
+        \frac{
+        \Xti |\bm{I}_i| \sfcos(\delta_i - \angle \bm{I}_i)
+        }
+        {
+        E_i - \Xti |\bm{I}_i| \sfsin(\delta_i - \angle \bm{I}_i)
+        }
+        \right)
+      }
+    \end{equation}
+    In this context, the voltage phasor is regarded as an output from the
+    generator to the bus bar. The set of active power and reactive power of
+    Equation \ref{eq:PiQis2}, $(P_i,Q_i)$, can also be considered as an output
+    that is mathematically equivalent to $(|\bm{V}_i|,\angle \bm{V}_i)$.
+  \end{subequations}
+
+  The unit of each variable is as follows: the unit for rotor angle $\delta_i$,
+  voltage phasor angle $\angle \bm{V}_i$, and current phasor angle $\angle
+  \bm{I}_i$ of the bus bar is [rad]. Frequency deviation $\Delta \omega_i$,
+  internal voltage $E_i$, absolute value of voltage phasor $|\bm{V}_i|$,
+  absolute value of current phasor $|\bm{I}_i|$, active power $P_i$, active
+  power $Q_i$, mechanical torque $P_{{\rm mech}i}$, and field voltage $V_{{\rm
+  field}i}$ are divided by their reference value and, thus are dimensionless
+  values divided by their reference value. Their unit is [pu], which means "per
+  unit". If the system frequency is 50 [Hz], $\omega_0$ is set as $100\pi$.
+  Therefore, the unit of $\omega_0 \Delta \omega_i$ is [rad/s].
+
+  \bigskip
+  \item \textbf{Relationship with the classical model}
+  
+  With the above one-axis model, the dynamic characteristics of the internal
+  voltage of the generator $E_i$ are taken into consideration. However, in the
+  classical model, this internal voltage is assumed to be constant.
+  Specifically, the following is assumed for the differential equation of
+  internal voltage $E_i$ in Equations (\ref{eq:dyngen}) and (\ref{eq:gendynVI}):
+
+  \begin{itemize}
+    \item Synchronous reactance $\Xsi$ and transient reactance $\Xti$ are equal, and
+    \item Field voltage $V_{{\rm field}i}$ is constant.
+  \end{itemize}
+
+  Then, if we denote the constant value of the field voltage as $V_i^{\star}$,
+  the stationary solution of the differential equation in Equation
+  \ref{eq:dynEi} is is $E_i(t)=V_i^{\star}$. In other words, the internal
+  voltage $E_i$ becomes $V_i^{\star}$, which is constant. For the deeper
+  understanding of the classical model in electrical power system analysis,
+  please refer to \cite[Section 2.11]{anderson2008power}.
+\end{enumerate}
 
 \subsection{Kron reduction of a generator bus}\label{sec:allgen}
 
@@ -1119,7 +1174,7 @@ e^{-\bm{j} \delta_i}
 }
 \]
 Thus, the real part and imaginary part of the $(i,j)$th element can be written as:
-\begin{align*}
+\begin{equation*}
 \spliteq{
 \real \left[
 \bm{\gamma}_{ij}^{-1} e^{\bm{j}(\delta_i -\delta_j)}
@@ -1141,7 +1196,7 @@ G_{ij}^{\rm red}
 G_{ij}^{\rm red}
 \sfcos(\delta_i -\delta_j)
 }
-\end{align*}
+\end{equation*}
 where reduced conductance and susceptance are defined as:
 \begin{equation}\label{eq:GBij}
 G_{ij}^{\rm red} := 
@@ -1359,7 +1414,7 @@ In this manner, the admittance matrix of the power grid in Equation \ref{eq:exY}
 In addition, if we calculate the real part (reduced conductance matrix) and the imaginary part (reduced susceptance matrix) of the reduced admittance matrix $\bm{Y}^{\rm red}$ of Equation \ref{eq:Yred}, 
 the following is obtained:
 
-\begin{align*}
+\begin{equation*}
 \spliteq{
 G^{\rm red}&=
 \mat{
@@ -1374,7 +1429,7 @@ B^{\rm red}&=
 - 0.3800 & - 0.4260 & - 0.6933
 }
 }
-\end{align*}
+\end{equation*}
 %\[
 %\bm{Y}^{\rm red}=
 %\mat{
@@ -1464,7 +1519,7 @@ In this case, the steady value of the internal state of the electrical power sys
 %\]
 %となることを前提にする。
 These steady values are one of the solutions that satisfy simultaneous equations:
-\begin{align*}
+\begin{equation*}
 \simode{
 0 &= %\textstyle
  - f_i \left( \delta^{\star},E^{\star} \right)
@@ -1479,7 +1534,7 @@ g_i \left( \delta^{\star},E^{\star} \right)
 }
 \qquad
  i \in \{1,2,3\}
-\end{align*}
+\end{equation*}
 where $\delta^{\star}$ and $E^{\star}$ are vectors with $\delta_i^{\star}$ and $E_i^{\star}$.
 Functions $f_i$ and $g_i$ are defined by Equation \ref{eq:figidef}.
 
@@ -1794,7 +1849,7 @@ E- |\bm{V}_0|e^{\bm{j}\delta}
 \]
 It is assumed that $\angle \bm{V}$ is 0 with the phase of voltage phasor of the infinite bus bar as the reference, and generality is not lost.
 Therefore, by substituting the relationship of this current phasor into Equation \ref{eq:gendynIVst}, the expression of the ordinary differential equation system is obtained as follows:
-\begin{align*}%\label{eq:gendynIVst}
+\begin{equation*}%\label{eq:gendynIVst}
 \simode{
 \dot{\delta} &= \omega_0  \Delta \omega\\
 M   \Delta \dot{\omega}&= \textstyle
@@ -1824,7 +1879,7 @@ E
 |\bm{V}_0| \sfcos\delta
 + V_{{\rm field}}
 }
-\end{align*}
+\end{equation*}
 Similarly, the active and reactive power supplied from the generator to the generator bus are obtained as follows from the relationship of Equation \ref{eq:PiQis2}:
 \[
 P=\frac{
@@ -1873,22 +1928,22 @@ At this time, for the admittance matrix $\bm{Y}^{\rm red}$ of Equation \ref{eq:Y
 \red{Translated with DeepL}
 By using the complementary ref{lem:nonsing} at the end of the chapter, we show the regularity of $\bm{\itGamma}$ in the formula\ref{eq:defGam}.
 From the definition, if the real part of $\bm{\itGamma}$ is $M$ and the imaginary part is $N$, then
-\begin{align*}
+\begin{equation*}
 \spliteq{
 M &:= \sfdiag \bigl( \Xti (1- \Cgi \Xti ) \bigr) 
 - \sfdiag \left( \Xti \right) B_0 \sfdiag \left( \Xti \right), \\
 N &:= - \sfdiag \left( \Xti \right) G_0 \sfdiag \left( \Xti \right)
 }
-\end{align*}
+\end{equation*}
 Here, since $B_0$ in equation\ref{eq:Ypig} is semi-negative definite, $M$ is at least semi-positive definite when equation\ref{eq:Xbeta} holds.
 If $\Cgi \Xti <1$ for at least one $i\in \mathcal{I}_G$, then
-\begin{align*}
+\begin{equation*}
 \underbrace{
 \sfker \sfdiag \left( \Xti \right) B_0 \sfdiag \left( \Xti \right)
 }_{\sfspan \left\{ \sfdiag \left( 1/\Xti \right) \mathds{1} \right\}}
 \nsubseteq
 \sfker \sfdiag \bigl( \Xti (1- \Cgi \Xti ) \bigr)
-\end{align*}
+\end{equation*}
 then, $M$ is positive definite.
 Therefore, since $N$ is symmetric, $M+NM^{-1}N$ is positive definite. This implies that $M+NM^{-1}N$ is regular.
 Also, since $N$ is semi-negative definite from the relation in equation\ref{eq:Y0}, from the complement\ref{lem:sdreim} at the end of the chapter,
@@ -2247,12 +2302,12 @@ If this is substituted into Equation \ref{eq:exY} to cancel $\bm{I}_3$, the foll
 \end{equation}
 Please note that, with the Equation on the third row, voltage phasor $\bm{V}_3$ of the load bus bar is replaced by voltage phasor $\bm{V}_2$ of the generator bus.
 Specifically, it can be expressed as:
-\begin{align*}
+\begin{equation*}
 \bm{V}_3 = \left(\bm{y}_{32} + \tfrac{1}{\bm{z}_{{\rm load}3}^{\star}} \right)^{-1} \bm{y}_{32} \bm{V}_2
-\end{align*}
+\end{equation*}
 
 If we also eliminate $\bm{V}_3$ using this, the relationship between the current and voltage phasors of the generator bus bar group is
-\begin{align*}
+\begin{equation*}
 \mat{
 \bm{I}_1\\
 \bm{I}_2
@@ -2263,7 +2318,7 @@ If we also eliminate $\bm{V}_3$ using this, the relationship between the current
 \bm{V}_1\\
 \bm{V}_2\\
 }
-\end{align*}
+\end{equation*}
 Here, the reduced admittance matrix of the load bus bar is obtained as:
 \[
 \bm{Y}_{\rm Kron}:=
@@ -2294,7 +2349,7 @@ Let us assume that current phasor flows from the load to bus bar 3:
 \]
 At this time, in the same procedure as the constant impedance model, if $\bm{I}_3$ and $\bm{V}_3$ 
 are cancelled from Equation \ref{eq:exY}, the following is obtained:
-\begin{align*}
+\begin{equation*}
 \mat{
 \bm{I}_1\\
 \bm{I}_2
@@ -2312,7 +2367,7 @@ are cancelled from Equation \ref{eq:exY}, the following is obtained:
 }
 \bm{y}_{32}^{-1}
 \bm{I}_{{\rm load}3}^{\star} e^{\bm{j} \angle \bm{V}_3}
-\end{align*}
+\end{equation*}
 where:
 \[
 \bm{Y}_{\rm Kron}' :=
@@ -2337,15 +2392,15 @@ Generally, phase $\angle \bm{V}_3$ of the voltage phasor is a nonlinear function
 
 Finally, let us consider a case wherein the load is given as the constant power model.
 When a constant active power $P_{{\rm load}3}^{\star}$ and reactive power $Q_{{\rm load}3}^{\star}$ are supplied from the load to bus bar 3, the following relationship is given:
-\begin{align*}
+\begin{equation*}
 \bm{I}_3 = \frac{P_{{\rm load}3}^{\star} - \bm{j} Q_{{\rm load}3}^{\star} }{\overline{\bm{V}}_3}
-\end{align*}
+\end{equation*}
 Since this is a nonlinear relationship of $\bm{I}_3$ and $\bm{V}_3$, to cancel $\bm{V}_3$ from Equation \ref{eq:exY}, nonlinear calculation is necessary.
 Specifically, $\bm{V}_3$ is given as a solution for the quadratic equation related to complex variables:
-\begin{align*}
+\begin{equation*}
 \bm{y}_{32} \bm{V}_3 \overline{\bm{V}}_3 - \bm{y}_{32}  \bm{V}_2 \overline{\bm{V}}_3 -P_{{\rm load}3}^{\star} 
 + \bm{j} Q_{{\rm load}3}^{\star} =0
-\end{align*}
+\end{equation*}
 Therefore, if the load of the constant power model is included in an electrical power system model, it is usually difficult to cancel the load bus bar through equivalent transformation.
 \end{example}
 
@@ -2364,10 +2419,10 @@ Let us analyze properties that hold for Kron reduction of the load bus bar when 
 First, we will show Kron reduction steps for the Example \ref{ex:genloadY} as a general form when generator buses and load bus bars are arbitrary.
 The subscripts set of generator buses is $\mathcal{I}_{\rm G}$ and the subscripts set of load bus bars is $\mathcal{I}_{\rm L}$.
 We assume that a smaller number is assigned to general buses than load bus bars without losing generality. In other words:
-\begin{align*}
+\begin{equation*}
 \mathcal{I}_{\rm G} = \{ 1,\ldots, n \},\qquad
 \mathcal{I}_{\rm L} = \{ n+1,\ldots, n + m \}
-\end{align*}
+\end{equation*}
 where $n$ and $m$ are numbers of generator buses and load bus bars, respectively.
 The definition stipulates that $n+m$ is equal to the total number of bus bars $N$.
 
@@ -2392,9 +2447,9 @@ At this time, the relationship between all current phasors and voltage phasors r
 }
 \end{equation}
 The relationship between the current phasor and voltage phasor determined by the load of the constant impedance model can be expressed as follows by using the admittance, which is a reciprocal of the impedance:
-\begin{align*}
+\begin{equation*}
 \bm{I}_{\rm L}=- \sfdiag(\bm{y}_{{\rm load}i}^{\star} )_{i \in \mathcal{I}_{\rm L}}\bm{V}_{\rm L}
-\end{align*}
+\end{equation*}
 Though $\bm{y}_{{\rm load}i}^{\star}$ defined as a reciprocal of $\bm{z}_{{\rm load}i}^{\star}$ of Equation \ref{eq:cimp} must have a non-zero value, since this is an expression of bus bars with no equipment connected, formally, $\bm{y}_{{\rm load}i}^{\star}$ is allowed to be 0.
 If this is substituted into Equation \ref{eq:YGL} to cancel $\bm{V}_{\rm L}$:
 \begin{equation}\label{eq:Kron}
@@ -2454,13 +2509,13 @@ $B_{\rm Kron}$ is negative definite.
 
 \red{Translated with DeepL}
 To show the subject using the Lemma \ref{lem: schur} at the end of the chapter
-\begin{align*}
+\begin{equation*}
 \bm{Y}' := 
 \mat{
 \bm{Y}_{\rm GG} & \bm{Y}_{\rm GL}\\
 \bm{Y}_{\rm LG} & \bm{Y}_{\rm LL} +\sfdiag(\bm{y}_{{\rm load}i}^{\star} )_{i \in \mathcal{I}_{\rm L}}
 }
-\end{align*}
+\end{equation*}
 At this time, since the expression \ref{eq: Y0} and the expression \ref{eq: loadys} hold, the real part of $\bm{j} \bm{Y}'$ is symmetric, and the imaginary part is half.It is symmetry.
 Therefore, the lemma \ref{lem: schur} shows that the real part of $\bm{j} \bm{Y}_{\rm Kron} $ is symmetric and the imaginary part is semi-positive.
 This implies that the real part of $\bm{Y}_{\rm Kron}$, $G_{\rm Kron}$, is semi-positive definite and the imaginary part, $B_{\rm Kron}$, is symmetric.
@@ -2483,7 +2538,7 @@ Let us confirm this with the next Example.
 In the admittance matrix $\bm{Y}_0$ where the capacitance to ground of Equation (\ref{eq:Y0prop}) can be ignored, the conductance matrix $G_0$ is positive semi-definite, and the susceptance matrix $B_0$ is negative semi-definite.
 At this time, the diagonal and non-diagonal elements of $G_0$ are non-negative and non-positive, respectively, and the diagonal and non-diagonal elements of $B_0$ are non-positive and non-negative, respectively.
 For example, let us consider a case where bus bar 1 and bus bar 2 are generator buses, bus bar 3 is the load bus bar, and the admittance of the load and the admittance matrix of the power grids are:
-\begin{align*}
+\begin{equation*}
 \bm{y}_{{\rm load}3}^{\star} = \alpha - \bm{j} \beta 
 ,\qquad
 \bm{Y}=  
@@ -2502,12 +2557,12 @@ For example, let us consider a case where bus bar 1 and bus bar 2 are generator 
 1&1&-2
 }
 }_{B_0}
-\end{align*}
+\end{equation*}
 where $\alpha$, $\beta$, and $\gamma$ are non-negative constants.
 Please note that the signs of the real and imaginary parts of the admittance of the load are the same as the signs of the diagonal element of the admittance matrix. 
 
 Kron reduction of the load bus bar causes the admittance matrix of Equation \ref{eq:Kron} that has been Kron reduced to become:
-\begin{align*}
+\begin{equation*}
 \spliteq{
 & \bm{Y}_{\rm Kron}
 = 
@@ -2542,13 +2597,13 @@ Kron reduction of the load bus bar causes the admittance matrix of Equation \ref
 \right)
 }_{B_{\rm Kron}}
 }
-\end{align*}
+\end{equation*}
 Here, for arbitrary non-negative constants, $\alpha$, $\beta$, and $\gamma$, the diagonal element of $G_{\rm Kron}$ is non-negative 
 and the diagonal and non-diagonal elements of $B_{\rm Kron}$ are negative and positive, respectively. 
 However, the non-diagonal element of $G_{\rm Kron}$ is positive when:
-\begin{align*}
+\begin{equation*}
 \gamma < \frac{\alpha}{\alpha^2 + (2+\beta)^2} 
-\end{align*}
+\end{equation*}
 As such, when the load bus bar is Kron reduced, the sign of the non-diagonal element of the admittance matrix is not always invariable. The sign of the diagonal element is invariable because of the positive semi-definite nature of $G_0$ and negative semi-definite nature of $B_0$.
 
 As for changes in the sign of the non-diagonal element, these can occur when the conductance and susceptance are not 0 for the load or transmission line connected to bus bars that have been Kron reduced. For example, in the above case, the admittance of the load is a pure imaginary number when $\alpha=0$. The admittance of the transmission line connected to bus bar 3; in other words, the elements of the third column and row of $\bm{Y}$ are all pure imaginary numbers. In such a case, the signs of elements in the conductance and susceptance matrices do not change. 
@@ -2593,9 +2648,9 @@ Q & P
 \end{equation}
 This means that the regularity of $M+ \bm{j} N$ is equivalent to the regularity of $L$.
 Furthermore, from the properties of the determinant of the block matrix:
-\begin{align*}
+\begin{equation*}
 \sfdet L =\sfdet M \sfdet \left(M+NM^{-1}N\right)
-\end{align*}
+\end{equation*}
 From the assumption that $\sfdet M \neq 0$, the regularity of $L$ is equivalent to the regularity of $M+NM^{-1}N$.
 From the above, the subject follows the intent of the title.
 \end{proof}
@@ -2619,22 +2674,22 @@ Therefore
 The equations for the real and imaginary parts of $L$ are equivalent to the equations in equation\ref{eq:MNinv}.
 This means that the diagonal and off-diagonal blocks of the inverse of $L$ are $P$ and $Q$.
 From the properties of the inverse of the block matrix
-\begin{align*}
+\begin{equation*}
 L^{-1}=
 \mat{
 (M+NM^{-1}N)^{-1} & M^{-1}N(M+NM^{-1}N)^{-1} \\
 -(M+NM^{-1}N)^{-1}NM^{-1} & (M+NM^{-1}N)^{-1}
 }
-\end{align*}
+\end{equation*}
 
 Therefore,
-\begin{align*}
+\begin{equation*}
 P=(M+NM^{-1}N)^{-1},\qquad
 Q=-M^{-1}N(M+NM^{-1}N)^{-1}
-\end{align*}
+\end{equation*}
 From the assumption that $N$ is symmetric and $M$ is positive definite, $P$ is positive definite.
 Also, using the positive definite matrix $\sqrt{M^{-1}}$ such that $M^{-1}=\sqrt{M^{-1}}\sqrt{M^{-1}}$, $Q$ is
-\begin{align*}
+\begin{equation*}
 Q=-\sqrt{M^{-1}} 
 \underbrace{
 \sqrt{M^{-1}} N \sqrt{M^{-1}}
@@ -2643,14 +2698,14 @@ I + (\sqrt{M^{-1}} N \sqrt{M^{-1}} )^2
 \right)^{-1}
 }_{X}
 \sqrt{M^{-1}}
-\end{align*}
+\end{equation*}
 where $\sqrt{M^{-1}} N \sqrt{M^{-1}}$ is symmetric, so it can be diagonalized by the orthogonal matrix $V$ and
-\begin{align*}
+\begin{equation*}
 X = V \Lambda \left(
 I + \Lambda^2
 \right)^{-1}
 V^{\sf T}
-\end{align*}
+\end{equation*}
 However, $\Lambda$ is a real diagonal matrix of eigenvalues of $\sqrt{M^{-1}} N \sqrt{M^{-1}}$.
 From this, since $X$ is symmetric, $Q$ is also symmetric.
 Furthermore, if $N$ is semi-definite, then $\Lambda$ is also semi-definite, and if $N$ is positive, then $\Lambda$ is also positive.
@@ -2709,7 +2764,7 @@ Next, consider the case where $M$ is semidefinite and $N$ is symmetric.
 First, show that both the real and imaginary parts of $\bm{Z}_{\rm S}$ are symmetric.
 Now, since the real part $M_{22}$ of $\bm{Z}_{22}$ is positive definite and the imaginary part $N_{22}$ is symmetric, both real and imaginary parts of $\bm{Z}_{22}^{-1}$ are symmetric.
 Therefore,
-\begin{align*}
+\begin{equation*}
 \spliteq{
 \real [\bm{Z}_{\rm S} ] &= \real [\bm{Z}_{11} ]
 - \real [\bm{Z}_{12} ] \real [\bm{Z}_{22}^{-1} ] \real [\bm{Z}_{21} ]\\
@@ -2721,37 +2776,37 @@ Therefore,
 + N_{12}  \real [\bm{Z}_{22}^{-1} ] N_{12}^{\sfT} \\
 &+ M_{12}  \imag [\bm{Z}_{22}^{-1} ] N_{12}^{\sfT}
 }
-\end{align*}
+\end{equation*}
 From this we see that the real part of $\bm{Z}_{\rm S}$ is symmetric.
 Similarly,
-\begin{align*}
+\begin{equation*}
 \spliteq{
 \imag [\bm{Z}_{\rm S} ]& = N_{11} + N_{12}  \imag [\bm{Z}_{22}^{-1} ] N_{12}^{\sfT} 
 - N_{12}  \real [\bm{Z}_{22}^{-1} ] M_{12}^{\sfT} \\
 & - M_{12}  \imag [\bm{Z}_{22}^{-1} ] M_{12}^{\sfT} 
 - M_{12}  \real [\bm{Z}_{22}^{-1} ] N_{12}^{\sfT}
 }
-\end{align*}
+\end{equation*}
 From this we see that the imaginary part of $\bm{Z}_{\rm S}$ is also symmetric.
 
 When $M$ in the expression \ref{eq:defbmZ} is semi-definite, $\bm{Z}$ is not necessarily regular, since $\bm{Z}^{-1}$ is not necessarily regular.
 In contrast, in what follows, for any $\epsilon >0$:
-\begin{align*}
+\begin{equation*}
 \bm{Z}^{+}
 :=
 \mat{
 \bm{Z}_{11}+ \epsilon I & \bm{Z}_{12} \\
 \bm{Z}_{21} & \bm{Z}_{22}+ \epsilon I
 }
-\end{align*}
+\end{equation*}
 The real part of $N$, $M+\epsilon I$, is positive definite.
 Now, when $N$ is semi-definite, for any $\epsilon >0$ we have
-\begin{align*}
+\begin{equation*}
 \bm{Z}_{\rm S}^{+}:=\bm{Z}_{11} + \epsilon I - \bm{Z}_{12} (\bm{Z}_{22}+ \epsilon I)^{-1}\bm{Z}_{21}
-\end{align*}
+\end{equation*}
 The real part of $(\bm{Z}_{22}+ \epsilon I)^{-1}$ is positive definite, and the imaginary part is semi-positive definite.
 Also, by expanding $(\bm{Z}_{22}+ \epsilon I)^{-1}$ using the auxiliary theorem of the inverse matrix the following is obtained.
-\begin{align*}
+\begin{equation*}
 \bm{Z}_{\rm S}^{+}=
 \bm{Z}_{\rm S}
 + \underbrace{
@@ -2762,30 +2817,30 @@ I + \bm{Z}_{12} \bm{Z}_{22}^{-1}
 \bm{Z}_{22}^{-1}\bm{Z}_{21}
 \right\}
 }_{\Delta(\epsilon)}
-\end{align*}
+\end{equation*}
 As mentioned above, since the real and imaginary parts of $\bm{Z}_{\rm S}^{+}$ and $\bm{Z}_{\rm S}$ are symmetric,
 the real and imaginary parts of $\Delta(\epsilon)$ are also symmetric.
 
 Next, we show that the imaginary part of $\bm{Z}_{\rm S}^{+}$ is semipositive definite if and only if $\bm{Z}_{\rm S}$ is semipositive definite.
 Note that the same argument can be used to show the semi- positive definiteness of the real part.
 For the following discussion
-\begin{align*}
+\begin{equation*}
 \mathcal{X} := \left\{
 x: 
 x^{\sf T} \imag[\Delta (\epsilon)] x >0
 ,\quad 
 \forall \epsilon >0
 \right\}
-\end{align*}
+\end{equation*}
 is defined as follows.
 From this definition of $\mathcal{X}$, for arbitrarily chosen $x \notin \mathcal{X}$, there exists some $\epsilon_0 >0$ such that
 \[
 x^{\sf T} \imag[\Delta(\epsilon_0)]x \leq 0
 \]
 Therefore, the imaginary part of $ \bm{Z}_{\rm S}^{+} $ is semi-positive definite, 
-\begin{align*}
+\begin{equation*}
 x^{\sf T} \imag [\bm{Z}_{\rm S}] x + x^{\sf T} \imag[\Delta(\epsilon_0)]x \geq 0
-\end{align*}
+\end{equation*}
 is derived.
 This leads to the following for all $x \notin \mathcal{X}$, 
 \begin{equation}\label{eq:xZxgeq}
@@ -2799,19 +2854,19 @@ x^{\sf T} \imag[\bm{Z}_{\rm S}] x < 0
 \end{equation}
 then the imaginary part of $ \bm{Z}_{\rm S}^{+} $ is not semidefinite.
 Now, noting that the imaginary part of $\Delta(\epsilon)$ asymptotes to 0 in the limit of $\epsilon \rightarrow 0$, if for some $x \in \mathcal{X}$ the expression\ref{eq:xZxleq}
-\begin{align*}
+\begin{equation*}
 x^{\sf T} \imag[ \bm{Z}_{\rm S}] x 
 +
 x^{\sf T} \imag[\Delta(\epsilon_0)]x < 0
-\end{align*}
+\end{equation*}
 This means that the imaginary part of $\bm{Z}_{\rm S}^{+} $ is not semi- positive definite.
 The above facts show that the imaginary part of $\bm{Z}_{\rm S}$ is semi-positive definite.
 
 Finally, we show that if $N$ is positive definite, then the imaginary part of $\bm{Z}_{\rm S}$ is positive definite.
 For this purpose, 
-\begin{align*}
+\begin{equation*}
 -\bm{j} \bm{Z} = N - \bm{j} M
-\end{align*}
+\end{equation*}
 is positive definite and the imaginary part is symmetric.
 Applying the results for the case where the real part is positive definite to this $-\bm{j} \bm{Z}_{\rm S}$, it can be shown that the real part of $-\bm{j} \bm{Z}_{\rm S}$ is positive definite.
 This implies that the imaginary part of $\bm{Z}_{\rm S}$ is positive definite.

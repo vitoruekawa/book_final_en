@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  3 JAN 2023 22:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  10 JAN 2023 17:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -867,12 +867,7 @@ File: figs/overviewPQ.pdf Graphic file (type pdf)
 <use figs/overviewPQ.pdf>
 Package pdftex.def Info: figs/overviewPQ.pdf  used on input line 427.
 (pdftex.def)             Requested size: 266.31879pt x 108.39001pt.
-
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 462.
-
-[8 <./figs/overviewPQ.pdf>]
+ [8 <./figs/overviewPQ.pdf>]
 <figs/line_pix3.pdf, id=247, 1284.8pt x 549.05125pt>
 File: figs/line_pix3.pdf Graphic file (type pdf)
 <use figs/line_pix3.pdf>
@@ -913,214 +908,204 @@ LaTeX Warning: Citation `anderson2008power' on page 12 undefined on input line 7
 <figs/generatorbus.pdf, id=307, 133.53287pt x 113.18988pt>
 File: figs/generatorbus.pdf Graphic file (type pdf)
 <use figs/generatorbus.pdf>
-Package pdftex.def Info: figs/generatorbus.pdf  used on input line 752.
+Package pdftex.def Info: figs/generatorbus.pdf  used on input line 753.
 (pdftex.def)             Requested size: 83.2243pt x 70.54486pt.
- [13 <./figs/generatorbus.pdf>]
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 836.
-
-[14]
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 874.
-
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 915.
-
-[15]
-LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 954.
+ [13 <./figs/generatorbus.pdf>] [14] [15]
+LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 1005.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 954.
+(Font)              scaled to size 10.0pt on input line 1005.
 
 
-LaTeX Warning: Citation `anderson2008power' on page 16 undefined on input line 959.
+LaTeX Warning: Citation `anderson2008power' on page 16 undefined on input line 1014.
 
 [16] [17] [18]
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1207.
+(amsmath)                trying to recover with `aligned' on input line 1262.
 
-[19]
 
-LaTeX Warning: Reference `sec:pfcal' on page 20 undefined on input line 1278.
+LaTeX Warning: Reference `sec:pfcal' on page 19 undefined on input line 1333.
 
-<figs/kronredgen.pdf, id=406, 566.04271pt x 208.23697pt>
+<figs/kronredgen.pdf, id=396, 566.04271pt x 208.23697pt>
 File: figs/kronredgen.pdf Graphic file (type pdf)
 <use figs/kronredgen.pdf>
-Package pdftex.def Info: figs/kronredgen.pdf  used on input line 1283.
+Package pdftex.def Info: figs/kronredgen.pdf  used on input line 1338.
 (pdftex.def)             Requested size: 282.96468pt x 104.09915pt.
+[19] [20 <./figs/kronredgen.pdf>]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `sec:powflow' on page 21 undefined on input line 1456.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 1534.
 
-[20 <./figs/kronredgen.pdf>]
 
-LaTeX Warning: Reference `sec:powflow' on page 21 undefined on input line 1401.
+LaTeX Warning: Reference `eq:figidef' on page 21 undefined on input line 1539.
 
 [21]
 
-LaTeX Warning: Reference `eq:figidef' on page 22 undefined on input line 1484.
+LaTeX Warning: Reference `chap:numcal' on page 22 undefined on input line 1631.
 
 [22]
-
-LaTeX Warning: Reference `chap:numcal' on page 23 undefined on input line 1576.
-
-<figs/Domega0.pdf, id=456, 685.90654pt x 526.19284pt>
+<figs/Domega0.pdf, id=455, 685.90654pt x 526.19284pt>
 File: figs/Domega0.pdf Graphic file (type pdf)
 <use figs/Domega0.pdf>
-Package pdftex.def Info: figs/Domega0.pdf  used on input line 1583.
+Package pdftex.def Info: figs/Domega0.pdf  used on input line 1638.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/delangV0.pdf, id=457, 685.90654pt x 526.19284pt>
+<figs/delangV0.pdf, id=456, 685.90654pt x 526.19284pt>
 File: figs/delangV0.pdf Graphic file (type pdf)
 <use figs/delangV0.pdf>
-Package pdftex.def Info: figs/delangV0.pdf  used on input line 1589.
+Package pdftex.def Info: figs/delangV0.pdf  used on input line 1644.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/EabsV0.pdf, id=458, 685.90654pt x 526.19284pt>
+<figs/EabsV0.pdf, id=457, 685.90654pt x 526.19284pt>
 File: figs/EabsV0.pdf Graphic file (type pdf)
 <use figs/EabsV0.pdf>
-Package pdftex.def Info: figs/EabsV0.pdf  used on input line 1595.
+Package pdftex.def Info: figs/EabsV0.pdf  used on input line 1650.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/PQ0.pdf, id=459, 686.18657pt x 526.19284pt>
+<figs/PQ0.pdf, id=458, 686.18657pt x 526.19284pt>
 File: figs/PQ0.pdf Graphic file (type pdf)
 <use figs/PQ0.pdf>
-Package pdftex.def Info: figs/PQ0.pdf  used on input line 1601.
+Package pdftex.def Info: figs/PQ0.pdf  used on input line 1656.
 (pdftex.def)             Requested size: 163.12146pt x 125.0845pt.
-<figs/DomegaP.pdf, id=460, 685.90654pt x 526.19284pt>
+<figs/DomegaP.pdf, id=459, 685.90654pt x 526.19284pt>
 File: figs/DomegaP.pdf Graphic file (type pdf)
 <use figs/DomegaP.pdf>
-Package pdftex.def Info: figs/DomegaP.pdf  used on input line 1618.
+Package pdftex.def Info: figs/DomegaP.pdf  used on input line 1673.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/delangVP.pdf, id=461, 685.90654pt x 526.19284pt>
+<figs/delangVP.pdf, id=460, 685.90654pt x 526.19284pt>
 File: figs/delangVP.pdf Graphic file (type pdf)
 <use figs/delangVP.pdf>
-Package pdftex.def Info: figs/delangVP.pdf  used on input line 1624.
+Package pdftex.def Info: figs/delangVP.pdf  used on input line 1679.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/EabsVP.pdf, id=462, 685.90654pt x 526.19284pt>
+<figs/EabsVP.pdf, id=461, 685.90654pt x 526.19284pt>
 File: figs/EabsVP.pdf Graphic file (type pdf)
 <use figs/EabsVP.pdf>
-Package pdftex.def Info: figs/EabsVP.pdf  used on input line 1630.
+Package pdftex.def Info: figs/EabsVP.pdf  used on input line 1685.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/PQP.pdf, id=463, 686.2689pt x 526.19284pt>
+<figs/PQP.pdf, id=462, 686.2689pt x 526.19284pt>
 File: figs/PQP.pdf Graphic file (type pdf)
 <use figs/PQP.pdf>
-Package pdftex.def Info: figs/PQP.pdf  used on input line 1636.
+Package pdftex.def Info: figs/PQP.pdf  used on input line 1691.
 (pdftex.def)             Requested size: 163.12146pt x 125.06844pt.
-<figs/DomegaV.pdf, id=464, 685.90654pt x 526.19284pt>
+<figs/DomegaV.pdf, id=463, 685.90654pt x 526.19284pt>
 File: figs/DomegaV.pdf Graphic file (type pdf)
 <use figs/DomegaV.pdf>
-Package pdftex.def Info: figs/DomegaV.pdf  used on input line 1653.
+Package pdftex.def Info: figs/DomegaV.pdf  used on input line 1708.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/delangVV.pdf, id=465, 685.90654pt x 526.19284pt>
+<figs/delangVV.pdf, id=464, 685.90654pt x 526.19284pt>
 File: figs/delangVV.pdf Graphic file (type pdf)
 <use figs/delangVV.pdf>
-Package pdftex.def Info: figs/delangVV.pdf  used on input line 1659.
+Package pdftex.def Info: figs/delangVV.pdf  used on input line 1714.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/EabsVV.pdf, id=466, 685.90654pt x 526.19284pt>
+<figs/EabsVV.pdf, id=465, 685.90654pt x 526.19284pt>
 File: figs/EabsVV.pdf Graphic file (type pdf)
 <use figs/EabsVV.pdf>
-Package pdftex.def Info: figs/EabsVV.pdf  used on input line 1665.
+Package pdftex.def Info: figs/EabsVV.pdf  used on input line 1720.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/PQV.pdf, id=467, 686.2689pt x 526.19284pt>
+<figs/PQV.pdf, id=466, 686.2689pt x 526.19284pt>
 File: figs/PQV.pdf Graphic file (type pdf)
 <use figs/PQV.pdf>
-Package pdftex.def Info: figs/PQV.pdf  used on input line 1671.
+Package pdftex.def Info: figs/PQV.pdf  used on input line 1726.
 (pdftex.def)             Requested size: 163.12146pt x 125.06844pt.
+ [23 <./figs/Domega0.pdf> <./figs/delangV0.pdf> <./figs/EabsV0.pdf> <./figs/PQ0.pdf>]
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1700.
+(amsmath)                trying to recover with `aligned' on input line 1755.
 
 
-LaTeX Warning: Citation `kuramoto1975self' on page 23 undefined on input line 1732.
+LaTeX Warning: Citation `kuramoto1975self' on page 24 undefined on input line 1787.
 
 
-LaTeX Warning: Citation `kuramoto2003chemical' on page 23 undefined on input line 1732.
+LaTeX Warning: Citation `kuramoto2003chemical' on page 24 undefined on input line 1787.
 
 
-LaTeX Warning: Citation `dorfler2012synchronization' on page 23 undefined on input line 1733.
+LaTeX Warning: Citation `dorfler2012synchronization' on page 24 undefined on input line 1788.
 
 
-LaTeX Warning: Citation `dorfler2013synchronization' on page 23 undefined on input line 1733.
+LaTeX Warning: Citation `dorfler2013synchronization' on page 24 undefined on input line 1788.
 
 
-LaTeX Warning: Citation `nagata2014node' on page 23 undefined on input line 1733.
+LaTeX Warning: Citation `nagata2014node' on page 24 undefined on input line 1788.
 
 
-LaTeX Warning: Citation `nishikawa2015comparative' on page 23 undefined on input line 1733.
+LaTeX Warning: Citation `nishikawa2015comparative' on page 24 undefined on input line 1788.
 
-[23] [24 <./figs/Domega0.pdf> <./figs/delangV0.pdf> <./figs/EabsV0.pdf> <./figs/PQ0.pdf>]
-<figs/inf1bus.pdf, id=502, 418.70929pt x 79.33139pt>
+[24 <./figs/DomegaP.pdf> <./figs/delangVP.pdf> <./figs/EabsVP.pdf> <./figs/PQP.pdf>] [25 <./figs/DomegaV.pdf> <./figs/delangVV.pdf> <./figs/EabsVV.pdf> <./figs/PQV.pdf>]
+<figs/inf1bus.pdf, id=555, 418.70929pt x 79.33139pt>
 File: figs/inf1bus.pdf Graphic file (type pdf)
 <use figs/inf1bus.pdf>
-Package pdftex.def Info: figs/inf1bus.pdf  used on input line 1743.
+Package pdftex.def Info: figs/inf1bus.pdf  used on input line 1798.
 (pdftex.def)             Requested size: 233.02704pt x 44.15048pt.
 
 
-LaTeX Warning: Citation `taniguchi2011power' on page 25 undefined on input line 1750.
+LaTeX Warning: Citation `taniguchi2011power' on page 26 undefined on input line 1805.
 
 
-LaTeX Warning: Citation `kato2017electric' on page 25 undefined on input line 1750.
+LaTeX Warning: Citation `kato2017electric' on page 26 undefined on input line 1805.
 
-[25 <./figs/DomegaP.pdf> <./figs/delangVP.pdf> <./figs/EabsVP.pdf> <./figs/PQP.pdf>] [26 <./figs/DomegaV.pdf> <./figs/delangVV.pdf> <./figs/EabsVV.pdf> <./figs/PQV.pdf> <./figs/inf1bus.pdf>] [27]
+[26 <./figs/inf1bus.pdf>]
+
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 1881.
+
+[27]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
-(Font)              scaled to size 10.0pt on input line 1861.
+(Font)              scaled to size 10.0pt on input line 1916.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/it' will be
-(Font)              scaled to size 10.0pt on input line 1873.
-Package hyperref Info: bookmark level for unknown proof defaults to 0 on input line 1873.
+(Font)              scaled to size 10.0pt on input line 1928.
+Package hyperref Info: bookmark level for unknown proof defaults to 0 on input line 1928.
  [28]
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1963.
+(amsmath)                trying to recover with `aligned' on input line 2018.
 
 [29]
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 2002.
+(amsmath)                trying to recover with `aligned' on input line 2057.
 
 
-LaTeX Warning: Citation `sauer2017power' on page 30 undefined on input line 2154.
+LaTeX Warning: Citation `sauer2017power' on page 30 undefined on input line 2209.
 
 [30
 
 pdfTeX warning: pdflatex: pop empty color page stack 0
-] [31]
-<figs/loadbus.pdf, id=634, 130.4875pt x 85.08487pt>
+]
+<figs/loadbus.pdf, id=628, 130.4875pt x 85.08487pt>
 File: figs/loadbus.pdf Graphic file (type pdf)
 <use figs/loadbus.pdf>
-Package pdftex.def Info: figs/loadbus.pdf  used on input line 2165.
+Package pdftex.def Info: figs/loadbus.pdf  used on input line 2220.
 (pdftex.def)             Requested size: 83.2243pt x 54.26717pt.
- [32 <./figs/loadbus.pdf>]
+ [31] [32 <./figs/loadbus.pdf>]
 
-LaTeX Warning: Citation `kundur1994power' on page 33 undefined on input line 2211.
+LaTeX Warning: Citation `kundur1994power' on page 33 undefined on input line 2266.
 
-[33] [34] [35] [36]
+[33] [34] [35]
 
-LaTeX Warning: Reference `lem: schur' on page 37 undefined on input line 2456.
+LaTeX Warning: Reference `lem: schur' on page 36 undefined on input line 2511.
 
+[36]
 
-LaTeX Warning: Reference `eq: Y0' on page 37 undefined on input line 2464.
-
-
-LaTeX Warning: Reference `eq: loadys' on page 37 undefined on input line 2464.
+LaTeX Warning: Reference `eq: Y0' on page 37 undefined on input line 2519.
 
 
-LaTeX Warning: Reference `lem: schur' on page 37 undefined on input line 2465.
+LaTeX Warning: Reference `eq: loadys' on page 37 undefined on input line 2519.
+
+
+LaTeX Warning: Reference `lem: schur' on page 37 undefined on input line 2520.
 
 [37]
 
-LaTeX Warning: Citation `kron1939tensor' on page 38 undefined on input line 2558.
+LaTeX Warning: Citation `kron1939tensor' on page 38 undefined on input line 2613.
 
 
-LaTeX Warning: Reference `sec:howtocal' on page 38 undefined on input line 2559.
+LaTeX Warning: Reference `sec:howtocal' on page 38 undefined on input line 2614.
 
 
-LaTeX Warning: Citation `dorfler2013kron' on page 38 undefined on input line 2560.
+LaTeX Warning: Citation `dorfler2013kron' on page 38 undefined on input line 2615.
 
 [38] [39] [40] [41]
 \tf@thm=\write5
@@ -1135,17 +1120,17 @@ Package rerunfilecheck Info: File `docmathmodel7_en.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  17751 strings out of 478268
- 272702 string characters out of 5846346
- 607038 words of memory out of 5000000
+ 272660 string characters out of 5846346
+ 602280 words of memory out of 5000000
  35419 multiletter control sequences out of 15000+600000
  566660 words of font info for 208 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,28n,134p,677b,686s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 88i,29n,134p,677b,686s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntxsups_ot1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-rm.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/doublestroke/dsrom8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ntxsups-Regular.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexas.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/txsya.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmbi.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on docmathmodel7_en.pdf (42 pages, 2868224 bytes).
+Output written on docmathmodel7_en.pdf (42 pages, 2869155 bytes).
 PDF statistics:
- 889 PDF objects out of 1000 (max. 8388607)
- 741 compressed objects within 8 object streams
+ 888 PDF objects out of 1000 (max. 8388607)
+ 740 compressed objects within 8 object streams
  180 named destinations out of 1000 (max. 500000)
  315 words of extra memory for PDF output out of 10000 (max. 10000000)
 
