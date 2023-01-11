@@ -1008,7 +1008,7 @@ systems [4, 5, 8, 9]. Here, we present four types of models.
 
   Then, if we denote the constant value of the field voltage as $V_i^{\star}$,
   the stationary solution of the differential equation in Equation
-  \ref{eq:dynEi} is is $E_i(t)=V_i^{\star}$. In other words, the internal
+  \ref{eq:dynEi} is $E_i(t)=V_i^{\star}$. In other words, the internal
   voltage $E_i$ becomes $V_i^{\star}$, which is constant. For the deeper
   understanding of the classical model in electrical power system analysis,
   please refer to \cite[Section 2.11]{anderson2008power}.
@@ -1016,148 +1016,176 @@ systems [4, 5, 8, 9]. Here, we present four types of models.
 
 \subsection{Kron reduction of a generator bus}\label{sec:allgen}
 
-In this Section, we analyze an electrical power system model, where the synchronous generator as equipment is connected to each bus bar. 
-%\footnote{
-%このような発電機のみで構成される電力系統モデルでは, 送電線の定数の設定などにより, 一部の発電機で有効電力が消費される場合がある。
-%このとき, 発電機の一部がモータのような機器として働くことで式\ref{eq:ohmpf}の電力バランスが満たされる。
-%}。
-At this time, if a subscript set of generator buses is expressed as $\mathcal{I}_{\rm G}$, the number of generator buses $|\mathcal{I}_{\rm G}|$ is equal to the total number of bus bars $N$.
-The model for the entire electrical power system is described as “a differential algebraic equation system,” where generators described by Equation \ref{eq:gendynVIst} are combined through the output equation of Equation \ref{eq:Iout} based on the input-output relationship of the algebraic equation of Equation \ref{eq:ohmY}.
+In this Section, we analyze an electrical power system model, where the
+synchronous generator as equipment is connected to each bus bar. Then, if a set
+of generator buses is expressed as $\mathcal{I}_{\rm G}$, the number of
+generator buses $|\mathcal{I}_{\rm G}|$ is equal to the total number of bus bars
+$N$. The model for the entire electrical power system is described as a
+"differential algebraic equation system", where generators described by Equation
+\ref{eq:gendynVIst} are combined with Equation \ref{eq:Iout} following the
+input-output relationship of the algebraic equation of Equation \ref{eq:ohmY}.
  
 \begin{COLUMN}
 \noindent \textbf{Differential algebraic equation system}:
-is a system that is described by differential algebraic equations and algebraic equations as follows:
+it is a system that described by differential algebraic equations and algebraic
+equations as follows:
 \begin{equation*}
   \begin{aligned}
     \begin{cases}
-    \dot{x}_1 &= f_1(x_1,x_2) \\
-    0 &= f_2(x_1,x_2)
+      \dot{x}_1 &= f_1(x_1,x_2) \\
+      0 &= f_2(x_1,x_2)
     \end{cases}
   \end{aligned}
 \end{equation*}
-where $x_1$ is the stat of the differential equation and $x_2$ is the stat the
-algebraic equation.  For example, in a system where generator models of Equation
-(\ref{eq:gendynVI}) are combined with the algebraic equation of the power grid
-in Equation \ref{eq:ohmZ}, the vector with the internal state of all generators,
-$\delta_i$ $\Delta \omega_i$, $E_i$, is $x_1$, while the vector w variab s of
-all bus bar voltage phasors, $|\bm{V}_i|$, $\angle \bm{V}_i$, is $x_2$.  When
-the algebraic equation has a solution for $x_2$, the solution expressed as $x_2=
-h(x_1)$. When this is substituted into the differential equation:
+where $x_1$ is the state of the differential equation and $x_2$ is the state of
+the algebraic equation. For example, in a system where generator models of
+Equation (\ref{eq:gendynVI}) are combined with the algebraic equation of the
+power grid of Equation \ref{eq:ohmZ}, the vector with the internal state of all
+generators, $\delta_i$ $\Delta \omega_i$, $E_i$, is $x_1$, while $x_2$ is the
+vector which contains all bus voltage phasor variables, $|\bm{V}_i|$ and $\angle
+\bm{V}_i$. When the algebraic equation has a solution for $x_2$, the solution is
+expressed as $x_2= h(x_1)$. By substituting $x_2 = h(x_1)$ into the differential
+equation we get the following ordinary differential equation system that
+describes the behavior of $x_1$:
 \[
-\dot{x}_1 = f_1\bigl(x_1,h(x_1) \bigr)
+  \dot{x}_1 = f_1\bigl(x_1,h(x_1) \bigr)
 \]
-is an equivalent ordinary differential equation system that describes the behavior of $x_1$.
 \end{COLUMN}
 
-
-The objective of this Section is to equivalently transform a differential algebraic equation system through the current phasor and voltage phasor of the generator bus to an ordinary differential equation system described only by the state variables of generators by expressing all voltage phasor variables $(|\bm{V}_i|, \angle \bm{V}_i)_{i\in \mathcal{I}_{\rm G}}$ as a function of the state variables of generators $(\delta_i,E_i)_{i\in \mathcal{I}_{\rm G}}$.
-This transformation is called \textbf{Kron reduction of the generator bus}.
-The specific steps are as follows:
+The goal of this section is to equivalently transform the system of differential
+algebraic equations via current and voltage phasors of the generator bus bar
+$(|\bm{V}_i|, \angle \bm{V}_i)_{i\in \mathcal{I}_{\rm G}}$ into a system of
+ordinary differential equations described only by the state variables of the
+generators, by expressing all voltage phasors as functions of the generator
+state variables $(\delta_i,E_i)_{i\in \mathcal{I}_{\rm G}}$. This transformation
+is called \textbf{Kron reduction} of the generator bus and the steps for
+performing it are as follows:
 
 \medskip
 \begin{breakbox} 
-\begin{itemize}
-\item[(a)] Eliminate the current phasor of bus bars $(\bm{I}_i)_{i\in \mathcal{I}_{\rm G}}$ from the algebraic equation of the power grid in Equation \ref{eq:ohmY} and the output equation of the generator in Equation \ref{eq:phVI}, and express voltage phasor $(\bm{V}_i)_{i\in \mathcal{I}_{\rm G}}$ as a function of state variables $(\delta_i,E_i)_{i\in \mathcal{I}_{\rm G}}$.
-\item[(b)] Using the relationship below as obtained from Euler's formula:
+  \begin{itemize}
+    \item[(a)] Replace the current phasor in the Equation \ref{eq:phVI} using the
+    algebraic equation representing the power grid in Equation \ref{eq:ohmY}. Then,
+    express the voltage phasor $(\bm{V}_i)_{i\in \mathcal{I}_{\rm G}}$ as a function
+    of the generator state variables $(\delta_i,E_i)_{i\in \mathcal{I}_{\rm G}}$.
 
-\[
-e^{\bm{j} \delta_i } \overline{\bm{V}}_i
-%=|{\bm{V}_i}| e^{\bm{j} (\delta_i -\angle \bm{V}_i )}
-= |{\bm{V}_i}| \sfcos (\delta_i -\angle \bm{V}_i )
-+
-\bm{j} |{\bm{V}_i}| \sfsin (\delta_i -\angle \bm{V}_i )
-\]
-and rewrite the term of trigonometric function related to $\bm{V}_i$ included in the model by the state variables $(\delta_i,E_i)_{i\in \mathcal{I}_{\rm G}}$.
-\end{itemize}
+    \item[(b)] Rewrite the phasors using the Euler's identity:
+    \[
+      e^{\bm{j} \delta_i } \overline{\bm{V}}_i
+      = |{\bm{V}_i}| \sfcos (\delta_i -\angle \bm{V}_i )
+      +
+      \bm{j} |{\bm{V}_i}| \sfsin (\delta_i -\angle \bm{V}_i )
+    \]
+
+    and rewrite the term of trigonometric function related to $\bm{V}_i$ included in
+    the model by the state variables $(\delta_i,E_i)_{i\in \mathcal{I}_{\rm G}}$.
+  \end{itemize}
 \end{breakbox}
 \medskip
 
-First, let us consider step (a).
-If the output equation of Equation \ref{eq:phVI} is expressed as a vector:
-\[
-\mat{
-\bm{I}_1\\
-\vdots \\
-\bm{I}_N
-}
-=
-\sfdiag \left(
-\frac{1}{\bm{j} \Xti }
-\right)
-\left(
-\sfdiag \left(
-e^{\bm{j} \delta_i}
-\right)
-\mat{
-E_1  \\
-\vdots \\
-E_N 
-}
--
-\mat{
-\bm{V}_1\\
-\vdots \\
-\bm{V}_N
-}
-\right)
-\]
-If the current phasor is cancelled using the algebraic equation of the power grid in Equation \ref{eq:ohmY}, and the equation is solved for the voltage phasor, the following is obtained:
-\begin{equation}\label{eq:colVi}
-\mat{
-\bm{V}_1\\
-\vdots \\
-\bm{V}_N
-} =
-\left(
-\sfdiag \left(
-\frac{1}{\bm{j} \Xti }
-\right) + 
-\bm{Y}
-\right)^{-1}
-\sfdiag\left(
-\frac{e^{\bm{j} \delta_i}}{\bm{j} \Xti }
-\right)
-\mat{
-E_1  \\
-\vdots \\
-E_N 
-}
-\end{equation}
-In this manner, voltage phasor $(\bm{V}_i)_{i\in \mathcal{I}_{\rm G}}$ of the bus bars is equivalently expressed by the state variables of generators $(\delta_i,E_i)_{i\in \mathcal{I}_{\rm G}}$.
+First, let us consider step (a). If the output equation of Equation
+\ref{eq:phVI} is expressed as a vector:
 
-Next, let us consider step (b).
-If the voltage phasor of the bus bar is expressed with a polar form:
 \[
-\bm{V}_i = |\bm{V}_i| e^{\bm{j} \angle \bm{V}_i}
+  \mat{
+  \bm{I}_1\\
+  \vdots \\
+  \bm{I}_N
+  }
+  =
+  \sfdiag \left(
+  \frac{1}{\bm{j} \Xti }
+  \right)
+  \left(
+  \sfdiag \left(
+  e^{\bm{j} \delta_i}
+  \right)
+  \mat{
+  E_1  \\
+  \vdots \\
+  E_N 
+  }
+  -
+  \mat{
+  \bm{V}_1\\
+  \vdots \\
+  \bm{V}_N
+  }
+  \right)
 \]
-and the complex conjugate for the whole is taken by multiplying Equation \ref{eq:colVi} with $\sfdiag(\tfrac{e^{- \bm{j} \delta_i} }{ \Xti } )$ from the left, the following is obtained:
-\begin{equation}\label{eq:kronGam}
-\mat{
-\tfrac{|{\bm{V}_1}|}{ \Xtone } e^{\bm{j} (\delta_1 -\angle \bm{V}_1 )} \\
-\vdots \\
-\tfrac{|{\bm{V}_N}|}{ \XtN } e^{\bm{j} (\delta_N -\angle \bm{V}_N )}
-}
-=
-\sfdiag\left(
-e^{\bm{j} \delta_i}
-\right)
-\bm{\itGamma}^{-1}
-\sfdiag\left(
-e^{-\bm{j} \delta_i}
-\right)
-\mat{
-E_1  \\
-\vdots \\
-E_N 
-}
+
+Using the algebraic equation of the power grid expressed by Equation
+\ref{eq:ohmY}, and solving the resulting equation for the voltage phasor, the
+following is obtained:
+
+\begin{equation}\label{eq:colVi}
+  \mat{
+  \bm{V}_1\\
+  \vdots \\
+  \bm{V}_N
+  } =
+  \left(
+  \sfdiag \left(
+  \frac{1}{\bm{j} \Xti }
+  \right) + 
+  \bm{Y}
+  \right)^{-1}
+  \sfdiag\left(
+  \frac{e^{\bm{j} \delta_i}}{\bm{j} \Xti }
+  \right)
+  \mat{
+  E_1  \\
+  \vdots \\
+  E_N 
+  }
 \end{equation}
-where $\bm{\itGamma}\in \mathbb{C}^{N \times N}$ is a complex square matrix defined by:
+
+In this manner, the voltage phasor $(\bm{V}_i)_{i\in \mathcal{I}_{\rm G}}$ of the
+bus bars is equivalently expressed by the state variables of generators
+$(\delta_i,E_i)_{i\in \mathcal{I}_{\rm G}}$. Next, let us consider step (b). If
+the voltage phasor of the bus bar is expressed in the polar form:
+
+\[
+  \bm{V}_i = |\bm{V}_i| e^{\bm{j} \angle \bm{V}_i}
+\]
+
+Then, by multiplying both sides of Equation \ref{eq:colVi} by
+$\sfdiag(\tfrac{e^{- \bm{j} \delta_i} }{ \Xti } )$ and taking the complex
+conjugate, we get:
+
+\begin{equation}\label{eq:kronGam}
+  \mat{
+  \tfrac{|{\bm{V}_1}|}{ \Xtone } e^{\bm{j} (\delta_1 -\angle \bm{V}_1 )} \\
+  \vdots \\
+  \tfrac{|{\bm{V}_N}|}{ \XtN } e^{\bm{j} (\delta_N -\angle \bm{V}_N )}
+  }
+  =
+  \sfdiag\left(
+  e^{\bm{j} \delta_i}
+  \right)
+  \bm{\itGamma}^{-1}
+  \sfdiag\left(
+  e^{-\bm{j} \delta_i}
+  \right)
+  \mat{
+  E_1  \\
+  \vdots \\
+  E_N 
+  }
+\end{equation}
+
+where $\bm{\itGamma}\in \mathbb{C}^{N \times N}$ is a complex square matrix
+defined by:
+
 \begin{equation}\label{eq:defGam}
 \bm{\itGamma}:=
 \sfdiag \left( \Xti \right) 
 -  \bm{j} \sfdiag \left( \Xti \right) \overline{\bm{Y}} \sfdiag \left( \Xti \right)
 \end{equation}
-In Equation \ref{eq:kronGam}, if the $(i,j)$th element of $\bm{\itGamma}^{-1}$ is expressed as $\bm{\gamma}_{ij}^{-1}$, the following expression is obtained:
+
+In Equation \ref{eq:kronGam}, if the $(i,j)$th element of $\bm{\itGamma}^{-1}$
+is expressed as $\bm{\gamma}_{ij}^{-1}$, then:
+
 \[
 \sfdiag\left(
 e^{\bm{j} \delta_i}
@@ -1173,31 +1201,35 @@ e^{-\bm{j} \delta_i}
 \bm{\gamma}_{N1}^{-1} e^{\bm{j}(\delta_N -\delta_1)} & \cdots & \bm{\gamma}_{NN}^{-1} e^{\bm{j}(\delta_N -\delta_N)}
 }
 \]
+
 Thus, the real part and imaginary part of the $(i,j)$th element can be written as:
+
 \begin{equation*}
-\spliteq{
-\real \left[
-\bm{\gamma}_{ij}^{-1} e^{\bm{j}(\delta_i -\delta_j)}
-\right]
-&=
--B_{ij}^{\rm red}
-\sfcos(\delta_i -\delta_j)
--
-G_{ij}^{\rm red}
-\sfsin(\delta_i -\delta_j),
-\\
-\imag \left[
-\bm{\gamma}_{ij}^{-1} e^{\bm{j}(\delta_i -\delta_j)}
-\right]
-&=
--B_{ij}^{\rm red}
-\sfsin(\delta_i -\delta_j)
-+
-G_{ij}^{\rm red}
-\sfcos(\delta_i -\delta_j)
-}
+  \spliteq{
+  \operatorname{Re} \left[
+  \bm{\gamma}_{ij}^{-1} e^{\bm{j}(\delta_i -\delta_j)}
+  \right]
+  &=
+  -B_{ij}^{\rm red}
+  \sfcos(\delta_i -\delta_j)
+  -
+  G_{ij}^{\rm red}
+  \sfsin(\delta_i -\delta_j),
+  \\
+  \operatorname{Im} \left[
+  \bm{\gamma}_{ij}^{-1} e^{\bm{j}(\delta_i -\delta_j)}
+  \right]
+  &=
+  -B_{ij}^{\rm red}
+  \sfsin(\delta_i -\delta_j)
+  +
+  G_{ij}^{\rm red}
+  \sfcos(\delta_i -\delta_j)
+  }
 \end{equation*}
-where reduced conductance and susceptance are defined as:
+
+where the reduced conductance and susceptance matrices are defined as:
+
 \begin{equation}\label{eq:GBij}
 G_{ij}^{\rm red} := 
 \imag \left[
@@ -1207,12 +1239,15 @@ G_{ij}^{\rm red} :=
 B_{ij}^{\rm red} := 
 - \real \left[ \bm{\gamma}_{ij}^{-1}  \right]
 \end{equation}
-Here, a matrix $\bm{Y}^{\rm red}$ of reduced admittance:
+
+In addition, the reduced admittance matrix $\bm{Y}^{\rm red}$ is defined as:
+
 \[
 \bm{Y}_{ij}^{\rm red}:= G_{ij}^{\rm red} + \bm{j} B_{ij}^{\rm red}
 \]
-is called a \textbf{reduced admittance matrix}.
+
 This is equal to defining as follows using the above complex matrix $\bm{\itGamma}^{-1} $:
+
 \begin{equation}\label{eq:Yred}
 \bm{Y}^{\rm red} := - \bm{j} \bm{\itGamma}^{-1} 
 \end{equation}
