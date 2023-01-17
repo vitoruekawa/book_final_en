@@ -1029,14 +1029,14 @@ input-output relationship of the algebraic equation of Equation \ref{eq:ohmY}.
 \noindent \textbf{Differential algebraic equation system}:
 it is a system that described by differential algebraic equations and algebraic
 equations as follows:
-\begin{equation*}
+\begin{equation}
   \begin{aligned}
     \begin{cases}
       \dot{x}_1 &= f_1(x_1,x_2) \\
       0 &= f_2(x_1,x_2)
     \end{cases}
   \end{aligned}
-\end{equation*}
+\end{equation}
 where $x_1$ is the state of the differential equation and $x_2$ is the state of
 the algebraic equation. For example, in a system where generator models of
 Equation (\ref{eq:gendynVI}) are combined with the algebraic equation of the
@@ -1232,12 +1232,12 @@ where the reduced conductance and susceptance matrices are defined as:
 
 \begin{equation}\label{eq:GBij}
 G_{ij}^{\rm red} := 
-\imag \left[
+\operatorname{Im} \left[
 \bm{\gamma}_{ij}^{-1} 
 \right]
 ,\qquad
 B_{ij}^{\rm red} := 
-- \real \left[ \bm{\gamma}_{ij}^{-1}  \right]
+- \operatorname{Re} \left[ \bm{\gamma}_{ij}^{-1}  \right]
 \end{equation}
 
 In addition, the reduced admittance matrix $\bm{Y}^{\rm red}$ is defined as:
@@ -1253,123 +1253,99 @@ $\bm{\itGamma}^{-1} $:
 \bm{Y}^{\rm red} := - \bm{j} \bm{\itGamma}^{-1} 
 \end{equation}
 
-By using this reduced admittance matrix, the term that includes voltage phasor
-variables of the bus bar in a generator model $(|\bm{V}_i|, \angle \bm{V}_i)$
-can be rewritten as:
+Then, Equation \ref{eq:colVi} can be rewritten as:
+
 \begin{equation}\label{eq:Vcossin}
-\spliteq{
-\frac{|{\bm{V}_i}|}{ \Xti } \sfcos (\delta_i -\angle \bm{V}_i ) 
-&=
--\sum_{j=1}^{N}
-E_j \bigl\{
-B_{ij}^{\rm red}
-\sfcos(\delta_i -\delta_j)
-+
-G_{ij}^{\rm red} 
-\sfsin(\delta_i -\delta_j)
-\bigr\},
-\\
-\frac{|{\bm{V}_i}|}{ \Xti } \sfsin (\delta_i -\angle \bm{V}_i ) 
-&=
-- \sum_{j=1}^{N}
-E_j \bigl\{
-B_{ij}^{\rm red}
-\sfsin(\delta_i -\delta_j)
--
-G_{ij}^{\rm red} 
-\sfcos(\delta_i -\delta_j)
-\bigr\}
-}
+  \spliteq{
+    \frac{|{\bm{V}_i}|}{ \Xti } \sfcos (\delta_i -\angle \bm{V}_i ) 
+    &=
+    -\sum_{j=1}^{N}
+    E_j \bigl\{
+    B_{ij}^{\rm red}
+    \sfcos(\delta_i -\delta_j)
+    +
+    G_{ij}^{\rm red} 
+    \sfsin(\delta_i -\delta_j)
+    \bigr\},
+    \\
+    \frac{|{\bm{V}_i}|}{ \Xti } \sfsin (\delta_i -\angle \bm{V}_i ) 
+    &=
+    - \sum_{j=1}^{N}
+    E_j \bigl\{
+    B_{ij}^{\rm red}
+    \sfsin(\delta_i -\delta_j)
+    -
+    G_{ij}^{\rm red} 
+    \sfcos(\delta_i -\delta_j)
+    \bigr\}
+  }
 \end{equation}
-Please note that the trigonometric function term related to the voltage phasor of the bus bar on the left side is expressed by the rotor argument difference $\delta_i -\delta_j$ and internal voltage $E_i$ of the generators on the right side.
-Therefore, a differential algebraic equation model of an electrical power system, in which the generator model of Equation (\ref{eq:gendynVI}) is combined by the simultaneous equation of Equation \ref{eq:ohmY}, can be equivalently expressed as a simultaneous ordinary differential equation system related to all $i \in \mathcal{I}_{\rm G}$.
+
+Please note that this equation associates the voltage phasor with the variation
+of the rotor angle $\delta_i -\delta_j$ and internal voltage $E_i$. Therefore, a
+differential algebraic equation model of an electrical power system, in which
+the generator model of Equation (\ref{eq:gendynVI}) is combined by the
+simultaneous equation of Equation \ref{eq:ohmY}, can be equivalently expressed
+as a simultaneous ordinary differential equation system related to all
+$i \in \mathcal{I}_{\rm G}$.
 \begin{equation}\label{eq:krondyn}
-\simode{
-\dot{\delta}_i&= \omega_0  \Delta \omega_i\\
-M_i   \Delta \dot{\omega}_i&= %\textstyle
- - D_i \Delta\omega_i   
- - f_i \left( \delta,E \right)
-+P_{{\rm mech}i}
-\\
-\taudi \dot{E}_i & = %\textstyle
- -  \tfrac{ \Xsi }{\Xti }  E_i  + \left(
-\Xsi - \Xti
-\right)
-g_i \left( \delta,E \right)
-+ V_{{\rm field}i}
-}
-\qquad
-i \in \mathcal{I}_{\rm G}
+  \simode{
+    \dot{\delta}_i&= \omega_0  \Delta \omega_i\\
+    M_i   \Delta \dot{\omega}_i&= %\textstyle
+    - D_i \Delta\omega_i   
+    - f_i \left( \delta,E \right)
+    +P_{{\rm mech}i}
+    \\
+    \taudi \dot{E}_i & = %\textstyle
+    -  \tfrac{ \Xsi }{\Xti }  E_i  + \left(
+    \Xsi - \Xti
+    \right)
+    g_i \left( \delta,E \right)
+    + V_{{\rm field}i}
+  }
+  \qquad
+  i \in \mathcal{I}_{\rm G}
 \end{equation}
-However, $\delta$ and $E$ are vectors with $\delta_i$ and $E_i$ in columns, expressing a nonlinear term that expresses interaction between generators. 
+
+However, $\delta$ and $E$ are column vectors corresponding to nonlinear
+interactions between generators. Defining $\delta_{ij}:= \delta_i - \delta_j$:
+
 \begin{equation}\label{eq:eigidef}
-\spliteq{
-f_i \left( \delta,E \right) &:=
--E_i \sum_{j=1}^{N}
- E_j 
-\bigl(
-B_{ij}^{\rm red}
-\sfsin \delta_{ij}
--
-G_{ij}^{\rm red}
-\sfcos \delta_{ij}
-\bigr) \\
-g_i \left( \delta,E \right) &:=
--
-\sum_{j=1}^{N}
-E_j \bigl(
-B_{ij}^{\rm red}
-\sfcos \delta_{ij}
-+
-G_{ij}^{\rm red}
-\sfsin \delta_{ij}
-\bigr)
-}
+  \spliteq{
+    f_i \left( \delta,E \right) &:=
+    -E_i \sum_{j=1}^{N}
+    E_j 
+    \bigl(
+    B_{ij}^{\rm red}
+    \sfsin \delta_{ij}
+    -
+    G_{ij}^{\rm red}
+    \sfcos \delta_{ij}
+    \bigr) \\
+    g_i \left( \delta,E \right) &:=
+    -
+    \sum_{j=1}^{N}
+    E_j \bigl(
+    B_{ij}^{\rm red}
+    \sfcos \delta_{ij}
+    +
+    G_{ij}^{\rm red}
+    \sfsin \delta_{ij}
+    \bigr)
+  }
 \end{equation}
-It was defined as $\delta_{ij}:= \delta_i - \delta_j$.
 
-
-
-%
-%\begin{equation}\label{eq:krondyn}
-%\simode{
-%\dot{\delta}_i&= \omega_0  \Delta \omega_i\\
-%M_i   \Delta \dot{\omega}_i&= %\textstyle
-% - D_i \Delta\omega_i   + E_i \sum_{j=1}^{N}
-% E_j 
-%\bigl(
-%B_{ij}^{\rm red}
-%\sfsin \delta_{ij}
-%-
-%G_{ij}^{\rm red} 
-%\sfcos \delta_{ij}
-%\bigr)
-%+P_{{\rm mech}i}
-%\\
-%\tau_{{\rm d}i} \dot{E}_i & = %\textstyle
-% -  \frac{X_{{\rm d}i}}{ X_{{\rm q}i} }  E_i \\
-%& \hspace{1em} - \left(
-%X_{{\rm d}i} - X_{{\rm q}i}
-%\right)
-%\sum_{j=1}^{N}
-%E_j \bigl(
-%B_{ij}^{\rm red} 
-%\sfcos \delta_{ij}
-%+
-%G_{ij}^{\rm red} 
-%\sfsin \delta_{ij}
-%\bigr) 
-%+ V_{{\rm field}i}
-%}
-%\end{equation}
-%と等価に表現できる。
-%ただし, $\delta_{ij}:=\delta_i - \delta_j$と定義した。
-
-Based on the expression of the ordinary differential equation system of Equation \ref{eq:krondyn}, only the relative difference of rotor argument $\delta_i$ of a generator and rotor argument $(\delta_j)_{j\in \mathcal{I}_{\rm G}\setminus \{i\}} $ of all the other generators has an impact on the behavior of generators $i$.
-Furthermore, by comparing with Equation \ref{eq:gendynVIst}, we can see that function $f_i(\delta,E)$ of Equation \ref{eq:krondyn} expresses active power $P_i$ output by the generators.
-If the real part of the admittance matrix $\bm{Y}$ is 0; in other words, if the conductance of all transmission lines is 0 (equivalent resistance is 0), reduced conductance $G_{ij}^{\rm red} $ also becomes 0 for all $(i,j)$.
-As will be discussed in Section \ref{sec:pfcal}, this corresponds to when there is no transmission loss of active power in the power grid.
-
+Based on Equation \ref{eq:krondyn}, the behavior of a generator $i$ is only
+impacted by the relative difference of rotor argument of the remaining
+generators $(\delta_j)_{j\in \mathcal{I}_{\rm G}\setminus \{i\}}$ . Furthermore,
+by comparing with Equation \ref{eq:gendynIVst}, we can see that $f_i(\delta,E)$
+of Equation \ref{eq:krondyn} corresponds to the active power $P_i$ output by the
+generators. If the real part of the admittance matrix $\bm{Y}$ is zero, in other
+words, if the conductance of all transmission lines is zero (equivalent
+resistance equal to zero), the reduced conductance reduced conductance
+$G_{ij}^{\rm red} $ also becomes 0 for all $(i,j)$. As it will be discussed in
+Section \ref{sec:pfcal}, this is equivalent to a lossless transmission of active
+power in the power grid.
 
 \begin{figure}[t]
 \centering
@@ -1381,22 +1357,21 @@ As will be discussed in Section \ref{sec:pfcal}, this corresponds to when there 
 \end{figure}
 
 
-In addition, though the admittance matrix $\bm{Y}$ is a sparce matrix that reflects the graph structure of the power grid, the reduced admittance matrix $\bm{Y}^{\rm red}$ in Equation \ref{eq:krondyn} is usually not a sparce matrix.
-%\footnote{
-%要素の多くに0をもつ行列を\textbf{疎行列}（sparse matrix）と呼ぶ。
-%逆に, ほとんどの要素に0でない値をもつ行列を\textbf{密行列}（dense matrix）と呼ぶ。
-%ただし, どの程度の要素が0であれば疎行列と呼ぶかは文脈に依る。
-%対角行列でない疎行列の逆行列は, 一般に密行列となる。
-%}。
-Therefore, please note that an ordinary differential equation system of Equation \ref{eq:krondyn} has a combined structure in which the internal state of all generators densely interact (\ref{fig:krongen}).
-Let us confirm this fact with numerical examples along with the behavior of the electrical power system model. 
+In addition, although the admittance matrix $\bm{Y}$ is a sparse matrix that
+reflects the graph structure of the power grid, the reduced admittance matrix
+$\bm{Y}^{\rm red}$ in Equation \ref{eq:krondyn} is usually not a sparse matrix.
+Therefore, note that the system of ordinary differential equations in Equation
+\ref{eq:krondyn} has a coupled structure in which the internal states of all
+generators interact closely.  Let's confirm this fact with numerical examples
+along with the behavior of the electrical power system model.
 
 \begin{COLUMN}
 \noindent \textbf{Sparse and dense matrices}:
-A matrix with many 0 elements is called a \textbf{sparse matrix}.
-In contrast, a matrix with almost no 0 elements is called a \textbf{dense matrix}.
-However, how many 0 elements are necessary to call a matrix sparse matrix depends on the context.
-The inverse matrix of a sparse matrix that is not a diagonal matrix is usually a dense matrix.
+A matrix with many 0 elements is called a \textbf{sparse matrix}. In contrast, a
+matrix with almost no 0 elements is called a \textbf{dense matrix}. However, how
+many 0 elements are necessary to call a matrix sparse matrix depends on the
+context. The inverse matrix of a sparse matrix that is not diagonal is usually a
+dense matrix.
 \end{COLUMN}
 
 
@@ -1420,7 +1395,7 @@ $i$ &  $M_i$~[s] & $D_i$~[pu] & $\tau_i$~[s] & $\Xsi$~[pu] & $\Xti$~[pu] \\
 
 \begin{table}[h]
 \medskip
- \caption{\textbf{Steady-state values of external inputs and internal conditions of the generator}}
+ \caption{\textbf{Steady-state values of external inputs and internal states of the generator}}
  \label{table:gensteady}
  \centering
   \begin{tabular}{ccccccccccccccccc}
@@ -1435,127 +1410,59 @@ $i$ &  $P_{{\rm mech}i}^{\star}$~[pu] & $V_{{\rm filed}i}^{\star}$~[pu] & $\delt
 \end{table}
 
 
-\begin{example}{\textbf{Behavior of an electrical power system model where a generator bus is reduced}}\label{ex:Kronode}
-Let us consider an electrical power system model consisting of three bus bars as discussed in Example \ref{ex:derY}. 
-Here, the one-axis generator model that was explained in Section \ref{sec:genfund} is connected to each bus bar. 
-In other words, the electrical power system model can be drawn as shown in the left image in \ref{fig:krongen}. 
-For the physical constant of the generators, values from \ref{table:genparams} are used. 
-Since the system frequency is set to 60 [Hz], the value of $\omega_0$ is $120\pi$.
+\begin{example}{\textbf{Behavior of an electrical power system model with a
+reduced generator bus}}\label{ex:Kronode}
 
+Let us consider an electrical power system model consisting of three bus bars as
+discussed in Example \ref{ex:derY}. Moreover, a synchronous generator is
+connected to each bus bar and modeled as the one-axis generator model discussed
+in Section \ref{sec:genfund}. Then, the electrical power system model can be
+draw as the left picture in Figure \ref{fig:krongen}. The values of the physical
+constants of the generators are chosen as in \ref{table:genparams}. Since the
+system frequency is set to 60 [Hz], the value of $\omega_0$ is $120\pi$.
 
 The admittance of the two transmission lines is set as:
 \begin{equation}\label{eq:defadpara}
-\bm{y}_{12} = 1.3652 - \bm{j} 11.6041, \qquad
-\bm{y}_{23} = 1.9422 - \bm{j} 10.5107
+  \bm{y}_{12} = 1.3652 - \bm{j} 11.6041, \qquad
+  \bm{y}_{23} = 1.9422 - \bm{j} 10.5107
 \end{equation}
-In this manner, the admittance matrix of the power grid in Equation \ref{eq:exY} is obtained.
-In addition, if we calculate the real part (reduced conductance matrix) and the imaginary part (reduced susceptance matrix) of the reduced admittance matrix $\bm{Y}^{\rm red}$ of Equation \ref{eq:Yred}, 
-the following is obtained:
+
+In this manner, the admittance matrix of the power grid in Equation \ref{eq:exY}
+can be obtained. Then, the real and imaginary parts of the reduced admittance
+matrix $\bm{Y}^{\rm red}$ can be calculated according to Equation \ref{eq:Yred}.
 
 \begin{equation*}
-\spliteq{
-G^{\rm red}&=
-\mat{
-0.0073  & 0.0005 & -0.0079  \\
-0.0005  & 0.0041 & -0.0046  \\
--0.0079 & -0.0046 & 0.0125 
-}, \\
-B^{\rm red}&=
-\mat{
-- 0.3716 & - 0.3167 & -0.3800  \\
-- 0.3167 & - 0.3550 & - 0.4260  \\
-- 0.3800 & - 0.4260 & - 0.6933
-}
-}
+  \spliteq{
+    G^{\rm red}&=
+    \mat{
+    0.0073  & 0.0005 & -0.0079  \\
+    0.0005  & 0.0041 & -0.0046  \\
+    -0.0079 & -0.0046 & 0.0125 
+    }, \\
+    B^{\rm red}&=
+    \mat{
+    - 0.3716 & - 0.3167 & -0.3800  \\
+    - 0.3167 & - 0.3550 & - 0.4260  \\
+    - 0.3800 & - 0.4260 & - 0.6933
+    }
+  }
 \end{equation*}
-%\[
-%\bm{Y}^{\rm red}=
-%\mat{
-%0.0073 - \bm{j} 0.3716 & 0.0005 - \bm{j} 0.3167 & -0.0079 -  \bm{j} 0.3800  \\
-%0.0005 - \bm{j} 0.3167 & 0.0041 - \bm{j} 0.3550 & -0.0046 -  \bm{j} 0.4260  \\
-%-0.0079 -  \bm{j} 0.3800 & -0.0046 -  \bm{j} 0.4260 & 0.0125 -  \bm{j} 0.6933
-%}
-%\]
-%\[
-%\bm{Y}^{\rm red}=
-%\mat{
-%7.3\times 10^{-3} - \bm{j} 0.3716 & 0.5\times 10^{-3} - \bm{j} 0.3167 & -7.9\times 10^{-3} -  \bm{j} 0.3800  \\
-%0.5\times 10^{-3} - \bm{j} 0.3167 & 4.1\times 10^{-3} - \bm{j} 0.3550 & -4.6\times 10^{-3} -  \bm{j} 0.4260  \\
-%-7.9\times 10^{-3} -  \bm{j} 0.3800 & -4.6\times 10^{-3} -  \bm{j} 0.4260 & 12.5\times 10^{-3} -  \bm{j} 0.6933
-%}
-%\]
-It shows that both are dense matrices.
-This dense structure corresponds to the right image of \ref{fig:krongen}.
 
+Therefore, both reduced conductance and susceptance matrices are dense. This
+dense structure corresponds to the right image of \ref{fig:krongen}.
 
+Next, let us calculate the time response of an ordinary differential equation
+system model of Equation \ref{eq:krondyn}.  Below, we obtain the initial
+response when the external input, mechanical torque and field voltage are fixed
+as constant. In this example, we use the steady state calculation method, which
+will be discussed in Section \ref{sec:powflow}, and assume that the external
+input of the electrical power system model and steady value of the internal
+state have been obtained in advance.  Specifically, the external input,
+mechanical torque and field voltage are set to constants in the first and second
+columns of \ref{table:gensteady}.  In this case, the steady value of the
+internal state of the electrical power system are values in the third to fifth
+columns in \ref{table:gensteady}.
 
-Next, let us calculate the time response of an ordinary differential equation system model of Equation \ref{eq:krondyn}.
-Below, we obtain the initial response when the external input, mechanical torque and field voltage are fixed as constant.
-In this example, we use the steady state calculation method, which will be discussed in Section \ref{sec:powflow},
-and assume that the external input of the electrical power system model and steady value of the internal state have been obtained in advance.
-Specifically, the external input, mechanical torque and field voltage are set to constants in the first and second columns of \ref{table:gensteady}.
-In this case, the steady value of the internal state of the electrical power system are values in the third to fifth columns in \ref{table:gensteady}.
-%\[
-%\mat{
-%P_{{\rm mech}1}^{\star} \\
-%P_{{\rm mech}2}^{\star} \\
-%P_{{\rm mech}3}^{\star} 
-%}
-%=
-%\mat{
-%-0.5623\\
-%0.8832\\
-%-0.3160
-%}, \qquad
-%\mat{
-%V_{{\rm filed}1}^{\star} \\
-%V_{{\rm filed}2}^{\star} \\
-%V_{{\rm filed}3}^{\star} 
-%}
-%=
-%\mat{
-%1.5132\\
-%2.2216\\
-%0.9198
-%}
-%\]
-%で与えられる場合には, 電力系統モデルの内部状態の定常値が
-%\[
-%\mat{
-%\delta_1^{\star} \\
-%\delta_2^{\star} \\
-%\delta_3^{\star} 
-%}
-%=
-%\mat{
-%0.4656 \\
-%1.0903 \\
-%0.6067
-%},\qquad
-%\mat{
-%\Delta \omega_1^{\star} \\
-%\Delta \omega_2^{\star} \\
-%\Delta \omega_3^{\star} 
-%}
-%=
-%\mat{
-%0 \\
-%0 \\
-%0
-%},\qquad
-%\mat{
-%E^{\star}_1 \\
-%E^{\star}_2 \\
-%E^{\star}_3 
-%}
-%=
-%\mat{
-%1.4363 \\
-%1.8095 \\
-%1.1030
-%}
-%\]
-%となることを前提にする。
 These steady values are one of the solutions that satisfy simultaneous equations:
 \begin{equation*}
 \simode{
