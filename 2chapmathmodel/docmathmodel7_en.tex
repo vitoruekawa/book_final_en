@@ -1029,14 +1029,14 @@ input-output relationship of the algebraic equation of Equation \ref{eq:ohmY}.
 \noindent \textbf{Differential algebraic equation system}:
 it is a system that described by differential algebraic equations and algebraic
 equations as follows:
-\begin{equation}
+\begin{equation*}
   \begin{aligned}
     \begin{cases}
       \dot{x}_1 &= f_1(x_1,x_2) \\
       0 &= f_2(x_1,x_2)
     \end{cases}
   \end{aligned}
-\end{equation}
+\end{equation*}
 where $x_1$ is the state of the differential equation and $x_2$ is the state of
 the algebraic equation. For example, in a system where generator models of
 Equation (\ref{eq:gendynVI}) are combined with the algebraic equation of the
@@ -1451,129 +1451,145 @@ matrix $\bm{Y}^{\rm red}$ can be calculated according to Equation \ref{eq:Yred}.
 Therefore, both reduced conductance and susceptance matrices are dense. This
 dense structure corresponds to the right image of \ref{fig:krongen}.
 
-Next, let us calculate the time response of an ordinary differential equation
-system model of Equation \ref{eq:krondyn}.  Below, we obtain the initial
-response when the external input, mechanical torque and field voltage are fixed
-as constant. In this example, we use the steady state calculation method, which
-will be discussed in Section \ref{sec:powflow}, and assume that the external
-input of the electrical power system model and steady value of the internal
-state have been obtained in advance.  Specifically, the external input,
-mechanical torque and field voltage are set to constants in the first and second
-columns of \ref{table:gensteady}.  In this case, the steady value of the
-internal state of the electrical power system are values in the third to fifth
-columns in \ref{table:gensteady}.
+Next, let us calculate the time response of the ordinary differential equation
+system model of Equation \ref{eq:krondyn}. In the following, the initial value
+response is obtained when the mechanical power and the magnetic field, which are
+external inputs, are fixed to constants.  In this example, we assume that the
+steady-state values of the external inputs and internal states of the power
+system model are obtained in advance using the steady-state calculation method
+that will be described in Section \ref{sec:powerflow}.  Specifically, the input
+mechanical power and magnetic field are set to the constant values shown in the
+first and second columns of Table \ref{table:gensteady}. In this case, the
+steady-state values of the internal states of the power system are given in
+columns 3 to 5 of Table \ref{table:gensteady}.
 
-These steady values are one of the solutions that satisfy simultaneous equations:
+These steady values are one of the solutions that satisfy the following
+simultaneous equations:
 \begin{equation*}
-\simode{
-0 &= %\textstyle
- - f_i \left( \delta^{\star},E^{\star} \right)
-+P_{{\rm mech}i}^{\star}
-\\
-0 & = %\textstyle
- -  \tfrac{ \Xsi }{\Xti }  E_i^{\star}  + \left(
-\Xsi - \Xti
-\right)
-g_i \left( \delta^{\star},E^{\star} \right)
-+ V_{{\rm field}i}^{\star}
-}
-\qquad
- i \in \{1,2,3\}
+  \simode{
+    0 &= %\textstyle
+    - f_i \left( \delta^{\star},E^{\star} \right)
+    +P_{{\rm mech}i}^{\star}
+    \\
+    0 & = %\textstyle
+    -  \tfrac{ \Xsi }{\Xti }  E_i^{\star}  + \left(
+    \Xsi - \Xti
+    \right)
+    g_i \left( \delta^{\star},E^{\star} \right)
+    + V_{{\rm field}i}^{\star}
+  }
+  \qquad
+  i \in \{1,2,3\}
 \end{equation*}
-where $\delta^{\star}$ and $E^{\star}$ are vectors with $\delta_i^{\star}$ and $E_i^{\star}$.
-Functions $f_i$ and $g_i$ are defined by Equation \ref{eq:figidef}.
+where $\delta^{\star}$ and $E^{\star}$ are vectors composed by
+$\delta_i^{\star}$ and $E_i^{\star}$ and the functions $f_i$ and $g_i$ are
+defined by Equation \ref{eq:eigidef}.
 
+First, let us consider a situation in which the steady-state value is perturbed
+and set as initial value. In other words:
 
-First, let us consider a situation where the steady value is perturbed to set the initial value.
-Specifically:
 \begin{equation}\label{eq:exdelE0}
-\mat{
-\delta_1(0) \\
-\delta_2(0) \\
-\delta_3(0) 
-}
- =
-\mat{
-\delta_1^{\star} + \tfrac{\pi}{6} \\
-\delta_2^{\star} \\
-\delta_3^{\star} 
-},\qquad
-%\mat{
-%\Delta \omega_1(0) \\
-%\Delta \omega_2(0) \\
-%\Delta \omega_3(0) 
-%}
-%=
-%\mat{
-%\Delta \omega_1^{\star} \\
-%\Delta \omega_2^{\star} \\
-%\Delta \omega_3^{\star} 
-%}, \\
-\mat{
-E_1(0) \\
-E_2(0) \\
-E_3 (0)
-}
- =
-\mat{
-E^{\star}_1 +0.1 \\
-E^{\star}_2 \\
-E^{\star}_3 
-}
+  \mat{
+    \delta_1(0) \\
+    \delta_2(0) \\
+    \delta_3(0) 
+  }
+  =
+  \mat{
+    \delta_1^{\star} + \tfrac{\pi}{6} \\
+    \delta_2^{\star} \\
+    \delta_3^{\star} 
+  },\qquad
+  \mat{
+    E_1(0) \\
+    E_2(0) \\
+    E_3 (0)
+  }
+  =
+  \mat{
+    E^{\star}_1 +0.1 \\
+    E^{\star}_2 \\
+    E^{\star}_3 
+  }
 \end{equation}
-where the initial value of the frequency deviation is 0. The time response of the electrical power system model at this time is shown in \ref{fig:Kron0}.
-This figure shows that, after frequency deviation and rotor argument were perturbed for about 15 seconds, they asymptotically converge to the original steady state.
-However, since only the relative difference among generators is meaningful in the rotor argument, the convergence value of the rotor argument shifts by a constant from the original steady value.
-In other words, for a certain constant $c_0$:
-\[
-\lim_{t\rightarrow \infty} \delta_i(t) = \delta_i^{\star} +c_0,\qquad
-\forall i \in \{1,2,3\}
-\]
-For any value of $c_0$, the steady value is essentially equivalent.
-The voltage phasor of the bus bar shown in \ref{fig:Kron0} can be calculated independently of the internal state of the generators using the relationship in Equation \ref{eq:colVi}.
-Similarly, the active and reactive power can be calculated independently using Equation \ref{eq:PiQis2}.
-Furthermore, since the system frequency is set to 60 [Hz], $5\times 10^{-3}$~[pu] of the frequency deviation is equal to 0.3 [Hz].
+where the initial value of the frequency deviation is 0. Then, the time response of
+the electrical power system model is shown in \ref{fig:Kron0}.
 
-Next, let us consider a case wherein the value of the external input is perturbed.
-Specifically, the mechanical torque of generator 1 is perturbed:
+From this figure, it can be seen that after the angular frequency deviation and
+rotor deflection angle oscillate for about 15 seconds, they asymptotically
+converge to the original steady state. However, since the behavior of the rotor
+angle is only affected by the relative difference among generators, the
+convergence value of the rotor angle is shifted from the original steady state
+value by a constant. In other words, for a certain constant $c_0$:
+
 \[
-\mat{
-P_{{\rm mech}1}(t) \\
-P_{{\rm mech}2}(t) \\
-P_{{\rm mech}3}(t) 
-}=
-\mat{
-P_{{\rm mech}1}^{\star} +0.05\\
-P_{{\rm mech}2}^{\star} \\
-P_{{\rm mech}3}^{\star} 
-}
+  \lim_{t\rightarrow \infty} \delta_i(t) = \delta_i^{\star} +c_0,\qquad
+  \forall i \in \{1,2,3\}
 \]
-\ref{fig:KronP} shows the time response of the electrical power system model under this condition.
-The initial value is set to be the same as the value in Equation \ref{eq:exdelE0}.
-The phase of the rotor argument and the voltage phasor of the bus bar voltage phasor express the remainder when divided by $2\pi$.
-In this case, the frequency deviation does not become 0 under a steady state, and the rotor argument where it has been integrated continues to change constantly.
-\ref{fig:KronV} shows the time response of the electrical power system model when field voltage of generator 1 is similarly perturbed:
+
+For any value of $c_0$, the steady value is essentially equivalent. The voltage
+phasor of the bus bar shown in Figure \ref{fig:Kron0} can be calculated
+independently of the internal state of the generators by using the Equation
+\ref{eq:colVi}. Similarly, the active and reactive power can be calculated
+independently using Equation \ref{eq:PiQis2}. Furthermore, since the frequency
+deviation is equal to $5\times 10^{-3}$~[pu] times the system frequency, it is
+equal to 0.3 [Hz]. 
+
+Next, let us consider a case where the value of an external input is perturbed.
+Specifically, let us consider a perturbation in the mechanical power of
+generator 1.
+
 \[
-\mat{
-V_{{\rm filed}1}(t) \\
-V_{{\rm filed}2}(t) \\
-V_{{\rm filed}3}(t) 
-}=
-\mat{
-V_{{\rm filed}1}^{\star} +0.5 \\
-V_{{\rm filed}2}^{\star} \\
-V_{{\rm filed}3}^{\star} 
-}
+  \mat{
+    P_{{\rm mech}1}(t) \\
+    P_{{\rm mech}2}(t) \\
+    P_{{\rm mech}3}(t) 
+  }=
+  \mat{
+    P_{{\rm mech}1}^{\star} +0.05\\
+    P_{{\rm mech}2}^{\star} \\
+    P_{{\rm mech}3}^{\star} 
+  }
 \]
-In this situation as well, the frequency deviation in a steady state does not become 0.
-As such, to calculate the time response of an electrical power system model, not only must the initial value be set to the appropriate values, but the external inputs, mechanical torque and field voltage as well.
+
+Figure \ref{fig:KronP} shows the time response of the electrical power system
+model under this condition. The initial value is set to be the same as in
+Equation \ref{eq:exdelE0}. In addition, the phase of the rotor angle and the bus
+voltage phasor are the remainder of the division by $\pi$. In this case, it can
+be seen that the angular frequency deviation does not become 0 in the steady
+state, and the integral of the rotor angle changes constantly.  Figure
+\ref{fig:KronV} shows the time response of the electrical power system model
+when field voltage of generator 1 is similarly perturbed:
+
+\[
+  \mat{
+    V_{{\rm filed}1}(t) \\
+    V_{{\rm filed}2}(t) \\
+    V_{{\rm filed}3}(t) 
+  }=
+  \mat{
+    V_{{\rm filed}1}^{\star} +0.5 \\
+    V_{{\rm filed}2}^{\star} \\
+    V_{{\rm filed}3}^{\star} 
+  }
+\]
+
+Similarly, in this situation the frequency deviation in a steady state does not
+become 0. Therefore, to calculate the time response of an electrical power
+system model, not only the initial values, but also the external inputs, such as
+mechanical power and field voltage, must be set to appropriate values.
 \end{example}
 
 
-Since Equation \ref{eq:krondyn} is an ordinary differential equation system model, by using a differential equation solver, which is a standard add-on in MATLAB, its behavior can be numerically simulated.
-However, as shown in example \ref{ex:Kronode}, unless the value of the mechanical torque and the field voltage are set appropriately, the frequency deviation of each generator under a steady state does not become 0, and the rotor argument constantly deviates from the reference coordinates.
-Thus, to perform a numerical simulation that is realistically meaningful, a process to calculate valid equilibrium points and initial values is necessary.
-These details will be explained in Chapter \ref{chap:numcal}.
+Since Equation \ref{eq:krondyn} is an ordinary differential equation system
+model, it is possible to numerically simulate its behavior by using differential
+equation solvers in MATLAB. However, as shown in Example \ref{ex:Kronode},
+unless the value of the mechanical power and the field voltage are set
+appropriately, the frequency deviation of each generator does not converge to 0
+in the steady state, and the rotor argument constantly deviates from the
+reference. Thus, to perform a numerical simulation that is realistically
+meaningful, a method to calculate valid equilibrium points and initial values is
+necessary. These details will be explained in Chapter \ref{chap:numcal}.
 
 \begin{figure}[t]
   \centering
@@ -1604,7 +1620,7 @@ These details will be explained in Chapter \ref{chap:numcal}.
   \end{minipage}
   }
   \medskip
-  \caption{\textbf{Time response when perturbation is added to the initial value}
+  \caption{\textbf{System time response for perturbated initial value}
   \\  \centering((Blue: Bus 1, Black: Bus 2, Red: Bus 3))}
   \label{fig:Kron0}
 \medskip
@@ -1639,7 +1655,7 @@ These details will be explained in Chapter \ref{chap:numcal}.
   \end{minipage}
   }
   \medskip
-  \caption{\textbf{Time response when perturbation is added to machine input}
+  \caption{\textbf{System time response when perturbation is applied to the mechanical power}
   \\  \centering(Blue: Bus 1, Black: Bus 2, Red: Bus 3)}
   \label{fig:KronP}
 \medskip
@@ -1674,7 +1690,7 @@ These details will be explained in Chapter \ref{chap:numcal}.
   \end{minipage}
   }
   \medskip
-  \caption{\textbf{Time response when perturbation is applied to the field input}
+  \caption{\textbf{System time response when perturbation is applied to the field voltage}
   \\  \centering(Blue: Bus 1, Black: Bus 2, Red: Bus 3)}
   \label{fig:KronV}
 \medskip
@@ -1682,59 +1698,72 @@ These details will be explained in Chapter \ref{chap:numcal}.
 
 \subsection{Derivation of the Kuramoto-type oscillator model}\label{sec:kuramod}
 
-By applying Kron reduction of generator bus to the classical model explained in Section \ref{sec:genfund}, the Kuramoto-type oscillator model can be derived.
-%\footnote{
-%蔵本モデルは, 主に物理学の分野で解析されている非線形振動子の同期現象を記述する数理モデルであり, 幅広い応用をもつことが知られている\cite{kuramoto1975self,kuramoto2003chemical}。
-%蔵本モデルを2次の非線形振動子系に拡張したモデルは, 電力系統の同期現象の解析にも応用されている\cite{dorfler2012synchronization,dorfler2013synchronization,nagata2014node,nishikawa2015comparative}。
-%}
-%。
-Specifically, if we assume that the value of synchronous reactance $\Xsi$ and transient reactance $\Xti$ are equal, and field voltage $V_{{\rm field}i}$ is constant at $V_i^{\star}$, the internal voltage $E_i$ becomes $V_i^{\star}$ and is constant.
-Therefore, the electrical power system model in which a generator is connected to each bus bar is expressed with a differential equation system model. 
+By applying Kron reduction of generator bus to the classical model explained in
+Section \ref{sec:genfund}, a Kuramoto-type oscillator model can be derived.
+
+Specifically, if we assume that the value of synchronous and transient
+reactances, $\Xsi$ and $\Xti$, are equal, and that the field voltage $V_{{\rm
+field}i}$ is constant and equal to $V_i^{\star}$, the internal voltage $E_i$ is
+constant and equal to $V_i^{\star}$. Therefore, the model of an electrical power
+system with synchronous generators connected to each bus bar is expressed by the
+following ordinary differential equation.
+
 \begin{equation}\label{eq:clamod}
-\simode{
-\dot{\delta}_i&= \omega_0  \Delta \omega_i\\
-M_i   \Delta \dot{\omega}_i&= 
- - D_i \Delta\omega_i - 
-\hat{f}_i (\delta)
-+P_{{\rm mech}i} 
-}\qquad
-i\in \mathcal{I}_{\rm G}
+  \simode{
+    \dot{\delta}_i&= \omega_0  \Delta \omega_i\\
+    M_i   \Delta \dot{\omega}_i&= 
+    - D_i \Delta\omega_i - 
+    \hat{f}_i (\delta)
+    +P_{{\rm mech}i} 
+  }\qquad
+  i\in \mathcal{I}_{\rm G}
 \end{equation}
+
 However, the nonlinear term is given by:
+
 \[
-\hat{f}_i (\delta):=
-- V_i^{\star} \sum_{j=1}^{N}
-V_j^{\star}\left(
-B_{ij}^{\rm red}   \sfsin \delta_{ij}
--
-G_{ij}^{\rm red}   \sfcos \delta_{ij}
-\right)
+  \hat{f}_i (\delta):=
+  - V_i^{\star} \sum_{j=1}^{N}
+  V_j^{\star}\left(
+  B_{ij}^{\rm red}   \sfsin \delta_{ij}
+  -
+  G_{ij}^{\rm red}   \sfcos \delta_{ij}
+  \right)
 \]
-Function $\hat{f}_i (\delta)$ expresses the active power of a generator $i$.
-An electrical power system model, where it is assumed that the conductance of a transmission line is 0; in other words, $G_{ij}^{\rm red}$ is 0, is occasionally used. 
+
+The function $\hat{f}_i (\delta)$ expresses the active power of a generator $i$.
+An electrical power system mode whose transmission lines have zero conductance,
+that is $G_{ij}^{\rm red}=0$, is occasionally used.
+
 
 \begin{COLUMN}
-\red{Translated with DeepL}
 
 \noindent\textbf{Kuramoto model}:
 
-The following differential equation system with $N$ oscillators moving on the circumference
+The following differential equation system comprising of $N$ oscillators moving
+on the circumference is called \textbf{Kuramoto model}.
+
 \[
-\dot{\theta}_i = \omega_i - \frac{K}{N} \sum_{j=1}^N \sfsin (\theta_i - \theta_j),
-\qquad
-i=1,\ldots,N
+  \dot{\theta}_i = \omega_i - \frac{K}{N} \sum_{j=1}^N \sfsin (\theta_i - \theta_j),
+  \qquad
+  i=1,\ldots,N
 \]
-is called \textbf{Kuramoto model}. 
-However, $\omega_i$ is a constant representing the intrinsic angular velocity of the oscillator $i$, and $K$ is a constant representing the bond strength. 
-In general, the angular velocity of the oscillator $\dot{\theta}_1$, when the bond strength $ K $ is large enough compared to the magnitude of the inhomogeneity of the intrinsic angular velocity $\omega_1,\ldots,\omega_N$. It has the property that $\dot{\theta}_1,\ldots,\dot{\theta}_N$ are asymptotically synchronized.
 
+In this context, $\omega_i$ is a constant representing the intrinsic angular
+velocity of the oscillator $i$, and $K$ is a constant representing the coupling
+strength. In general, when the coupling strength $K$ is sufficiently large
+compared to the magnitude of the inhomogeneity of the intrinsic angular speeds
+$\omega_1,\ldots,\omega_N$, the angular speeds of the oscillator,
+$\dot{\theta}_1,\ldots,\dot{\theta}_N$, are asymptotically synchronized.
 
-The Kuramoto model has been analyzed mainly in the field of physics as a mathematical model describing synchronization phenomena of nonlinear oscillators, and is known to have a wide range of applications \cite{kuramoto1975self,kuramoto2003chemical}.
-The model extended to the second-order nonlinear oscillator system with inertia is also applied to the analysis of the synchronization phenomenon of the power system \cite{dorfler2012synchronization,dorfler2013synchronization,nagata2014node,nishikawa2015comparative}.
+The Kuramoto model has been analyzed mainly in the field of physics as a
+mathematical model describing the synchronization phenomena of nonlinear
+oscillators, and is known to have a wide range of applications
+\cite{kuramoto1975self,kuramoto2003chemical}. The nonlinear second-order
+oscillator model with inertial is also applied to the analysis of
+synchronization in power systems
+\cite{dorfler2012synchronization,dorfler2013synchronization,nagata2014node,nishikawa2015comparative}.
 \end{COLUMN}
-
-
-
 
 \subsection{Single machine infinite bus system model}\label{sec:onemachine}
 
@@ -1742,35 +1771,42 @@ The model extended to the second-order nonlinear oscillator system with inertia 
 \centering
 \includegraphics[width = .70\linewidth]{figs/inf1bus}
 \medskip
-\caption{\textbf{1 infinity bus system model}}
+\caption{\textbf{Single machine infinity bus system model}}
 \label{fig:inf1bus}
 \medskip
 \end{figure}
 
-In basic mathematical analysis in electrical power system engineering, for example, a simplified electrical power system model, called a \textbf{single machine infinite bus system model}, such as \cite[Section 1.3]{taniguchi2011power} and \cite[Section 6.3, Section 8.3]{kato2017electric}, is often used. 
-The single machine infinite bus system model is an electrical power system model consisting of a generator, transmission line, and infinite bus bar as shown in \ref{fig:inf1bus}.
-The infinite bus bar is interpreted as a rough approximation of the entire electrical power system, except for the generator of interest, as a “fixed voltage source.”
+The \textbf{single machine infinite bus system model} is a simplified electrical
+power system model that is often used in basic mathematical analysis of
+electrical power systems, such as in \cite[Section 1.3]{taniguchi2011power} and
+\cite[Section 6.3, Section 8.3]{kato2017electric}. It is an electrical power
+system model consisting of a generator, a transmission line, and an infinite bus
+bar as shown in Figure \ref{fig:inf1bus}. The infinite bus bar is interpreted as
+a rough approximation of the entire electrical power system, except for the
+generator of interest, as a "fixed voltage source".
 
-%\footnote{
-%ここでの「電力系統全体」には, その他の発電機や負荷, 送電網などのすべての構成要素が含まれる。
-%1機無限大母線系統モデルでは, それらすべてをまとめて固定された電圧源とみなしてしまう。
-%}。
-Specifically, we assume that voltage phasor of the infinite bus bar $\bm{V}_0$ is maintained as a constant, independent of the internal state of the generator.
-In other words, considering electric power that is lost in transmission, the active and reactive power generated by the generator are assumed to be consumed each moment, without excess or deficiency, by the infinite bus bar.
+Specifically, we assume that voltage phasor of the infinite bus bar $\bm{V}_0$
+is maintained as constant regardless the internal state of the generator.  In
+other words, considering a transmission loss of electric power, the active and
+reactive power generated by the generator are assumed to be consumed each
+moment, without excess or deficiency, by the infinite bus bar.
 
+In the following, we only focus on one generator, so we omit the subscript $i$
+and denote the variables of the generator and the generator bus. For the dynamic
+characteristics of the generator expressed in Equation (\ref{eq:gendynVI}), the
+voltage phasor $\bm{V}$ and current phasor $\bm{I}$ of a generator bus have the
+following relationship:
 
-
-As follows, since there is only one generator of interest, we omit the subscript $i$, and note the variables of the generator and generator bus.
-For the dynamic characteristics of the generator expressed in Equation (\ref{eq:gendynVI}), the voltage phasor $\bm{V}$ and current phasor $\bm{I}$ of a generator bus have the following relationship:
 \[
-\bm{I}= \bm{y} (\bm{V}-\bm{V}_0)
-%\qquad
-%\Longleftrightarrow
-%\qquad
-%\bm{V} = \tfrac{1}{\bm{y}} \bm{I} +\bm{V}_0
+  \bm{I}= \bm{y} (\bm{V}-\bm{V}_0)
 \]
-This is the algebraic equation that determines the input-output relationship of the generator and the electrical power system. 
-For reference, let us derive an ordinary differential equation model obtained through Kron reduction for a single machine infinite bus bar system when the resistance of a transmission line is 0, and the reactance is $x$; in other words, the admittance of a transmission line is:
+
+This is the algebraic equation that determines the input-output relationship of
+the generator and the electrical power system. For reference, let us derive an
+ordinary differential equation model obtained through Kron reduction for a
+single machine infinite bus bar system when the resistance of a transmission
+line is 0, and the reactance is $x$; in other words, the admittance of a
+transmission line is:
 \[
 \bm{y} = \frac{1}{\bm{j} x}
 \]
