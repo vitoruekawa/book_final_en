@@ -1801,220 +1801,274 @@ following relationship:
   \bm{I}= \bm{y} (\bm{V}-\bm{V}_0)
 \]
 
-This is the algebraic equation that determines the input-output relationship of
+This is an algebraic equation that determines the input-output relationship of
 the generator and the electrical power system. For reference, let us derive an
-ordinary differential equation model obtained through Kron reduction for a
-single machine infinite bus bar system when the resistance of a transmission
-line is 0, and the reactance is $x$; in other words, the admittance of a
-transmission line is:
+ordinary differential equation model from the Kron reduction of the single
+machinen infinite bus bar system when the resistance of the transmission line is
+0 and the reactance $x$. In other words, the admittance of the transmission line
+is:
+
 \[
-\bm{y} = \frac{1}{\bm{j} x}
+  \bm{y} = \frac{1}{\bm{j} x}
 \]
-Specifically, using the same procedure as that used for Kron reduction of a generator bus in Section \ref{sec:allgen}, 
-the following two equations are used:
+
+Specifically, following the same procedure as of the Kron reduction of a
+generator bus in Section \ref{sec:allgen}, the following two equations are used
+to replace the current and voltage phasors of the generator bus.
+
 \[
-\bm{I}= \frac{1}{\bm{j} x} (\bm{V}-\bm{V}_0)
-,\qquad
-\bm{I}= \frac{1}{\bm{j} \Xt} (Ee^{\bm{j}\delta} -\bm{V})
+  \bm{I}= \frac{1}{\bm{j} x} (\bm{V}-\bm{V}_0)
+  ,\qquad
+  \bm{I}= \frac{1}{\bm{j} \Xt} (Ee^{\bm{j}\delta} -\bm{V})
 \]
-to cancel the current phasor and voltage phasor of the generator bus.
-When the voltage phasor is cancelled and the Equation is reorganized, the following is obtained:
+
+By substituting the voltage phasor and reorganizing the equation, the following
+is obtained:
+
 \[
-|\bm{I}| e^{\bm{j}(\delta -\angle \bm{I})}
-=
--\frac{
-E- |\bm{V}_0|e^{\bm{j}\delta}
-}{
-\bm{j}(\Xt + x )
-}
+  |\bm{I}| e^{\bm{j}(\delta -\angle \bm{I})}
+  =
+  -\frac{
+  E- |\bm{V}_0|e^{\bm{j}\delta}
+  }{
+  \bm{j}(\Xt + x )
+  }
 \]
-It is assumed that $\angle \bm{V}$ is 0 with the phase of voltage phasor of the infinite bus bar as the reference, and generality is not lost.
-Therefore, by substituting the relationship of this current phasor into Equation \ref{eq:gendynIVst}, the expression of the ordinary differential equation system is obtained as follows:
+
+However, without loss of generality, $\angle \bm{V} = 0$ with respect to the
+phase of the infinite bus voltage phasor. Therefore, by replacing the current
+phasor into Equation \ref{eq:gendynIVst}, the expression of the ordinary
+differential equation system is obtained as follows:
+
 \begin{equation*}%\label{eq:gendynIVst}
-\simode{
-\dot{\delta} &= \omega_0  \Delta \omega\\
-M   \Delta \dot{\omega}&= \textstyle
- - D \Delta\omega  - 
-\tfrac{
-E|\bm{V}_0|
-}{
-\Xt + x
-}
-\sfsin\delta
-+P_{{\rm mech}}
-\\
-\taud \dot{E} & = \textstyle
- - 
- \tfrac{
-\Xs + x
-}{
-\Xt + x
-}
-E
-+
-\tfrac{
-\Xs - \Xt
-}{
-\Xt + x
-}
-|\bm{V}_0| \sfcos\delta
-+ V_{{\rm field}}
-}
+  \simode{
+    \dot{\delta} &= \omega_0  \Delta \omega\\
+    M   \Delta \dot{\omega}&= \textstyle
+    - D \Delta\omega  - 
+    \tfrac{
+    E|\bm{V}_0|
+    }{
+    \Xt + x
+    }
+    \sfsin\delta
+    +P_{{\rm mech}}
+    \\
+    \taud \dot{E} & = \textstyle
+    - 
+    \tfrac{
+    \Xs + x
+    }{
+    \Xt + x
+    }
+    E
+    +
+    \tfrac{
+    \Xs - \Xt
+    }{
+    \Xt + x
+    }
+    |\bm{V}_0| \sfcos\delta
+    + V_{{\rm field}}
+  }
 \end{equation*}
-Similarly, the active and reactive power supplied from the generator to the generator bus are obtained as follows from the relationship of Equation \ref{eq:PiQis2}:
+
+Similarly, from Equation \ref{eq:PiQis2} the active and reactive power supplied
+from the generator to the bus bar can be calculated as follows:
+
 \[
-P=\frac{
-E|\bm{V}_0|\sfsin\delta
-}{
-\Xt + x
-}
-,\qquad
-Q=
-\frac{
-x E^2 + (\Xt - x )E|\bm{V}_0|\sfcos\delta
-- \Xt |\bm{V}_0|^2
-}{
-( \Xt + x )^2
-}
+  P=\frac{
+  E|\bm{V}_0|\sfsin\delta
+  }{
+  \Xt + x
+  }
+  ,\qquad
+  Q=
+  \frac{
+  x E^2 + (\Xt - x )E|\bm{V}_0|\sfcos\delta
+  - \Xt |\bm{V}_0|^2
+  }{
+  ( \Xt + x )^2
+  }
 \]
-As a reference, we introduced the single machine infinite bus system model, but since we focus on an analysis of an electrical power system model consisting of multiple generators in this book, analysis with this model is basically not performed.
 
+In practice, since electrical power systems consist of multiple generators, the 
+single machine infinite bus system model is not usually used in this book. The
+introduction of this model only serves as a reference.
 
-\subsection{Mathematical properties of the admittance matrix with reduced generator bus}
+\subsection{Mathematical properties of the admittance matrix with reduced
+generator bus}
 
-Below, we mathematically discuss the existence and definiteness of the reduced admittance matrix $\bm{Y}^{\rm red}$ of Equation \ref{eq:Yred}.
-Let us remember that with the admittance matrix $\bm{Y}_0$ when the capacitance to ground of Equation (\ref{eq:Y0prop}) can be ignored, the real part of the conductance matrix $G_0$ is positive semi-definite and the imaginary part of the susceptance matrix $B_0$ is negative definite.
-The reduced admittance matrix also has a similar definiteness.
-Below, the reduced conductance matrix and reduced susceptance matrix, the real and imaginary parts of $\bm{Y}^{\rm red}$, are expressed as follows:
+Below, we mathematically discuss the existence and definiteness of the reduced
+admittance matrix $\bm{Y}^{\rm red}$ of Equation \ref{eq:Yred}. Let us remember
+that when the capacitance to ground can be ignored, the conductance matrix $G_0$
+is positive semi-definite and the susceptance matrix $B_0$ is negative definite.
+Moreover, the reduced conductance and susceptance matrices, which correspond to the
+real and imaginary parts of $\bm{Y}^{\rm red}$ are expressed as follows:
+
 \begin{equation}\label{eq:GredBred}
-G^{\rm red} :=\real\bigl[\bm{Y}^{\rm red}\bigr] ,\qquad
-B^{\rm red} :=\imag\bigl[\bm{Y}^{\rm red}\bigr] 
+  G^{\rm red} :=\operatorname{Re}\bigl[\bm{Y}^{\rm red}\bigr] ,\qquad
+  B^{\rm red} :=\operatorname{Im}\bigl[\bm{Y}^{\rm red}\bigr] 
 \end{equation}
 
-At this time, the following facts are indicated.
+Then, the following facts hold.
 
-
-\begin{theorem}[existence and definiteness of the reduced admittance matrix]
+\begin{theorem}[Existence and definiteness of the reduced admittance matrix]
 \label{thm:redadmat}
-If the following is true for the admittance matrix $\bm{Y}\in \mathbb{C}^{N\times N}$ of Equation \ref{eq:Ypig}:
+
+If the following is true for the admittance matrix $\bm{Y}\in
+\mathbb{C}^{N\times N}$ of Equation \ref{eq:Ypig}:
+
 \begin{equation}\label{eq:Xbeta}
-\Cgi \Xti \leq 1
-,\qquad \forall i \in \mathcal{I}_G
+  \Cgi \Xti \leq 1
+  ,\qquad \forall i \in \mathcal{I}_G
 \end{equation}
-And the inequality holds exactly for Equation \ref{eq:Xbeta} for at least one generator bus at the same time, $\bm{\itGamma}$ of Equation \ref{eq:defGam} is nonsingular.
-At this time, for the admittance matrix $\bm{Y}^{\rm red}$ of Equation \ref{eq:Yred}, the reduced conductance matrix $G^{\rm red}$ is positive semi-definite, and the reduced susceptance matrix $B^{\rm red}$ is negative definite.
+
+and at the same time for at least one generator bus the inequality in Equation
+\ref{eq:Xbeta} is strict, then  $\bm{\itGamma}$ of Equation \ref{eq:defGam} is
+nonsingular. Moreover, for the admittance matrix $\bm{Y}^{\rm red}$ of Equation
+\ref{eq:Yred}, the reduced conductance matrix $G^{\rm red}$ is positive
+semi-definite, and the reduced susceptance matrix $B^{\rm red}$ is negative
+definite.
 \end{theorem}
 
 \begin{proof}
-\red{Translated with DeepL}
-By using the complementary ref{lem:nonsing} at the end of the chapter, we show the regularity of $\bm{\itGamma}$ in the formula\ref{eq:defGam}.
-From the definition, if the real part of $\bm{\itGamma}$ is $M$ and the imaginary part is $N$, then
+By using the Mathematical Supplement \ref{lem:nonsing} at the end of this
+chapter, we prove the singularity of $\bm{\itGamma}$ of Equation
+\ref{eq:defGam}. From the definition, if $M$ and $N$ are the real and imaginary parts of 
+$\bm{\itGamma}$, respectively, then:
+
 \begin{equation*}
-\spliteq{
-M &:= \sfdiag \bigl( \Xti (1- \Cgi \Xti ) \bigr) 
-- \sfdiag \left( \Xti \right) B_0 \sfdiag \left( \Xti \right), \\
-N &:= - \sfdiag \left( \Xti \right) G_0 \sfdiag \left( \Xti \right)
-}
+  \spliteq{
+    M &:= \sfdiag \bigl( \Xti (1- \Cgi \Xti ) \bigr) 
+    - \sfdiag \left( \Xti \right) B_0 \sfdiag \left( \Xti \right), \\
+    N &:= - \sfdiag \left( \Xti \right) G_0 \sfdiag \left( \Xti \right)
+  }
 \end{equation*}
-Here, since $B_0$ in equation\ref{eq:Ypig} is semi-negative definite, $M$ is at least semi-positive definite when equation\ref{eq:Xbeta} holds.
-If $\Cgi \Xti <1$ for at least one $i\in \mathcal{I}_G$, then
+
+Here, since $B_0$ in Equation \ref{eq:Ypig} is negative semi-definite, $M$ is at
+least positive semi-definite if Equation \ref{eq:Xbeta} holds. If $\Cgi \Xti <1$
+for at least one $i\in \mathcal{I}_G$, then
+
 \begin{equation*}
-\underbrace{
-\sfker \sfdiag \left( \Xti \right) B_0 \sfdiag \left( \Xti \right)
-}_{\sfspan \left\{ \sfdiag \left( 1/\Xti \right) \mathds{1} \right\}}
-\nsubseteq
-\sfker \sfdiag \bigl( \Xti (1- \Cgi \Xti ) \bigr)
+  \underbrace{
+    \sfker \sfdiag \left( \Xti \right) B_0 \sfdiag \left( \Xti \right)
+  }_{\sfspan \left\{ \sfdiag \left( 1/\Xti \right) \mathds{1} \right\}}
+  \nsubseteq
+  \sfker \sfdiag \bigl( \Xti (1- \Cgi \Xti ) \bigr)
 \end{equation*}
-then, $M$ is positive definite.
-Therefore, since $N$ is symmetric, $M+NM^{-1}N$ is positive definite. This implies that $M+NM^{-1}N$ is regular.
-Also, since $N$ is semi-negative definite from the relation in equation\ref{eq:Y0}, from the complement\ref{lem:sdreim} at the end of the chapter,
-it can be shown that the real part of $\bm{\itGamma}^{-1}$ is positive definite and the imaginary part is semi-negative definite.
-Therefore, the real part $G^{\rm red}$ of $\bm{Y}^{\rm red}$ is semipositive definite and the imaginary part $B^{\rm red}$ is negative definite.
+and $M$ is positive definite.
+
+Therefore, since $N$ is symmetric, $M+NM^{-1}N$ is positive definite. This
+implies that $M+NM^{-1}N$ is non-singular. Also, since $N$ is negative
+semi-definite from the relation in Equation \ref{eq:Y0}, from the Mathematical
+Supplement \ref{lem:sdreim} at the end of the chapter, it can be shown that the
+real part of $\bm{\itGamma}^{-1}$ is positive definite and the imaginary part is
+negative semi-definite. Therefore, the real part $G^{\rm red}$ of $\bm{Y}^{\rm
+red}$ is positive semi-definite and the imaginary part $B^{\rm red}$ is negative
+definite.
 \end{proof}
 
-Inequality in Equation \ref{eq:Xbeta} is the condition required for $\bm{\itGamma}$ to be nonsingular. 
-However, if $ \Cgi \Xti $ is 1 for all generator buses, $\bm{\itGamma}$ is no longer nonsingular.
-If all $\Cgi$ is sufficiently small; in other words, if the capacitance to ground of each transmission line can be ignored as in the Example \ref{ex:derY}, inequality of Equation \ref{eq:Xbeta} holds.
-At this time, the reduced conductance matrix $G^{\rm red}$, the real part of $\bm{Y}^{\rm red}$, is positive semi-definite. The imaginary part, the reduced susceptance matrix $B^{\rm red}$, is negative definite.
-For this reason, the definiteness of the admittance matrix is invariable to the Kron reduction.
+Inequality in Equation \ref{eq:Xbeta} is a sufficient condition for
+$\bm{\itGamma}$ to be nonsingular. However, if $ \Cgi \Xti = 1$ for all
+generator buses, $\bm{\itGamma}$ is no longer nonsingular. If all $\Cgi$ are 
+sufficiently small; in other words, if the capacitance to ground of each
+transmission line can be ignored as in the Example \ref{ex:derY}, Equation
+\ref{eq:Xbeta} holds. Then, the reduced conductance matrix $G^{\rm red}$, the
+real part of $\bm{Y}^{\rm red}$, is positive semi-definite.  The imaginary part,
+the reduced susceptance matrix $B^{\rm red}$, is negative definite. For this
+reason, the definiteness of the admittance matrix is invariable to the Kron
+reduction.
 
+\subsection{Mathematical model of salient pole synchronous
+generators}\label{sec:genmodadv}
 
-\subsection{Mathematical model for salient pole synchronous generators}\label{sec:genmodadv}
+Let us consider a salient pole synchronous generator model that incorporates the
+difference in reactance between the d and q axes
+\cite{tsolas1985structure,varaiya1985direct,chang1995direct,chiang2011direct}.
+Specifically, let us consider a situation where Equation \ref{eq:phVIsincos} is
+as follows:
 
-Let us look at a salient pole generator model that incorporates the difference in the reactance of the d-axis and q-axis.
-Specifically, let us consider a situation where Equation \ref{eq:phVIsincos} is as follows:
 \begin{equation}\label{eq:phVIsincosC_}
-\spliteq{
-|\bm{V}_i| \sfsin (\delta_i -\angle \bm{V}_i)  &= 
-X_{{\rm q}i} |\bm{I}_i| \sfcos (\delta_i -\angle \bm{I}_i),\\
-|\bm{V}_i| \sfcos (\delta_i -\angle \bm{V}_i)  & = E_i - 
-X_{{\rm d}i}' |\bm{I}_i| \sfsin (\delta_i -\angle \bm{I}_i)
-}
+  \spliteq{
+    |\bm{V}_i| \sfsin (\delta_i -\angle \bm{V}_i)  &= 
+    X_{{\rm q}i} |\bm{I}_i| \sfcos (\delta_i -\angle \bm{I}_i),\\
+    |\bm{V}_i| \sfcos (\delta_i -\angle \bm{V}_i)  & = E_i - 
+    X_{{\rm d}i}' |\bm{I}_i| \sfsin (\delta_i -\angle \bm{I}_i)
+  }
 \end{equation}
-$X_{{\rm d}i}'$ is the transient reactance of the d-axis.
-If $X_{{\rm d}i}'$ and $X_{{\rm q}i}$ are equal $\Xti$, Equation \ref{eq:phVIsincosC_} is consistent with Equation \ref{eq:phVIsincos}.
+where $X_{{\rm d}i}'$ is the transient reactance of the d-axis.
+If $X_{{\rm d}i}'$ and $X_{{\rm q}i}$ are equal $\Xti$, Equation
+\ref{eq:phVIsincosC_} is consistent with Equation \ref{eq:phVIsincos}.
 
-When cancelling the current phasor using Equation \ref{eq:phVIsincosC_}, the active and reactive power are expressed as:
+When cancelling the current phasor using Equation \ref{eq:phVIsincosC_}, the
+active and reactive power are expressed as:
+
 \begin{equation}\label{eq:PQV_}
-\spliteq{
-P_i &=  \frac{|\bm{V}_i | E_i}{X_{{\rm d}i}'} \sfsin(\delta_i -  \angle \bm{V}_i) \\
-  & \hspace{2em}-  
-\left( \frac{1}{X_{{\rm d}i}'}  -  \frac{1}{X_{{\rm q}i}} \right)
-|\bm{V}_i|^2 \sfsin( \delta_i - \angle \bm{V}_i)\sfcos( \delta_i - \angle \bm{V}_i), \\
-Q_i &=  \frac{|\bm{V}_i|E_i}{X_{{\rm d}i}'} \sfcos (\delta_i - \angle \bm{V}_i) \\
- & \hspace{2em} -|\bm{V}_i|^2 \left( \frac{\sfcos^2 (\delta_i - \angle \bm{V}_i) }{X_{{\rm d}i}'} 
-+ \frac{\sfsin^2 (\delta_i - \angle \bm{V}_i)}{X_{{\rm q}i}} \right)
-}
-\end{equation}
-Similarly, if the voltage phasor is cancelled, the following is obtained:
-\begin{equation}\label{eq:PQI}
-\spliteq{
-P_i &=  E_i |\bm{I}|  \sfcos(\delta_i -  \angle \bm{I}_i) \\
- & \hspace{2em} - (X_{{\rm d}i}' -X_{{\rm q}i}) |\bm{I}_i|^2  \sfsin(\delta_i -  \angle \bm{I}_i)\sfcos(\delta_i -  \angle \bm{I}_i), \\
-Q_i &= E_i |\bm{I}_i| \sfsin (\delta_i - \angle \bm{I}_i)  \\
- & \hspace{2em}- |\bm{I}_i|^2 \left\{
-X_{{\rm d}i}'  \sfsin^2  (\delta_i - \angle \bm{I}_i) 
-+ X_{{\rm q}i} \sfcos^2  (\delta_i - \angle \bm{I}_i)  
-\right\}
-}
+  \spliteq{
+    P_i &=  \frac{|\bm{V}_i | E_i}{X_{{\rm d}i}'} \sfsin(\delta_i -  \angle \bm{V}_i) \\
+      & \hspace{2em}-  
+    \left( \frac{1}{X_{{\rm d}i}'}  -  \frac{1}{X_{{\rm q}i}} \right)
+    |\bm{V}_i|^2 \sfsin( \delta_i - \angle \bm{V}_i)\sfcos( \delta_i - \angle \bm{V}_i), \\
+    Q_i &=  \frac{|\bm{V}_i|E_i}{X_{{\rm d}i}'} \sfcos (\delta_i - \angle \bm{V}_i) \\
+    & \hspace{2em} -|\bm{V}_i|^2 \left( \frac{\sfcos^2 (\delta_i - \angle \bm{V}_i) }{X_{{\rm d}i}'} 
+    + \frac{\sfsin^2 (\delta_i - \angle \bm{V}_i)}{X_{{\rm q}i}} \right)
+  }
 \end{equation}
 
-The oscillation equation and dynamic characteristics of generators combined with magnetic flux attenuation are given with the following in the same manner as Equation (\ref{eq:gendynVI}):
+Similarly, if the voltage phasor is cancelled, the following is obtained:
+
+\begin{equation}\label{eq:PQI}
+  \spliteq{
+    P_i &=  E_i |\bm{I}|  \sfcos(\delta_i -  \angle \bm{I}_i) \\
+    & \hspace{2em} - (X_{{\rm d}i}' -X_{{\rm q}i}) |\bm{I}_i|^2  \sfsin(\delta_i -  \angle \bm{I}_i)\sfcos(\delta_i -  \angle \bm{I}_i), \\
+    Q_i &= E_i |\bm{I}_i| \sfsin (\delta_i - \angle \bm{I}_i)  \\
+    & \hspace{2em}- |\bm{I}_i|^2 \left\{
+    X_{{\rm d}i}'  \sfsin^2  (\delta_i - \angle \bm{I}_i) 
+    + X_{{\rm q}i} \sfcos^2  (\delta_i - \angle \bm{I}_i)  
+    \right\}
+  }
+\end{equation}
+
+Similar to Equation \ref{eq:gendynVI}, by combining the swing equation with the
+electromagnetic dynamics, the following can be obtained. 
+
 \begin{subequations}\label{eq:gendynVI_}
 \begin{equation}\label{eq:gendynVIst_}
-\simode{
-\dot{\delta}_i&= \omega_0  \Delta \omega_i\\
-M_i   \Delta \dot{\omega}_i&= 
- - D_i \Delta\omega_i  
- - P_i 
-+P_{{\rm mech}i} 
-\\
-\taudi \dot{E}_i & = 
- -\tfrac{X_{{\rm d}i}}{X_{{\rm d}i}'}E_i
-+\left(
-\tfrac{X_{{\rm d}i}}{X_{{\rm d}i}'}-1
-\right)
-|\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
-+ V_{{\rm field}i}
-}
+  \begin{aligned}
+    \dot{\delta}_i&= \omega_0  \Delta \omega_i\\
+    M_i   \Delta \dot{\omega}_i&= 
+    - D_i \Delta\omega_i  
+    - P_i 
+    +P_{{\rm mech}i} 
+    \\
+    \taudi \dot{E}_i & = 
+    -\tfrac{X_{{\rm d}i}}{X_{{\rm d}i}'}E_i
+    +\left(
+    \tfrac{X_{{\rm d}i}}{X_{{\rm d}i}'}-1
+    \right)
+    |\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
+    + V_{{\rm field}i}
+  \end{aligned}
 \end{equation}
-However, for active power $P_i$, the expression of Equation \ref{eq:PQV_} is used.
-Here, the voltage phasor is considered an input from the electrical power system to the generator $i$.
-In addition, the current phasor becomes an output from the generator to the electrical power system:
+
+However, for active power $P_i$, the expression of Equation \ref{eq:PQV_} is
+used. Here, the voltage phasor is considered an input from the electrical power
+system to the generator $i$. In addition, the current phasor becomes an output
+from the generator to the electrical power system:
 
 \begin{equation}\label{eq:Iout_}
-\spliteq{
-|\bm{I}_i| &= \textstyle \sqrt{
-\left\{ \tfrac{|\bm{V}_i|}{X_{{\rm q}i}} \sfsin(\delta_i - \angle \bm{V}_i) \right\}^2
-+\left\{ \tfrac{E_i}{X_{{\rm d}i}'} - \tfrac{|\bm{V}_i|}{X_{{\rm d}i}'} \sfcos(\delta_i - \angle \bm{V}_i) \right\}^2
-}, \\
-\angle \bm{I}_i &= %\textstyle 
-\delta_i - \sfarctan \left(
-\frac{\tfrac{E_i}{X_{{\rm d}i}'} - \tfrac{|\bm{V}_i|}{X_{{\rm d}i}'} \sfcos(\delta_i - \angle \bm{V}_i)}{
-\tfrac{|\bm{V}_i|}{X_{{\rm q}i}} \sfsin(\delta_i - \angle \bm{V}_i)
-}
-\right)
-}
+  \spliteq{
+    |\bm{I}_i| &= \textstyle \sqrt{
+    \left\{ \tfrac{|\bm{V}_i|}{X_{{\rm q}i}} \sfsin(\delta_i - \angle \bm{V}_i) \right\}^2
+    +\left\{ \tfrac{E_i}{X_{{\rm d}i}'} - \tfrac{|\bm{V}_i|}{X_{{\rm d}i}'} \sfcos(\delta_i - \angle \bm{V}_i) \right\}^2
+    }, \\
+    \angle \bm{I}_i &= %\textstyle 
+    \delta_i - \sfarctan \left(
+    \frac{\tfrac{E_i}{X_{{\rm d}i}'} - \tfrac{|\bm{V}_i|}{X_{{\rm d}i}'} \sfcos(\delta_i - \angle \bm{V}_i)}{
+    \tfrac{|\bm{V}_i|}{X_{{\rm q}i}} \sfsin(\delta_i - \angle \bm{V}_i)
+    }
+    \right)
+  }
 \end{equation}
 \end{subequations}
 This is derived from Equation \ref{eq:phVIsincosC_}.
