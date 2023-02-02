@@ -2034,7 +2034,7 @@ electromagnetic dynamics, the following can be obtained.
 
 \begin{subequations}\label{eq:gendynVI_}
 \begin{equation}\label{eq:gendynVIst_}
-  \begin{aligned}
+  \simode{
     \dot{\delta}_i&= \omega_0  \Delta \omega_i\\
     M_i   \Delta \dot{\omega}_i&= 
     - D_i \Delta\omega_i  
@@ -2048,13 +2048,14 @@ electromagnetic dynamics, the following can be obtained.
     \right)
     |\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
     + V_{{\rm field}i}
-  \end{aligned}
+  }
 \end{equation}
 
 However, for active power $P_i$, the expression of Equation \ref{eq:PQV_} is
-used. Here, the voltage phasor is considered an input from the electrical power
-system to the generator $i$. In addition, the current phasor becomes an output
-from the generator to the electrical power system:
+used. Here, the voltage phasor is regarded as an input from the electrical power
+system to the generator $i$. In addition, from Equation \ref{eq:phVIsincosC_},
+the current phasor can be regarded as an output from the generator to the
+electrical power system:
 
 \begin{equation}\label{eq:Iout_}
   \spliteq{
@@ -2071,55 +2072,66 @@ from the generator to the electrical power system:
   }
 \end{equation}
 \end{subequations}
-This is derived from Equation \ref{eq:phVIsincosC_}.
+
 \begin{subequations}\label{eq:gendynIV_}
-Similarly, if current phasor is considered as an input from the electrical power system to the generator $i$, the following becomes the equation of state that expresses the dynamic characteristics of the generator:
+Similarly, if the current phasor is regarded as an input from the electrical
+power system to the generator $i$, the state space representation of the dynamic
+characteristics of the generator becomes the following:
 \begin{equation}\label{eq:gendynIVst_}
-\simode{
-\dot{\delta}_i &= \omega_0  \Delta \omega_i\\
-M_i   \Delta \dot{\omega}_i&= \textstyle
- - D_i \Delta\omega_i  - 
-P_i
-+P_{{\rm mech}i}
-\\
-\taudi \dot{E}_i & = \textstyle
- - E_i
--(
-X_{{\rm d}i} - X_{{\rm d}i}'
-)
-|\bm{I}_i| \sfsin (\delta_i - \angle \bm{I}_i ) 
-+ V_{{\rm field}i}
-}
+  \simode{
+    \dot{\delta}_i &= \omega_0  \Delta \omega_i\\
+    M_i   \Delta \dot{\omega}_i&= \textstyle
+    - D_i \Delta\omega_i  - 
+    P_i
+    +P_{{\rm mech}i}
+    \\
+    \taudi \dot{E}_i & = \textstyle
+    - E_i
+    -(
+    X_{{\rm d}i} - X_{{\rm d}i}'
+    )
+    |\bm{I}_i| \sfsin (\delta_i - \angle \bm{I}_i ) 
+    + V_{{\rm field}i}
+  }
 \end{equation}
-For active power $P_i$, the expression of Equation \ref{eq:PQI} is used.
-The voltage phasor obtained from: 
+
+where $P_i$ is calculated through Equation \ref{eq:PQI}.
+
+Moreover, the voltage phasor obtained from Equation \ref{eq:phVIsincosC_}, is an
+output from the generator to the electrical power system:
+
 \begin{equation}\label{eq:Vout_}
-\spliteq{
-|\bm{V}_i| &= \textstyle \sqrt{
-\bigl\{ X_{{\rm q}i} |\bm{I}_i| \sfcos(\delta_i - \angle \bm{I}_i) \bigr\}^2
-+\left\{ E_i - X_{{\rm d}i}' |\bm{I}_i| \sfsin(\delta_i - \angle \bm{I}_i) \right\}^2
-}, \\
-\angle \bm{V}_i &= %\textstyle 
-\delta_i - \sfarctan \left(
-\frac{
-X_{{\rm q}i} |\bm{I}_i| \sfcos(\delta_i - \angle \bm{I}_i)
-}
-{
-E_i - X_{{\rm d}i}' |\bm{I}_i| \sfsin(\delta_i - \angle \bm{I}_i)
-}
-\right)
-}
+  \spliteq{
+    |\bm{V}_i| &= \textstyle \sqrt{
+    \bigl\{ X_{{\rm q}i} |\bm{I}_i| \sfcos(\delta_i - \angle \bm{I}_i) \bigr\}^2
+    +\left\{ E_i - X_{{\rm d}i}' |\bm{I}_i| \sfsin(\delta_i - \angle \bm{I}_i) \right\}^2
+    }, \\
+    \angle \bm{V}_i &= %\textstyle 
+    \delta_i - \sfarctan \left(
+    \frac{
+    X_{{\rm q}i} |\bm{I}_i| \sfcos(\delta_i - \angle \bm{I}_i)
+    }
+    {
+    E_i - X_{{\rm d}i}' |\bm{I}_i| \sfsin(\delta_i - \angle \bm{I}_i)
+    }
+    \right)
+  }
 \end{equation}
-which is derived from Equation \ref{eq:phVIsincosC_}, is an output from the generator to the electrical power system. 
 \end{subequations}
-This salient pole generators model assumes that $X_{{\rm d}i}'$ and $X_{{\rm q}i}$ are equal and $\Xti$, and if $X_{{\rm d}i}$ is substituted with $\Xsi$, it becomes consistent with the generator model discussed in Section \ref{sec:genfund}.
-The relationship, $X_{{\rm d}i}>X_{{\rm q}i}> X_{{\rm d}i}'$ usually holds between these reactances.
+
+This salient pole generator model is consistent with the generator model
+discussed in Section \ref{sec:genfund} by assuming that $X_{{\rm d}i}'$ and
+$X_{{\rm q}i}$ are equal to $\Xti$ and replacing $X_{{\rm d}i}$ with $\Xsi$.
+The relationship, $X_{{\rm d}i}>X_{{\rm q}i}> X_{{\rm d}i}'$ usually holds
+between these reactances.
 
 \begin{COLUMN}
-\red{Translated with DeepL}
 \noindent \textbf{Relationship between generator models}:
-The relationship between the 2-axis model, 1-axis model, and classical model can be understood as the difference in the magnitude of the time constant in the dynamic characteristics of magnetic flux attenuation.
-The equation of state of the 2-axis model when the voltage phasor of the bus is regarded as the input is
+The relationship between the 2-axis, 1-axis and classical models is related to
+the magnitude of the time constant of the electromagnetic dynamics representing
+the flux variation. The state-space equation of the 2-axis model when the
+voltage phasor of the bus is regarded as the input is:
+
 \begin{equation*}
   \begin{aligned}%\label{eq:gendyn2a}
     \begin{cases}
@@ -2145,15 +2157,19 @@ The equation of state of the 2-axis model when the voltage phasor of the bus is 
     \end{cases}
   \end{aligned}
 \end{equation*}
-However, $X_{{\rm q}i}'$ is the transient reactance of the q axis.
+
+where $X_{{\rm q}i}'$ is the transient reactance of the q axis.
+
 \[
-\bm{V}_{{\rm d}i}:=
-|\bm{V}_i| \sfsin (\delta_i - \angle \bm{V}_i ) 
-,\qquad
-\bm{V}_{{\rm q}i}:=
-|\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
+  \bm{V}_{{\rm d}i}:=
+  |\bm{V}_i| \sfsin (\delta_i - \angle \bm{V}_i ) 
+  ,\qquad
+  \bm{V}_{{\rm q}i}:=
+  |\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
 \]
-Also, the output equations for active power and reactive power are:
+
+Additionally, the output active and reactive power are expressed by the
+following equations:
 \begin{equation*}
   \begin{aligned}%\label{eq:gendyn2ao}
     \begin{cases}
@@ -2177,17 +2193,22 @@ Also, the output equations for active power and reactive power are:
     \end{cases}
   \end{aligned}
 \end{equation*}
-Note that the state variables of the internal voltage have increased to two, $E_{{\rm d}i}$ and $E_{{\rm q}i}$.
-This two-axis model is known to match the salient pole-type one-axis model in the limit when the time constant $\tau_{{\rm q}i}$ is small enough.
-Specifically, assuming that $\tau_{{\rm q}i}$ is formally 0, the state variable $E_{{\rm d}i}$ satisfies the following relationship over time.
+Note that the state variables of the internal voltage have increased to two,
+$E_{{\rm d}i}$ and $E_{{\rm q}i}$. This two-axis model matches the salient pole
+one-axis model asymptotically if the time constant $\tau_{{\rm q}i}$ is small
+enough. Specifically, assuming that $\tau_{{\rm q}i}$ is 0, the state variable
+$E_{{\rm d}i}$ satisfies the following relationship over time.
+
 \[
-0=- \frac{ X_{{\rm q}i} }{ X_{{\rm q}i}' }E_{{\rm d}i}
-+\left(
-\frac{ X_{{\rm q}i} }{ X_{{\rm q}i}' } -1
-\right)
-\bm{V}_{{\rm d}i}
+  0=- \frac{ X_{{\rm q}i} }{ X_{{\rm q}i}' }E_{{\rm d}i}
+  +\left(
+  \frac{ X_{{\rm q}i} }{ X_{{\rm q}i}' } -1
+  \right)
+  \bm{V}_{{\rm d}i}
 \]
-At this time, the active power and the active power are
+
+Then, the active power and the active power are given by:
+
 \begin{equation*}
   \begin{aligned}
     \begin{cases}
@@ -2209,8 +2230,11 @@ At this time, the active power and the active power are
     \end{cases}
   \end{aligned}
 \end{equation*}
-That is, the dynamic characteristics of the generator model match those of the salient pole type uniaxial model.
-Furthermore, in the limit when the time constant $\tau_{{\rm d}i}$ is also small enough
+
+Therefore, the dynamic characteristics of the generator model match those of the
+salient pole type uniaxial model. Furthermore, in the limit when the time
+constant $\tau_{{\rm d}i}$ is small enough:
+
 \begin{equation*}
   \begin{aligned}
     \begin{cases}
@@ -2232,197 +2256,254 @@ Furthermore, in the limit when the time constant $\tau_{{\rm d}i}$ is also small
     \end{cases}
   \end{aligned}
 \end{equation*}
-In particular, it is non-polar, that is, $X_{{\rm d}i}$ and $X_{{\rm q}i}$ are equal $X_i$, and the field input.
-Assuming that $V_{{\rm field}i}$ is constant with the constant $V_{i}^{\star}$:
+
+In particular, assuming the non-salient rotor type, that is, $X_{{\rm d}i}$ and
+$X_{{\rm q}i}$ are equal $X_i$, and the field input $V_{{\rm field}i}$ is
+constant and equal to $V_{i}^{\star}$, the above equations become:
+
 \[
-P_i = \frac{V_{i}^{\star} |\bm{V}_i| }{X_i } \sfsin (\delta_i - \angle \bm{V}_i ) 
-,\qquad
-Q_i = \frac{V_{i}^{\star} |\bm{V}_i| }{X_i }  \sfcos (\delta_i - \angle \bm{V}_i ) 
-- \frac{|\bm{V}_i|^2 }{X_i }
+  P_i = \frac{V_{i}^{\star} |\bm{V}_i| }{X_i } \sfsin (\delta_i - \angle \bm{V}_i ) 
+  ,\qquad
+  Q_i = \frac{V_{i}^{\star} |\bm{V}_i| }{X_i }  \sfcos (\delta_i - \angle \bm{V}_i ) 
+  - \frac{|\bm{V}_i|^2 }{X_i }
 \]
-This matches the classic model.
-For the detailed derivation process, refer to \cite[Section 5]{sauer2017power}.
+
+This matches the classic model. For the detailed derivation process, refer to
+\cite[Section 5]{sauer2017power}.
 \end{COLUMN}
-
-
 
 \section{Mathematical model of load}\label{sec:modload}
 
-\subsection{Relational expression of current and voltage based on load characteristics}\label{sec:loadpr}
+\subsection{Relational expression of current and voltage according to load
+characteristics}\label{sec:loadpr}
 
 \begin{figure}[t]
-\centering
-\includegraphics[width = .25\linewidth]{figs/loadbus}
-\medskip
-\caption{\textbf{Load connected to bus bar}}
-\label{fig:loadbus}
-\medskip
+  \centering
+  \includegraphics[width = .25\linewidth]{figs/loadbus}
+  \medskip
+  \caption{\textbf{Load connected to bus bar}}
+  \label{fig:loadbus}
+  \medskip
 \end{figure}
 
-As a static load model, three types of models — \textbf{constant impedance model}, \textbf{constant power model}, and \textbf{constant current model}— or their combinations are often used.
-These are all static models described by algebraic equations related to the current phasor and voltage phasor. 
-Let us assume that voltage phasor of a bus bar $i$ connected with a load is $\bm{V}_i$ and the current phase flowing from the load to the bus bar is $\bm{I}_i$ (\ref{fig:loadbus}).
-At this time, the constant impedance model gives the following relationship:
+With regard to static load models, \textbf{constant impedance model},
+\textbf{constant power model}, and \textbf{constant current model} or
+combinations of them are often used. These are all static models described by
+algebraic equations with respect to the current and voltage phasors. Let us
+assume that voltage phasor of a bus bar $i$ connected with a load is $\bm{V}_i$
+and the current phasor flowing from the load to the bus bar is $\bm{I}_i$
+(\ref{fig:loadbus}). Then, the constant impedance model is given by the
+following relationship:
+
 \begin{subequations}\label{eq:ldynVI}
 \begin{equation}\label{eq:cimp}
-\bm{I}_i= - \frac{ \bm{V}_i}{\bm{z}_{{\rm load}i}^{\star}}
+  \bm{I}_i= - \frac{ \bm{V}_i}{\bm{z}_{{\rm load}i}^{\star}}
 \end{equation}
-where, $\bm{z}_{{\rm load}i}^{\star} \in \mathbb{C}$ is a constant that expresses the impedance of the load.
-Here, the reason that there is a negative sign on the right side of Equation \ref{eq:cimp} is that the equipment that is equivalent to the load is grounded, and the direction of the flow from the load to the bus bar $i$ is defined as positive sign of the current phasor $\bm{I}_i$.
-Specifically:
-\[
-\bm{I}_i= \frac{1}{\bm{z}_{{\rm load}i}^{\star}} (0-\bm{V}_i)
-\]
-Incandescent lamps and electric heaters are expressed as the constant impedance model.
+where, $\bm{z}_{{\rm load}i}^{\star} \in \mathbb{C}$ is a constant expressing
+the impedance of the load.
 
-The constant current model gives the following relationship with the constant that represents the fixed current phasor as $\bm{I}_{{\rm load}i}^{\star} \in \mathbb{C}$:
-\begin{equation}\label{eq:ccrt}
-\bm{I}_i = \bm{I}_{{\rm load}i}^{\star} e^{\bm{j} \angle \bm{V}_i }
-\end{equation}
-In other words, the following is true for the absolute value $|\bm{I}_{{\rm load}i}^{\star}|$ and phase $\angle \bm{I}_{{\rm load}i}^{\star}$:
+The negative sign on the right side of Equation \ref{eq:cimp} indicates the load
+is grounded and the direction of the flow of thecurrent phasor $\bm{I}_i$ from
+the load to the bus bar $i$ is defined as positive. Specifically:
+
 \[
-|\bm{I}_i| = |\bm{I}_{{\rm load}i}^{\star}|,\qquad
-\angle \bm{I}_i = \angle \bm{I}_{{\rm load}i}^{\star} + \angle \bm{V}_i
+  \bm{I}_i= \frac{1}{\bm{z}_{{\rm load}i}^{\star}} (0-\bm{V}_i)
 \]
-The constant power model gives the following relationship:
+
+Incandescent lamps and electric heaters are common devices that can be expressed
+by the constant impedance model.
+
+The constant current model is expressed by the following relationship, where
+$\bm{I}_{{\rm load}i}^{\star} \in \mathbb{C}$ is a constant current phasor.
+
+\begin{equation}\label{eq:ccrt}
+  \bm{I}_i = \bm{I}_{{\rm load}i}^{\star} e^{\bm{j} \angle \bm{V}_i }
+\end{equation}
+
+In other words, the following is true for the magnitude $|\bm{I}_{{\rm
+load}i}^{\star}|$ and phase $\angle \bm{I}_{{\rm load}i}^{\star}$:
+
+\[
+  |\bm{I}_i| = |\bm{I}_{{\rm load}i}^{\star}|,\qquad
+  \angle \bm{I}_i = \angle \bm{I}_{{\rm load}i}^{\star} + \angle \bm{V}_i
+\]
+
+The constant power model is given by the following relationship:
 \begin{equation}\label{eq:cpw}
-\bm{I}_i = \frac{P_{{\rm load}i}^{\star} - \bm{j} Q_{{\rm load}i}^{\star} }{\overline{\bm{V}}_i}
+  \bm{I}_i = \frac{P_{{\rm load}i}^{\star} - \bm{j} Q_{{\rm load}i}^{\star} }{\overline{\bm{V}}_i}
 \end{equation}
 \end{subequations}
-where $P_{{\rm load}i}^{\star} \in \mathbb{R}$ and $Q_{{\rm load}i}^{\star} \in \mathbb{R}$ are constants that express the active and reactive power supplied to the bus bar $i$.
+where $P_{{\rm load}i}^{\star} \in \mathbb{R}$ and $Q_{{\rm load}i}^{\star} \in
+\mathbb{R}$ are constant active and reactive power supplied to the bus bar $i$.
 This is derived by considering the complex conjugate of:
-\[
-P_{{\rm load}i}^{\star} + \bm{j} Q_{{\rm load}i}^{\star} =
-\bm{V}_i \overline{\bm{I}}_i
-\]
-The electric power converter is expressed as the constant current model and the constant power model based on its properties.
 
-Depending on the purpose of the analysis, a dynamic load model might be employed.
+\[
+  P_{{\rm load}i}^{\star} + \bm{j} Q_{{\rm load}i}^{\star} =
+  \bm{V}_i \overline{\bm{I}}_i
+\]
+
+Power converters can be represented as constant-current models or constant power
+model, depending on their characteristics.
+
+Depending on the purpose of the analysis, a dynamic load model might be used.
 Please see \cite[Section 7.1.2]{kundur1994power} for further details.
 
+\subsection{Kron reduction of load bus bar}
 
-\subsection{Kron reduction of the load bus bar}
+Even when there are generators and multiple types of loads connected in a power
+system, a mathematical model of the system can be obtained by defining the
+relationship between the current and voltage phasors of each device using
+Equations \ref{eq:gendynVI} and \ref{eq:ldynVI} and combining them with Equation
+\ref{eq:ohmY}. In this case, the constant impedance model in Equation
+\ref{eq:cimp} gives a linear relationship between the current and voltage
+phasors. On the other hand, the constant-current model in Equation \ref{eq:ccrt}
+and the constant-power model in Equation \ref{eq:cpw} provide nonlinear
+relationships for current and voltage phasors, which generally makes
+mathematical analysis of the resulting power system model difficult. Let us
+illustrate this fact with the following example.
 
-When there are generators and multiple types of loads, the relationship between the current phasor and voltage phasor of each device is stipulated by Equations (\ref{eq:gendynVI}) and (\ref{eq:ldynVI}), and by combining these with Equation \ref{eq:ohmY}, the mathematical model of the entire electrical power system can be obtained.
-At this time, the constant impedance model of Equation \ref{eq:cimp} provides a linear relationship for the current phasor and voltage phasor.
-On the other hand, since the constant current model of Equation \ref{eq:ccrt} and the constant power model of Equation \ref{eq:cpw} give a nonlinear relationship for the current phasor and voltage phasor, mathematical analysis of the obtained electrical power system model would generally be difficult.
-Let us confirm with the following example.
+\begin{example}{Kron reduction of load bus bar}\label{ex:genloadY} Let us assume
+that in the electrical power system of the Example \ref{ex:derY}, the generators
+are represented by devices 1 and 2, and the load is represented by device 3. The
+relationship between current and voltage phasors and the admittance matrix of
+the power grid is given by Equation \ref{eq:exY}. First, let us consider the
+case where the load is given by the constant impedance model.  If $\bm{z}_{{\rm
+load}3}^{\star}$ is the impedance of the load, the following Equation can be
+obtained:
 
-\begin{example}{Kron reduction of load bus bar}\label{ex:genloadY}
-Let us assume that in the electrical power system of the Example \ref{ex:derY}, the generators are connected as equipment 1 and equipment 2, and load is connected as equipment 3.
-The relationship of the current phasor vector and voltage phasor vector of the admittance matrix of a power grid is given by Equation \ref{eq:exY}.
-First, let us consider a case where the load is given as the constant impedance model.
-If $\bm{z}_{{\rm load}3}^{\star}$ is the impedance of the load, the following Equation is obtained:
 \[
-\bm{I}_3 = -\frac{ \bm{V}_3}{\bm{z}_{{\rm load}3}^{\star}}
+  \bm{I}_3 = -\frac{ \bm{V}_3}{\bm{z}_{{\rm load}3}^{\star}}
 \]
-If this is substituted into Equation \ref{eq:exY} to cancel $\bm{I}_3$, the following is obtained:
+
+If this is substituted into Equation \ref{eq:exY} to cancel $\bm{I}_3$:
+
 \begin{equation}\label{eq:exYcimp}
-\mat{
-\bm{I}_1\\
-\bm{I}_2\\
-0\\
-}
-=
-\mat{
-\bm{y}_{12} & -\bm{y}_{12} & 0\\
--\bm{y}_{12} & \bm{y}_{12}+\bm{y}_{32} & -\bm{y}_{32}\\
-0 & -\bm{y}_{32} & \bm{y}_{32}  + \tfrac{1}{\bm{z}_{{\rm load}3}^{\star}}
-}
-\mat{
-\bm{V}_1\\
-\bm{V}_2\\
-\bm{V}_3\\
-}
+  \mat{
+    \bm{I}_1\\
+    \bm{I}_2\\
+    0\\
+  }
+  =
+  \mat{
+    \bm{y}_{12} & -\bm{y}_{12} & 0\\
+    -\bm{y}_{12} & \bm{y}_{12}+\bm{y}_{32} & -\bm{y}_{32}\\
+    0 & -\bm{y}_{32} & \bm{y}_{32}  + \tfrac{1}{\bm{z}_{{\rm load}3}^{\star}}
+  }
+  \mat{
+    \bm{V}_1\\
+    \bm{V}_2\\
+    \bm{V}_3\\
+  }
 \end{equation}
-Please note that, with the Equation on the third row, voltage phasor $\bm{V}_3$ of the load bus bar is replaced by voltage phasor $\bm{V}_2$ of the generator bus.
-Specifically, it can be expressed as:
+
+Please note that with the equation on the third row the voltage phasor
+$\bm{V}_3$ can be written in function of the voltage phasor $\bm{V}_2$ of the
+generator bus. Specifically:
+
 \begin{equation*}
-\bm{V}_3 = \left(\bm{y}_{32} + \tfrac{1}{\bm{z}_{{\rm load}3}^{\star}} \right)^{-1} \bm{y}_{32} \bm{V}_2
+  \bm{V}_3 = \left(\bm{y}_{32} + \tfrac{1}{\bm{z}_{{\rm load}3}^{\star}} \right)^{-1} \bm{y}_{32} \bm{V}_2
 \end{equation*}
 
-If we also eliminate $\bm{V}_3$ using this, the relationship between the current and voltage phasors of the generator bus bar group is
-\begin{equation*}
-\mat{
-\bm{I}_1\\
-\bm{I}_2
-}
-=
-\bm{Y}_{\rm Kron}
-\mat{
-\bm{V}_1\\
-\bm{V}_2\\
-}
-\end{equation*}
-Here, the reduced admittance matrix of the load bus bar is obtained as:
-\[
-\bm{Y}_{\rm Kron}:=
-\mat{
-\bm{y}_{12} & -\bm{y}_{12}\\
--\bm{y}_{12} & \bm{y}_{12}+\bm{y}_{32}
-}
--
-\mat{
-0\\
-\bm{y}_{32}
-}
-\left( 
-\bm{y}_{32} 
-+ \tfrac{1}{\bm{z}_{{\rm load}3}^{\star}} 
-\right)^{-1}
-\mat{
-0&\bm{y}_{32}
-}
-\]
-Therefore, if the load is given as the constant impedance model, $\bm{Y}_{\rm Kron} \in \mathbb{C}^{2\times 2}$ obtained in this way 
-is considered as the admittance matrix of a new power grid to cancel the load bus bar and its variable, allowing for equivalent transformation to a differential-algebraic equation system where only generators are connected to bus bars. 
+In addition, by replacing $\bm{V}_3$ using the above expression, the
+relationship between the current and voltage phasors of the generator bus bar
+group becomes:
 
-Next, let us consider a situation where the load is given as the constant current model.
-Let us assume that current phasor flows from the load to bus bar 3:
-\[
-\bm{I}_3 = \bm{I}_{{\rm load}3}^{\star} e^{\bm{j} \angle \bm{V}_3}
-\]
-At this time, in the same procedure as the constant impedance model, if $\bm{I}_3$ and $\bm{V}_3$ 
-are cancelled from Equation \ref{eq:exY}, the following is obtained:
 \begin{equation*}
-\mat{
-\bm{I}_1\\
-\bm{I}_2
-}
-=
-\bm{Y}_{\rm Kron}'
-\mat{
-\bm{V}_1\\
-\bm{V}_2\\
-}
-+
-\mat{
-0\\
--\bm{y}_{32}
-}
-\bm{y}_{32}^{-1}
-\bm{I}_{{\rm load}3}^{\star} e^{\bm{j} \angle \bm{V}_3}
+  \mat{
+    \bm{I}_1\\
+    \bm{I}_2
+  }
+  =
+  \bm{Y}_{\rm Kron}
+  \mat{
+    \bm{V}_1\\
+    \bm{V}_2\\
+  }
 \end{equation*}
+
+The reduced admittance matrix of the load bus bar is obtained as:
+
+\[
+  \bm{Y}_{\rm Kron}:=
+  \mat{
+    \bm{y}_{12} & -\bm{y}_{12}\\
+    -\bm{y}_{12} & \bm{y}_{12}+\bm{y}_{32}
+  }
+  -
+  \mat{
+    0\\
+    \bm{y}_{32}
+  }
+  \left( 
+  \bm{y}_{32} 
+  + \tfrac{1}{\bm{z}_{{\rm load}3}^{\star}} 
+  \right)^{-1}
+  \mat{
+    0&\bm{y}_{32}
+  }
+\]
+Therefore, if the load is given as a constant impedance model, the load busbar
+and its variables can be eliminated by considering $\bm{Y}_{\rm Kron} \in
+\mathbb{C}^{2\times 2}$ as the admittance matrix of the new power grid, and the
+system can be equivalently transformed into a system of differential algebraic
+equations with only the generator connected to the busbar.
+
+Next, let us consider a situation where the load is given as the constant
+current model. Let us assume that current phasor flows from the load to bus bar
+3:
+\[
+  \bm{I}_3 = \bm{I}_{{\rm load}3}^{\star} e^{\bm{j} \angle \bm{V}_3}
+\]
+
+Then, following the same procedure as for the constant impedance model, and
+replacing $\bm{I}_3$ and $\bm{V}_3$ in Equation \ref{eq:exY}, the following is
+obtained:
+
+\begin{equation*}
+  \mat{
+    \bm{I}_1\\
+    \bm{I}_2
+  }
+  =
+  \bm{Y}_{\rm Kron}'
+  \mat{
+    \bm{V}_1\\
+    \bm{V}_2\\
+  }
+  +
+  \mat{
+    0\\
+    -\bm{y}_{32}
+  }
+  \bm{y}_{32}^{-1}
+  \bm{I}_{{\rm load}3}^{\star} e^{\bm{j} \angle \bm{V}_3}
+\end{equation*}
+
 where:
+
 \[
-\bm{Y}_{\rm Kron}' :=
-\mat{
-\bm{y}_{12} & -\bm{y}_{12}\\
--\bm{y}_{12} & \bm{y}_{12}+\bm{y}_{32}
-}
--
-\mat{
-0\\
-\bm{y}_{32}
-}
-\bm{y}_{32}^{-1}
-\mat{
-0&\bm{y}_{32}
-}
+  \bm{Y}_{\rm Kron}' :=
+  \mat{
+    \bm{y}_{12} & -\bm{y}_{12}\\
+    -\bm{y}_{12} & \bm{y}_{12}+\bm{y}_{32}
+  }
+  -
+  \mat{
+    0\\
+    \bm{y}_{32}
+  }
+  \bm{y}_{32}^{-1}
+  \mat{
+    0&\bm{y}_{32}
+  }
 \]
-This means that, if the load is given as the constant current model, an affine relationship is given to the current phasor and voltage phasor of the generators.
-However, phase $\angle \bm{V}_3$ of the voltage phasor of the load bus bar also has an impact on the current phasor of the generators.
-Generally, phase $\angle \bm{V}_3$ of the voltage phasor is a nonlinear function of the voltage phasor $\bm{V}_3$.
+
+This means that, if the load is given as the constant current model, an affine
+relationship is given to the current phasor and voltage phasor of the
+generators. However, phase $\angle \bm{V}_3$ of the voltage phasor of the load
+bus bar also has an impact on the current phasor of the generators. Generally,
+phase $\angle \bm{V}_3$ of the voltage phasor is a nonlinear function of the
+voltage phasor $\bm{V}_3$.
 
 
 Finally, let us consider a case wherein the load is given as the constant power model.

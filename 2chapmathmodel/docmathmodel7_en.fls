@@ -1,8 +1,8 @@
-PWD /Users/vuekawa/Documents/Tokyo Tech/book_final_en/2chapmathmodel
+PWD /Users/vuekawa/repos/book_final_en/2chapmathmodel
 INPUT /usr/local/texlive/2022/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/vuekawa/Documents/Tokyo Tech/book_final_en/2chapmathmodel/docmathmodel7_en.tex
+INPUT /Users/vuekawa/repos/book_final_en/2chapmathmodel/docmathmodel7_en.tex
 OUTPUT docmathmodel7_en.log
 INPUT ./svmult.cls
 INPUT ./svmult.cls
