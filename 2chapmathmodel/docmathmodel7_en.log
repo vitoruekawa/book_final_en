@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  2 FEB 2023 15:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  3 FEB 2023 16:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1093,26 +1093,20 @@ LaTeX Warning: Citation `kundur1994power' on page 32 undefined on input line 234
 
 [32 <./figs/loadbus.pdf>] [33] [34] [35]
 
-LaTeX Warning: Reference `lem: schur' on page 36 undefined on input line 2627.
+LaTeX Warning: Reference `eq: Y0' on page 36 undefined on input line 2690.
 
 
-LaTeX Warning: Reference `eq: Y0' on page 36 undefined on input line 2635.
-
-
-LaTeX Warning: Reference `eq: loadys' on page 36 undefined on input line 2635.
-
-
-LaTeX Warning: Reference `lem: schur' on page 36 undefined on input line 2636.
+LaTeX Warning: Reference `eq: loadys' on page 36 undefined on input line 2690.
 
 [36] [37]
 
-LaTeX Warning: Citation `kron1939tensor' on page 38 undefined on input line 2729.
+LaTeX Warning: Citation `kron1939tensor' on page 38 undefined on input line 2822.
 
 
-LaTeX Warning: Reference `sec:howtocal' on page 38 undefined on input line 2730.
+LaTeX Warning: Reference `sec:howtocal' on page 38 undefined on input line 2824.
 
 
-LaTeX Warning: Citation `dorfler2013kron' on page 38 undefined on input line 2731.
+LaTeX Warning: Citation `dorfler2013kron' on page 38 undefined on input line 2826.
 
 [38] [39] [40] [41]
 \tf@thm=\write5
@@ -1127,17 +1121,17 @@ Package rerunfilecheck Info: File `docmathmodel7_en.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  17754 strings out of 478268
- 272678 string characters out of 5846346
- 600304 words of memory out of 5000000
+ 272677 string characters out of 5846346
+ 600310 words of memory out of 5000000
  35422 multiletter control sequences out of 15000+600000
  566660 words of font info for 208 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,29n,134p,660b,686s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 88i,29n,134p,587b,686s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntxsups_ot1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-rm.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/doublestroke/dsrom8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ntxsups-Regular.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexas.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/txsya.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmbi.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on docmathmodel7_en.pdf (42 pages, 2868057 bytes).
+Output written on docmathmodel7_en.pdf (42 pages, 2868031 bytes).
 PDF statistics:
- 889 PDF objects out of 1000 (max. 8388607)
- 741 compressed objects within 8 object streams
+ 891 PDF objects out of 1000 (max. 8388607)
+ 743 compressed objects within 8 object streams
  180 named destinations out of 1000 (max. 500000)
  315 words of extra memory for PDF output out of 10000 (max. 10000000)
 

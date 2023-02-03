@@ -2362,14 +2362,15 @@ relationships for current and voltage phasors, which generally makes
 mathematical analysis of the resulting power system model difficult. Let us
 illustrate this fact with the following example.
 
-\begin{example}{Kron reduction of load bus bar}\label{ex:genloadY} Let us assume
-that in the electrical power system of the Example \ref{ex:derY}, the generators
-are represented by devices 1 and 2, and the load is represented by device 3. The
-relationship between current and voltage phasors and the admittance matrix of
-the power grid is given by Equation \ref{eq:exY}. First, let us consider the
-case where the load is given by the constant impedance model.  If $\bm{z}_{{\rm
-load}3}^{\star}$ is the impedance of the load, the following Equation can be
-obtained:
+\begin{example}{Kron reduction of load bus bar}\label{ex:genloadY} 
+  
+Let us assume that in the electrical power system of the Example \ref{ex:derY},
+the generators are represented by devices 1 and 2, and the load is represented
+by device 3. The relationship between current and voltage phasors and the
+admittance matrix of the power grid is given by Equation \ref{eq:exY}. First,
+let us consider the case where the load is given by the constant impedance
+model.  If $\bm{z}_{{\rm load}3}^{\star}$ is the impedance of the load, the
+following Equation can be obtained:
 
 \[
   \bm{I}_3 = -\frac{ \bm{V}_3}{\bm{z}_{{\rm load}3}^{\star}}
@@ -2498,237 +2499,331 @@ where:
   }
 \]
 
-This means that, if the load is given as the constant current model, an affine
-relationship is given to the current phasor and voltage phasor of the
-generators. However, phase $\angle \bm{V}_3$ of the voltage phasor of the load
+This means that, if the load is given as the constant current model, the
+relationship between the current and voltage phasors of the generators is
+affine. However, the phase $\angle \bm{V}_3$ of the voltage phasor of the load
 bus bar also has an impact on the current phasor of the generators. Generally,
-phase $\angle \bm{V}_3$ of the voltage phasor is a nonlinear function of the
+the phase $\angle \bm{V}_3$ of the voltage phasor is a nonlinear function of the
 voltage phasor $\bm{V}_3$.
 
+Finally, let us consider a case wherein the load is given as the constant power
+model. When constant active power $P_{{\rm load}3}^{\star}$ and reactive
+power $Q_{{\rm load}3}^{\star}$ are supplied from the load to bus bar 3, the
+following relationship holds:
 
-Finally, let us consider a case wherein the load is given as the constant power model.
-When a constant active power $P_{{\rm load}3}^{\star}$ and reactive power $Q_{{\rm load}3}^{\star}$ are supplied from the load to bus bar 3, the following relationship is given:
 \begin{equation*}
-\bm{I}_3 = \frac{P_{{\rm load}3}^{\star} - \bm{j} Q_{{\rm load}3}^{\star} }{\overline{\bm{V}}_3}
+  \bm{I}_3 = \frac{P_{{\rm load}3}^{\star} - \bm{j} Q_{{\rm load}3}^{\star} }{\overline{\bm{V}}_3}
 \end{equation*}
-Since this is a nonlinear relationship of $\bm{I}_3$ and $\bm{V}_3$, to cancel $\bm{V}_3$ from Equation \ref{eq:exY}, nonlinear calculation is necessary.
-Specifically, $\bm{V}_3$ is given as a solution for the quadratic equation related to complex variables:
+
+Since this is a nonlinear relationship of $\bm{I}_3$ and $\bm{V}_3$, to cancel
+$\bm{V}_3$ from Equation \ref{eq:exY}, nonlinear calculation is necessary.
+Specifically, $\bm{V}_3$ is given as a solution for the quadratic equation
+related to complex variables:
+
 \begin{equation*}
-\bm{y}_{32} \bm{V}_3 \overline{\bm{V}}_3 - \bm{y}_{32}  \bm{V}_2 \overline{\bm{V}}_3 -P_{{\rm load}3}^{\star} 
-+ \bm{j} Q_{{\rm load}3}^{\star} =0
+  \bm{y}_{32} \bm{V}_3 \overline{\bm{V}}_3 - \bm{y}_{32}  \bm{V}_2 \overline{\bm{V}}_3 -P_{{\rm load}3}^{\star} 
+  + \bm{j} Q_{{\rm load}3}^{\star} =0
 \end{equation*}
-Therefore, if the load of the constant power model is included in an electrical power system model, it is usually difficult to cancel the load bus bar through equivalent transformation.
+
+Therefore, if the load of the constant power model is included in an electrical
+power system model, it is usually difficult to cancel the load bus bar through
+equivalent transformation.
+
 \end{example}
 
-As shown in Example \ref{ex:genloadY}, if the load is given as a static model expressed by Equation (\ref{eq:ldynVI}), the current phasor and voltage phasor of some or all load bus bars can be equivalently cancelled through algebraic calculation.
-This operation is called \textbf{Kron reduction of the load bus bar}.
-Specifically, when the load is given as the constant impedance model, Kron reduction of the load bus bar corresponds to reducing the dimension of the admittance matrix of the power grid by mathematically equivalent calculation.
+As shown in Example \ref{ex:genloadY}, if the load is given as a static model
+expressed by Equation (\ref{eq:ldynVI}), the current phasor and voltage phasor
+of some or all load bus bars can be equivalently cancelled through algebraic
+calculation. This operation is called \textbf{Kron reduction of the load bus
+bar}. Specifically, when the load is given as the constant impedance model,
+Kron reduction of the load bus bar corresponds to reducing the dimension of the
+admittance matrix of the power grid by mathematically equivalent calculation.
 
-If there is no equipment, such as a generator or load, connected to the bus bar, we can assume that the absolute value of $\bm{z}_{{\rm load}i}^{\star}$ in Equation \ref{eq:cimp} is where the load of an infinite constant impedance model is connected to the bus bar $i$.
-This is equal to virtually connecting the load of the constant current model, where the current phasor between the load and the bus bar is always 0.
-Therefore, the above-described Kron reduction of the load bus bar allows for equivalent cancellation of the bus bar without equipment.
+If there is no device connected to the bus bar, such as a generator or load,
+we can assume a constant impedance model load with an infinite absolute value of
+$\bm{z}_{{\rm load}i}^{\star}$ connected to bus $i$ in Equation \ref{eq:cimp}.
+This is equivalent to a virtual connection of a constant-current model load in
+which the current phasor between the load and the bus is always zero. Therefore,
+the above-described Kron reduction of the load bus bar allows for equivalent
+cancellation of bus bars without device.
 
 
-\subsection{Mathematical properties of the admittance matrix with reduced load bus bar}
+\subsection{Mathematical properties of the admittance matrix with reduced load
+bus bar}
 
-Let us analyze properties that hold for Kron reduction of the load bus bar when all loads are given by the constant impedance model.
-First, we will show Kron reduction steps for the Example \ref{ex:genloadY} as a general form when generator buses and load bus bars are arbitrary.
-The subscripts set of generator buses is $\mathcal{I}_{\rm G}$ and the subscripts set of load bus bars is $\mathcal{I}_{\rm L}$.
-We assume that a smaller number is assigned to general buses than load bus bars without losing generality. In other words:
+Let us analyze properties that hold for Kron reduction of the load bus bar when
+all loads are given by the constant impedance model. First, the procedure for
+Kron reduction in Example \ref{ex:genloadY} is shown as a general form when the
+number of generator and load buses is arbitrary. The subscripts set of
+generator buses is $\mathcal{I}_{\rm G}$ and the subscripts set of load bus bars
+is $\mathcal{I}_{\rm L}$. Without loss of generality, the number of generator
+buses is assumed to be inferior to that of load buses. In other words:
+
 \begin{equation*}
-\mathcal{I}_{\rm G} = \{ 1,\ldots, n \},\qquad
-\mathcal{I}_{\rm L} = \{ n+1,\ldots, n + m \}
+  \mathcal{I}_{\rm G} = \{ 1,\ldots, n \},\qquad
+  \mathcal{I}_{\rm L} = \{ n+1,\ldots, n + m \}
 \end{equation*}
 where $n$ and $m$ are numbers of generator buses and load bus bars, respectively.
-The definition stipulates that $n+m$ is equal to the total number of bus bars $N$.
+By definition, $n+m$ is equal to the total number of bus bars $N$.
 
-A vector with current phasors of all generator buses is $\bm{I}_{\rm G} \in \mathbb{C}^{n}$ and a vector with voltage phasors of all generator buses is $\bm{V}_{\rm G} \in \mathbb{C}^{n}$.
-Similarly, a vector with current phasors of all load bus bars is $\bm{I}_{\rm L}\in \mathbb{C}^{m}$ and a vector of voltage phasors of all load bus bars is $\bm{V}_{\rm L} \in \mathbb{C}^{m}$.
-At this time, the relationship between all current phasors and voltage phasors related to the admittance matrix of power grids $\bm{Y}\in \mathbb{C}^{N\times N}$ can be expressed as:
+Let $\bm{I}_{\rm G} \in \mathbb{C}^{n}$ be the vector of current phasors of all
+generator buses, and $\bm{V}_{\rm G} \in \mathbb{C}^{n}$ be the vector of
+voltage phasors. Similarly, the vector of current phasors of all load buses is
+expressed as $\bm{I}_{\rm L}\in \mathbb{C}^{m}$, and the vector of voltage
+phasors is expressed as $\bm{V}_{\rm L} \in \mathbb{C}^{m}$. Then, the
+relationship between all current and voltage phasors with respect to the
+admittance matrix $\bm{Y}\in \mathbb{C}^{N\times N}$ of the power grid is:
+
 \begin{equation}\label{eq:YGL}
-\mat{
-\bm{I}_{\rm G}\\
-\bm{I}_{\rm L}
-}
-=
-\underbrace{
-\mat{
-\bm{Y}_{\rm GG} & \bm{Y}_{\rm GL}\\
-\bm{Y}_{\rm LG} & \bm{Y}_{\rm LL}
-}
-}_{\bm{Y}}
-\mat{
-\bm{V}_{\rm G}\\
-\bm{V}_{\rm L}
-}
+  \mat{
+    \bm{I}_{\rm G}\\
+    \bm{I}_{\rm L}
+  }
+  =
+  \underbrace{
+    \mat{
+      \bm{Y}_{\rm GG} & \bm{Y}_{\rm GL}\\
+      \bm{Y}_{\rm LG} & \bm{Y}_{\rm LL}
+    }
+  }_{\bm{Y}}
+  \mat{
+    \bm{V}_{\rm G}\\
+    \bm{V}_{\rm L}
+  }
 \end{equation}
-The relationship between the current phasor and voltage phasor determined by the load of the constant impedance model can be expressed as follows by using the admittance, which is a reciprocal of the impedance:
+
+Here, the relationship between the current phasor and the voltage phasor
+determined by the load in the constant impedance model is expressed using the
+admittance:
+
 \begin{equation*}
-\bm{I}_{\rm L}=- \sfdiag(\bm{y}_{{\rm load}i}^{\star} )_{i \in \mathcal{I}_{\rm L}}\bm{V}_{\rm L}
+  \bm{I}_{\rm L}=- \sfdiag(\bm{y}_{{\rm load}i}^{\star} )_{i \in \mathcal{I}_{\rm L}}\bm{V}_{\rm L}
 \end{equation*}
-Though $\bm{y}_{{\rm load}i}^{\star}$ defined as a reciprocal of $\bm{z}_{{\rm load}i}^{\star}$ of Equation \ref{eq:cimp} must have a non-zero value, since this is an expression of bus bars with no equipment connected, formally, $\bm{y}_{{\rm load}i}^{\star}$ is allowed to be 0.
-If this is substituted into Equation \ref{eq:YGL} to cancel $\bm{V}_{\rm L}$:
+
+Although $\bm{y}_{{\rm load}i}^{\star}$ is defined as a reciprocal of
+$\bm{z}_{{\rm load}i}^{\star}$ in Equation \ref{eq:cimp} and must have a
+non-zero value, since this is an expression of bus bars with no equipment
+connected, formally, $\bm{y}_{{\rm load}i}^{\star}$ is allowed to be 0.
+Substituting it in Equation \ref{eq:YGL} to cancel $\bm{V}_{\rm L}$, the
+followed is obtained.
+
 \begin{equation}\label{eq:Kron}
-\bm{I}_{\rm G} = 
-\Bigl\{ 
-\underbrace{
-\bm{Y}_{\rm GG} - \bm{Y}_{\rm GL} 
-\bigl( \bm{Y}_{\rm LL} + \sfdiag(\bm{y}_{{\rm load}i}^{\star} )_{i \in \mathcal{I}_{\rm L}} \bigr)^{-1}
-\bm{Y}_{\rm LG} 
-}_{\bm{Y}_{\rm Kron}}
-\Bigr\}
-\bm{V}_{\rm G}
+  \bm{I}_{\rm G} = 
+    \Bigl\{ 
+      \underbrace{
+        \bm{Y}_{\rm GG} - \bm{Y}_{\rm GL} 
+        \bigl( \bm{Y}_{\rm LL} + \sfdiag(\bm{y}_{{\rm load}i}^{\star} )_{i \in \mathcal{I}_{\rm L}} \bigr)^{-1}
+        \bm{Y}_{\rm LG} 
+      }_{\bm{Y}_{\rm Kron}}
+    \Bigr\}
+  \bm{V}_{\rm G}
 \end{equation}
-is obtained.
-Note that, generally, when a load consumes active power and reactive power in terms of the admittances of the load, similar to a transmission line, the following is established: 
+
+Note that in general, if the load consumes active and reactive power with
+respect to the admittance of the load, then the following holds as in
+transmission lines.
+
 \begin{equation}\label{eq:loadys}
-\real[\bm{y}_{{\rm load}i}^{\star} ] \geq 0 ,\qquad
-\imag[\bm{y}_{{\rm load}i}^{\star} ] \leq 0
-,\qquad
-\forall i \in \mathcal{I}_{\rm L}
+  \operatorname{Re}[\bm{y}_{{\rm load}i}^{\star} ] \geq 0 ,\qquad
+  \operatorname{Im}[\bm{y}_{{\rm load}i}^{\star} ] \leq 0
+  ,\qquad
+  \forall i \in \mathcal{I}_{\rm L}
 \end{equation}
-The conductance and susceptance matrices, where the load bus bar, which is the real and imaginary part of $\bm{Y}_{\rm Kron}$, is reduced, are expressed as:
+
+In addition, the conductance and susceptance matricces obtained by Kron
+reduction of the load bus, which are the real and imaginary parts of
+$\bm{Y}_{\rm Kron}$, are expressed as:
+
 \[
-G_{\rm Kron} := \real \bigl[  \bm{Y}_{\rm Kron}  \bigr] ,\qquad
-B_{\rm Kron} := \imag \bigl[  \bm{Y}_{\rm Kron}  \bigr]
+  G_{\rm Kron} := \real \bigl[  \bm{Y}_{\rm Kron}  \bigr] ,\qquad
+  B_{\rm Kron} := \imag \bigl[  \bm{Y}_{\rm Kron}  \bigr]
 \]
-This presents the following fact:
+This introduces the following fact:
 
 \begin{theorem}[Properties of the Kron-reduced admittance matrix]
 \label{thm:Kron}
-For the admittance matrix $\bm{Y}\in \mathbb{C}^{N\times N}$ of Equation \ref{eq:Ypig}, 
-the partitioned matrix of Equation \ref{eq:YGL} defines the admittance matrix where the load bus bars have been Kron reduced as 
-$\bm{Y}_{\rm Kron}\in \ \mathbb{C}^{n\times n}$ of Equation \ref{eq:Kron}. 
-The admittance $\bm{y}_{{\rm load}i}^{\star} $ of each load satisfies Equation \ref{eq:loadys}. 
-At this point, the reduced conductance matrix $G_{\rm Kron}$ is positive semi-definite, while the reduced susceptance matrix 
-$B_{\rm Kron}$ is symmetric. If the following is true for generator buses:
+For the admittance matrix $\bm{Y}\in \mathbb{C}^{N\times N}$ of Equation
+\ref{eq:Ypig}, by dividing the block matrix of Equation \ref{eq:YGL},
+$\bm{Y}_{\rm Kron}\in \ \mathbb{C}^{n\times n}$ of Equation \ref{eq:Kron} can be
+obtained, corresponding to the admittance matrix of the system after the Kron
+reduction of the load bus bars. Additionally, the admittance $\bm{y}_{{\rm
+load}i}^{\star} $ of each load satisfies Equation \ref{eq:loadys}.  Then, the
+reduced conductance matrix $G_{\rm Kron}$ is positive semi-definite, and the
+reduced susceptance matrix $B_{\rm Kron}$ is symmetric. Furthermore, if the following
+is true for the generator buses:
+
 \begin{subequations}\label{eq:betas}
 \begin{equation}\label{eq:betag}
-\Cgi = 0
-,\qquad
-\forall i \in \mathcal{I}_{\rm G}
+  \Cgi = 0
+  ,\qquad
+  \forall i \in \mathcal{I}_{\rm G}
 \end{equation}
+
 And the following is true for load bus bars:
+
 \begin{equation}\label{eq:betay}
-\imag[\bm{y}_{{\rm load}i}^{\star} ] + \Cgi \leq 0
-,\qquad
-\forall i \in \mathcal{I}_{\rm L}
-\end{equation}
+  \operatorname{Im}[\bm{y}_{{\rm load}i}^{\star} ] + \Cgi \leq 0
+  ,\qquad
+  \forall i \in \mathcal{I}_{\rm L}
+  \end{equation}
 \end{subequations}
-$B_{\rm Kron}$ is negative semi-definite.
-where $\Cgi$ is a non-negative constant equivalent to the capacitance to ground of Equation \ref{eq:Ypig}. 
-Specifically, if the inequality of Equation \ref{eq:betay} strictly holds for at least one load bus bar, 
-$B_{\rm Kron}$ is negative definite.
+where $\Cgi$ is a non-negative constant equivalent to the capacitance to ground
+of Equation \ref{eq:Ypig}, $B_{\rm Kron}$ is negative semidefinite.   
+
+Specifically, if the inequality of Equation \ref{eq:betay} strictly holds for at
+least one load bus bar, then $B_{\rm Kron}$ is negative definite.
 \end{theorem}
 
 \begin{proof}
 
-\red{Translated with DeepL}
-To show the subject using the Lemma \ref{lem: schur} at the end of the chapter
-\begin{equation*}
-\bm{Y}' := 
-\mat{
-\bm{Y}_{\rm GG} & \bm{Y}_{\rm GL}\\
-\bm{Y}_{\rm LG} & \bm{Y}_{\rm LL} +\sfdiag(\bm{y}_{{\rm load}i}^{\star} )_{i \in \mathcal{I}_{\rm L}}
-}
-\end{equation*}
-At this time, since the expression \ref{eq: Y0} and the expression \ref{eq: loadys} hold, the real part of $\bm{j} \bm{Y}'$ is symmetric, and the imaginary part is half.It is symmetry.
-Therefore, the lemma \ref{lem: schur} shows that the real part of $\bm{j} \bm{Y}_{\rm Kron} $ is symmetric and the imaginary part is semi-positive.
-This implies that the real part of $\bm{Y}_{\rm Kron}$, $G_{\rm Kron}$, is semi-positive definite and the imaginary part, $B_{\rm Kron}$, is symmetric.
+Using Lemma \ref{lem:schur} of the Mathematical Supplement at the end of the
+chapter, let us define:
 
-Moreover, when the equation (\ref{eq:betas}) holds, the imaginary part of $\bm{Y}'$ is semi-negative definite, which shows the semi-negativity of $B_{\rm Kron}$ by the complement \ref{lem:schur}.
-Similarly, the imaginary part of $\bm{Y}'$ is negative definite if the inequality in equation\ref{eq:betay} holds strictly for at least one load matrix.
-Therefore, $B_{\rm Kron}$ is also negative definite.
+\begin{equation*}
+  \bm{Y}' := 
+  \mat{
+  \bm{Y}_{\rm GG} & \bm{Y}_{\rm GL}\\
+  \bm{Y}_{\rm LG} & \bm{Y}_{\rm LL} +\sfdiag(\bm{y}_{{\rm load}i}^{\star} )_{i \in \mathcal{I}_{\rm L}}
+  }
+\end{equation*}
+
+Since Equations \ref{eq: Y0} and \ref{eq: loadys} hold, the real part of $\bm{j}
+\bm{Y}'$ is symmetric, and the imaginary part is positive semidefinite.
+Therefore, Lemma \ref{lem:schur} shows that the real part of $\bm{j} \bm{Y}_{\rm
+Kron} $ is symmetric and the imaginary part is semi-positive. This implies that
+the real part of $\bm{Y}_{\rm Kron}$, $G_{\rm Kron}$, is positive semidefinite
+and the imaginary part, $B_{\rm Kron}$, is symmetric.
+
+Moreover, when Equation \ref{eq:betas} holds, the imaginary part of $\bm{Y}'$ is
+negative semidefinite, which by the Lemma \ref{lem:schur} implies that $B_{\rm
+Kron}$ is negative semidefinite. Similarly, if Equation \ref{eq:betay} holds
+strictly for at least one load bus bar, then $\bm{Y}'$ and $B_{\rm Kron}$ are
+negative definite.
+
 \end{proof}
 
-Theorem \ref{thm:Kron} shows that, if all loads are given by the constant impedance model, even if the load bus bars were Kron reduced, 
-the positive semi-definite nature of the conductance matrix and symmetry of the susceptance matrix in the admittance matrix of Equation \ref{eq:Ypig} is preserved.
-Therefore, it can be similarly applied to the electrical power system model, in which the generator buses and load bus bars in Section \ref{sec:allgen} are Kron reduced.
-Theorem \ref{thm:Kron} shows a case where all load bus bars are Kron reduced simultaneously. However, the same fact is shown when only some of load bus bars are Kron reduced.
+Theorem \ref{thm:Kron} shows that, if all loads are given by the constant
+impedance model, the conductance and susceptance matrix of related to the
+admittance matrix of Equation \ref{eq:Ypig} remain positive semidefinite and
+symmetric, respectively, even if the load bus bars were Kron reduced.
+Therefore, it can be similarly applied to the electrical power system model, in
+which the generator buses and load bus bars in Section \ref{sec:allgen} are Kron
+reduced. Theorem \ref{thm:Kron} shows a case where all load bus bars are Kron
+reduced simultaneously. However, the same fact is shown when only some of load
+bus bars are Kron reduced.
 
-As discussed above, while the definiteness of the admittance matrix is invariable to Kron reduction, the “element signs” of the real part and imaginary part are not necessarily invariable. 
-Let us confirm this with the next Example.
-\
+As discussed above, while the definiteness of the admittance matrix is
+invariable to Kron reduction, the "element signs" of the real and imaginary
+parts are not necessarily invariable. Let us confirm this with the next Example.
 
-\begin{example}{Sign change of the admittance matrix by Kron reduction of bus bars}\label{ex:kronsign}
-In the admittance matrix $\bm{Y}_0$ where the capacitance to ground of Equation (\ref{eq:Y0prop}) can be ignored, the conductance matrix $G_0$ is positive semi-definite, and the susceptance matrix $B_0$ is negative semi-definite.
-At this time, the diagonal and non-diagonal elements of $G_0$ are non-negative and non-positive, respectively, and the diagonal and non-diagonal elements of $B_0$ are non-positive and non-negative, respectively.
-For example, let us consider a case where bus bar 1 and bus bar 2 are generator buses, bus bar 3 is the load bus bar, and the admittance of the load and the admittance matrix of the power grids are:
+\begin{example}{Sign change of the admittance matrix by Kron reduction of bus
+bars}\label{ex:kronsign}
+
+Regarding the admittance matrix $\bm{Y}_0$ when the ground capacitance in
+Equation \ref{eq:Y0prop} is negligible, the conductance matrix $G_0$ is positive
+semidefinite and the susceptance matrix $B_0$ is negative semidefinite. Then,
+the diagonal and non-diagonal elements of $G_0$ are non-negative and
+non-positive, respectively, and the diagonal and non-diagonal elements of $B_0$
+are non-positive and non-negative, respectively. For example, For example, let
+bus 1 and bus 2 be the generator bus, bus 3 be the load bus. Then, the load bus
+admittance and the power grid admittance matrix are:
+
 \begin{equation*}
-\bm{y}_{{\rm load}3}^{\star} = \alpha - \bm{j} \beta 
-,\qquad
-\bm{Y}=  
-\underbrace{
-\gamma \mat{
-1&-1&0\\
--1&1&0\\
-0&0&0
-}
-}_{G_0}+
-\bm{j} 
-\underbrace{
-\mat{
--2&1&1\\
-1&-2&1\\
-1&1&-2
-}
-}_{B_0}
+  \bm{y}_{{\rm load}3}^{\star} = \alpha - \bm{j} \beta 
+  ,\qquad
+  \bm{Y}=  
+  \underbrace{
+    \gamma \mat{
+      1&-1&0\\
+      -1&1&0\\
+      0&0&0
+    }
+  }_{G_0}+
+  \bm{j} 
+  \underbrace{
+    \mat{
+      -2&1&1\\
+      1&-2&1\\
+      1&1&-2
+    }
+  }_{B_0}
 \end{equation*}
 where $\alpha$, $\beta$, and $\gamma$ are non-negative constants.
-Please note that the signs of the real and imaginary parts of the admittance of the load are the same as the signs of the diagonal element of the admittance matrix. 
+Please note that the signs of the real and imaginary parts of the load bus
+admittance of are the same as the signs of the diagonal element of the
+admittance matrix. 
 
-Kron reduction of the load bus bar causes the admittance matrix of Equation \ref{eq:Kron} that has been Kron reduced to become:
+By Kron reducing the load bus bar, the reduced admittance matrix of Equation
+\ref{eq:Kron} becomes:
+
 \begin{equation*}
-\spliteq{
-& \bm{Y}_{\rm Kron}
-= 
-\underbrace{
-\gamma
-\mat{
-1&-1\\
--1&1\\
-}
-+
-\frac{\alpha}{\alpha^2 + (2+\beta)^2}
-\mat{
-1&1\\
-1&1\\
-}
-}_{G_{\rm Kron}}
-\\
-& \hspace{7em} +
-\bm{j} 
-\underbrace{
-\left(
-\mat{
--2&1\\
-1&-2\\
-}
-+
-\frac{2+\beta}{\alpha^2 + (2+\beta)^2}
-\mat{
-1&1\\
-1&1\\
-}
-\right)
-}_{B_{\rm Kron}}
-}
+  \spliteq{
+    & \bm{Y}_{\rm Kron}
+    = 
+    \underbrace{
+      \gamma
+      \mat{
+        1&-1\\
+        -1&1\\
+      }
+      +
+      \frac{\alpha}{\alpha^2 + (2+\beta)^2}
+      \mat{
+        1&1\\
+        1&1\\
+      }
+    }_{G_{\rm Kron}}
+    \\
+    & \hspace{7em} +
+    \bm{j} 
+    \underbrace{
+      \left(
+      \mat{
+        -2&1\\
+        1&-2\\
+      }
+      +
+      \frac{2+\beta}{\alpha^2 + (2+\beta)^2}
+      \mat{
+        1&1\\
+        1&1\\
+      }
+      \right)
+      }_{B_{\rm Kron}}
+  }
 \end{equation*}
-Here, for arbitrary non-negative constants, $\alpha$, $\beta$, and $\gamma$, the diagonal element of $G_{\rm Kron}$ is non-negative 
-and the diagonal and non-diagonal elements of $B_{\rm Kron}$ are negative and positive, respectively. 
+
+Here, for arbitrary non-negative constants, $\alpha$, $\beta$, and $\gamma$, the
+diagonal element of $G_{\rm Kron}$ is non-negative and the diagonal and
+non-diagonal elements of $B_{\rm Kron}$ are negative and positive, respectively.
 However, the non-diagonal element of $G_{\rm Kron}$ is positive when:
-\begin{equation*}
-\gamma < \frac{\alpha}{\alpha^2 + (2+\beta)^2} 
-\end{equation*}
-As such, when the load bus bar is Kron reduced, the sign of the non-diagonal element of the admittance matrix is not always invariable. The sign of the diagonal element is invariable because of the positive semi-definite nature of $G_0$ and negative semi-definite nature of $B_0$.
 
-As for changes in the sign of the non-diagonal element, these can occur when the conductance and susceptance are not 0 for the load or transmission line connected to bus bars that have been Kron reduced. For example, in the above case, the admittance of the load is a pure imaginary number when $\alpha=0$. The admittance of the transmission line connected to bus bar 3; in other words, the elements of the third column and row of $\bm{Y}$ are all pure imaginary numbers. In such a case, the signs of elements in the conductance and susceptance matrices do not change. 
+\begin{equation*}
+  \gamma < \frac{\alpha}{\alpha^2 + (2+\beta)^2} 
+\end{equation*}
+
+Thus, when the laod bus bar is Kron reduced, the sign of the non-diagonal
+elements of the admittance matrix is not always invariable. The diagonal
+elements are invariable because of t he positive semidefinite nature of $G_0$
+and the negative semidefinite nature of $B_0$.
+
+A change of sign of an off-diagonal element can occur when the conductance and
+susceptance are both non-zero for the load or transmission line connected to the
+bus bar being Kron reduced. For example, in the above case, the admittance of
+the load is a pure imaginary number when $\alpha=0$ and the admittance of the
+transmission line connected to bus bar 3; in other words, the elements of the
+third column and the third row of $\bm{Y}$, are all pure imaginary. In such a
+case, it can be shown that there is no sign change of the elements of the
+conductance and susceptance matrices.
 
 \end{example}
 
-The above-described Kron reduction has been known as a mathematical operation related to the derivation of an equivalent circuit \cite{kron1939tensor}.
-Specifically, in an enalysis of an electrical power system, it is applied to the power flow calculations explained in Section \ref{sec:howtocal}.
-Kron reduction has also been analyzed from the perspective of graph theory, and has mathematically interesting properties \cite{dorfler2013kron}.
+The above-described Kron reduction has been known as a mathematical operation
+related to the derivation of an equivalent circuit \cite{kron1939tensor}.
+Specifically, in the analysis of an electrical power system, it is applied to
+power flow calculations explained in Section \ref{sec:howtocal}. Kron reduction
+has also been applied in graph theory, and has interesting mathematical
+properties \cite{dorfler2013kron}.
 
 
 %\section{蓄電池の数理モデル？}
@@ -2740,54 +2835,62 @@ Kron reduction has also been analyzed from the perspective of graph theory, and 
 
 
 \section*{Mathematical Supplement}
-\red{Entire section translated with DeepL}
 \begin{lemma}\label{lem:nonsing}
-Assume that the running matrix $M$ is regular.
-The necessary and sufficient condition for $M+ \bm{j} N$ to be regular for a running matrix $N$ is that $M+NM^{-1}N$ is regular.
+Assume that the real matrix $M$ is regular. Then, for real matrix $N$, the necessary
+and sufficient condition for $M + jN$ to be regular is that $M + NM-1N$ is regular.
 \end{lemma}
 
 \begin{proof}
-First, the fact that $M+ \bm{j} N$ is regular is equivalent to the fact that there exist certain real square matrices $P$ and $Q$ such that $(M+ \bm{j} N)(P+ \bm{j} Q)=I$.
-If we rearrange these two equations for the real and imaginary parts, we get
+First, the fact that $M+ \bm{j} N$ is regular is equivalent to the fact that
+there exist certain real square matrices $P$ and $Q$ such that $(M+ \bm{j} N)(P+
+\bm{j} Q)=I$. If we rearrange these two equations for the real and imaginary
+parts, we get:
+
 \begin{equation}\label{eq:MNinv}
-\underbrace{
-\mat{
-M & -N\\
-N & M
-}
-}_{L}
-\mat{
-P & -Q\\
-Q & P
-}
-=I
+  \underbrace{
+  \mat{
+    M & -N\\
+    N & M
+  }
+  }_{L}
+  \mat{
+    P & -Q\\
+    Q & P
+  }
+  =I
 \end{equation}
-This means that the regularity of $M+ \bm{j} N$ is equivalent to the regularity of $L$.
-Furthermore, from the properties of the determinant of the block matrix:
+
+This means that the regularity of $M+ \bm{j} N$ is equivalent to the regularity
+of $L$. Furthermore, using the properties of the determinant of block matrices:
+
 \begin{equation*}
-\sfdet L =\sfdet M \sfdet \left(M+NM^{-1}N\right)
+  \sfdet L =\sfdet M \sfdet \left(M+NM^{-1}N\right)
 \end{equation*}
-From the assumption that $\sfdet M \neq 0$, the regularity of $L$ is equivalent to the regularity of $M+NM^{-1}N$.
-From the above, the subject follows the intent of the title.
+
+From the assumption that $\sfdet M \neq 0$, the regularity of $L$ is equivalent
+to the regularity of $M+NM^{-1}N$. Then, the lemma is proven to be true. 
 \end{proof}
 
- \begin{lemma}\label{lem:sdreim}
-The real part of the complex matrix $\bm{Z}$ is assumed to be positive definite.
-If the imaginary part of $\bm{Z}$ is symmetric, then the real part of $\bm{Z}^{-1}$ is positive definite and the imaginary part is symmetric.
-In particular, if the imaginary part of $\bm{Z}$ is semipositive definite, then the imaginary part of $\bm{Z}^{-1}$ is seminegative definite.
-Also, if the imaginary part of $\bm{Z}$ is positive definite, then the imaginary part of $\bm{Z}^{-1}$ is negative definite.
- \end{lemma}
+\begin{lemma}\label{lem:sdreim}
+Let the real part of the complex matrix $\bm{Z}$ be positive definite. If the
+imaginary part of $\bm{Z}$ is symmetric, then the real part of $\bm{Z}^{-1}$ is
+positive definite and the imaginary part is symmetric. In particular, if the
+imaginary part of $\bm{Z}$ is positive semidefinite, then the imaginary part of
+$\bm{Z}^{-1}$ is negative semidefinite. Also, if the imaginary part of $\bm{Z}$
+is positive definte, the imaginary part of $\bm{Z}^{-1}$ is negative definite.
+\end{lemma}
 
 \begin{proof}
-Using a real positive definite matrix $M$ and a symmetric matrix $N$, denote $\bm{Z}$ by $M+ \bm{j} N$.
-Also, denote the real part of $\bm{Z}^{-1}$ by $P$ and the imaginary part by $Q$.
-From the complement \ref{lem:nonsing}, $M+NM^{-1}N$ is positive definite and therefore $\bm{Z}$ is regular.
-Therefore
+Let $\bm{Z} = M + \bm{j} N$, where $M$ is a real positive definite matrix and
+$N$ is a symmetric matrix. Let $P$ be the real part of $\bm{Z}^{-1}$ and $Q$ be
+its imaginary part. From the Lemma \ref{lem:nonsing}, $M+NM^{-1}N$ is positive
+definite and therefore $\bm{Z}$ is regular. Therefore
 
 \[
-(M+ \bm{j} N)(P+ \bm{j} Q)=I
+  (M+ \bm{j} N)(P+ \bm{j} Q)=I
 \]
-The equations for the real and imaginary parts of $L$ are equivalent to the equations in equation\ref{eq:MNinv}.
+
+The equations for the real and imaginary parts of $L$ are equivalent to the Equation \ref{eq:MNinv}.
 This means that the diagonal and off-diagonal blocks of the inverse of $L$ are $P$ and $Q$.
 From the properties of the inverse of the block matrix
 \begin{equation*}
