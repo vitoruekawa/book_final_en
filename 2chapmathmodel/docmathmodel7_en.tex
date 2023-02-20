@@ -2890,207 +2890,245 @@ definite and therefore $\bm{Z}$ is regular. Therefore
   (M+ \bm{j} N)(P+ \bm{j} Q)=I
 \]
 
-The equations for the real and imaginary parts of $L$ are equivalent to the Equation \ref{eq:MNinv}.
-This means that the diagonal and off-diagonal blocks of the inverse of $L$ are $P$ and $Q$.
-From the properties of the inverse of the block matrix
+The equations for the real and imaginary parts of $L$ are equivalent to the
+Equation \ref{eq:MNinv}. This means that the diagonal and off-diagonal blocks of
+the inverse of $L$ are $P$ and $Q$. From the properties of the inverse of block
+matrices:
+
 \begin{equation*}
-L^{-1}=
-\mat{
-(M+NM^{-1}N)^{-1} & M^{-1}N(M+NM^{-1}N)^{-1} \\
--(M+NM^{-1}N)^{-1}NM^{-1} & (M+NM^{-1}N)^{-1}
-}
+  L^{-1}=
+    \mat{
+      (M+NM^{-1}N)^{-1} & M^{-1}N(M+NM^{-1}N)^{-1} \\
+      -(M+NM^{-1}N)^{-1}NM^{-1} & (M+NM^{-1}N)^{-1}
+    }
 \end{equation*}
 
 Therefore,
 \begin{equation*}
-P=(M+NM^{-1}N)^{-1},\qquad
-Q=-M^{-1}N(M+NM^{-1}N)^{-1}
+  P=(M+NM^{-1}N)^{-1},\qquad
+  Q=-M^{-1}N(M+NM^{-1}N)^{-1}
 \end{equation*}
-From the assumption that $N$ is symmetric and $M$ is positive definite, $P$ is positive definite.
-Also, using the positive definite matrix $\sqrt{M^{-1}}$ such that $M^{-1}=\sqrt{M^{-1}}\sqrt{M^{-1}}$, $Q$ is
+
+From the assumption that $N$ is symmetric and $M$ is positive definite, $P$ is
+positive definite. Also, using the positive definite matrix $\sqrt{M^{-1}}$ such
+that $M^{-1}=\sqrt{M^{-1}}\sqrt{M^{-1}}$, $Q$ is
 \begin{equation*}
-Q=-\sqrt{M^{-1}} 
-\underbrace{
-\sqrt{M^{-1}} N \sqrt{M^{-1}}
-\left(
-I + (\sqrt{M^{-1}} N \sqrt{M^{-1}} )^2
-\right)^{-1}
-}_{X}
-\sqrt{M^{-1}}
+  Q=-\sqrt{M^{-1}} 
+  \underbrace{
+    \sqrt{M^{-1}} N \sqrt{M^{-1}}
+    \left(
+    I + (\sqrt{M^{-1}} N \sqrt{M^{-1}} )^2
+    \right)^{-1}
+  }_{X}
+  \sqrt{M^{-1}}
 \end{equation*}
-where $\sqrt{M^{-1}} N \sqrt{M^{-1}}$ is symmetric, so it can be diagonalized by the orthogonal matrix $V$ and
+where $\sqrt{M^{-1}} N \sqrt{M^{-1}}$ is symmetric, so it can be diagonalized by
+the orthogonal matrix $V$ and
+
 \begin{equation*}
-X = V \Lambda \left(
-I + \Lambda^2
-\right)^{-1}
-V^{\sf T}
+  X = V \Lambda \left(
+  I + \Lambda^2
+  \right)^{-1}
+  V^{\sf T}
 \end{equation*}
-However, $\Lambda$ is a real diagonal matrix of eigenvalues of $\sqrt{M^{-1}} N \sqrt{M^{-1}}$.
-From this, since $X$ is symmetric, $Q$ is also symmetric.
-Furthermore, if $N$ is semi-definite, then $\Lambda$ is also semi-definite, and if $N$ is positive, then $\Lambda$ is also positive.
-Therefore, if $N$ is semi-positive definite, then $Q$ is semi-negative definite, and if $N$ is positive definite, then $Q$ is negative definite.
-From the above, the subject follows.
+
+However, $\Lambda$ is a real diagonal matrix of eigenvalues of $\sqrt{M^{-1}} N
+\sqrt{M^{-1}}$. From this, since $X$ is symmetric, $Q$ is also symmetric.
+Furthermore, if $N$ is semi-definite, then $\Lambda$ is also semi-definite, and
+if $N$ is positive, then $\Lambda$ is also positive. Therefore, if $N$ is
+semi-positive definite, then $Q$ is semi-negative definite, and if $N$ is
+positive definite, then $Q$ is negative definite. From the above, the subject
+follows.
 \end{proof}
 
 
 
 \begin{lemma}\label{lem:schur}
-\red{Translated with DeepL}
-Consider symmetric running matrices $M$ and $N$.
-They are partitioned into block matrices
+Let $M$ and $N$ be symmetric real matrices, which are partitioned into block
+matrices as follows:
 \begin{equation}\label{eq:defbmZ}
-\mat{
-\bm{Z}_{11} & \bm{Z}_{12} \\
-\bm{Z}_{21} & \bm{Z}_{22}
-}
-:=
-\underbrace{
-\mat{
-M_{11} & M_{12} \\ 
-M_{12}^{\sfT} & M_{22}
-}
-}_{M}
-+\bm{j}
-\underbrace{
-\mat{
-N_{11} & N_{12} \\ 
-N_{12}^{\sfT} & N_{22}
-}
-}_{N}
+  \mat{
+    \bm{Z}_{11} & \bm{Z}_{12} \\
+    \bm{Z}_{21} & \bm{Z}_{22}
+  }
+  :=
+  \underbrace{
+    \mat{
+    M_{11} & M_{12} \\ 
+    M_{12}^{\sfT} & M_{22}
+    }
+  }_{M}
+  +\bm{j}
+  \underbrace{
+    \mat{
+    N_{11} & N_{12} \\ 
+    N_{12}^{\sfT} & N_{22}
+    }
+  }_{N}
 \end{equation}
-For $\bm{Z}_{11} - \bm{Z}_{12}\bm{Z}_{22}^{-1}\bm{Z}_{21}$ denote $\bm{Z}_{\rm S}$.
-Also assume that $M$ is semi-definite and that $M_{22}$ is positive definite.
-In this case, the real part of $\bm{Z}_{\rm S}$ is semipositive definite and the imaginary part is symmetric.
-In particular, if $N$ is semipositive definite, then the imaginary part of $\bm{Z}_{\rm S}$ is semipositive definite.
-Also, if $N$ is positive definite, then the imaginary part of $\bm{Z}_{\rm S}$ is positive definite.
-Furthermore, if $M$ is positive definite, then the real part of $\bm{Z}_{\rm S}$ is positive definite.
+Let $\bm{Z}_{\rm S}$ denote $\bm{Z}_{11} -
+\bm{Z}_{12}\bm{Z}_{22}^{-1}\bm{Z}_{21}$. Moreover, assume that $M$ is postivie
+semi-definite and $M_{22}$ is positive definite. Then the real part of 
+$\bm{Z}_{\rm S}$ is positive semi-definite, and the imaginary part of
+$\bm{Z}_{\rm S}$ is symmetric. In particular, if $N$ is positive semi-definite,
+then the imaginary part of $\bm{Z}_{\rm S}$ is also positive semi-definite.
+Furthermore, if $N$ is positive definite, then the imaginary part of
+$\bm{Z}_{\rm S}$ is positive definite. Finally, if $M$ is positive definite,
+then the real part of $\bm{Z}_{\rm S}$ is positive definite.
 \end{lemma}
 
 \begin{proof}
-\red{Translated with DeepL}
-Denote by $\bm{Z}$ the matrix on the left-hand side of the Equation \ref{eq:defbmZ}.
-First, if $M$ is positive definite, then the real part of $\bm{Z}_{\rm S}$ is positive definite and the imaginary part is symmetric.
-Now, from the positive definiteness of $M_{22}$, $\bm{Z}_{22}$ is regular from the complement \ref{lem:nonsing}.
-Therefore, by the inverse property of the block matrix, $\bm{Z}_{\rm S}^{-1}$ coincides with the upper left block of $\bm{Z}^{-1}$.
-Here, from the complementation\ref{lem:sdreim}, the real part of $\bm{Z}^{-1}$ is positive definite and the imaginary part is symmetric.
-This means that the real part of $\bm{Z}_{\rm S}^{-1}$ is positive definite and the imaginary part is symmetric.
-Therefore, applying the complementation \ref{lem:sdreim} to $\bm{Z}_{\rm S}^{-1}$ shows that the real part of $\bm{Z}_{\rm S}$ is positive definite and the imaginary part is symmetric.
-Similarly, if $N$ is semipositive definite, then from the complementation \ref{lem:sdreim}, the imaginary part of $\bm{Z}^{-1}$ is semidefinite, which means that the imaginary part of $\bm{Z}_{\rm S}^{-1}$ is semidefinite.
-Therefore, by applying the complementation \ref{lem:sdreim} again to $\bm{Z}_{\rm S}^{-1}$, it can be shown that the imaginary part of $\bm{Z}_{\rm S}$ is semipositive definite.
 
+Let us denote the matrix on the left-hand side of Equation \ref{eq:defbmZ} as
+$\bm{Z}$.  First, if $M$ is positive definite, then the real part of
+$\bm{Z}_{\rm S}$ is positive definite and the imaginary part is symmetric.  Now,
+due to the positive definitess of $M_{22}$, Lemma \ref{lem:nonsing} implies that
+$\bm{Z}_{22}$ is nonsingular. Hence by the property of the inverse of a block
+matrix, $\bm{Z}_{\rm S}^{-1}$ coincides with the upper left block of
+$\bm{Z}^{-1}$. Here, Lemma \ref{lem:sdreim} implies that the real part of
+$\bm{Z}^{-1}$ is positive definite and the imaginary part is symmetric. This
+means that the real part of $\bm{Z}_{\rm S}^{-1}$ is positive definite and the
+imaginary part is symmetric. Thus, by applying Lemma \ref{lem:sdreim} to
+$\bm{Z}_{\rm S}^{-1}$, we show the positive definiteness of the real part and
+the symmetry of the imaginary part of $\bm{Z}_{\rm S}$.
 
-Next, consider the case where $M$ is semidefinite and $N$ is symmetric.
-First, show that both the real and imaginary parts of $\bm{Z}_{\rm S}$ are symmetric.
-Now, since the real part $M_{22}$ of $\bm{Z}_{22}$ is positive definite and the imaginary part $N_{22}$ is symmetric, both real and imaginary parts of $\bm{Z}_{22}^{-1}$ are symmetric.
-Therefore,
+Next, consider the case where $M$ is positive semi-definite and $N$ is
+symmetric. First, show that both the real and imaginary parts of $\bm{Z}_{\rm
+S}$ are symmetric. Now, since the real part $M_{22}$ of $\bm{Z}_{22}$ is
+positive definite and the imaginary part $N_{22}$ is symmetric, both real and
+imaginary parts of $\bm{Z}_{22}^{-1}$ are symmetric. Therefore,
 \begin{equation*}
-\spliteq{
-\real [\bm{Z}_{\rm S} ] &= \real [\bm{Z}_{11} ]
-- \real [\bm{Z}_{12} ] \real [\bm{Z}_{22}^{-1} ] \real [\bm{Z}_{21} ]\\
-&+ \imag [\bm{Z}_{12} ] \imag [\bm{Z}_{22}^{-1} ] \real [\bm{Z}_{21} ]
-+ \imag [\bm{Z}_{12} ] \real [\bm{Z}_{22}^{-1} ] \imag [\bm{Z}_{21} ] \\
-&+ \real [\bm{Z}_{12} ] \imag [\bm{Z}_{22}^{-1} ] \imag [\bm{Z}_{21} ]\\
-&= M_{11} - M_{12}  \real [\bm{Z}_{22}^{-1} ] M_{12}^{\sfT} 
-+ N_{12}  \imag [\bm{Z}_{22}^{-1} ] M_{12}^{\sfT} 
-+ N_{12}  \real [\bm{Z}_{22}^{-1} ] N_{12}^{\sfT} \\
-&+ M_{12}  \imag [\bm{Z}_{22}^{-1} ] N_{12}^{\sfT}
-}
+  \spliteq{
+    \real [\bm{Z}_{\rm S} ] &= \real [\bm{Z}_{11} ]
+    - \real [\bm{Z}_{12} ] \real [\bm{Z}_{22}^{-1} ] \real [\bm{Z}_{21} ]\\
+    &+ \imag [\bm{Z}_{12} ] \imag [\bm{Z}_{22}^{-1} ] \real [\bm{Z}_{21} ]
+    + \imag [\bm{Z}_{12} ] \real [\bm{Z}_{22}^{-1} ] \imag [\bm{Z}_{21} ] \\
+    &+ \real [\bm{Z}_{12} ] \imag [\bm{Z}_{22}^{-1} ] \imag [\bm{Z}_{21} ]\\
+    &= M_{11} - M_{12}  \real [\bm{Z}_{22}^{-1} ] M_{12}^{\sfT} 
+    + N_{12}  \imag [\bm{Z}_{22}^{-1} ] M_{12}^{\sfT} 
+    + N_{12}  \real [\bm{Z}_{22}^{-1} ] N_{12}^{\sfT} \\
+    &+ M_{12}  \imag [\bm{Z}_{22}^{-1} ] N_{12}^{\sfT}
+  }
 \end{equation*}
+
 From this we see that the real part of $\bm{Z}_{\rm S}$ is symmetric.
 Similarly,
 \begin{equation*}
-\spliteq{
-\imag [\bm{Z}_{\rm S} ]& = N_{11} + N_{12}  \imag [\bm{Z}_{22}^{-1} ] N_{12}^{\sfT} 
-- N_{12}  \real [\bm{Z}_{22}^{-1} ] M_{12}^{\sfT} \\
-& - M_{12}  \imag [\bm{Z}_{22}^{-1} ] M_{12}^{\sfT} 
-- M_{12}  \real [\bm{Z}_{22}^{-1} ] N_{12}^{\sfT}
-}
+  \spliteq{
+    \imag [\bm{Z}_{\rm S} ]& = N_{11} + N_{12}  \imag [\bm{Z}_{22}^{-1} ] N_{12}^{\sfT} 
+    - N_{12}  \real [\bm{Z}_{22}^{-1} ] M_{12}^{\sfT} \\
+    & - M_{12}  \imag [\bm{Z}_{22}^{-1} ] M_{12}^{\sfT} 
+    - M_{12}  \real [\bm{Z}_{22}^{-1} ] N_{12}^{\sfT}
+  }
 \end{equation*}
 From this we see that the imaginary part of $\bm{Z}_{\rm S}$ is also symmetric.
 
-When $M$ in the expression \ref{eq:defbmZ} is semi-definite, $\bm{Z}$ is not necessarily regular, since $\bm{Z}^{-1}$ is not necessarily regular.
-In contrast, in what follows, for any $\epsilon >0$:
+When $M$ in Equation \ref{eq:defbmZ} is positive semi-definite, $\bm{Z}$ is not
+always nonsingular and therefore $\bm{Z}^{-1}$ may not exist. In what follows,
+for any $\epsilon > 0$:
 \begin{equation*}
-\bm{Z}^{+}
-:=
-\mat{
-\bm{Z}_{11}+ \epsilon I & \bm{Z}_{12} \\
-\bm{Z}_{21} & \bm{Z}_{22}+ \epsilon I
+  \bm{Z}^{+}
+  :=
+  \mat{
+  \bm{Z}_{11}+ \epsilon I & \bm{Z}_{12} \\
+  \bm{Z}_{21} & \bm{Z}_{22}+ \epsilon I
 }
 \end{equation*}
-The real part of $N$, $M+\epsilon I$, is positive definite.
-Now, when $N$ is semi-definite, for any $\epsilon >0$ we have
-\begin{equation*}
-\bm{Z}_{\rm S}^{+}:=\bm{Z}_{11} + \epsilon I - \bm{Z}_{12} (\bm{Z}_{22}+ \epsilon I)^{-1}\bm{Z}_{21}
-\end{equation*}
-The real part of $(\bm{Z}_{22}+ \epsilon I)^{-1}$ is positive definite, and the imaginary part is semi-positive definite.
-Also, by expanding $(\bm{Z}_{22}+ \epsilon I)^{-1}$ using the auxiliary theorem of the inverse matrix the following is obtained.
-\begin{equation*}
-\bm{Z}_{\rm S}^{+}=
-\bm{Z}_{\rm S}
-+ \underbrace{
-\epsilon
-\left\{
-I + \bm{Z}_{12} \bm{Z}_{22}^{-1}
-(I +\epsilon \bm{Z}_{22}^{-1} )^{-1}
-\bm{Z}_{22}^{-1}\bm{Z}_{21}
-\right\}
-}_{\Delta(\epsilon)}
-\end{equation*}
-As mentioned above, since the real and imaginary parts of $\bm{Z}_{\rm S}^{+}$ and $\bm{Z}_{\rm S}$ are symmetric,
-the real and imaginary parts of $\Delta(\epsilon)$ are also symmetric.
+The real part of $M+\epsilon I$, is positive definite. If $N$ is positive
+semi-definite, then for any $\epsilon >0$, the real part of the following matrix
+is positive definite, and its imaginary part is positive semi-definite:
 
-Next, we show that the imaginary part of $\bm{Z}_{\rm S}^{+}$ is semipositive definite if and only if $\bm{Z}_{\rm S}$ is semipositive definite.
-Note that the same argument can be used to show the semi- positive definiteness of the real part.
-For the following discussion
 \begin{equation*}
-\mathcal{X} := \left\{
-x: 
-x^{\sf T} \imag[\Delta (\epsilon)] x >0
-,\quad 
-\forall \epsilon >0
-\right\}
+  \bm{Z}_{\rm S}^{+}:=\bm{Z}_{11} + \epsilon I - \bm{Z}_{12} (\bm{Z}_{22}+ \epsilon I)^{-1}\bm{Z}_{21}
 \end{equation*}
-is defined as follows.
-From this definition of $\mathcal{X}$, for arbitrarily chosen $x \notin \mathcal{X}$, there exists some $\epsilon_0 >0$ such that
+
+Moreover, expanding $(\bm{Z}_{22}+ \epsilon I)^{-1}$ using the auxiliary theorem
+of the inverse matrix the following is obtained.
+
+\begin{equation*}
+  \bm{Z}_{\rm S}^{+}=
+  \bm{Z}_{\rm S}
+  + \underbrace{
+  \epsilon
+  \left\{
+  I + \bm{Z}_{12} \bm{Z}_{22}^{-1}
+  (I +\epsilon \bm{Z}_{22}^{-1} )^{-1}
+  \bm{Z}_{22}^{-1}\bm{Z}_{21}
+  \right\}
+  }_{\Delta(\epsilon)}
+\end{equation*}
+
+As mentioned above, since the real and imaginary parts of $\bm{Z}_{\rm S}^{+}$
+and $\bm{Z}_{\rm S}$ are symmetric, the real and imaginary parts of
+$\Delta(\epsilon)$ are also symmetric.
+
+Next, we show that if the imaginary part of $\bm{Z}_{\rm S}^{+}$ is positive
+semi-definite, then the imaginary part of $\bm{Z}_{\rm S}$ is also positive
+semi-definite. Note that the same argument can be applied to the real part. For
+this purpose, we define:
+\begin{equation*}
+  \mathcal{X} := \left\{
+  x: 
+  x^{\sf T} \imag[\Delta (\epsilon)] x >0
+  ,\quad 
+  \forall \epsilon >0
+  \right\}
+\end{equation*}
+
+From this definition of $\mathcal{X}$, for any $x$ chosen arbitrarily $x \notin
+\mathcal{X}$, there exists some $\epsilon_0 >0$ such that:
 \[
-x^{\sf T} \imag[\Delta(\epsilon_0)]x \leq 0
+  x^{\sf T} \imag[\Delta(\epsilon_0)]x \leq 0
 \]
-Therefore, the imaginary part of $ \bm{Z}_{\rm S}^{+} $ is semi-positive definite, 
+
+Therefore, since the imaginary part of $ \bm{Z}_{\rm S}^{+} $ is positive
+semi-definite, we have:
 \begin{equation*}
-x^{\sf T} \imag [\bm{Z}_{\rm S}] x + x^{\sf T} \imag[\Delta(\epsilon_0)]x \geq 0
+  x^{\sf T} \imag [\bm{Z}_{\rm S}] x + x^{\sf T} \imag[\Delta(\epsilon_0)]x \geq 0
 \end{equation*}
-is derived.
-This leads to the following for all $x \notin \mathcal{X}$, 
+
+This leads to the following for all $x \notin \mathcal{X}$:
 \begin{equation}\label{eq:xZxgeq}
-x^{\sf T}\imag[\bm{Z}_{\rm S}] x \geq 0
+  x^{\sf T}\imag[\bm{Z}_{\rm S}] x \geq 0
 \end{equation}
 
-Furthermore, if the imaginary part of $ \bm{Z}_{\rm S}^{+} $ is semi-positive definite, we show by contraposition that the expression \ref{eq:xZxgeq} holds for all $x \in \mathcal{X}$.
-That is, for some $x \in \mathcal{X}$, we have
+Furthermore, we prove the contrapositive that if the imaginary part of $
+\bm{Z}_{\rm S}^{+} $ is not positive semi-definite, then Equation
+\ref{eq:xZxgeq} does not hold for all $x \in \mathcal{X}$. That is, if there
+exists an $x \in \mathcal{X}$ such that 
+
 \begin{equation}\label{eq:xZxleq}
-x^{\sf T} \imag[\bm{Z}_{\rm S}] x < 0
+  x^{\sf T} \imag[\bm{Z}_{\rm S}] x < 0
 \end{equation}
-then the imaginary part of $ \bm{Z}_{\rm S}^{+} $ is not semidefinite.
-Now, noting that the imaginary part of $\Delta(\epsilon)$ asymptotes to 0 in the limit of $\epsilon \rightarrow 0$, if for some $x \in \mathcal{X}$ the expression\ref{eq:xZxleq}
+then we show that the imaginary part of $ \bm{Z}_{\rm S}^{+} $ is not positive
+semi-definite. 
+
+Now, noting that the imaginary part of $ \Delta(\epsilon)$ approaches to zero as
+$\epsilon \rightarrow 0$, if Equation \ref{eq:xZxleq} holds for some $x \in
+\mathcal{X}$, then there exists some $\epsilon_0$ such that:
+
 \begin{equation*}
 x^{\sf T} \imag[ \bm{Z}_{\rm S}] x 
 +
 x^{\sf T} \imag[\Delta(\epsilon_0)]x < 0
 \end{equation*}
-This means that the imaginary part of $\bm{Z}_{\rm S}^{+} $ is not semi- positive definite.
-The above facts show that the imaginary part of $\bm{Z}_{\rm S}$ is semi-positive definite.
+This means that the imaginary part of $\bm{Z}_{\rm S}^{+} $ is not positive
+semi-definite. From these facts, we can conclude that the imaginary part of
+$\bm{Z}_{\rm S}$ is positive semi-definite.
 
-Finally, we show that if $N$ is positive definite, then the imaginary part of $\bm{Z}_{\rm S}$ is positive definite.
-For this purpose, 
+Finally, we show that if $N$ is positive definite, then the imaginary part of
+$\bm{Z}_{\rm S}$ is positive definite. For this purpose, we can use the fact
+that the real part of the following matrix is positive definite and its
+imaginary part is symmetric.
 \begin{equation*}
 -\bm{j} \bm{Z} = N - \bm{j} M
 \end{equation*}
-is positive definite and the imaginary part is symmetric.
-Applying the results for the case where the real part is positive definite to this $-\bm{j} \bm{Z}_{\rm S}$, it can be shown that the real part of $-\bm{j} \bm{Z}_{\rm S}$ is positive definite.
-This implies that the imaginary part of $\bm{Z}_{\rm S}$ is positive definite.
-\end{proof}
 
+Applying the results for the case when the real part of $-\bm{j} \bm{Z}$ is
+positive definite, we can conclude that the real part of $-\bm{j} \bm{Z}_{\rm
+S}$ is positive definite, which means that the imaginary part of $\bm{Z}_{\rm
+S}$ is positive definite.
+\end{proof}
 
 %\newpage
 \end{document}
