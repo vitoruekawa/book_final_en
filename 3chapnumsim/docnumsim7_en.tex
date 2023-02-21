@@ -1,70 +1,132 @@
-\documentclass[tombow,dvipdfmx]{corona-a5-1.1}
-% dvipdfmxを追加（川口）
-
+\documentclass[graybox, envcountchap]{svmult}
 \input{../settings}
 
 \begin{document}
 
-\chapter{Numerical simulation of the electrical power system model}\label{chap:numcal}
+\chapter{Numerical simulation of the electrical power system
+model}\label{chap:numcal}
+In this chapter, we will explain numerical simulation methods for power system
+models described by nonlinear differential algebraic equation systems. We will
+also provide guidelines for building a structured numerical simulation
+environment.
 
-In this Chapter, we will explain a numerical simulation method for the electrical power system model described by a nonlinear differential-algebraic equation system.
-A policy for creating a structured numerical simulation environment will also be shown.
-The structure of this Chapter is as follows. First, in Section \ref{sec:howtocal}, we will explain the difficulty of the calculation time response of the electrical power system model.
-Next, in Section \ref{sec:powflow}, we will explain the power flow calculation, which is a process that numerically searches the equilibrium of the electrical power system model.
-In Section \ref{sec:paradef}, we will discuss a method to determine constants for a load model and steady values for the internal state of generators to be consistent with the steady values of the voltage and electric power of the bus bars determined by the power flow calculation. In Section \ref{sec:numsimtr}, we will explain a calculation method for the time response to changes in the initial value, the load, and ground fault, and also present actual time response calculations. Finally, in Section \ref{sec:phsync}, we will mathematically analyze a steady current as a synchronization phenomenon of the bus bar voltage as an evolving topic.
+The chapter is organized as follows. First, in Section \ref{sec:howtocal}, we
+will explain the difficulty of calculating the time response of power system
+models. Next, in section \ref{sec:powflow}, we will describe the process of
+power flow calculation, which numerically explores the equilibrium state of
+power system models. In section \ref{sec:paradef}, we will discuss how to
+determine the steady-state values of internal states of generators and constants
+of load models that are consistent with the steady-state values of bus voltages
+and power determined by power flow calculation.
 
-\section{To calculate time response of the electrical power system}\label{sec:howtocal}
+In section \ref{sec:numsimtr}, we will explain the calculation methods for time
+responses to changes in initial conditions, load fluctuations, and ground
+faults, and illustrate the calculation of time responses. Finally, in section
+\ref{sec:phsync}, we will discuss synchronism phenomena of bus voltages in
+steady-state power flow states from an advanced perspective, and analyze them
+mathematically.
 
-\subsection{Difficulties in calculating time response}
+\section{Calculation of time response of an electrical power
+system}\label{sec:howtocal}
 
-In Chapter \ref{ch:model}, we explained that, as a generator model and a load model were combined by a power grid model,
-a mathematical model of the entire electrical power system can be described with a nonlinear differential-algebraic equation system.
-Therefore, the time response of the electrical power system can be obtained by numerical integration of the differential-algebraic equation with appropriately chosen initial values and external inputs.
-However, in numerical simulation of the electrical power system model, properties unique to an electrical power system must be considered:
-\begin{itemize}	
-  \item Unless external inputs are correctly set, supply and demand will not be in balance; thus, the steady value of the frequency deviation does not become 0, and the rotor argument of the generators will continue to change.
-	\item Since there are innumerable combinations of external input values to achieve 0 for the steady value of the frequency deviation, realistically valid external input values must be chosen.
-	\item Values for the voltage phasor and current phasor of the bus bars must be selected so that they are consistent as dependent variables to state variables of generators.
+\subsection{Challenges in calculating time response}
+
+In Chapter \ref{ch:model}, we explained that the mathematical model of the
+entire power system, including generator and load models coupled with
+transmission line models, is described by a system of nonlineadr differential
+algebraic equations. Therefore, the time response of the power system model can
+be obtained by numerically integrating these equations with appropriate initial
+values and external inputs. However, when performing numerical simulations of
+the power system model, it is necessary to consider specific characteristics of
+the power system, such as:
+\begin{itemize}
+  \item If external inputs are not properly set, the demand and supply will not
+  be in equilibrium, and the steady-state value of the frequency deviation will
+  not be zero, causing the rotor angle of the generator to continue to change.
+  \item There are an infinite number of combinations of external input values
+  that result in zero steady-state value for frequency deviation. Therefore, it
+  is necessary to specify realistic external input values.
+  \item The values of the voltage phase and current phase of the bus bar group
+  must be determined so that they are consistent as dependent variables with
+  respect to the state variables of the generator group.
 \end{itemize}
-Therefore, simply using the differential-algebraic equation solver on MATLAB cannot correctly execute the numerical simulation of an electrical power system.
-This is one of the factors that makes calculation of the time response for the electrical power system difficult.
+
+Therefore, simply using the differential-algebraic equation solver that is
+standardly implemented in MATLAB is not sufficient to accurately execute
+numerical simulations of the power system. This is one of the factors that makes
+the calculation of the time response of the power system model difficult.
 
 \subsection{Calculation steps}\label{sec:numstep}
 
-The standard calculation method for the time response of the electrical power system model described with a nonlinear differential-algebraic equation can be divided into the following three steps.
+The standard calculation procedure for the time response of a power system model
+described by nonlinear differential algebraic equations is divided into the
+following three steps:
 
 \medskip
 \begin{breakbox}
 \begin{itemize}
-\item[(A)] To specify the state of an electrical power system in which the supply and demand to be analyzed are in equilibrium,the admittance matrix determined by the power grids is used to calculate the value of the current phasor and voltage phasor for all bus bars in a steady state. 
-\item[(B)] To be consistent with the determined steady values of the current phasor and voltage phasor of the bus bars, the steady values of internal voltage and the rotor argument of each generator, the external input to the generators, and the impedance of each load are back-calculated.
-\item[(C)] With the state of an electrical power system, in which the demand calculated in the Steps A and B are in equilibrium, as the initial value, various sizes of disturbances are caused, such as perturbation applied to the internal state of generators, ground fault of bus bar voltage, and change in load parameters, and the time response is calculated.
+  \item[(A)] To specify the power system state in a steady state where supply and
+  demand are balanced, calculate the values of the phase angle and voltage of all
+  buses in the steady state using the admittance matrix determined from the
+  transmission network.
+  \item[(B)] Calculate the steady-state values of the internal voltage and rotor
+  angle of each generator, the external input values to the generator, and the
+  impedance value of each load, so that they are consistent with the steady-state
+  values of the bus current phase and voltage phase determined in Step A.
+  \item[(C)] Using the power system state where supply and demand are balanced
+  calculated in Steps A and B as the initial value, calculate the time response
+  under various disturbances of different magnitudes such as giving perturbations
+  to the internal state of the generator, grounding the voltage of the bus, or
+  changing the parameter values of the load.
 \end{itemize}
 \end{breakbox}
 \medskip
 
-From the perspective of control systems engineering, Step A can be understood as “determining one equilibrium point from many equilibrium points to perform numerical analysis”.
-As discussed in Section \ref{sec:paradef}, when the steady values for the current phasor and voltage phasor of all bus bars are provided, the steady value of the internal state of generators, external input, and load parameters that achieve this always exist.
-As such, calculating the steady values of the current phasor and voltage phasor for all bus bars is equivalent to calculating the equilibrium point of the electrical power system model expressed by a differential-algebraic equation.
-In electrical power system engineering, this process is called \textbf{power flow calculation}. Obtaining the steady values of the current phasor and voltage phasor of each bus bar is mathematically equivalent to obtaining the steady values of the active reactive power supplied from each equipment to the bus bars. 
+From the viewpoint of system control engineering, Step A can be understood as
+"determining one equilibrium point to perform numerical analysis from among an
+infinite number of equilibrium points." As described in Section
+\ref{sec:paradef}, when the steady-state values of the phase angle and voltage
+of all buses are given, there must exist steady-state values of the internal
+state of the generator, external input values to the generator, and the load
+parameter values that realize them. Therefore, calculating the steady-state
+values of the phase angle and voltage of all buses is equivalent to calculating
+the equilibrium point of the power system model represented by differential
+algebraic equations. In power system engineering, this process is called the
+\textbf{power flow calculation}\index{power flow calculation}. 
 
-In Step B, to be consistent with the steady values of the current phasor and voltage phasor of the bus bars, the steady value of the internal state of the generators, external input, and load parameters are back-calculated.
-In this Step, one must pay attention to the load parameters; in other words, the mathematical model of load “is determined by back calculating from the result of the power flow calculation in Step A”.
-For example, if setting the load connected to bus bars in the constant impedance model, the impedance of the load is back-calculated as a value where the current phasor of the bus bars obtained in the power flow calculation is divided by the voltage phasor.
-If setting load model parameters as desired values, in Step C, the time response to load parameter fluctuations is calculated while changing the load parameters to desired values. 
+It should be noted that calculating the steady-state values of the internal
+state of the generator, external input values, and the load parameter values in
+Step B is an indirect procedure of determining the mathematical model of the
+load from the results of the power flow calculation in Step A.  For example, if
+you want to set the load connected to a certain bus as a constant impedance
+model, you need to reverse calculate the impedance value of the load using the
+current phase of the bus calculated by the power flow calculation divided by the
+voltage phase.  If setting load model parameters as desired values, in Step C,
+the time response to load parameter fluctuations is calculated while changing
+the load parameters to desired values. 
 
+Finally, in Step C, the time response of the electrical power system model is
+calculated under various conditions depending on the purpose. For example, if
+the external input to each generator and load parameter calculated in Steps A
+and B are set as constants in the model, and the time response is calculated
+with the initial value appropriate for generators, the internal state of the
+generators asymptotically converges to the steady state calculated in Step B
+over time. However, to set valid initial values such that asymptotic convergence
+is established, as in Steps A and B, the equilibrium point that serves as the
+reference for the analysis must be calculated first. The calculated equilibrium
+point must be stable in an appropriate sense. 
 
-Finally, in Step C, the time response of the electrical power system model is calculated under various conditions depending on the purpose.
-For example, if the external input to each generator and load parameter calculated in Steps A and B are set as constants in the model, and the time response is calculated with the initial value appropriate for generators, the internal state of the generators asymptotically converges to the steady state calculated in Step B over time.
-However, to set valid initial values such that asymptotic convergence is established, as in Steps A and B, the equilibrium point that serves as the reference for the analysis must be calculated first.
-The calculated equilibrium point must be stable in an appropriate sense. 
+\section{Numerical analysis of steady-state in power flow
+calculation}\label{sec:powflow}
 
+In this Section, we describe an overview of power flow calculation to
+numerically search the steady-state of the power system, as explained in Step A
+of Section \ref{sec:numstep} and the implementation method using MATLAB.
 
-\section{Power flow calculation that numerically searches the steady stat}\label{sec:powflow}
-
-In this Section, we discuss the outline of the power flow calculation that searches the steady state of the electrical power system that was explained as Step A in Section \ref{sec:numstep} and the implementation method by MATLAB.
-Below, the distribution of the current phasor and voltage phasor of the bus bars:
-\begin{align}\label{eq:ohmY2}
+Given the admittance matrix $\bm{Y}$, the distribution of current and voltage
+phasors of the busbar group that satisfies the following relationship is
+referred to as the \textbf{power flow distribution} at time $t$.
+\begin{equation}\label{eq:ohmY2}
 \mat{
   \bm{I}_1(t)\\
   \vdots\\
@@ -83,9 +145,9 @@ Below, the distribution of the current phasor and voltage phasor of the bus bars
   \vdots\\
   \bm{V}_N(t)
 }
-\end{align}
-that satisfies the given admittance matrix $\bm{Y}$:
-\begin{align}\label{eq:pfconIV}
+\end{equation}
+
+\begin{equation}\label{eq:pfconIV}
 \bigl(
 |\bm{I}_1(t)|,\angle \bm{I}_1(t),
 |\bm{V}_1(t)|,\angle \bm{V}_1(t),
@@ -93,51 +155,60 @@ that satisfies the given admittance matrix $\bm{Y}$:
 |\bm{I}_N(t)|,\angle \bm{I}_N(t),
 |\bm{V}_N(t)|,\angle \bm{V}_N(t)
 \bigr)
-\end{align}
-is called \textbf{power flow distribution} at time $t$.
-Each current phasor and voltage phasor changes with time, and from the laws of physics of current and voltage, these must satisfy Equation \ref{eq:ohmY2} at arbitrary time $t$. 
+\end{equation}
 
-The power flow calculation is a calculation process that obtains “one of the steady power flow distributions”.
-Here, a steady power flow distribution means that the following holds for a constant current phasor $\bm{I}_i^{\star}$ and voltage phasor $\bm{V}_i^{\star}$ for all bus bars $i$:
+Each current and voltage phasors changes with time, and from the laws of physics
+of current and voltage, these must satisfy Equation \ref{eq:ohmY2} at any
+arbitrary time $t$. 
+
+Power flow calculation is a computational process to find "one of the
+steady-state power flow distributions". A steady-sate power flow distribution
+refers to the condition that all the buses satisfy the following for given
+constant current phasors $\bm{I}_i^{\star}$ and voltage phasors
+$\bm{V}_i^{\star}$.
+
 \[
-\bm{I}_i(t)=\bm{I}_i^{\star} ,\qquad
-\bm{V}_i(t)=\bm{V}_i^{\star}, \qquad
-\forall t\geq 0
+  \bm{I}_i(t)=\bm{I}_i^{\star} ,\qquad
+  \bm{V}_i(t)=\bm{V}_i^{\star}, \qquad
+  \forall t\geq 0
 \]
 
-Using the definitions of active power and reactive power supplied to the bus bars:
+Using the definitions of active power and reactive power supplied to the bus
+bars in the following equation, the current phasors can be eliminated.
 
 \begin{align}\label{eq:defPQVIi2}
 P_i(t)+\bm{j}Q_i(t) = \bm{V}_i(t) \overline{\bm{{I}} }_i(t)
 \end{align}
 
-current phasor is cancelled. In this manner, we can see that simultaneous equations of Equation \ref{eq:ohmY2} are equivalent to:
+Thus, the system of equations in Equation \ref{eq:ohmY2} is equilvalent to:
 
-\begin{align}\label{eq:PQVgen}
-\simode{
-P_1(t) + \bm{j} Q_1(t) &= 
-\sum_{j=1}^{N} \overline{\bm{Y}}_{1j} |\bm{V}_1(t)| |\bm{V}_j(t) | e^{\bm{j} \bigl(\angle \bm{V}_1(t) - \angle \bm{V}_j(t) \bigr)} \\ 
-& \; \;  \vdots \\
-P_N(t) + \bm{j} Q_N(t) &= 
-\sum_{j=1}^{N} \overline{\bm{Y}}_{Nj} |\bm{V}_N(t)| |\bm{V}_j(t) | e^{\bm{j} \bigl(\angle \bm{V}_N(t) - \angle \bm{V}_j(t) \bigr)}
-}
-\end{align}
+\begin{equation}\label{eq:PQVgen}
+  \simode{
+    P_1(t) + \bm{j} Q_1(t) &= 
+    \sum_{j=1}^{N} \overline{\bm{Y}}_{1j} |\bm{V}_1(t)| |\bm{V}_j(t) | e^{\bm{j} \bigl(\angle \bm{V}_1(t) - \angle \bm{V}_j(t) \bigr)} \\ 
+    & \; \;  \vdots \\
+    P_N(t) + \bm{j} Q_N(t) &= 
+    \sum_{j=1}^{N} \overline{\bm{Y}}_{Nj} |\bm{V}_N(t)| |\bm{V}_j(t) | e^{\bm{j} \bigl(\angle \bm{V}_N(t) - \angle \bm{V}_j(t) \bigr)}
+  }
+\end{equation}
 
-Therefore, based on the context, the distribution of active power, reactive power, and voltage power that satisfies Equation \ref{eq:PQVgen}:
+Therefore, depending on the context, the distribution of active power, reactive
+power, and voltage phasors satisfying Equation \ref{eq:PQVgen}  is referred to
+as the power flow distribution at time $t$.
 
-\begin{align}\label{eq:pfcon}
-\bigl(
-P_1(t),Q_1(t),|\bm{V}_1(t)|,\angle \bm{V}_1(t),
-\ldots,
-P_N(t),Q_N(t),|\bm{V}_N(t)|,\angle \bm{V}_N(t)
-\bigr)
-\end{align}
-is also called the power flow distribution of time $t$.
+\begin{equation}\label{eq:pfcon}
+  \bigl(
+    P_1(t),Q_1(t),|\bm{V}_1(t)|,\angle \bm{V}_1(t),
+    \ldots,
+    P_N(t),Q_N(t),|\bm{V}_N(t)|,\angle \bm{V}_N(t)
+  \bigr)
+\end{equation}
 
 
 \subsection{Outline of the power flow calculation}\label{sec:pfcal}
 
-Let us explain the characteristics of the power flow calculation using a simple example consisting of two bus bars.
+Let us explain the characteristics of the power flow calculation using a simple
+example consisting of two bus bars.
 
 \begin{figure}[t]
 \centering
@@ -148,187 +219,242 @@ Let us explain the characteristics of the power flow calculation using a simple 
 \medskip
 \end{figure}
 
-\begin{例}[The power flow calculation of the electrical power system model consisting of two bus bars]\label{ex:2buspf}
-Let us consider an electrical power system consisting of two bus bars in \FIGref{fig:2buspf}.
-We assume that a load or generator is connected to each bus bar, but the type of equipment does not have to be specified in the power flow calculation.
+\begin{example}{\textbf{Power flow calculation of a two bus bar power system
+model}}\label{ex:2buspf}
 
-The admittance of a transmission line that connects two bus bars is $\bm{y}\in \mathbb{C}$.
-When employing a basic transmission line model, the following relationship is established between the voltage phasor and current phasor of the bus bars:
-\begin{align}\label{eq:exyIV}
-\mat{
-\bm{I}_1^{\star}\\
-\bm{I}_2^{\star}
-}
-=
-\mat{
-\bm{y} & -\bm{y} \\
--\bm{y} & \bm{y}
-}
-\mat{
-\bm{V}_1^{\star}\\
-\bm{V}_2^{\star}
-}
-\end{align}
+Let us consider an electrical power system consisting of two bus bars, as shown
+in Figure \ref{fig:2buspf}.  We assume that each bus is connected to either a
+load or a generator, but in power flow calculations, it is not necessary to
+specify the type of device connected.
 
-However, to clarify that these are steady state values, we added “${\star}$”.
-Here, if the current phasor is cancelled using the relationship of Equation \ref{eq:defPQVIi2}, simultaneous equations equivalent to Equation \ref{eq:exyIV} can be obtained as follows by using the active power, reactive power, and voltage phasor under a steady state: 
+The admittance of a transmission line that connects two bus bars is denoted by
+$\bm{y}\in \mathbb{C}$. When using the basic transmission line model, the
+voltage and current phasors at the buses are related by:
+\begin{equation}\label{eq:exyIV}
+  \mat{
+    \bm{I}_1^{\star}\\
+    \bm{I}_2^{\star}
+  }
+  =
+  \mat{
+    \bm{y} & -\bm{y} \\
+    -\bm{y} & \bm{y}
+  }
+  \mat{
+    \bm{V}_1^{\star}\\
+    \bm{V}_2^{\star}
+  }
+\end{equation}
+
+However, to indicate that these values are in a steady-state, they are markeed
+with a "${\star}$". Here, by eliminating the current phasors using the
+relationship in Equation \ref{eq:defPQVIi2}, we obtain a system of equations
+equivalent to Equation \ref{eq:exyIV} in terms of steady-state active power,
+reactive power, and voltage phasors as follows:
 
 \begin{subequations}\label{eq:PQpf}
-\begin{align}\label{eq:PQcom}
-\simode{
-P_1^{\star} + \bm{j} Q_1^{\star} &= 
-\overline{\bm{y}} \left( 
- |\bm{V}_1^{\star}|^2 
--  |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| e^{ \bm{j} (\angle \bm{V}_1^{\star}- \angle \bm{V}_2^{\star})}
-\right) \\
-P_2^{\star} + \bm{j} Q_2^{\star} &= 
-\overline{\bm{y}} \left( 
- |\bm{V}_2^{\star}|^2
- - |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| e^{ \bm{j} (\angle \bm{V}_2^{\star} - \angle \bm{V}_1^{\star})}
-\right)
-}
-\end{align}
+\begin{equation}\label{eq:PQcom}
+  \begin{aligned}
+    P_1^{\star} + \bm{j} Q_1^{\star} &= 
+    \overline{\bm{y}} \left( 
+    |\bm{V}_1^{\star}|^2 
+    -  |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| e^{ \bm{j} (\angle \bm{V}_1^{\star}- \angle \bm{V}_2^{\star})}
+    \right) \\
+    P_2^{\star} + \bm{j} Q_2^{\star} &= 
+    \overline{\bm{y}} \left( 
+    |\bm{V}_2^{\star}|^2
+    - |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| e^{ \bm{j} (\angle \bm{V}_2^{\star} - \angle \bm{V}_1^{\star})}
+    \right)
+  \end{aligned}
+\end{equation}
 
-The objective of the power flow calculation is to determine a pair of:
+The objective of the power flow calculation is to determine the following set of
+values that satisfy the above simultaneous equations. 
 
 \[
 (P_1^{\star},Q_1^{\star}, |\bm{V}_1^{\star}|, \angle \bm{V}_1^{\star}, P_2^{\star},Q_2^{\star},|\bm{V}_2^{\star}|, \angle \bm{V}_2^{\star})
 \]
 
-that satisfies these simultaneous equations. 
-Conductance and susceptance of a transmission line are expressed as:
-
+We denote the conductance and susceptance of a transmission line as:
 \[
-g:= \real[\bm{y}],\qquad
-b:= \imag[\bm{y}]
+  g:= \operatorname{Re}[\bm{y}],\qquad
+  b:= \operatorname{Im}[\bm{y}]
 \]
 
-At this time, if we consider an equation related to the real and imaginary parts of Equation \ref{eq:PQcom}, four simultaneous equations are obtained:
+Then, considering the real and imaginary parts of Equation \ref{eq:PQcom}, we
+obtain a system of four equations:
 
-\begin{align}\label{eq:PQreal}
-\simode{
-P_1^{\star} &= g |\bm{V}_1^{\star}|^2  
--   g |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfcos \angle \bm{V}_{12}^{\star}
- - b |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfsin \angle \bm{V}_{12}^{\star}
-\\
-P_2^{\star} &= g |\bm{V}_2^{\star}|^2  
--  g |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfcos \angle \bm{V}_{21}^{\star}
- - b |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfsin \angle \bm{V}_{21}^{\star}
-\\
-Q_1^{\star} &= - b |\bm{V}_1^{\star}|^2  
-+ b |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfcos \angle \bm{V}_{12}^{\star} 
- - g |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfsin \angle \bm{V}_{12}^{\star}
-\\
-Q_2 &= - b |\bm{V}_2^{\star}|^2  
-+ b |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfcos \angle \bm{V}_{21}^{\star} 
-- g |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfsin \angle \bm{V}_{21}^{\star}
-}
-\end{align}
+\begin{equation}\label{eq:PQreal}
+  \begin{aligned}
+    P_1^{\star} &= g |\bm{V}_1^{\star}|^2  
+    -   g |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfcos \angle \bm{V}_{12}^{\star}
+    - b |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfsin \angle \bm{V}_{12}^{\star}
+    \\
+    P_2^{\star} &= g |\bm{V}_2^{\star}|^2  
+    -  g |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfcos \angle \bm{V}_{21}^{\star}
+    - b |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfsin \angle \bm{V}_{21}^{\star}
+    \\
+    Q_1^{\star} &= - b |\bm{V}_1^{\star}|^2  
+    + b |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfcos \angle \bm{V}_{12}^{\star} 
+    - g |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfsin \angle \bm{V}_{12}^{\star}
+    \\
+    Q_2 &= - b |\bm{V}_2^{\star}|^2  
+    + b |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfcos \angle \bm{V}_{21}^{\star} 
+    - g |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfsin \angle \bm{V}_{21}^{\star}
+  \end{aligned}
+\end{equation}
 \end{subequations}
-where: $\angle \bm{V}_{ij}^{\star}$ is $\angle \bm{V}_i^{\star}- \angle \bm{V}_j^{\star}$
-The phase of the voltage phasor is only meaningful in terms of the difference value; thus, the number of variables that must be practically determined is seven. 
-Therefore, there are three variables of freedom in Equation \ref{eq:PQreal}.
-A simple method to determine these values, for example, is to specify appropriate values for the three variables of $(|\bm{V}_1^{\star}|,|\bm{V}_2^{\star}|,\angle \bm{V}_{12}^{\star})$.
-In this manner, the remaining $(P_1^{\star},P_2^{\star},Q_1^{\star},Q_2^{\star})$ are determined by simply calculating the right side of Equation \ref{eq:PQreal}.
-However, while the voltage phasor of each bus bar can be arbitrarily set with this method, the electric power supplied to each bus bar and the electric power that is consumed cannot be arbitrarily set.
-In other words, we cannot specify which load bus bar consumes electric power and which generator bus supplies electric power. Therefore, to execute numerical simulation under a realistic setting, in many cases, the value of the voltage phasor must be appropriately set to achieve the specified active and reactive power values.
+where $\angle \bm{V}_{ij}^{\star}$ represents $\angle \bm{V}_i^{\star}- \angle \bm{V}_j^{\star}$.
 
-For example, let us consider obtaining $(|\bm{V}_1^{\star}|,|\bm{V}_2^{\star}|,\angle \bm{V}_{12}^{\star})$ to achieve:
-\begin{align}\label{eq:P1P2ex}
-P_1^{\star}=1,\qquad
-P_2^{\star}=-1
-\end{align}
-Where the active power supplied to bus bars is balanced. 
-This is equivalent to obtaining the voltage phasor distribution, when the active power supplied by the equipment connected to bus bar 1, and the active power consumed by the equipment connected to bus bar 2, are both 1 under a steady state.
-When formulas related to $P_1^{\star}$ and $P_2^{\star}$ of Equation \ref{eq:PQreal} are added, the sum of $P_1^{\star}$ and $P_2^{\star}$ is 0; thus, 
-\begin{align*}
-\spliteq{
-0 &= g \Bigl\{
- |\bm{V}_1^{\star}|^2 + |\bm{V}_2^{\star}|^2 
-- 2 |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfcos \angle \bm{V}_{12}^{\star}
-\Bigr\}\\
-&=
-g \Bigl\{
-\left( |\bm{V}_1^{\star}| - |\bm{V}_2^{\star}| \right)^2 
-+ 2 |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \bigl( 1-\sfcos \angle \bm{V}_{12}^{\star} \bigr)
-\Bigr\}
-}
-\end{align*}
-is obtained. Please note that in a realistic power flow distribution, the phase difference of the voltage phasor of a bus bar $ \angle \bm{V}_{12}^{\star}$ is within a range of $\pm \tfrac{\pi}{2}$.
-%\footnote{
-%発電機の偏角差や母線の電圧フェーザの位相差が$\pm \tfrac{\pi}{2}$の範囲を超えてしまうと正弦関数の傾きが反転するため，非現実的な有効電力の送電特性となる。
-%}。
-As such, if the conductance $g$ of a real part of $\bm{y}$ of the transmission line is not 0, the voltage phasor that satisfies this Equation must always satisfy:
-\begin{align}\label{eq:Vequal}
-|\bm{V}_1^{\star}| = |\bm{V}_2^{\star}|,\qquad
-\angle \bm{V}_{12}^{\star} =0
-\end{align}
-However, Equation \ref{eq:Vequal} means that $P_1^{\star}$ and $P_2^{\star}$ are both 0.
-Therefore, as long as $g$ is not 0, a steady power flow distribution that satisfies Equation \ref{eq:P1P2ex} cannot be realized.
-This indicates that, since transmission loss occurs due to the conductance component (resistance component) of the transmission line, setting of Equation \ref{eq:P1P2ex} does not balance the supply and demand of electric power in the entire system.
-Thus, attention must be paid such that, if “all active power and reactive power are set to specific values, variables that satisfy Equation (\ref{eq:PQpf}) might not exist.”
+The phase of the voltage phasor is only meaningful in terms of the difference
+value; thus, the number of variables that must be practically determined is
+seven. Therefore, there are three variables of freedom in Equation
+\ref{eq:PQreal}. To determine these, one can choose appropriate values for the
+three variables $(|\bm{V}_1^{\star}|,|\bm{V}_2^{\star}|,\angle
+\bm{V}_{12}^{\star})$. This allows us to calculate the remaining variables
+$(P_1^{\star},P_2^{\star},Q_1^{\star},Q_2^{\star})$
 
-Below, for the sake of simplification, let us assume that the conductance $g$ of the transmission line is 0.
-At this time, we also assume that the capacitance to ground is sufficiently small, and susceptance $b$ is negative. Since:
-\begin{align*}
-P_1^{\star} = -b  |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfsin \angle \bm{V}_{12}^{\star}, \qquad
-P_2^{\star}  =   b |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfsin \angle \bm{V}_{12}^{\star}
-\end{align*}
-distribution of the voltage phasor must be equal to $P_1^{\star}$ and $-P_2^{\star}$.
-For example, if the value of Equation \ref{eq:P1P2ex} is specified, by specifying the absolute value of the voltage phasor: 
-\begin{align*}\textstyle
-|\bm{V}_1^{\star}|=\sqrt{
-\frac{2}{|b|}
-}
-,\qquad
- |\bm{V}_2^{\star}| 
-=
-\sqrt{
-\frac{2}{|b|}
-}
-\end{align*}
+However, with this method, while the voltage phase of each bus can be set to any
+value, it is not possible to set the power supplied or consumed by each bus to
+any value. That is, it is not possible to specify which bus is a load bus that
+consumes power, or which bus is a generator bus that supplies power. Therefore,
+in order to perform numerical simulations with realistic settings, it is often
+necessary to properly determine the voltage phase values to achieve the
+specified active and reactive power values.
 
-the phase difference is determined as:
+For example, let us consider finding the
+$(|\bm{V}_1^{\star}|,|\bm{V}_2^{\star}|,\angle \bm{V}_{12}^{\star})$ that
+realize balanced active power supplied to the bus as:
+\begin{equation}\label{eq:P1P2ex}
+  P_1^{\star}=1,\qquad
+  P_2^{\star}=-1
+\end{equation}
+
+This corresponds to determining the voltage phase distribution when the device
+connected to bus 1 and bus 2 both supply and consume active power, respectively,
+with both having a value of 1 in a steady-state condition. By adding the
+equations in Equation \ref{eq:PQreal} with respect to $P_1^{\star}$ and
+$P_2^{\star}$, we obtain:
+\begin{equation*}
+  \spliteq{
+    0 &= g \Bigl\{
+    |\bm{V}_1^{\star}|^2 + |\bm{V}_2^{\star}|^2 
+    - 2 |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfcos \angle \bm{V}_{12}^{\star}
+    \Bigr\}\\
+    &=
+    g \Bigl\{
+    \left( |\bm{V}_1^{\star}| - |\bm{V}_2^{\star}| \right)^2 
+    + 2 |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \bigl( 1-\sfcos \angle \bm{V}_{12}^{\star} \bigr)
+    \Bigr\}
+  }
+\end{equation*}
+Note that in realistic power flow conditions, the phase difference in voltage
+phase between the buses, $\angle \bm{V}_{12}^{\star}$, is within the range of
+$\pm \tfrac{\pi}{2}$. Moreover, it should be noted that if the phase angle
+difference of the generator or the voltage phase difference of the bus exceeds
+the range of $\pm \tfrac{\pi}{2}$, the slope of the sine function will be
+inverted, resulting in an unrealistic transmission characteristic of active
+power.
+
+From this, if the conductance $g$ of the transmission line, which is the real
+part of $\bm{y}$, is not equal to zero, then the voltage phase that satisfies
+this equation must necessarily satisfy:
+\begin{equation}\label{eq:Vequal}
+  |\bm{V}_1^{\star}| = |\bm{V}_2^{\star}|,\qquad
+  \angle \bm{V}_{12}^{\star} =0
+\end{equation}
+However, Equation \ref{eq:Vequal} implies that both $P_1^{\star}$ and
+$P_2^{\star}$ are equal to 0. Therefore, it can be concluded that a steady-state
+current state satisfying Equation \ref{eq:P1P2ex} does not exist as long as $g$
+is not equal to 0. This is because the conductance component (resistance
+component) of the transmission line causes power loss, and in the setting of
+Equation \ref{eq:P1P2ex}, it indicates that the power supply and demand are not
+balanced across the entire system. Therefore, it is important to note that for
+certain values of active and reactive power, there might not exist solutions to
+Equation \ref{eq:PQpf}.
+
+Next, let us assume that the conductance $g$ of the transmission line is zero
+for simplicity. Additionally, assume that the ground capacitance is sufficiently
+small and the susceptance $b$ is negative. Then:
+
+\begin{equation*}
+  P_1^{\star} = -b  |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfsin \angle \bm{V}_{12}^{\star}, \qquad
+  P_2^{\star}  =   b |\bm{V}_1^{\star}| |\bm{V}_2^{\star}| \sfsin \angle \bm{V}_{12}^{\star}
+\end{equation*}
+
+In this case, the voltage phasor distribution must be such that $P_1^{\star}$ =
+$-P_2^{\star}$.
+
+For example, in the case where the value of Equation \ref{eq:P1P2ex} is
+specified, the absolute value of the voltage phasor can be specified as:
+
+\begin{equation*}\textstyle
+  |\bm{V}_1^{\star}|=\sqrt{
+    \frac{2}{|b|}
+  }
+  ,\qquad
+  |\bm{V}_2^{\star}| 
+  =
+  \sqrt{
+    \frac{2}{|b|}
+  }
+\end{equation*}
+
+As a result, the phase difference can be determined as:
 
 \begin{align*}
 \angle \bm{V}_{12}^{\star} = \frac{\pi}{6}
 \end{align*}
 
-Since values of more than three variables are already determined, the reactive power value is automatically determined:
+Since three or more variables have already been determined, the reactive power
+is automatically determined as:
 
-\begin{align*}
-Q_1^{\star} = 2 -\sqrt{3},\qquad
-Q_2^{\star} = 2 -\sqrt{3}
-\end{align*}
-\end{例}
+\begin{equation*}
+  Q_1^{\star} = 2 -\sqrt{3},\qquad
+  Q_2^{\star} = 2 -\sqrt{3}
+\end{equation*}
+\end{example}
 
 
-As shown in the Example \ref{ex:2buspf}, a process for determining one set of $4N$ constants that satisfies $2N$ simultaneous equations under a steady state:
-\begin{align}\label{eq:PQVgenst}
-\simode{
-P_1^{\star} + \bm{j} Q_1^{\star} &= 
-\sum_{j=1}^{N} \overline{\bm{Y}}_{1j} |\bm{V}_1^{\star}| |\bm{V}_j^{\star} | e^{\bm{j} (\angle \bm{V}_1^{\star} - \angle \bm{V}_j^{\star} )} \\ 
-& \; \;  \vdots \\
-P_N^{\star} + \bm{j} Q_N^{\star} &= 
-\sum_{j=1}^{N} \overline{\bm{Y}}_{Nj} |\bm{V}_N^{\star}| |\bm{V}_j^{\star} | e^{\bm{j} (\angle \bm{V}_N^{\star} - \angle \bm{V}_j^{\star} )}
-}
-\end{align}
+As shown in Example \ref{ex:2buspf}, the power flow calculation is a procedure
+that determines a set of $4N$ constants, given the admittance matrix $\bm{Y}$ of
+the power network and $2N$ simultaneous equations in steady state:
+\begin{equation}\label{eq:PQVgenst}
+  \begin{aligned}
+    P_1^{\star} + \bm{j} Q_1^{\star} &= 
+    \sum_{j=1}^{N} \overline{\bm{Y}}_{1j} |\bm{V}_1^{\star}| |\bm{V}_j^{\star} | e^{\bm{j} (\angle \bm{V}_1^{\star} - \angle \bm{V}_j^{\star} )} \\ 
+    & \; \;  \vdots \\
+    P_N^{\star} + \bm{j} Q_N^{\star} &= 
+    \sum_{j=1}^{N} \overline{\bm{Y}}_{Nj} |\bm{V}_N^{\star}| |\bm{V}_j^{\star} | e^{\bm{j} (\angle \bm{V}_N^{\star} - \angle \bm{V}_j^{\star} )}
+  \end{aligned}
+\end{equation}
 
-\begin{align}\label{eq:pfconst}
-\bigl(
-P_1^{\star},Q_1^{\star},|\bm{V}_1^{\star}|,\angle \bm{V}_1^{\star},
-\ldots,
-P_N^{\star},Q_N^{\star},|\bm{V}_N^{\star}|,\angle \bm{V}_N^{\star},
-\bigr)
-\end{align}
-for the admittance matrix of the given power grid $\bm{Y}$ is the power flow calculation.
-However, the phase of the voltage phasor is only meaningful in terms of the relative value; thus, $(4N-1)$ variables must be practically determined.
-As discussed in Section \ref{sec:numstep}, the power flow calculation can be interpreted as a process that obtains the equilibrium point of the electrical power system model that is able to balance the supply and demand for the entire system.
-In this process, the properties of the equipment, such as the generator and load, are not considered, whereas only the steady values of the input and output for each bus bar are obtained.
-Therefore, please note that, by performing the calculation of Step B in Section \ref{sec:numstep}, one equilibrium point related to the internal state of a differential-algebraic equation system is determined.
-Calculation of Step B will be discussed in Section \ref{sec:paradef}.
+\begin{equation}\label{eq:pfconst}
+  \bigl(
+    P_1^{\star},Q_1^{\star},|\bm{V}_1^{\star}|,\angle \bm{V}_1^{\star},
+    \ldots,
+    P_N^{\star},Q_N^{\star},|\bm{V}_N^{\star}|,\angle \bm{V}_N^{\star},
+  \bigr)
+\end{equation}
+where $|\bm{V}_i^{\star}|$ and $\angle \bm{V}_i^{\star}$ are the magnitude and
+phase angle of the voltage at bus $i$ in polar form, and $P_i^{\star}$ and
+$Q_i^{\star}$ are the active and reactive power injections at bus $i$,
+respectively. Note that the phase angle of the voltage is only meaningful in a
+relative sense, so there are effectively only $(4N-1)$ variables to be
+determined.
 
-%例えば，\ref{sec:loadpr}節における負荷の定インピーダンスモデルは，$(P_i,Q_i)$と$|\bm{V}_i|$の間に
+As described in Section \ref{sec:numstep}, the power flow calculation can be
+interpreted as a procedure for finding the equilibrium point of a power system
+model that is capable of balancing demand and supply throughout the system. The
+characteristics of individual devices, such as generators and loads, are not
+considered in this process, and only the steady-state values of inputs and
+outputs at each bus are determined.
+
+More precisely, Step B in Section \ref{sec:numstep} is used to calculate the
+equilibrium point of the internal state of the system of differential-algebraic
+equations. The calculation of Step B is described in Section \ref{sec:paradef}.
+
+%exampleえば，\ref{sec:loadpr}節における負荷の定インピーダンスモデルは，$(P_i,Q_i)$と$|\bm{V}_i|$の間に
 %\begin{align*}
 %P_i + \bm{j} Q_i = -\frac{1}{\overline{\bm{z}}_{{\rm load}i}} |\bm{V}_i|^2
 %\end{align*}
@@ -339,29 +465,54 @@ Calculation of Step B will be discussed in Section \ref{sec:paradef}.
 %ただし，式(\ref{eq:gendynVI})の発電機の定常状態は機械入力$P_{{\rm mech}i}$と界磁入力$V_{{\rm field}i}$という別の2変数にも依存するため，発電機の動特性に由来する方程式を潮流計算で考慮する必要はない。
 %このことは\ref{sec:stagen}節で後述する。
 
-\subsection{Numerical search method for steady power flow distribution}
+\subsection{Numerical Search Method for Steady-State Power Flow}
 
+Generally, the standard models of the Institute of Electrical Engineers in Japan
+\cite{ieejstandardmodel}, the IEEE 39-bus system model
+\cite{athay1979practical}, and the IEEE 68-bus system model
+\cite{singh2013ieee}, provide data sheets with standard values for the power
+supplied by each generator bus and the power consumed by each load bus, in
+addition to the impedance values of each transmission line. By specifying $2N$
+variables based on these standard values, the remaining variables can be
+explored numerically.
 
-In general, Institute of Electrical Engineers of Japan standard models \cite{ieejstandardmodel}, such as IEEE 39 bus bar system model \cite{athay1979practical}, and IEEE 68 bus bar system model \cite{singh2013ieee},
-that provide reference values for the electric power consumed by each load bus bar and the electric power supplied to each generator bus, in addition to the impedance of each transmission line, are provided in a datasheet.
-By specifying $2N$ variables based on these reference values, the remaining variables can be numerically searched. 
+The data sheets typically provide the values of active and reactive power
+consumed by each load bus, as well as the active power supplied by each
+generator bus and the magnitude of the voltage phase at that bus. Therefore,
+$2N$ steady-state values can be specified in advance using these values.
+However, as shown in Example \ref{ex:2buspf}, if all steady-state values of
+active power at every bus are specified in advance, the remaining variables
+cannot be set to any value that satisfies the system of equations in
+\ref{eq:PQVgen} due to the impact of transmission losses. For instance, if the
+values of active or reactive power at some load buses are specified at a
+different steady-state value from that on the data sheet, the steady-state
+values of active and reactive power that should be supplied to the generator bus
+change, and as a result, the steady-state values of power flowing through the
+transmission network and the voltage phase of the bus also change, leading to a
+change in the total transmission loss for the entire system. Therefore, if
+steady-state values of active power at every generator bus are specified in
+advance, the system of equations in \ref{eq:PQVgen} cannot generally be solved.
 
-The data sheet usually provides the active power and reactive power consumed by each load bus bar, the active power supplied by each generator bus, and the absolute value of the voltage phasor for these bus bars.
-Therefore, by using these values, $2N$ steady values can be specified in advance. However, as shown in Example \ref{ex:2buspf}, if the steady value of the active power is specified for all bus bars in advance, the impact of transmission loss leads to none of the remaining variables satisfying the simultaneous equations of Equation \ref{eq:PQVgen}.
-For example, if the active and reactive power of some load bus bars are set to steady values that differ from those in the data sheet, the steady values of the active and reactive power supplied to generator buses will change, and the steady values of the electric power flowing in the power grid and bus bar voltage phasor will also change; thus, the total value for transmission lines in the entire system will also change.
-Therefore, if the steady values of active power for all generator buses is specified ahead of time, simultaneous equations of Equation \ref{eq:PQVgen} are usually unsolvable.
-
-A typical method of solving this problem is to introduce one special generator bus, called a \textbf{slack bus}.
-With the slack bus, instead of specifying the active power, the phase of the voltage phasor is specified.
-At this time, only the relative values of the phase of the voltage phasor in each bus has meaning; thus, the steady value of the phase in the slack bus being set to 0 does not cause generality to be lost.
-As a result, the active power in the slack bus is automatically determined such that it would be consistent to the value of transmission loss in the entire system.
-The above steps can be summarized as follows:
+A typical solution to this problem is to introduce a special generator bus
+called the \textbf{slack bus} \index{slack bus} to resolve it. At the slack bus,
+instead of specifying the active power, the phase of the voltage phase is
+specified. At this time, only the relative value of the voltage phase at each
+bus has meaning, so the steady-state value of the phase of the slack bus can be
+set to 0 without losing generality. As a result, the active power at the slack
+bus is automatically determined to be consistent with the total transmission
+loss for the entire system. The above steps can be summarized as follows.
 
 \medskip
 \begin{breakbox}
 \begin{itemize}
-\item[(a)] Based on the data sheet, the value of $(|\bm{V}_{i_0}^{\star}|,\angle \bm{V}_{i_0}^{\star})$ is specified for the slack bus, the value of $(P_i^{\star},|\bm{V}_{i}^{\star}|)_{i \in \mathcal{I}_{\rm G}\setminus\{i_0\} }$ is specified for other generator buses, and the value of $(P_i^{\star},Q_i^{\star})_{i \in \mathcal{I}_{\rm L}}$ is specified for the load bus bar.
-\item[(b)] Other variables are numerically searched to satisfy simultaneous equations of Equation \ref{eq:PQVgen}.
+  \item[(a)] Based on the data sheet, the value of $(|\bm{V}_{i_0}^{\star}|,\angle
+  \bm{V}_{i_0}^{\star})$ is specified for the slack bus, the value of
+  $(P_i^{\star},|\bm{V}_{i}^{\star}|)_{i \in \mathcal{I}_{\rm G}\setminus\{i_0\}
+  }$ is specified for other generator buses, and the value of
+  $(P_i^{\star},Q_i^{\star})_{i \in \mathcal{I}_{\rm L}}$ is specified for the
+  load bus bar.
+  \item[(b)] Other variables are numerically searched to satisfy simultaneous
+  equations of Equation \ref{eq:PQVgen}.
 \end{itemize}
 \end{breakbox}
 \medskip
@@ -369,7 +520,7 @@ The above steps can be summarized as follows:
 where $\mathcal{I}_{\rm G}$ is a subscript set of the generator buses, $\mathcal{I}_{\rm L}$ is a subscript set of the load bus bars, and $i_0 \in \mathcal{I}_{\rm G}$ is subscript of the slack bus.
 Bus bars without equipment are handled as load bus bars where the consumed active and reactive power are 0. 
 
-%参考として，3つの発電機母線（母線1，母線2，母線3）と2つの負荷母線（母線4，母線5）から構成される電力系統モデルの例を\FIGref{fig:powerflow}に示す。
+%参考として，3つの発電機母線（母線1，母線2，母線3）と2つの負荷母線（母線4，母線5）から構成される電力系統モデルのexampleをFigure \ref{fig:powerflow}に示す。
 %ここでは発電機母線1をスラック母線に設定しており，その他の母線には，有効電力や無効電力，母線電圧フェーザの絶対値などが指定されている。
 %
 %\begin{figure}[t]
@@ -469,7 +620,7 @@ Bus bars without equipment are handled as load bus bars where the consumed activ
 
 
 
-\begin{例}[Power flow calculations based on the datasheet]\label{ex:pf3bus}
+\begin{example}{\textbf{Power flow calculations based on the datasheet}}\label{ex:pf3bus}
 Let us consider the electrical power system model consisting of 3 bus bars discussed in Example \ref{ex:derY}.
 For the admittance matrix of the power grid of Equation \ref{eq:exY}, the admittance values of the two transmission lines are set as:
 \begin{align}\label{eq:rightlossless}
@@ -503,7 +654,7 @@ In this case, the ratio of transmission loss for consumed electric power of the 
 Compared to the previous Example, the transmission loss of active power is high.
 This is because the majority of active power consumed by bus bar 2 was supplied by the left transmission line where transmission loss occurs.
 In contrast, it can be seen that the reactive power loss is smaller than in the previous Example.
-\end{例}
+\end{example}
 
 We can see that the power flow distribution obtained from Example \ref{ex:pf3bus} varies the size of the transmission loss for the entire system.
 Generally, when supplying electric power for consumption using a transmission line with a high conductance component (resistance component), the transmission loss of active power becomes large.
@@ -567,7 +718,7 @@ Equation \ref{eq:GBrep}is equivalent to the definition below:
 
 Using this expression, the following facts are shown.
 
-\begin{定理}[Expression of transmission loss through bus bar voltage phasor]
+\begin{theorem}[Expression of transmission loss through bus bar voltage phasor]
 \label{thm:PQ}
 For Equation \ref{eq:PQVgen}, we define the transmission loss of active power and reactive power for the entire system:
 \begin{align}
@@ -599,9 +750,9 @@ W(\bm{V}_i,\bm{V}_j):=
 \left( |\bm{V}_i| - |\bm{V}_j| \right)^2 
 + 2 |\bm{V}_i| |\bm{V}_j| \bigl\{ 1-\sfcos (\angle \bm{V}_i- \angle \bm{V}_j) \bigr\}
 \]
-\end{定理}
+\end{theorem}
 
-\begin{証明}
+\begin{proof}
 For simplification, time $t$ is omitted. Also, $\angle\bm{V}_i- \angle \bm{V}_j$ is expressed as $\angle \bm{V}_{ij}$.
 From Equation \ref{eq:PQVgen}, for $\bm{Y}_{ij}= G_{ij} + \bm{j} B_{ij}$, because of $\bm{Y}_{ij}=\bm{Y}_{ji}$, the following is true:
 
@@ -714,7 +865,7 @@ L_P &=
 
 Therefore, $L_P$ can be expressed with the format of Equation \ref{eq:LPLQ}. With the same steps, $L_Q$ can be expressed with the format of Equation \ref{eq:LPLQ}.
 
-\end{証明}
+\end{proof}
 
 Theorem \ref{thm:PQ} shows that the discussion of electrical power loss in the electrical power system of two bus bars shown in the Example \ref{ex:2buspf} can be generalized in the same manner as an electrical power system consisting of an arbitrary number of bus bars.
 Here, if we express the admittance matrix $\bm{Y}$ as in Section \ref{sec:admathp}:
@@ -931,7 +1082,7 @@ Please note that Equation \ref{eq:PQout} and Equation \ref{eq:phVIsincosC2} are 
 
 For this generator model, the following facts are presented.
 
-\begin{補題}[The relationship between the internal state of generators and input/output]\label{lem:delVE}
+\begin{lemma}[The relationship between the internal state of generators and input/output]\label{lem:delVE}
 If we consider Equation \ref{eq:PQout} as simultaneous equations related to $\delta - \angle \bm{V}$ and $E$, the solution is provided with:\begin{subequations}\label{eq:tandelV}
 \begin{align}
 \delta - \angle \bm{V} & = \sfarctan  \left( \frac{P}{Q + \tfrac{ |\bm{V}|^2}{X_{\rm q}} } \right) , \label{eq:tandelVa} \\
@@ -950,9 +1101,9 @@ E &=
 %}
 %\end{align}
 where $|\bm{V}|\neq 0$. In contrast, if we consider Equation (\ref{eq:tandelV}) simultaneous equations related to $P$ and $Q$, the solution is given with Equation \ref{eq:PQout}.
-\end{補題}
+\end{lemma}
 
-\begin{証明}
+\begin{proof}
 \red{Translated with DeepL}
 First, we derive Equation \ref{eq:tandelV} from Equation \ref{eq:PQout}.
 Multiplying $P$ by $\sfcos (\delta - \angle \bm{V})$ and $Q$ by $\sfsin (\delta - \angle \bm{V})$ and taking the difference
@@ -1045,7 +1196,7 @@ and thus the relation in Equation \ref{eq:tandelVb} is obtained.
 Following the reverse procedure, we derive the expression \ref{eq:PQout} from the expression (\ref{eq:tandelV}).
 Using the relationship in \ref{eq:tandelVa}, $E$ in \ref{eq:tandelVb} can be rewritten by $E$ in \ref{eq:Etran}.
 As mentioned above, when the relation \ref{eq:tandelVa} holds, the expression\ref{eq:Etran} is equivalent to the expression\ref{eq:PQout}.
-\end{証明}
+\end{proof}
 
 The lemma \ref{lem:delVE} shows that there is a one-to-one relationship between a variable set $(\delta - \angle \bm{V},E)$ and a set $(P,Q)$. 
 Specifically, it shows that the internal state of generators $(\delta,E)$ can be uniquely back-calculated from the input/output of $(|\bm{V}|,\angle \bm{V})$ and $(P,Q)$. 
@@ -1053,7 +1204,7 @@ Please note that the relationship of Equation (\ref{eq:tandelV}) holds for arbit
 
 The following theorem gives a relationship that holds between the input, output, and internal state under a steady state of generators.
 
-\begin{定理}[The relationship between the internal state of generators and input/output under a steady state]
+\begin{theorem}[The relationship between the internal state of generators and input/output under a steady state]
 \label{thm:stst}
 Let us consider the generator models of Equation \ref{eq:gendif} and Equation \ref{eq:PQout}. 
 For some constants, $|\bm{V}^{\star}|$, $\Delta \omega^{\star}$, $\angle \bm{V}^{\star}$, $P^{\star}$, and $Q^{\star}$, 
@@ -1097,9 +1248,9 @@ as the steady solutions. The active and reactive power supplied to bus bars are 
 P(t)=P^{\star},\qquad
 Q(t)=Q^{\star}
 \end{align}
-\end{定理}
+\end{theorem}
 
-\begin{証明}
+\begin{proof}
 First, under the input of Equation (\ref{eq:allinputs}), we show that Equation \ref{eq:inicon} is a solution of the differential Equation of Equation \ref{eq:gendif}, and that Equation \ref{eq:PtQt} holds for the output.
 If we consider Equation \ref{eq:inicon} as equations for $P^{\star}$ and $Q^{\star}$, as shown in the Complement\ref{eq:delVE}, their solutions given by:
 \begin{align*}
@@ -1136,7 +1287,7 @@ However,
 \frac{ Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm q}} }
 {  \sqrt{ \left( Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm q}} \right)^2 + (P^{\star})^2 }  }
 \end{align*}
-\end{証明}
+\end{proof}
 
 Theorem \ref{thm:stst} shows, the mechanical torque and field voltage values necessary to achieve the voltage phasor, active power, and reactive power of bus bars determined by the power flow calculations $(P_{\rm mech}^{\star},V_{\rm field}^{\star})$, and the steady behavior of the internal state $(\delta,E)$ at the time.
 With Equation \ref{eq:busvolin}, the phase of the voltage phasor is not a constant. However, since $\Delta \omega^{\star}$ that expresses the steady state of the frequency deviation is a constant that should usually be set to 0, only the value $\angle \bm{V}^{\star}$ determined by the power flow calculation has a practical meaning.
@@ -1152,7 +1303,7 @@ With this result, Equation (\ref{eq:intssgen}) can be derived.
 
 Furthermore, the next Theorem provides an equivalence relationship related to the input/output and the internal state that hold under a steady state of generators. 
 
-\begin{定理}[Equivalence generators related to input/output and the internal state]
+\begin{theorem}[Equivalence generators related to input/output and the internal state]
 \label{thm:outst}
 
 For the generator models of Equation \ref{eq:gendif} and Equation \ref{eq:PQout}, conditions necessary for the following:
@@ -1193,9 +1344,9 @@ When Equation \ref{eq:domdE} or Equation \ref{eq:dPdQ} is true, the following is
 \Delta \omega(t)= \frac{1}{\omega_0}\frac{d \angle \bm{V}}{dt}(t)
 \end{align}
 which is a constant.
-\end{定理}
+\end{theorem}
 
-\begin{証明}
+\begin{proof}
 \red{Translated with DeepL}
 First, if the expression \ref{eq: domdE} holds, then the expression \ref{eq: dPdQ} holds.
 In the formula \ref{eq: gendif}, $\Delta\omega $, $ E $, $ P_{\rm mech} $, $V_{\rm field} $ are all constants, so $ P $ You can see that $|\bm{V}|\sfcos(\delta-\angle\bm{V})$ is a constant.
@@ -1217,7 +1368,7 @@ Next, we show that if the Equation \ref{eq:dPdQ} holds, then the Equation \ref{e
 From Equation (\ref{eq:tandelV}), we know that $E$ is constant and that the second derivative of $\delta$ is $0$, that is, $\delta \omega$ is constant.
 Therefore, in Equation \ref{eq:gendif}, $P$ and $|\bm{V}|\sfcos (\delta - \angle \bm{V})$ are constants, which means that $P_{\rm mech}$ and $V_{\rm field}$ are constants
 Equation \ref{eq:frer} is evident from the fact that the derivatives of $\angle \bm{V}$ and $\delta$ are equal.
-\end{証明}
+\end{proof}
 
 As Theorem \ref{thm:outst} shows, an external input to generators $(P_{\rm mech},V_{\rm field})$ being a constant, the internal state $(\delta,E)$ being in a steady state, and input to and output from bus bar s$(P,Q,|\bm{V}|,\angle \bm{V})$ being in a steady state, are equivalent.
 Therefore, the steps of the power flow calculations that determine the active power, reactive power, and voltage phasor of each bus bar are, assuming that the external input of all generators are in a steady state, mathematically equivalent to searching the steady state of the entire electrical power system; in other words, searching the equilibrium point of the electrical power system model.
@@ -1265,7 +1416,7 @@ $i$ &  $P_{{\rm mech}i}^{\star}$~[pu] & $V_{{\rm filed}i}^{\star}$~[pu] & $\delt
 \end{table}
 
 
-\begin{例}[Initial response of the electrical power system model]\label{ex:inires}
+\begin{example}[Initial response of the electrical power system model]\label{ex:inires}
 Let us consider the electrical power system model consisting of three bus bars handled in the Example \ref{ex:pf3bus}.
 Let us consider a situation where the generator model of Equation \ref{eq:gendif_} is connected to bus bar 1 and bus bar 3, and a load model with constant impedance of Equation \ref{eq:lmodimp} is connected to bus bar 2.
 For the generator model, we use the constants for generator 1 and generator 2 presented in \ref{table:genparams}.
@@ -1299,11 +1450,11 @@ E^{\star}_3
 }
 \end{align}
 The initial value of the frequency deviation is 0.
-\FIGref{fig:P13ini} shows the initial value response of the frequency deviation corresponding to the two power flow calculations at this time.
+Figure \ref{fig:P13ini} shows the initial value response of the frequency deviation corresponding to the two power flow calculations at this time.
 The solid blue line represents the frequency deviation of generator 1, while the broken red line is the frequency deviation of generator 3. 
 With either one of the steady power flow distributions, oscillations with a similar frequency were generated.
 Since the system frequency was set to 60 [Hz], a frequency deviation of $0.015$ [pu] is equal to 0.9 [Hz].
-\end{例}
+\end{example}
 
 \begin{table}[h]
 \medskip
@@ -1370,19 +1521,19 @@ If we change even one constant of the load model relative to the electrical powe
 At this time, since the supply and demand of electric power for the entire system will usually become unbalanced, unless mechanical torque is appropriately corrected depending on the given field voltage value, the frequency deviation of each generator does not converge to 0.
 Let us confirm this.
 
-\begin{例}[Response time of the electrical power system model to changes in load impedance]\label{ex:loadpv}
+\begin{example}[Response time of the electrical power system model to changes in load impedance]\label{ex:loadpv}
 Let us calculate the response time of frequency deviation when load impedance changes in the same setting as the Example \ref{ex:inires}.
 Specifically, we calculate the response time by either increasing or decreasing the load resistance, which was back-calculated from the result of the power flow calculation, by 1\%.
 The load impedance values after increase and decrease are shown in the second and third rows of \ref{table:loadpara1} and \ref{table:loadpara2}.
 
-Calculation results are shown in \FIGref{fig:P1load} and \FIGref{fig:P3load}.
+Calculation results are shown in Figure \ref{fig:P1load} and Figure \ref{fig:P3load}.
 The solid blue line is the frequency deviation of generator 1, and the broken red line is the frequency deviation of generator 3.
 In any case, the frequency deviation of two generators changes in sync. If the resistance increases, consumption of the active power usually increases; thus, the frequency of the generators decreases.
 The trend is opposite if the resistance decreases. Since the mechanical torque of the generators is set for the value before the resistance changes, the supply and demand of the active power becomes unbalanced, and the steady value of the frequency deviation becomes nonzero.
-Changes in the load resistance are about the same for \FIGref{fig:P1load} and \FIGref{fig:P3load}, but the values of generated frequency deviation are different.
+Changes in the load resistance are about the same for Figure \ref{fig:P1load} and Figure \ref{fig:P3load}, but the values of generated frequency deviation are different.
 This indicates that how one chooses the equilibrium point of the electrical power system changes the sensitivity (stability) to disturbance.
 
-\end{例}
+\end{example}
 
 \begin{figure}[t]
   \centering
@@ -1540,22 +1691,22 @@ Calculation of the time response to the above bus bar ground fault can be summar
 
 With these steps, let us calculate the time response of the bus bar ground fault.
 
-\begin{例}[Time response of the electrical power system model to bus bar ground fault]\label{ex:busflt}
+\begin{example}[Time response of the electrical power system model to bus bar ground fault]\label{ex:busflt}
 Let us calculate the time response of frequency deviation to ground fault of bus bars under the same setting as the Example \ref{ex:inires} and Example \ref{ex:loadpv}.
 Specifically, we set the two steady power flow distributions, where the electrical power system was obtained with the power flow calculation, as the initial values, and calculate the time response when the ground fault occurs in bus bar 1.
 For comparison, we consider two situations: when the time it takes for the ground fault to be eliminated is 50 [ms] and 100 [ms]. 
 
-The calculation result is shown in \FIGref{fig:P1fault} and \FIGref{fig:P3fault}. The solid blue line is the frequency deviation of generator 1, and the broken red line is the frequency deviation of generator 3.
-\FIGref{fig:P1fault} shows that the oscillation of the frequency of generator 3 is large under the steady power flow distribution of \ref{table:pflow1}.
+The calculation result is shown in Figure \ref{fig:P1fault} and Figure \ref{fig:P3fault}. The solid blue line is the frequency deviation of generator 1, and the broken red line is the frequency deviation of generator 3.
+Figure \ref{fig:P1fault} shows that the oscillation of the frequency of generator 3 is large under the steady power flow distribution of \ref{table:pflow1}.
 Specifically, when the duration of the ground fault is 100 [ms], oscillation is even larger. The reason oscillation of generator 3 is large is because, as shown in \ref{table:genparams}, while the inertia constant of generator 1 is large at 100 [s], the inertia constant of generator 3 is small at 12 [s].
 In other words, oscillation of generators with large inertia causes large oscillations in generators with small inertia.
 
-On the other hand, with the steady power flow distribution of \TABref{table:pflow2}, frequency oscillation is small even for the same ground fault (\FIGref{fig:P3fault}).
+On the other hand, with the steady power flow distribution of Table \ref{table:pflow2}, frequency oscillation is small even for the same ground fault (Figure \ref{fig:P3fault}).
 The reason for this is that, with the steady power flow distribution of \ref{table:pflow1}, the small inertia of generator 3 provided the majority of active power consumed by the load.
 In contrast, with the steady power flow distribution of \ref{table:pflow2}, the large inertia of generator 1 provided the majority of active power.
 Generally, the sensitivity of synchronous generators to disturbance increases as they more closely approach the electric power provided.
 With the steady power flow distribution of \ref{table:pflow2}, the stability of generator 3 with small inertia is relatively high; thus, the sensitivity of frequency deviation to ground faults is low.
-\end{例}
+\end{example}
 
 
 \begin{figure}[t]
@@ -1615,7 +1766,7 @@ With frequency control, which will be discussed in Section \ref{sec:agcover} and
 In this Section, we mathematically discuss synchronization phenomenon of the frequency observed in Section \ref{sec:numsimtr} from the viewpoint of graph structure for the power grid.
 Based on Theorem \ref{thm:outst}, the following definition is introduced.
 
-\begin{定義}[Synchronization of the steady power flow distribution and bus bar voltage]
+\begin{definition}[Synchronization of the steady power flow distribution and bus bar voltage]
 \label{def:sync}
 Let us consider an electrical power system model wherein a group of equipment is combined with simultaneous equations of the Equation \ref{eq:PQVgen}.
 For all bus bars $i$, when:
@@ -1638,7 +1789,7 @@ When the electrical power system is in the steady power flow distribution, and:
 \frac{d \angle \bm{V}_i}{dt}(t) =  \frac{d \angle \bm{V}_j}{dt}(t)
 \end{align}
 is true, bus bar $i$ and bus bar $j$ are \textbf{synchronized} in the steady power flow distribution.
-\end{定義}
+\end{definition}
 
 As shown in Theorem \ref{thm:outst}, for generator buses, the Equation \ref{eq:stapfs} being true and the internal state of generators and external inputs being in a steady state are equivalent.
 In addition, if a set of arbitrarily selected bus bars $(i,j)$ is synchronized according to the definition \ref{def:sync}, it is concluded that the frequency deviation of all generators will converge to the same value.
@@ -1736,7 +1887,7 @@ in other words, let us think about deriving:
 \end{align}
 
 Here, Equation \ref{eq:sumcirc} expresses that "the center of gravity $\bm{C}_i (t)$ of $|\mathcal{N}_i|$ points that move at a constant velocity on the circumference of a circle with the radius of $r_{ij}$ with the origin as the center with the initial phase of $\Phi_{ij}$ and the angular velocity of $\Omega_{ij}$ is invariable on a point $\bm{z}_i$ on a complex plane".
-\FIGref{fig:centerg} shows the relationship when bus bar $1$ is connected to bus bar $2$ and bus bar $3$. Focusing on this fact, the following result can be derived.
+Figure \ref{fig:centerg} shows the relationship when bus bar $1$ is connected to bus bar $2$ and bus bar $3$. Focusing on this fact, the following result can be derived.
 
 \begin{figure}[t]
 \centering
@@ -1748,7 +1899,7 @@ Here, Equation \ref{eq:sumcirc} expresses that "the center of gravity $\bm{C}_i 
 \end{figure}
 
 
-\begin{補題}[Synchronization of bus bars derived from the balance equation of electric power]
+\begin{lemma}[Synchronization of bus bars derived from the balance equation of electric power]
 \label{lem:sumc2}
 
 Let us consider $\bm{C}_i (t)$ of Equation \ref{eq:sumcirc} for real constants $r_{ij}$, $\Omega_i$, $\Omega_j$, and $\Phi_{ij}$, where $r_{ij}>0$.
@@ -1773,9 +1924,9 @@ or Equation \ref{eq:N2sing} being true for $j_3 \in \mathcal{N}_i$ satisfying $\
 \sum_{j\in \mathcal{N}_i} 
 r_{ij} e^{\bm{j} \Phi_{ij}}=0
 \end{align}
-\end{補題}
+\end{lemma}
 
-\begin{証明}
+\begin{proof}
 \red{Translated with DeepL}
 By applying the complementary problem\ref{lem:sumc} at the end of the chapter, we can show the facts for the cases $|\mathcal{N}_i|=1$ and $|\mathcal{N}_i|=2$.
 Thus, in the following we consider the case $|\mathcal{N}_i|=3$.
@@ -1822,11 +1973,11 @@ r_{1} = r_{2}
 \end{align*}
 と等価である。
 以上より題意が示される。
-\end{証明}
+\end{proof}
 
-Lemma \ref{lem:sumc2} shows that when the degree of the bus bar of interest is 1; in other words, for end-point bus bars such as \FIGref{fig:bussync}(a), bus bars adjacent to such bus bars synchronize.
-In addition, if the degree of the bus bar of interest (the node shown with a thick line) is 2; in other words, for bus bars in a chain such as \FIGref{fig:bussync}(b), at least on bus bar on each side, are synchronized.
-Furthermore, when the degree of the bus bar of interest is 3; meaning, a bus bar of a node is connected with three transmission lines as in \FIGref{fig:bussync}(c), at least one adjacent bus bar synchronizes with the bus bar of interest.
+Lemma \ref{lem:sumc2} shows that when the degree of the bus bar of interest is 1; in other words, for end-point bus bars such as Figure \ref{fig:bussync}(a), bus bars adjacent to such bus bars synchronize.
+In addition, if the degree of the bus bar of interest (the node shown with a thick line) is 2; in other words, for bus bars in a chain such as Figure \ref{fig:bussync}(b), at least on bus bar on each side, are synchronized.
+Furthermore, when the degree of the bus bar of interest is 3; meaning, a bus bar of a node is connected with three transmission lines as in Figure \ref{fig:bussync}(c), at least one adjacent bus bar synchronizes with the bus bar of interest.
 This means that there is no situation where only three arbitrarily chosen bus bars are synchronized and one remaining bus bar is not synchronized, or no set of bus bars is synchronized.
 
 \begin{figure}[t]
@@ -1862,25 +2013,25 @@ However, for the bus bar of interest $i$ and $|\mathcal{N}_i|$ adjacent bus bars
 By combining conditions with the degree of three or less shown in lemma \ref{lem:sumc2}, even when a bus bar with degree of four or more is included in the power grid, all bus bars could be synchronized.
 For example, the next fact can be shown.
 
-\begin{定理}[Synchronization of bus bars in a tree-structured power grid]
+\begin{theorem}[Synchronization of bus bars in a tree-structured power grid]
 \label{thm:tree}
 With simultaneous equations of Equation \ref{eq:PQVgen}, let us consider an electrical power system model in which a group of equipment is connected.
 When the graph of the power grid has a tree structure, all bus bars are synchronized under a steady power flow distribution.
 %\footnote{
 %グラフ理論において，連結であり閉路をもたないグラフは\textbf{木}（tree）と呼ばれる。
 %}
-\end{定理}
+\end{theorem}
 
-\begin{証明}
+\begin{proof}
 \red{Translated with DeepL}
-Note the bus bar at the endpoint indicated by the bold line in \FIGref{fig:treepr}(a).
+Note the bus bar at the endpoint indicated by the bold line in Figure \ref{fig:treepr}(a).
 Since the order of the bus bar is 1, the adjacent bus bars are synchronous with the bus bars of the endpoints.
 Next, if the bus bar next to the endpoint is in the chain path, the degree of the bus bar is 2, so at least both of its adjacent bus bars are synchronized.
-By repeating this process, as in \FIGref{fig:treepr}(a), synchronization of all the bus bars is shown in the chain path connecting the endpoint and the bus bars of nodes of degree 3 or more.
+By repeating this process, as in Figure \ref{fig:treepr}(a), synchronization of all the bus bars is shown in the chain path connecting the endpoint and the bus bars of nodes of degree 3 or more.
 
-Similarly, since all the bus bars in a node of degree 3 or more from another endpoint are synchronous, we see that all the bus bars in all chain paths connected to the bus bar in the node indicated by the bold line, as in \FIGref{fig:treepr}, are all synchronous.
+Similarly, since all the bus bars in a node of degree 3 or more from another endpoint are synchronous, we see that all the bus bars in all chain paths connected to the bus bar in the node indicated by the bold line, as in Figure \ref{fig:treepr}, are all synchronous.
 Repeating this argument, it can be shown that all the bus bars composing the tree are synchronous.
-\end{証明}
+\end{proof}
 
 
 \begin{figure}[t]
@@ -1913,16 +2064,16 @@ There is no limit to the degree of bus bars in a power grid with a tree structur
 As such, even if a bus bar with degree of four or higher is included in the power grid, synchronization of all bus bars could be deduced based only on the information from the graph structure.
 Similarly, the following fact can be shown.
 
-\begin{定理}[Synchronization of bus bars in a power grid with a ring structure]
+\begin{theorem}[Synchronization of bus bars in a power grid with a ring structure]
 \label{thm:circ}
 With simultaneous equations of Equation \ref{eq:PQVgen}, let us consider an electrical power system model where a group of equipment is connected.
 When the graph of a power grid has a ring structure, and the total number of bus bars is odd, all bus bars synchronize under a steady power flow distribution.
-\end{定理}
+\end{theorem}
 
-\begin{証明}
+\begin{proof}
 Focusing on one bus bar shows the synchronization of the bus bars at both ends of it.
 By repeating this process, synchronization of all bus bars is shown when the total number of bus bars is odd.
-\end{証明}
+\end{proof}
 
 %\begin{figure}[t]
 %  \centering
@@ -1955,20 +2106,20 @@ In the Example \ref{ex:symbox} discussed later, even if the total number of bus 
 
 The next example is an application of Lemma \ref{lem:sumc2} to a power grid that includes a bus bar with degree of three.
 
-%次数3の母線を含む送電網に補題\ref{lem:sumc2}を適用した例としてつぎを示す。
+%次数3の母線を含む送電網にlemma\ref{lem:sumc2}を適用したexampleとしてつぎを示す。
 
-%\begin{例}[ハニカム構造の送電網における母線の同期]\label{ex:deg3}
-%\FIGref{fig:hony}(a)に示されるハニカム構造をもつ送電網に対して，定常潮流状態における母線の同期を考えよう。
+%\begin{example}[ハニカム構造の送電網における母線の同期]\label{ex:deg3}
+%Figure \ref{fig:hony}(a)に示されるハニカム構造をもつ送電網に対して，定常潮流状態における母線の同期を考えよう。
 %最下部の母線に注目すると，その両隣の母線の同期がわかる。
 %これらの同期する母線を赤で示し，最下部の母線と同期するものを青で示す。
-%このとき，補題\ref{lem:sumc2}を各母線に適用していくことによって，同期するすべての母線群を\FIGref{fig:hony}(b)のように色分けすることができる。
+%このとき，lemma\ref{lem:sumc2}を各母線に適用していくことによって，同期するすべての母線群をFigure \ref{fig:hony}(b)のように色分けすることができる。
 %しかしながら，この場合には，グラフ構造の情報だけで赤の母線群と青の母線群の同期を結論づけることはできない。
-%一方で，\FIGref{fig:hony}(c)のように母線が1つ追加された送電網の場合には，その追加された母線に注目することで，両隣の赤と青の母線の同期が導かれる。
-%したがって，\FIGref{fig:hony}(c)のグラフ構造の場合には，すべての母線の同期が示される。
-%\end{例}
+%一方で，Figure \ref{fig:hony}(c)のように母線が1つ追加された送電網の場合には，その追加された母線に注目することで，両隣の赤と青の母線の同期が導かれる。
+%したがって，Figure \ref{fig:hony}(c)のグラフ構造の場合には，すべての母線の同期が示される。
+%\end{example}
 %
-%例\ref{ex:deg3}において，一部のグラフ構造の差異により同期する母線の対称性が崩れることで，電力系統全体での母線の同期が演繹されている点は興味深い。
-%つぎの例では，アドミタンスの値まで考慮した「定量的な送電網の対称性」の観点から母線の同期を考察する。
+%example\ref{ex:deg3}において，一部のグラフ構造の差異により同期する母線の対称性が崩れることで，電力系統全体での母線の同期が演繹されている点は興味深い。
+%つぎのexampleでは，アドミタンスの値まで考慮した「定量的な送電網の対称性」の観点から母線の同期を考察する。
 
 \begin{figure}[t]
 \centering
@@ -1979,10 +2130,10 @@ The next example is an application of Lemma \ref{lem:sumc2} to a power grid that
 \medskip
 \end{figure}
 
-\begin{例}[Synchronization of four bus bars in a power grid with a ring structure]\label{ex:symbox}
-Let us consider synchronization of bus bars under a steady power flow distribution in a power grid with a ring structure shown in \FIGref{fig:4busbox}.
+\begin{example}[Synchronization of four bus bars in a power grid with a ring structure]\label{ex:symbox}
+Let us consider synchronization of bus bars under a steady power flow distribution in a power grid with a ring structure shown in Figure \ref{fig:4busbox}.
 Since the number of bus bars is even, synchronization of bus bars cannot be shown using only the information of the graph structure as in Theorem \ref{thm:circ}.
-However, as it is shown with red and blue in \FIGref{fig:4busbox}, synchronization of alternating bus bars is shown by Lemma \ref{lem:sumc2}.
+However, as it is shown with red and blue in Figure \ref{fig:4busbox}, synchronization of alternating bus bars is shown by Lemma \ref{lem:sumc2}.
 Therefore, for all bus bars to show synchronization, all that is necessary is to show that one of the conditions of Equation \ref{eq:N2sing} is not satisfied for at least one bus bar.
 
 The admittance of the transmission line that connects bus bar $i$ and bus bar $j$ is expressed as $\bm{y}_{ij}$.
@@ -2056,8 +2207,8 @@ If we focus on this, the condition necessary for $(\phi_1,\ldots,\phi_4)$ that s
 Therefore, as long as the admittance matrix does not satisfy this condition, all bus bars synchronize.
 
 The above discussion shows that the conditions necessary for at least one set of bus bars that do not synchronize under a steady power flow distribution to exist are Equation \ref{eq:ycond} and Equation \ref{eq:ycona}.
-These two conditions indicate that only when the power grid of \FIGref{fig:4busbox} has specific symmetry related to the admittance value, a condition arises where only alternating bus bars synchronize.
-\end{例}
+These two conditions indicate that only when the power grid of Figure \ref{fig:4busbox} has specific symmetry related to the admittance value, a condition arises where only alternating bus bars synchronize.
+\end{example}
 
 The Example \ref{ex:symbox} shows that the condition of Equation \ref{eq:N2sing} presents specific symmetry related to the admittance of the power grid.
 In a practical application, all bus bars synchronizing under a steady power flow distribution for a sparse grid where each bus has a low degree is a universal fact as long as there is no specific symmetry in the graph structure.
@@ -2075,7 +2226,7 @@ In this section, we describe an implementation method for tidal current calculat
 For the power flow calculation, simultaneous equations of Equation \ref{eq:ohmY2} must be solved.
 In this Section, we will first use a simple problem to show a method to search the solution of algebraic equations with \matlab.
 
-\begin{例}[Searching for a solution for algebraic equations]\label{ex:algenraic_equation_ex1}
+\begin{example}[Searching for a solution for algebraic equations]\label{ex:algenraic_equation_ex1}
 Let us consider a set of $(x, y)$ that satisfies algebraic equations through numerical calculation: 
 \begin{subequations}\label{eq:algebraic_equation_ex1}
 \begin{align}
@@ -2185,13 +2336,13 @@ x_sol =
 
 As you can see with this Example, based on the initial value, even equations with solutions might not yield correct solutions.
 For practice, it is important to provide initial values that are close to the desired solution.
-\end{例}
+\end{example}
 
 \subsection{Simple implementation of the power flow calculation}
 
 Next, let us introduce a simple method to implement a program that performs power flow calculations.
 
-\begin{例}[Implementation method of power flow calculations]\label{ex:simplepowerflow}
+\begin{example}[Implementation method of power flow calculations]\label{ex:simplepowerflow}
 Let us think about performing power flow calculations for the power system in Figure \ref{dummy}.
 Power flow calculation is a type of calculation to solve algebraic equations. Thus, as in the Example \nobreak\ref{ex:algenraic_equation_ex1}, $f(x)$ of $f(x)=0$ must be implemented.
 
@@ -2343,10 +2494,10 @@ Q:
 \end{verbatim}
 \end{実行結果}
 
-\end{例}
+\end{example}
 
 % \begin{COLUMN}
-% 例\nobreak\ref{ex:algenraic_equation_ex2}
+% example\nobreak\ref{ex:algenraic_equation_ex2}
 % % のプログラムでは，各種のパラメータは\verb{func_ex2.m}の中で
 % % 定義されている。様々な条件での潮流計算を行うことを考えて，
 % % \verb{main_ex2.m}のファイルにパラメータを記述したくなることがある。
@@ -2362,7 +2513,7 @@ First, let us think about separating the implementation of the admittance matrix
 
 First, let us think about separating the implementation of the admittance matrix of the program \nobreak\ref{program:ex2}.
 
-\begin{例}[Separation of the implementation of the admittance matrix]
+\begin{example}[Separation of the implementation of the admittance matrix]
 In the program \nobreak\ref{program:ex2}, let us separate the part that specifies the admittance matrix.
 To do this, the function of variables \verb|Y| is used as the input argument.
 For example, the following correction is possible.
@@ -2412,7 +2563,7 @@ Thus, culling is the creation of a new function in which the variables given to 
 Using this technique, a function with an arbitrary number of arguments can be used as a function with the required number of arguments.
 This allows separation of functions without the use of global variables.
 
-\end{例}
+\end{example}
 
 \red{Translated with DeepL}
 Next, consider the part of the program\nobreak\ref{program:ex2} that calculates the constraint conditions at each bus bar.
@@ -2422,7 +2573,7 @@ In addition, the case classification by the type of bus bar is implicitly includ
 In order to write a program with good visibility without using case separation, it is recommended to use the object-oriented concept of \textbf{polymorphism}.
 In the following examples, the idea of polymorphism will be explained through implementation examples.
 
-\begin{例}[Separation of bus bar implementation]
+\begin{example}[Separation of bus bar implementation]
 In the power flow calculation, different constraints are set based on different types of bus bars.
 At this time, the bus bar of each type has a commonality of “having constraints”.
 If we implement this common property as a method with a common name, we can create a program that is easy to handle.
@@ -2582,12 +2733,12 @@ In other words, if it has a \verb|get_constraint|, it is defined to be a bus bar
 This is a concept called duck typing, derived from "if it walks like a duck and quacks like a duck, then it is a duck".
 This allows the module designer to define a new class of bus bar and implement only \verb|get_constraint| without paying attention to the internal processing of the program \nobreak\ref{program:ex4}.
 In other words, this clarifies the scope of the implementation to be done by the module designer.
-\end{例}
+\end{example}
 
 The above has allowed us to prospectively implement a program for calculating the tidal currents given an admittance matrix.
 Furthermore, let us implement the computation of the admittance matrix by dividing it into a group of modules.
 
-\begin{例}[Object-oriented computation of admittance matrices]
+\begin{example}[Object-oriented computation of admittance matrices]
 An admittance matrix is generally defined by several transmission lines.
 Therefore, we consider creating a class that represents a transmission line and using a set of instances of the class.
 Since a transmission line connects two bus bars, the numbers of those bus bars need to be specified.
@@ -2681,11 +2832,11 @@ Y = get_admittance_matrix(3, a_branch)
 In the program\nobreak\ref{program:admittance}, we only assume that the transmission line has the data \verb|from| and \verb|to| and that it has the method \verb|get_admittance_matrix| and the method \verb|get_admittance_matrix|.
 Therefore, when considering other transmission line models such as $\pi$-type models When considering other transmission line models, such as $\pi$-type models, the variables \verb|to| and \verb|from| and the method \verb|get_admittance_matrix| are also assumed to be used.
 The program program \nobreak\ref{program:admittance} can be used without any modification by simply implementing a class with variables named \verb|to|, \verb|from| and a method named \verb|get_admittance_matrix|.
-\end{例}
+\end{example}
 
 From the above, the program to calculate tidal currents can be summarized as follows.
 
-\begin{例}[Tidal current calculation implementation results]
+\begin{example}[Tidal current calculation implementation results]
 \red{Translated with DeepL}
 The program implemented in the above example is summarized and organized as a function that performs a tidal flow calculation Program\nobreak\ref{program:calc_flow}.
 
@@ -2737,7 +2888,7 @@ display('Q:'), display(Q')
 If it is necessary to perform tidal flow calculations for different power grids, only the definitions of bus bar and transmission line in lines 1 to 8 of the Program \nobreak\ref{program:main_calc_flow} can be changed, and the other programs can be used without any modification.
 When a new type of bus bar or transmission line is needed, a new class that implements the data and methods with the defined names can be implemented.
 These features make the program more readable and extensible than a simple implementation such as \ref{ex:simplepowerflow}.
-\end{例}
+\end{example}
 
 \section{How to implement time response calculations for power system models}\label{sec:timerescal}
 
@@ -2756,9 +2907,9 @@ First, let's take a simple system of differential-algebraic equations as an exam
 \end{figure}
 
 
-\begin{例}[Numerical solution of simple systems of differential-algebraic equations]\label{ex:dae_ex1}
+\begin{example}[Numerical solution of simple systems of differential-algebraic equations]\label{ex:dae_ex1}
 \red{Translated with DeepL}
-Numerical simulation is performed for the simple electric circuit shown in \FIGref{fig:RLC}, where $R$, $L$, $C$, and $E$ are all 1.
+Numerical simulation is performed for the simple electric circuit shown in Figure \ref{fig:RLC}, where $R$, $L$, $C$, and $E$ are all 1.
 The dynamic elements of this circuit are the coil $L$ and the capacitor $C$, whose differential equations are given by:
 \begin{subequations}\label{eq:ex_de}
   \begin{align}
@@ -2923,7 +3074,7 @@ In fact, the algebraic equation is not satisfied by the initial value with all t
 The solution \verb|x| obtained in the 15th line is a matrix in which the time series of $v_R, v_L, v_C, i_R, i_L, i_C$ are arranged, and all of them are different from the case of equivalent conversion to the ordinary differential equation system.
 The time series of the variables of is calculated at once.
 
-\FIGref{fig: solution_dae} shows the time response of $ i_L $ and $ v_C $ when converted to an ordinary differential equation system and when the solution of the differential algebraic equation system is directly calculated. Two lines are displayed in each figure: the solution by \ verb | ode45 | (solid blue line) and the solution by \ verb | ode15s | (red dashed line). Obviously, the two solutions are equal.
+Figure \ref{fig: solution_dae} shows the time response of $ i_L $ and $ v_C $ when converted to an ordinary differential equation system and when the solution of the differential algebraic equation system is directly calculated. Two lines are displayed in each figure: the solution by \ verb | ode45 | (solid blue line) and the solution by \ verb | ode15s | (red dashed line). Obviously, the two solutions are equal.
 
 
 \begin{figure}[t]
@@ -2946,7 +3097,7 @@ The time series of the variables of is calculated at once.
   }
   \medskip
 \end{figure}
-\end{例}
+\end{example}
 
 
 
@@ -2955,7 +3106,7 @@ The time series of the variables of is calculated at once.
 \red{Translated with DeepL}
 Describe how to implement a numerical simulation of a power system model.
 
-\begin{例}[Simple implementation of power system simulation]\label{ex:dae_ex2}
+\begin{example}[Simple implementation of power system simulation]\label{ex:dae_ex2}
 Let us implement a program to numerically compute the time response of the power system model treated in the example \ref{ex:inires}.
 In order to describe this system, we need the differential equations in \req{eq:gendynVIst} for bus bars 1 and 3, to which the generators are connected.
 Also, the algebraic equation of \req{eq:phVI} holds. A constant-impedance load model is connected to bus bar 2, and the algebraic equation of \req{eq:cimp} is satisfied.
@@ -3083,13 +3234,13 @@ plot(t, x(:, [2, 5]))
 
 In the Program\nobreak\ref{program:main_simple_network_dae},
 the initial value response of the power system model is calculated and the angular frequency deviations of the two generators are drawn.
-\end{例}
+\end{example}
 
 \subsection{Implementation method for time response calculation using a group of partitioned modules}
 \red{Translated with DeepL}
 This section describes how to separate the program described in the previous section by function and change it to a highly extensible program.
 
-\begin{例}[Modularization of generators and loads]\label{ex:gen_load}
+\begin{example}[Modularization of generators and loads]\label{ex:gen_load}
   The program \nobreak\ref{program:simple_network_dae} consists of two steps: dividing the input \verb|x| into the state variables, voltage and current of each device, and computing differential and algebraic equations.
   Let's consider how to write a program that executes these two steps in a clear view.
  
@@ -3341,7 +3492,7 @@ and not to change the Program \nobreak\ref{program:simulate_network1} from \nobr
 In the case of using equipment different from the generator or load in the Program \nobreak\ref{program:generator} or Program \ref{program:load},
 you only need to implement and use a class with \verb|get_nx| and \verb|get_dx_constraint|.
 These modularizations make the program more readable and extensible compared to the implementation of the Example \ref{ex:dae_ex2}.
-\end{例}
+\end{example}
 
 In the example program \ref{ex:gen_load}, the modularization of generators and loads allows for a prospective implementation of the time response calculation of the power system model.
 However, in the program \nobreak\ref{program:main_network1}, the values of the external input of the generator and the impedance of the load need to be pre-computed to match the desired equilibrium point.
@@ -3349,7 +3500,7 @@ Since these values depend on the dynamic characteristics of each device, there r
 To solve this problem, let us consider an extension of the program described in the example \ref{ex:gen_load} to make it functionally more separated.
 
 
-\begin{例}[Add methods to calculate steady state conditions for generators and loads]
+\begin{example}[Add methods to calculate steady state conditions for generators and loads]
 In the numerical computation of the time response of the power system model, we consider achieving a steady tidal state that achieves the desired power supply.
 In this case, the Equations (\ref{eq:intssgen}) and \ref{eq:lmodimppara} must be satisfied for the generator and load, respectively.
 Since these relations are related to the state equations of each device, it is appropriate to implement them in the classes \verb|generator| and \verb|load_impedance|.
@@ -3456,12 +3607,12 @@ The program \ref{program:main_equilibrium} clarifies the process of defining a p
 The user only needs to specify the physical constants of each device and can run the numerical simulation without paying attention to the internal dynamic characteristics.
 In this example, it is assumed that the equipment model has a method called {\verb|set_equilibrium|}.
 This is equivalent to changing the definition of the device in duck typing.
-\end{例}
+\end{example}
 
 The above examples have dealt with the numerical computation of the initial value response of power system models.
 Next, we will discuss how to implement the time response calculation for ground faults.
 
-\begin{例}[Numerical calculation of time response to ground fault]
+\begin{example}[Numerical calculation of time response to ground fault]
 In order to calculate the response to a ground fault, the voltage at the bus bar where the fault occurred should be fixed at $0$ for a certain time, as described in section \ref{sec:fault}.
 This can be implemented as follows by modifying some constraints in line 36 of the Program \nobreak\ref{program:network_dae1}.
 
@@ -3551,11 +3702,11 @@ plot(t, [x{1}(:, 2), x{3}(:, 2)])
 \end{PROGRAMA}
 
 Execution of this program yields results equivalent to \ref{fig:P3faulta}.
-\end{例}
+\end{example}
 
 Finally, the calculation of the time response to the input signal is described.
 
-\begin{例}[Numerical computation of time response to input signals]
+\begin{example}[Numerical computation of time response to input signals]
 In the examples we have dealt with so far, we will consider numerical simulations in which the mechanical input $P_\mathrm{mech}$ of the generator is varied and the magnitude of the load is varied, as in the example\ref{sec:resldpara}.
 For this purpose, we modify the program so that it can take into account external inputs.
 
@@ -3726,12 +3877,12 @@ With the above program modifications, it is possible to perform time response ca
 Since this modification takes care to maintain backward compatibility, the initial value response to various power systems and the time response to ground faults and external inputs can be calculated by appropriately rewriting program\nobreak\ref{program:main_input}.
 At this time, the other program groups can be used without any modification except for the Program \nobreak\ref{program:main_input}.
 This is the advantage of the implementation divided into modules.
-\end{例}
+\end{example}
 
 
 \section*{Mathematical Supplement}
 \red{Translated with DeepL}
-\begin{補題}\label{lem:sumc}
+\begin{lemma}\label{lem:sumc}
 For real constants $r_i$, $\omega_i$, and $phi_i$.
 \begin{align*}
 \bm{C}_n(t) := 
@@ -3755,9 +3906,9 @@ Furthermore, when $\omega_1$, $\omega_2$, and $\omega_3$ are all non-zero, the n
 ,\qquad
 \sum_{i=1}^3 r_i e^{\bm{j}\phi_i}=0
 \end{align*}
-\end{補題}
+\end{lemma}
 
-\begin{証明}
+\begin{proof}
 \red{Translated with DeepL}
 First, by setting the derivative of $\bm{C}_1$ with respect to $t$ to 0:
 \begin{align*}
@@ -3832,7 +3983,7 @@ In this case, since $\\omega_1$,$\omega_2$,$\omega_3$ are non-zero, the Equation
 \sum_{i=1}^n r_i e^{\bm{j}\phi_i}
 =0
 \end{align*}
-\end{証明}
+\end{proof}
 
 
 \end{document}
@@ -3840,7 +3991,7 @@ In this case, since $\\omega_1$,$\omega_2$,$\omega_3$ are non-zero, the Equation
 %
 %さいごに，以上の議論から導かれるつぎの事実を示す。
 %
-%\begin{定理}[母線変数の計測による母線同期の判定]
+%\begin{theorem}[母線変数の計測による母線同期の判定]
 %\label{cor:PQsync}
 %式\ref{eq:PQVgen}の連立方程式によって機器群が結合された電力系統モデルを考える。
 %電力系統は定常潮流状態にあるものと仮定する。
@@ -3878,9 +4029,9 @@ In this case, since $\\omega_1$,$\omega_2$,$\omega_3$ are non-zero, the Equation
 %\end{align}
 %が成り立つ，もしくは，その隣接母線に対して式\ref{eq:VYnot2}が成り立つならば，式\ref{eq:alloms}が成り立つ。
 %ただし，$ \mathcal{N}_i \setminus \{j_3\}=\{j_1,j_2\}$である。
-%\end{定理}
+%\end{theorem}
 %
-%\begin{証明}
+%\begin{proof}
 %次数2の母線に関する題意を対偶により示す。
 %すなわち，式\ref{eq:alloms}の否定，すなわち，式\ref{eq:N2sing}が成り立つならば，式\ref{eq:PQnot2}や式\ref{eq:VYnot2}の否定が成り立つことを示す。
 %まず，式\ref{eq:VYnot2}の否定は，式\ref{eq:N2sing}の中央と右そのものであることから，後者の含意は明らかである。
@@ -3894,11 +4045,11 @@ In this case, since $\\omega_1$,$\omega_2$,$\omega_3$ are non-zero, the Equation
 %を意味する。
 %以上より，次数2の母線に関する題意が示される。
 %次数3の母線に関する題意も同様に示される。
-%\end{証明}
+%\end{proof}
 %
 %
-%定理\ref{cor:PQsync}により，有効電力や無効電力，電圧フェーザを実際に計測することによって，グラフ構造だけでは判断できなかった母線の同期を示すことが可能となる。
-%例えば，\FIGref{fig:hony}(b)のハニカム構造をもつ送電網に対して，定常潮流状態において適当な母線の有効電力や無効電力，電圧フェーザを計測し，いずれかの赤と青の母線の同期を示すことができれば，送電網全体での母線の同期が結論できる。
+%theorem\ref{cor:PQsync}により，有効電力や無効電力，電圧フェーザを実際に計測することによって，グラフ構造だけでは判断できなかった母線の同期を示すことが可能となる。
+%exampleえば，Figure \ref{fig:hony}(b)のハニカム構造をもつ送電網に対して，定常潮流状態において適当な母線の有効電力や無効電力，電圧フェーザを計測し，いずれかの赤と青の母線の同期を示すことができれば，送電網全体での母線の同期が結論できる。
 %
 
 
