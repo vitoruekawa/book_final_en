@@ -1,0 +1,97 @@
+\begin{thebibliography}{10}
+
+\bibitem{mesbahi2010graph}
+M.~Mesbahi and M.~Egerstedt.
+\newblock {\em Graph theoretic methods in multiagent networks}.
+\newblock Princeton University Press, 2010.
+
+\bibitem{sauer2017power}
+P.~W. Sauer, M.~A. Pai, and J.~H. Chow.
+\newblock {\em Power system dynamics and stability: with synchrophasor
+  measurement and power system toolbox}.
+\newblock John Wiley \& Sons, 2017.
+
+\bibitem{anderson2008power}
+P.~M. Anderson and A.~A. Fouad.
+\newblock {\em Power system control and stability}.
+\newblock John Wiley \& Sons, 2008.
+
+\bibitem{kuramoto1975self}
+Y.~Kuramoto.
+\newblock Self-entrainment of a population of coupled non-linear oscillators.
+\newblock In {\em International symposium on mathematical problems in
+  theoretical physics}, pp. 420--422. Springer, 1975.
+
+\bibitem{kuramoto2003chemical}
+Y.~Kuramoto.
+\newblock {\em Chemical oscillations, waves, and turbulence}.
+\newblock Courier Corporation, 2003.
+
+\bibitem{dorfler2012synchronization}
+F.~Dorfler and F.~Bullo.
+\newblock Synchronization and transient stability in power networks and
+  nonuniform {Kuramoto} oscillators.
+\newblock {\em SIAM Journal on Control and Optimization}, Vol.~50, No.~3, pp.
+  1616--1642, 2012.
+
+\bibitem{dorfler2013synchronization}
+F.~D{\"o}rfler, M.~Chertkov, and F.~Bullo.
+\newblock Synchronization in complex oscillator networks and smart grids.
+\newblock {\em Proceedings of the National Academy of Sciences}, Vol. 110,
+  No.~6, pp. 2005--2010, 2013.
+
+\bibitem{nagata2014node}
+M.~Nagata, N.~Fujiwara, G.~Tanaka, H.~Suzuki, E.~Kohda, and K.~Aihara.
+\newblock Node-wise robustness against fluctuations of power consumption in
+  power grids.
+\newblock {\em The European Physical Journal Special Topics}, Vol. 223, No.~12,
+  pp. 2549--2559, 2014.
+
+\bibitem{nishikawa2015comparative}
+T.~Nishikawa and A.~E. Motter.
+\newblock Comparative analysis of existing models for power-grid
+  synchronization.
+\newblock {\em New Journal of Physics}, Vol.~17, No.~1, p. 015012, 2015.
+
+\bibitem{tsolas1985structure}
+N.~Tsolas, A.~Arapostathis, and P.~Varaiya.
+\newblock A structure preserving energy function for power system transient
+  stability analysis.
+\newblock {\em IEEE Transactions on Circuits and Systems}, Vol.~32, No.~10, pp.
+  1041--1049, 1985.
+
+\bibitem{varaiya1985direct}
+P.~Varaiya, F.~F. Wu, and R.-L. Chen.
+\newblock Direct methods for transient stability analysis of power systems:
+  Recent results.
+\newblock {\em Proceedings of the IEEE}, Vol.~73, No.~12, pp. 1703--1715, 1985.
+
+\bibitem{chang1995direct}
+H.-D. Chang, C.-C. Chu, and G.~Cauley.
+\newblock Direct stability analysis of electric power systems using energy
+  functions: theory, applications, and perspective.
+\newblock {\em Proceedings of the IEEE}, Vol.~83, No.~11, pp. 1497--1529, 1995.
+
+\bibitem{chiang2011direct}
+H.-D. Chiang.
+\newblock {\em Direct methods for stability analysis of electric power systems:
+  theoretical foundation, BCU methodologies, and applications}.
+\newblock John Wiley \& Sons, 2011.
+
+\bibitem{kundur1994power}
+P.~Kundur.
+\newblock {\em Power system stability and control}.
+\newblock Tata McGraw-Hill Education, 1994.
+
+\bibitem{kron1939tensor}
+G.~Kron.
+\newblock Tensor analysis of networks.
+\newblock {\em New York}, 1939.
+
+\bibitem{dorfler2013kron}
+F.~Dorfler and F.~Bullo.
+\newblock Kron reduction of graphs with applications to electrical networks.
+\newblock {\em Circuits and Systems I: Regular Papers, IEEE Transactions on},
+  Vol.~60, No.~1, pp. 150--163, 2013.
+
+\end{thebibliography}

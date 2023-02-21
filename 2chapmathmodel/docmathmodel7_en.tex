@@ -237,7 +237,7 @@ bar represents the transmission line.
   \medskip
 \end{figure}
 
-\begin{example}{\textbf{Admittance matrix of a power grid}}\label{ex:derY}
+\begin{example}{Admittance matrix of a power grid}\label{ex:derY}
 
   Let us consider a simple electrical power system consisting of three bus bars as
   shown in Fig. \ref{fig:3busex}. Assume that to each bus there is a device
@@ -493,8 +493,9 @@ power grid is obtained as follows.
   \medskip
 \end{figure}
 
-\begin{example}{\textbf{Admittance matrix for the transmission line in a
-$\pi$-type circuit}}\label{ex:pitypeY}
+\begin{example}{Admittance matrix for the transmission line in a $\pi$-type
+circuit}
+\label{ex:pitypeY}
   
   For an electrical power system similar to Example \ref{ex:derY}, let's derive
   the admittance matrix when the transmission line is expressed by a $\pi$-type
@@ -1289,7 +1290,7 @@ simultaneous equation of Equation \ref{eq:ohmY}, can be equivalently expressed
 as a simultaneous ordinary differential equation system related to all
 $i \in \mathcal{I}_{\rm G}$.
 \begin{equation}\label{eq:krondyn}
-  \simode{
+  \begin{aligned}
     \dot{\delta}_i&= \omega_0  \Delta \omega_i\\
     M_i   \Delta \dot{\omega}_i&= %\textstyle
     - D_i \Delta\omega_i   
@@ -1302,7 +1303,7 @@ $i \in \mathcal{I}_{\rm G}$.
     \right)
     g_i \left( \delta,E \right)
     + V_{{\rm field}i}
-  }
+  \end{aligned}
   \qquad
   i \in \mathcal{I}_{\rm G}
 \end{equation}
@@ -1466,7 +1467,7 @@ columns 3 to 5 of Table \ref{table:gensteady}.
 These steady values are one of the solutions that satisfy the following
 simultaneous equations:
 \begin{equation*}
-  \simode{
+  \begin{aligned}
     0 &= %\textstyle
     - f_i \left( \delta^{\star},E^{\star} \right)
     +P_{{\rm mech}i}^{\star}
@@ -1477,7 +1478,7 @@ simultaneous equations:
     \right)
     g_i \left( \delta^{\star},E^{\star} \right)
     + V_{{\rm field}i}^{\star}
-  }
+  \end{aligned}
   \qquad
   i \in \{1,2,3\}
 \end{equation*}
@@ -1709,13 +1710,14 @@ system with synchronous generators connected to each bus bar is expressed by the
 following ordinary differential equation.
 
 \begin{equation}\label{eq:clamod}
-  \simode{
+  \begin{aligned}
     \dot{\delta}_i&= \omega_0  \Delta \omega_i\\
     M_i   \Delta \dot{\omega}_i&= 
     - D_i \Delta\omega_i - 
     \hat{f}_i (\delta)
     +P_{{\rm mech}i} 
-  }\qquad
+  \end{aligned}
+  \qquad
   i\in \mathcal{I}_{\rm G}
 \end{equation}
 
@@ -1841,7 +1843,7 @@ phasor into Equation \ref{eq:gendynIVst}, the expression of the ordinary
 differential equation system is obtained as follows:
 
 \begin{equation*}%\label{eq:gendynIVst}
-  \simode{
+  \begin{aligned}
     \dot{\delta} &= \omega_0  \Delta \omega\\
     M   \Delta \dot{\omega}&= \textstyle
     - D \Delta\omega  - 
@@ -1869,7 +1871,7 @@ differential equation system is obtained as follows:
     }
     |\bm{V}_0| \sfcos\delta
     + V_{{\rm field}}
-  }
+  \end{aligned}
 \end{equation*}
 
 Similarly, from Equation \ref{eq:PiQis2} the active and reactive power supplied
@@ -2034,7 +2036,7 @@ electromagnetic dynamics, the following can be obtained.
 
 \begin{subequations}\label{eq:gendynVI_}
 \begin{equation}\label{eq:gendynVIst_}
-  \simode{
+  \begin{aligned}
     \dot{\delta}_i&= \omega_0  \Delta \omega_i\\
     M_i   \Delta \dot{\omega}_i&= 
     - D_i \Delta\omega_i  
@@ -2048,7 +2050,7 @@ electromagnetic dynamics, the following can be obtained.
     \right)
     |\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
     + V_{{\rm field}i}
-  }
+  \end{aligned}
 \end{equation}
 
 However, for active power $P_i$, the expression of Equation \ref{eq:PQV_} is
@@ -2078,7 +2080,7 @@ Similarly, if the current phasor is regarded as an input from the electrical
 power system to the generator $i$, the state space representation of the dynamic
 characteristics of the generator becomes the following:
 \begin{equation}\label{eq:gendynIVst_}
-  \simode{
+  \begin{aligned}
     \dot{\delta}_i &= \omega_0  \Delta \omega_i\\
     M_i   \Delta \dot{\omega}_i&= \textstyle
     - D_i \Delta\omega_i  - 
@@ -2092,7 +2094,7 @@ characteristics of the generator becomes the following:
     )
     |\bm{I}_i| \sfsin (\delta_i - \angle \bm{I}_i ) 
     + V_{{\rm field}i}
-  }
+  \end{aligned}
 \end{equation}
 
 where $P_i$ is calculated through Equation \ref{eq:PQI}.
@@ -2362,7 +2364,7 @@ relationships for current and voltage phasors, which generally makes
 mathematical analysis of the resulting power system model difficult. Let us
 illustrate this fact with the following example.
 
-\begin{example}{Kron reduction of load bus bar}\label{ex:genloadY} 
+\begin{example}{\textbf{Kron reduction of load bus bar}}\label{ex:genloadY} 
   
 Let us assume that in the electrical power system of the Example \ref{ex:derY},
 the generators are represented by devices 1 and 2, and the load is represented
@@ -2716,8 +2718,8 @@ As discussed above, while the definiteness of the admittance matrix is
 invariable to Kron reduction, the "element signs" of the real and imaginary
 parts are not necessarily invariable. Let us confirm this with the next Example.
 
-\begin{example}{Sign change of the admittance matrix by Kron reduction of bus
-bars}\label{ex:kronsign}
+\begin{example}{\textbf{Sign change of the admittance matrix by Kron reduction of bus
+bars}}\label{ex:kronsign}
 
 Regarding the admittance matrix $\bm{Y}_0$ when the ground capacitance in
 Equation \ref{eq:Y0prop} is negligible, the conductance matrix $G_0$ is positive
@@ -3130,5 +3132,7 @@ S}$ is positive definite, which means that the imaginary part of $\bm{Z}_{\rm
 S}$ is positive definite.
 \end{proof}
 
+\bibliographystyle{myjunsrt}		% bib style
+\bibliography{../reference,../reference_corona,../reference_CREST,../reference_kawaguchi}
 %\newpage
 \end{document}

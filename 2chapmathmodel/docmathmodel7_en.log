@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  20 FEB 2023 20:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  21 FEB 2023 14:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -674,6 +674,28 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 \c@currassumptionctr=\count343
 \c@endassumptionctr=\count344
 \c@assumption=\count345
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count346
+\lst@gtempboxa=\box119
+\lst@token=\toks53
+\lst@length=\count347
+\lst@currlwidth=\dimen267
+\lst@column=\count348
+\lst@pos=\count349
+\lst@lostspace=\dimen268
+\lst@width=\dimen269
+\lst@newlines=\count350
+\lst@lineno=\count351
+\lst@maxwidth=\dimen270
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count352
+\lst@skipnumbers=\count353
+\lst@framebox=\box120
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
 )
 LaTeX Font Info:    Trying to load font information for OT1+ntxtlf on input line 5.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/ot1ntxtlf.fd
@@ -683,8 +705,8 @@ LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 (Font)              scaled to size 10.0pt on input line 5.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count346
-\l__pdf_internal_box=\box119
+\l__color_backend_stack_int=\count354
+\l__pdf_internal_box=\box121
 ) (./docmathmodel7_en.aux)
 \openout1 = `docmathmodel7_en.aux'.
 
@@ -728,25 +750,25 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
  (/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count347
-\scratchdimen=\dimen267
-\scratchbox=\box120
-\nofMPsegments=\count348
-\nofMParguments=\count349
-\everyMPshowfont=\toks53
-\MPscratchCnt=\count350
-\MPscratchDim=\dimen268
-\MPnumerator=\count351
-\makeMPintoPDFobject=\count352
-\everyMPtoPDFconversion=\toks54
+\scratchcounter=\count355
+\scratchdimen=\dimen271
+\scratchbox=\box122
+\nofMPsegments=\count356
+\nofMParguments=\count357
+\everyMPshowfont=\toks54
+\MPscratchCnt=\count358
+\MPscratchDim=\dimen272
+\MPnumerator=\count359
+\makeMPintoPDFobject=\count360
+\everyMPtoPDFconversion=\toks55
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@mv@tabular=\count353
-\c@mv@boldtabular=\count354
+\c@mv@tabular=\count361
+\c@mv@boldtabular=\count362
 Package hyperref Info: Link coloring OFF on input line 5.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -755,7 +777,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/usr/local/texlive/2022/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count355
+\c@section@level=\count363
 )
 LaTeX Info: Redefining \ref on input line 5.
 LaTeX Info: Redefining \pageref on input line 5.
@@ -765,7 +787,9 @@ LaTeX Info: Redefining \nameref on input line 5.
 \openout4 = `docmathmodel7_en.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count364
 
 Chapter 1.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
@@ -805,18 +829,18 @@ LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<figs/circres2.pdf, id=108, 306.14375pt x 404.64775pt>
+<figs/circres2.pdf, id=115, 306.14375pt x 404.64775pt>
 File: figs/circres2.pdf Graphic file (type pdf)
 <use figs/circres2.pdf>
 Package pdftex.def Info: figs/circres2.pdf  used on input line 42.
 (pdftex.def)             Requested size: 69.90881pt x 92.40018pt.
 LaTeX Font Info:    Calculating math sizes for size <8.5> on input line 45.
-<figs/circcoil.pdf, id=109, 309.81245pt x 404.64775pt>
+<figs/circcoil.pdf, id=116, 309.81245pt x 404.64775pt>
 File: figs/circcoil.pdf Graphic file (type pdf)
 <use figs/circcoil.pdf>
 Package pdftex.def Info: figs/circcoil.pdf  used on input line 48.
 (pdftex.def)             Requested size: 69.90881pt x 91.30731pt.
-<figs/circcond.pdf, id=110, 315.35516pt x 404.64775pt>
+<figs/circcond.pdf, id=117, 315.35516pt x 404.64775pt>
 File: figs/circcond.pdf Graphic file (type pdf)
 <use figs/circcond.pdf>
 Package pdftex.def Info: figs/circcond.pdf  used on input line 54.
@@ -836,19 +860,24 @@ LaTeX Font Info:    Font shape `OT1/qhv/m/n' will be
 LaTeX Font Info:    Font shape `OT1/qhv/m/n' will be
 (Font)              scaled to size 5.17001pt on input line 101.
  [2 <./figs/circres2.pdf> <./figs/circcoil.pdf> <./figs/circcond.pdf>]
-<figs/phasorrep.pdf, id=150, 1103.46347pt x 372.19952pt>
+<figs/phasorrep.pdf, id=157, 1103.46347pt x 372.19952pt>
 File: figs/phasorrep.pdf Graphic file (type pdf)
 <use figs/phasorrep.pdf>
 Package pdftex.def Info: figs/phasorrep.pdf  used on input line 144.
 (pdftex.def)             Requested size: 329.57008pt x 111.16661pt.
  [3] [4 <./figs/phasorrep.pdf>]
-<figs/3busex.pdf, id=181, 359.74602pt x 187.4483pt>
+<figs/3busex.pdf, id=188, 359.74602pt x 187.4483pt>
 File: figs/3busex.pdf Graphic file (type pdf)
 <use figs/3busex.pdf>
 Package pdftex.def Info: figs/3busex.pdf  used on input line 233.
 (pdftex.def)             Requested size: 199.74036pt x 104.07794pt.
+
+Overfull \hbox (3.0pt too wide) detected at line 240
+ [] 
+ []
+
 LaTeX Font Info:    Trying to load font information for OT1+ntxsups on input line 245.
- (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/ot1ntxsups.fd
+(/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/ot1ntxsups.fd
 File: ot1ntxsups.fd 2015/01/17 v1.0
 )
 LaTeX Font Info:    Font shape `OT1/ntxsups/m/n' will be
@@ -856,19 +885,19 @@ LaTeX Font Info:    Font shape `OT1/ntxsups/m/n' will be
 LaTeX Font Info:    Font shape `OT1/ntxsups/m/n' will be
 (Font)              scaled to size 8.5pt on input line 247.
  [5 <./figs/3busex.pdf>] [6]
-<figs/overview.pdf, id=210, 635.0877pt x 258.46765pt>
+<figs/overview.pdf, id=214, 635.0877pt x 258.46765pt>
 File: figs/overview.pdf Graphic file (type pdf)
 <use figs/overview.pdf>
 Package pdftex.def Info: figs/overview.pdf  used on input line 378.
 (pdftex.def)             Requested size: 266.31879pt x 108.39001pt.
  [7 <./figs/overview.pdf>]
-<figs/overviewPQ.pdf, id=226, 635.08868pt x 258.46765pt>
+<figs/overviewPQ.pdf, id=232, 635.08868pt x 258.46765pt>
 File: figs/overviewPQ.pdf Graphic file (type pdf)
 <use figs/overviewPQ.pdf>
 Package pdftex.def Info: figs/overviewPQ.pdf  used on input line 427.
 (pdftex.def)             Requested size: 266.31879pt x 108.39001pt.
  [8 <./figs/overviewPQ.pdf>]
-<figs/line_pix3.pdf, id=247, 1284.8pt x 549.05125pt>
+<figs/line_pix3.pdf, id=253, 1284.8pt x 549.05125pt>
 File: figs/line_pix3.pdf Graphic file (type pdf)
 <use figs/line_pix3.pdf>
 Package pdftex.def Info: figs/line_pix3.pdf  used on input line 488.
@@ -879,236 +908,173 @@ LaTeX Font Info:    Font shape `OT1/qhv/m/n' will be
 (Font)              scaled to size 5.83267pt on input line 491.
 LaTeX Font Info:    Font shape `OT1/qhv/m/n' will be
 (Font)              scaled to size 4.39452pt on input line 491.
- [9 <./figs/line_pix3.pdf>]
-LaTeX Font Info:    Trying to load font information for U+dsrom on input line 602.
+
+Overfull \hbox (3.0pt too wide) detected at line 497
+ [] 
+ []
+
+[9 <./figs/line_pix3.pdf>]
+LaTeX Font Info:    Trying to load font information for U+dsrom on input line 603.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 ) [10]
-
-LaTeX Warning: Citation `mesbahi2010graph' on page 11 undefined on input line 636.
-
-<figs/congraph.pdf, id=275, 111.41624pt x 99.37125pt>
+<figs/congraph.pdf, id=280, 111.41624pt x 99.37125pt>
 File: figs/congraph.pdf Graphic file (type pdf)
 <use figs/congraph.pdf>
-Package pdftex.def Info: figs/congraph.pdf  used on input line 645.
+Package pdftex.def Info: figs/congraph.pdf  used on input line 646.
 (pdftex.def)             Requested size: 83.89058pt x 74.8224pt.
-<figs/notcongraph.pdf, id=276, 111.41624pt x 99.37125pt>
+<figs/notcongraph.pdf, id=281, 111.41624pt x 99.37125pt>
 File: figs/notcongraph.pdf Graphic file (type pdf)
 <use figs/notcongraph.pdf>
-Package pdftex.def Info: figs/notcongraph.pdf  used on input line 652.
+Package pdftex.def Info: figs/notcongraph.pdf  used on input line 653.
 (pdftex.def)             Requested size: 83.89058pt x 74.8224pt.
-[11 <./figs/congraph.pdf> <./figs/notcongraph.pdf>]
-
-LaTeX Warning: Citation `sauer2017power' on page 12 undefined on input line 725.
-
-
-LaTeX Warning: Citation `anderson2008power' on page 12 undefined on input line 726.
-
-[12]
-<figs/generatorbus.pdf, id=307, 133.53287pt x 113.18988pt>
+ [11 <./figs/congraph.pdf> <./figs/notcongraph.pdf>] [12]
+<figs/generatorbus.pdf, id=318, 133.53287pt x 113.18988pt>
 File: figs/generatorbus.pdf Graphic file (type pdf)
 <use figs/generatorbus.pdf>
-Package pdftex.def Info: figs/generatorbus.pdf  used on input line 753.
+Package pdftex.def Info: figs/generatorbus.pdf  used on input line 754.
 (pdftex.def)             Requested size: 83.2243pt x 70.54486pt.
  [13 <./figs/generatorbus.pdf>] [14] [15]
-LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 1005.
+LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 1006.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 1005.
+(Font)              scaled to size 10.0pt on input line 1006.
+ [16] [17] [18]
 
+LaTeX Warning: Reference `sec:pfcal' on page 19 undefined on input line 1348.
 
-LaTeX Warning: Citation `anderson2008power' on page 16 undefined on input line 1014.
-
-[16] [17] [18]
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1305.
-
-
-LaTeX Warning: Reference `sec:pfcal' on page 19 undefined on input line 1347.
-
-<figs/kronredgen.pdf, id=397, 566.04271pt x 208.23697pt>
+<figs/kronredgen.pdf, id=409, 566.04271pt x 208.23697pt>
 File: figs/kronredgen.pdf Graphic file (type pdf)
 <use figs/kronredgen.pdf>
-Package pdftex.def Info: figs/kronredgen.pdf  used on input line 1352.
+Package pdftex.def Info: figs/kronredgen.pdf  used on input line 1353.
 (pdftex.def)             Requested size: 282.96468pt x 104.09915pt.
-[19] [20 <./figs/kronredgen.pdf>]
+[19]
+Overfull \hbox (3.0pt too wide) detected at line 1415
+ [] 
+ []
 
-LaTeX Warning: Reference `sec:powerflow' on page 21 undefined on input line 1460.
+[20 <./figs/kronredgen.pdf>]
 
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1480.
+LaTeX Warning: Reference `sec:powerflow' on page 21 undefined on input line 1461.
 
 [21]
 
-LaTeX Warning: Reference `chap:numcal' on page 22 undefined on input line 1592.
+LaTeX Warning: Reference `chap:numcal' on page 22 undefined on input line 1593.
 
-<figs/Domega0.pdf, id=449, 685.90654pt x 526.19284pt>
+<figs/Domega0.pdf, id=461, 685.90654pt x 526.19284pt>
 File: figs/Domega0.pdf Graphic file (type pdf)
 <use figs/Domega0.pdf>
-Package pdftex.def Info: figs/Domega0.pdf  used on input line 1599.
+Package pdftex.def Info: figs/Domega0.pdf  used on input line 1600.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/delangV0.pdf, id=450, 685.90654pt x 526.19284pt>
+<figs/delangV0.pdf, id=462, 685.90654pt x 526.19284pt>
 File: figs/delangV0.pdf Graphic file (type pdf)
 <use figs/delangV0.pdf>
-Package pdftex.def Info: figs/delangV0.pdf  used on input line 1605.
+Package pdftex.def Info: figs/delangV0.pdf  used on input line 1606.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/EabsV0.pdf, id=451, 685.90654pt x 526.19284pt>
+<figs/EabsV0.pdf, id=463, 685.90654pt x 526.19284pt>
 File: figs/EabsV0.pdf Graphic file (type pdf)
 <use figs/EabsV0.pdf>
-Package pdftex.def Info: figs/EabsV0.pdf  used on input line 1611.
+Package pdftex.def Info: figs/EabsV0.pdf  used on input line 1612.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/PQ0.pdf, id=452, 686.18657pt x 526.19284pt>
+<figs/PQ0.pdf, id=464, 686.18657pt x 526.19284pt>
 File: figs/PQ0.pdf Graphic file (type pdf)
 <use figs/PQ0.pdf>
-Package pdftex.def Info: figs/PQ0.pdf  used on input line 1617.
+Package pdftex.def Info: figs/PQ0.pdf  used on input line 1618.
 (pdftex.def)             Requested size: 163.12146pt x 125.0845pt.
 [22]
-<figs/DomegaP.pdf, id=460, 685.90654pt x 526.19284pt>
+<figs/DomegaP.pdf, id=471, 685.90654pt x 526.19284pt>
 File: figs/DomegaP.pdf Graphic file (type pdf)
 <use figs/DomegaP.pdf>
-Package pdftex.def Info: figs/DomegaP.pdf  used on input line 1634.
+Package pdftex.def Info: figs/DomegaP.pdf  used on input line 1635.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/delangVP.pdf, id=461, 685.90654pt x 526.19284pt>
+<figs/delangVP.pdf, id=472, 685.90654pt x 526.19284pt>
 File: figs/delangVP.pdf Graphic file (type pdf)
 <use figs/delangVP.pdf>
-Package pdftex.def Info: figs/delangVP.pdf  used on input line 1640.
+Package pdftex.def Info: figs/delangVP.pdf  used on input line 1641.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/EabsVP.pdf, id=462, 685.90654pt x 526.19284pt>
+<figs/EabsVP.pdf, id=473, 685.90654pt x 526.19284pt>
 File: figs/EabsVP.pdf Graphic file (type pdf)
 <use figs/EabsVP.pdf>
-Package pdftex.def Info: figs/EabsVP.pdf  used on input line 1646.
+Package pdftex.def Info: figs/EabsVP.pdf  used on input line 1647.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/PQP.pdf, id=463, 686.2689pt x 526.19284pt>
+<figs/PQP.pdf, id=474, 686.2689pt x 526.19284pt>
 File: figs/PQP.pdf Graphic file (type pdf)
 <use figs/PQP.pdf>
-Package pdftex.def Info: figs/PQP.pdf  used on input line 1652.
+Package pdftex.def Info: figs/PQP.pdf  used on input line 1653.
 (pdftex.def)             Requested size: 163.12146pt x 125.06844pt.
-<figs/DomegaV.pdf, id=464, 685.90654pt x 526.19284pt>
+<figs/DomegaV.pdf, id=475, 685.90654pt x 526.19284pt>
 File: figs/DomegaV.pdf Graphic file (type pdf)
 <use figs/DomegaV.pdf>
-Package pdftex.def Info: figs/DomegaV.pdf  used on input line 1669.
+Package pdftex.def Info: figs/DomegaV.pdf  used on input line 1670.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/delangVV.pdf, id=465, 685.90654pt x 526.19284pt>
+<figs/delangVV.pdf, id=476, 685.90654pt x 526.19284pt>
 File: figs/delangVV.pdf Graphic file (type pdf)
 <use figs/delangVV.pdf>
-Package pdftex.def Info: figs/delangVV.pdf  used on input line 1675.
+Package pdftex.def Info: figs/delangVV.pdf  used on input line 1676.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/EabsVV.pdf, id=466, 685.90654pt x 526.19284pt>
+<figs/EabsVV.pdf, id=477, 685.90654pt x 526.19284pt>
 File: figs/EabsVV.pdf Graphic file (type pdf)
 <use figs/EabsVV.pdf>
-Package pdftex.def Info: figs/EabsVV.pdf  used on input line 1681.
+Package pdftex.def Info: figs/EabsVV.pdf  used on input line 1682.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/PQV.pdf, id=467, 686.2689pt x 526.19284pt>
+<figs/PQV.pdf, id=478, 686.2689pt x 526.19284pt>
 File: figs/PQV.pdf Graphic file (type pdf)
 <use figs/PQV.pdf>
-Package pdftex.def Info: figs/PQV.pdf  used on input line 1687.
+Package pdftex.def Info: figs/PQV.pdf  used on input line 1688.
 (pdftex.def)             Requested size: 163.12146pt x 125.06844pt.
-
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1718.
-
-[23 <./figs/Domega0.pdf> <./figs/delangV0.pdf> <./figs/EabsV0.pdf> <./figs/PQ0.pdf>]
-
-LaTeX Warning: Citation `kuramoto1975self' on page 24 undefined on input line 1762.
-
-
-LaTeX Warning: Citation `kuramoto2003chemical' on page 24 undefined on input line 1762.
-
-
-LaTeX Warning: Citation `dorfler2012synchronization' on page 24 undefined on input line 1765.
-
-
-LaTeX Warning: Citation `dorfler2013synchronization' on page 24 undefined on input line 1765.
-
-
-LaTeX Warning: Citation `nagata2014node' on page 24 undefined on input line 1765.
-
-
-LaTeX Warning: Citation `nishikawa2015comparative' on page 24 undefined on input line 1765.
-
-[24 <./figs/DomegaP.pdf> <./figs/delangVP.pdf> <./figs/EabsVP.pdf> <./figs/PQP.pdf>] [25 <./figs/DomegaV.pdf> <./figs/delangVV.pdf> <./figs/EabsVV.pdf> <./figs/PQV.pdf>]
-<figs/inf1bus.pdf, id=556, 418.70929pt x 79.33139pt>
+ [23 <./figs/Domega0.pdf> <./figs/delangV0.pdf> <./figs/EabsV0.pdf> <./figs/PQ0.pdf>] [24 <./figs/DomegaP.pdf> <./figs/delangVP.pdf> <./figs/EabsVP.pdf> <./figs/PQP.pdf>] [25 <./figs/DomegaV.pdf> <./figs/delangVV.pdf> <./figs/EabsVV.pdf> <./figs/PQV.pdf>]
+<figs/inf1bus.pdf, id=571, 418.70929pt x 79.33139pt>
 File: figs/inf1bus.pdf Graphic file (type pdf)
 <use figs/inf1bus.pdf>
-Package pdftex.def Info: figs/inf1bus.pdf  used on input line 1772.
+Package pdftex.def Info: figs/inf1bus.pdf  used on input line 1774.
 (pdftex.def)             Requested size: 233.02704pt x 44.15048pt.
 
 
-LaTeX Warning: Citation `taniguchi2011power' on page 26 undefined on input line 1781.
+LaTeX Warning: Citation `taniguchi2011power' on page 26 undefined on input line 1783.
 
 
-LaTeX Warning: Citation `kato2017electric' on page 26 undefined on input line 1782.
+LaTeX Warning: Citation `kato2017electric' on page 26 undefined on input line 1784.
 
 [26 <./figs/inf1bus.pdf>]
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1872.
-
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
-(Font)              scaled to size 10.0pt on input line 1915.
-[27]
+(Font)              scaled to size 10.0pt on input line 1917.
+ [27]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/it' will be
-(Font)              scaled to size 10.0pt on input line 1935.
-Package hyperref Info: bookmark level for unknown proof defaults to 0 on input line 1935.
-
-
-LaTeX Warning: Citation `tsolas1985structure' on page 28 undefined on input line 1987.
-
-
-LaTeX Warning: Citation `varaiya1985direct' on page 28 undefined on input line 1987.
-
-
-LaTeX Warning: Citation `chang1995direct' on page 28 undefined on input line 1987.
-
-
-LaTeX Warning: Citation `chiang2011direct' on page 28 undefined on input line 1987.
-
-[28]
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 2051.
-
-[29]
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 2095.
-
-
-LaTeX Warning: Citation `sauer2017power' on page 30 undefined on input line 2272.
-
-[30]
-<figs/loadbus.pdf, id=630, 130.4875pt x 85.08487pt>
+(Font)              scaled to size 10.0pt on input line 1937.
+Package hyperref Info: bookmark level for unknown proof defaults to 0 on input line 1937.
+ [28] [29] [30]
+<figs/loadbus.pdf, id=654, 130.4875pt x 85.08487pt>
 File: figs/loadbus.pdf Graphic file (type pdf)
 <use figs/loadbus.pdf>
-Package pdftex.def Info: figs/loadbus.pdf  used on input line 2282.
+Package pdftex.def Info: figs/loadbus.pdf  used on input line 2284.
 (pdftex.def)             Requested size: 83.2243pt x 54.26717pt.
- [31]
+ [31] [32 <./figs/loadbus.pdf>]
+Overfull \hbox (3.0pt too wide) detected at line 2367
+ [] 
+ []
 
-LaTeX Warning: Citation `kundur1994power' on page 32 undefined on input line 2349.
+[33] [34] [35]
 
-[32 <./figs/loadbus.pdf>] [33] [34] [35]
-
-LaTeX Warning: Reference `eq: Y0' on page 36 undefined on input line 2690.
-
-
-LaTeX Warning: Reference `eq: loadys' on page 36 undefined on input line 2690.
-
-[36] [37]
-
-LaTeX Warning: Citation `kron1939tensor' on page 38 undefined on input line 2822.
+LaTeX Warning: Reference `eq: Y0' on page 36 undefined on input line 2692.
 
 
-LaTeX Warning: Reference `sec:howtocal' on page 38 undefined on input line 2824.
+LaTeX Warning: Reference `eq: loadys' on page 36 undefined on input line 2692.
 
+[36]
+Overfull \hbox (3.0pt too wide) detected at line 2722
+ [] 
+ []
 
-LaTeX Warning: Citation `dorfler2013kron' on page 38 undefined on input line 2826.
+[37]
 
-[38] [39] [40] [41]
+LaTeX Warning: Reference `sec:howtocal' on page 38 undefined on input line 2826.
+
+[38] [39] [40] [41] (./docmathmodel7_en.bbl
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
+(Font)              scaled to size 8.5pt on input line 5.
+)
 \tf@thm=\write5
 \openout5 = `docmathmodel7_en.thm'.
 
@@ -1117,21 +1083,21 @@ LaTeX Warning: Citation `dorfler2013kron' on page 38 undefined on input line 282
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `docmathmodel7_en.out' has not changed.
-(rerunfilecheck)             Checksum: 3BB80B724E330B8F9B800823D7ECB687;6797.
+(rerunfilecheck)             Checksum: C821E44BA32DC98F89C3158E754B829A;7007.
  ) 
 Here is how much of TeX's memory you used:
- 17754 strings out of 478268
- 272677 string characters out of 5846346
- 600311 words of memory out of 5000000
- 35422 multiletter control sequences out of 15000+600000
- 566660 words of font info for 208 fonts, out of 8000000 for 9000
+ 19129 strings out of 478268
+ 292832 string characters out of 5846346
+ 620914 words of memory out of 5000000
+ 36768 multiletter control sequences out of 15000+600000
+ 568481 words of font info for 211 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,29n,134p,587b,686s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 88i,29n,134p,587b,690s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntxsups_ot1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-rm.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/doublestroke/dsrom8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ntxsups-Regular.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexas.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/txsya.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmbi.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on docmathmodel7_en.pdf (42 pages, 2867341 bytes).
+Output written on docmathmodel7_en.pdf (42 pages, 2873613 bytes).
 PDF statistics:
- 889 PDF objects out of 1000 (max. 8388607)
- 741 compressed objects within 8 object streams
- 180 named destinations out of 1000 (max. 500000)
- 315 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 924 PDF objects out of 1000 (max. 8388607)
+ 776 compressed objects within 8 object streams
+ 192 named destinations out of 1000 (max. 500000)
+ 331 words of extra memory for PDF output out of 10000 (max. 10000000)
 
