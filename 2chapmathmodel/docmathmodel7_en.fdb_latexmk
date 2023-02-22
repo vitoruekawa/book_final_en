@@ -1,17 +1,17 @@
 # Fdb version 3
-["bibtex docmathmodel7_en"] 1676958709 "docmathmodel7_en.aux" "docmathmodel7_en.bbl" "docmathmodel7_en" 1676958712
+["bibtex docmathmodel7_en"] 1676958709 "docmathmodel7_en.aux" "docmathmodel7_en.bbl" "docmathmodel7_en" 1677048695
   "../reference.bib" 1671778091 227292 803c87a6a696601ecd56f475476df413 ""
   "../reference_CREST.bib" 1671778091 59019 df82731dbc24f835dd8300a6c830b01b ""
   "../reference_corona.bib" 1671778091 5771 bc174bc28c76295797b197e95bdf146e ""
   "../reference_kawaguchi.bib" 1671778091 1083 3a546a44eab236df90ca3befbfcb06b4 ""
   "./myjunsrt.bst" 1671778084 20460 fc9c2855f78b9a8b2efd825755852948 ""
-  "docmathmodel7_en.aux" 1676958712 20985 578b2ba39d1fdfbfba2504d6db564c52 "pdflatex"
+  "docmathmodel7_en.aux" 1677048694 20985 578b2ba39d1fdfbfba2504d6db564c52 "pdflatex"
   (generated)
   "docmathmodel7_en.bbl"
   "docmathmodel7_en.blg"
-["pdflatex"] 1676958709 "/Users/vuekawa/repos/book_final_en/2chapmathmodel/docmathmodel7_en.tex" "docmathmodel7_en.pdf" "docmathmodel7_en" 1676958712
-  "../settings.tex" 1676895635 4472 1c81eed7fd4018192392fc44c9aa1478 ""
-  "/Users/vuekawa/repos/book_final_en/2chapmathmodel/docmathmodel7_en.tex" 1676958705 115150 c00e86e56892d18a4675ec32afa20ee2 ""
+["pdflatex"] 1677048692 "/Users/vuekawa/repos/book_final_en/2chapmathmodel/docmathmodel7_en.tex" "docmathmodel7_en.pdf" "docmathmodel7_en" 1677048695
+  "../settings.tex" 1676959234 4473 f4b63a93255e9a8cc326f20b91f62b7b ""
+  "/Users/vuekawa/repos/book_final_en/2chapmathmodel/docmathmodel7_en.tex" 1677048691 115150 c00e86e56892d18a4675ec32afa20ee2 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc" 1422827479 2083 60e36f8eac802fcaf19eabe2633b406e ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntxsups_ot1.enc" 1583272976 2856 9c183bd297dcc12b554656ec0c79f350 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-rm.enc" 1529098226 2409 c64dab22331c83731e970f6020b4448b ""
@@ -209,10 +209,10 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1668484045 2826445 cf7d7340e9c2a7d1df78c5cafc645348 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "docmathmodel7_en.aux" 1676958712 20985 578b2ba39d1fdfbfba2504d6db564c52 "pdflatex"
+  "docmathmodel7_en.aux" 1677048694 20985 578b2ba39d1fdfbfba2504d6db564c52 "pdflatex"
   "docmathmodel7_en.bbl" 1676958709 3507 cd153db382ef93c47e4a3a0192999346 "bibtex docmathmodel7_en"
-  "docmathmodel7_en.out" 1676958712 7007 c821e44ba32dc98f89c3158e754b829a "pdflatex"
-  "docmathmodel7_en.tex" 1676958705 115150 c00e86e56892d18a4675ec32afa20ee2 ""
+  "docmathmodel7_en.out" 1677048694 7007 c821e44ba32dc98f89c3158e754b829a "pdflatex"
+  "docmathmodel7_en.tex" 1677048691 115150 c00e86e56892d18a4675ec32afa20ee2 ""
   "dsfont.sty" 1671778083 230 7bc61880b468bfd38aedc173be7c3486 ""
   "eclbkbox.sty" 1671778083 2338 aa5837e82377ed2acc7ee21c1d523b1d ""
   "figs/3busex.pdf" 1671778083 65776 6a28475c7efcd10e25afc5350ec80a7e ""

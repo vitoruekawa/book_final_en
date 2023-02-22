@@ -321,6 +321,7 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/kastrup/binhex.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/kastrup/binhex.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/kastrup/binhex.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/kastrup/binhex.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/ntheorem/ntheorem.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsmath.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/enumitem/enumitem.sty
@@ -394,7 +395,6 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/makeidx.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/makeidx.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/makeidx.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/makeidx.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/ntheorem/ntheorem.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/ascmac/ascmac.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/ascmac/ascmac.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/ascmac/ascmac.sty

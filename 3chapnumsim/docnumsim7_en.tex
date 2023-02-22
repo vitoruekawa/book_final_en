@@ -517,8 +517,11 @@ loss for the entire system. The above steps can be summarized as follows.
 \end{breakbox}
 \medskip
 
-where $\mathcal{I}_{\rm G}$ is a subscript set of the generator buses, $\mathcal{I}_{\rm L}$ is a subscript set of the load bus bars, and $i_0 \in \mathcal{I}_{\rm G}$ is subscript of the slack bus.
-Bus bars without equipment are handled as load bus bars where the consumed active and reactive power are 0. 
+Here, $\mathcal{I}_{\rm G}$ is the set of indices for generator buses,
+$\mathcal{I}_{\rm L}$ is the set of indices for load buses, and $i_0 \in
+\mathcal{I}_{\rm G}$ represents the index of the slack bus. Unconnected buses
+are treated as load buses with zero consumed active and reactive power.
+
 
 %参考として，3つの発電機母線（母線1，母線2，母線3）と2つの負荷母線（母線4，母線5）から構成される電力系統モデルのexampleをFigure \ref{fig:powerflow}に示す。
 %ここでは発電機母線1をスラック母線に設定しており，その他の母線には，有効電力や無効電力，母線電圧フェーザの絶対値などが指定されている。
@@ -535,7 +538,7 @@ Bus bars without equipment are handled as load bus bars where the consumed activ
 
 \begin{table}[h]
 \medskip
-\caption{\textbf{Data sheet and tidal current calculation results (1)}} \label{table:pflow1}
+\caption{\textbf{Data sheet and power flow calculation results (1)}} \label{table:pflow1}
  \centering
   {
   \begin{minipage}{0.49\linewidth}
@@ -570,7 +573,7 @@ Bus bars without equipment are handled as load bus bars where the consumed activ
    $\angle \bm{V}_i^{\star}$ & $-0.0490$ & $-0.0596$ & \\
    \hline
   \end{tabular}
-   \subcaption{Tidal current calculation results}
+   \subcaption{Power flow calculation results}
   \end{minipage}
   }
 \end{table}
@@ -578,92 +581,119 @@ Bus bars without equipment are handled as load bus bars where the consumed activ
 
 \begin{table}[h]
 \medskip
-\caption{\textbf{Data sheet and tidal flow calculation results (2)}} \label{table:pflow2}
+\caption{\textbf{Data sheet and power flow calculation results (2)}} \label{table:pflow2}
  \centering
   {
   \begin{minipage}{0.49\linewidth}
     \centering
   \begin{tabular}{|c|c|c|c|c|c|c|}
-   \hline
- & Bus 1 & Bus 2 & Bus 3 \\
-   \hline 
-   $P_i^{\star}$ &  & $-3$ & 0.5 \\
-   \hline    
-   $Q_i^{\star}$ &  & 0 & \\
-   \hline
-   $|\bm{V}_i^{\star}|$ & 2 & & 2 \\
-   \hline
-   $\angle \bm{V}_i$ & 0 & &  \\
-   \hline
+    \hline
+  & Bus 1 & Bus 2 & Bus 3 \\
+    \hline 
+    $P_i^{\star}$ &  & $-3$ & 0.5 \\
+    \hline    
+    $Q_i^{\star}$ &  & 0 & \\
+    \hline
+    $|\bm{V}_i^{\star}|$ & 2 & & 2 \\
+    \hline
+    $\angle \bm{V}_i$ & 0 & &  \\
+    \hline
   \end{tabular}
    \subcaption{Data sheet}
   \end{minipage}
   \begin{minipage}{0.49\linewidth}
     \centering
   \begin{tabular}{|c|c|c|c|c|c|c|}
-   \hline
-   & Bus 1 & Bus 2 & Bus 3 \\
-   \hline 
-   $P_i^{\star}$ & 2.5158 & &  \\
-   \hline
-   $Q_i^{\star}$ & $-0.0347$ & & 0.1759 \\
-   \hline
-   $|\bm{V}_i^{\star}|$ & & 1.9918 & \\
-   \hline
-   $\angle \bm{V}_i^{\star}$ & & $-0.0538$ & $-0.0419$ \\
-   \hline
+    \hline
+    & Bus 1 & Bus 2 & Bus 3 \\
+    \hline 
+    $P_i^{\star}$ & 2.5158 & &  \\
+    \hline
+    $Q_i^{\star}$ & $-0.0347$ & & 0.1759 \\
+    \hline
+    $|\bm{V}_i^{\star}|$ & & 1.9918 & \\
+    \hline
+    $\angle \bm{V}_i^{\star}$ & & $-0.0538$ & $-0.0419$ \\
+    \hline
   \end{tabular}
-  \subcaption{Tidal current calculation results}
+  \subcaption{Power flow calculation results}
   \end{minipage}
   }
 \end{table}
 
+\begin{example}{\textbf{Power flow calculation based on the datasheet}}\label{ex:pf3bus}
+Let us consider the electrical power system model consisting of 3 bus bars
+discussed in Example \ref{ex:derY}. For the admittance matrix of the power grid
+of Equation \ref{eq:exY}, the admittance values of the two transmission lines
+are set to be:
+\begin{equation}\label{eq:rightlossless}
+  \bm{y}_{12} = 1.3652 - \bm{j} 11.6041, \qquad
+  \bm{y}_{23} =  - \bm{j} 10.5107
+\end{equation}
 
+Please note that the conductance (real part of $\bm{y}_{23}$) of the
+transmission line that connects bus bar 2 and bus bar 3 is set to zero, so the
+active power transmission loss on this line is zero.
 
-\begin{example}{\textbf{Power flow calculations based on the datasheet}}\label{ex:pf3bus}
-Let us consider the electrical power system model consisting of 3 bus bars discussed in Example \ref{ex:derY}.
-For the admittance matrix of the power grid of Equation \ref{eq:exY}, the admittance values of the two transmission lines are set as:
-\begin{align}\label{eq:rightlossless}
-\bm{y}_{12} = 1.3652 - \bm{j} 11.6041, \qquad
-\bm{y}_{23} =  - \bm{j} 10.5107
-\end{align}
-Please note that the conductance (real part of $\bm{y}_{23}$) of the transmission line that connects bus bar 2 and bus bar 3 is set to 0, and the transmission loss of active power by this transmission line is 0. 
+First, let us consider a case where bus bar 1 is the generator bus, bus bar 2 is
+the load bus, and bus bar 3 is the slack bus.  Specifically, we assume that the
+values in Table \ref{table:pflow1}(a) are specified for each bus bar.  In this
+case, the set of variable satisfying the simultaneous equations in Equation
+\ref{eq:PQVgen} can be obtained as shown in Table \ref{table:pflow1}(b). The
+transmission los in this case is:
 
-First, let us consider a case where bus bar 1 is the generator bus, bus bar 2 is the load bus bar, and bus bar 3 is the slack bus.
-Specifically, we assume that the value in \ref{table:pflow1}(a) is specified for each bus bar.
-At this time, the sets of variables that satisfy simultaneous equations in Equation \ref{eq:PQVgen} are obtained as in \ref{table:pflow1}(b):
-Transmission loss in this case is:
 \[
-P_1^{\star} + P_2^{\star} + P_3^{\star} = 6.2562\times 10^{-4},
-\qquad 
-Q_1^{\star} + Q_2^{\star} + Q_3^{\star} =1.5450  \times 10^{-1}
+  P_1^{\star} + P_2^{\star} + P_3^{\star} = 6.2562\times 10^{-4},
+  \qquad 
+  Q_1^{\star} + Q_2^{\star} + Q_3^{\star} =1.5450  \times 10^{-1}
 \]
-The ratio of transmission loss for the electric power for consumption for the load is extremely low at about 0.02\%.
-The reason for the transmission loss of active power being small is as follows: While the active power consumed by the load of bus bar 2 is 3 [pu], the generator of the bus bar supplies most of it, ca. 2.5 [pu], while the generator of bus bar 1 only supplies 0.5 [pu].
-In other words, the majority of active power consumed by bus bar 2 is supplied through the transmission line on the right where there is no transmission loss. 
 
-Next, assuming that bus bar 1 is the slack bus, bus bar 2 is the load bus, and bus bar 3 is the generator bus, we specify variables for each bus bar as in \ref{table:pflow2}(a).
-At this time, the result of the power flow calculation is shown in \ref{table:pflow2}(b).
-Transmission loss in this case is:
+The ratio of power transmission loss to the consumed power of the load is about
+0.02\%, which is very small. The reason why the power transmission loss for the
+active power is small is that most of the active power consumed by the load on
+bus bar 2 (about 2.5 pu out of 3 pu) is supplied by the generator on bus bar 3,
+and only 0.5 pu is supplied by the generator on bus bar 1. In other words, most
+of the active power consumed by the load on bus bar 2 is supplied using the right
+transmission line, which has no power transmission loss.
+
+Next, consider the case where bus bar 1 is the slack bus, bus bar 2 is the load
+bus, and bus bar 3 is the generator bus, and specify the variables for each bus
+bar as shown in Table \ref{table:pflow2}(a). The result of the power flow
+calculation in this case is shown in Table \ref{table:pflow2}(b). The power loss in
+this case is given by:
+
 \[
-P_1^{\star} + P_2^{\star} + P_3^{\star} = 1.5826 \times 10^{-2},
-\qquad 
-Q_1^{\star} + Q_2^{\star} + Q_3^{\star} =1.4120  \times 10^{-1}
+  P_1^{\star} + P_2^{\star} + P_3^{\star} = 1.5826 \times 10^{-2},
+  \qquad 
+  Q_1^{\star} + Q_2^{\star} + Q_3^{\star} =1.4120  \times 10^{-1}
 \]
-In this case, the ratio of transmission loss for consumed electric power of the load is about 0.52\%.
-Compared to the previous Example, the transmission loss of active power is high.
-This is because the majority of active power consumed by bus bar 2 was supplied by the left transmission line where transmission loss occurs.
-In contrast, it can be seen that the reactive power loss is smaller than in the previous Example.
+
+The ratio of power loss to consumed power of the load in this case is about
+0.52\%. As compared to the previous example, it can be seen that the power loss
+due to active power transmission has increased. This is because the majority of
+the active power consumed by bus 2 is being supplied using the left transmission
+line where power losses occur. On the other hand, it can also be seen that the
+reactive power loss has decreased as compared to the previous example.
 \end{example}
 
-We can see that the power flow distribution obtained from Example \ref{ex:pf3bus} varies the size of the transmission loss for the entire system.
-Generally, when supplying electric power for consumption using a transmission line with a high conductance component (resistance component), the transmission loss of active power becomes large.
-When the transmission loss is larger, the power generation necessary to supply the same active power for consumption also increases; thus, the economic cost of power generation cost also increases.  
+From Example \ref{ex:pf3bus}, it can be seen that the magnitude of the overall
+transmission losses of the system varies depending on the power flow
+distribution that is obtained. Generally, when supplying power using
+transmission lines with a large conductance (or resistance) component, the
+transmission losses of active power increase. As the transmission losses
+increase, the generation cost, among other economic costs, also increases
+because a larger amount of generation is required to supply the same amount of
+consumed active power.
 
-On the other hand, one must be aware of the fact that a steady power flow distribution with low economic cost does not necessarily mean a highly stable equilibrium point.
-Therefore, it is important to search for a better equilibrium point while considering the trade-off related to economy and stability for practical application.
-Such a better equilibrium point search process is called \textbf{optimal power flow calculation} in electrical power system engineering.
-In this book, the relationship between the selection of an equilibrium point and stability is discussed in Chapter \ref{sec:staana} and Chapter \ref{ch:stabcont}.
+On the other hand, it is important to note that an economically efficient
+steady-state power flow distribution may not necessarily correspond to a high
+stability equilibrium point. Therefore, in practical applications, it is
+important to search for better equilibrium points by considering trade-offs
+between economic efficiency and stability. The process of searching for such
+better equilibrium points is called \textbf{optimal power flow calculation} in
+power system engineering. In this book, we discuss the relationship between the
+selection of equilibrium points and stability in Chapters \ref{sec:staana} and
+\ref{ch:stabcont}.
 
 \subsection{The relationship between the admittance matrix and transmission loss*\advanced}
 
