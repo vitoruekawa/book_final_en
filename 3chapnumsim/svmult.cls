@@ -2623,5 +2623,34 @@ to\z@{\kern0.55\wd0\vrule\@height0.45\ht0\hss}\box0}}}}
 \gdef\NoneSymbol{}
 
 
+\def\itembox{\@ifnextchar[{\@itembox}{\@itembox[c]}}
+\def\@itembox[#1]#2{%
+  \@savetbaselineshift\tbaselineshift\tbaselineshift\z@
+  \par\vspace{.3\baselineskip}%
+  \setbox\@iboxstr=\hbox{#2}\@itemh\ht\@iboxstr\advance\@itemh\dp\@iboxstr
+  \vspace{.5\@itemh}\bgroup\@scw\linewidth
+  \advance\@scw-20pt\@iboxpos={#1}%
+  \setbox\scb@x=\hbox\bgroup\begin{minipage}{\@scw}%
+  \tbaselineshift\@savetbaselineshift% (KN:1998/02/27)
+  \vspace*{.5\@itemh}}%
+\def\enditembox{\end{minipage}\egroup%
+  \setbox\scscb@x=\hbox to\linewidth{\hfil\vbox{\offinterlineskip%
+  \thicklines\setlength{\unitlength}{1pt}%
+  \hbox to\@scw{\if l\the\@iboxpos\else\@hleader\fi
+    \space\vbox to.8pt{\vss\hbox{\box\@iboxstr}\vss}%
+    \space\if r\the\@iboxpos\else \@hleader\fi}\kern9.6pt
+  \@hobox{tl}{tr}{20}\kern-10pt\box\scb@x\@hobox{bl}{br}{20}%
+  \kern-.8pt\hrule height.8pt}\hfil}\dimen0=\ht\scscb@x%
+  \noindent\hbox to\linewidth{\hbox to.6pt{\vbox to\dimen0{\@vrf@{10pt}{.8pt}}%
+  \hss}\box\scscb@x\hbox to.6pt{\hss\vbox to\dimen0{\@vrf@{10pt}{.9pt}}}%
+  \hss}\egroup}
+%%
+
+\newcounter{EXECUTION}[chapter]
+\renewcommand{\theEXECUTION}{\thechapter.\@arabic\c@EXECUTION}
+
+\newenvironment{execution}{\footnotesize\refstepcounter{EXECUTION}\begin{itembox}{{\small\bfseries execution\theEXECUTION}}}{\end{itembox}}
+
+
 \endinput
 %end of file svmult.cls

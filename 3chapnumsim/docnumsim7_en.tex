@@ -695,410 +695,438 @@ power system engineering. In this book, we discuss the relationship between the
 selection of equilibrium points and stability in Chapters \ref{sec:staana} and
 \ref{ch:stabcont}.
 
-\subsection{The relationship between the admittance matrix and transmission loss*\advanced}
+\subsection{The relationship between the admittance matrix and transmission
+loss\advanced}
 
-Below, for a typical power grid consisting of $N$ bus bars, we derive a mathematical expression of transmission loss related to an arbitrary power flow distribution.
-If the real and imaginary parts of the admittance matrix $\bm{Y}$, the conductance matrix $G$ and the susceptance matrix $B$, are symmetrical, they can be rewritten as follows using appropriate constants $\phi_{ij}=\phi_{ji}$ and $\psi_{ij}=\psi_{ji}$:
-%\begin{align}\label{eq:GBrep}
-%\spliteq{
-%G
-%& =
-%\mat{
-%  \sum_{j=1}^{N} \phi_{1j} & -\phi_{12} & \cdots & -\phi_{1N}\\
-%  -\phi_{21} & \sum_{j=1}^{N} \phi_{2j} & \cdots & -\phi_{2N}\\
-%  \vdots & \vdots & \ddots & \vdots\\
-%  -\phi_{N1} & -\phi_{N2} & \cdots & \sum_{j=1}^{N} \phi_{Nj}
-%},
-%\\
-%B
-%& =
-%-\mat{
-%  \sum_{j=1}^{N} \psi_{1j} & -\psi_{12} & \cdots & -\psi_{1N}\\
-%  -\psi_{21} & \sum_{j=1}^{N} \psi_{2j} & \cdots & -\psi_{2N}\\
-%  \vdots & \vdots & \ddots & \vdots\\
-%  -\psi_{N1} & -\psi_{N2} & \cdots & \sum_{j=1}^{N} \psi_{Nj}
-%}
-%}
-%\end{align}
-\begin{align}\label{eq:GBrep}
-G_{ij} =
-\left\{
-\begin{array}{cl}
-\textstyle \sum_{j=1}^{N} \phi_{ij}, & i=j \\
--\phi_{ij}, & i\neq j 
-\end{array}
-\right.
-\quad
-B_{ij}  =
-\left\{
-\begin{array}{cl}
-\textstyle - \sum_{j=1}^{N} \psi_{ij}, & i=j \\
-\psi_{ij}, & i\neq j 
-\end{array}
-\right.
-\end{align}
-However, $G_{ij}$ and $B_{ij}$ are $(i,j)$th elements of the conductance matrix $G$ and the susceptance matrix $B$, respectively.
-Equation \ref{eq:GBrep}is equivalent to the definition below:
+The following derivation provides a mathematical expression for transmission
+losses in any power flow distribution for a general power network consisting of
+$N$ buses. Assuming that the real and imaginary parts of the admittance matrix
+$\bm{Y}$, which are the conductance matrix $G$ and susceptance matrix $B$,
+respectively, are symmetric, appropriate constants $\phi_{ij}=\phi_{ji}$ and
+$\psi_{ij}=\psi_{ji}$ can be used to represent $G_{ij}$ and $B_{ij}$,
+respectively, as follows:
+
+\begin{equation}\label{eq:GBrep}
+  G_{ij} =
+  \left\{
+    \begin{array}{cl}
+      \textstyle \sum_{j=1}^{N} \phi_{ij}, & i=j \\
+      -\phi_{ij}, & i\neq j 
+    \end{array}
+  \right.
+  \quad
+  B_{ij}  =
+  \left\{
+    \begin{array}{cl}
+      \textstyle - \sum_{j=1}^{N} \psi_{ij}, & i=j \\
+      \psi_{ij}, & i\neq j 
+    \end{array}
+  \right.
+\end{equation}
+
+Here, $G_{ij}$ and $B_{ij}$ denote the $(i,j)$th element of the conductance
+matrix $G$ and the susceptance matrix $B$, respectively. Equation \ref{eq:GBrep}
+is equivalent to defining:
+
 \[
-\phi_{ii}:= \sum_{j=1}^N G_{ij},\qquad
-\phi_{ij}:=-G_{ij},\qquad 
-\psi_{ii}:= - \sum_{j=1}^N B_{ij},\qquad 
-\psi_{ij}:=B_{ij}
+  \phi_{ii}:= \sum_{j=1}^N G_{ij},\qquad
+  \phi_{ij}:=-G_{ij},\qquad 
+  \psi_{ii}:= - \sum_{j=1}^N B_{ij},\qquad 
+  \psi_{ij}:=B_{ij}
 \]
 
-Using this expression, the following facts are shown.
+Using this expression, the following fact can be shown.
 
 \begin{theorem}[Expression of transmission loss through bus bar voltage phasor]
 \label{thm:PQ}
-For Equation \ref{eq:PQVgen}, we define the transmission loss of active power and reactive power for the entire system:
-\begin{align}
-L_{P}(t) := P_1(t) +\cdots P_N(t)
-,\qquad
-L_Q(t) := Q_1(t) +\cdots Q_N(t)
-\end{align}
+For equation \ref{eq:PQVgen}, the transmission losses of active and reactive
+power for the entire system are defined as:
 
-These transmission losses are obtained with:
+\begin{equation}
+  L_{P}(t) := P_1(t) +\cdots P_N(t)
+  ,\qquad
+  L_Q(t) := Q_1(t) +\cdots Q_N(t)
+\end{equation}
 
-\begin{align}\label{eq:LPLQ}
-\spliteq{
-L_P(t) &= \sum_{i=1}^N \phi_{ii} |\bm{V}_{i}(t)|^2  +
-\sum_{i=1}^N \sum_{j=i+1}^N
-\phi_{ij} 
-W\bigl(\bm{V}_i(t),\bm{V}_j(t)\bigr)
-\\
-L_Q(t) &= \sum_{i=1}^N \psi_{ii} |\bm{V}_{i}(t)|^2  +
-\sum_{i=1}^N \sum_{j=i+1}^N
-\psi_{ij} 
-W\bigl(\bm{V}_i(t),\bm{V}_j(t)\bigr)
-}
-\end{align}
+These transmission losses are given by:
 
-However, the following is true:
+\begin{equation}\label{eq:LPLQ}
+  \spliteq{
+    L_P(t) &= \sum_{i=1}^N \phi_{ii} |\bm{V}_{i}(t)|^2  +
+    \sum_{i=1}^N \sum_{j=i+1}^N
+    \phi_{ij} 
+    W\bigl(\bm{V}_i(t),\bm{V}_j(t)\bigr)
+    \\
+    L_Q(t) &= \sum_{i=1}^N \psi_{ii} |\bm{V}_{i}(t)|^2  +
+    \sum_{i=1}^N \sum_{j=i+1}^N
+    \psi_{ij} 
+    W\bigl(\bm{V}_i(t),\bm{V}_j(t)\bigr)
+  }
+\end{equation}
+
+where the following is used:
 
 \[
-W(\bm{V}_i,\bm{V}_j):=
-\left( |\bm{V}_i| - |\bm{V}_j| \right)^2 
-+ 2 |\bm{V}_i| |\bm{V}_j| \bigl\{ 1-\sfcos (\angle \bm{V}_i- \angle \bm{V}_j) \bigr\}
+  W(\bm{V}_i,\bm{V}_j):=
+  \left( |\bm{V}_i| - |\bm{V}_j| \right)^2 
+  + 2 |\bm{V}_i| |\bm{V}_j| \bigl\{ 1-\sfcos (\angle \bm{V}_i- \angle \bm{V}_j) \bigr\}
 \]
 \end{theorem}
 
 \begin{proof}
-For simplification, time $t$ is omitted. Also, $\angle\bm{V}_i- \angle \bm{V}_j$ is expressed as $\angle \bm{V}_{ij}$.
-From Equation \ref{eq:PQVgen}, for $\bm{Y}_{ij}= G_{ij} + \bm{j} B_{ij}$, because of $\bm{Y}_{ij}=\bm{Y}_{ji}$, the following is true:
+For simplification, time $t$ is omitted. Also, we denote $\angle\bm{V}_i- \angle
+\bm{V}_j$ as $\angle \bm{V}_{ij}$. From Equation \ref{eq:PQVgen}, we have 
+$\bm{Y}_{ij}= G_{ij} + \bm{j} B_{ij}$, and $\bm{Y}_{ij}=\bm{Y}_{ji}$, therefore:
 
-\begin{align*}
-\spliteq{
-\sum_{i=1}^N (P_i + \bm{j} Q_i)
- & =
-\sum_{i=1}^N \overline{\bm{Y}}_{ii} |\bm{V}_i|^2
-+
-\sum_{i=1}^N \sum_{j=i+1}^N
-\overline{\bm{Y}}_{ij}
-|\bm{V}_i| |\bm{V}_j| 
-\left(e^{ \bm{j} \angle \bm{V}_{ij} } + e^{ \bm{j} \angle \bm{V}_{ji} } \right) \\
- & =
-\sum_{i=1}^N \overline{\bm{Y}}_{ii} |\bm{V}_i|^2
-+
-2
-\sum_{i=1}^N \sum_{j=i+1}^N
-\overline{\bm{Y}}_{ij}
-|\bm{V}_i| |\bm{V}_j| 
-\sfcos \angle \bm{V}_{ij}
-}
-\end{align*}
+\begin{equation*}
+  \spliteq{
+    \sum_{i=1}^N (P_i + \bm{j} Q_i)
+    & =
+    \sum_{i=1}^N \overline{\bm{Y}}_{ii} |\bm{V}_i|^2
+    +
+    \sum_{i=1}^N \sum_{j=i+1}^N
+    \overline{\bm{Y}}_{ij}
+    |\bm{V}_i| |\bm{V}_j| 
+    \left(e^{ \bm{j} \angle \bm{V}_{ij} } + e^{ \bm{j} \angle \bm{V}_{ji} } \right) \\
+    & =
+    \sum_{i=1}^N \overline{\bm{Y}}_{ii} |\bm{V}_i|^2
+    +
+    2
+    \sum_{i=1}^N \sum_{j=i+1}^N
+    \overline{\bm{Y}}_{ij}
+    |\bm{V}_i| |\bm{V}_j| 
+    \sfcos \angle \bm{V}_{ij}
+  }
+\end{equation*}
 
-Therefore, by using the notations $G_{ij}$ and $B_{ij}$ of Equation \ref{eq:GBrep}, the following is obtained:
+Thus, using the notation of $G_{ij}$ and $B_{ij}$ from Equation \ref{eq:GBrep},
+we obtain:
 
-\begin{align*}
-\spliteq{
-L_P &= 
-\sum_{i=1}^N \left(
-\sum_{j=1}^N \phi_{ij}
-\right)
-|\bm{V}_i|^2
--
-2
-\sum_{i=1}^N \sum_{j=i+1}^N
-\phi_{ij}
-|\bm{V}_i| |\bm{V}_j| 
-\sfcos \angle \bm{V}_{ij} \\
-L_Q &= 
-\sum_{i=1}^N \left(
-\sum_{j=1}^N \psi_{ij}
-\right)
-|\bm{V}_i|^2
--
-2
-\sum_{i=1}^N \sum_{j=i+1}^N
-\psi_{ij}
-|\bm{V}_i| |\bm{V}_j| 
-\sfcos \angle \bm{V}_{ij}
-}
-\end{align*}
+\begin{equation*}
+  \spliteq{
+    L_P &= 
+    \sum_{i=1}^N \left(
+    \sum_{j=1}^N \phi_{ij}
+    \right)
+    |\bm{V}_i|^2
+    -
+    2
+    \sum_{i=1}^N \sum_{j=i+1}^N
+    \phi_{ij}
+    |\bm{V}_i| |\bm{V}_j| 
+    \sfcos \angle \bm{V}_{ij} \\
+    L_Q &= 
+    \sum_{i=1}^N \left(
+    \sum_{j=1}^N \psi_{ij}
+    \right)
+    |\bm{V}_i|^2
+    -
+    2
+    \sum_{i=1}^N \sum_{j=i+1}^N
+    \psi_{ij}
+    |\bm{V}_i| |\bm{V}_j| 
+    \sfcos \angle \bm{V}_{ij}
+  }
+\end{equation*}
 
-If we focus on the first term of $L_P$, we can see that $\phi_{ij}=\phi_{ji}$; thus,
+where we focus on the first term of $L_P$. Because $\phi_{ij}=\phi_{ji}$, we
+have:
 
-\[\sum_{i=1}^N 
-\sum_{j=1}^N \phi_{ij}
-|\bm{V}_i|^2 = 
-\sum_{i=1}^N 
-\phi_{ii}|\bm{V}_i|^2
-+
-\sum_{i=1}^N 
-\sum_{j=i+1}^N \phi_{ij}
-|\bm{V}_i|^2
-+
-\sum_{i=1}^N 
-\sum_{j=i+1}^N \phi_{ij}
-|\bm{V}_j|^2
+\[
+  \sum_{i=1}^N 
+  \sum_{j=1}^N \phi_{ij}
+  |\bm{V}_i|^2 = 
+  \sum_{i=1}^N 
+  \phi_{ii}|\bm{V}_i|^2
+  +
+  \sum_{i=1}^N 
+  \sum_{j=i+1}^N \phi_{ij}
+  |\bm{V}_i|^2
+  +
+  \sum_{i=1}^N 
+  \sum_{j=i+1}^N \phi_{ij}
+  |\bm{V}_j|^2
 \]
 
 If we rewrite the first term of $L_P$ using this, we can obtain:
 
-\begin{align*}
-\spliteq{
-L_P &= 
-\sum_{i=1}^N 
-\phi_{ii}|\bm{V}_i|^2
-+
-\sum_{i=1}^N 
-\sum_{j=i+1}^N \phi_{ij}
-\left(
-|\bm{V}_i|^2
-+
-|\bm{V}_j|^2
--
-2 |\bm{V}_i| |\bm{V}_j| 
-\sfcos \angle \bm{V}_{ij}
-\right)
-\\
-&= 
-\sum_{i=1}^N 
-\phi_{ii}|\bm{V}_i|^2
-+
-\sum_{i=1}^N 
-\sum_{j=i+1}^N \phi_{ij}
-\left\{
-\left(
-|\bm{V}_i|
--
-|\bm{V}_j|
-\right)^2
-+
-2 |\bm{V}_i| |\bm{V}_j| 
-(1-
-\sfcos \angle \bm{V}_{ij}
-)
-\right\}
-}
-\end{align*}
+\begin{equation*}
+  \spliteq{
+    L_P &= 
+    \sum_{i=1}^N 
+    \phi_{ii}|\bm{V}_i|^2
+    +
+    \sum_{i=1}^N 
+    \sum_{j=i+1}^N \phi_{ij}
+    \left(
+      |\bm{V}_i|^2
+      +
+      |\bm{V}_j|^2
+      -
+      2 |\bm{V}_i| |\bm{V}_j| 
+      \sfcos \angle \bm{V}_{ij}
+    \right)
+    \\
+    &= 
+    \sum_{i=1}^N 
+    \phi_{ii}|\bm{V}_i|^2
+    +
+    \sum_{i=1}^N 
+    \sum_{j=i+1}^N \phi_{ij}
+    \left\{
+      \left(
+        |\bm{V}_i|
+        -
+        |\bm{V}_j|
+      \right)^2
+      +
+      2 |\bm{V}_i| |\bm{V}_j| 
+      (1-
+      \sfcos \angle \bm{V}_{ij}
+      )
+    \right\}
+  }
+\end{equation*}
 
-Therefore, $L_P$ can be expressed with the format of Equation \ref{eq:LPLQ}. With the same steps, $L_Q$ can be expressed with the format of Equation \ref{eq:LPLQ}.
+Therefore, $L_P$ can be expressed in the form of Equation \ref{eq:LPLQ}.
+With the same steps, $L_Q$ can be expressed with the format of Equation
+\ref{eq:LPLQ}.
 
 \end{proof}
 
-Theorem \ref{thm:PQ} shows that the discussion of electrical power loss in the electrical power system of two bus bars shown in the Example \ref{ex:2buspf} can be generalized in the same manner as an electrical power system consisting of an arbitrary number of bus bars.
-Here, if we express the admittance matrix $\bm{Y}$ as in Section \ref{sec:admathp}:
+Theorem \ref{thm:PQ} shows that the discussion of electrical power loss in the
+electrical power system of two bus bars shown in the Example \ref{ex:2buspf} can
+be generalized to power systems consisting of any number of buses. Here, if we
+express the admittance matrix $\bm{Y}$ as in Section \ref{sec:admathp}:
 
 \[
-\bm{Y}=\bm{Y}_0 + \bm{j} \sfdiag(\Cgi)_{i\in \{1,\ldots,N\} }
+  \bm{Y}=\bm{Y}_0 + \bm{j} \sfdiag(\Cgi)_{i\in \{1,\ldots,N\} }
 \]
 
-$\bm{Y}_0 \mathds{1}$ is 0; in other words, the sum of all rows for the real and imaginary parts of $\bm{Y}_0$ is zero; thus, it becomes: 
+In this case, it is known that $\bm{Y}_0 \mathds{1}=0$, which means that the sum
+of each row of the real and imaginary parts of $\bm{Y}_0$ is 0. Thus, for all
+$i\in{1,\ldots,N}$:
 
 \[
-\phi_{ii}=0,\qquad
-\psi_{ii}= - \Cgi
+  \phi_{ii}=0,\qquad
+  \psi_{ii}= - \Cgi
 \]
-Since the conductance of each transmission line is non-negative and the susceptance is negative, $\phi_{ij}$ and $\psi_{ij}$ for all $i\neq j$ is non-negative.
-Therefore, as long as $\phi_{ij}$ is not 0, loss will always occur when transmitting active power between a bus bar $i$ and a bus bar $j$.
-Thus, the transmission loss of active power in the entire system $L_P(t)$ is positive for an arbitrary time $t$.
-Similarly, if $\Cgi$ is sufficiently small; in other words, if the capacitance to ground of a transmission line is sufficiently small, loss of reactive power $L_Q(t)$ is also positive.
-This means that increasing the capacitance to ground of a transmission line and connecting equipment with capacitance properties to a bus bar will reduce the loss of reactive power. 
 
-\section{The steady state of generators that achieves a desired supply of electric power}\label{sec:paradef}
+Furthermore, since the conductance of each transmission line is nonnegative and
+the susceptance is negative, it follows that $\phi_{ij}$ and $\psi_{ij}$ are
+nonnegative for all $i\neq j$. Therefore, as long as $\phi_{ij}$ is not 0, loss
+will always occur when transmitting active power between a bus bar $i$ and a bus
+bar $j$.  This implies that the transmission loss of active power $L_P(t)$ is
+positive at any time $t$ for the entire power system. Similarly, if $\Cgi$ is
+sufficiently small; in other words, if the capacitance to ground of a
+transmission line is sufficiently small, loss of reactive power $L_Q(t)$ is also
+positive. In other words, connecting devices with capacitive characteristics to
+the buses reduces the loss of reactive power.
 
-In this Section, we explain a method to back calculate the steady value of the internal state of the generators, external input,
-and load parameters so that the numbers are consistent with the power flow calculation result, which was explained in Step B of Section \ref{sec:numstep}.
+\section{The steady state of generators achieving desired power
+supply}\label{sec:paradef}
 
+In this Section, we explain how to retroactively calculate the steady-state
+values of the internal states and external inputs of generators, as well as the
+parameter values of loads, to achieve the power flow state described by the
+results of the power flow calculation explained in Step B of Section
+\ref{sec:numstep}.
 
 \subsection{The steady state of generators that achieves a desired supply of electric power}\label{sec:stagen}
 
-Let us consider a generator model that inputs the voltage phasor in Section \ref{sec:genfund}.
-For the sake of simplification, subscripts $i$ have been omitted:
-\begin{align}\label{eq:gendif_}
-\simode{
-\dot{\delta}&= \omega_0  \Delta \omega\\
-M   \Delta \dot{\omega}&= 
- - D \Delta\omega  
- - P
-+P_{{\rm mech}}
-\\
-\taud \dot{E} & = 
--\tfrac{ \Xs }{ \Xt }E
-+\left(
-\tfrac{ \Xs }{ \Xt } -1
-\right)
-|\bm{V}| \sfcos (\delta - \angle \bm{V} ) 
-+ V_{{\rm field}}
-}
-\end{align}
+Let us consider a generator model that inputs the voltage phasor in Section
+\ref{sec:genfund}. For simplicity of notation, subscripts $i$ have been
+omitted:
+\begin{equation}\label{eq:gendif_}
+  \simode{
+    \dot{\delta}&= \omega_0  \Delta \omega\\
+    M   \Delta \dot{\omega}&= 
+    - D \Delta\omega  
+    - P
+    +P_{{\rm mech}}
+    \\
+    \taud \dot{E} & = 
+    -\tfrac{ \Xs }{ \Xt }E
+    +\left(
+    \tfrac{ \Xs }{ \Xt } -1
+    \right)
+    |\bm{V}| \sfcos (\delta - \angle \bm{V} ) 
+    + V_{{\rm field}}
+  }
+\end{equation}
 
 Here, if the active power and reactive power are the outputs:
-\begin{align}\label{eq:PQout_}
-P =  \frac{|\bm{V} | E}{ \Xt } \sfsin(\delta -  \angle \bm{V}), \qquad
-Q =  \frac{|\bm{V}|E}{ \Xt } \sfcos (\delta - \angle \bm{V})
--\frac{|\bm{V}|^2}{ \Xt }
-\end{align}
 
-%また，電流フェーザを出力とする場合には
-%\begin{align}\label{eq:phVIsincosC2_}
-%\spliteq{
-% |\bm{I}| \sfcos (\delta -\angle \bm{I}) & =
-%\frac{|\bm{V}|}{X_{{\rm q}}}  \sfsin (\delta -\angle \bm{V}) , \\
-%|\bm{I}| \sfsin (\delta -\angle \bm{I})
-%& = \frac{E - |\bm{V}| \sfcos (\delta -\angle \bm{V}) }{X_{{\rm q}}} 
-%}
-%\end{align}
-%である。
-The purpose here is to obtain the steady values for the internal state of the generators and external inputs that are consistent with the absolute values of the active power,
-reactive power, and voltage phasor of the bus bars to which the generators are connected as a result of the power flow calculation.
-Specifically, when expressing sets of the absolute value for the active power, reactive power, and voltage phasor provided as $(P^{\star},Q^{\star},|V^{\star}|,\angle \bm{V}^{\star})$, the objective is to obtain the steady value of the internal state of the generators $(\delta^{\star},E^{\star})$ and the steady value of the external input $(P_{{\rm mech}}^{\star},V_{{\rm field}}^{\star})$ that satisfies the simultaneous equations of:
-\begin{align}\label{eq:P0Q0eq}
-\simode{
-P^{\star} &=  \tfrac{|V^{\star}| E^{\star}}{ \Xt } \sfsin(\delta^{\star} -  \angle \bm{V}^{\star}), \\
-Q^{\star} & = \tfrac{|V^{\star}| E^{\star}}{ \Xt } \sfcos (\delta^{\star} -  \angle \bm{V}^{\star})
--\tfrac{|V^{\star}|^2}{ \Xt }, \\
-0 & =  - P^{\star} +P_{{\rm mech}}^{\star}, \\
-0 & = 
- -\tfrac{ \Xs }{ \Xt }E^{\star}
-+\left(
-\tfrac{ \Xs }{ \Xt }-1
-\right)
-|V^{\star}| \sfcos (\delta^{\star} - \angle \bm{V}^{\star})
-+ V_{{\rm field}}^{\star}
-}
-\end{align}
+\begin{equation}\label{eq:PQout_}
+  P =  \frac{|\bm{V} | E}{ \Xt } \sfsin(\delta -  \angle \bm{V}), \qquad
+  Q =  \frac{|\bm{V}|E}{ \Xt } \sfcos (\delta - \angle \bm{V})
+  -\frac{|\bm{V}|^2}{ \Xt }
+\end{equation}
 
-The simultaneous equations of Equation \ref{eq:P0Q0eq} are equations related to the equilibrium point when the steady value of frequency deviation $\Delta \omega$ in Equation \ref{eq:gendif_} is 0.
-Also, the provided $(P^{\star},Q^{\star},|V^{\star}|,\angle \bm{V}^{\star})$ corresponds to the input and output of the generator model for each bus bar.
+The purpose here is to determine the steady-state values of the internal state
+and external input values of a generator that are consistent with the given
+constant values of active power, reactive power, and voltage phasor of the bus
+to which the generator is connected, as the result of power flow calculation.
+Specifically, let $(P^{\star},Q^{\star},|V^{\star}|,\angle \bm{V}^{\star})$
+denote the given set of active power, reactive power, and absolute value and
+phase of the voltage phasor. Then, the objective is to determine the
+steady-state values of the internal state of the generator
+$(\delta^{\star},E^{\star})$ and the external input values $(P_{{\rm
+mech}}^{\star},V_{{\rm field}}^{\star})$ that satisfy the following set of
+equations:
 
-If we perform a concrete calculation of the steady value of the internal state of the generators that satisfies Equation \ref{eq:P0Q0eq}, the following is obtained:
+\begin{equation}\label{eq:P0Q0eq}
+  \simode{
+    p^{\star} &=  \tfrac{|v^{\star}| e^{\star}}{ \Xt } \sfsin(\delta^{\star} -  \angle \bm{v}^{\star}), \\
+    q^{\star} & = \tfrac{|v^{\star}| e^{\star}}{ \Xt } \sfcos (\delta^{\star} -  \angle \bm{v}^{\star})
+    -\tfrac{|v^{\star}|^2}{ \Xt }, \\
+    0 & =  - p^{\star} +p_{{\rm mech}}^{\star}, \\
+    0 & = 
+    -\tfrac{ \Xs }{ \Xt }e^{\star}
+    +\left(
+    \tfrac{ \Xs }{ \Xt }-1
+    \right)
+    |v^{\star}| \sfcos (\delta^{\star} - \angle \bm{v}^{\star})
+    + v_{{\rm field}}^{\star}
+  }
+\end{equation}
+
+The set of equations in \ref{eq:P0Q0eq} represents the equilibrium point of the
+generator model when the steady-state value of the angular frequency deviation
+$\Delta \omega$ in equation \ref{eq:gendif_} is zero. Also, the given
+$(P^{\star},Q^{\star},|V^{\star}|,\angle \bm{V}^{\star})$ corresponds to the
+input and output values of the generator model for each bus.
+
+The specific values of the steady-state internal states of the generator that
+satisfy equation \ref{eq:P0Q0eq} are given by:
 \begin{subequations}\label{eq:intssgen}
-\begin{align}
-\spliteq{
-\delta ^{\star} &= \angle \bm{V}^{\star}
-+ \sfarctan \left( \frac{P^{\star}}{Q^{\star} + \tfrac{ |\bm{V}^{\star}|^2}{ \Xt } } \right), 
-\\
-E^{\star} &= 
-\frac{ \Xt }{ |\bm{V}^{\star}| } \sqrt{ \left( Q^{\star} + \frac{|\bm{V}^{\star}|^2}{ \Xt } \right)^2 + (P^{\star})^2 } 
-}
-\end{align}
+\begin{equation}
+  \spliteq{
+    \delta ^{\star} &= \angle \bm{v}^{\star}
+    + \sfarctan \left( \frac{p^{\star}}{q^{\star} + \tfrac{ |\bm{v}^{\star}|^2}{ \Xt } } \right), 
+    \\
+    e^{\star} &= 
+    \frac{ \Xt }{ |\bm{v}^{\star}| } \sqrt{ \left( q^{\star} + \frac{|\bm{v}^{\star}|^2}{ \Xt } \right)^2 + (p^{\star})^2 } 
+  }
+\end{equation}
 
-The steady values of mechanical torque and field voltage are:
+The steady-state values of the mechanical and field inputs are:
 
-\begin{align}\label{eq:PmVfdss}
-\spliteq{
-P_{{\rm mech}}^{\star} &=    P^{\star}, \\
- V_{{\rm field}}^{\star} &=  \frac{ \tfrac{ \Xs }{ |\bm{V}^{\star}| } \left\{ \left( Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{ \Xt } \right) 
-\left(Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{ \Xs } \right) +(P^{\star})^2  \right\} }
-{  \sqrt{ \left( Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{ \Xt } \right)^2 + (P^{\star})^2 }  }
-}
-\end{align}
+\begin{equation}\label{eq:pmvfdss}
+  \spliteq{
+    p_{{\rm mech}}^{\star} &=    p^{\star}, \\
+    v_{{\rm field}}^{\star} &=  \frac{ \tfrac{ \Xs }{ |\bm{v}^{\star}| } \left\{ \left( q^{\star} + \tfrac{|\bm{v}^{\star}|^2}{ \Xt } \right) 
+    \left(q^{\star} + \tfrac{|\bm{v}^{\star}|^2}{ \Xs } \right) +(p^{\star})^2  \right\} }
+    {  \sqrt{ \left( q^{\star} + \tfrac{|\bm{v}^{\star}|^2}{ \Xt } \right)^2 + (p^{\star})^2 }  }
+  }
+\end{equation}
 \end{subequations}
-Please refer to Section \ref{sec:genssPQ} for these derivation processes.
 
-\subsection{Load parameters that achieve the desired electric power consumption}\label{sec:loadpara}
+Please refer to Section \ref{sec:gensspq} for the derivation process of these equations.
 
-The method of setting the parameters matching the desired power consumption for the load model described in the \ref{sec: loadpr} section is explained.
-If we cancel the current phasor using Equation \ref{eq:defPQVIi2}, the constant impedance model is written as:
+\subsection{Load Parameters for Achieving Desired Power Consumption}\label{sec:loadpara}
 
-%\begin{subequations}\label{eq:lmodels}
-\begin{align}\label{eq:lmodimp}
-P + \bm{j} Q = -\frac{|\bm{V}|^2}{\overline{\bm{z}}_{\rm load}^{\star}} 
-\end{align}
+In this section, we explain how to set the parameters of the load model
+described in Section \ref{sec:loadpr} to achieve the desired power consumption.
+By eliminating the current phase using Equation \ref{eq:defPQVIi2}, the fixed
+impedance model can be expressed as follows:
 
-However, the subscripts of bus bars $i$ were omitted for simplification.
-This can be interpreted as the load constant impedance model when current phasor $\bm{V}$ is the input and active power $P$ and reactive power $Q$ are the output.
-If the values of active power and reactive power determined by the power flow calculation are expressed as $P^{\star}$ and $Q^{\star}$,
-and the voltage phasor and absolute value are expressed as $|\bm{V}^{\star}|$, the real part (resistance) and the imaginary part (reactance) of load impedance $\bm{z}_{\rm load}^{\star}$ can be obtained as:
+\begin{equation}\label{eq:lmodimp}
+  p + \bm{j} q = -\frac{|\bm{v}|^2}{\overline{\bm{z}}_{\rm load}^{\star}} 
+\end{equation}
 
-\begin{align}\label{eq:lmodimppara}
-\real [\bm{z}_{\rm load}^{\star}] = - \frac{ P^{\star} |\bm{V}^{\star}|^2 }{(P^{\star})^2 + (Q^{\star})^2}
-,\qquad
-\imag [\bm{z}_{\rm load}^{\star}] = - \frac{ Q^{\star} |\bm{V}^{\star}|^2 }{(P^{\star})^2 + (Q^{\star})^2}
-\end{align}
+Here, the subscript $i$ of the bus is omitted for simplicity. This can be
+interpreted as the fixed impedance model of the load, where the current phase
+$\bm{V}$ is the input and the active power $P$ and reactive power $Q$ are the
+outputs. If the values of the active power and reactive power determined by
+power flow calculations are represented as $P^{\star}$ and $Q^{\star}$,
+respectively, and the absolute value of the voltage phase is represented as
+$|\bm{V}^{\star}|$, then the real part (resistance) and imaginary part
+(reactance) of the load impedance $\bm{z}_{\rm load}^{\star}$ can be calculated
+as:
 
-Similarly, the constant current model can be written as:
+\begin{equation}\label{eq:lmodimppara}
+  \operatorname{Re} [\bm{z}_{\rm load}^{\star}] = - \frac{ p^{\star} |\bm{v}^{\star}|^2 }{(p^{\star})^2 + (q^{\star})^2}
+  ,\qquad
+  \operatorname{Im} [\bm{z}_{\rm load}^{\star}] = - \frac{ q^{\star} |\bm{v}^{\star}|^2 }{(p^{\star})^2 + (q^{\star})^2}
+\end{equation}
 
-\begin{align}
-P + \bm{j} Q = \overline{\bm{I}}_{\rm load}^{\star} |\bm{V}|
-\end{align}
+Similarly, for the fixed current model, since the equation can be expressed as:
 
-Thus, the real part and the imaginary part of the load current parameters can be obtained as:
+\begin{equation}
+  p + \bm{j} q = \overline{\bm{i}}_{\rm load}^{\star} |\bm{v}|
+\end{equation}
 
-\begin{align*}
-\real [\bm{I}_{\rm load}^{\star}]
- =\frac{P^{\star} }{|\bm{V}^{\star}|},\qquad
-\imag [\bm{I}_{\rm load}^{\star}]
- = -\frac{ Q^{\star} }{|\bm{V}^{\star}|}
-\end{align*}
+The real and imaginary parts of the load current parameter can be calculated as:
 
-Since the constant power model is:
+\begin{equation*}
+  \operatorname{Re} [\bm{i}_{\rm load}^{\star}] =\frac{p^{\star} }{|\bm{v}^{\star}|},\qquad
+  \operatorname{Im} [\bm{i}_{\rm load}^{\star}] = -\frac{ q^{\star} }{|\bm{v}^{\star}|}
+\end{equation*}
 
-\begin{align}
-P + \bm{j} Q =
-P_{{\rm load}}^{\star} + \bm{j} Q_{{\rm load}}^{\star} 
-\end{align}
+For the fixed power model, since the equation can be expressed as:
+
+\begin{equation}
+  p + \bm{j} q =
+  p_{{\rm load}}^{\star} + \bm{j} q_{{\rm load}}^{\star} 
+\end{equation}
 %\end{subequations}
 
-Clearly, the parameters are:
+Then, clearly, the parameters are:
 
-\begin{align*}
-P_{\rm load}^{\star}=P^{\star}
-,\qquad
-Q_{\rm load}^{\star}=Q^{\star}
-\end{align*}
-If we use these parameters in the load model, the power flow distribution obtained with the power flow calculation can be steadily achieved.
+\begin{equation*}
+  p_{\rm load}^{\star}=p^{\star}
+  ,\qquad
+  q_{\rm load}^{\star}=q^{\star}
+\end{equation*}
 
-\subsection{Mathematical relationship between the internal state of generators and input/output\advanced}\label{sec:genssPQ}
+By setting these parameter values in the load model, the steady-state flow state
+obtained by power flow calculation can be achieved.
 
-Below, we mathematically analyze the relationship between the internal state of the generators, the active and reactive power provided by the bus bars, and the voltage phasor of the bus bars.
-Here, we use the generator model handled in Section \ref{sec:genmodadv}. For simplification, subscripts $i$ have been omitted:
-\begin{align}\label{eq:gendif}
-\simode{
-\dot{\delta}&= \omega_0  \Delta \omega\\
-M   \Delta \dot{\omega}&= 
- - D \Delta\omega  
- - P
-+P_{{\rm mech}}
-\\
-\taud \dot{E} & = 
- -\tfrac{X_{{\rm d}}}{X_{{\rm d}}'}E
-+\left(
-\tfrac{X_{{\rm d}}}{X_{{\rm d}}'}-1
-\right)
-|\bm{V}| \sfcos (\delta - \angle \bm{V} ) 
-+ V_{{\rm field}}
-}
-\end{align}
+\subsection{mathematical relationship between generator internal state and
+input/output\advanced}\label{sec:gensspq}
 
-Here, if the active power and reactive power are the output:
+In the following, we mathematically analyze the internal state of the generator,
+the active and reactive power provided to the bus bar, and voltage phasor of the
+bus bar. We use the generator model discussed in Section \ref{sec:genmodadv}.
+However, for ease of notation, we omit the subscript $i$ and use the model as
+follows:
 
-\begin{align}\label{eq:PQout}
-\spliteq{
-P &=  \frac{|\bm{V} | E}{X_{{\rm d}}'} \sfsin(\delta -  \angle \bm{V})
--  
-\left( \frac{1}{X_{{\rm d}}'}  -  \frac{1}{X_{{\rm q}}} \right)
-|\bm{V}|^2 \sfsin( \delta - \angle \bm{V})\sfcos( \delta - \angle \bm{V}), \\
-Q &=  \frac{|\bm{V}|E}{X_{{\rm d}}'} \sfcos (\delta - \angle \bm{V})
--|\bm{V}|^2 \left( \frac{\sfcos^2 (\delta - \angle \bm{V}) }{X_{{\rm d}}'} 
-+ \frac{\sfsin^2 (\delta - \angle \bm{V})}{X_{{\rm q}}} \right)
-}
-\end{align}
+\begin{equation}\label{eq:gendif}
+  \simode{
+    \dot{\delta}&= \omega_0  \Delta \omega\\
+    M   \Delta \dot{\omega}&= 
+    - D \Delta\omega  
+    - P
+    +P_{{\rm mech}}
+    \\
+    \taud \dot{E} & = 
+    -\tfrac{X_{{\rm d}}}{X_{{\rm d}}'}E
+    +\left(
+    \tfrac{X_{{\rm d}}}{X_{{\rm d}}'}-1
+    \right)
+    |\bm{V}| \sfcos (\delta - \angle \bm{V} ) 
+    + V_{{\rm field}}
+  }
+\end{equation}
 
-If $X_{{\rm d}}'$ and $X_{{\rm q}}$ are equal and $\Xt$, and $X_{\rm d}$ are substituted with $\Xs$, it becomes consistent with the generator model handled in Section \ref{sec:stagen}. 
-If the current phasor is output:
+When the output is given as active and reactive power, we have:
+
+\begin{equation}\label{eq:PQout}
+  \spliteq{
+    P &=  \frac{|\bm{V} | E}{X_{{\rm d}}'} \sfsin(\delta -  \angle \bm{V})
+    -  
+    \left( \frac{1}{X_{{\rm d}}'}  -  \frac{1}{X_{{\rm q}}} \right)
+    |\bm{V}|^2 \sfsin( \delta - \angle \bm{V})\sfcos( \delta - \angle \bm{V}), \\
+    Q &=  \frac{|\bm{V}|E}{X_{{\rm d}}'} \sfcos (\delta - \angle \bm{V})
+    -|\bm{V}|^2 \left( \frac{\sfcos^2 (\delta - \angle \bm{V}) }{X_{{\rm d}}'} 
+    + \frac{\sfsin^2 (\delta - \angle \bm{V})}{X_{{\rm q}}} \right)
+  }
+\end{equation}
+
+Note that $X_{{\rm d}}'$ and $X_{{\rm q}}$ are equal to $\Xt$, and if we replace
+$X_{\rm d}$ with $\Xs$, this model matches the generator model discussed in
+Section \ref{sec:stagen}. When the output is given as current phasors, we have:
 
 \begin{align}\label{eq:phVIsincosC2}
 \spliteq{
@@ -1108,20 +1136,25 @@ If the current phasor is output:
 & = \frac{E - |\bm{V}| \sfcos (\delta -\angle \bm{V}) }{X_{{\rm d}}'} 
 }
 \end{align}
-Please note that Equation \ref{eq:PQout} and Equation \ref{eq:phVIsincosC2} are equivalent outputs; in other words, for the given arbitrary $(\delta, E, |\bm{V}|, \angle \bm{V})$, there is a one-to-one relationship for $(P,Q)$ and $(|\bm{I}|, \angle \bm{I})$.
 
-For this generator model, the following facts are presented.
+Note that equations \ref{eq:PQout} and \ref{eq:phVIsincosC2} are equivalent
+outputs, meaning that for any given $(\delta, E, |\bm{V}|, \angle \bm{V})$,
+there exists a one-to-one relationship between $(P,Q)$ and $(|\bm{I}|, \angle
+\bm{I})$.
 
-\begin{lemma}[The relationship between the internal state of generators and input/output]\label{lem:delVE}
-If we consider Equation \ref{eq:PQout} as simultaneous equations related to $\delta - \angle \bm{V}$ and $E$, the solution is provided with:\begin{subequations}\label{eq:tandelV}
-\begin{align}
-\delta - \angle \bm{V} & = \sfarctan  \left( \frac{P}{Q + \tfrac{ |\bm{V}|^2}{X_{\rm q}} } \right) , \label{eq:tandelVa} \\
-E &=
-\frac{ \tfrac{X_{\rm d}'}{|\bm{V}| } \left\{ \left( Q + \tfrac{|\bm{V}|^2}{X_{\rm q}} \right) \left(Q + \tfrac{|\bm{V}|^2}{X_{\rm d}'} \right) +P^2  \right\} }
-{  \sqrt{ \left( Q + \tfrac{|\bm{V}|^2}{X_{\rm q}} \right)^2 + P^2 }  }
-\label{eq:tandelVb}
-\end{align}
-\end{subequations}
+The following facts are shown for this generator model.
+
+\begin{lemma}[Relationship between generator internal states and
+input/output]\label{lem:delVE}
+
+Consider equation \ref{eq:PQout} as a system of equations in $\delta - \angle
+\bm{V}$ and $E$. The solution is given by:
+\begin{subequations}\label{eq:tandelV}
+  \begin{align}
+    \delta - \angle \bm{V} & = \sfarctan  \left( \frac{P}{Q + \tfrac{ |\bm{V}|^2}{X_{\rm q}} } \right) , \label{eq:tandelVa} \\
+    E &= \frac{ \tfrac{X_{\rm d}'}{|\bm{V}| } \left\{ \left( Q + \tfrac{|\bm{V}|^2}{X_{\rm q}} \right) \left(Q + \tfrac{|\bm{V}|^2}{X_{\rm d}'} \right) +P^2  \right\} }{  \sqrt{ \left( Q + \tfrac{|\bm{V}|^2}{X_{\rm q}} \right)^2 + P^2 }  } \label{eq:tandelVb}
+  \end{align}
+  \end{subequations}
 %\begin{align}\label{eq:tandelV}
 %\spliteq{
 %\delta(t) - \angle \bm{V}(t) & = \sfarctan  \left( \frac{P(t)}{Q(t) + \frac{ |\bm{V}(t)|^2}{X_{\rm q}} } \right) , \\
@@ -1130,7 +1163,10 @@ E &=
 %{  \sqrt{ \left( Q(t) + \frac{|\bm{V}(t)|^2}{X_{\rm q}} \right)^2 + P^2(t) }  }
 %}
 %\end{align}
-where $|\bm{V}|\neq 0$. In contrast, if we consider Equation (\ref{eq:tandelV}) simultaneous equations related to $P$ and $Q$, the solution is given with Equation \ref{eq:PQout}.
+where $|\bm{V}|\neq 0$.
+
+Conversely, if we consider Equation \ref{eq:tandelV} as a system of equations in
+$P$ and $Q$, the solution is given by Equation \ref{eq:PQout}.
 \end{lemma}
 
 \begin{proof}
@@ -2302,7 +2338,7 @@ With this example, the optimization process is shown. \verb|x0 = [0.1; 0.5];| in
 When we execute this program, the following result is obtained:
 
 \smallskip
-\begin{実行結果}
+\begin{execution}
 \begin{verbatim}
   Iteration  Func-count     f(x)     （省略）
       0          3          3.2677
@@ -2316,7 +2352,7 @@ When we execute this program, the following result is obtained:
       1.0000
       1.0000
 \end{verbatim}
-\end{実行結果}
+\end{execution}
 
 Based on this result, with repetitions, the value of $f(x)$ becomes small, and ultimately, a solution is found where $f(x)$ becomes almost 0.
 The solution sought here is $(1, 1)$. This value is an actual solution to algebraic equations, but in a numerical solution that uses \verb|fsolve|, not all solutions are obtained, as only one solution is obtained.
@@ -2325,7 +2361,7 @@ Next, let us look at a situation where another solution is obtained.
 The next result is obtained when the second row of the program \nobreak\ref{program:ex1_main} is changed to \verb|x0 = [-0.1; 0.5];|.
 
 \smallskip
-\begin{実行結果}
+\begin{execution}
 \begin{verbatim}
  Iteration  Func-count     f(x)   
      0          3          3.2677
@@ -2340,14 +2376,14 @@ x_sol =
    -1.0000
     1.0000
 \end{verbatim}
-\end{実行結果}
+\end{execution}
 
 We can see that the solution $(-1, 1)$ is obtained.
 As such, with the numerical solution of non-linear algebraic equations, the solution varies based on the initial value.
 As a reference, let us look at the result of executing the program \nobreak\ref{program:ex1_main} with the initial value in the second row set as \verb|x0 = [-0.1; -0.1];|:
 
 \smallskip
-\begin{実行結果}
+\begin{execution}
     \begin{verbatim}
   Iteration  Func-count     f(x)     （省略）
      0          3          2.8125
@@ -2362,7 +2398,7 @@ x_sol =
     0.0000
    -1.2247
 \end{verbatim}
-\end{実行結果}
+\end{execution}
 
 As you can see with this Example, based on the initial value, even equations with solutions might not yield correct solutions.
 For practice, it is important to provide initial values that are close to the desired solution.
@@ -2500,7 +2536,7 @@ The initial value is set in the first row. The result of executing the program \
 This result is consistent with the values shown in \ref{table:pflow2}(b).
 
 \smallskip
-\begin{実行結果}
+\begin{execution}
 \begin{verbatim}
  Iteration  Func-count     f(x)     （略）
      0          7           11.25 
@@ -2522,7 +2558,7 @@ P:
 Q:
    -0.0347    0.0000    0.1759
 \end{verbatim}
-\end{実行結果}
+\end{execution}
 
 \end{example}
 
@@ -3138,9 +3174,9 @@ Describe how to implement a numerical simulation of a power system model.
 
 \begin{example}[Simple implementation of power system simulation]\label{ex:dae_ex2}
 Let us implement a program to numerically compute the time response of the power system model treated in the example \ref{ex:inires}.
-In order to describe this system, we need the differential equations in \req{eq:gendynVIst} for bus bars 1 and 3, to which the generators are connected.
-Also, the algebraic equation of \req{eq:phVI} holds. A constant-impedance load model is connected to bus bar 2, and the algebraic equation of \req{eq:cimp} is satisfied.
-Furthermore, the algebraic system of equations of Kirchhoff's law, \req{eq:ohmY2}, holds for the entire system at any given time.
+In order to describe this system, we need the differential equations in \ref{eq:gendynVIst} for bus bars 1 and 3, to which the generators are connected.
+Also, the algebraic equation of \ref{eq:phVI} holds. A constant-impedance load model is connected to bus bar 2, and the algebraic equation of \ref{eq:cimp} is satisfied.
+Furthermore, the algebraic system of equations of Kirchhoff's law, \ref{eq:ohmY2}, holds for the entire system at any given time.
 
 In the following, let $x$ be a vector of $\delta_1$, $\delta_1$, $\delta_omega_1$, $E_1$, $\delta_3$, $\delta_3$, $\bm V_1$, $\bm V_2$, $\bm V_3$, $\bm I_1$, $\bm I_2$ and $\bm I_3$ arranged vertically
 \[
