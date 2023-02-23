@@ -1170,145 +1170,167 @@ $P$ and $Q$, the solution is given by Equation \ref{eq:PQout}.
 \end{lemma}
 
 \begin{proof}
-\red{Translated with DeepL}
 First, we derive Equation \ref{eq:tandelV} from Equation \ref{eq:PQout}.
-Multiplying $P$ by $\sfcos (\delta - \angle \bm{V})$ and $Q$ by $\sfsin (\delta - \angle \bm{V})$ and taking the difference
-\begin{align*}
-P \sfcos (\delta - \angle \bm{V}) - Q \sfsin (\delta - \angle \bm{V})
-= \frac{|\bm{V}|^2}{X_{\rm q}} \sfsin (\delta - \angle \bm{V}) 
-\end{align*}
-is obtained.
-Dividing both sides by $\sfcos (\delta - \angle \bm{V})$, we obtain the Equation \ref{eq:tandelVa}.
-Next, the relation of Euqtion \ref{eq:tandelVb} is shown.
-Rewriting $P$ and $Q$ in $\bm{I}$ using the Equation \ref{eq:defPQVIi2}, the Equation \ref{eq:PQout} is equivalently transformed to\ref{eq:phVIsincosC2}.
-This is also equivalent to
-\begin{align}\label{eq:tmpVE}
-|\bm{V}|e^{\bm{j}(\delta - \angle \bm{V})}=E
--X_{\rm d}' |\bm{I}| \sfsin (\delta - \angle \bm{I})
-+ 
-\bm{j} X_{\rm q} 
-|\bm{I}| \sfcos (\delta - \angle \bm{I})
-\end{align}
-is equivalent to
-Expressing the relation in complex numbers in Equation \ref{eq:tandelVa} is
-\begin{align*}
-\frac{ e^{\bm{j}(\delta - \angle \bm{V})} - e^{-\bm{j}(\delta - \angle \bm{V})}}
-{e^{\bm{j}(\delta - \angle \bm{V})} + e^{-\bm{j}(\delta - \angle \bm{V})}}
-= 
-\underbrace{
-\frac{P}{Q + \tfrac{ |\bm{V}|^2}{X_{\rm q}} }
-}_{\alpha}
- \bm{j}
-\end{align*}
-given that it is
-\begin{align*}
-e^{-\bm{j}(\delta - \angle \bm{V})} = \frac{1-\alpha \bm{j}}{1+\alpha \bm{j}}
-e^{\bm{j}(\delta - \angle \bm{V})}
-\end{align*}
-can be found.
-Therefore, an equivalent variant of the Equation \ref{eq:defPQVIi2}
-\begin{align}\label{eq:IVPQ}
-|\bm{I}|e^{\bm{j}(\delta - \angle \bm{I})} = \frac{P+\bm{j}Q}{|\bm{V}|}  
-e^{\bm{j}(\delta - \angle \bm{V})}
-\end{align}
-by considering its complex conjugation:
-\begin{align}\label{eq:IVPQc}
+Multiplying $P$ by $\sfcos (\delta - \angle \bm{V})$ and $Q$ by $\sfsin (\delta
+- \angle \bm{V})$ and taking the difference, we obtain:
+
+\begin{equation*}
+  P \sfcos (\delta - \angle \bm{V}) - Q \sfsin (\delta - \angle \bm{V})
+  = \frac{|\bm{V}|^2}{X_{\rm q}} \sfsin (\delta - \angle \bm{V}) 
+\end{equation*}
+
+Dividing both sides by $\sfcos (\delta - \angle \bm{V})$, we obtain Equation
+\ref{eq:tandelVa}.  Next, we show the relation of Euqtion \ref{eq:tandelVb}.
+Rewriting $P$ and $Q$ in terms of $\bm{I}$ using the Equation
+\ref{eq:defPQVIi2}, Equation \ref{eq:PQout} is equivalently transformed to
+Equation \ref{eq:phVIsincosC2}. Furthermore, this is equivalent to:
+
+\begin{equation}\label{eq:tmpVE}
+  |\bm{V}|e^{\bm{j}(\delta - \angle \bm{V})}=E
+  -X_{\rm d}' |\bm{I}| \sfsin (\delta - \angle \bm{I})
+  + 
+  \bm{j} X_{\rm q} 
+  |\bm{I}| \sfcos (\delta - \angle \bm{I})
+\end{equation}
+
+The relationship in Equation \ref{eq:tandelVa} can be expressed in complex
+numbers as:
+
+\begin{equation*}
+  \frac{ e^{\bm{j}(\delta - \angle \bm{V})} - e^{-\bm{j}(\delta - \angle \bm{V})}}
+  {e^{\bm{j}(\delta - \angle \bm{V})} + e^{-\bm{j}(\delta - \angle \bm{V})}}
+  = 
+  \underbrace{
+  \frac{P}{Q + \tfrac{ |\bm{V}|^2}{X_{\rm q}} }
+  }_{\alpha}
+  \bm{j}
+\end{equation*}
+
+Therefore, we obtain:
+\begin{equation*}
+  e^{-\bm{j}(\delta - \angle \bm{V})} = \frac{1-\alpha \bm{j}}{1+\alpha \bm{j}}
+  e^{\bm{j}(\delta - \angle \bm{V})}
+\end{equation*}
+
+By considering the complex conjugate of Equation \ref{eq:defPQVIi2}, it can be
+transformed into an equivalent form given by:
+
+\begin{equation}\label{eq:IVPQ}
+  |\bm{I}|e^{\bm{j}(\delta - \angle \bm{I})} = \frac{P+\bm{j}Q}{|\bm{V}|}  
+  e^{\bm{j}(\delta - \angle \bm{V})}
+\end{equation}
+
+Then, by taking the complex conjugate of the above equation:
+
+\begin{equation}\label{eq:IVPQc}
 |\bm{I}|e^{-\bm{j}(\delta - \angle \bm{I})} = \frac{P-\bm{j}Q}{|\bm{V}|}  
 \cdot \frac{1-\alpha \bm{j}}{1+\alpha \bm{j}}
 e^{\bm{j}(\delta - \angle \bm{V})}
-\end{align}
-We obtain
-From Equation \ref{eq:IVPQ} and Equation \ref{eq:IVPQc}:
+\end{equation}
+
+From Equations \ref{eq:IVPQ} and \ref{eq:IVPQc}:
 \begin{align*}
-|\bm{I}| \sfsin (\delta - \angle \bm{I})
-& =
-\frac{1}{|\bm{V}|} \cdot
-\frac{\alpha P +Q}{ 1+\alpha \bm{j} }e^{\bm{j}(\delta - \angle \bm{V})}, \\
-|\bm{I}| \sfcos (\delta - \angle \bm{I})
-& =
-\frac{1}{|\bm{V}|} \cdot
-\frac{ P - \alpha Q}{ 1+\alpha \bm{j} }e^{\bm{j}(\delta - \angle \bm{V})}
+  |\bm{I}| \sfsin (\delta - \angle \bm{I})
+  & =
+  \frac{1}{|\bm{V}|} \cdot
+  \frac{\alpha P +Q}{ 1+\alpha \bm{j} }e^{\bm{j}(\delta - \angle \bm{V})}, \\
+  |\bm{I}| \sfcos (\delta - \angle \bm{I})
+  & =
+  \frac{1}{|\bm{V}|} \cdot
+  \frac{ P - \alpha Q}{ 1+\alpha \bm{j} }e^{\bm{j}(\delta - \angle \bm{V})}
 \end{align*}
-We can see that $P$ and $Q$ can be used in the equation $G$ and $Q$.
-By substituting these into Equation\ref{eq:tmpVE} and rewriting $\bm{I}$ in terms of $P$ and $Q$, when the relationship in Equation \ref{eq:tandelVa} holds, the Equation\ref{eq:PQout} becomes
-\begin{align}\label{eq:Etran}
-E=
-\frac{X_{\rm d}'}{|\bm{V}| } 
-\left\{
-\left(Q + \frac{|\bm{V}|^2}{X_{\rm q}} \right) \left(Q + \frac{|\bm{V}|^2}{X_{\rm d}'} \right) +P^2
-\right\}
-\frac{  Q + \tfrac{|\bm{V}|^2}{X_{\rm q}} - \bm{j} P }
-{   \left( Q + \tfrac{|\bm{V}|^2}{X_{\rm q}} \right)^2 + P^2   }
-e^{\bm{j}(\delta - \angle \bm{V})}
-\end{align}
-is equivalent to
-where, from the relation in Equation \ref{eq:tandelVa}, it can be shown that:
-\begin{align*}
-Q + \frac{|\bm{V}|^2}{X_{\rm q}} - \bm{j} P
-= 
-\left|Q + \frac{|\bm{V}|^2}{X_{\rm q}} - \bm{j} P \right|
-e^{-\bm{j}(\delta - \angle \bm{V})}
-\end{align*}
-Furthermore,
+
+By substituting these into Equation \ref{eq:tmpVE} and rewriting $\bm{I}$ in
+terms of $P$ and $Q$, we can show that when Equation \ref{eq:tandelVa} holds,
+Equation \ref{eq:PQout} is equivalent to:
+
+\begin{equation}\label{eq:Etran}
+  E=
+  \frac{X_{\rm d}'}{|\bm{V}| } 
+  \left\{
+    \left(Q + \frac{|\bm{V}|^2}{X_{\rm q}} \right) \left(Q + \frac{|\bm{V}|^2}{X_{\rm d}'} \right) +P^2
+  \right\}
+  \frac{  Q + \tfrac{|\bm{V}|^2}{X_{\rm q}} - \bm{j} P }{   \left( Q + \tfrac{|\bm{V}|^2}{X_{\rm q}} \right)^2 + P^2   }
+  e^{\bm{j}(\delta - \angle \bm{V})}
+\end{equation}
+
+Here, we have used the fact that from Equation \ref{eq:tandelVa}:
+
+\begin{equation*}
+  Q + \frac{|\bm{V}|^2}{X_{\rm q}} - \bm{j} P
+  = 
+  \left|Q + \frac{|\bm{V}|^2}{X_{\rm q}} - \bm{j} P \right|
+  e^{-\bm{j}(\delta - \angle \bm{V})}
+\end{equation*}
+
+Furthermore, since $|E|=E$ and
+
 \[
-|E|=E
-,\qquad
 \left( Q + \frac{|\bm{V}|^2}{X_{\rm q}} \right)^2 + P^2
 =
 \left|Q + \frac{|\bm{V}|^2}{X_{\rm q}} - \bm{j} P \right|^2
 \]
-and thus the relation in Equation \ref{eq:tandelVb} is obtained.
+Equation \ref{eq:tandelVb} can be obtained.
 
-Following the reverse procedure, we derive the expression \ref{eq:PQout} from the expression (\ref{eq:tandelV}).
-Using the relationship in \ref{eq:tandelVa}, $E$ in \ref{eq:tandelVb} can be rewritten by $E$ in \ref{eq:Etran}.
-As mentioned above, when the relation \ref{eq:tandelVa} holds, the expression\ref{eq:Etran} is equivalent to the expression\ref{eq:PQout}.
+We can follow the reverse steps to derive Equation \ref{eq:PQout} from Equation
+\ref{eq:tandelV}. Using Equation \ref{eq:tandelVa}, we can replace the $E$ in
+Equation \ref{eq:tandelVb} with the expression in Equation \ref{eq:Etran}. As
+mentioned earlier, when Equation \ref{eq:tandelVa} holds, Equation
+\ref{eq:Etran} is equivalent to Equation \ref{eq:PQout}.
 \end{proof}
 
-The lemma \ref{lem:delVE} shows that there is a one-to-one relationship between a variable set $(\delta - \angle \bm{V},E)$ and a set $(P,Q)$. 
-Specifically, it shows that the internal state of generators $(\delta,E)$ can be uniquely back-calculated from the input/output of $(|\bm{V}|,\angle \bm{V})$ and $(P,Q)$. 
-Please note that the relationship of Equation (\ref{eq:tandelV}) holds for arbitrary time $t$ regardless of the steady state or transient state.
+Lemma \ref{lem:delVE} shows that there is a one-to-one relationship between the
+pairs $(\delta - \angle \bm{V},E)$ and $(P,Q)$. Specifically, it shows that the
+internal state of generators $(\delta,E)$ can be uniquely determined from the
+input/output $(|\bm{V}|,\angle \bm{V})$ or $(P,Q)$. Please note that the
+relationship in Equation (\ref{eq:tandelV}) holds at any time $t$, regardless of
+whether the system is in steady-state or transient. The following theorem gives
+a relationship that holds between the input, output, and internal state under a
+steady state of generators.
 
-The following theorem gives a relationship that holds between the input, output, and internal state under a steady state of generators.
+\begin{theorem}[Relationship between generator internal states and input/output
+in steady state] \label{thm:stst}
 
-\begin{theorem}[The relationship between the internal state of generators and input/output under a steady state]
-\label{thm:stst}
-Let us consider the generator models of Equation \ref{eq:gendif} and Equation \ref{eq:PQout}. 
-For some constants, $|\bm{V}^{\star}|$, $\Delta \omega^{\star}$, $\angle \bm{V}^{\star}$, $P^{\star}$, and $Q^{\star}$, 
-let us assume that inputs of mechanical torque and field voltage are constants given by:
+Consider the generator model given by Equations \ref{eq:gendif} and
+\ref{eq:PQout}. Let $\bm{V}^{\star}$, $\Delta \omega^{\star}$, $\angle
+\bm{V}^{\star}$, $P^{\star}$, and $Q^{\star}$ be real constants. Let us assume
+the inputs of mechanical torque and field voltage are constants given by:
+
 \begin{subequations}\label{eq:allinputs}
 \begin{align}\label{eq:PmVfd}
-\spliteq{
-P_{{\rm mech}}(t) &=   D \Delta \omega^{\star}  + P^{\star}, \\
- V_{{\rm field}}(t) &=  \frac{ \tfrac{X_{\rm d}}{ |\bm{V}^{\star}| } \left\{ \left( Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm q}} \right) 
-\left(Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm d}} \right) +(P^{\star})^2  \right\} }
-{  \sqrt{ \left( Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm q}} \right)^2 + (P^{\star})^2 }  }
-}
+  \spliteq{
+    P_{{\rm mech}}(t) &=   D \Delta \omega^{\star}  + P^{\star}, \\
+    V_{{\rm field}}(t) &=  \frac{ \tfrac{X_{\rm d}}{ |\bm{V}^{\star}| } \left\{ \left( Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm q}} \right) 
+    \left(Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm d}} \right) +(P^{\star})^2  \right\} }
+    {  \sqrt{ \left( Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm q}} \right)^2 + (P^{\star})^2 }  }
+  }
 \end{align}
-
-And the inputs of the voltage phasor of the bus bars are determined by:
+and the input due to the voltage phase angle of the bus are given by:
 
 \begin{align}\label{eq:busvolin}
-|\bm{V}(t)|=|\bm{V}^{\star}|,\qquad
-\angle \bm{V}(t) = \omega_0 \Delta \omega^{\star} t + \angle \bm{V}^{\star}
+  |\bm{V}(t)|=|\bm{V}^{\star}|,\qquad
+  \angle \bm{V}(t) = \omega_0 \Delta \omega^{\star} t + \angle \bm{V}^{\star}
 \end{align}
 \end{subequations}
 
-At this time, the rotor argument, frequency deviation, and internal voltage have:
+where $\omega_0$ is the nominal frequency. Then, in steady state, the rotor
+angle, angular frequency deviation, and internal voltage are given by
 
-\begin{align}\label{eq:inicon}
-\spliteq{
-\delta (t) &= \angle \bm{V}(t)
-+ \sfarctan \left( \frac{P^{\star}}{Q^{\star} + \tfrac{ |\bm{V}^{\star}|^2}{X_{\rm q}} } \right), 
-\\
-\Delta \omega(t) &= \Delta \omega^{\star},
-\\
-E(t) &= \frac{ \tfrac{X_{\rm d}'}{ |\bm{V}^{\star}| } \left\{ \left( Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm q}} \right) 
-\left(Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm d}' } \right) +(P^{\star})^2  \right\} }
-{  \sqrt{ \left( Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm q}} \right)^2 + (P^{\star})^2 }  }
-}
-\end{align}
+\begin{equation}\label{eq:inicon}
+  \spliteq{
+    \delta (t) &= \angle \bm{V}(t)
+    + \sfarctan \left( \frac{P^{\star}}{Q^{\star} + \tfrac{ |\bm{V}^{\star}|^2}{X_{\rm q}} } \right), 
+    \\
+    \Delta \omega(t) &= \Delta \omega^{\star},
+    \\
+    E(t) &= \frac{ \tfrac{X_{\rm d}'}{ |\bm{V}^{\star}| } \left\{ \left( Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm q}} \right) 
+    \left(Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm d}' } \right) +(P^{\star})^2  \right\} }
+    {  \sqrt{ \left( Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm q}} \right)^2 + (P^{\star})^2 }  }
+  }
+\end{equation}
 
-as the steady solutions. The active and reactive power supplied to bus bars are constants given by:
+Furthermore, the active and reactive power supplied to bus bars are constants
+and given by:
 
 \begin{align}\label{eq:PtQt}
 P(t)=P^{\star},\qquad
@@ -1317,73 +1339,99 @@ Q(t)=Q^{\star}
 \end{theorem}
 
 \begin{proof}
-First, under the input of Equation (\ref{eq:allinputs}), we show that Equation \ref{eq:inicon} is a solution of the differential Equation of Equation \ref{eq:gendif}, and that Equation \ref{eq:PtQt} holds for the output.
-If we consider Equation \ref{eq:inicon} as equations for $P^{\star}$ and $Q^{\star}$, as shown in the Complement\ref{eq:delVE}, their solutions given by:
-\begin{align*}
-\spliteq{
-P^{\star} &=  \frac{|\bm{V}^{\star}| E(t)}{X_{{\rm d}}'} \sfsin\left(\delta(t) -  \angle \bm{V}(t)\right) 
-\\
-& -  
-\left( \frac{1}{X_{{\rm d}}'}  -  \frac{1}{X_{{\rm q}}} \right)
-|\bm{V}^{\star}|^2 \sfsin\left( \delta(t) - \angle \bm{V}(t) \right) \sfcos\left( \delta(t) - \angle \bm{V}(t) \right), 
-\\
-Q^{\star} &=  \frac{|\bm{V}^{\star}| E(t)}{X_{{\rm d}}'} \sfcos \left( \delta(t) - \angle \bm{V}(t) \right)
-\\
-& - |\bm{V}^{\star}|^2 \left( \frac{\sfcos^2 \left( \delta(t) - \angle \bm{V}(t) \right) }{X_{{\rm d}}'} 
-+ \frac{\sfsin^2 \left( \delta(t) - \angle \bm{V}(t) \right)}{X_{{\rm q}}} \right)
-}
-\end{align*}
-This implies Equation \ref{eq:PtQt}.
+First, we demonstrate that Equation \ref{eq:PtQt} holds for the output under the
+assumption that Equation \ref{eq:inicon} is a solution to the differential
+equation in Equation \ref{eq:gendif} with the input given by Equation
+\ref{eq:allinputs}. As shown in Lemma \ref{lem:delVE}, considering Equation
+\ref{eq:inicon} as equations for $P^{\star}$ and $Q^{\star}$, their solutions
+are given by
 
+\begin{equation*}
+  \spliteq{
+    P^{\star} &=  \frac{|\bm{V}^{\star}| E(t)}{X_{{\rm d}}'} \sfsin\left(\delta(t) -  \angle \bm{V}(t)\right) 
+    \\
+    & -  
+    \left( \frac{1}{X_{{\rm d}}'}  -  \frac{1}{X_{{\rm q}}} \right)
+    |\bm{V}^{\star}|^2 \sfsin\left( \delta(t) - \angle \bm{V}(t) \right) \sfcos\left( \delta(t) - \angle \bm{V}(t) \right), 
+    \\
+    Q^{\star} &=  \frac{|\bm{V}^{\star}| E(t)}{X_{{\rm d}}'} \sfcos \left( \delta(t) - \angle \bm{V}(t) \right)
+    \\
+    & - |\bm{V}^{\star}|^2 \left( \frac{\sfcos^2 \left( \delta(t) - \angle \bm{V}(t) \right) }{X_{{\rm d}}'} 
+    + \frac{\sfsin^2 \left( \delta(t) - \angle \bm{V}(t) \right)}{X_{{\rm q}}} \right)
+  }
+\end{equation*}
+which implies Equation \ref{eq:PtQt}.
 
-Next, under the input of Equation (\ref{eq:allinputs}), we check that Equation \ref{eq:inicon} is a solution of the differential Equation of Equation\ref{eq:gendif}.
-The differential equations for $\delta$ and $\delta \omega$ in Equation\ref{eq:gendif} are equivalents:
-\begin{align*}
+Next, we verify that Equation \ref{eq:inicon} is a solution to the differential
+equation in Equation \ref{eq:gendif} with the input given by equation
+\ref{eq:allinputs}. The differential equation for $\delta$ and $\Delta \omega$
+in Equation \ref{eq:gendif} is equivalent to
+
+\begin{equation*}
 \frac{M}{\omega_0} \ddot{\delta}(t) + \frac{D}{\omega_0} \dot{\delta}(t)
 + P(t) - P_{{\rm mech}}(t) = 0
-\end{align*}
+\end{equation*}
 
-Substituting $P_{{\rm mech}}(t)$ in Equation\ref{eq:PmVfd}, $P(t)$ in Equation\ref{eq:PtQt} and $\delta(t)$ in Equation\ref{eq:inicon}, this differential equation is satisfied from the relation in Equation\ref{eq:busvolin} We can see that this differential equation is satisfied.
-Similarly, by substituting $V_{{\rm field}}(t)$ in Equation\ref{eq:PmVfd}, $\delta(t) - \angle \bm{V}(t)$ and $E(t)$ in Equation\ref{eq:inicon}, the differential equation for $E$ in Equation\ref{eq:gendif} is satisfied. 
+If we substitute the expressions for $P_{{\rm mech}}(t)$ from Equation
+\ref{eq:PmVfd}, $P(t)$ from Equation \ref{eq:PtQt}, and $\delta(t)$ from
+Equation \ref{eq:inicon} into the relationship given by Equation
+\ref{eq:busvolin}, we can see that this differential equation is satisfied.
+Similarly, by substituting the expressions for $V_{{\rm field}}(t)$ from
+Equation \ref{eq:PmVfd}, $\delta(t) - \angle \bm{V}(t)$, and $E(t)$ from
+Equation \ref{eq:inicon} into Equation \ref{eq:gendif}, we can see that the
+differential equation for $E$ is satisfied.  Here, we use the fact that:
 
-However, 
+\begin{equation*}
+  \sfcos \left( \sfarctan \left( \frac{P^{\star}}{Q^{\star} + \tfrac{ |\bm{V}^{\star}|^2}{X_{\rm q}} } \right) \right) =
+  \frac{ Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm q}} }
+  {  \sqrt{ \left( Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm q}} \right)^2 + (P^{\star})^2 }  }
+\end{equation*}
+From the above, we prove Theorem \ref{thm:stst}.
 
-\begin{align*}
-\sfcos \left( \sfarctan \left( \frac{P^{\star}}{Q^{\star} + \tfrac{ |\bm{V}^{\star}|^2}{X_{\rm q}} } \right) \right) =
-\frac{ Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm q}} }
-{  \sqrt{ \left( Q^{\star} + \tfrac{|\bm{V}^{\star}|^2}{X_{\rm q}} \right)^2 + (P^{\star})^2 }  }
-\end{align*}
 \end{proof}
 
-Theorem \ref{thm:stst} shows, the mechanical torque and field voltage values necessary to achieve the voltage phasor, active power, and reactive power of bus bars determined by the power flow calculations $(P_{\rm mech}^{\star},V_{\rm field}^{\star})$, and the steady behavior of the internal state $(\delta,E)$ at the time.
-With Equation \ref{eq:busvolin}, the phase of the voltage phasor is not a constant. However, since $\Delta \omega^{\star}$ that expresses the steady state of the frequency deviation is a constant that should usually be set to 0, only the value $\angle \bm{V}^{\star}$ determined by the power flow calculation has a practical meaning.
-Clearly, when $\Delta \omega^{\star}$ is 0:
-\begin{align*}
-P_{{\rm mech}}(t) =    P^{\star},\qquad
-\delta (t)  = \angle \bm{V}^{\star}
-+ \sfarctan \left( \frac{P^{\star}}{Q^{\star} + \tfrac{ |\bm{V}^{\star}|^2}{X_{\rm q}} } \right)
-\end{align*}
+From Theorem \ref{thm:stst}, we can determine the values of mechanical input
+$P_{\rm mech}^{\star}$ and field input $V_{\rm field}^{\star}$ that are
+necessary to achieve the voltage phase, active power, and reactive power of the
+bus bars determined by power flow calculation, as well as the steady-state
+behavior of internal states $(\delta, E)$ at that time. Note that in Equation
+\ref{eq:busvolin}, the phase of the voltage phasor is not a constant, but the
+steady-state value of the angular frequency deviation $\Delta \omega^{\star}$,
+which usually should be set to zero as a constant with practical significance,
+is determined only by the value of $\angle \bm{V}^{\star}$ obtained from the
+power flow calculation. Clearly, when $\Delta \omega^{\star}=0$,
 
-Based on the above discussions, even if the dynamic characteristics of the generators are not considered, and $(P^{\star},Q^{\star},|\bm{V}^{\star}|,\angle \bm{V}^{\star})$ is determined by the power flow calculation, a consistent $(P_{\rm mech}^{\star},V_{\rm field}^{\star})$ can be uniquely back-calculated.
-With this result, Equation (\ref{eq:intssgen}) can be derived.
+\begin{equation*}
+  P_{{\rm mech}}(t) =    P^{\star},\qquad
+  \delta (t)  = \angle \bm{V}^{\star}
+  + \sfarctan \left( \frac{P^{\star}}{Q^{\star} + \tfrac{ |\bm{V}^{\star}|^2}{X_{\rm q}} } \right)
+\end{equation*}
 
-Furthermore, the next Theorem provides an equivalence relationship related to the input/output and the internal state that hold under a steady state of generators. 
+From the above discussion, we can see that even if we determine
+$(P^{\star},Q^{\star},|\bm{V}^{\star}|,\angle \bm{V}^{\star})$ by power flow
+calculation without considering the dynamic characteristics of the generator, we
+can uniquely calculate $(P_{\rm mech}^{\star},V_{\rm field}^{\star})$ that are
+consistent with them. This result leads to Equation (\ref{eq:intssgen}).
 
-\begin{theorem}[Equivalence generators related to input/output and the internal state]
-\label{thm:outst}
+Furthermore, the following theorem gives an equivalence relation between the
+inputs and internal states in steady-state of the generator.
 
-For the generator models of Equation \ref{eq:gendif} and Equation \ref{eq:PQout}, conditions necessary for the following:
+\begin{theorem}[Equivalence relation between input/output and internal state of
+generator] \label{thm:outst}
 
-\begin{align}\label{eq:domdE}
-\frac{d^2 \delta}{dt^2}(t)=0
-,\quad
-\frac{dE}{dt}(t)=0
-,\quad
-\frac{d P_{\rm mech}}{dt}(t)=0
-,\quad
-\frac{d V_{\rm field}}{dt}(t)=0
-\end{align}
-are true for all $t\geq0$.
+For the generator model given by Equations \ref{eq:gendif} and \ref{eq:PQout},
+the necessary and sufficient conditions for Equations \ref{eq:domdE} to hold for
+all $t \geq 0$ are that Equations \ref{eq:dPdQ} hold for all $t \geq 0$, where
+
+\begin{equation}\label{eq:domdE}
+  \frac{d^2 \delta}{dt^2}(t)=0
+  ,\quad
+  \frac{dE}{dt}(t)=0
+  ,\quad
+  \frac{d P_{\rm mech}}{dt}(t)=0
+  ,\quad
+  \frac{d V_{\rm field}}{dt}(t)=0
+\end{equation}
 %\begin{align}\label{eq:domdE}
 %\frac{d^2 \delta}{dt^2}=0
 %,\qquad
@@ -1394,66 +1442,102 @@ are true for all $t\geq0$.
 %\frac{d V_{\rm field}}{dt}=0
 %\end{align}
 %であるための必要十分条件は
-\begin{align}\label{eq:dPdQ}
-\frac{dP}{dt}(t)=0
-,\quad
-\frac{dQ}{dt}(t)=0
-,\quad
-\frac{d|\bm{V}|}{dt}(t)=0
-,\quad
-\frac{d^2 \angle \bm{V}}{dt^2}(t)=0
-\end{align}
+and
+\begin{equation}\label{eq:dPdQ}
+  \frac{dP}{dt}(t)=0
+  ,\quad
+  \frac{dQ}{dt}(t)=0
+  ,\quad
+  \frac{d|\bm{V}|}{dt}(t)=0
+  ,\quad
+  \frac{d^2 \angle \bm{V}}{dt^2}(t)=0
+\end{equation}
 
-When Equation \ref{eq:domdE} or Equation \ref{eq:dPdQ} is true, the following is true:
+Moreover, when equations \ref{eq:domdE} or \ref{eq:dPdQ} hold, the following
+holds for all $t \geq 0$:
 
-\begin{align}\label{eq:frer}
-\Delta \omega(t)= \frac{1}{\omega_0}\frac{d \angle \bm{V}}{dt}(t)
-\end{align}
+\begin{equation}\label{eq:frer}
+  \Delta \omega(t)= \frac{1}{\omega_0}\frac{d \angle \bm{V}}{dt}(t)
+\end{equation}
 which is a constant.
+
 \end{theorem}
 
 \begin{proof}
-\red{Translated with DeepL}
-First, if the expression \ref{eq: domdE} holds, then the expression \ref{eq: dPdQ} holds.
-In the formula \ref{eq: gendif}, $\Delta\omega $, $ E $, $ P_{\rm mech} $, $V_{\rm field} $ are all constants, so $ P $ You can see that $|\bm{V}|\sfcos(\delta-\angle\bm{V})$ is a constant.
-Therefore, from the two equations \ref{eq:PQout}, we can see that $ Q $ and $ |\bm{V}|\sfsin(\delta-\angle\bm{V})$ are also constants.
-Also,
+First, we show that if Equation \ref{eq:domdE} holds, then Equation
+\ref{eq:dPdQ} also holds. From Equation \ref{eq:gendif}, since $\Delta \omega$,
+$E$, $P_{\rm mech}$, and $V_{\rm field}$ are all constants, we can see that $P$
+and $|\bm{V}|\sfcos (\delta - \angle \bm{V})$ are also constants. Therefore,
+from the two equations in Equation \ref{eq:PQout}, we can see that $Q$ and
+$|\bm{V}|\sfsin (\delta - \angle \bm{V})$ are also constants. Additionally,
 
-\begin{align*}
-|\bm{V}|^2\sfcos^2 (\delta - \angle \bm{V}) +
-|\bm{V}|^2\sfsin^2 (\delta - \angle \bm{V}) = |\bm{V}|^2
-\end{align*}
-and since the left side is constant, $|\bm{V}|$ is also constant.
-Furthermore, in the first relation of Equation (\ref{eq:tandelV}), the derivatives of $\angle \bm{V}$ and $\delta$ are equal at any order, since the right side is constant.
-Therefore,
-\begin{align*}
+\begin{equation*}
+  |\bm{V}|^2\sfcos^2 (\delta - \angle \bm{V}) +
+  |\bm{V}|^2\sfsin^2 (\delta - \angle \bm{V}) = |\bm{V}|^2
+\end{equation*}
+and since the left-hand side is constant, we can see that $|\bm{V}|$ is also
+constant. Furthermore, in the first equation of Equation \ref{eq:tandelV}, the
+right-hand side is constant, so the derivatives of $\angle \bm{V}$ and $\delta$
+are equal for any order. Therefore, we have
+
+\begin{equation*}
 \frac{d^2 \angle \bm{V}}{dt^2} = \frac{d^2 \delta}{dt^2} =0
-\end{align*}
-is obtained.
-Next, we show that if the Equation \ref{eq:dPdQ} holds, then the Equation \ref{eq:domdE} holds.
-From Equation (\ref{eq:tandelV}), we know that $E$ is constant and that the second derivative of $\delta$ is $0$, that is, $\delta \omega$ is constant.
-Therefore, in Equation \ref{eq:gendif}, $P$ and $|\bm{V}|\sfcos (\delta - \angle \bm{V})$ are constants, which means that $P_{\rm mech}$ and $V_{\rm field}$ are constants
-Equation \ref{eq:frer} is evident from the fact that the derivatives of $\angle \bm{V}$ and $\delta$ are equal.
+\end{equation*}
+
+Next, we show that if Equation \ref{eq:dPdQ} holds, then Equation \ref{eq:domdE}
+also holds. From Equation \ref{eq:tandelV}, we know that $E$ is constant and
+that the second derivative of $\delta$ is 0, which means that $\Delta \omega$ is
+constant. Therefore, from Equation \ref{eq:gendif}, since $P$ and
+$|\bm{V}|\sfcos (\delta - \angle \bm{V})$ are constants, we can see that $P_{\rm
+mech}$ and $V_{\rm field}$ are also constants. Equation \ref{eq:frer} is
+obvious from the fact that the derivatives of $\angle \bm{V}$ and $\delta$ are
+equal.
 \end{proof}
 
-As Theorem \ref{thm:outst} shows, an external input to generators $(P_{\rm mech},V_{\rm field})$ being a constant, the internal state $(\delta,E)$ being in a steady state, and input to and output from bus bar s$(P,Q,|\bm{V}|,\angle \bm{V})$ being in a steady state, are equivalent.
-Therefore, the steps of the power flow calculations that determine the active power, reactive power, and voltage phasor of each bus bar are, assuming that the external input of all generators are in a steady state, mathematically equivalent to searching the steady state of the entire electrical power system; in other words, searching the equilibrium point of the electrical power system model.
+As Theorem \ref{thm:outst} shows, the fact that the external inputs $(P_{\rm
+mech},V_{\rm field})$ to the generator are constant and the internal states
+$(\delta,E)$ are in a steady state is equivalent to the input/output
+$(P,Q,|\bm{V}|,\angle \bm{V})$ to the bus being in a steady state. Therefore,
+the procedures for power flow calculations that determine the active and
+reactive power and voltage phase angles for each bus are mathematically
+equivalent to searching for one of the equilibrium points of the power system
+model, assuming that all internal states and external inputs of the generators
+are in steady state. This is the steady-state of the entire power system.
 
-\section{Calculating time response of the electrical power system model}\label{sec:numsimtr}
+\section{Time Response Calculation of Power System Model}\label{sec:numsimtr}
 
-In this Section, we explain a method to calculate the time response of the electric power system model explained as Step C in Section \ref{sec:numstep}.
-We will also numerically analyze the behavior of the electrical power system against several disturbances.
+In this Section, we explain a method to calculate the time response of the
+electric power system model explained as Step C in Section \ref{sec:numstep}.
+We will also numerically analyze the behavior of the electrical power system
+against several disturbances.
 
-\subsection{Initial response}
+\subsection{Initial Value Response}
 
-With the steps shown in Section \ref{sec:powflow} and Section \ref{sec:paradef}, one equilibrium point for the electrical power system is found as a steady state where the frequency deviation of all generators is 0.
-Specifically, if the bus bar variables determined in the power flow calculation are used to set the initial value of the internal state shown by Theorem \ref{thm:stst} and the steady value of the external input for each generator model, and to set the constants back-calculated in Section \ref{sec:loadpara} for each load model, the electrical power system model expressed by a differential-algebraic equation system is balanced by a given steady power flow distribution.
-Specifically, if the obtained equilibrium point is stable in an appropriate sense, even if there are some perturbations for the internal state of the generators, the internal state of the electrical power system model asymptotically converges to the original steady value.
-Let us confirm this fact with the following example:
+In this section, we explain the method for calculating the time response of the
+power system model, which was described as Step C in Section \ref{sec:numstep}.
+We also numerically analyze the behavior of the power system model in response
+to several disturbances.
+
+By following the procedures outlined in Sections \ref{sec:powflow} and
+\ref{sec:paradef}, the equilibrium point of the power system model can be
+obtained as a steady-state where all generator frequency deviations are zero.
+Specifically, by using the bus variables determined in the power flow
+calculation, the initial values of the internal states and external inputs of
+each generator model, as shown in Theorem \ref{thm:stst}, can be set. In
+addition, the constants derived in Section \ref{sec:loadpara} can be set for
+each load model. By doing so, the differential-algebraic equation system
+representing the power system model is in equilibrium at the given steady-state
+power flow condition.
+
+In particular, if the obtained equilibrium point is stable in a meaningful
+sense, then even if some perturbation occurs in the internal states of the
+generators, the internal states of the power system model will asymptotically
+converge to the original steady-state values. We confirm this fact in the
+following example.
 
 \begin{table}[h]
 \medskip
- \caption{\textbf{Steady-state values of generators for the tidal flow calculation results of \ref{table:pflow1}}}
+ \caption{\textbf{Steady-state values of generators for flow calculation results of Table \ref{table:pflow1}}}
  \label{table:genst13a}
  \centering
   \begin{tabular}{ccccccccc}
@@ -1468,7 +1552,7 @@ $i$ &  $P_{{\rm mech}i}^{\star}$~[pu] & $V_{{\rm filed}i}^{\star}$~[pu] & $\delt
 
 \begin{table}[h]
 \medskip
- \caption{\textbf{Steady-state values of generators for the tidal flow calculation results of \ref{table:pflow2}}}
+ \caption{\textbf{Steady-state values of generators for flow calculation results of Table \ref{table:pflow2}}}
  \label{table:genst13b}
  \centering
   \begin{tabular}{cccccccc}
@@ -1482,18 +1566,28 @@ $i$ &  $P_{{\rm mech}i}^{\star}$~[pu] & $V_{{\rm filed}i}^{\star}$~[pu] & $\delt
 \end{table}
 
 
-\begin{example}[Initial response of the electrical power system model]\label{ex:inires}
-Let us consider the electrical power system model consisting of three bus bars handled in the Example \ref{ex:pf3bus}.
-Let us consider a situation where the generator model of Equation \ref{eq:gendif_} is connected to bus bar 1 and bus bar 3, and a load model with constant impedance of Equation \ref{eq:lmodimp} is connected to bus bar 2.
-For the generator model, we use the constants for generator 1 and generator 2 presented in \ref{table:genparams}.
+\begin{example}{\textbf{Initial response of the electrical power system
+model}}\label{ex:inires}
+Let us consider the electrical power system model consisting of three bus bars
+handled in the Example \ref{ex:pf3bus}.  Let us consider a situation where the
+generator model of Equation \ref{eq:gendif_} is connected to bus bar 1 and bus
+bar 3, and a load model with constant impedance of Equation \ref{eq:lmodimp} is
+connected to bus bar 2.  For the generator model, we use the constants for
+generator 1 and generator 2 presented in \ref{table:genparams}.
 
-For the two results of the power flow calculation in \ref{table:pflow1} and \ref{table:pflow2}, we calculate the steady values of mechanical torque, field voltage, rotor argument, and interval voltage for generator 1 and generator 2 based on Equation (\ref{eq:intssgen}).
-The calculated steady values are shown in \ref{table:genst13a} and \ref{table:genst13b}.
-Similarly, if we back calculate the load impedance based on Equation \ref{eq:lmodimppara}, it can be obtained as in the first row of \ref{table:loadpara1} and \ref{table:loadpara2}.
-Please note that, depending on the result of the power flow calculation, the internal state of the generators, the steady value of the external input, and the load impedance vary.
+For the two results of the power flow calculation in \ref{table:pflow1} and
+\ref{table:pflow2}, we calculate the steady values of mechanical torque, field
+voltage, rotor argument, and interval voltage for generator 1 and generator 2
+based on Equation (\ref{eq:intssgen}).  The calculated steady values are shown
+in \ref{table:genst13a} and \ref{table:genst13b}.  Similarly, if we back
+calculate the load impedance based on Equation \ref{eq:lmodimppara}, it can be
+obtained as in the first row of \ref{table:loadpara1} and \ref{table:loadpara2}.
+Please note that, depending on the result of the power flow calculation, the
+internal state of the generators, the steady value of the external input, and
+the load impedance vary.
 
-Let us perturb the steady value of the internal state of the generators as the initial value.
-Specifically:
+Let us perturb the steady value of the internal state of the generators as the
+initial value.  Specifically:
 
 \begin{align}\label{eq:exdelE0_}
 \mat{
@@ -1515,11 +1609,14 @@ E^{\star}_1 +0.1 \\
 E^{\star}_3 
 }
 \end{align}
-The initial value of the frequency deviation is 0.
-Figure \ref{fig:P13ini} shows the initial value response of the frequency deviation corresponding to the two power flow calculations at this time.
-The solid blue line represents the frequency deviation of generator 1, while the broken red line is the frequency deviation of generator 3. 
-With either one of the steady power flow distributions, oscillations with a similar frequency were generated.
-Since the system frequency was set to 60 [Hz], a frequency deviation of $0.015$ [pu] is equal to 0.9 [Hz].
+The initial value of the frequency deviation is 0.  Figure \ref{fig:P13ini}
+shows the initial value response of the frequency deviation corresponding to the
+two power flow calculations at this time.  The solid blue line represents the
+frequency deviation of generator 1, while the broken red line is the frequency
+deviation of generator 3.  With either one of the steady power flow
+distributions, oscillations with a similar frequency were generated.  Since the
+system frequency was set to 60 [Hz], a frequency deviation of $0.015$ [pu] is
+equal to 0.9 [Hz].
 \end{example}
 
 \begin{table}[h]
