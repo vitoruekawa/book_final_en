@@ -1619,9 +1619,7 @@ system frequency was set to 60 [Hz], a frequency deviation of $0.015$ [pu] is
 equal to 0.9 [Hz].
 \end{example}
 
-\begin{table}[h]
-\medskip
-%\caption{データシートと潮流計算結果(1)} \label{table:pflow1}
+\begin{table}[h] \medskip
  \centering
   {
   \begin{minipage}{0.49\linewidth}
@@ -1629,28 +1627,28 @@ equal to 0.9 [Hz].
     \centering
   \begin{tabular}{crrrccc}
    \hline
-負荷 &  $\real [\bm{z}_{{\rm load}2}^{\star}]$ & $\imag [\bm{z}_{{\rm load}2}^{\star}]$ \\
+   Load &  $\real [\bm{z}_{{\rm load}2}^{\star}]$ & $\imag [\bm{z}_{{\rm load}2}^{\star}]$ \\
    \hline \hline
-   定常 & 1.3293 & 0 \\
-   増加 & 1.3426 & 0 \\
-   減少 & 1.3160 & 0 \\
+   Steady-state & 1.3293 & 0 \\
+   Increased laod & 1.3426 & 0 \\
+   Decreased load & 1.3160 & 0 \\
    \hline
   \end{tabular}
-  \subcaption{\ref{table:pflow1}の潮流計算結果}
+  \subcaption{Results of power flow calculation for Table\ref{table:pflow1}}
   \end{minipage}
   \begin{minipage}{0.49\linewidth}
-  \caption{\textbf{負荷のインピーダンス値~[pu]}} \label{table:loadpara2}
+  \caption{\textbf{Impedance value of load~[pu]}} \label{table:loadpara2}
     \centering
   \begin{tabular}{crrrrccccc}
    \hline
-負荷 &  $\real [\bm{z}_{{\rm load}2}^{\star}]$ & $\imag [\bm{z}_{{\rm load}2}^{\star}]$ \\
+   Load &  $\real [\bm{z}_{{\rm load}2}^{\star}]$ & $\imag [\bm{z}_{{\rm load}2}^{\star}]$ \\
    \hline \hline
-   定常 & 1.3224 & 0\\
-   増加 & 1.3356 & 0 \\
-   減少 & 1.3092 & 0 \\
+   Steady-state & 1.3224 & 0\\
+   Increased load & 1.3356 & 0 \\
+   Decreased load & 1.3092 & 0 \\
    \hline
   \end{tabular}
-   \subcaption{\ref{table:pflow2}の潮流計算結果}
+   \subcaption{Results of power flow calculation for Table \ref{table:pflow2}}
   \end{minipage}
   }
 \end{table}
@@ -1663,38 +1661,59 @@ equal to 0.9 [Hz].
   \begin{minipage}{0.49\linewidth}
     \centering
     \includegraphics[width = 1.0\linewidth]{figs/P1ini}
-    \subcaption{ \ref{table:pflow1}の定常潮流状態}
+    \subcaption{Steady-state power flow of Table \ref{table:pflow1}}
   \end{minipage}
   \begin{minipage}{0.49\linewidth}
     \centering
     \includegraphics[width = 1.0\linewidth]{figs/P3ini}
-    \subcaption{ \ref{table:pflow2}の定常潮流状態}
+    \subcaption{Steady-state power flow of Table \ref{table:pflow2}
   \end{minipage}
   \medskip
-  \caption{\textbf{初期値変動に対する角周波数偏差の時間応答}
-  \\ \centering（青実線：$\Delta \omega_1$，赤破線：$\Delta \omega_3$）}
+  \caption{\textbf{Time response of frequency deviation for initial value
+  disturbance}
+  \\ \centering(Solid blue line: $\Delta \omega_1$, Dashed red line:$\Delta \omega_3$)}
   \label{fig:P13ini}
   }
 \medskip
 \end{figure}
 
-\subsection{Response to parameter fluctuations of the load model}\label{sec:resldpara}
+\subsection{Response to Parameter Variations of the Load
+Model}\label{sec:resldpara}
 
-If we change even one constant of the load model relative to the electrical power system in a steady power flow distribution, the voltage phasor and current phasor of all bus bars will usually change.
-At this time, since the supply and demand of electric power for the entire system will usually become unbalanced, unless mechanical torque is appropriately corrected depending on the given field voltage value, the frequency deviation of each generator does not converge to 0.
-Let us confirm this.
+For a power system model in steady-state, if any of the constants in the load
+model are changed, the values of the voltage and current phases at all buses
+generally change. At this point, the power supply and demand in the entire
+system generally no longer balance, so unless the value of the mechanical input
+is appropriately modified according to the given excitation input value, the
+angular frequency deviation of each generator will not converge to zero. Let's
+verify this in the following example.
 
-\begin{example}[Response time of the electrical power system model to changes in load impedance]\label{ex:loadpv}
-Let us calculate the response time of frequency deviation when load impedance changes in the same setting as the Example \ref{ex:inires}.
-Specifically, we calculate the response time by either increasing or decreasing the load resistance, which was back-calculated from the result of the power flow calculation, by 1\%.
-The load impedance values after increase and decrease are shown in the second and third rows of \ref{table:loadpara1} and \ref{table:loadpara2}.
+\begin{example}[Time Response of Power System Model to Load Impedance
+Changes]\label{ex:loadpv}
 
-Calculation results are shown in Figure \ref{fig:P1load} and Figure \ref{fig:P3load}.
-The solid blue line is the frequency deviation of generator 1, and the broken red line is the frequency deviation of generator 3.
-In any case, the frequency deviation of two generators changes in sync. If the resistance increases, consumption of the active power usually increases; thus, the frequency of the generators decreases.
-The trend is opposite if the resistance decreases. Since the mechanical torque of the generators is set for the value before the resistance changes, the supply and demand of the active power becomes unbalanced, and the steady value of the frequency deviation becomes nonzero.
-Changes in the load resistance are about the same for Figure \ref{fig:P1load} and Figure \ref{fig:P3load}, but the values of generated frequency deviation are different.
-This indicates that how one chooses the equilibrium point of the electrical power system changes the sensitivity (stability) to disturbance.
+Let us calculate the time response of the angular frequency deviation when the
+load impedance value changes under the same setting as Example \ref{ex:inires}.
+Specifically, we calculate the time response by increasing or decreasing
+the resistance of the load by 1\% based on the results of the power flow
+calculation. The increased and decreased load impedance values are shown in the
+second and third rows of Tables \ref{table:loadpara1} and \ref{table:loadpara2},
+respectively.
+
+The calculation results are shown in Figures \ref{fig:P1load} and
+\ref{fig:P3load}. The solid blue line represents the angular frequency
+deviation of generator 1, and the dashed red line represents that of generator
+3. In all cases, it can be seen that the angular frequency deviations of the two
+generators change in sync. Also, since increasing the resistance generally
+increases the consumption of active power, the frequency of the generators
+decreases. The opposite is true when the resistance is decreased. It should be
+noted that since the mechanical input of the generators is fixed at the value
+before the change in resistance, the balance of active power supply and demand
+is not maintained, and the steady-state value of the angular frequency deviation
+is nonzero. Furthermore, although the ratio of the change in load resistance is
+the same in both Figures \ref{fig:P1load} and \ref{fig:P3load}, the resulting
+values of the angular frequency deviation are different. This suggests that the
+sensitivity (stability) to disturbances changes depending on how the equilibrium
+point of the power system model is chosen.
 
 \end{example}
 
@@ -1712,8 +1731,9 @@ This indicates that how one chooses the equilibrium point of the electrical powe
     \subcaption{If the resistance is reduced by 1\%}
   \end{minipage}
   \medskip
-  \caption{\textbf{Time response of angular frequency deviation to changes in load}
-  \\ \centering(Steady current state of \ref{table:pflow1}, line type is the same as \ref{fig:P13ini}.)}
+  \caption{\textbf{Time response of angular frequency deviation to load change}
+  \\ \centering(Steady-state state of Table \ref{table:pflow1}, line type is
+  the same as Figure \ref{fig:P13ini}.)}
   \label{fig:P1load}
   }
 \medskip
@@ -1734,39 +1754,61 @@ This indicates that how one chooses the equilibrium point of the electrical powe
   \end{minipage}
   \medskip
   \caption{\textbf{Time response of angular frequency deviation to changes in load}
-  \\ \centering(Steady current state of \ref{table:pflow2}, line type is the same as \ref{fig:P13ini}.)}
+  \\ \centering(Steady-state of Table \ref{table:pflow2}, line type is the same
+  as Figure \ref{fig:P13ini}.)}
   \label{fig:P3load}
   }
 \medskip
 \end{figure}
+In Example \ref{ex:loadpv}, unlike the result in Example \ref{ex:inires}, the
+generator's frequency deviation has a non-zero steady-state value. In order to
+make this frequency deviation zero, it is necessary to adjust the mechanical
+input or excitation input of the generator group appropriately. On the other
+hand, to make the steady-state value of the frequency deviation zero, frequency
+control is generally performed by a control algorithm that adjusts the
+mechanical input of the generator group to balance the demand and supply of
+active power. However, it is practically difficult to accurately measure the
+changes in all loads. Therefore, feedback control that automatically searches
+for the value of the mechanical input that achieves the demand-supply balance
+through control operations based on an integrator is necessary. The details of
+this are described later in Sections \ref{sec:agcover} and \ref{sec:mathnpas}.
 
-The result in Example \ref{ex:loadpv} was different from that in Example \ref{ex:inires}, and th frequency deviation of the generators have nonzero steady values.
-To make this frequency deviation 0, the mechanical torque of the generators or the value of the field voltage must be adjusted appropriately.
-In contrast, making the steady value of frequency deviation 0 means balancing the supply and demand of active power; thus, usually, frequency is regulated using a control algorithm that adjusts the mechanical torque of the generators.
-However, it is unrealistic and difficult to accurately measure changes in all loads. Thus, a feedback system is necessary, where the value of mechanical torque achieves the supply-demand balance through a control operation based on an integrator.
-Details will be discussed in Section \ref{sec:agcover} and Section \ref{sec:mathnpas}.
-
-\subsection{Response by ground fault}\label{sec:fault}
+\subsection{Response to ground fault}\label{sec:fault}
 
 \smallskip
 \subsubsection{What is ground fault?}
 
-Triggers, such as a contact between an object and transmission line, and lightning, cause an electric circuit to come into contact with the ground, discharging significant current to the ground.
-This phenomenon is called a \textbf{ground fault}. If a ground fault continues for a long time, connected equipment and facilities could become damaged; thus, in an electrical power system, there is a device that detects ground faults and blocks the ground fault current rapidly.
-If the block is released after eliminating the ground fault current, the electrical power system can return to operating in the same way as before the ground fault.
+When an electric circuit comes into contact with the ground due to contact with
+an object or lightning strike, a phenomenon called \textbf{ground fault} occurs,
+and a large current flows into the ground. Ground fault detection devices
+quickly operate in power systems to detect the occurrence of ground fault and
+block the ground fault current. If the ground fault current is removed and the
+blocking is released, the power system operation before the occurrence of ground
+fault can be restored.
 
-The time it takes to detect a ground fault and eliminate the same is usually 50 [ms] to 100 [ms].
-Ground fault current that flows into the ground during this time becomes a severe disturbance that causes significant fluctuations in the state of an electrical power system.
-Disturbances caused by ground faults are not modeled as external input, but as “a fluctuation that switches to a different electrical power system model while the ground fault continues”.
+The time required to detect and remove ground fault is generally about 70 [ms].
+During this time, the ground fault current flowing into the ground can cause
+severe disturbances to the power system operation. Note that the disturbance due
+to ground fault is not modeled as an external input, but is modeled as a
+"switching to a different power system model during the time when the ground
+fault is still present."
 
 \smallskip
 \subsubsection{Formulation of bus bar ground fault}
 
-Ground faults generated in bus bars discussed in this book are modeled assuming that the voltage phasor of the bus bars while the ground fault continues converges to 0.
-Below, we explain that ground faults are generated in bus bars $1$ without losing generality in the electrical power system model consisting of $N$ bus bars.
-It is also assumed that ground faults are generated at time 0 [s] and continue to time $t_0$~[s].
-At this time, the power flow distribution in Equation \ref{eq:pfconIV} usually satisfies the algebraic equation of Equation \ref{eq:ohmY2} between $t<0$ and $t\geq t_0$,
-but during $ t \in [0, t_0)$ when the ground fault continues, the power flow distribution must satisfy the algebraic equation of:
+Bus bar ground faults discussed in this book are modeled assuming that the
+voltage phasor of the bus is constrained to zero during the time the fault
+persists. Without losing generality, we explain it for the case where a fault
+occurs on bus bar $1$ of a power system model consisting of $N$ bus bars.
+Additionally, we assume that the fault occurs at time $0$ and persists until
+time $t_0$. Under these conditions, the power flow state in Equation
+\ref{eq:pfconIV} satisfies the algebraic equation of the normal operating state
+in Equation \ref{eq:ohmY2} for $t < 0$ and $t \geq t_0$. However, for the time
+period when the fault persists, $t \in [0, t_0)$, the power flow state must
+satisfy the algebraic equation in Equation \ref{eq:ohmY2f}, which excludes the
+equation related to the current phasor of the faulted bus $\bm{I}_{1}(t)$, and
+the constraint condition on the voltage phasor of the faulted bus:
+
 \begin{subequations}\label{eq:ohmY2f}
  \begin{align}
 \mat{
@@ -1786,36 +1828,46 @@ but during $ t \in [0, t_0)$ when the ground fault continues, the power flow dis
   \bm{V}_{N}(t)
 }
 \end{align}
-excluding equations related to the current phasor of the ground fault bus bar $\bm{I}_{1}(t)$, and constraints for the voltage phasor of the ground fault bus bar:
+and the constraint condition on the voltage phase of the faulted bus:
 \begin{align}
 |\bm{V}_{1}(t)| = 0
 \end{align}
 \end{subequations}
 
-For bus bars without ground faults or when there is no ground fault, the current phasor and voltage phasor follow a differential equation or algebraic equation that are expressed as a model of each equipment.
-This is the same as the time without ground fault. In other words, this is equal to using the following two models: 
-
+Note that for buses and time periods where a ground fault has not occurred, the
+voltage and current phasors follow the differential or algebraic equations that
+represent each equipment's model. This is the same as during normal operation.
+Therefore, in numerical simulations, it is necessary to switch between the
+following two models:
 \begin{itemize}
-\item When there is no ground fault, a normal electrical power system model is sued.
-\item When the ground fault is continuing, an electrical power system model is used with the bus bars with a ground fault and any equipment and transmission lines connected to these bus bars are removed.
+  \item During periods where a ground fault has not occurred, the normal power
+  system model is used.
+  \item During periods where a ground fault is ongoing, the power system model
+  is used with the affected bus and its connected equipment and transmission
+  lines removed.
 \end{itemize}
 
-Current phasor $\bm{I}_{1}(t)$ flowing from equipment $1$ to bus bars $1$ during a ground fault is determined from dynamic characteristics.
-Specifically, if the equipment is a generator, at the time $ t \in [0, t_0)$, the internal state of the generator develops over time according to a differential equation where $|\bm{V}_{1}(t)|$ is 0:
-\begin{align}\label{eq:gendynVIfN}
-\simode{
-\dot{\delta}_1&= \omega_0  \Delta \omega_1\\
-M_1   \Delta \dot{\omega}_1 &= 
- - D_1 \Delta\omega_1  
-+P_{{\rm mech}1} 
-\\
-\taud_1 \dot{E}_1 & = 
-- \tfrac{ \Xs_1 }{ \Xt_1 }E_1
-+ V_{{\rm field}1}
-}
-\end{align}
+The current phasor $\bm{I}{1}(t)$ flowing from device $1$ to bus $1$ during a
+ground fault is determined by the dynamic characteristics of the device.
+Specifically, if the device is a generator, then its internal state evolves over
+time according to following differential equations for $t\in [0, t_0)$, where
+$|\bm{V}{1}(t)|$ is set to 0. 
 
-At this time, current phasor $\bm{I}_{1}(t)$ is given with the following as an output of generators:
+\begin{equation}\label{eq:gendynVIfN}
+  \simode{
+    \dot{\delta}_1&= \omega_0  \Delta \omega_1\\
+    M_1   \Delta \dot{\omega}_1 &= 
+    - D_1 \Delta\omega_1  
+    +P_{{\rm mech}1} 
+    \\
+    \taud_1 \dot{E}_1 & = 
+    - \tfrac{ \Xs_1 }{ \Xt_1 }E_1
+    + V_{{\rm field}1}
+  }
+\end{equation}
+
+In this case, current phasor $\bm{I}_{1}(t)$ is given with the following as an
+output of generators:
 
 \begin{align*}%\label{eq:IoutfN}
 |\bm{I}_1(t)|=\frac{E_1 (t)}{ \Xt_1 }
@@ -1823,54 +1875,92 @@ At this time, current phasor $\bm{I}_{1}(t)$ is given with the following as an o
 \angle \bm{I}_1 (t) = \delta_1 (t) - \frac{\pi}{2}
 \end{align*}
 
-Similarly, if equipment $1$ is a load model with constant impedance, $|\bm{V}_{1}(t)|$ of Equation \ref{eq:cimp} is 0; thus, $|\bm{I}_{1}(t)|$ is also 0.
-Other load models are basically the same, but with a load model with constant electric power, $|\bm{I}_{1}(t)|$ becomes infinitely large; thus, in a numerical simulation, one must be careful of numerical instability.
-The ground fault current phasor from bus bars $1$ to the ground can be expressed as:
+On the other hand, if device $1$ is modeled as a constant impedance load,
+then $|\bm{I}{1}(t)|$ is also zero since $|\bm{V}{1}(t)|$ is zero as given by
+Eq. \eqref{eq:cimp}. For other load models, the situation is generally similar,
+except that for constant power loads, $|\bm{I}{1}(t)|$ becomes infinite, so
+numerical instability must be taken into account in simulations. Note that the
+ground fault current phasor flowing from bus $1$ to ground can be expressed as
 
 \[
-\bm{I}_{1}'(t) := \bm{I}_{1}(t) - \sum_{j=2}^{N} \bm{Y}_{1j} \bm{V}_{j}(t),\qquad
- t \in [0, t_0)
+  \bm{I}_{1}'(t) := \bm{I}_{1}(t) - \sum_{j=2}^{N} \bm{Y}_{1j} \bm{V}_{j}(t),\qquad
+  t \in [0, t_0)
 \]
+where $N$ is the number of buses.
 
-The value of the ground fault current phasor does not have to be calculated to execute a numerical simulation of the electrical power system model.
-On the other hand, if generators are connected to the ground fault bus bar, it is important to calculate the internal state of generators for the time when the ground fault is eliminated $t_0$; thus, the differential equation of Equation \ref{eq:gendynVIfN} must be solved.
-For the internal state of the electric power system model at the time of ground fault; in other words, for the internal state of each generator at the initial time, a value for arbitrary power flow distribution can be set.
-In this book, we set an appropriate value for the steady power flow distribution obtained as a result of the power flow calculation.
-During ground faults, and when ground faults are eliminated, the internal state of each generator is continuous, but the voltage phasor and current phasor of each bus bar change discontinuously.
+The value of the ground fault current phasor does not need to be calculated for
+the purpose of running numerical simulations of power system models. On the
+other hand, when a generator is connected to the ground fault bus, it is
+important to calculate the value of the generator's internal state at the time
+$t_0$ when the ground fault is cleared, so it is necessary to solve the
+differential equations in Equation \ref{eq:gendynVIfN}. For the initial internal
+states of each generator at the time of the ground fault occurrence, arbitrary
+values can be set for any flow state. In this book, appropriate values obtained
+as a result of the power flow calculation for a steady-state flow condition are
+used. Note that at the time of occurrence and clearance of the ground fault, the
+internal states of each generator are continuous, but the voltage and current
+phasors of each bus change discontinuously.
 
-Calculation of the time response to the above bus bar ground fault can be summarized in the following steps:
+The calculation of the time response for bus-ground faults can be summarized in
+the following steps:
 
 \medskip
 \begin{breakbox}
 \begin{itemize}
-\item[(a)] Variable values in the steady power flow distribution obtained with the power flow calculation are used as the initial value of each generator. 
-\item[(b)] During time $ t \in [0, t_0)$ when a ground fault is continuing, time development is calculated with the electrical power system model where bus bars with ground fault and equipment and transmission lines connected to these bus bars are removed.
-\item[(c)] If generators are connected to bus bars with ground fault, the bus bar voltage phasor is set to 0 during the time of continuing ground fault $ t \in [0, t_0)$, and time development of the internal state of the generators is calculated.
-\item[(d)] The value of the internal state of each generator at the time $t_0$ is set, and time development after eliminating ground fault is calculated using the normal electrical power system model with all equipment connected. 
+  \item[(a)] Set the variable values at the steady-state condition obtained from
+  the power flow calculation as the initial values of the internal states of each
+  generator. 
+  \item[(b)] Calculate the time evolution using the power system model that
+  excludes the faulted bus and the devices and transmission lines connected to it,
+  for the time interval $t \in [0, t_0)$, where the fault persists.
+  \item[(c)] If a generator is connected to the faulted bus, set the bus voltage
+  phase to zero for $t \in [0, t_0)$, and calculate the time evolution of its
+  internal state.
+  \item[(d)] Set the values of the internal states of each generator at time
+  $t_0$, and calculate the time evolution of the system after the fault is cleared
+  using the usual power system model with all devices connected. 
 \end{itemize}
 \end{breakbox}
 \medskip
 
+Let us calculate the time response for bus-ground faults using these steps.
 
-With these steps, let us calculate the time response of the bus bar ground fault.
+\begin{example}[Time response of power system model to bus bar ground
+fault]\label{ex:busflt}
 
-\begin{example}[Time response of the electrical power system model to bus bar ground fault]\label{ex:busflt}
-Let us calculate the time response of frequency deviation to ground fault of bus bars under the same setting as the Example \ref{ex:inires} and Example \ref{ex:loadpv}.
-Specifically, we set the two steady power flow distributions, where the electrical power system was obtained with the power flow calculation, as the initial values, and calculate the time response when the ground fault occurs in bus bar 1.
-For comparison, we consider two situations: when the time it takes for the ground fault to be eliminated is 50 [ms] and 100 [ms]. 
+In the same setting as Examples \ref{ex:inires} and \ref{ex:loadpv}, let us
+calculate the time response of the frequency deviation of the bus due to ground
+fault. Specifically, we set the two steady-state power flow states obtained by
+power flow calculation as initial values and calculate the time response when a
+ground fault occurs at bus 1. For comparison, we consider two cases where the
+time until the fault is cleared is 50 [ms] and 100 [ms], respectively.
 
-The calculation result is shown in Figure \ref{fig:P1fault} and Figure \ref{fig:P3fault}. The solid blue line is the frequency deviation of generator 1, and the broken red line is the frequency deviation of generator 3.
-Figure \ref{fig:P1fault} shows that the oscillation of the frequency of generator 3 is large under the steady power flow distribution of \ref{table:pflow1}.
-Specifically, when the duration of the ground fault is 100 [ms], oscillation is even larger. The reason oscillation of generator 3 is large is because, as shown in \ref{table:genparams}, while the inertia constant of generator 1 is large at 100 [s], the inertia constant of generator 3 is small at 12 [s].
-In other words, oscillation of generators with large inertia causes large oscillations in generators with small inertia.
+The calculation results are shown in Figures \ref{fig:P1fault} and
+\ref{fig:P3fault}.  The solid blue line represents the frequency deviation of
+generator 1, and the dashed red line represents the frequency deviation of
+generator 3.  From Figure \ref{fig:P1fault}, it can be seen that the frequency
+oscillation of generator 3 is large in the steady-state power flow state shown
+in Table \ref{table:pflow1}.  In particular, a larger oscillation occurs when
+the duration of the ground fault is 100 [ms].  The reason why the oscillation of
+generator 3 is larger is that, as shown in Table \ref{table:genparams}, the
+inertia constant of generator 1 is large at 100 [s], while that of generator 3
+is small at 12 [s].  In other words, the oscillation of the generator with
+larger inertia causes the larger oscillation of the generator with smaller
+inertia.
 
-On the other hand, with the steady power flow distribution of Table \ref{table:pflow2}, frequency oscillation is small even for the same ground fault (Figure \ref{fig:P3fault}).
-The reason for this is that, with the steady power flow distribution of \ref{table:pflow1}, the small inertia of generator 3 provided the majority of active power consumed by the load.
-In contrast, with the steady power flow distribution of \ref{table:pflow2}, the large inertia of generator 1 provided the majority of active power.
-Generally, the sensitivity of synchronous generators to disturbance increases as they more closely approach the electric power provided.
-With the steady power flow distribution of \ref{table:pflow2}, the stability of generator 3 with small inertia is relatively high; thus, the sensitivity of frequency deviation to ground faults is low.
+On the other hand, it can be seen from Figure \ref{fig:P3fault} that the frequency
+oscillation for the same ground fault is small in the steady-state power flow
+state shown in Table \ref{table:pflow2}. This is because in the steady-state
+power flow state of Table \ref{table:pflow1}, generator 3 with small inertia
+supplied most of the active power consumed by the load, while in the
+steady-state power flow state of Table \ref{table:pflow2}, generator 1 with
+large inertia supplied most of the active power. In general, synchronous
+generators have the characteristic that their sensitivity to disturbances
+increases as the supplied power approaches its maximum value. In the
+steady-state power flow state of Table \ref{table:pflow2}, the stability of
+generator 3 with small inertia is relatively high, so the sensitivity of the
+frequency deviation to the ground fault is low.
 \end{example}
-
 
 \begin{figure}[t]
   \centering
@@ -1887,7 +1977,7 @@ With the steady power flow distribution of \ref{table:pflow2}, the stability of 
   \end{minipage}
   \medskip
   \caption{\textbf{Time response of angular frequency deviation to ground fault}
-  \\ \centering (Steady current state of \ref{table:pflow1}, line type is the same as \ref{fig:P13ini})}
+  \\ \centering (Steady-state of \ref{table:pflow1}, line type is the same as \ref{fig:P13ini})}
   \label{fig:P1fault}
   }
 \medskip
@@ -1908,21 +1998,39 @@ With the steady power flow distribution of \ref{table:pflow2}, the stability of 
   \end{minipage}
   \medskip
   \caption{\textbf{Time response of angular frequency deviation to ground fault}
-  \\ \centering (Steady current state of \ref{table:pflow2}, line type is the same as \ref{fig:P13ini})}
+  \\ \centering (Steady-state of \ref{table:pflow2}, line type is the same as \ref{fig:P13ini})}
   \label{fig:P3fault}
   }
 \medskip
 \end{figure}
 
-The Example \ref{ex:busflt} shows that the stability of the electrical power system model to ground faults changes according to the steady power flow distribution (equilibrium point).
-Specifically, with the Example \ref{ex:pf3bus}, the steady power flow distribution of \ref{table:pflow1} was superior in terms of transmission loss, while in the Example \ref{ex:busflt}, the steady power flow distribution of \ref{table:pflow2} is superior in terms of system stability against ground faults.
-These examples show the importance of considering the trade-off with economics and stability and searching for the desirable equilibrium point.
-Ground faults do not only occur to specific bus bars or transmission lines, and can potentially occur in various grounds. Thus, the stability of the entire electrical power system should be improved in an appropriate sense.
-To that end, the control mechanism is explained in Section \ref{sec:transcont} and Section \ref{sec:retrofit}.
+From Example \ref{ex:busflt}, it can be seen that the stability of the power
+system model for ground faults varies depending on the steady-state power flow
+condition (equilibrium point). In particular, in Example \ref{ex:pf3bus}, the
+steady-state power flow condition in Table \ref{table:pflow1} was superior from
+the perspective of transmission loss, while in Example \ref{ex:busflt}, the
+steady-state power flow condition in Table \ref{table:pflow2} was found to be
+superior in terms of system stability with respect to ground faults. These
+examples suggest the importance of exploring desirable equilibrium points,
+taking into account trade-offs between factors such as economic efficiency and
+stability.
 
-The results of simulations from Example \ref{ex:inires} to Example \ref{ex:busflt} show that, if the system reaches a steady state without diverging from the internal state, “frequency deviation of all generators converge to the same value”.
-A similar result was also observed in Example \ref{ex:Kronode}. Synchronization of this frequency in the steady power flow distribution is a universal phenomenon in the electrical power system model.
-With frequency control, which will be discussed in Section \ref{sec:agcover} and Section \ref{sec:mathnpas}, the control algorithm is constructed assuming that the frequency automatically synchronizes with the steady power flow distribution.
+It should be noted that ground faults may occur at various locations and not
+only on specific buses or transmission lines, so it is necessary to improve the
+overall stability of the power system in a meaningful way. Control mechanisms
+for this purpose are explained in Sections \ref{sec:transcont} and
+\ref{sec:retrofit}.
+
+Furthermore, from the simulation results of Examples \ref{ex:inires} to
+\ref{ex:busflt}, it can be observed that when the internal state settles into a
+steady state without diverging, "all generator frequency deviations have
+converged to the same value." Similar results are also observed in Example
+\ref{ex:Kronode}. This synchronization of frequency in the steady-state power
+flow condition is a universal phenomenon in power system models. Frequency
+control, which will be discussed in Sections \ref{sec:agcover} and
+\ref{sec:mathnpas}, is based on the assumption that the frequency will
+automatically synchronize in the steady-state power flow condition, and control
+algorithms are constructed accordingly.
 
 \section{Synchronization of bus bar voltage in a steady power flow distribution\advanced}\label{sec:phsync}
 
