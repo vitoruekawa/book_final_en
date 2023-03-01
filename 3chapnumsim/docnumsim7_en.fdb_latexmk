@@ -3,9 +3,9 @@
   "docnumsim7_en.xdv" 0 -1 0 "xelatex"
   (generated)
   "docnumsim7_en.pdf"
-["xelatex"] 1677220646 "/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex" "docnumsim7_en.xdv" "docnumsim7_en" 1677220646
+["xelatex"] 1677650831 "/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex" "docnumsim7_en.xdv" "docnumsim7_en" 1677650831
   "../settings.tex" 1676959234 4473 f4b63a93255e9a8cc326f20b91f62b7b ""
-  "/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex" 1677220644 174509 62762b9ebd1ddf9f6c403c34ef867656 ""
+  "/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex" 1677650830 174644 693d99844463a46d0ac13abb0109a63e ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/ascmac/ascgrp.tfm" 1520635638 448 9a1f3a95c3a7e2681aa6eefcf410b7ac ""
@@ -139,9 +139,9 @@
   "/usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf" 1646502317 40171 cdab547de63d26590bebb3baff566530 ""
   "/usr/local/texlive/2022/texmf-var/web2c/xetex/xelatex.fmt" 1668484031 5419919 6030633a70bb3257f0865cf4b6d858d0 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "docnumsim7_en.aux" 1677220646 32 3985256e7290058c681f74d7a3565a19 "xelatex"
+  "docnumsim7_en.aux" 1677650831 32 3985256e7290058c681f74d7a3565a19 "xelatex"
   "docnumsim7_en.out" 0 -1 0 "xelatex"
-  "docnumsim7_en.tex" 1677220644 174509 62762b9ebd1ddf9f6c403c34ef867656 ""
+  "docnumsim7_en.tex" 1677650830 174644 693d99844463a46d0ac13abb0109a63e ""
   "dsfont.sty" 1671778083 230 7bc61880b468bfd38aedc173be7c3486 ""
   "eclbkbox.sty" 1671778083 2338 aa5837e82377ed2acc7ee21c1d523b1d ""
   "figs/100mP1.pdf" 1671778085 100478 3407d1ac9a5540ee3bcd9c3f73013c45 ""

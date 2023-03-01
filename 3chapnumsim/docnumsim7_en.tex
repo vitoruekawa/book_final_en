@@ -1666,7 +1666,7 @@ equal to 0.9 [Hz].
   \begin{minipage}{0.49\linewidth}
     \centering
     \includegraphics[width = 1.0\linewidth]{figs/P3ini}
-    \subcaption{Steady-state power flow of Table \ref{table:pflow2}
+    \subcaption{Steady-state power flow of Table \ref{table:pflow2}}
   \end{minipage}
   \medskip
   \caption{\textbf{Time response of frequency deviation for initial value
@@ -2034,44 +2034,56 @@ algorithms are constructed accordingly.
 
 \section{Synchronization of bus bar voltage in a steady power flow distribution\advanced}\label{sec:phsync}
 
-In this Section, we mathematically discuss synchronization phenomenon of the frequency observed in Section \ref{sec:numsimtr} from the viewpoint of graph structure for the power grid.
-Based on Theorem \ref{thm:outst}, the following definition is introduced.
+In this section, we mathematically investigate the frequency synchronization
+phenomenon observed in Section \ref{sec:numsimtr} from the perspective of the
+graph structure of the power transmission network. Based on the results of
+Theorem \ref{thm:outst}, we introduce the following definition.
 
-\begin{definition}[Synchronization of the steady power flow distribution and bus bar voltage]
-\label{def:sync}
-Let us consider an electrical power system model wherein a group of equipment is combined with simultaneous equations of the Equation \ref{eq:PQVgen}.
-For all bus bars $i$, when:
-\begin{align}\label{eq:stapfs}
-\frac{dP_i}{dt}(t)=0
-,\quad
-\frac{dQ_i}{dt}(t)=0
-,\quad
-\frac{d|\bm{V}_i|}{dt}(t)=0
-,\quad
-\frac{d^2 \angle \bm{V}_i }{dt^2}(t)=0
-\end{align}
-is true for all $t\geq0$, the electrical power system is said to be in the \textbf{steady power flow distribution}.
+\begin{definition}[Synchronization of the steady power flow distribution and bus
+bar voltage] \label{def:sync}
+
+Consider the power system model in which the devices are coupled by the
+simultaneous equations of Equation \ref{eq:PQVgen}. For all buses $i$, if the
+following hold for all $t\geq0$, the power system is said to be in a
+\textbf{steady-state power flow}\index{steady-state power flow}.
+
+\begin{equation}\label{eq:stapfs}
+  \frac{dP_i}{dt}(t)=0
+  ,\quad
+  \frac{dQ_i}{dt}(t)=0
+  ,\quad
+  \frac{d|\bm{V}_i|}{dt}(t)=0
+  ,\quad
+  \frac{d^2 \angle \bm{V}_i }{dt^2}(t)=0
+\end{equation}
+
 \footnote{
 Please note that the mathematical definition of this “steady power flow distribution” is unique to this book and is not typically used in electrical power system engineering.
 }
 
-When the electrical power system is in the steady power flow distribution, and:
-\begin{align}\label{eq:defsyn}
-\frac{d \angle \bm{V}_i}{dt}(t) =  \frac{d \angle \bm{V}_j}{dt}(t)
-\end{align}
-is true, bus bar $i$ and bus bar $j$ are \textbf{synchronized} in the steady power flow distribution.
-\end{definition}
+Moreover, if the power system is in a steady-state power flow and Equation
+\ref{eq:defsyn} holds, the buses $i$ and $j$ are said to be
+\textbf{synchronized}\index{synchronization} in the steady-state power flow.
 
-As shown in Theorem \ref{thm:outst}, for generator buses, the Equation \ref{eq:stapfs} being true and the internal state of generators and external inputs being in a steady state are equivalent.
-In addition, if a set of arbitrarily selected bus bars $(i,j)$ is synchronized according to the definition \ref{def:sync}, it is concluded that the frequency deviation of all generators will converge to the same value.
-The fact that Equation \ref{eq:stapfs} holds for any bus bars means that:
-\begin{align*}
-\frac{d|\bm{I}_i|}{dt}(t)=0
-,\qquad
-\frac{d^2 \angle \bm{I}_i }{dt^2}(t)=0
-,\qquad
-\frac{d \angle \bm{I}_i }{dt}(t) = \frac{d \angle \bm{V}_i }{dt} (t)
-\end{align*}
+\begin{equation}\label{eq:defsyn}
+  \frac{d \angle \bm{V}_i}{dt}(t) =  \frac{d \angle \bm{V}_j}{dt}(t)
+\end{equation}
+\end{definition}
+As stated in Theorem \ref{thm:outst}, the validity of Equation \ref{eq:stapfs}
+for the generator bus is equivalent to the internal state of the generator and
+the external input being in steady state. Moreover, if any selected
+pair of buses $(i,j)$ are in synchronized in the sense of Definition
+\ref{def:sync}, it can be concluded that the angular frequency deviation of all
+generators converges to the same value. Note that the validity of Equation
+\ref{eq:stapfs} for any bus applies to the current phase $\bm{I}_i$.
+
+\begin{equation*}
+  \frac{d|\bm{I}_i|}{dt}(t)=0
+  ,\qquad
+  \frac{d^2 \angle \bm{I}_i }{dt^2}(t)=0
+  ,\qquad
+  \frac{d \angle \bm{I}_i }{dt}(t) = \frac{d \angle \bm{V}_i }{dt} (t)
+\end{equation*}
 
 is true for current phasor $\bm{I}_i$.
 This can be easily confirmed since:
