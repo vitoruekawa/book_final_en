@@ -2085,183 +2085,220 @@ generators converges to the same value. Note that the validity of Equation
   \frac{d \angle \bm{I}_i }{dt}(t) = \frac{d \angle \bm{V}_i }{dt} (t)
 \end{equation*}
 
-is true for current phasor $\bm{I}_i$.
-This can be easily confirmed since:
+This means that it can be easily verified by the equations:
 
 \begin{align*}
-|P_i(t) + \bm{j} Q_i(t)| = |\bm{V}_i(t)| |\bm{I}_i(t)|
-,\qquad
-\angle(P_i(t) + \bm{j} Q_i(t)) = \angle \bm{V}_i(t) - \angle \bm{I}_i(t)
+  |P_i(t) + \bm{j} Q_i(t)| = |\bm{V}_i(t)| |\bm{I}_i(t)|
+  ,\qquad
+  \angle(P_i(t) + \bm{j} Q_i(t)) = \angle \bm{V}_i(t) - \angle \bm{I}_i(t)
 \end{align*}
 
-A set of adjacent bus bars connected to the bus bar $i$ with a transmission line is expressed as $\mathcal{N}_i$. 
-In other words:
+Let $\mathcal{N}_i$ denote the set of adjacent buses connected to bus $i$ via
+transmission lines. In other words:
 
 \begin{align*}
-\mathcal{N}_i:=
-\left\{
-j : \bm{Y}_{ij} \neq 0,\quad j \neq i
-\right\}
+  \mathcal{N}_i:=
+  \left\{
+    j : \bm{Y}_{ij} \neq 0,\quad j \neq i
+  \right\}
 \end{align*}
 
-The number of adjacent bus bars connected to the bus bar $i$ with a transmission line is $|\mathcal{N}_i|$.
-This is called "\textbf{ degree} of bus bar $i$ is $|\mathcal{N}_i|$".
-We can use the following expression assuming that the electrical power system model is in the steady power flow distribution, 
+Note that bus $i$ is not included in $\mathcal{N}_i$. The number of adjacent
+buses connected to bus $i$ is denoted by $|\mathcal{N}_i|$ and is called the
+\textbf{degree}\index{degree@degree} of bus $i$.
 
-\begin{align*}
-\angle \bm{V}_i (t) = \Omega_i t +\phi_i
-\end{align*}
+The number of adjacent buses connected to bus $i$ via transmission lines is
+denoted as $|\mathcal{N}_i|$, and this is referred to as the
+\textbf{degree}\index{degree} of bus $i$, which is equal to $|\mathcal{N}_i|$.
+In addition, the power system model assumes a steady-state condition, which can
+be expressed as:
 
-However, $\Omega_i$ and $\phi_i$ are constant. 
-At this time, electric power balance equation for bus bar $i$ in Equation \ref{eq:PQVgen} is:
+\begin{equation*}
+  \angle \bm{V}_i (t) = \Omega_i t +\phi_i
+\end{equation*}
+where, $\Omega_i$ and $\phi_i$ are constant. 
+
+Under this assumption, the power balance equation for bus $i$ in Equation
+\ref{eq:PQVgen} is given by:
 
 \[
-P_i + \bm{j} Q_i = \sum_{j=1}^N \overline{\bm{Y}}_{ij} |\bm{V}_i| |\bm{V}_j|
-e^{\bm{j} \left\{ ( \Omega_i - \Omega_j )t + \phi_i -\phi_j \right\}}
+  P_i + \bm{j} Q_i = \sum_{j=1}^N \overline{\bm{Y}}_{ij} |\bm{V}_i| |\bm{V}_j|
+  e^{\bm{j} \left\{ ( \Omega_i - \Omega_j )t + \phi_i -\phi_j \right\}}
 \]
 
-If we assume a steady power flow distribution, the absolute value of the active power, reactive power, and bus bar voltage phasor provided to the bus bar $i$ are all constants.
-If these are expressed as $P_i^{\star}$, $Q_i^{\star}$, and $|\bm{V}_i^{\star}|$, this electric power balance equation can be rewritten as:
+Here, assuming a steady-state condition, the active and reactive power supplied
+to bus $i$, as well as the magnitude of the bus voltage phasor, are all
+constants. If we denote these quantities as $P_i^{\star}$, $Q_i^{\star}$, and
+$|\bm{V}_i^{\star}|$, respectively, then the power balance equation can be
+transformed into the following: 
 
-\begin{align}\label{eq:sumcirc}
-\underbrace{
-\frac{1}{|\mathcal{N}_i|}\sum_{j \in \mathcal{N}_i } 
-r_{ij}
-e^{\bm{j} 
-\left(
-\Omega_{ij}t + 
-\Phi_{ij}
-\right) }
-}_{\bm{C}_i (t)}
-= \bm{z}_i
-\end{align}
-
-However, the frequency difference of the voltage phasor for bus bars $i$ and $j$ is expressed as:
-
-\[
-\Omega_{ij}:=\Omega_{i}-\Omega_{j}
-\]
-
-$r_{ij}$, $\Phi_{ij}$, and $\bm{z}_i$ are all constants, and defined by:
+\begin{equation}\label{eq:sumcirc}
+  \underbrace{
+    \frac{1}{|\mathcal{N}_i|}\sum_{j \in \mathcal{N}_i } 
+    r_{ij}
+    e^{\bm{j} 
+    \left(
+    \Omega_{ij}t + 
+    \Phi_{ij}
+    \right) }
+  }_{\bm{C}_i (t)}
+  = \bm{z}_i
+\end{equation}
+where $\Omega_{ij}:=\Omega_{i}-\Omega_{j}$ is the frequency difference between bus
+$i$ and bus $j$. The constants $r_{ij}$, $\Phi_{ij}$, and $\bm{z}_i$ are defined
+as:
 
 \begin{align*}
-r_{ij} &:=|\bm{V}_i^{\star}| |\bm{V}_j^{\star}| |\bm{Y}_{ij}|, \qquad
-\Phi_{ij} := \phi_i - \phi_j - \angle \bm{Y}_{ij},
-\\
-\bm{z}_i &:=  \tfrac{
-\left\{
-P_i^{\star} - \real[\bm{Y}_{ii}] |\bm{V}_i^{\star}|^2
-+ \bm{j}
-\left(
-Q_i^{\star} + \imag [\bm{Y}_{ii}] |\bm{V}_i^{\star}|^2
-\right)
-\right\}
-}
-{|\mathcal{N}_i|}
+  r_{ij} &:=|\bm{V}_i^{\star}| |\bm{V}_j^{\star}| |\bm{Y}_{ij}|, \qquad
+  \Phi_{ij} := \phi_i - \phi_j - \angle \bm{Y}_{ij},
+  \\
+  \bm{z}_i &:=  \tfrac{
+  \left\{
+  P_i^{\star} - \real[\bm{Y}_{ii}] |\bm{V}_i^{\star}|^2
+  + \bm{j}
+  \left(
+  Q_i^{\star} + \imag [\bm{Y}_{ii}] |\bm{V}_i^{\star}|^2
+  \right)
+  \right\}
+  }
+  {|\mathcal{N}_i|}
 \end{align*}
 
-Below, let us think about $\Omega_{ij}$ being 0 for all $j\in \mathcal{N}_i$ as an equation that expresses the synchronicity with adjacent bus bars from Equation \ref{eq:sumcirc};
-in other words, let us think about deriving: 
+In the following, we consider deriving the equation $\Omega_{ij}=0$ for all
+$j\in \mathcal{N}_i$, which represents synchronization with adjacent buses, from
+the Equation \ref{eq:sumcirc}. Here, the Equation \ref{eq:sumcirc} represents
+that the center of gravity $\bm{C}_i (t)$ of $|\mathcal{N}_i|$ points that move at
+a constant speed along the circumference of a circle with radius $r_{ij}$ and
+initial phase $\Phi_{ij}$ and angular velocity $\Omega_{ij}$, is invariant at a
+point $\bm{z}_i$ on the complex plane.
 
-\begin{align}\label{eq:alloms}
-\Omega_i = \Omega_{j} 
-,\qquad 
-\forall j\in \mathcal{N}_i
-\end{align}
-
-Here, Equation \ref{eq:sumcirc} expresses that "the center of gravity $\bm{C}_i (t)$ of $|\mathcal{N}_i|$ points that move at a constant velocity on the circumference of a circle with the radius of $r_{ij}$ with the origin as the center with the initial phase of $\Phi_{ij}$ and the angular velocity of $\Omega_{ij}$ is invariable on a point $\bm{z}_i$ on a complex plane".
-Figure \ref{fig:centerg} shows the relationship when bus bar $1$ is connected to bus bar $2$ and bus bar $3$. Focusing on this fact, the following result can be derived.
+Figure \ref{fig:centerg} illustrates the relationship when bus 1 is connected to
+buses 2 and 3. Based on this fact, the following result can be obtained.
 
 \begin{figure}[t]
-\centering
-\includegraphics[width = .4\linewidth]{figs/centerg}
-\medskip
-\caption{\textbf{When bus bar 1 is connected to bus bars 2 and 3}}
-\label{fig:centerg}
-\medskip
+  \centering
+  \includegraphics[width = .4\linewidth]{figs/centerg}
+  \medskip
+  \caption{\textbf{When bus bar 1 is connected to bus bars 2 and 3}}
+  \label{fig:centerg}
+  \medskip
 \end{figure}
 
 
-\begin{lemma}[Synchronization of bus bars derived from the balance equation of electric power]
+\begin{lemma}[Synchronization of busbars derived from power flow equations]
 \label{lem:sumc2}
 
-Let us consider $\bm{C}_i (t)$ of Equation \ref{eq:sumcirc} for real constants $r_{ij}$, $\Omega_i$, $\Omega_j$, and $\Phi_{ij}$, where $r_{ij}>0$.
-At this time, if $|\mathcal{N}_i|=1$, $\bm{C}_i (t)$ being a constant that is not dependent on $t$ is equivalent to Equation \ref{eq:alloms}.
-In addition, if $|\mathcal{N}_i|=2$, $\bm{C}_i (t)$ being a constant that is not dependent on $t$ is equivalent to Equation \ref{eq:alloms} being true, or to:
+Consider $\bm{C}_i (t)$ in Equation \ref{eq:sumcirc} for real constants
+$r_{ij}$, $\Omega_i$, $\Omega_j$, and $\Phi_{ij}$, where $r_{ij}>0$. If
+$|\mathcal{N}_i|=1$, then $\bm{C}_i (t)$ being a constant independent of $t$ is
+equivalent to Equation \ref{eq:alloms}. If $|\mathcal{N}_i|=2$, then $\bm{C}_i
+(t)$ being a constant independent of $t$ is equivalent to either Equation
+\ref{eq:alloms} being true, or to:
 
-\begin{align}\label{eq:N2sing}
-\Omega_{j_1} = \Omega_{j_2}
-,\qquad
-r_{i j_1} = r_{i j_2}
-,\qquad
-|\Phi_{i j_1}-\Phi_{i j_2}| = \pi
-\end{align}
+\begin{equation}\label{eq:N2sing}
+  \Omega_{j_1} = \Omega_{j_2}
+  ,\qquad
+  r_{i j_1} = r_{i j_2}
+  ,\qquad
+  |\Phi_{i j_1}-\Phi_{i j_2}| = \pi
+\end{equation}
 
 where $\mathcal{N}_i = \{j_1,j_2\}$.
-Furthermore, if $|\mathcal{N}_i|=3$, $\bm{C}_i (t)$ being a constant that is not dependent on $t$ is equivalent to Equation \ref{eq:alloms} being true,
-or Equation \ref{eq:N2sing} being true for $j_3 \in \mathcal{N}_i$ satisfying $\Omega_{i} = \Omega_{j_3}$, where $ \mathcal{N}_i \setminus \{j_3\}=\{j_1,j_2\}$.
+If $|\mathcal{N}_i|=3$, then $\bm{C}_i(t)$ being a constant independent of $t$ is
+equivalent to Equation \ref{eq:alloms} holding, or to either of the following:
 
-\begin{align}\label{eq:threeoms}
-\Omega_{j_1} = \Omega_{j_2}= \Omega_{j_2}
-,\qquad 
-\sum_{j\in \mathcal{N}_i} 
-r_{ij} e^{\bm{j} \Phi_{ij}}=0
-\end{align}
+\begin{itemize}
+  \item For $\mathcal{N}_i ={j_1,j_2,j_3}$, Equation \ref{eq:threeoms} holds, where
+  \begin{equation}\label{eq:threeoms}
+    \Omega{j_1} = \Omega{j_2}= \Omega{j_2},
+    \qquad
+    \sum{j\in \mathcal{N}_i}
+    r_{ij} e^{\bm{j} \Phi_{ij}}=0,
+  \end{equation}
+  \item $\Omega_{i} = \Omega_{j_3}$ holds for $j_3 \in \mathcal{N}_i$ and Equation \ref{eq:N2sing} holds, where $\mathcal{N}_i \setminus {j_3}={j_1,j_2}$.
+\end{itemize}
+
 \end{lemma}
 
 \begin{proof}
-\red{Translated with DeepL}
-By applying the complementary problem\ref{lem:sumc} at the end of the chapter, we can show the facts for the cases $|\mathcal{N}_i|=1$ and $|\mathcal{N}_i|=2$.
-Thus, in the following we consider the case $|\mathcal{N}_i|=3$.
-For simplicity of notation, let $j \in\{1,2,3\}$ and denote $r_{ij}$, $\Phi_{ij}$, $\Omega_i$ and $\bm{C}_i$ as $r_{j}$, $\Phi_{j}$, $\Omega_0$ and $\bm{C}_0$ respectively.
-First, let's consider the following case,
-\begin{align}\label{eq:omjeq}
-\Omega_j \neq \Omega_0
-,\qquad \forall j \in \{1,2,3\}
-\end{align}
-From the complement \ref{lem:sumc}, when the formula\ref{eq:omjeq} holds, the formula\ref{eq:sumcirc} is equivalent to:
-\begin{align*}
-\Omega_1 = \Omega_2 = \Omega_3,\qquad
-\sum_{j=1}^3 
-r_j e^{\bm{j} \Phi_j}=0
-\end{align*}
-This implies that the expression \ref{eq:threesoms}
-%しかしながら，$\Omega_1 = \Omega_2 = \Omega_3$である場合には，$|\mathcal{N}_i|=1$のときと同様にして，$\bm{C}_i (t)$が$t$に依らない定数であることと式\ref{eq:alloms}が等価であることが導かれる。
-%これは式\ref{eq:omjeq}に矛盾する。
+By applying Lemma \ref{lem:sumc} at the end of the chapter, it can be shown that
+the cases where $|\mathcal{N}_i|=1$ and $|\mathcal{N}_i|=2$ hold. Therefore, we
+consider the case where $|\mathcal{N}_i|=3$ below.
 
-Next, consider the case where the expression \ref{eq:omjeq} does not hold, i.e., where $\Omega_0=\Omega_j$ for some $j\in\{1,2,3\}$.
-In particular, consider the case where $\Omega_0=\Omega_3$ without loss of generality from symmetry with respect to $j$.
-In this case
-\begin{align*}
-\bm{C}_0 (t) = \frac{1}{3} \left\{
-r_3 e^{\bm{j} \Phi_3}
-+
-\sum_{j=1}^2
-r_{j}
-e^{\bm{j} 
-\left\{
-(\Omega_0 - \Omega_j)t + 
-\Phi_{j}
-\right\} }
-\right\}
-\end{align*}
-であることから，$t$に関する不変性は，$|\mathcal{N}_i|=2$の場合と同様に議論できる。
-したがって，$\bm{C}_0 (t)$が$t$に依らない定数であることは，式\ref{eq:alloms}または
-\begin{align*}
-\Omega_{1} = \Omega_{2}
-,\qquad
-r_{1} = r_{2}
-,\qquad
-|\Phi_{1}-\Phi_{2}| = \pi
-\end{align*}
-と等価である。
-以上より題意が示される。
+For simplicity of notation, let $j\in\{1,2,3\}$, and denote $r_{ij}$, $\Phi_{ij}$,
+$\Omega_i$, and $\bm{C}_i$ as $r_{j}$, $\Phi_{j}$, $\Omega_0$, and $\bm{C}_0$,
+respectively. First, we consider the case where $\Omega_j \neq \Omega_0$ for all
+$j \in \{1,2,3\}$. From Lemma \ref{lem:sumc}, it follows that when Equation
+\ref{eq:omjeq} holds, Equation \ref{eq:sumcirc} is equivalent to
+
+\begin{equation*}
+  \Omega_1 = \Omega_2 = \Omega_3,\qquad
+  \sum{j=1}^3
+  r_j e^{\bm{j} \Phi_j}=0
+\end{equation*}
+which implies Equation \ref{eq:threeoms}. However, if $\Omega_1 = \Omega_2 =
+\Omega_3$, then by the same argument as in the case $|\mathcal{N}_i|=1$, it
+follows that $\bm{C}_i(t)$ is a constant independent of $t$, and Equation
+\ref{eq:alloms} is equivalent to Equation \ref{eq:omjeq}, leading to a
+contradiction.
+
+Next, we consider the case where Equation \ref{eq:omjeq} does not hold, i.e.,
+there exists $j\in\{1,2,3\}$ such that $\Omega_0=\Omega_j$. Without loss of
+generality, we may assume that $\Omega_0=\Omega_3$. In this case, we have
+
+\begin{equation*}
+  \bm{C}_0 (t) = \frac{1}{3} \left\{
+    r_3 e^{\bm{j} \Phi_3}
+    \sum_{j=1}^2
+    r_{j}
+    e^{\bm{j}
+    \left\{
+    (\Omega_0 - \Omega_j)t +
+    \Phi_{j}
+    \right\} }
+  \right\}.
+\end{equation*}
+
+Thus, we can discuss the invariance with respect to $t$ in the same way as the
+case $|\mathcal{N}_i|=2$. Therefore, the fact that $\bm{C}_0(t)$ is a constant
+independent of $t$ is equivalent to Equation \ref{eq:alloms} or:
+
+\begin{equation*}
+  \Omega{1} = \Omega{2}
+  ,\qquad
+  r_{1} = r_{2}
+  ,\qquad
+  |\Phi_{1}-\Phi_{2}| = \pi.
+\end{equation*}
+Therefore, the proposition is proved.
 \end{proof}
 
-Lemma \ref{lem:sumc2} shows that when the degree of the bus bar of interest is 1; in other words, for end-point bus bars such as Figure \ref{fig:bussync}(a), bus bars adjacent to such bus bars synchronize.
-In addition, if the degree of the bus bar of interest (the node shown with a thick line) is 2; in other words, for bus bars in a chain such as Figure \ref{fig:bussync}(b), at least on bus bar on each side, are synchronized.
-Furthermore, when the degree of the bus bar of interest is 3; meaning, a bus bar of a node is connected with three transmission lines as in Figure \ref{fig:bussync}(c), at least one adjacent bus bar synchronizes with the bus bar of interest.
-This means that there is no situation where only three arbitrarily chosen bus bars are synchronized and one remaining bus bar is not synchronized, or no set of bus bars is synchronized.
+Lemma \ref{lem:sumc2} shows that when the degree of the target bus is 1, i.e.,
+for a bus at the endpoint of a line like in \ref{fig:bussync}(a), it
+synchronizes with its neighboring bus. When the degree of the target bus (the
+node indicated by a thick line) is 2, i.e., for a bus on a chain-like path like
+in \ref{fig:bussync}(b), at least its two neighboring buses synchronize.
+Furthermore, when the degree of the target bus is 3, i.e., for a bus at a node
+connected by three power lines like in \ref{fig:bussync}(c), either the three
+buses except the target bus synchronize, or at least one of the adjacent buses
+synchronizes with the target bus. This means that situations where only one of
+the adjacent buses does not synchronize or situations where no pair of buses
+synchronize do not occur.
+
+Similar analyses can be performed for cases where the degree of the target bus
+is greater than or equal to 4. However, deriving equivalent synchronization
+conditions generally becomes complicated due to higher-order equations involving
+$\Omega_i$ and $\Omega_j$, and multiple combinations of some adjacent buses
+synchronizing while others do not. Nevertheless, it is generally shown that if
+any $|\mathcal{N}_i|-1$ adjacent buses out of the $|\mathcal{N}_i|$ buses
+adjacent to the target bus $i$ synchronize with bus $i$, then the remaining one
+also synchronizes.
+
+By combining the conditions for degrees 3 and below as shown in Lemma
+\ref{lem:sumc2}, it is possible to show the synchronization of all buses even
+when there are buses with degrees greater than or equal to 4 in the power grid.
+For example, it can be shown for a power grid with a tree structure, which is
+connected and has no cycles, that all buses synchronize.
 
 \begin{figure}[t]
   \centering
@@ -2269,22 +2306,23 @@ This means that there is no situation where only three arbitrarily chosen bus ba
   \begin{minipage}{0.24\linewidth}
     \centering
     \includegraphics[width = .85\linewidth]{figs/1degbus}
-    \subcaption{ 次数1の母線}
+    \subcaption{ Bus bar degree 1 }
     \label{fig:N1} 
   \end{minipage}
   \begin{minipage}{0.24\linewidth}
     \centering
     \includegraphics[width = .85\linewidth]{figs/2degbus}
-    \subcaption{ 次数2の母線}
+    \subcaption{ Bus bar degree 2 }
   \end{minipage}
   \label{fig:N2}
   \begin{minipage}{0.48\linewidth}
     \centering
     \includegraphics[width = .85\linewidth]{figs/3degbus}
-    \subcaption{ 次数3の母線 }
+    \subcaption{ Bus bar degree 3 }
   \end{minipage}
   \medskip
-  \caption{\textbf{母線の次数に応じた隣接母線との同期}}
+  \caption{\centering\textbf{Synchronization with adjacent busbars according to
+  the degree of the busbar}}
   \label{fig:bussync}
   }
 \medskip
