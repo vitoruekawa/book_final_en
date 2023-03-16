@@ -2327,31 +2327,46 @@ connected and has no cycles, that all buses synchronize.
   }
 \medskip
 \end{figure}
-When the degree of the bus bar of interest is four or higher, the same analysis can be performed.
-However, since the obtained conditions could be a higher-order equation related to $\Omega_i$ and $\Omega_j$, or there are multiple combinations where only some adjacent bus bars that are arbitrarily selected synchronize, describing the equivalent conditions for synchronization is usually cumbersome.
-However, for the bus bar of interest $i$ and $|\mathcal{N}_i|$ adjacent bus bars, if some of the $|\mathcal{N}_i |-1$ adjacent bus bars synchronize with the bus bar $i$, the remaining one adjacent bus bar usually synchronizes. 
+It is possible to perform a similar analysis even when the degree of the bus of
+interest is four or greater. However, because the resulting conditions become
+higher-order equations in terms of $\Omega_i$ and $\Omega_j$, and there are
+multiple combinations where only certain adjacent buses synchronize, writing
+down equivalent conditions regarding synchronization generally becomes
+complicated. However, if any of the $|\mathcal{N}_i|-1$ adjacent buses to the
+bus of interest $i$ synchronize, then the remaining one will generally
+synchronize as well.
 
-By combining conditions with the degree of three or less shown in lemma \ref{lem:sumc2}, even when a bus bar with degree of four or more is included in the power grid, all bus bars could be synchronized.
-For example, the next fact can be shown.
+By combining the conditions for degrees 3 or lower shown in Lemma
+\ref{lem:sumc2}, it is possible to demonstrate synchronization of all buses even
+when the network contains buses with degree 4 or greater. For example, it can be
+shown for a power network with a tree structure (i.e., connected with no cycles)
+that all buses will synchronize.
 
-\begin{theorem}[Synchronization of bus bars in a tree-structured power grid]
+\begin{theorem}[Synchronization of Generators in a Tree-Structured Power System]
 \label{thm:tree}
-With simultaneous equations of Equation \ref{eq:PQVgen}, let us consider an electrical power system model in which a group of equipment is connected.
-When the graph of the power grid has a tree structure, all bus bars are synchronized under a steady power flow distribution.
+Consider the power system model where the devices are connected by a network of
+transmission lines represented by a system of simultaneous equations as shown in
+Equation \ref{eq:PQVgen}. When the graph of the power system network has a tree
+structure, all generators synchronize in steady-state operating conditions.
 %\footnote{
 %グラフ理論において，連結であり閉路をもたないグラフは\textbf{木}（tree）と呼ばれる。
 %}
 \end{theorem}
 
 \begin{proof}
-\red{Translated with DeepL}
-Note the bus bar at the endpoint indicated by the bold line in Figure \ref{fig:treepr}(a).
-Since the order of the bus bar is 1, the adjacent bus bars are synchronous with the bus bars of the endpoints.
-Next, if the bus bar next to the endpoint is in the chain path, the degree of the bus bar is 2, so at least both of its adjacent bus bars are synchronized.
-By repeating this process, as in Figure \ref{fig:treepr}(a), synchronization of all the bus bars is shown in the chain path connecting the endpoint and the bus bars of nodes of degree 3 or more.
+We focus on the bus at the endpoint indicated by the bold line in
+\ref{fig:treepr}(a). Since the degree of the bus is 1, the adjacent bus is
+synchronized with the endpoint bus. Next, if the adjacent bus to the endpoint is
+on a chain path, its degree is 2, so at least the two adjacent buses are
+synchronized. By repeating this process, as shown in \ref{fig:treepr}(a), the
+synchronization of all buses is demonstrated on the chain path connecting the
+endpoint and buses of degree 3 or higher.
 
-Similarly, since all the bus bars in a node of degree 3 or more from another endpoint are synchronous, we see that all the bus bars in all chain paths connected to the bus bar in the node indicated by the bold line, as in Figure \ref{fig:treepr}, are all synchronous.
-Repeating this argument, it can be shown that all the bus bars composing the tree are synchronous.
+Similarly, all buses with degree 3 or higher that exist on nodes from another
+endpoint are synchronized, so all buses on chain paths connecting the buses of
+the bold nodes in \ref{fig:treepr} are synchronized. By repeating this
+discussion, it is demonstrated that all buses in the power system tree are
+synchronized.
 \end{proof}
 
 
@@ -2369,7 +2384,8 @@ Repeating this argument, it can be shown that all the bus bars composing the tre
     \subcaption{ }
   \end{minipage}
   \medskip
-  \caption{\textbf{Synchronization of bus bars in a power grid with a tree structure}}
+  \caption{\centering\textbf{Synchronization of bus bars in a power grid with a
+  tree structure}}
   \label{fig:treepr}
   }
 \medskip
@@ -2381,19 +2397,25 @@ Repeating this argument, it can be shown that all the bus bars composing the tre
 %\label{fig:treepr}
 %\medskip
 %\end{figure}
-There is no limit to the degree of bus bars in a power grid with a tree structure shown in Theorem \ref{thm:tree}.
-As such, even if a bus bar with degree of four or higher is included in the power grid, synchronization of all bus bars could be deduced based only on the information from the graph structure.
-Similarly, the following fact can be shown.
+There is no degree restriction on the buses in the power grid with a tree
+structure, as stated in Theorem \ref{thm:tree}. Thus, even if there are buses
+with degree 4 or higher in the power grid, it is sometimes possible to deduce
+the synchronization of all buses using only the graph structure information.
+Similarly, the following theorem can be proven:
 
-\begin{theorem}[Synchronization of bus bars in a power grid with a ring structure]
+\begin{theorem}[Synchronization of Buses in a Ring-Structured Power Grid]
 \label{thm:circ}
-With simultaneous equations of Equation \ref{eq:PQVgen}, let us consider an electrical power system model where a group of equipment is connected.
-When the graph of a power grid has a ring structure, and the total number of bus bars is odd, all bus bars synchronize under a steady power flow distribution.
+Consider a power system model in which a group of devices is connected by a
+system of power transmission lines described by the set of equations in
+\ref{eq:PQVgen}. If the power grid has a circular structure and the total
+number of buses is odd, then all buses will be synchronized in the steady-state
+power flow.
 \end{theorem}
 
 \begin{proof}
-Focusing on one bus bar shows the synchronization of the bus bars at both ends of it.
-By repeating this process, synchronization of all bus bars is shown when the total number of bus bars is odd.
+If we focus on one bus, the synchronization of the two buses at each end of it
+is shown. By repeating this process, the synchronization of all buses is shown
+when the total number of buses is odd.
 \end{proof}
 
 %\begin{figure}[t]
@@ -2421,11 +2443,16 @@ By repeating this process, synchronization of all bus bars is shown when the tot
 %\medskip
 %\end{figure}
 
-Theorem \ref{thm:circ} indicates that, in a power grid with a ring structure, if the total number of bus bars is odd, regardless of the admittance of each power grid, all bus bars synchronize.
-On the other hand, if the total number of bus bars is even, unless using additional information, such as admittance of transmission lines, synchronization of all bus bars cannot be concluded even for a power grid with a ring structure.
-In the Example \ref{ex:symbox} discussed later, even if the total number of bus bars is even, as long as there is some information such as admittance, all bus bars can be synchronized. 
+Theorem \ref{thm:circ} demonstrates that for a circular structured power grid
+with an odd number of transmission lines, all the main lines will synchronize
+regardless of the admittance values of the power grid. On the other hand, for an
+even number of transmission lines, it is not possible to conclude the
+synchronization of all the main lines for a circular structured power grid
+without additional information such as admittance values.
 
-The next example is an application of Lemma \ref{lem:sumc2} to a power grid that includes a bus bar with degree of three.
+The following example demonstrates that even when the number of transmission
+lines is even, the synchronization of all main lines can be inferred with only
+some information about the admittance values.
 
 %次数3の母線を含む送電網にlemma\ref{lem:sumc2}を適用したexampleとしてつぎを示す。
 
@@ -2446,125 +2473,169 @@ The next example is an application of Lemma \ref{lem:sumc2} to a power grid that
 \centering
 \includegraphics[width = .20\linewidth]{figs/4busbox}
 \medskip
-\caption{\textbf{円環構造をもつ送電網における4母線の同期}}
+\caption{\centering\textbf{Synchronization of four busbars in a ring-structured
+transmission network}}
 \label{fig:4busbox}
 \medskip
 \end{figure}
 
-\begin{example}[Synchronization of four bus bars in a power grid with a ring structure]\label{ex:symbox}
-Let us consider synchronization of bus bars under a steady power flow distribution in a power grid with a ring structure shown in Figure \ref{fig:4busbox}.
-Since the number of bus bars is even, synchronization of bus bars cannot be shown using only the information of the graph structure as in Theorem \ref{thm:circ}.
-However, as it is shown with red and blue in Figure \ref{fig:4busbox}, synchronization of alternating bus bars is shown by Lemma \ref{lem:sumc2}.
-Therefore, for all bus bars to show synchronization, all that is necessary is to show that one of the conditions of Equation \ref{eq:N2sing} is not satisfied for at least one bus bar.
+\begin{example}[Synchronization of four bus bars in a power grid\\ with a ring
+structure]\label{ex:symbox}
+Let us consider synchronization of bus bars under a steady power flow
+distribution in a power grid with a ring structure shown in Figure
+\ref{fig:4busbox}. Since the number of bus bars is even, synchronization of bus
+bars cannot be shown using only the information of the graph structure as in
+Theorem \ref{thm:circ}. However, as it is shown with red and blue in Figure
+\ref{fig:4busbox}, synchronization of alternating bus bars is shown by Lemma
+\ref{lem:sumc2}. Therefore, for all bus bars to show synchronization, all that
+is necessary is to show that one of the conditions of Equation \ref{eq:N2sing}
+is not satisfied for at least one bus bar.
 
-The admittance of the transmission line that connects bus bar $i$ and bus bar $j$ is expressed as $\bm{y}_{ij}$.
-At this point, the center condition of Equation \ref{eq:N2sing} for each bus bar can be rewritten as:
-\begin{align*}
-|\bm{V}_2^{\star}||\bm{y}_{12}|&=|\bm{V}_4^{\star}||\bm{y}_{14}|
-,\qquad
-|\bm{V}_1^{\star}||\bm{y}_{12}|=|\bm{V}_3^{\star}||\bm{y}_{23}|,
-\\
-|\bm{V}_2^{\star}||\bm{y}_{23}|&=|\bm{V}_4^{\star}||\bm{y}_{34}|
-,\qquad
-|\bm{V}_3^{\star}||\bm{y}_{34}|=|\bm{V}_1^{\star}||\bm{y}_{14}|
-\end{align*}
+Let $\bm{y}_{ij}$ denote the admittance of the transmission line connecting bus
+$i$ and bus $j$. Then, the central condition in Equation \ref{eq:N2sing} for
+each bus can be expressed as follows:
 
-If we express this as a matrix:
+\begin{equation}
+  \begin{align}
+    |\bm{V}_2^{\star}||\bm{y}_{12}|&=|\bm{V}_4^{\star}||\bm{y}_{14}|
+    ,\qquad
+    |\bm{V}_1^{\star}||\bm{y}_{12}|=|\bm{V}_3^{\star}||\bm{y}_{23}|,
+    \\
+    |\bm{V}_2^{\star}||\bm{y}_{23}|&=|\bm{V}_4^{\star}||\bm{y}_{34}|
+    ,\qquad
+    |\bm{V}_3^{\star}||\bm{y}_{34}|=|\bm{V}_1^{\star}||\bm{y}_{14}|
+  \end{align}
+\end{equation}
 
-\begin{align*}
-\underbrace{
-\mat{
-0 & |\bm{y}_{12}| &  0  & -|\bm{y}_{14}|\\
--|\bm{y}_{12}| & 0 & |\bm{y}_{23}| & 0\\
-0 & -|\bm{y}_{23}| & 0 & |\bm{y}_{34}|\\
-|\bm{y}_{14}| & 0 & -|\bm{y}_{34}| & 0
-}}_{S}
-\mat{
-|\bm{V}_1^{\star}|\\
-|\bm{V}_2^{\star}|\\
-|\bm{V}_3^{\star}|\\
-|\bm{V}_4^{\star}|
-}=0
-\end{align*}
+Expressing this in matrix form, we have:
 
-For conditions necessary for a positive vector that satisfy this Equation $(|\bm{V}_1^{\star}|,\ldots,|\bm{V}_4^{\star}|)$ to exist, $S$ on the left side must be nonsingular.
-Because of the sparse structure of the column vector, for $S$ to be non-regular; the following must be true:
+\begin{equation*}
+  \begin{align}
+    \underbrace{
+    \mat{
+    0 & |\bm{y}_{12}| &  0  & -|\bm{y}_{14}|\\
+    -|\bm{y}_{12}| & 0 & |\bm{y}_{23}| & 0\\
+    0 & -|\bm{y}_{23}| & 0 & |\bm{y}_{34}|\\
+    |\bm{y}_{14}| & 0 & -|\bm{y}_{34}| & 0
+    }}_{S}
+    \mat{
+    |\bm{V}_1^{\star}|\\
+    |\bm{V}_2^{\star}|\\
+    |\bm{V}_3^{\star}|\\
+    |\bm{V}_4^{\star}|
+    }=0
+  \end{align}
+\end{equation*}
+A necessary condition for the existence of a positive vector
+$(|\bm{V}_1^{\star}|,\ldots,|\bm{V}_4^{\star}|)$ that satisfies this equation is
+that the matrix $S$ on the left-hand side is not invertible. However, note that
+even if $S$ is singular, it does not necessarily mean that there exists a
+positive vector that is its nullspace. From the sparse structure of the column
+vectors, it can be seen that $S$ is non-invertible if and only if:
 
-\begin{align}\label{eq:ycond}
-|\bm{y}_{12}||\bm{y}_{34}| = |\bm{y}_{14}||\bm{y}_{23}|
-\end{align}
+\begin{equation}\label{eq:ycond}
+  |\bm{y}_{12}||\bm{y}_{34}| = |\bm{y}_{14}||\bm{y}_{23}|
+\end{equation}
 
-Therefore, unless the admittance matrix satisfies these conditions, all bus bars synchronize.
-If Equation \ref{eq:ycond} is satisfied, the absolute value of the desired voltage phasor can be determined; thus, the condition necessary for $(|\bm{V}_1^{\star}|,\ldots,|\bm{V}_4^{\star}|)$ that satisfies the central condition of Equation \ref{eq:N2sing} to exist is the Equation \ref{eq:ycond}.
+Therefore, all buses are synchronized unless the admittance matrix satisfies
+this condition. It is also shown that if Equation \ref{eq:ycond} holds, then a
+necessary and sufficient condition for the existence of a positive vector that
+satisfies the central condition in Equation \ref{eq:N2sing}  is Equation
+\ref{eq:ycond}.
 
-Next, the condition of the right side of Equation \ref{eq:N2sing} can be written as below if we focus on bus bar 1 and bus bar 3:
-\begin{align*}
-|\phi_2 - \phi_4 + \angle \bm{y}_{12} - \angle \bm{y}_{14}|=\pi
-,\qquad
-|\phi_2 - \phi_4 + \angle \bm{y}_{23} - \angle \bm{y}_{34}|=\pi
-\end{align*}
+Next, let us consider the right-hand side conditions in Equation \ref{eq:N2sing}
+for buses 1 and 3:
 
-Similarly, if we focus on bus bar 2 and bus bar 4, the following can be obtained:
+\begin{equation*}
+  |\phi_2 - \phi_4 + \angle \bm{y}_{12} - \angle \bm{y}_{14}|=\pi
+  ,\qquad
+  |\phi_2 - \phi_4 + \angle \bm{y}_{23} - \angle \bm{y}_{34}|=\pi
+\end{equation*}
 
-\begin{align*}
-|\phi_1 - \phi_3 + \angle \bm{y}_{12} - \angle \bm{y}_{23}|=\pi
-,\qquad
-|\phi_1 - \phi_3 + \angle \bm{y}_{14} - \angle \bm{y}_{34}|=\pi
-\end{align*}
+Similarly, if we focus on bus bar 2 and bus bar 4, we obtain the following
+equations:
 
-Generally, when capacitance to ground is sufficiently small, the real part of admittance, the conductance component, was non-negative, while the imaginary part, the susceptance component, was negative.
-In other words:
+\begin{equation*}
+  |\phi_1 - \phi_3 + \angle \bm{y}_{12} - \angle \bm{y}_{23}|=\pi
+  ,\qquad
+  |\phi_1 - \phi_3 + \angle \bm{y}_{14} - \angle \bm{y}_{34}|=\pi
+\end{equation*}
+
+In general, when the ground capacitance is sufficiently small, the real part of
+the admittance, which is the conductance component, is non-negative, and the
+imaginary part, which is the susceptance component, is negative. In other words
 
 \[
-\angle \bm{y}_{ij} \in \left[-\frac{\pi}{2},0 \right]
+  \angle \bm{y}_{ij} \in \left[-\frac{\pi}{2},0 \right]
 \]
 
-If we focus on this, the condition necessary for $(\phi_1,\ldots,\phi_4)$ that satisfies the above conditions to exist is derived as:
+Note that if we satisfy the above conditions, then the necessary and sufficient
+condition for the existence of $(\phi_1,\ldots,\phi_4)$ that satisfy the above
+conditions is:
 
-\begin{align}\label{eq:ycona}
-\angle \bm{y}_{12} - \angle \bm{y}_{14}=
-\angle \bm{y}_{23} - \angle \bm{y}_{34}
-\end{align}
-Therefore, as long as the admittance matrix does not satisfy this condition, all bus bars synchronize.
+\begin{equation}\label{eq:ycona}
+  \angle \bm{y}_{12} - \angle \bm{y}_{14}=
+  \angle \bm{y}_{23} - \angle \bm{y}_{34}
+\end{equation}
 
-The above discussion shows that the conditions necessary for at least one set of bus bars that do not synchronize under a steady power flow distribution to exist are Equation \ref{eq:ycond} and Equation \ref{eq:ycona}.
-These two conditions indicate that only when the power grid of Figure \ref{fig:4busbox} has specific symmetry related to the admittance value, a condition arises where only alternating bus bars synchronize.
+Therefore, unless the admittance matrix satisfies this condition, all busbars
+will synchronize.
+
+From the above discussion, it can be seen that the necessary and sufficient
+conditions for the existence of one or more sets of unsynchronized busbars in
+steady-state power flow are given by Equations \ref{eq:ycond} and
+\ref{eq:ycona}. These two conditions suggest that only the opposite busbars will
+synchronize with each other when the power transmission network shown in Figure
+\ref{fig:4busbox} has a specific symmetry with respect to the values of
+admittance.
 \end{example}
 
-The Example \ref{ex:symbox} shows that the condition of Equation \ref{eq:N2sing} presents specific symmetry related to the admittance of the power grid.
-In a practical application, all bus bars synchronizing under a steady power flow distribution for a sparse grid where each bus has a low degree is a universal fact as long as there is no specific symmetry in the graph structure.
-Actually, as far as the author is aware, synchronization of all bus bars under a steady power flow distribution has been numerically confirmed for all parameters of the electric power system model that are set to realistic values. 
+From Example \ref{ex:symbox}, it can be seen that the condition given by
+Equation \ref{eq:N2sing} represents a specific symmetry with respect to the
+values of admittance in the power transmission network. In practical
+applications, it is a universal fact that all busbars will synchronize in
+steady-state power flow for sparse transmission networks with low degree of each
+busbar, unless there is a specific symmetry in the graph structure. In fact, to
+the best of the authors' knowledge, it has been numerically verified that all
+busbars synchronize in steady-state power flow for any power system model
+parameters set to realistic values.
 
+\section{Implementation of Power Flow Calculation}\label{sec:powfcal}
 
-\section{Method to implement the power flow calculation}\label{sec:powfcal}
-\red{Translated with DeepL}
-We consider building a numerical simulation environment for power system analysis and control.
-In order to correctly implement numerical simulation of a large and complex power system model, object-oriented thinking and programming techniques that describe the model as a group of modules divided by function are useful.
-In this section, we describe an implementation method for tidal current calculation based on this way of thinking.
+Let us consider building a numerical simulation environment for analyzing and
+controlling power systems. In order to correctly perform numerical simulations
+of large and complex power system models, it is useful to employ object-oriented
+thinking and programming techniques, which allow us to describe them as a group
+of modules separated by their functions. In this section, we introduce an
+implementation method of power flow calculation using Matlab, based on this
+approach. For basic syntax of Matlab, please refer to \cite{Kamisaka2011} or
+\cite{Kitamura2016}. For object-oriented programming with Matlab, please refer
+to \cite{Kobayashi2020}, and for general principles of object-oriented
+programming, please refer to \cite{Hirasawa2021} or \cite{Sandi_Metz2016}.
 
-
-\subsection{How to solve algebraic equations}
-For the power flow calculation, simultaneous equations of Equation \ref{eq:ohmY2} must be solved.
-In this Section, we will first use a simple problem to show a method to search the solution of algebraic equations with \matlab.
+\subsection{Solving Algebraic Equations}
+In order to perform power flow calculation, it is necessary to solve the
+algebraic equations in equation \ref{eq:PQVgenst}. In this section, we will show
+how to use \matlab to explore the solutions of algebraic equations using a simple
+example.
 
 \begin{example}[Searching for a solution for algebraic equations]\label{ex:algenraic_equation_ex1}
-Let us consider a set of $(x, y)$ that satisfies algebraic equations through numerical calculation: 
+Consider the following set of algebraic equations:
 \begin{subequations}\label{eq:algebraic_equation_ex1}
 \begin{align}
-x^2 - y = 0\\
-x^2 + y^2 - 2 = 0
+x^2 - y &= 0\
+x^2 + y^2 - 2 &= 0
 \end{align}
 \end{subequations}
-Please note that there are two solutions: $(-1, 1)$ and $(1, 1)$. \verb|fsolve| of \verb|optimization toolbox| is a convenient command that solves algebraic equations in \matlab.
-To use this command, function $f(x,y)$ must be implemented, where algebraic equations of Equation (\ref{eq:algebraic_equation_ex1}) are expressed as follows:
-\[
-f(x,y)=0
-\]
-When this function is implemented with a file name of \verb|func_ex1.m|, it is called program \nobreak\ref{program:ex1}.
+We want to find the values of $(x, y)$ that satisfy these equations using
+numerical computations. Note that the solutions are $(x, y) = (-1, 1)$ and $(1,
+1)$. \matlab provides a convenient command for solving algebraic equations
+called \verb|fsolve| from the \verb|optimization toolbox|. To use this command,
+we need to implement a function $f(x, y)$ such that the algebraic equations in
+Equation \ref{eq:algebraic_equation_ex1} can be written in the form $f(x, y) =
+0$.  We implement the function $f(x, y)$ in Program \ref{program:ex1}.
 
-\smallskip
-\begin{PROGRAMA}[count,title={func\_ex1.m}]\label{program:ex1}
-\begin{verbatim}
+\begin{lstlisting}[language=Matlab, caption=func\_ex1.m, label={program:ex1}]
 function out = func_ex1(x_in)
 
 x = x_in(1);
@@ -2575,45 +2646,51 @@ out(1) = x^2 - y;
 out(2) = x^2 + y^2 - 2;
 
 end
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-Next, if a program is written to execute \verb|fsolve| using this function and search for a solution for algebraic equations, it becomes program \nobreak\ref{program:ex1_main}:
-\smallskip
-\begin{PROGRAMA}[count,title={main\_ex1.m}]\label{program:ex1_main}
-\begin{verbatim}
+Next, using this function, we will write a program to explore the solution of
+the algebraic equation by executing \verb|fsolve|. The program for this is
+shown in Program \ref{program:ex1_main}.
+
+\begin{lstlisting}[language=Matlab, caption=main\_ex1.m, label={program:ex1_main}]
 options = optimoptions('fsolve', 'Display', 'iter');
 x0 = [0.1; 0.5];
 x_sol = fsolve(@func_ex1, x0, options)
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-Here \verb|options| in the first row sets the optimum option that converges $f(x,y)$ to 0.
-With this example, the optimization process is shown. \verb|x0 = [0.1; 0.5];| in the second row shows the initial value at the time of optimization with convergence calculation.
-When we execute this program, the following result is obtained:
+Here, the first line's \verb|options| sets the options to be given to
+\verb|fsolve| to solve the algebraic equation, and in this example, the
+optimization process is displayed. Also, the second line \verb|x0 = [0.1; 0.5];|
+represents the initial values for numerically searching for solutions.  When
+this program is executed, the following results are obtained.
 
 \smallskip
 \begin{execution}
 \begin{verbatim}
-  Iteration  Func-count     f(x)     （省略）
+  Iteration  Func-count     f(x)    (Omitted) 
       0          3          3.2677
       1          6        0.282554
-（省略）
+(Omitted)
       4         15     3.60447e-14
 
-  方程式が解かれました。
-（省略）
+The equation is solved
+(Omitted)
   x_sol =
       1.0000
       1.0000
 \end{verbatim}
 \end{execution}
 
-Based on this result, with repetitions, the value of $f(x)$ becomes small, and ultimately, a solution is found where $f(x)$ becomes almost 0.
-The solution sought here is $(1, 1)$. This value is an actual solution to algebraic equations, but in a numerical solution that uses \verb|fsolve|, not all solutions are obtained, as only one solution is obtained.
+From this result, it can be seen that as the iteration progresses, the value of
+$f(x)$ decreases, and a solution is found where $f(x)$ is almost 0. The solution
+found through this search is $(1, 1)$, which is indeed a solution to the
+algebraic equation. However, it should be noted that numerical solution methods
+using \verb|fsolve| do not always find all the solutions, and only one of the
+solutions may be obtained.
 
-Next, let us look at a situation where another solution is obtained.
-The next result is obtained when the second row of the program \nobreak\ref{program:ex1_main} is changed to \verb|x0 = [-0.1; 0.5];|.
+Next, let's show the case where the other solution is obtained. When the second
+line of Program \nobreak\ref{program:ex1_main} is changed to \verb|x0 = [-0.1;0.5];|
+and executed, the following result is obtained.
 
 \smallskip
 \begin{execution}
@@ -2621,11 +2698,11 @@ The next result is obtained when the second row of the program \nobreak\ref{prog
  Iteration  Func-count     f(x)   
      0          3          3.2677
      1          6        0.282554
-（省略）
+(Omitted)
      4         15     3.60447e-14
 
-方程式が解かれました。
-（省略）
+The equation has been solved.
+(Omitted)
 x_sol =
 
    -1.0000
@@ -2633,21 +2710,23 @@ x_sol =
 \end{verbatim}
 \end{execution}
 
-We can see that the solution $(-1, 1)$ is obtained.
-As such, with the numerical solution of non-linear algebraic equations, the solution varies based on the initial value.
-As a reference, let us look at the result of executing the program \nobreak\ref{program:ex1_main} with the initial value in the second row set as \verb|x0 = [-0.1; -0.1];|:
+In this execution result, the solution $(-1, 1)$ is obtained. In numerical
+solution methods for nonlinear algebraic equations, it is important to note that
+different solutions can be obtained depending on the initial values. As a
+reference, let's check the execution result when the initial values set in the
+second line of \nobreak\ref{program:ex1_main} are set as \verb|x0 = [-0.1; -0.1]|:
 
 \smallskip
 \begin{execution}
     \begin{verbatim}
-  Iteration  Func-count     f(x)     （省略）
+  Iteration  Func-count     f(x)    (Omitted) 
      0          3          2.8125
      1          6         1.89068
-（省略）
+(Omitted)
     29         62            1.75
 
-解が見つかりませんでした。
-（省略）
+No solution found.
+(Omitted)
 x_sol =
 
     0.0000
@@ -2655,19 +2734,28 @@ x_sol =
 \end{verbatim}
 \end{execution}
 
-As you can see with this Example, based on the initial value, even equations with solutions might not yield correct solutions.
-For practice, it is important to provide initial values that are close to the desired solution.
+As seen in this example, depending on the initial values given, even for
+equations with solutions, correct solutions may not be obtained. In practice, it
+is important to provide initial values close to the desired solution.
 \end{example}
 
-\subsection{Simple implementation of the power flow calculation}
+\subsection{Simple implementation of power flow calculation}
 
-Next, let us introduce a simple method to implement a program that performs power flow calculations.
+Next, we will introduce a simple implementation method for power flow
+calculation.
 
-\begin{example}[Implementation method of power flow calculations]\label{ex:simplepowerflow}
-Let us think about performing power flow calculations for the power system in Figure \ref{dummy}.
-Power flow calculation is a type of calculation to solve algebraic equations. Thus, as in the Example \nobreak\ref{ex:algenraic_equation_ex1}, $f(x)$ of $f(x)=0$ must be implemented.
+\begin{example}[Implementation method for power flow
+calculations]\label{ex:simplepowerflow}
+Consider performing power flow calculations on the power system model consisting
+of 3 buses in Example \ref{ex:pf3bus}. Since power flow calculation is also a
+type of calculation that solves algebraic equations, it is necessary to
+implement the $f(x)$ part of $f(x)=0$ as in Example
+\ref{ex:algenraic_equation_ex1}.
 
-Let us think about obtaining the steady power flow distribution that is consistent with the datasheet of \ref{table:pflow2}(a) when setting the admittance of two transmission lines to the value of Equation \ref{eq:rightlossless}. 
+If the admittance values of the two transmission lines are set to the values in
+Equation \ref{eq:rightlossless}, the steady-state power flow state that is
+consistent with the data sheet in \ref{table:pflow2}(a) is as follows.
+
 %\[
 %\bigl(
 %|\bm{I}_1^{\star}|,\angle \bm{I}_1^{\star},
@@ -2697,31 +2785,34 @@ Let us think about obtaining the steady power flow distribution that is consiste
 %        \hline
 %      \end{tabular}
 %\end{table}
-When the admittance matrix $\bm Y$ is provided, current is determined uniquely dependent on voltage; thus, power flow calculation becomes a practical step by which to determine a set of voltages.
-As such, variables $x$ in algebraic equations just need to be the voltage phasor of bus bars under a steady state.
-Here, we express the real and imaginary parts of the voltage phasor of all bus bars in a line as $x$.
+Given the admittance matrix $\bm Y$, the current is uniquely determined by the
+voltage, so the power flow calculation is essentially a process of determining
+the set of voltages for the buses. Therefore, we can take the real and imaginary
+parts of the voltage phasors for all buses and arrange them as variables $x$ in
+the algebraic equations. \footnote{It is also possible to take the magnitude and
+phase angle of the voltage phasors as $x$.} In this case, the voltage phasors,
+current phasors, active and reactive power for each bus are all functions of
+$x$. Denoting them as $\hat{\bm V}_i(x)$, $\hat{\bm I}_i(x)$, $\hat{P}_i(x)$,
+and $\hat{Q}_i(x)$, respectively, the algebraic equations to be solved are given
+by:
 
-\footnote{It is the same when expressing the absolute value and argument of the voltage phasor as $x$}。
-As discussed above, the voltage phasor and current phasor of each bus bar can be expressed as a function of $x$.
-Similarly, the active power and reactive power of each bus bar also become a function of $x$.
-If these are expressed as $\hat{\bm V}_i(x)$, $\hat{\bm I}_i(x)$, $\hat{P}_i(x)$, and $\hat{Q}_i(x)$, algebraic equations to be solved are:
-\begin{align*}
+\begin{equation*}
+  \begin{aligned}
     |\bm V_1^{\star}|-|\hat{\bm V}_1(x)| &= 0\\
     \angle \bm V_1^{\star} - \angle \hat{\bm V}_1(x) &= 0\\
     P_2^{\star} -\hat P_2(x) &= 0\\
     Q_2^{\star} -\hat Q_2(x) &= 0\\
     P_3^{\star} -\hat P_3(x) &= 0\\
     |\bm V_3^{\star}|-|\hat{\bm V}_3(x)| &= 0
- \end{align*}
- If we implement the functions on the left side, it becomes a program \nobreak\ref{program:ex2}.
+  \end{aligned}
+\end{equation*}
 
- Though this function has five output arguments, with \texttt{fsolve}, only the first output argument is used.
- The remaining arguments were added to confirm the result.
+If we implement the functions on the left side, it becomes a program \nobreak\ref{program:ex2}.
 
+Though this function has five output arguments, with \texttt{fsolve}, only the first output argument is used.
+The remaining arguments were added to confirm the result.
 
-\smallskip
-\begin{PROGRAMA}[count, title={func\_ex2.m}]\label{program:ex2}
-\begin{verbatim}
+\begin{lstlisting}[language=Matlab, caption=func\_ex2.m, label={program:ex2}]
 function [out, Vhat, Ihat, Phat, Qhat] = func_ex2(x)
 % x: [Real(V1), Imag(V1),
 %     Real(V2), Imag(V2),
@@ -2757,22 +2848,24 @@ out = [V1abs-abs(V1hat); V1angle-angle(V1hat);
     P2-Phat(2); Q2-Qhat(2);
     P3-Phat(3); V3abs-abs(V3hat)];
 end
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-As discussed in the Example \nobreak\ref{ex:algenraic_equation_ex1}, if searching the solution of algebraic equations with convergence calculation, setting of the initial value is important.
-An initial value often used by the power flow calculation is \textbf{flat start}. With flat start, for all bus bars, the initial value of $x$ is set as:
+As mentioned in Example \ref{ex:algenraic_equation_ex1}, when numerically
+searching for solutions to algebraic equations, the choice of initial values is
+important. In power flow calculations, an initial value called the \textbf{flat
+start} is often used. In the flat start, the initial value of $x$ is set by
+
 \[
-|\hat{\bm V}_i(x)|=1
-,\qquad
-\angle \bm V_i(x) = 0
+  |\hat{\bm V}_i(x)|=1
+  ,\qquad
+  \angle \bm V_i(x) = 0
 \]
-This corresponds to setting the real and imaginary parts of $\bm V_i$ of 1 and 0, respectively.
-The program is as follows:
 
-\smallskip
-\begin{PROGRAMA}[count,title={main\_ex2.m}]\label{program:ex2_main}
-\begin{verbatim}
+for all buses. This corresponds to setting the real and imaginary parts of $\bm
+V_i$ to 1 and 0, respectively. The specific program for the flat start is as
+follows.
+
+\begin{lstlisting}[language=Matlab, caption=main\_ex2.m, label={program:ex2_main}]
 x0 = [1; 0; 1; 0; 1; 0];
 options = optimoptions('fsolve', 'Display', 'iter');
 x_sol = fsolve(@func_ex2, x0, options);
@@ -2784,23 +2877,27 @@ display('Vabs:'), display(Vabs')
 display('Vangle:'), display(Vangle')
 display('P:'), display(P')
 display('Q:'), display(Q')
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-The initial value is set in the first row. The result of executing the program \nobreak\ref{program:ex2_main} is shown.
-This result is consistent with the values shown in \ref{table:pflow2}(b).
+The initial value for the flat start is set in the first line of Program
+\ref{program:ex2_main}. Then, on the fifth line, the voltage phasors, current
+phasors, active power, and reactive power are calculated using the solution of
+the algebraic equation. Finally, on the sixth line and below, the absolute
+value, phase angle, active power, and reactive power of the voltage phasors are
+displayed. The result of running Program \ref{program:ex2_main} is shown. Note
+that this result matches the values shown in Table \ref{table:pflow2}(b).
 
 \smallskip
 \begin{execution}
 \begin{verbatim}
- Iteration  Func-count     f(x)     （略）
+ Iteration  Func-count     f(x)     (Omitted)
      0          7           11.25 
      1         14         3.28327 
-（省略）
+(Omitted)
      5         42     4.19428e-28
 
-方程式が解かれました。
-（省略）
+The equation has been solved.
+(Omitted)
 Vabs:
     2.0000    1.9918    2.0000
 
@@ -2824,37 +2921,40 @@ Q:
 % % \verb{main_ex2.m}のファイルにパラメータを記述したくなることがある。
 % % グローバル変数はあかん。
 % \end{COLUMN}
-\subsection{Implementation method of the power flow calculation that considers increased scale}
-In the previous section, we discussed the implementation method of the power flow calculation.
-With this implementation, each time the admittance matrix is changed, the function related to the program \ref{program:ex2} must be rewritten.
-Furthermore, when the number or type of bus bars are changed, the entire program must be rewritten.
-In this Section, we consider dividing the program into modules so that power flow calculations can be performed for a large-scale electrical power system and the program can be shared and implemented by multiple people.
-In this manner, the program becomes structured and clear.
-First, let us think about separating the implementation of the admittance matrix of the program \nobreak\ref{program:ex2}.
+\subsection{Implementation of Power Flow Calculation using Separated Modules}
 
-First, let us think about separating the implementation of the admittance matrix of the program \nobreak\ref{program:ex2}.
+In the previous section, a simple implementation of power flow calculation was
+described. However, in this implementation, it is necessary to rewrite the
+function corresponding to Program \ref{program:ex2} every time the admittance
+matrix is changed. Also, if the number or type of buses is changed, the entire
+program needs to be rewritten. In this section, to enable power flow calculation
+for large-scale power systems or implementation by multiple people, we consider
+dividing the program into a group of modules. This leads to a well-structured
+implementation.
 
-\begin{example}[Separation of the implementation of the admittance matrix]
-In the program \nobreak\ref{program:ex2}, let us separate the part that specifies the admittance matrix.
-To do this, the function of variables \verb|Y| is used as the input argument.
-For example, the following correction is possible.
+First, let's consider modularizing the implementation of the admittance matrix
+in Program \ref{program:ex2}.
 
-\smallskip
-\begin{PROGRAMA}[count, title={func\_ex3.m}]\label{program:ex3}
-\begin{verbatim}
+\begin{example}[Separation of Implementation of Admittance Matrix]
+Let's separate the part of Program \ref{program:ex2} that specifies the
+admittance matrix. For this purpose, we can make the variable \verb|Y| an input
+argument of the function. For example, a modification like Program
+\ref{program:ex3} can be considered.
+
+\begin{lstlisting}[language=Matlab, caption=function\_ex2.m, label={program:ex3}]
 function [out, Vhat, Ihat, Phat, Qhat] = func_ex3(x, Y)
 (Same as lines 12 through 34 of program 3-3)
 end
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-However, the specification of \verb|fsolve| demands a function that uses the optimizing parameter as the only argument; thus, the program \ref{program:ex3} cannot be used directly.
-This problem can be solved by using a technology called \textbf{currying} for the function.
-Specifically, it is corrected as follows:
+However, since \verb|fsolve| requires a "function with only the parameters to be
+optimized as arguments", the modified program \ref{program:ex3} cannot be used
+directly. This problem can be solved by using a technique called
+\textbf{currying}\index{currying} of functions. Specifically, program
+\ref{program:ex3} can be modified as follows.
 
-\smallskip
-\begin{PROGRAMA}[count,title={main\_ex3.m}]\label{program:ex3_main}
-\begin{verbatim}
+
+\begin{lstlisting}[language=Matlab, caption=main\_ex3.m, label={program:ex3_main}]
 x0 = [1; 0; 1; 0; 1; 0];
 options = optimoptions('fsolve', 'Display', 'iter');
 
@@ -2868,31 +2968,34 @@ func_curried = @(x) func_ex3(x, Y);
 
 x_sol = fsolve(func_curried, x0, options);
 [~, V, I, P, Q] = func_curried(x_sol);
-（プログラム3-4の6行目以下と同じ）
-\end{verbatim}
-\end{PROGRAMA}
+(Same as line 6 and below in program 3-4)
+\end{lstlisting}
 
-\red{Translated with www.DeepL.com/Translator (free version)}
-The "\verb|@(x) expression of x|" used creates "a function that returns an expression of \verb|x| for the argument \verb|x|".
-In this way, a function that is generated without writing the function name is called \textbf{anonymous function}.
-In this case, the variable \verb|Y|, which is not included in the argument of the anonymous function, is always a constant that exists in the workspace.
-This allows us to generate a new function that retains only the first argument,\verb|x|, of the two input arguments,\verb|x| and \verb|Y|, of the function \verb|func_ex3(x, Y)|.
-
-
-\red{Translated with www.DeepL.com/Translator (free version)}
-Thus, culling is the creation of a new function in which the variables given to some of the multiple arguments are fixed and only the remaining variables are used as arguments.
-Using this technique, a function with an arbitrary number of arguments can be used as a function with the required number of arguments.
-This allows separation of functions without the use of global variables.
+The "\verb|@(x) expression of x|" used creates a function that returns the value
+of the expression with argument \verb|x|. This type of function that is created
+without a name is called an \textbf{anonymous function}. When an anonymous
+function contains variables that are not included in its arguments, such as
+\verb|Y| in this case, it uses a constant from the workspace. Therefore, it is
+possible to generate a new function by fixing some of the variables among
+multiple arguments and leaving only the remaining variables as arguments. This
+technique is called currying. Using currying, a function that takes any number
+of arguments can be used as a function with a specified number of arguments.
+This allows for the separation of functionality without using global variables.
 
 \end{example}
 
-\red{Translated with DeepL}
-Next, consider the part of the program\nobreak\ref{program:ex2} that calculates the constraint conditions at each bus bar.
-In the program\nobreak\ref{program:ex2}, the constraint conditions for each bus bar are written down directly, so the program needs to be rewritten each time the number of bus bars is changed.
-In addition, the case classification by the type of bus bar is implicitly included, which means that the case classification process needs to be modified when the number of bus bars is increased.
+Next, let us consider the part of the program \ref{program:ex2} that calculates
+the constraint conditions for each busbar. In the program \ref{program:ex2}, the
+constraint conditions for each busbar are directly written, so it is necessary
+to rewrite the program every time the number of busbars is changed. Furthermore,
+there is an implicit case distinction depending on the type of busbar, and if
+the types of busbars are increased, it is necessary to modify the processing of
+the case distinction.
 
-In order to write a program with good visibility without using case separation, it is recommended to use the object-oriented concept of \textbf{polymorphism}.
-In the following examples, the idea of polymorphism will be explained through implementation examples.
+To write a transparent program without using case distinctions, it is useful to
+use the concept of \textbf{polymorphism} in object-oriented programming. In the
+following example, we explain the concept of polymorphism through an
+implementation example.
 
 \begin{example}[Separation of bus bar implementation]
 In the power flow calculation, different constraints are set based on different types of bus bars.
