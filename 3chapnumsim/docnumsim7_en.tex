@@ -2997,16 +2997,15 @@ use the concept of \textbf{polymorphism} in object-oriented programming. In the
 following example, we explain the concept of polymorphism through an
 implementation example.
 
-\begin{example}[Separation of bus bar implementation]
-In the power flow calculation, different constraints are set based on different types of bus bars.
-At this time, the bus bar of each type has a commonality of “having constraints”.
-If we implement this common property as a method with a common name, we can create a program that is easy to handle.
-Specifically, the class of bus bars is defined as shown in Program \ref{program:bus_slack} to Program \ref{program:ex4}.
-If we use the instance of these classes, the power flow calculation can be executed as below.
+\begin{example}[Implementation of Power Flow Calculation using Polymorphism]
+In power flow calculation, different constraint conditions are set depending on
+the type of busbar, but all busbars have a common property of "having constraint
+conditions." By implementing this common property as a "method with a common
+name," a simple program can be created. To understand this, let's define
+classes corresponding to slack busbars, generator busbars, and load busbars in
+Program \ref{program:bus_slack} as shown in Program \ref{program:ex4}.
 
-\smallskip
-\begin{PROGRAMA}[count,title={bus\_slack.m}]\label{program:bus_slack}
-\begin{verbatim}
+\begin{lstlisting}[language=Matlab, caption=bus\_slack.m, label={program:bus_slack}]
 classdef bus_slack
   
   properties
@@ -3027,12 +3026,10 @@ classdef bus_slack
     end
   end
 end
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-\smallskip
-\begin{PROGRAMA}[count,title={bus\_genertor.m}]\label{program:bus_PV}
-\begin{verbatim}
+
+\begin{lstlisting}[language=Matlab, caption=bus\_generator.m, label={program:bus_PV}]
 classdef bus_generator
   
   properties
@@ -3052,12 +3049,9 @@ classdef bus_generator
     end
   end
 end
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-\smallskip
-\begin{PROGRAMA}[count,title={bus\_load.m}]\label{program:bus_PQ}
-\begin{verbatim}
+\begin{lstlisting}[language=Matlab, caption=bus\_load.m, label={program:bus_PQ}]
 classdef bus_load
   
   properties
@@ -3076,20 +3070,16 @@ classdef bus_load
     end
   end
 end
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-\smallskip
+The classes defined here, \verb|bus_slack|, \verb|bus_generator|, and
+\verb|bus_load|, all have a method called \verb|get_constraint| with a common
+input and output. In this case, a program that uses these classes can calculate
+the appropriate constraint conditions by calling \verb|get_constraint| without
+being aware of what type of busbar it is. Using this idea, Program
+\ref{program:ex2} can be rewritten as follows.
 
-\red{Translated with DeepL}
-All of the classes defined here, \verb|bus_slack|, \verb|bus_generator|, and \verb|bus_load|, have a method named \verb|get_constraint| with common inputs and outputs.
-In this case, programs using these classes can calculate constraints appropriately by calling \verb|get_constraint| without being aware of which type of bus bar they are.
-If we rewrite the Program \nobreak\ref{program:ex2} using this concept, we obtain the following.
-
-
-\smallskip
-\begin{PROGRAMA}[count, title={func\_power\_flow.m}]\label{program:ex4}%
-\begin{verbatim}
+\begin{lstlisting}[language=Matlab, caption=func\_power\_flow.m, label={program:ex4}]
 function [out, V, I, P, Q] = func_power_flow(x, Y, a_bus)
 
 V = x(1:2:end) + 1j*x(2:2:end);
@@ -3108,16 +3098,13 @@ end
 out = vertcat(out_cell{:});
 
 end
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-\red{Translated with DeepL}
-The program \nobreak\ref{program:ex4} assumes that the cell array, which is the set of mother lines, is input as \verb|a_bus|.
-An example of how to use this function is shown in the program \nobreak\ref{program:ex4_main}.
+The program \nobreak\ref{program:ex4} assumes that the cell array, which is the
+set of mother lines, is input as \verb|a_bus|. An example of how to use this
+function is shown in the program \nobreak\ref{program:ex4_main}.
 
-\smallskip
-\begin{PROGRAMA}[count,title={main\_ex4.m}]\label{program:ex4_main}
-\begin{verbatim}
+\begin{lstlisting}[language=Matlab, caption=main\_ex4.m, label={program:ex4_main}]
 (Same as lines 1-8 in program 3-6)
 
 a_bus = cell(3, 1);
@@ -3130,69 +3117,86 @@ func_curried = @(x) func_power_flow(x, Y, a_bus);
 x_sol = fsolve(func_curried, x0, options);
 
 (Same as Program 3-4, line 6 and following)
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-\red{Translated with DeepL until end of chapter}
-In the program \nobreak\ref{program:ex4_main}, the slack bus bar, load bus bar, and generator bus bar are defined respectively and assigned to the cell array \verb|a_bus|.
-At this time, in the program\nobreak\ref{program:ex4}, \verb|get_constraint| is executed for each bus bar assigned to \verb|a_bus|.
-Since \verb|get_constraint| is implemented for each bus line type, the appropriate processing is performed without having to describe the case.
-Such different processing for similar program calls is called {polymorphism} or {polymorphism}, and is one of the important concepts in object-oriented programming.
+In the program \nobreak\ref{program:ex4_main}, the slack bus bar, load bus bar,
+and generator bus bar are defined respectively and assigned to the cell array
+\verb|a_bus|. At this time, in the program\nobreak\ref{program:ex4},
+\verb|get_constraint| is executed for each bus bar assigned to \verb|a_bus|.
+Since \verb|get_constraint| is implemented for each bus line type, the
+appropriate processing is performed without having to describe the case. Such
+different processing for similar program calls is called {polymorphism}, and is
+one of the important concepts in object-oriented programming.
 
+% \begin{comment}
+% In the implementation of Program \ref{program:ex4_main}, constraint conditions
+% are calculated by calling a method with a common name, \verb|get_constraint|,
+% without being aware of the type of busbar, and the description is simplified.
+% Like this, the property of being able to use the same method name regardless of
+% the type of instance is called \textbf{polymorphism}, and it is one of the
+% important concepts in object-oriented programming.  Using polymorphism, not only
+% can the description be simplified, but it also allows for easier addition of new
+% classes and more efficient maintenance of programs.
+% \end{comment}
 
-\begin{comment}
-In the implementation of the program \nobreak\ref{program:ex4_main}, the constraint is computed by calling a method named \verb|get_constraint| method, which has a common name without being aware of the type of bus bar.
-\red{(called in programs 1-10, not 3-11?). Also, is the backslash before the underscore unnecessary?}.
-The description is simplified.
-This property of being able to use the same method name regardless of the type of instance is called \textbf{polymorphism} or \textbf{polymorphism}, and is one of the important concepts in object-oriented programming.
-Using polymorphism not only simplifies not only simplifies the description, but also
-\end{comment}
+In an implementation using polymorphism like program \ref{program:ex4}, it has
+the advantage of easy adaptability to changes in the number and configuration of
+buses. Specifically, by changing the number and definition of buses in lines 3-6
+of program \ref{program:ex4_main}, program \ref{program:ex4} can be used without
+modification.
 
-An implementation using polymorphism such as Program \nobreak\ref{program:ex4} has the advantage that it is easy to deal with changes in the number or configuration of bus bars.
-That is, the Program \nobreak\ref{program:ex4_main} can be used without modification simply by changing the number and definition of bus bars in lines 3 to 6 of the Program \nobreak\ref{program:ex4_main}.
-
-Furthermore, it is easy to add new types of bus bars.
-The program \nobreak\ref{program:ex4} assumes only that there exists a method named \verb|get_constraint| with appropriate inputs and outputs for the bus bar.
-In other words, if it has a \verb|get_constraint|, it is defined to be a bus bar.
-This is a concept called duck typing, derived from "if it walks like a duck and quacks like a duck, then it is a duck".
-This allows the module designer to define a new class of bus bar and implement only \verb|get_constraint| without paying attention to the internal processing of the program \nobreak\ref{program:ex4}.
-In other words, this clarifies the scope of the implementation to be done by the module designer.
+Moreover, adding new types of buses is also easy. Program \ref{program:ex4}
+assumes only that a method called \verb|get_constraint| with appropriate inputs
+and outputs exists for the bus. In other words, if it has \verb|get_constraint|,
+it is defined as a bus. This is called "duck typing", a concept that comes from
+"if it walks like a duck and quacks like a duck, then it must be a duck." This
+allows module designers to define a new bus class by implementing only
+\verb|get_constraint| without having to pay attention to the internal processing
+of program \ref{program:ex4}. Thus, this approach clarifies the scope of
+implementation for module designers.
 \end{example}
 
-The above has allowed us to prospectively implement a program for calculating the tidal currents given an admittance matrix.
-Furthermore, let us implement the computation of the admittance matrix by dividing it into a group of modules.
+The above has allowed us to prospectively implement a program for calculating
+the tidal currents given an admittance matrix. Furthermore, let us implement the
+computation of the admittance matrix by dividing it into a group of modules.
 
-\begin{example}[Object-oriented computation of admittance matrices]
-An admittance matrix is generally defined by several transmission lines.
-Therefore, we consider creating a class that represents a transmission line and using a set of instances of the class.
-Since a transmission line connects two bus bars, the numbers of those bus bars need to be specified.
-In addition, in general, regardless of the type of transmission line model
-\begin{align}
-\mat{
-\bm I_\mathrm{from}\\\bm I_\mathrm{to}
-} =
-\bm Y_\mathrm{branch}
-\mat{
-\bm V_\mathrm{from}\\\bm V_\mathrm{to}
-}
-\end{align}
+\begin{example}[Calculation of Admittance Matrix using Object-oriented Programming]
 
-The admittance matrix $\bm Y_\mathrm{branch}$ is determined satisfying where $\bm V_\mathrm{from}$ and $\bm V_\mathrm{to}$ are the voltages at the bus bars at both ends of the transmission line and $\bm I_\mathrm{from}$ and $\bm I_\mathrm{to}$ are the currents entering the transmission line from the bus bars at both ends.
-For example, for the simple transmission line treated in the example\ref{ex:derY}
+The admittance matrix is generally defined by multiple power transmission lines.
+Therefore, we create a class that represents a power transmission line and
+consider using a collection of its instances. A power transmission line connects
+two busbars, so it is necessary to identify the numbers of these busbars.
+Additionally, regardless of the type of power transmission line model, the
+admittance matrix $\bm Y_\mathrm{branch}$ satisfying
+
+\begin{equation}
+  \mat{
+    \bm I_\mathrm{from}\\\bm I_\mathrm{to}
+  } =
+  \bm Y_\mathrm{branch}
+  \mat{
+    \bm V_\mathrm{from}\\\bm V_\mathrm{to}
+  }
+\end{equation}
+is generally determined. Here, $\bm V_\mathrm{from}$ and $\bm V_\mathrm{to}$ are
+the voltages of the busbars at both ends of the power transmission line, and
+$\bm I_\mathrm{from}$ and $\bm I_\mathrm{to}$ are the currents flowing from the
+busbars to the power transmission line at both ends. For example, in the simple
+power transmission line discussed in Example \ref{ex:derY}, we have
 
 \[
-\bm Y_\mathrm{branch} = \begin{bmatrix}
-\bm y & -\bm y\\
--\bm y & \bm y
-\end{bmatrix}
+  \bm Y_\mathrm{branch} = \begin{bmatrix}
+    \bm y & -\bm y\\
+    -\bm y & \bm y
+  \end{bmatrix}
 \]
 
-In summary, if the information on the bus bar at both ends and the admittance matrix $Y_\mathrm{branch}$ are returned, it is safe to define it as a transmission line.
-An example implementation of a transmission line based on this concept is shown below.
+In summary, it is sufficient to return the information of the two connected
+buses and the admittance matrix $Y_\mathrm{branch}$ to define a transmission
+line. An example implementation of a transmission line based on this idea is as
+follows.
 
-\smallskip
-\begin{PROGRAMA}[count,title={branch.m}]\label{program:branch}
-\begin{verbatim}
+\begin{lstlisting}[language=Matlab, caption=branch.m, label={program:branch}]
 classdef branch
   
   properties
@@ -3215,47 +3219,49 @@ classdef branch
     end
   end
 end
-\end{verbatim}\end{PROGRAMA}
+\end{lstlisting}
 
-The function to compute the admittance matrix using this transmission line class is implemented as follows
+The function to compute the admittance matrix using this transmission line class
+is implemented as follows
 %\footnote{ここでは，母線のシャント抵抗は簡単のために無視する。}。
-\smallskip
-\begin{PROGRAMA}[count,title={get\_admittance\_matrix.m}]\label{program:admittance}
-\begin{verbatim}
+
+\begin{lstlisting}[language=Matlab, caption=get\_admittance\_matrix.m, label={program:admittance}]
 function Y = get_admittance_matrix(n_bus, a_branch)
 
-Y = zeros(n_bus, n_bus);
+  Y = zeros(n_bus, n_bus);
 
-for i = 1:numel(a_branch)
-  br = a_branch{i};
-  Y_branch = br.get_admittance_matrix();
-  Y([br.from, br.to], [br.from, br.to]) =...
-    Y([br.from, br.to], [br.from, br.to]) + Y_branch;
+  for i = 1:numel(a_branch)
+    br = a_branch{i};
+    Y_branch = br.get_admittance_matrix();
+    Y([br.from, br.to], [br.from, br.to]) =...
+      Y([br.from, br.to], [br.from, br.to]) + Y_branch;
+  end
+
 end
+\end{lstlisting}
 
-end
-\end{verbatim}
-\end{PROGRAMA}
+The input argument \verb|n_bus| is the number of bus lines. Also,
+\verb|a_branch| is a cell array containing the transmission lines. This program
+can be used as follows:
 
-The input argument \verb|n_bus| is the number of bus lines.
-Also, \verb|a_branch| is a cell array containing the transmission lines.
-This program can be used as follows
-
-\smallskip
-\begin{PROGRAMA}[count,title={main\_admittance\_matrix.m}]\label{program:main_admittance}
-\begin{verbatim}
+\begin{lstlisting}[language=Matlab, caption=main\_admittance\_matrix.m, label={program:main_admittance}]
 a_branch = cell(2, 1);
 a_branch{1} = branch(1, 2, 1.3652-11.6040j);
 a_branch{2} = branch(2, 3, -10.5107j);
 
 Y = get_admittance_matrix(3, a_branch)
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-
-In the program\nobreak\ref{program:admittance}, we only assume that the transmission line has the data \verb|from| and \verb|to| and that it has the method \verb|get_admittance_matrix| and the method \verb|get_admittance_matrix|.
-Therefore, when considering other transmission line models such as $\pi$-type models When considering other transmission line models, such as $\pi$-type models, the variables \verb|to| and \verb|from| and the method \verb|get_admittance_matrix| are also assumed to be used.
-The program program \nobreak\ref{program:admittance} can be used without any modification by simply implementing a class with variables named \verb|to|, \verb|from| and a method named \verb|get_admittance_matrix|.
+In the program\nobreak\ref{program:admittance}, we only assume that the
+transmission line has the data \verb|from| and \verb|to| and that it has the
+method \verb|get_admittance_matrix| and the method \verb|get_admittance_matrix|.
+Therefore, when considering other transmission line models such as $\pi$-type
+models When considering other transmission line models, such as $\pi$-type
+models, the variables \verb|to| and \verb|from| and the method
+\verb|get_admittance_matrix| are also assumed to be used. The program program
+\nobreak\ref{program:admittance} can be used without any modification by simply
+implementing a class with variables named \verb|to|, \verb|from| and a method
+named \verb|get_admittance_matrix|.
 \end{example}
 
 From the above, the program to calculate tidal currents can be summarized as follows.
