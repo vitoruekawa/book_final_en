@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.15)  17 MAR 2023 15:37
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.15)  17 MAR 2023 18:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2515,66 +2515,14 @@ Overfull \hbox (3.0pt too wide) detected at line 3269
  []
 
 
-LaTeX Warning: Reference `program:calc_flow' on page 46 undefined on input line 3271.
-
-
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3274: LaTeX Error: Environment PROGRAMA undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.3274 \begin{PROGRAMA}
-                       [count,title={calculate\_power\_flow.m}]\label{progra...
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+LaTeX Warning: Reference `program:calc_flow' on page 46 undefined on input line 3273.
 
 [46]
-
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3291: LaTeX Error: \begin{example} on input line 3269 ended by \end{PROGRAMA}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.3291 \end{PROGRAMA}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
 
 LaTeX Warning: Reference `program:main_calc_flow' on page 47 undefined on input line 3294.
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3297: LaTeX Error: Environment PROGRAMA undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.3297 \begin{PROGRAMA}
-                       [count,title={main\_power\_flow.m}]\label{program:mai...
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3315: LaTeX Error: \begin{example} on input line 3269 ended by \end{PROGRAMA}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.3315 \end{PROGRAMA}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-LaTeX Warning: Reference `program:main_calc_flow' on page 47 undefined on input line 3318.
+LaTeX Warning: Reference `program:main_calc_flow' on page 47 undefined on input line 3317.
 
 
 LaTeX Warning: Reference `ex:simplepowerflow' on page 47 undefined on input line 3320.
@@ -2583,342 +2531,239 @@ LaTeX Warning: Reference `ex:simplepowerflow' on page 47 undefined on input line
 File: figs/circkawaguchi.pdf Graphic file (type pdf)
 <use figs/circkawaguchi.pdf>
 
-Overfull \hbox (3.0pt too wide) detected at line 3340
+Overfull \hbox (3.0pt too wide) detected at line 3345
  [] 
  []
 
 
-LaTeX Warning: Reference `fig:RLC' on page 48 undefined on input line 3342.
+LaTeX Warning: Reference `fig:RLC' on page 48 undefined on input line 3350.
+
+
+LaTeX Warning: Reference `eq:ex_ae' on page 48 undefined on input line 3371.
 
 [48]
 
-LaTeX Warning: Reference `eq:ex_ae' on page 49 undefined on input line 3361.
+LaTeX Warning: Reference `eq:ex1_ode' on page 49 undefined on input line 3388.
 
 
-LaTeX Warning: Reference `eq: ex1_ode' on page 49 undefined on input line 3373.
+LaTeX Warning: Reference `program:ex1_ode' on page 49 undefined on input line 3389.
 
 
-LaTeX Warning: Reference `program: ex1_ode' on page 49 undefined on input line 3373.
+LaTeX Warning: Reference `program: main_ode1' on page 49 undefined on input line 3407.
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3376: LaTeX Error: Environment PROGRAMA undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.3376 \begin{PROGRAMA}
-                       [count,title={func\_RLC\_ode.m}]\label{program:ex1_ode}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+LaTeX Warning: Reference `program: main_ode1' on page 49 undefined on input line 3425.
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3390: LaTeX Error: \begin{example} on input line 3340 ended by \end{PROGRAMA}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.3390 \end{PROGRAMA}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-LaTeX Warning: Reference `program: main_ode1' on page 49 undefined on input line 3392.
-
-
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3395: LaTeX Error: Environment PROGRAMA undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.3395 \begin{PROGRAMA}
-                       [count,title={main\_RLC\_ode.m}]\label{program:main_o...
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+LaTeX Warning: Reference `eq: ex_ae' on page 49 undefined on input line 3429.
 
 [49]
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3410: LaTeX Error: \begin{example} on input line 3340 ended by \end{PROGRAMA}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.3410 \end{PROGRAMA}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+LaTeX Warning: Reference `eq: ex_de' on page 50 undefined on input line 3443.
 
 
-LaTeX Warning: Reference `program: main_ode1' on page 50 undefined on input line 3412.
+LaTeX Warning: Reference `eq: ex_ae' on page 50 undefined on input line 3443.
 
 
-LaTeX Warning: Reference `eq: ex_ae' on page 50 undefined on input line 3413.
+LaTeX Warning: Reference `program: func_DAE1' on page 50 undefined on input line 3469.
 
 
-LaTeX Warning: Reference `eq: ex_de' on page 50 undefined on input line 3422.
-
-
-LaTeX Warning: Reference `eq: ex_ae' on page 50 undefined on input line 3422.
-
-
-LaTeX Warning: Reference `program: func_DAE1' on page 50 undefined on input line 3447.
-
-
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3450: LaTeX Error: Environment PROGRAMA undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.3450 \begin{PROGRAMA}
-                       [count,title={func\_RLC\_dae.m}]\label{program:func_D...
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+LaTeX Warning: Reference `program: DAE1' on page 50 undefined on input line 3495.
 
 [50]
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3472: LaTeX Error: \begin{example} on input line 3340 ended by \end{PROGRAMA}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.3472 \end{PROGRAMA}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+LaTeX Warning: Reference `eq: numDAE' on page 51 undefined on input line 3519.
 
 
-LaTeX Warning: Reference `program: DAE1' on page 51 undefined on input line 3474.
-
-
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3477: LaTeX Error: Environment PROGRAMA undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.3477 \begin{PROGRAMA}
-                       [count,title={main\_RLC\_dae.m}]\label{program:DAE1}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3497: LaTeX Error: \begin{example} on input line 3340 ended by \end{PROGRAMA}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.3497 \end{PROGRAMA}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-LaTeX Warning: Reference `eq: numDAE' on page 51 undefined on input line 3500.
-
-
-LaTeX Warning: Reference `fig: solution_dae' on page 51 undefined on input line 3507.
+LaTeX Warning: Reference `fig:solution_dae' on page 51 undefined on input line 3533.
 
 File: figs/iL.pdf Graphic file (type pdf)
 <use figs/iL.pdf>
 File: figs/vC.pdf Graphic file (type pdf)
 <use figs/vC.pdf>
-[51]
-Overfull \hbox (3.0pt too wide) detected at line 3539
+
+Overfull \hbox (3.0pt too wide) detected at line 3566
  [] 
  []
 
 
-LaTeX Warning: Reference `ex:inires' on page 52 undefined on input line 3540.
+LaTeX Warning: Reference `ex:inires' on page 51 undefined on input line 3567.
 
 
-LaTeX Warning: Reference `eq:gendynVIst' on page 52 undefined on input line 3541.
+LaTeX Warning: Reference `eq:gendynVIst' on page 51 undefined on input line 3568.
 
 
-LaTeX Warning: Reference `eq:phVI' on page 52 undefined on input line 3542.
+LaTeX Warning: Reference `eq:phVI' on page 51 undefined on input line 3569.
 
 
-LaTeX Warning: Reference `eq:cimp' on page 52 undefined on input line 3542.
+LaTeX Warning: Reference `eq:cimp' on page 51 undefined on input line 3569.
 
 
-LaTeX Warning: Reference `eq:ohmY2' on page 52 undefined on input line 3543.
+LaTeX Warning: Reference `eq:ohmY2' on page 51 undefined on input line 3570.
+
+[51]
+
+LaTeX Warning: Reference `program:simple_network_dae' on page 52 undefined on input line 3577.
 
 
-LaTeX Warning: Reference `program:simple_network_dae' on page 52 undefined on input line 3550.
-
-
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3553: LaTeX Error: Environment PROGRAMA undefined.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3580: LaTeX Error: Environment PROGRAMA undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3553 \begin{PROGRAMA}
+l.3580 \begin{PROGRAMA}
                        [count,title={func\_simulation\_3bus.m}]\label{progra...
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 [52]
-Overfull \hbox (20.35277pt too wide) in paragraph at lines 3614--3614
+Overfull \hbox (20.35277pt too wide) in paragraph at lines 3641--3641
  []    \TU/lmtt/m/n/10 (X1/X1_prime-1)*abs(V1)*cos(delta1-angle(V1))+Vfield1)/tau1];[] 
  []
 
 
-Overfull \hbox (20.35277pt too wide) in paragraph at lines 3614--3614
+Overfull \hbox (20.35277pt too wide) in paragraph at lines 3641--3641
  []    \TU/lmtt/m/n/10 (X3/X3_prime-1)*abs(V3)*cos(delta3-angle(V3))+Vfield3)/tau3];[] 
  []
 
-[53]
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3615: LaTeX Error: \begin{example} on input line 3539 ended by \end{PROGRAMA}.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3642: LaTeX Error: \begin{example} on input line 3566 ended by \end{PROGRAMA}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3615 \end{PROGRAMA}
+l.3642 \end{PROGRAMA}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-LaTeX Warning: Reference `program:simple_network_dae' on page 54 undefined on input line 3619.
+LaTeX Warning: Reference `program:simple_network_dae' on page 53 undefined on input line 3646.
 
 
-LaTeX Warning: Reference `program:main_simple_network_dae' on page 54 undefined on input line 3619.
+LaTeX Warning: Reference `program:main_simple_network_dae' on page 53 undefined on input line 3646.
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3622: LaTeX Error: Environment PROGRAMA undefined.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3649: LaTeX Error: Environment PROGRAMA undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3622 \begin{PROGRAMA}
+l.3649 \begin{PROGRAMA}
                        [count,title={main\_simulation\_simple.m}]\label{prog...
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-[54]
+[53]
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3663: LaTeX Error: \begin{example} on input line 3539 ended by \end{PROGRAMA}.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3690: LaTeX Error: \begin{example} on input line 3566 ended by \end{PROGRAMA}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3663 \end{PROGRAMA}
+l.3690 \end{PROGRAMA}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-LaTeX Warning: Reference `program:main_simple_network_dae' on page 55 undefined on input line 3665.
+LaTeX Warning: Reference `program:main_simple_network_dae' on page 54 undefined on input line 3692.
 
-
-Overfull \hbox (3.0pt too wide) detected at line 3673
+[54]
+Overfull \hbox (3.0pt too wide) detected at line 3700
  [] 
  []
 
 
-LaTeX Warning: Reference `program:simple_network_dae' on page 55 undefined on input line 3674.
+LaTeX Warning: Reference `program:simple_network_dae' on page 55 undefined on input line 3701.
 
 
-LaTeX Warning: Reference `program:generator' on page 55 undefined on input line 3680.
+LaTeX Warning: Reference `program:generator' on page 55 undefined on input line 3707.
 
 
-LaTeX Warning: Reference `program:load' on page 55 undefined on input line 3680.
+LaTeX Warning: Reference `program:load' on page 55 undefined on input line 3707.
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3683: LaTeX Error: Environment PROGRAMA undefined.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3710: LaTeX Error: Environment PROGRAMA undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3683 \begin{PROGRAMA}
+l.3710 \begin{PROGRAMA}
                        [count,title={generator.m}]\label{program:generator}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-[55] [56]
+[55]
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3746: LaTeX Error: \begin{example} on input line 3673 ended by \end{PROGRAMA}.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3773: LaTeX Error: \begin{example} on input line 3700 ended by \end{PROGRAMA}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3746 \end{PROGRAMA}
+l.3773 \end{PROGRAMA}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3750: LaTeX Error: Environment PROGRAMA undefined.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3777: LaTeX Error: Environment PROGRAMA undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3750 \begin{PROGRAMA}
+l.3777 \begin{PROGRAMA}
                        [count,title={load\_impedance.m}]\label{program:load}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
+[56]
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3777: LaTeX Error: \begin{example} on input line 3673 ended by \end{PROGRAMA}.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3804: LaTeX Error: \begin{example} on input line 3700 ended by \end{PROGRAMA}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3777 \end{PROGRAMA}
+l.3804 \end{PROGRAMA}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-LaTeX Warning: Reference `program:simple_network_dae' on page 57 undefined on input line 3780.
+LaTeX Warning: Reference `program:simple_network_dae' on page 57 undefined on input line 3807.
 
 
-LaTeX Warning: Reference `program:network_dae1' on page 57 undefined on input line 3780.
+LaTeX Warning: Reference `program:network_dae1' on page 57 undefined on input line 3807.
 
 
-Overfull \hbox (46.90285pt too wide) in paragraph at lines 3779--3781
+Overfull \hbox (46.90285pt too wide) in paragraph at lines 3806--3808
 []\TU/TeXGyreTermesX(0)/m/n/10 In these programs, the method [][]\TU/lmtt/m/n/10 get_nx []\TU/TeXGyreTermesX(0)/m/n/10 returns the number of states and [][]\TU/lmtt/m/n/10 get_dx_constraint
  []
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3783: LaTeX Error: Environment PROGRAMA undefined.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3810: LaTeX Error: Environment PROGRAMA undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3783 \begin{PROGRAMA}
+l.3810 \begin{PROGRAMA}
                        [count,title={func\_simulation.m}]\label{program:netw...
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -2926,375 +2771,335 @@ or  <return>  to continue without it.
 
 [57]
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3828: LaTeX Error: \begin{example} on input line 3673 ended by \end{PROGRAMA}.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3855: LaTeX Error: \begin{example} on input line 3700 ended by \end{PROGRAMA}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3828 \end{PROGRAMA}
+l.3855 \end{PROGRAMA}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-LaTeX Warning: Reference `program:network_dae1' on page 58 undefined on input line 3830.
+LaTeX Warning: Reference `program:network_dae1' on page 58 undefined on input line 3857.
 
 
-Overfull \hbox (22.02287pt too wide) in paragraph at lines 3830--3837
+Overfull \hbox (22.02287pt too wide) in paragraph at lines 3857--3864
 []\TU/TeXGyreTermesX(0)/m/n/10 In the Program[], it is assumed that the cell array of the device is input to[][]\TU/lmtt/m/n/10 a_component[]\TU/TeXGyreTermesX(0)/m/n/10 .
  []
 
 
-LaTeX Warning: Reference `program:network_dae1' on page 58 undefined on input line 3838.
+LaTeX Warning: Reference `program:network_dae1' on page 58 undefined on input line 3865.
 
 
-LaTeX Warning: Reference `program:main_simple_network_dae' on page 58 undefined on input line 3839.
+LaTeX Warning: Reference `program:main_simple_network_dae' on page 58 undefined on input line 3866.
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3842: LaTeX Error: Environment PROGRAMA undefined.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3869: LaTeX Error: Environment PROGRAMA undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3842 \begin{PROGRAMA}
+l.3869 \begin{PROGRAMA}
                        [count,title={simulate\_power\_system.m}]\label{progr...
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 [58]
-Overfull \hbox (20.35277pt too wide) in paragraph at lines 3880--3880
+Overfull \hbox (20.35277pt too wide) in paragraph at lines 3907--3907
  []\TU/lmtt/m/n/10 [t, y] = ode15s(@(t, x) func_simulation(t, x, Y, a_component),...[] 
  []
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3881: LaTeX Error: \begin{example} on input line 3673 ended by \end{PROGRAMA}.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3908: LaTeX Error: \begin{example} on input line 3700 ended by \end{PROGRAMA}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3881 \end{PROGRAMA}
+l.3908 \end{PROGRAMA}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-LaTeX Warning: Reference `program:simulate_network1' on page 59 undefined on input line 3883.
+LaTeX Warning: Reference `program:simulate_network1' on page 59 undefined on input line 3910.
 
 
-LaTeX Warning: Reference `program:network_dae1' on page 59 undefined on input line 3884.
+LaTeX Warning: Reference `program:network_dae1' on page 59 undefined on input line 3911.
 
 
-LaTeX Warning: Reference `program:main_simple_network_dae' on page 59 undefined on input line 3887.
+LaTeX Warning: Reference `program:main_simple_network_dae' on page 59 undefined on input line 3914.
 
 
-LaTeX Warning: Reference `program:main_network1' on page 59 undefined on input line 3887.
+LaTeX Warning: Reference `program:main_network1' on page 59 undefined on input line 3914.
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3890: LaTeX Error: Environment PROGRAMA undefined.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3917: LaTeX Error: Environment PROGRAMA undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3890 \begin{PROGRAMA}
+l.3917 \begin{PROGRAMA}
                        [count,title={main\_simulation\_3bus.m}]\label{progra...
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 [59]
-Overfull \hbox (15.10277pt too wide) in paragraph at lines 3914--3914
+Overfull \hbox (15.10277pt too wide) in paragraph at lines 3941--3941
  []\TU/lmtt/m/n/10 [t, x, V, I] = simulate_power_system(a_component, Y, x0, tspan);[] 
  []
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3915: LaTeX Error: \begin{example} on input line 3673 ended by \end{PROGRAMA}.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3942: LaTeX Error: \begin{example} on input line 3700 ended by \end{PROGRAMA}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3915 \end{PROGRAMA}
+l.3942 \end{PROGRAMA}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-LaTeX Warning: Reference `program:main_network1' on page 60 undefined on input line 3917.
+LaTeX Warning: Reference `program:main_network1' on page 60 undefined on input line 3944.
 
 
-LaTeX Warning: Reference `program:simulate_network1' on page 60 undefined on input line 3917.
+LaTeX Warning: Reference `program:simulate_network1' on page 60 undefined on input line 3944.
 
 
-LaTeX Warning: Reference `program:simulate_network1' on page 60 undefined on input line 3918.
+LaTeX Warning: Reference `program:simulate_network1' on page 60 undefined on input line 3945.
 
 
-LaTeX Warning: Reference `program:main_network1' on page 60 undefined on input line 3920.
+LaTeX Warning: Reference `program:main_network1' on page 60 undefined on input line 3947.
 
 
-LaTeX Warning: Reference `program:simulate_network1' on page 60 undefined on input line 3921.
+LaTeX Warning: Reference `program:simulate_network1' on page 60 undefined on input line 3948.
 
 
-LaTeX Warning: Reference `program:generator' on page 60 undefined on input line 3921.
+LaTeX Warning: Reference `program:generator' on page 60 undefined on input line 3948.
 
 
-LaTeX Warning: Reference `program:generator' on page 60 undefined on input line 3922.
+LaTeX Warning: Reference `program:generator' on page 60 undefined on input line 3949.
 
 
-LaTeX Warning: Reference `program:load' on page 60 undefined on input line 3922.
+LaTeX Warning: Reference `program:load' on page 60 undefined on input line 3949.
 
 
-LaTeX Warning: Reference `ex:dae_ex2' on page 60 undefined on input line 3924.
+LaTeX Warning: Reference `ex:dae_ex2' on page 60 undefined on input line 3951.
 
 
-LaTeX Warning: Reference `ex:gen_load' on page 60 undefined on input line 3927.
+LaTeX Warning: Reference `ex:gen_load' on page 60 undefined on input line 3954.
 
 
-LaTeX Warning: Reference `program:main_network1' on page 60 undefined on input line 3928.
+LaTeX Warning: Reference `program:main_network1' on page 60 undefined on input line 3955.
 
 
-LaTeX Warning: Reference `ex:gen_load' on page 60 undefined on input line 3930.
+LaTeX Warning: Reference `ex:gen_load' on page 60 undefined on input line 3957.
 
 
-Overfull \hbox (3.0pt too wide) detected at line 3933
+Overfull \hbox (3.0pt too wide) detected at line 3960
  [] 
  []
 
 
-LaTeX Warning: Reference `eq:intssgen' on page 60 undefined on input line 3935.
+LaTeX Warning: Reference `eq:intssgen' on page 60 undefined on input line 3962.
 
 
-LaTeX Warning: Reference `eq:lmodimppara' on page 60 undefined on input line 3935.
+LaTeX Warning: Reference `eq:lmodimppara' on page 60 undefined on input line 3962.
 
 
-LaTeX Warning: Reference `program:generator' on page 60 undefined on input line 3937.
+LaTeX Warning: Reference `program:generator' on page 60 undefined on input line 3964.
 
 
-LaTeX Warning: Reference `program:load' on page 60 undefined on input line 3937.
+LaTeX Warning: Reference `program:load' on page 60 undefined on input line 3964.
 
 
-LaTeX Warning: Reference `program:generator2' on page 60 undefined on input line 3937.
+LaTeX Warning: Reference `program:generator2' on page 60 undefined on input line 3964.
 
 
-LaTeX Warning: Reference `program:load2' on page 60 undefined on input line 3937.
+LaTeX Warning: Reference `program:load2' on page 60 undefined on input line 3964.
 
-[60]
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3940: LaTeX Error: Environment PROGRAMA undefined.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3967: LaTeX Error: Environment PROGRAMA undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3940 \begin{PROGRAMA}
+l.3967 \begin{PROGRAMA}
                        [count,title={generator.m}]\label{program:generator2}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
+[60]
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3971: LaTeX Error: \begin{example} on input line 3933 ended by \end{PROGRAMA}.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3998: LaTeX Error: \begin{example} on input line 3960 ended by \end{PROGRAMA}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3971 \end{PROGRAMA}
+l.3998 \end{PROGRAMA}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3974: LaTeX Error: Environment PROGRAMA undefined.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4001: LaTeX Error: Environment PROGRAMA undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3974 \begin{PROGRAMA}
+l.4001 \begin{PROGRAMA}
                        [count,title={load\_impedance.m}]\label{program:load2}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-[61]
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3993: LaTeX Error: \begin{example} on input line 3933 ended by \end{PROGRAMA}.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4020: LaTeX Error: \begin{example} on input line 3960 ended by \end{PROGRAMA}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3993 \end{PROGRAMA}
+l.4020 \end{PROGRAMA}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-LaTeX Warning: Reference `ex:gen_load' on page 62 undefined on input line 3996.
+LaTeX Warning: Reference `ex:gen_load' on page 61 undefined on input line 4023.
 
+[61]
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:3999: LaTeX Error: Environment PROGRAMA undefined.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4026: LaTeX Error: Environment PROGRAMA undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3999 \begin{PROGRAMA}
+l.4026 \begin{PROGRAMA}
                        [count,title={main\_simulation\_3bus\_equilibrium.m}]...
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (9.85277pt too wide) in paragraph at lines 4033--4033
+Overfull \hbox (9.85277pt too wide) in paragraph at lines 4060--4060
  []\TU/lmtt/m/n/10 gen1 = generator(60*2*pi, 100, 10, 5.14, 1.569, 0.936, [], []);[] 
  []
 
 
-Overfull \hbox (4.60277pt too wide) in paragraph at lines 4033--4033
+Overfull \hbox (4.60277pt too wide) in paragraph at lines 4060--4060
  []\TU/lmtt/m/n/10 gen3 = generator(60*2*pi, 12, 10, 8.97, 1.220, 0.667, [], []);[] 
  []
 
 
-Overfull \hbox (15.10277pt too wide) in paragraph at lines 4033--4033
+Overfull \hbox (15.10277pt too wide) in paragraph at lines 4060--4060
  []\TU/lmtt/m/n/10 [t, x, V, I] = simulate_power_system(a_component, Y, x0, tspan);[] 
  []
 
-[62]
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4034: LaTeX Error: \begin{example} on input line 3933 ended by \end{PROGRAMA}.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4061: LaTeX Error: \begin{example} on input line 3960 ended by \end{PROGRAMA}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4034 \end{PROGRAMA}
+l.4061 \end{PROGRAMA}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-LaTeX Warning: Reference `program:main_equilibrium' on page 63 undefined on input line 4036.
+LaTeX Warning: Reference `program:main_equilibrium' on page 62 undefined on input line 4063.
 
-
-Overfull \hbox (3.0pt too wide) detected at line 4045
+[62]
+Overfull \hbox (3.0pt too wide) detected at line 4072
  [] 
  []
 
 
-LaTeX Warning: Reference `sec:fault' on page 63 undefined on input line 4046.
+LaTeX Warning: Reference `sec:fault' on page 63 undefined on input line 4073.
 
 
-LaTeX Warning: Reference `program:network_dae1' on page 63 undefined on input line 4047.
+LaTeX Warning: Reference `program:network_dae1' on page 63 undefined on input line 4074.
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4050: LaTeX Error: Environment PROGRAMA undefined.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4077: LaTeX Error: Environment PROGRAMA undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4050 \begin{PROGRAMA}
+l.4077 \begin{PROGRAMA}
                        [count,title={func\_simulation.m}]\label{program:netw...
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4063: LaTeX Error: \begin{example} on input line 4045 ended by \end{PROGRAMA}.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4090: LaTeX Error: \begin{example} on input line 4072 ended by \end{PROGRAMA}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4063 \end{PROGRAMA}
+l.4090 \end{PROGRAMA}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-LaTeX Warning: Reference `program:simulate_network1' on page 63 undefined on input line 4066.
+LaTeX Warning: Reference `program:simulate_network1' on page 63 undefined on input line 4093.
 
 
-LaTeX Warning: Reference `program:simulate_network2' on page 63 undefined on input line 4066.
+LaTeX Warning: Reference `program:simulate_network2' on page 63 undefined on input line 4093.
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4069: LaTeX Error: Environment PROGRAMA undefined.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4096: LaTeX Error: Environment PROGRAMA undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4069 \begin{PROGRAMA}
+l.4096 \begin{PROGRAMA}
                        [count,title={simulate\_power\_system.m}]\label{progr...
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (4.60277pt too wide) in paragraph at lines 4104--4104
+Overfull \hbox (4.60277pt too wide) in paragraph at lines 4131--4131
  []\TU/lmtt/m/n/10 function [t, x, V, I] = simulate_power_system(a_component, ...[] 
  []
 
-[63]
-Overfull \hbox (15.10277pt too wide) in paragraph at lines 4104--4104
+
+Overfull \hbox (15.10277pt too wide) in paragraph at lines 4131--4131
  []    \TU/lmtt/m/n/10 @(t, x) func_simulation(t, x, Y, a_component, bus_fault),...[] 
  []
 
+[63]
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4105: LaTeX Error: \begin{example} on input line 4045 ended by \end{PROGRAMA}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.4105 \end{PROGRAMA}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-LaTeX Warning: Reference `program:main_network1' on page 64 undefined on input line 4108.
-
-
-LaTeX Warning: Reference `program:simulate_network2' on page 64 undefined on input line 4111.
-
-
-LaTeX Warning: Reference `program:main_fault' on page 64 undefined on input line 4113.
-
-
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4116: LaTeX Error: Environment PROGRAMA undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.4116 \begin{PROGRAMA}
-                       [count,title={main\_simulation\_3bus\_fault.m}]\label...
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-[64]
-Overfull \hbox (25.60277pt too wide) in paragraph at lines 4131--4131
- []\TU/lmtt/m/n/10 [t, x, V, I] = simulate_power_system(a_component, Y, x0, tspan,...[] 
- []
-
-
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4132: LaTeX Error: \begin{example} on input line 4045 ended by \end{PROGRAMA}.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4132: LaTeX Error: \begin{example} on input line 4072 ended by \end{PROGRAMA}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
@@ -3307,207 +3112,249 @@ Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-LaTeX Warning: Reference `fig:P3faulta' on page 65 undefined on input line 4134.
+LaTeX Warning: Reference `program:main_network1' on page 64 undefined on input line 4135.
 
 
-Overfull \hbox (3.0pt too wide) detected at line 4139
- [] 
- []
+LaTeX Warning: Reference `program:simulate_network2' on page 64 undefined on input line 4138.
 
 
-LaTeX Warning: Reference `sec:resldpara' on page 65 undefined on input line 4140.
+LaTeX Warning: Reference `program:main_fault' on page 64 undefined on input line 4140.
 
 
-LaTeX Warning: Reference `program:generator2' on page 65 undefined on input line 4145.
-
-
-LaTeX Warning: Reference `program:load2' on page 65 undefined on input line 4145.
-
-
-LaTeX Warning: Reference `program:generator3' on page 65 undefined on input line 4145.
-
-
-LaTeX Warning: Reference `program:load3' on page 65 undefined on input line 4145.
-
-
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4148: LaTeX Error: Environment PROGRAMA undefined.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4143: LaTeX Error: Environment PROGRAMA undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4148 \begin{PROGRAMA}
+l.4143 \begin{PROGRAMA}
+                       [count,title={main\_simulation\_3bus\_fault.m}]\label...
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (25.60277pt too wide) in paragraph at lines 4158--4158
+ []\TU/lmtt/m/n/10 [t, x, V, I] = simulate_power_system(a_component, Y, x0, tspan,...[] 
+ []
+
+
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4159: LaTeX Error: \begin{example} on input line 4072 ended by \end{PROGRAMA}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4159 \end{PROGRAMA}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+LaTeX Warning: Reference `fig:P3faulta' on page 64 undefined on input line 4161.
+
+
+Overfull \hbox (3.0pt too wide) detected at line 4166
+ [] 
+ []
+
+[64]
+
+LaTeX Warning: Reference `sec:resldpara' on page 65 undefined on input line 4167.
+
+
+LaTeX Warning: Reference `program:generator2' on page 65 undefined on input line 4172.
+
+
+LaTeX Warning: Reference `program:load2' on page 65 undefined on input line 4172.
+
+
+LaTeX Warning: Reference `program:generator3' on page 65 undefined on input line 4172.
+
+
+LaTeX Warning: Reference `program:load3' on page 65 undefined on input line 4172.
+
+
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4175: LaTeX Error: Environment PROGRAMA undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4175 \begin{PROGRAMA}
                        [count,title={generator.m}]\label{program:generator3}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4204: LaTeX Error: \begin{example} on input line 4166 ended by \end{PROGRAMA}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4204 \end{PROGRAMA}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4206: LaTeX Error: Environment PROGRAMA undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4206 \begin{PROGRAMA}
+                       [count,title={load\_impedance.m}]\label{program:load3}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 [65]
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4177: LaTeX Error: \begin{example} on input line 4139 ended by \end{PROGRAMA}.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4233: LaTeX Error: \begin{example} on input line 4166 ended by \end{PROGRAMA}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4177 \end{PROGRAMA}
+l.4233 \end{PROGRAMA}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4179: LaTeX Error: Environment PROGRAMA undefined.
+LaTeX Warning: Reference `program:network_dae_fault' on page 66 undefined on input line 4237.
+
+
+LaTeX Warning: Reference `program:simulate_network2' on page 66 undefined on input line 4237.
+
+
+LaTeX Warning: Reference `program:network_dae_ input' on page 66 undefined on input line 4237.
+
+
+LaTeX Warning: Reference `program:simulate_network3' on page 66 undefined on input line 4237.
+
+
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4240: LaTeX Error: Environment PROGRAMA undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4179 \begin{PROGRAMA}
-                       [count,title={load\_impedance.m}]\label{program:load3}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4206: LaTeX Error: \begin{example} on input line 4139 ended by \end{PROGRAMA}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.4206 \end{PROGRAMA}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-LaTeX Warning: Reference `program:network_dae_fault' on page 66 undefined on input line 4210.
-
-
-LaTeX Warning: Reference `program:simulate_network2' on page 66 undefined on input line 4210.
-
-
-LaTeX Warning: Reference `program:network_dae_ input' on page 66 undefined on input line 4210.
-
-
-LaTeX Warning: Reference `program:simulate_network3' on page 66 undefined on input line 4210.
-
-
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4213: LaTeX Error: Environment PROGRAMA undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.4213 \begin{PROGRAMA}
+l.4240 \begin{PROGRAMA}
                        [count,title={func\_simulation.m}]\label{program:netw...
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-[66]
-Overfull \hbox (15.10277pt too wide) in paragraph at lines 4239--4239
+
+Overfull \hbox (15.10277pt too wide) in paragraph at lines 4266--4266
  []  \TU/lmtt/m/n/10 [dx{k}, con{k}] = component.get_dx_constraint(xk, Vk, Ik, uk);[] 
  []
 
+[66]
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4240: LaTeX Error: \begin{example} on input line 4139 ended by \end{PROGRAMA}.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4267: LaTeX Error: \begin{example} on input line 4166 ended by \end{PROGRAMA}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4240 \end{PROGRAMA}
+l.4267 \end{PROGRAMA}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4242: LaTeX Error: Environment PROGRAMA undefined.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4269: LaTeX Error: Environment PROGRAMA undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4242 \begin{PROGRAMA}
+l.4269 \begin{PROGRAMA}
                        [count,title={simulate\_power\_system.m}]\label{progr...
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (4.60277pt too wide) in paragraph at lines 4276--4276
+Overfull \hbox (4.60277pt too wide) in paragraph at lines 4303--4303
  []\TU/lmtt/m/n/10 function [t, x, V, I] = simulate_power_system(a_component, ...[] 
  []
 
-[67]
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4277: LaTeX Error: \begin{example} on input line 4139 ended by \end{PROGRAMA}.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4304: LaTeX Error: \begin{example} on input line 4166 ended by \end{PROGRAMA}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4277 \end{PROGRAMA}
+l.4304 \end{PROGRAMA}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
+[67]
 
-LaTeX Warning: Reference `program:main_input' on page 68 undefined on input line 4283.
+LaTeX Warning: Reference `program:main_input' on page 68 undefined on input line 4310.
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4286: LaTeX Error: Environment PROGRAMA undefined.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4313: LaTeX Error: Environment PROGRAMA undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4286 \begin{PROGRAMA}
+l.4313 \begin{PROGRAMA}
                        [count,title={main\_simulation\_3bus\_input.m}]\label...
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4301: LaTeX Error: \begin{example} on input line 4139 ended by \end{PROGRAMA}.
+/Users/vuekawa/repos/book_final_en/3chapnumsim/docnumsim7_en.tex:4328: LaTeX Error: \begin{example} on input line 4166 ended by \end{PROGRAMA}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4301 \end{PROGRAMA}
+l.4328 \end{PROGRAMA}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-LaTeX Warning: Reference `program:main_input' on page 68 undefined on input line 4303.
+LaTeX Warning: Reference `program:main_input' on page 68 undefined on input line 4330.
 
 
-LaTeX Warning: Reference `program:main_input' on page 68 undefined on input line 4307.
+LaTeX Warning: Reference `program:main_input' on page 68 undefined on input line 4334.
 
 
-LaTeX Warning: Reference `program:main_input' on page 68 undefined on input line 4308.
+LaTeX Warning: Reference `program:main_input' on page 68 undefined on input line 4335.
 
 [68]
 
-LaTeX Warning: Reference `eq:C2d' on page 69 undefined on input line 4363.
+LaTeX Warning: Reference `eq:C2d' on page 69 undefined on input line 4390.
 
 [69]
 
-LaTeX Warning: Reference `eq:C3d' on page 70 undefined on input line 4403.
+LaTeX Warning: Reference `eq:C3d' on page 70 undefined on input line 4430.
 
 
-LaTeX Warning: Reference `eq:omegas' on page 70 undefined on input line 4410.
+LaTeX Warning: Reference `eq:omegas' on page 70 undefined on input line 4437.
 
 
-LaTeX Warning: Reference `eq:C3d' on page 70 undefined on input line 4411.
+LaTeX Warning: Reference `eq:C3d' on page 70 undefined on input line 4438.
 
 \tf@thm=\write5
 \openout5 = `docnumsim7_en.thm'.
@@ -3526,15 +3373,15 @@ Package rerunfilecheck Warning: File `docnumsim7_en.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `docnumsim7_en.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  B4FBCE5AB5C6FEC05CFB95813473FA4D;8461.
+(rerunfilecheck)             After:  3B0A78BECC6F71258FA02924EE45789D;8496.
  ) 
 Here is how much of TeX's memory you used:
- 21474 strings out of 476179
- 381775 string characters out of 5809543
+ 21495 strings out of 476179
+ 381943 string characters out of 5809543
  1043741 words of memory out of 5000000
- 41863 multiletter control sequences out of 15000+600000
+ 41884 multiletter control sequences out of 15000+600000
  539292 words of font info for 217 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 93i,24n,134p,558b,1810s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,24n,134p,427b,1821s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on docnumsim7_en.xdv (70 pages, 1309632 bytes).
+Output written on docnumsim7_en.xdv (70 pages, 1348060 bytes).

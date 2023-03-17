@@ -3266,36 +3266,34 @@ named \verb|get_admittance_matrix|.
 
 From the above, the program to calculate tidal currents can be summarized as follows.
 
-\begin{example}[Tidal current calculation implementation results]
-\red{Translated with DeepL}
-The program implemented in the above example is summarized and organized as a function that performs a tidal flow calculation Program\nobreak\ref{program:calc_flow}.
+\begin{example}[Implementation result of power flow calculation]
 
-\smallskip
-\begin{PROGRAMA}[count,title={calculate\_power\_flow.m}]\label{program:calc_flow}
-\begin{verbatim}
+The program implemented in the above example can be organized as a function for
+performing power flow calculation, which is shown in Program
+\ref{program:calc_flow}.
+
+\begin{lstlisting}[language=Matlab, caption=calculate\_power\_flow.m, label={program:calc_flow}]
 function [V, I, P, Q] = calculate_power_flow(a_bus, a_branch)
 
-n_bus = numel(a_bus);
-Y = get_admittance_matrix(n_bus, a_branch);
+  n_bus = numel(a_bus);
+  Y = get_admittance_matrix(n_bus, a_branch);
 
-func_curried = @(x) func_power_flow(x, Y, a_bus);
+  func_curried = @(x) func_power_flow(x, Y, a_bus);
 
-x0 = kron(ones(n_bus, 1), [1; 0]);
-options = optimoptions('fsolve', 'Display', 'iter');
-x_sol = fsolve(func_curried, x0, options);
+  x0 = kron(ones(n_bus, 1), [1; 0]);
+  options = optimoptions('fsolve', 'Display', 'iter');
+  x_sol = fsolve(func_curried, x0, options);
 
-[~, V, I, P, Q] = func_curried(x_sol);
+  [~, V, I, P, Q] = func_curried(x_sol);
 
 end
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-\red{Translated with DeepL}
-This program receives a set of bus lines and a set of transmission lines and performs a tidal current calculation It can be used as Program \nobreak\ref{program:main_calc_flow}.
+This program takes a set of buses and a set of transmission lines as inputs and
+performs power flow calculations. It can be used as shown in Program
+\ref{program:main_calc_flow}.
 
-\smallskip
-\begin{PROGRAMA}[count,title={main\_power\_flow.m}]\label{program:main_calc_flow}
-\begin{verbatim}
+\begin{lstlisting}[language=Matlab, caption=main\_power\_flow.m, label={program:main_calc_flow}]
 a_bus = cell(3, 1);
 a_bus{1} = bus_slack(2, 0);
 a_bus{2} = bus_load(-3, 0);
@@ -3311,55 +3309,70 @@ display('Vabs:'), display(abs(V)')
 display('Vangle:'), display(angle(V)')
 display('P:'), display(P')
 display('Q:'), display(Q')
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-\red{Translated with DeepL}
-If it is necessary to perform tidal flow calculations for different power grids, only the definitions of bus bar and transmission line in lines 1 to 8 of the Program \nobreak\ref{program:main_calc_flow} can be changed, and the other programs can be used without any modification.
-When a new type of bus bar or transmission line is needed, a new class that implements the data and methods with the defined names can be implemented.
-These features make the program more readable and extensible than a simple implementation such as \ref{ex:simplepowerflow}.
+If it is necessary to perform power flow calculations for different power grids,
+other programs can be used without modification by changing only the definitions
+of buses and transmission lines in lines 1 to 8 of Program
+\ref{program:main_calc_flow}. Also, if a new type of bus or transmission line is
+required, a new class implementing the data and methods with predetermined names
+can be implemented. Therefore, compared to a simple implementation like Example
+\ref{ex:simplepowerflow}, this program has high readability and extensibility.
 \end{example}
 
-\section{How to implement time response calculations for power system models}\label{sec:timerescal}
+\section{Implementation method for time response calculation of power system
+models}\label{sec:timerescal}
 
-\red{Translated with DeepL}
-This section describes how to numerically calculate the time response of a power system model using \matlab.
-The computation of the time response of a power system model requires solving a system of differential equations that expresses the dynamic characteristics of the equipment and a system of differential algebraic equations that The time response of the power system model requires solving a system of differential algebraic equations, which is a system of differential equations representing the dynamic characteristics of the equipment and a system of algebraic equations for the power flow.
-First, let's take a simple system of differential-algebraic equations as an example and see how to solve it.
+In this section, we will explain how to numerically calculate the time response
+of a power system model using \matlab. To calculate the time response of a power
+system model, it is necessary to solve a system of differential-algebraic
+equations that combine differential equations representing the dynamic
+characteristics of the equipment and algebraic equations representing the power
+flow. First, let's look at an example of a simple differential-algebraic
+equation system and its solution method.
 
 \begin{figure}[t]
   \centering
   \includegraphics[width = .5\linewidth]{figs/circkawaguchi}
   \medskip
-  \caption{\textbf{Differential Algebraic Equations Example: LC Parallel Circuit}}
+  \caption{\centering\textbf{Differential Algebraic Equations Example: LC
+  Parallel Circuit}}
   \label{fig:RLC}
   \medskip
 \end{figure}
 
 
-\begin{example}[Numerical solution of simple systems of differential-algebraic equations]\label{ex:dae_ex1}
-\red{Translated with DeepL}
-Numerical simulation is performed for the simple electric circuit shown in Figure \ref{fig:RLC}, where $R$, $L$, $C$, and $E$ are all 1.
-The dynamic elements of this circuit are the coil $L$ and the capacitor $C$, whose differential equations are given by:
+\begin{example}[Numerical solution method for a simple differential-algebraic
+equation system]\label{ex:dae_ex1}
+
+Let us perform a numerical simulation for the case where $R$, $L$, $C$, and $E$
+are all equal to 1 in the simple electrical circuit shown in Figure
+\ref{fig:RLC}. The dynamic elements of this circuit are the coil $L$ and the
+capacitor $C$, and their differential equations are given by:
+
 \begin{subequations}\label{eq:ex_de}
   \begin{align}
     L\dot i_L & = v_L \\
     C\dot v_C & = i_C
   \end{align}
 \end{subequations}
-However, the initial values are $i_L(0)=0$ and $v_C(0)=0$.
-Also, from Ohm's law and Kirchhoff's law, we get the following algebraic equations.
+where the initial values are set to $i_L(0)=0$ and $v_C(0)=0$. Also, the
+algebraic equations given by Ohm's law and Kirchhoff's law are:
+
 \begin{subequations}\label{eq:ex_ae}
   \begin{align}
-    v_R & =R i_R      \\
+    v_R & = R i_R      \\
     i_R & = i_L + i_C \\
     v_L & = v_C       \\
     E   & = v_C + v_R
   \end{align}
 \end{subequations}
 
-Using the algebraic equations in equation (\ref{eq:ex_ae}) and eliminating redundant variables such as $v_R$ and $i_R$, we obtain an equivalent system of ordinary differential equations can be obtained.
-This operation corresponds to Kron reduction, and the resulting system of ordinary differential equations is
+Using the algebraic equations in (\ref{eq:ex_ae}), redundant variables such as
+$v_R$ and $i_R$ can be eliminated, resulting in an equivalent system of ordinary
+differential equations. This operation corresponds to Kron reduction, and the
+resulting system of ordinary differential equations is given by:
+
 \begin{subequations}\label{eq:ex1_ode}
   \begin{align}
     \dot{i}_L & = \frac{1}{L}v_C                     \\
@@ -3367,14 +3380,16 @@ This operation corresponds to Kron reduction, and the resulting system of ordina
   \end{align}
 \end{subequations}
 
-First, let's write a program to solve this ordinary differential equation system.
-The solver of \matlab for the ODE system is generally \verb|ode45|.
-In \verb|ode45|, the solution of the ordinary differential equation system can be obtained by implementing the function $f(t,x)$ of the ordinary differential equation $\dot{x} = f(t,x) $.
-Implementing the right-hand side of an expression (\ref{eq: ex1_ode}) results in the Program \ref{program: ex1_ode}.
+First, let's write a program to solve this system of ordinary differential
+equations. The \verb|ode45| solver in MATLAB is commonly used for solving
+systems of ordinary differential equations. By implementing the function
+$f(t,x)$ for the ordinary differential equation $\dot{x} = f(t,x)$, the solver
+can compute the solution of the system of ordinary differential equations.
+Implementing the right-hand side of (\ref{eq:ex1_ode}), the program becomes as
+shown in Program \ref{program:ex1_ode}.
 
-\smallskip
-\begin{PROGRAMA}[count,title={func\_RLC\_ode.m}]\label{program:ex1_ode}
-  \begin{verbatim}
+
+\begin{lstlisting}[language=Matlab, caption=func\_RLC\_ode.m, label={program:ex1_ode}]
 function dx = func_RLC_ode(x, R, C, L, E)
 
 iL = x(1);
@@ -3386,14 +3401,13 @@ dvC = (E-vC)/R/C - iL/C;
 dx = [diL; dvC];
 
 end
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-As a result, when \verb|ode45| is executed and the ordinary differential equation system is solved, the program \nobreak\ref{program: main_ode1} becomes:
+As a result, when \verb|ode45| is executed and the ordinary differential
+equation system is solved, the Program \nobreak\ref{program: main_ode1} becomes:
 
-\smallskip
-\begin{PROGRAMA}[count,title={main\_RLC\_ode.m}]\label{program:main_ode1}
-\begin{verbatim}
+
+\begin{lstlisting}[language=Matlab, caption=main\_RLC\_ode.m, label={program:main_ode1}]
 R = 1;
 L = 1;
 C = 1;
@@ -3406,19 +3420,26 @@ tspan = [0 30];
 [t, x] = ode45(func, tspan, x0);
 
 plot(t, x)
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-The output variable \verb|x| in the program \nobreak\ref{program: main_ode1} is a matrix in which the time series of $i_L$ and $v_C$ are arranged vertically.
-Therefore, note that the time series of other variables such as $i_C$ and $i_R$ need to be additionally calculated using the algebraic equation of the equation (\ref{eq: ex_ae}).
+The output variable \verb|x| in the program \nobreak\ref{program: main_ode1} is
+a matrix in which the time series of $i_L$ and $v_C$ are arranged vertically.
+Therefore, note that the time series of other variables such as $i_C$ and $i_R$
+need to be additionally calculated using the algebraic equation of the Equation
+(\ref{eq: ex_ae}).
 
-Next, consider directly finding the solution of the system of differential algebra equations without going through Kron reduction.
-In this case, since the physical algebraic equation can be written down as it is, there is an advantage that the description is easy even if the system becomes complicated.
-One of the commands that can solve the system of differential algebra with \matlab is \verb|ode15s|.
-The target is a system of differential algebraic equations described in the following format.
+Next, consider directly finding the solution of the system of differential
+algebra equations without going through Kron reduction. In this case, since the
+physical algebraic equation can be written down as it is, there is an advantage
+that the description is easy even if the system becomes complicated. One of the
+commands that can solve the system of differential algebra with \matlab is
+\verb|ode15s|. The target is a system of differential algebraic equations
+described in the following format.
+
 \begin{align}\label{eq:numDAE}
   M\dot{x} = f(t, x)
 \end{align}
+
 Applying the expression (\ref{eq: ex_de}) and the expression (\ref{eq: ex_ae}):
 \[
 \underbrace{
@@ -3443,69 +3464,78 @@ Applying the expression (\ref{eq: ex_de}) and the expression (\ref{eq: ex_ae}):
 }
 }_{f(t,x)}
 \]
-Note that the order in which the elements on the 3rd to 6th lines on the right side are placed is arbitrary.
-Implementing this right-hand side results in a program \ref{program: func_DAE1}.
+Note that the order in which the elements on the 3rd to 6th lines on the right
+side are placed is arbitrary. Implementing this right-hand side results in a
+program \ref{program: func_DAE1}.
 
-\smallskip
-\begin{PROGRAMA}[count,title={func\_RLC\_dae.m}]\label{program:func_DAE1}
-\begin{verbatim}
+
+\begin{lstlisting}[language=Matlab, caption=func\_RLC\_dae.m, label={program:func_DAE1}]
 function dx = func_RLC_dae(x, R, C, L, E)
 
-iR = x(1);
-iL = x(2);
-iC = x(3);
-vR = x(4);
-vL = x(5);
-vC = x(6);
+  iR = x(1);
+  iL = x(2);
+  iC = x(3);
+  vR = x(4);
+  vL = x(5);
+  vC = x(6);
 
-diL = vL;
-dvC = iC;
+  diL = vL;
+  dvC = iC;
 
-con1 = vC-vL;
-con2 = E-vC-vR;
-con3 = iR-(iC+iL);
-con4 = vR-iR*R;
+  con1 = vC-vL;
+  con2 = E-vC-vR;
+  con3 = iR-(iC+iL);
+  con4 = vR-iR*R;
 
-dx = [diL; dvC; con1; con2; con3; con4];
+  dx = [diL; dvC; con1; con2; con3; con4];
 end
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-This function can be used to solve a system of differential algebraic equations such as in Program \nobreak\ref{program: DAE1}.
+This function can be used to solve a system of differential algebraic equations
+such as in Program \nobreak\ref{program: DAE1}.
 
-\smallskip
-\begin{PROGRAMA}[count,title={main\_RLC\_dae.m}]\label{program:DAE1}
-\begin{verbatim}
-R = 1;
-C = 1;
-L = 1;
-E = 1;
+\begin{lstlisting}[language=Matlab, caption=main\_RLC\_dae.m, label={program:DAE1}]
+function dx = func_RLC_dae(x, R, C, L, E)
 
-M = zeros(6, 6);
-M(1, 2) = L;
-M(2, 6) = C;
+  iR = x(1);
+  iL = x(2);
+  iC = x(3);
+  vR = x(4);
+  vL = x(5);
+  vC = x(6);
 
-x0 = zeros(6, 1);
-tspan = [0 30];
+  diL = vL;
+  dvC = iC;
 
-options = odeset('Mass', M);
-[t, x] = ode15s(@(t, x) func_RLC_dae(x, R, C, L, E),...
-  tspan, x0, options);
+  con1 = vC-vL;
+  con2 = E-vC-vR;
+  con3 = iR-(iC+iL);
+  con4 = vR-iR*R;
 
-plot(t, x(:, [2, 6]))
-\end{verbatim}
-\end{PROGRAMA}
+  dx = [diL; dvC; con1; con2; con3; con4];
+end
+\end{lstlisting}
 
+In this program, $M$ of the expression \ref{eq: numDAE} is set in the option on
+the 13th line. Also, the initial value of the state is set in the 10th line,
+but only the state of the differential equation, that is, the 2nd and 6th
+elements, has meaning. The state of the algebraic equation does not need to be
+calculated and set by the user himself because the value that satisfies the
+equation is automatically searched by \verb|ode15s|. In fact, the algebraic
+equation is not satisfied by the initial value with all the elements as $0$, but
+the solution of the system of differential algebraic equations is calculated
+without any problem. The solution \verb|x| obtained in the 15th line is a
+matrix in which the time series of $v_R, v_L, v_C, i_R, i_L, i_C$ are arranged,
+and all of them are different from the case of equivalent conversion to the
+ordinary differential equation system. The time series of the variables of is
+calculated at once.
 
-In this program, $M$ of the expression \ref{eq: numDAE} is set in the option on the 13th line.
-Also, the initial value of the state is set in the 10th line, but only the state of the differential equation, that is, the 2nd and 6th elements, has meaning.
-The state of the algebraic equation does not need to be calculated and set by the user himself because the value that satisfies the equation is automatically searched by \verb|ode15s|.
-In fact, the algebraic equation is not satisfied by the initial value with all the elements as $0$, but the solution of the system of differential algebraic equations is calculated without any problem.
-The solution \verb|x| obtained in the 15th line is a matrix in which the time series of $v_R, v_L, v_C, i_R, i_L, i_C$ are arranged, and all of them are different from the case of equivalent conversion to the ordinary differential equation system.
-The time series of the variables of is calculated at once.
-
-Figure \ref{fig: solution_dae} shows the time response of $ i_L $ and $ v_C $ when converted to an ordinary differential equation system and when the solution of the differential algebraic equation system is directly calculated. Two lines are displayed in each figure: the solution by \ verb | ode45 | (solid blue line) and the solution by \ verb | ode15s | (red dashed line). Obviously, the two solutions are equal.
-
+Figure \ref{fig:solution_dae} shows the time response of $i_L$ and $v_C$ when
+the differential algebraic equation system is solved directly and when it is
+converted to an ordinary differential equation system.  In each figure, two
+lines are displayed: one is the solution obtained by \verb|ode45| (blue solid
+line) and the other is the solution obtained by \verb|ode15s| (red dashed line).
+It is clear that the two solutions are equal.
 
 \begin{figure}[t]
   \centering
@@ -3528,9 +3558,6 @@ Figure \ref{fig: solution_dae} shows the time response of $ i_L $ and $ v_C $ wh
   \medskip
 \end{figure}
 \end{example}
-
-
-
 
 \subsection{Simple implementation of time response calculations for power system models}
 \red{Translated with DeepL}
