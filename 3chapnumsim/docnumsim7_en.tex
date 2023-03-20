@@ -3919,15 +3919,17 @@ function [t, x, V, I] = ...
 end
 \end{lstlisting}
 
-In the Program\nobreak\ref{program:simulate_network1}, lines 5 to 9 define the matrix\verb|M|| using the number of states obtained from each device.
-In line 17, the differential algebraic equations are solved using the program \nobreak\ref{program:network_dae1}.
-In lines 27 to 34, the result is divided into the state variables of each device, the voltage phasors and current phasors of each bus bar, and returned.
+In the Program\nobreak\ref{program:simulate_network1}, lines 5 to 9 define the
+matrix\verb|M|| using the number of states obtained from each device.  In line
+17, the differential algebraic equations are solved using the program
+\nobreak\ref{program:network_dae1}. In lines 27 to 34, the result is divided
+into the state variables of each device, the voltage phasors and current phasors
+of each bus bar, and returned.
 
-Furthermore, rewriting the Program\nobreak\ref{program:main_simple_network_dae} results in the Program\nobreak\ref{program:main_network1}.
+Furthermore, rewriting the Program\nobreak\ref{program:main_simple_network_dae}
+results in the Program\nobreak\ref{program:main_network1}.
 
-\smallskip
-\begin{PROGRAMA}[count,title={main\_simulation\_3bus.m}]\label{program:main_network1}
-\begin{verbatim}
+\begin{lstlisting}[language=Matlab, caption=main\_simulation\_3bus.m, label={program:main_network1}]
 a_branch = cell(2, 1);
 a_branch{1} = branch(1, 2, 1.3652-11.6040j);
 a_branch{2} = branch(2, 3, -10.5107j);
@@ -3950,93 +3952,123 @@ tspan = [0 50];
 [t, x, V, I] = simulate_power_system(a_component, Y, x0, tspan);
 
 plot(t, [x{1}(:, 2), x{3}(:, 2)])
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-In the Program\nobreak\ref{program:main_network1},an array \verb|a_component| of devices representing generators and loads is created and the function \verb|simulate_power_system| defined in the Program \nobreak\ref{program:simulate_network1} is executed.
-The function \verb|simulate_power_system| defined in the program\nobreak\ref{program:simulate_network1} is executed.
-In the numerical calculation of the time response, when changing the structure of the power grid or the devices connected to it,
-it is only necessary to change the program \verb|a_branch| and \verb|a_component| in the Program \ref{program:main_network1},
-and not to change the Program \nobreak\ref{program:simulate_network1} from \nobreak\ref{program:generator}.
-In the case of using equipment different from the generator or load in the Program \nobreak\ref{program:generator} or Program \ref{program:load},
-you only need to implement and use a class with \verb|get_nx| and \verb|get_dx_constraint|.
-These modularizations make the program more readable and extensible compared to the implementation of the Example \ref{ex:dae_ex2}.
+In the Program\nobreak\ref{program:main_network1}, an array \verb|a_component|
+of devices representing generators and loads is created and the function
+\verb|simulate_power_system| defined in the Program
+\nobreak\ref{program:simulate_network1} is executed.
+
+When changing the structure of the power transmission network or the devices to
+be connected in numerical calculations of time response, it is sufficient to
+change \verb|a_branch| and \verb|a_component| in program
+\ref{program:main_network1}, and it is not necessary to modify programs from
+\ref{program:generator} to \ref{program:simulate_network1}. Moreover, if using
+other devices than generators and loads in programs \ref{program:generator} and
+\ref{program:load}, it is enough to implement a class with \verb|get_nx| and
+\verb|get_dx_constraint| and use it.
+
+Thanks to this modularization, the resulting program is more readable and
+extensible compared to the implementation in Example \ref{ex:dae_ex2}.
+
+In the execution results of this program, the state of each device is returned
+in the cell array \verb|x|. Let's confirm that the elements of \verb|x| form a
+matrix consistent with the number of state variables for each device. Here, the
+device connected to bus 2 is a load, and the number of states is 0, so
+\verb|x{2}| is an empty matrix with 0 columns. The program plots the second
+element of the states of the generators connected to bus 1 and bus 3, i.e., the
+angular frequency deviation.
+
 \end{example}
 
-In the example program \ref{ex:gen_load}, the modularization of generators and loads allows for a prospective implementation of the time response calculation of the power system model.
-However, in the program \nobreak\ref{program:main_network1}, the values of the external input of the generator and the impedance of the load need to be pre-computed to match the desired equilibrium point.
-Since these values depend on the dynamic characteristics of each device, there remains room for improvement in terms of separation of functions.
-To solve this problem, let us consider an extension of the program described in the example \ref{ex:gen_load} to make it functionally more separated.
+In Example \ref{ex:gen_load}, it is possible to implement time-response
+calculations of the power system model with clear visibility by modularizing the
+generator and load modules. However, in Program \ref{program:main_network1}, it
+is necessary to calculate in advance the values of the external input of the
+generator and the impedance of the load that match the desired equilibrium
+point. Since these values depend on the dynamic characteristics of each
+equipment, there is room for improvement from the perspective of functional
+separation. To solve this problem, let's consider extending the program
+described in Example \ref{ex:gen_load} and making it functionally more
+separated.
 
 
-\begin{example}[Add methods to calculate steady state conditions for generators and loads]
-In the numerical computation of the time response of the power system model, we consider achieving a steady tidal state that achieves the desired power supply.
-In this case, the Equations (\ref{eq:intssgen}) and \ref{eq:lmodimppara} must be satisfied for the generator and load, respectively.
-Since these relations are related to the state equations of each device, it is appropriate to implement them in the classes \verb|generator| and \verb|load_impedance|.
-From this point of view, adding a method to calculate the steady state that achieves the desired power supply and demand to the program\ref{program:generator} and the program\ref{program:load} will result in the Program \nobreak\ref{program:generator2} and Program \ref{program:load2}.
+\begin{example}[Adding a Method to Calculate the Steady State of Generators and Loads]
 
-\smallskip
-\begin{PROGRAMA}[count,title={generator.m}]\label{program:generator2}
-  \begin{verbatim}
+In numerical calculations of the time response of power system models, achieving
+a steady-state flow that realizes the desired power supply is important. At this
+time, Equation \ref{eq:intssgen} and Equation \ref{eq:lmodimppara} must be
+satisfied for each generator and load, respectively. Since these equations are
+related to the state equations of each device, it is appropriate to implement
+them in the classes of \verb|generator| and \verb|load_impedance|. From this
+perspective, by adding a method to calculate the steady state that achieves the
+desired power supply to Program \ref{program:generator} and Program
+\ref{program:load}, Programs \ref{program:generator2} and \ref{program:load2}
+are obtained.
+
+
+\begin{lstlisting}[language=Matlab, caption=generator.m, label={program:generator2}]
 classdef generator < handle
   
 (Same as lines 3-12 of program 3-23)
 
-methods
+  methods
 
-(Same as lines 15-57 in program 3-23)
+  (Same as lines 15-57 in program 3-23)
 
-  function x_equilibrium = set_equilibrium(obj, V, I, P, Q)
-    Vabs = abs(V);
-    Vangle = angle(V);
-    
-    X = obj.X;
-    X_prime = obj.X_prime;
-    
-    delta = Vangle + atan(P/(Q+Vabs^2/X_prime));
-    E = X_prime/Vabs*sqrt((Q+Vabs^2/X_prime)^2+P^2);
-    
-    x_equilibrium = [delta; 0; E];
-    
-    obj.Pmech = P;
-    obj.Vfield = X*E/X_prime ...
-      - (X/X_prime-1)*Vabs*cos(delta-Vangle);
+    function x_equilibrium = set_equilibrium(obj, V, I, P, Q)
+      Vabs = abs(V);
+      Vangle = angle(V);
+      
+      X = obj.X;
+      X_prime = obj.X_prime;
+      
+      delta = Vangle + atan(P/(Q+Vabs^2/X_prime));
+      E = X_prime/Vabs*sqrt((Q+Vabs^2/X_prime)^2+P^2);
+      
+      x_equilibrium = [delta; 0; E];
+      
+      obj.Pmech = P;
+      obj.Vfield = X*E/X_prime ...
+        - (X/X_prime-1)*Vabs*cos(delta-Vangle);
+    end
+
   end
-
-end
   
 end
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-\smallskip
-\begin{PROGRAMA}[count,title={load\_impedance.m}]\label{program:load2}
-\begin{verbatim}
+
+\begin{lstlisting}[language=Matlab, caption=generator.m, label={program:generator2}]
 classdef load_impedance < handle
   
 (Same as lines 3-5 in program 3-24)
 
-methods
-  
-(Same as lines 8 through 21 in Program 3-24)
+  methods
+    
+  (Same as lines 8 through 21 in Program 3-24)
 
-  function x_equilibrium = set_equilibrium(obj, V, I, P, Q)
-    x_equilibrium = [];
-    obj.z = -V/I;
+    function x_equilibrium = set_equilibrium(obj, V, I, P, Q)
+      x_equilibrium = [];
+      obj.z = -V/I;
+    end
+
   end
 
 end
+\end{lstlisting}
 
-end
-\end{verbatim}
-\end{PROGRAMA}
-In these programs, \verb|set_equilibrium| takes the bus bar voltage phasor \verb|V|, current phasor\verb|I|, active power\verb|P|, reactive power\verb|Q| at the desired steady state and returns a steady state value\verb|x_ equilibrium|.
-Theoretically, it is not necessary to give \verb|I|, only \verb|V| and \verb|P| are sufficient, but for convenience, we also give \verb|I|.
-A program that performs a simulation similar to the one shown in the example \ref{ex:gen_load} using the parameters obtained from the tidal current calculation can be written as follows.
+In these programs, \verb|set_equilibrium| is a method that takes the voltage
+phase \verb|V|, current phase \verb|I|, active power \verb|P|, and reactive
+power \verb|Q| of the bus in the desired steady state as input and returns the
+steady state value of the state \verb|x_equilibrium|. Theoretically, it is
+sufficient to provide only \verb|V| and \verb|P| without providing \verb|I|, but
+\verb|I| is also provided for convenience. Using the parameters obtained from
+the power flow calculation, a simulation similar to Example \ref{ex:gen_load}
+can be described as follows.
 
-\smallskip
-\begin{PROGRAMA}[count,title={main\_simulation\_3bus\_equilibrium.m}]\label{program:main_equilibrium}
-\begin{verbatim}
+
+\begin{lstlisting}[language=Matlab, caption=main\_simulation\_3bus\_equilibrium.m, label={program:main_equilibrium}]
 a_bus = cell(3, 1);
 a_bus{1} = bus_slack(2, 0);
 a_bus{2} = bus_load(-3, 0);
@@ -4069,92 +4101,103 @@ tspan = [0 50];
 [t, x, V, I] = simulate_power_system(a_component, Y, x0, tspan);
 
 plot(t, [x{1}(:, 2), x{3}(:, 2)])
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-The program \ref{program:main_equilibrium} clarifies the process of defining a power system model using classes of bus bar, transmission line, generator, and load, calculating the tidal current, and computing the time response.
-The user only needs to specify the physical constants of each device and can run the numerical simulation without paying attention to the internal dynamic characteristics.
-In this example, it is assumed that the equipment model has a method called {\verb|set_equilibrium|}.
-This is equivalent to changing the definition of the device in duck typing.
+In Program \ref{program:main_equilibrium}, the process of defining the power
+system model using the classes for the bus, transmission line, generator, and
+load, and performing power flow calculations to obtain the time response is made
+clear. Users can execute numerical simulations without paying attention to the
+internal dynamic characteristics by simply specifying the physical constants of
+each equipment. In this example, it is assumed that each equipment model has the
+method \verb|set_equilibrium|. This corresponds to changing the definition of
+equipment in terms of duck typing.
+
 \end{example}
 
-The above examples have dealt with the numerical computation of the initial value response of power system models.
-Next, we will discuss how to implement the time response calculation for ground faults.
+In the above examples, numerical calculations for the initial value response of
+the power system model were discussed. Next, we will describe the implementation
+method for time response calculations for ground faults.
 
 \begin{example}[Numerical calculation of time response to ground fault]
-In order to calculate the response to a ground fault, the voltage at the bus bar where the fault occurred should be fixed at $0$ for a certain time, as described in section \ref{sec:fault}.
-This can be implemented as follows by modifying some constraints in line 36 of the Program \nobreak\ref{program:network_dae1}.
+In order to calculate the response to a ground fault, the voltage at the bus bar
+where the fault occurred should be fixed at $0$ for a certain time, as described
+in section \ref{sec:fault}. This can be implemented as follows by modifying
+some constraints in line 36 of the Program \nobreak\ref{program:network_dae1}.
 
-\smallskip
-\begin{PROGRAMA}[count,title={func\_simulation.m}]\label{program:network_dae_fault}
-\begin{verbatim}
+
+\begin{lstlisting}[language=Matlab, caption=func\_simulation.m, label={program:network_dae_fault}]
 function out = func_simulation(x, Y, a_component, bus_fault)
 
-(Same as lines 3-34 of program 3-25)
+  (Same as lines 3-34 of program 3-25)
 
-con_network = I - Y*V;
-con_network(bus_fault) = V(bus_fault);
+  con_network = I - Y*V;
+  con_network(bus_fault) = V(bus_fault);
 
-(Same as lines 38 through 40 in program 3-25)
+  (Same as lines 38 through 40 in program 3-25)
 
 end
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-In this program, an input argument has been added, and it is assumed that the number of the bus bar where the ground fault occurs is assigned to \verb|bus_fault|.
-The Program \nobreak\ref{program:simulate_network1} is changed to correspond to this change, resulting in Program \ref{program:simulate_network2}.
+In this program, an input argument has been added, and it is assumed that the
+number of the bus bar where the ground fault occurs is assigned to
+\verb|bus_fault|. The Program \nobreak\ref{program:simulate_network1} is
+changed to correspond to this change, resulting in Program
+\ref{program:simulate_network2}.
 
-\smallskip
-\begin{PROGRAMA}[count,title={simulate\_power\_system.m}]\label{program:simulate_network2}
-  \begin{verbatim}
+
+\begin{lstlisting}[language=Matlab, caption=simulate\_power\_system.m, label={program:simulate_network2}]
 function [t, x, V, I] = simulate_power_system(a_component, ...
   Y, x0, tspan,bus_fault, tspan_fault)
 
-if nargin < 5
-  bus_fault = [];
+  if nargin < 5
+    bus_fault = [];
+  end
+
+  if nargin < 6
+    tspan_fault = [0, 0];
+  end
+
+  (Same as lines 4-15 of program 3-26)
+
+  if isempty(bus_fault)
+    [t, y] = ode15s(...
+      @(t, x) func_simulation(t, x, Y, a_component, []),...
+      tspan, y0, options);
+  else
+    [t1, y1] = ode15s(...
+      @(t, x) func_simulation(t, x, Y, a_component, bus_fault),...
+    tspan_fault, y0, options);
+    
+    [t2, y2] = ode15s(...
+      @(t, x) func_simulation(t, x, Y, a_component, []),...
+    [tspan_fault(2), tspan(2)], y1(end, :), options);
+
+    t = [t1; t2];
+    y = [y1; y2];
+  end
+
+  (Same as lines 21 through 34 of program 3-26)
+
 end
+\end{lstlisting}
 
-if nargin < 6
-  tspan_fault = [0, 0];
-end
+In this program, the bus bar and time interval where the ground fault occurs are
+added to the input arguments. However, lines 4 through 10 set default values if
+these values are not entered, so the program can be used without specifying a
+ground fault as in the Program \nobreak\ref{program:main_network1}. Such a
+property that allows past programs to be used in newer versions is called
+\textbf{backward compatibility}\index{public_reference@backward_compatibility}.
 
-(Same as lines 4-15 of program 3-26)
+In the Program \nobreak\ref{program:simulate_network2}, a ground fault is
+specified in lines 19 to 21, and the numerical simulation after the ground fault
+is cleared is performed in lines 23 to 25. Note that the initial value of the
+state in the numerical simulation after the ground fault is cleared is the final
+value of the time response calculation during the ground fault. If a program
+that numerically simulates the time response to a ground fault is written using
+this program, it will be Program\nobreak\ref{program:main_fault}.
 
-if isempty(bus_fault)
-  [t, y] = ode15s(...
-    @(t, x) func_simulation(t, x, Y, a_component, []),...
-    tspan, y0, options);
-else
-  [t1, y1] = ode15s(...
-    @(t, x) func_simulation(t, x, Y, a_component, bus_fault),...
-  tspan_fault, y0, options);
-  
-  [t2, y2] = ode15s(...
-    @(t, x) func_simulation(t, x, Y, a_component, []),...
-  [tspan_fault(2), tspan(2)], y1(end, :), options);
 
-  t = [t1; t2];
-  y = [y1; y2];
-end
-
-(Same as lines 21 through 34 of program 3-26)
-
-end
-\end{verbatim}
-\end{PROGRAMA}
-
-In this program, the bus bar and time interval where the ground fault occurs are added to the input arguments.
-However, lines 4 through 10 set default values if these values are not entered, so the program can be used without specifying a ground fault as in the Program \nobreak\ref{program:main_network1}.
-Such a property that allows past programs to be used in newer versions is called \textbf{backward compatibility}\index{public_reference@backward_compatibility}.
-
-In the Program \nobreak\ref{program:simulate_network2}, an earth fault is specified in lines 19 to 21, and the numerical simulation after the earth fault is resolved is performed in lines 23 to 25.
-Note that the initial value of the state in the numerical simulation after the ground fault is cleared is the final value of the time response calculation during the ground fault.
-If a program that numerically simulates the time response to a ground fault is written using this program, it will be Program\nobreak\ref{program:main_fault}.
-
-\smallskip
-\begin{PROGRAMA}[count,title={main\_simulation\_3bus\_fault.m}]\label{program:main_fault}
-\begin{verbatim}
-
+\begin{lstlisting}[language=Matlab, caption=main\_simulation\_3bus\_fault.m, label={program:main_fault}]
 (Same as lines 1 through 23 of program 3-30)
 
 x0 = vertcat(x_equilibrium{:});
@@ -4167,8 +4210,7 @@ fault_tspan = [0, 50e-3];
   fault_bus, fault_tspan);
 
 plot(t, [x{1}(:, 2), x{3}(:, 2)])
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
 Execution of this program yields results equivalent to \ref{fig:P3faulta}.
 \end{example}
