@@ -148,13 +148,13 @@ referred to as the \textbf{power flow distribution} at time $t$.
 \end{equation}
 
 \begin{equation}\label{eq:pfconIV}
-\bigl(
-|\bm{I}_1(t)|,\angle \bm{I}_1(t),
-|\bm{V}_1(t)|,\angle \bm{V}_1(t),
-\ldots
-|\bm{I}_N(t)|,\angle \bm{I}_N(t),
-|\bm{V}_N(t)|,\angle \bm{V}_N(t)
-\bigr)
+  \bigl(
+    |\bm{I}_1(t)|,\angle \bm{I}_1(t),
+    |\bm{V}_1(t)|,\angle \bm{V}_1(t),
+    \ldots
+    |\bm{I}_N(t)|,\angle \bm{I}_N(t),
+    |\bm{V}_N(t)|,\angle \bm{V}_N(t)
+  \bigr)
 \end{equation}
 
 Each current and voltage phasors changes with time, and from the laws of physics
@@ -177,19 +177,19 @@ Using the definitions of active power and reactive power supplied to the bus
 bars in the following equation, the current phasors can be eliminated.
 
 \begin{align}\label{eq:defPQVIi2}
-P_i(t)+\bm{j}Q_i(t) = \bm{V}_i(t) \overline{\bm{{I}} }_i(t)
+  P_i(t)+\bm{j}Q_i(t) = \bm{V}_i(t) \overline{\bm{{I}} }_i(t)
 \end{align}
 
 Thus, the system of equations in Equation \ref{eq:ohmY2} is equilvalent to:
 
 \begin{equation}\label{eq:PQVgen}
-  \simode{
+  \begin{aligned}
     P_1(t) + \bm{j} Q_1(t) &= 
     \sum_{j=1}^{N} \overline{\bm{Y}}_{1j} |\bm{V}_1(t)| |\bm{V}_j(t) | e^{\bm{j} \bigl(\angle \bm{V}_1(t) - \angle \bm{V}_j(t) \bigr)} \\ 
     & \; \;  \vdots \\
     P_N(t) + \bm{j} Q_N(t) &= 
     \sum_{j=1}^{N} \overline{\bm{Y}}_{Nj} |\bm{V}_N(t)| |\bm{V}_j(t) | e^{\bm{j} \bigl(\angle \bm{V}_N(t) - \angle \bm{V}_j(t) \bigr)}
-  }
+  \end{aligned}
 \end{equation}
 
 Therefore, depending on the context, the distribution of active power, reactive
@@ -219,8 +219,8 @@ example consisting of two bus bars.
 \medskip
 \end{figure}
 
-\begin{example}{\textbf{Power flow calculation of a two bus bar power system
-model}}\label{ex:2buspf}
+\begin{example}{\textbf{\textbf{Power flow calculation of a two bus bar power system
+model}}}\label{ex:2buspf}
 
 Let us consider an electrical power system consisting of two bus bars, as shown
 in Figure \ref{fig:2buspf}.  We assume that each bus is connected to either a
@@ -621,7 +621,7 @@ are treated as load buses with zero consumed active and reactive power.
   }
 \end{table}
 
-\begin{example}{\textbf{Power flow calculation based on the datasheet}}\label{ex:pf3bus}
+\begin{example}{\textbf{\textbf{Power flow calculation based on the datasheet}}}\label{ex:pf3bus}
 Let us consider the electrical power system model consisting of 3 bus bars
 discussed in Example \ref{ex:derY}. For the admittance matrix of the power grid
 of Equation \ref{eq:exY}, the admittance values of the two transmission lines
@@ -739,7 +739,7 @@ Using this expression, the following fact can be shown.
 
 \begin{theorem}[Expression of transmission loss through bus bar voltage phasor]
 \label{thm:PQ}
-For equation \ref{eq:PQVgen}, the transmission losses of active and reactive
+For Equation \ref{eq:PQVgen}, the transmission losses of active and reactive
 power for the entire system are defined as:
 
 \begin{equation}
@@ -938,7 +938,7 @@ Let us consider a generator model that inputs the voltage phasor in Section
 \ref{sec:genfund}. For simplicity of notation, subscripts $i$ have been
 omitted:
 \begin{equation}\label{eq:gendif_}
-  \simode{
+  \begin{aligned}
     \dot{\delta}&= \omega_0  \Delta \omega\\
     M   \Delta \dot{\omega}&= 
     - D \Delta\omega  
@@ -952,7 +952,7 @@ omitted:
     \right)
     |\bm{V}| \sfcos (\delta - \angle \bm{V} ) 
     + V_{{\rm field}}
-  }
+  \end{aligned}
 \end{equation}
 
 Here, if the active power and reactive power are the outputs:
@@ -976,7 +976,7 @@ mech}}^{\star},V_{{\rm field}}^{\star})$ that satisfy the following set of
 equations:
 
 \begin{equation}\label{eq:P0Q0eq}
-  \simode{
+  \begin{aligned}
     p^{\star} &=  \tfrac{|v^{\star}| e^{\star}}{ \Xt } \sfsin(\delta^{\star} -  \angle \bm{v}^{\star}), \\
     q^{\star} & = \tfrac{|v^{\star}| e^{\star}}{ \Xt } \sfcos (\delta^{\star} -  \angle \bm{v}^{\star})
     -\tfrac{|v^{\star}|^2}{ \Xt }, \\
@@ -988,17 +988,17 @@ equations:
     \right)
     |v^{\star}| \sfcos (\delta^{\star} - \angle \bm{v}^{\star})
     + v_{{\rm field}}^{\star}
-  }
+  \end{aligned}
 \end{equation}
 
 The set of equations in \ref{eq:P0Q0eq} represents the equilibrium point of the
 generator model when the steady-state value of the angular frequency deviation
-$\Delta \omega$ in equation \ref{eq:gendif_} is zero. Also, the given
+$\Delta \omega$ in Equation \ref{eq:gendif_} is zero. Also, the given
 $(P^{\star},Q^{\star},|V^{\star}|,\angle \bm{V}^{\star})$ corresponds to the
 input and output values of the generator model for each bus.
 
 The specific values of the steady-state internal states of the generator that
-satisfy equation \ref{eq:P0Q0eq} are given by:
+satisfy Equation \ref{eq:P0Q0eq} are given by:
 \begin{subequations}\label{eq:intssgen}
 \begin{equation}
   \spliteq{
@@ -1147,7 +1147,7 @@ The following facts are shown for this generator model.
 \begin{lemma}[Relationship between generator internal states and
 input/output]\label{lem:delVE}
 
-Consider equation \ref{eq:PQout} as a system of equations in $\delta - \angle
+Consider Equation \ref{eq:PQout} as a system of equations in $\delta - \angle
 \bm{V}$ and $E$. The solution is given by:
 \begin{subequations}\label{eq:tandelV}
   \begin{align}
@@ -1566,8 +1566,8 @@ $i$ &  $P_{{\rm mech}i}^{\star}$~[pu] & $V_{{\rm filed}i}^{\star}$~[pu] & $\delt
 \end{table}
 
 
-\begin{example}{\textbf{Initial response of the electrical power system
-model}}\label{ex:inires}
+\begin{example}{\textbf{\textbf{Initial response of the electrical power system
+model}}}\label{ex:inires}
 Let us consider the electrical power system model consisting of three bus bars
 handled in the Example \ref{ex:pf3bus}.  Let us consider a situation where the
 generator model of Equation \ref{eq:gendif_} is connected to bus bar 1 and bus
@@ -1688,9 +1688,7 @@ is appropriately modified according to the given excitation input value, the
 angular frequency deviation of each generator will not converge to zero. Let's
 verify this in the following example.
 
-\begin{example}[Time Response of Power System Model to Load Impedance
-Changes]\label{ex:loadpv}
-
+\begin{example}{\textbf{Time Response of Power System Model to Load Impedance Changes}}\label{ex:loadpv}
 Let us calculate the time response of the angular frequency deviation when the
 load impedance value changes under the same setting as Example \ref{ex:inires}.
 Specifically, we calculate the time response by increasing or decreasing
@@ -1925,8 +1923,7 @@ the following steps:
 
 Let us calculate the time response for bus-ground faults using these steps.
 
-\begin{example}[Time response of power system model to bus bar ground
-fault]\label{ex:busflt}
+\begin{example}{\textbf{Time response of power system model to bus bar ground fault}}\label{ex:busflt}
 
 In the same setting as Examples \ref{ex:inires} and \ref{ex:loadpv}, let us
 calculate the time response of the frequency deviation of the bus due to ground
@@ -2479,8 +2476,8 @@ transmission network}}
 \medskip
 \end{figure}
 
-\begin{example}[Synchronization of four bus bars in a power grid\\ with a ring
-structure]\label{ex:symbox}
+\begin{example}{\textbf{Synchronization of four bus bars in a power grid with a ring
+structure}}\label{ex:symbox}
 Let us consider synchronization of bus bars under a steady power flow
 distribution in a power grid with a ring structure shown in Figure
 \ref{fig:4busbox}. Since the number of bus bars is even, synchronization of bus
@@ -2496,7 +2493,7 @@ $i$ and bus $j$. Then, the central condition in Equation \ref{eq:N2sing} for
 each bus can be expressed as follows:
 
 \begin{equation}
-  \begin{align}
+  \begin{aligned}
     |\bm{V}_2^{\star}||\bm{y}_{12}|&=|\bm{V}_4^{\star}||\bm{y}_{14}|
     ,\qquad
     |\bm{V}_1^{\star}||\bm{y}_{12}|=|\bm{V}_3^{\star}||\bm{y}_{23}|,
@@ -2504,13 +2501,13 @@ each bus can be expressed as follows:
     |\bm{V}_2^{\star}||\bm{y}_{23}|&=|\bm{V}_4^{\star}||\bm{y}_{34}|
     ,\qquad
     |\bm{V}_3^{\star}||\bm{y}_{34}|=|\bm{V}_1^{\star}||\bm{y}_{14}|
-  \end{align}
+  \end{aligned}
 \end{equation}
 
 Expressing this in matrix form, we have:
 
 \begin{equation*}
-  \begin{align}
+  \begin{aligned}
     \underbrace{
     \mat{
     0 & |\bm{y}_{12}| &  0  & -|\bm{y}_{14}|\\
@@ -2524,7 +2521,7 @@ Expressing this in matrix form, we have:
     |\bm{V}_3^{\star}|\\
     |\bm{V}_4^{\star}|
     }=0
-  \end{align}
+  \end{aligned}
 \end{equation*}
 A necessary condition for the existence of a positive vector
 $(|\bm{V}_1^{\star}|,\ldots,|\bm{V}_4^{\star}|)$ that satisfies this equation is
@@ -2615,11 +2612,13 @@ programming, please refer to \cite{Hirasawa2021} or \cite{Sandi_Metz2016}.
 
 \subsection{Solving Algebraic Equations}
 In order to perform power flow calculation, it is necessary to solve the
-algebraic equations in equation \ref{eq:PQVgenst}. In this section, we will show
+algebraic equations in Equation \ref{eq:PQVgenst}. In this section, we will show
 how to use \matlab to explore the solutions of algebraic equations using a simple
 example.
 
-\begin{example}[Searching for a solution for algebraic equations]\label{ex:algenraic_equation_ex1}
+\begin{example}{\textbf{Searching for a solution for algebraic
+equations}}\label{ex:algenraic_equation_ex1}
+
 Consider the following set of algebraic equations:
 \begin{subequations}\label{eq:algebraic_equation_ex1}
 \begin{align}
@@ -2744,8 +2743,9 @@ is important to provide initial values close to the desired solution.
 Next, we will introduce a simple implementation method for power flow
 calculation.
 
-\begin{example}[Implementation method for power flow
-calculations]\label{ex:simplepowerflow}
+\begin{example}{\textbf{Implementation method for power flow
+calculations}}\label{ex:simplepowerflow}
+
 Consider performing power flow calculations on the power system model consisting
 of 3 buses in Example \ref{ex:pf3bus}. Since power flow calculation is also a
 type of calculation that solves algebraic equations, it is necessary to
@@ -2935,7 +2935,8 @@ implementation.
 First, let's consider modularizing the implementation of the admittance matrix
 in Program \ref{program:ex2}.
 
-\begin{example}[Separation of Implementation of Admittance Matrix]
+\begin{example}{\textbf{Separation of Implementation of Admittance Matrix}}
+
 Let's separate the part of Program \ref{program:ex2} that specifies the
 admittance matrix. For this purpose, we can make the variable \verb|Y| an input
 argument of the function. For example, a modification like Program
@@ -2948,7 +2949,7 @@ end
 \end{lstlisting}
 
 However, since \verb|fsolve| requires a "function with only the parameters to be
-optimized as arguments", the modified program \ref{program:ex3} cannot be used
+optimized as arguments", the modified Program \ref{program:ex3} cannot be used
 directly. This problem can be solved by using a technique called
 \textbf{currying}\index{currying} of functions. Specifically, program
 \ref{program:ex3} can be modified as follows.
@@ -2984,8 +2985,8 @@ This allows for the separation of functionality without using global variables.
 
 \end{example}
 
-Next, let us consider the part of the program \ref{program:ex2} that calculates
-the constraint conditions for each busbar. In the program \ref{program:ex2}, the
+Next, let us consider the part of the Program \ref{program:ex2} that calculates
+the constraint conditions for each busbar. In the Program \ref{program:ex2}, the
 constraint conditions for each busbar are directly written, so it is necessary
 to rewrite the program every time the number of busbars is changed. Furthermore,
 there is an implicit case distinction depending on the type of busbar, and if
@@ -2997,7 +2998,8 @@ use the concept of \textbf{polymorphism} in object-oriented programming. In the
 following example, we explain the concept of polymorphism through an
 implementation example.
 
-\begin{example}[Implementation of Power Flow Calculation using Polymorphism]
+\begin{example}{\textbf{Implementation of Power Flow Calculation using Polymorphism}}
+
 In power flow calculation, different constraint conditions are set depending on
 the type of busbar, but all busbars have a common property of "having constraint
 conditions." By implementing this common property as a "method with a common
@@ -3139,10 +3141,10 @@ one of the important concepts in object-oriented programming.
 % classes and more efficient maintenance of programs.
 % \end{comment}
 
-In an implementation using polymorphism like program \ref{program:ex4}, it has
+In an implementation using polymorphism like Program \ref{program:ex4}, it has
 the advantage of easy adaptability to changes in the number and configuration of
 buses. Specifically, by changing the number and definition of buses in lines 3-6
-of program \ref{program:ex4_main}, program \ref{program:ex4} can be used without
+of Program \ref{program:ex4_main}, Program \ref{program:ex4} can be used without
 modification.
 
 Moreover, adding new types of buses is also easy. Program \ref{program:ex4}
@@ -3152,7 +3154,7 @@ it is defined as a bus. This is called "duck typing", a concept that comes from
 "if it walks like a duck and quacks like a duck, then it must be a duck." This
 allows module designers to define a new bus class by implementing only
 \verb|get_constraint| without having to pay attention to the internal processing
-of program \ref{program:ex4}. Thus, this approach clarifies the scope of
+of Program \ref{program:ex4}. Thus, this approach clarifies the scope of
 implementation for module designers.
 \end{example}
 
@@ -3160,7 +3162,7 @@ The above has allowed us to prospectively implement a program for calculating
 the tidal currents given an admittance matrix. Furthermore, let us implement the
 computation of the admittance matrix by dividing it into a group of modules.
 
-\begin{example}[Calculation of Admittance Matrix using Object-oriented Programming]
+\begin{example}{\textbf{Calculation of Admittance Matrix using Object-oriented Programming}}
 
 The admittance matrix is generally defined by multiple power transmission lines.
 Therefore, we create a class that represents a power transmission line and
@@ -3266,7 +3268,7 @@ named \verb|get_admittance_matrix|.
 
 From the above, the program to calculate tidal currents can be summarized as follows.
 
-\begin{example}[Implementation result of power flow calculation]
+\begin{example}{\textbf{Implementation result of power flow calculation}}
 
 The program implemented in the above example can be organized as a function for
 performing power flow calculation, which is shown in Program
@@ -3342,8 +3344,8 @@ equation system and its solution method.
 \end{figure}
 
 
-\begin{example}[Numerical solution method for a simple differential-algebraic
-equation system]\label{ex:dae_ex1}
+\begin{example}{\textbf{Numerical solution method for a simple differential-algebraic
+equation system}}\label{ex:dae_ex1}
 
 Let us perform a numerical simulation for the case where $R$, $L$, $C$, and $E$
 are all equal to 1 in the simple electrical circuit shown in Figure
@@ -3466,7 +3468,7 @@ Applying the expression (\ref{eq: ex_de}) and the expression (\ref{eq: ex_ae}):
 \]
 Note that the order in which the elements on the 3rd to 6th lines on the right
 side are placed is arbitrary. Implementing this right-hand side results in a
-program \ref{program: func_DAE1}.
+Program \ref{program: func_DAE1}.
 
 
 \begin{lstlisting}[language=Matlab, caption=func\_RLC\_dae.m, label={program:func_DAE1}]
@@ -3565,8 +3567,8 @@ models}
 The following example describes how to implement a numerical simulation of a
 power system model.
 
-\begin{example}[Simple implementation of power system
-simulation]\label{ex:dae_ex2}
+\begin{example}{\textbf{Simple implementation of power system
+simulation}\label{ex:dae_ex2}}
 
 Let us implement a program to numerically compute the time response of the power
 system model discussed in the Example \ref{ex:inires}. To describe this system,
@@ -3707,7 +3709,7 @@ the two generators are plotted.
 In this section, we explain how to separate the program described in the
 previous section into functions and modify it into a highly extensible program.
 
-\begin{example}[Modularization of generators and loads]\label{ex:gen_load}
+\begin{example}{\textbf{Modularization of generators and loads}}\label{ex:gen_load}
   The program \nobreak\ref{program:simple_network_dae} consists of two steps:
   dividing the input \verb|x| into the state variables, voltage and current of
   each device, and computing differential and algebraic equations. Let us
@@ -3993,7 +3995,8 @@ described in Example \ref{ex:gen_load} and making it functionally more
 separated.
 
 
-\begin{example}[Adding a Method to Calculate the Steady State of Generators and Loads]
+\begin{example}{\textbf{Adding a Method to Calculate the Steady State of Generators and
+Loads}}
 
 In numerical calculations of the time response of power system models, achieving
 a steady-state flow that realizes the desired power supply is important. At this
@@ -4039,7 +4042,7 @@ end
 \end{lstlisting}
 
 
-\begin{lstlisting}[language=Matlab, caption=generator.m, label={program:generator2}]
+\begin{lstlisting}[language=Matlab, caption=generator.m, label={program:generator3}]
 classdef load_impedance < handle
   
 (Same as lines 3-5 in program 3-24)
@@ -4118,7 +4121,7 @@ In the above examples, numerical calculations for the initial value response of
 the power system model were discussed. Next, we will describe the implementation
 method for time response calculations for ground faults.
 
-\begin{example}[Numerical calculation of time response to ground fault]
+\begin{example}{\textbf{Numerical calculation of time response to ground fault}}
 In order to calculate the response to a ground fault, the voltage at the bus bar
 where the fault occurred should be fixed at $0$ for a certain time, as described
 in section \ref{sec:fault}. This can be implemented as follows by modifying
@@ -4215,158 +4218,172 @@ plot(t, [x{1}(:, 2), x{3}(:, 2)])
 Execution of this program yields results equivalent to \ref{fig:P3faulta}.
 \end{example}
 
-Finally, the calculation of the time response to the input signal is described.
+Finally, the calculation of the time response to the input signal is described
+in the follwing example.
 
-\begin{example}[Numerical computation of time response to input signals]
-In the examples we have dealt with so far, we will consider numerical simulations in which the mechanical input $P_\mathrm{mech}$ of the generator is varied and the magnitude of the load is varied, as in the example\ref{sec:resldpara}.
-For this purpose, we modify the program so that it can take into account external inputs.
+\begin{example}{\textbf{Numerical computation of time response to input signals}}
 
-In order to take external inputs into account, the number of inputs that each device receives must be explicitly stated.
-From this perspective, we add to the definition of an instrument "a method that returns the number of inputs".
-Furthermore, if we modify the Programs \ref{program:generator2} and \ref{program:load2} to reflect the external inputs in the time differentiation of the state variables and the computation of the constraint conditions, the Programs \ref{program:generator3} and \ref{program:load3}.
+In the examples we have dealt with so far, we consider performing numerical
+simulations that vary the mechanical input $P_\mathrm{mech}$ of the generator or
+the size of the load, as in Example \ref{sec:resldpara}. To do this, we need to
+modify the program to consider external inputs.
 
-\smallskip
-\begin{PROGRAMA}[count,title={generator.m}]\label{program:generator3}
-  \begin{verbatim}
+In order to consider external inputs, it is necessary that the number of inputs
+received by each device is explicitly stated in the device definitions.
+Therefore, we add the requirement that each device definition must have a method
+that returns the number of inputs.
+
+Furthermore, we modify Program \ref{program:generator2} and \ref{program:load2}
+to reflect external inputs in the calculation of state variable time derivatives
+and constraint conditions. These modifications result in Program
+\ref{program:generator3} and Program \ref{program:load3}.
+
+\begin{lstlisting}[language=Matlab, caption=generator.m, label={program:generator3}]
 classdef generator < handle
   
-(Same as lines 3-12 of program 3-23)
+  (Same as lines 3-12 of program 3-23)
 
-methods
+  methods
 
-(Same as lines 15-57 in program 3-23)
+  (Same as lines 15-57 in program 3-23)
 
-  function nu = get_nu(obj)
-    nx = 1;
+    function nu = get_nu(obj)
+      nx = 1;
+    end
+
+    function [dx, con] = get_dx_constraint(obj, x, V, I, u)
+      
+  (Same as lines 33 through 36 of program 3-23)
+
+      Pmech = obj.Pmech + u;
+
+  (Same as lines 39-56 in program 3-23)
+
+    end
+
+  (Same as lines 9 through 24 of program 3-28)
+
   end
-
-  function [dx, con] = get_dx_constraint(obj, x, V, I, u)
-    
-(Same as lines 33 through 36 of program 3-23)
-
-    Pmech = obj.Pmech + u;
-
-(Same as lines 39-56 in program 3-23)
-
-  end
-
-(Same as lines 9 through 24 of program 3-28)
-
 end
-end
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-\begin{PROGRAMA}[count,title={load\_impedance.m}]\label{program:load3}
-\begin{verbatim}
+
+\begin{lstlisting}[language=Matlab, caption=load\_impedance.m, label={program:load3}]
 classdef load_impedance < handle
   
-(Same as lines 3-5 in program 3-24)
+  (Same as lines 3-5 in program 3-24)
 
-methods
+  methods
 
-(Same as lines 8 through 21 in Program 3-24)
-  
-  function nu = get_nu(obj)
-    nu = 2;
+  (Same as lines 8 through 21 in Program 3-24)
+    
+    function nu = get_nu(obj)
+      nu = 2;
+    end
+
+    function [dx, con] = get_dx_constraint(obj, x, V, I, u)
+      dx = [];
+      z = real(obj.z)*(1+u(1)) + 1j*imag(obj.z)*(1+u(2));
+      con = V+z*I;
+      con = [real(con); imag(con)];
+    end
+
+  (Same as lines 9 through 12 in program 3-29)
+
   end
 
-  function [dx, con] = get_dx_constraint(obj, x, V, I, u)
-    dx = [];
-    z = real(obj.z)*(1+u(1)) + 1j*imag(obj.z)*(1+u(2));
-    con = V+z*I;
-    con = [real(con); imag(con)];
-  end
-
-(Same as lines 9 through 12 in program 3-29)
-
 end
+\end{lstlisting}
 
-end
-\end{verbatim}
-\end{PROGRAMA}
+In these programs, the method \verb|get_nu| returns the number of inputs that
+can be received, and \verb|get_dx_constraint| has been modified to appropriately
+handle the input \verb|u|.
 
-These programs return the number of inputs that \verb|get_nu| can receive. They are also modified so that \verb|get_dx_constraint| receives the input \verb|u| and processes it appropriately.
-The input to the generator represents the increment of $P_\mathrm{mech}$, and the input to the load represents the ratio of the real to the imaginary part of the impedance change.
-Modifying the Programs \ref{program:network_dae_fault} and \ref{program:simulate_network2} so that the input response can be calculated using these devices will result in the Programs \ref{program:network_dae_ input} and \ref{program:simulate_network3}.
+In this case, the input to the generator represents the increment of
+$P_\mathrm{mech}$, while the input to the load represents the change in the real
+and imaginary parts of the impedance.
 
-\smallskip
-\begin{PROGRAMA}[count,title={func\_simulation.m}]\label{program:network_dae_input}
-\begin{verbatim}
+By using these devices, it is possible to calculate input responses. Modifying
+Program \ref{program:network_dae_fault} and \ref{program:simulate_network2} to
+accommodate input responses results in Program \ref{program:network_dae_input}
+and \ref{program:simulate_network3}.
+
+\begin{lstlisting}[language=Matlab, caption=func\_simulation.m, label={program:network_dae_input}]
 function out = func_simulation(t, x, Y, a_component,...
   bus_fault, U, bus_U)
 
-(Same as lines 3-26 of program 3-25)
+  (Same as lines 3-26 of program 3-25)
 
-for k = 1:n_component
+  for k = 1:n_component
 
-(Same as lines 29-32 of program 3-25)
-  
-  if ismember(k, bus_U)
-    uk = U{bus_U==k}(t);
-  else
-    uk = zeros(component.get_nu(), 1);
+  (Same as lines 29-32 of program 3-25)
+    
+    if ismember(k, bus_U)
+      uk = U{bus_U==k}(t);
+    else
+      uk = zeros(component.get_nu(), 1);
+    end
+    
+    [dx{k}, con{k}] = component.get_dx_constraint(xk, Vk, Ik, uk);
+    
   end
-  
-  [dx{k}, con{k}] = component.get_dx_constraint(xk, Vk, Ik, uk);
-  
-end
 
-(Same as lines 5-6 in program 3-31)
+  (Same as lines 5-6 in program 3-31)
 
-(Same as lines 38 through 40 in program 3-25)
+  (Same as lines 38 through 40 in program 3-25)
 
 end
-\end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-\begin{PROGRAMA}[count,title={simulate\_power\_system.m}]\label{program:simulate_network3}
-\begin{verbatim}
+
+\begin{lstlisting}[language=Matlab, caption=simulate\_power\_system.m, label={program:simulate_network3}]
+
 function [t, x, V, I] = simulate_power_system(a_component, ...
   Y, x0, tspan,bus_fault, tspan_fault, U, bus_U)
 
-(Same as lines 4 through 10 in program 3-32)
+  (Same as lines 4 through 10 in program 3-32)
 
-if nargin < 7
-    U = {};
-    bus_U = [];
+  if nargin < 7
+      U = {};
+      bus_U = [];
+  end
+
+  (Same as lines 4-15 of program 3-26)
+
+  if isempty(bus_fault)
+    func = @(t, x) func_simulation(t, x, Y, a_component,...
+      [], U, bus_U);
+    [t, y] = ode15s(func, tspan, y0, options);
+  else
+    func = @(t, x) func_simulation(t, x, Y, a_component,...
+      bus_fault, U, bus_U);
+    [t1, y1] = ode15s(func, tspan_fault, y0, options);
+    
+    func = @(t, x) func_simulation(t, x, Y, a_component,...
+      [], U, bus_U);
+    [t2, y2] = ode15s(func, ...
+      [tspan_fault(2), tspan(2)], y1(end, :), options);
+    
+    t = [t1; t2];
+    y = [y1; y2];
+  end
+  (Same as lines 21 through 34 of program 3-26)
+
 end
+\end{lstlisting}
 
-(Same as lines 4-15 of program 3-26)
+In these programs, the input arguments \verb|U| and \verb|bus_U| have been
+added. Here, \verb|bus_U| is assumed to be assigned the number of the bus that
+specifies the input signal. In addition, \verb|U| is a cell array with the
+number of elements specified by the bus. Each element is a function that takes
+the time \verb|t| as an argument and returns the input signal. Note that in line
+11 of Program \ref{program:network_dae_input}, the element corresponding to the
+\verb|k|-th bus is selected from \verb|U|.
 
-if isempty(bus_fault)
-  func = @(t, x) func_simulation(t, x, Y, a_component,...
-    [], U, bus_U);
-  [t, y] = ode15s(func, tspan, y0, options);
-else
-  func = @(t, x) func_simulation(t, x, Y, a_component,...
-    bus_fault, U, bus_U);
-  [t1, y1] = ode15s(func, tspan_fault, y0, options);
-  
-  func = @(t, x) func_simulation(t, x, Y, a_component,...
-    [], U, bus_U);
-  [t2, y2] = ode15s(func, ...
-    [tspan_fault(2), tspan(2)], y1(end, :), options);
-  
-  t = [t1; t2];
-  y = [y1; y2];
-end
-(Same as lines 21 through 34 of program 3-26)
+An example program that uses the modified functions to perform simulations is
+shown in Program \ref{program:main_input}.
 
-end
-\end{verbatim}
-\end{PROGRAMA}
-
-In these programs, \verb|U| and \verb|bus_U| are added to the input arguments.
-Here, it is assumed that \verb|bus_U| is assigned the bus line number that specifies the input signal.
-In addition, \verb|U| is a cell array with the specified number of bus lines, and its elements are functions that receive the time \verb|t| and return the input signal.
-
-An example of a program that uses the modified function to perform the simulation is the Program \nobreak\ref{program:main_input}.
-
-\smallskip
-\begin{PROGRAMA}[count,title={main\_simulation\_3bus\_input.m}]\label{program:main_input}
-\begin{verbatim}
-
+\begin{lstlisting}[language=Matlab, caption=main\_simulation\_3bus\_input.m, label={program:main_input}]
   (Same as lines 1 through 25 of program 3-30)
 
 tspan = [0 50];
@@ -4378,122 +4395,157 @@ U = {@(t) 0; @(t) [0.05*t/50; 0.05*t/50]};
     tspan, [], [], U, bus_U);
 
 plot(t, [x{1}(:, 2), x{3}(:, 2)])
-  \end{verbatim}
-\end{PROGRAMA}
+\end{lstlisting}
 
-In the Program \nobreak\ref{program:main_input}, the input signal is defined in lines 6 and 7. In this program, the load impedance is increased by 5\% in 50 seconds.
-The input signal on bus bar 1 has no meaning because it always returns 0, but it is added to illustrate how to specify it.
-Also, no input is specified for bus bar 3, but in this case, 0 is automatically input.
-With the above program modifications, it is possible to perform time response calculations for external inputs.
-Since this modification takes care to maintain backward compatibility, the initial value response to various power systems and the time response to ground faults and external inputs can be calculated by appropriately rewriting program\nobreak\ref{program:main_input}.
-At this time, the other program groups can be used without any modification except for the Program \nobreak\ref{program:main_input}.
-This is the advantage of the implementation divided into modules.
+In Program \ref{program:main_input}, input signals are defined in lines 6 and 7.
+In this program, the load impedance is increased by 5% over a period of 50
+seconds. The input signal for bus 1 always returns 0, so it has no meaning, but
+it was added to demonstrate how to specify inputs. In the case of bus 3, no
+input is specified, so the input is automatically set to 0.
+
+With these changes, time response calculations can be performed for external
+inputs. Since these changes have been made with backward compatibility in mind,
+by appropriately modifying Program \ref{program:main_input}, initial value
+response calculations, ground fault calculations, and time response calculations
+for various power systems can be performed. Furthermore, the other programs in
+the program group can be used without any modifications. This is the advantage
+of implementing the programs as a group of modules.
 \end{example}
 
 
-\section*{Mathematical Supplement}
-\red{Translated with DeepL}
+\section*{Mathematical Appendix}
 \begin{lemma}\label{lem:sumc}
-For real constants $r_i$, $\omega_i$, and $phi_i$.
-\begin{align*}
-\bm{C}_n(t) := 
-\sum_{i=1}^n r_i e^{ \bm{j} (\omega_i t + \phi_i)}
-\end{align*}
-However, $r_i>0$ and $\phi_i \in [0,2\pi)$.
-In this case, the necessary and sufficient condition for $\bm{C}_1$ to be a constant independent of $t$ is $\omega_1=0$.
-Also, the necessary and sufficient condition for $\bm{C}_2$ to be a constant independent of $t$ is $\omega_1=\omega_2=0$.
-Besides that,
 
-\begin{align*}
-\omega_1=\omega_2
-,\qquad
-r_1=r_2
-,\qquad
-|\phi_2-\phi_1| = \pi
-\end{align*}
-Furthermore, when $\omega_1$, $\omega_2$, and $\omega_3$ are all non-zero, the necessary and sufficient condition for $\bm{C}_3$ to be a constant independent of $t$ is
-\begin{align*}
-\omega_1=\omega_2=\omega_3
-,\qquad
-\sum_{i=1}^3 r_i e^{\bm{j}\phi_i}=0
-\end{align*}
+For real constants $r_i$, $\omega_i$, and $phi_i$.
+
+\begin{equation*}
+  \bm{C}_n(t) := 
+  \sum_{i=1}^n r_i e^{ \bm{j} (\omega_i t + \phi_i)}
+\end{equation*}
+
+However, $r_i>0$ and $\phi_i \in [0,2\pi)$. In this case, the necessary and
+sufficient condition for $\bm{C}_1$ to be a constant independent of $t$ is
+$\omega_1=0$. Also, the necessary and sufficient condition for $\bm{C}_2$ to be
+a constant independent of $t$ is $\omega_1=\omega_2=0$.  Besides that,
+
+\begin{equation*}
+  \omega_1=\omega_2
+  ,\qquad
+  r_1=r_2
+  ,\qquad
+  |\phi_2-\phi_1| = \pi
+\end{equation*}
+
+Furthermore, when $\omega_1$, $\omega_2$, and $\omega_3$ are all non-zero, the
+necessary and sufficient condition for $\bm{C}_3$ to be a constant independent
+of $t$ is
+
+\begin{equation*}
+  \omega_1=\omega_2=\omega_3
+  ,\qquad
+  \sum_{i=1}^3 r_i e^{\bm{j}\phi_i}=0
+\end{equation*}
 \end{lemma}
 
 \begin{proof}
-\red{Translated with DeepL}
+
 First, by setting the derivative of $\bm{C}_1$ with respect to $t$ to 0:
-\begin{align*}
-r_1 \omega_1 e^{ \bm{j} (\omega_1 t + \phi_1)}=0
-\end{align*}
-Therefore, the necessary and sufficient condition for $\bm{C}_1$ to be a constant independent of $t$ is that $\omega_1=0$.
-Next, by setting the derivative of $\bm{C}_2$ with respect to $t$ to 0:
-\begin{align}\label{eq:C2d}
-r_1 \omega_1 e^{ \bm{j} (\omega_1 t + \phi_1)}
-+ r_2 \omega_2 e^{ \bm{j} (\omega_2 t + \phi_2)}=0
-\end{align}
-Multiply both sides by $e^{ -\bm{j} (\omega_1 t + \phi_1)}$ and further differentiate by $t$.
-\begin{align*}
-r_2 \omega_2 (\omega_2-\omega_1)
-e^{ \bm{j} \left\{( 
-(\omega_2-\omega_1) t + \phi_2 - \phi_1)
-\right\}
-}=0
-\end{align*}
-This is equivalent to $\omega_2 (\omega_2-\omega_1)=0$.
-Thus, $\\omega_1 =\omega_2$ is obtained.
-In particular, if $\\omega_1=\omega_2=0$, then the equation\ref{eq:C2d} is satisfied for any $r_1$, $r_2$, $\phi_1$, $\phi_1$.
+
+\begin{equation*}
+  r_1 \omega_1 e^{ \bm{j} (\omega_1 t + \phi_1)}=0
+\end{equation*}
+
+Therefore, the necessary and sufficient condition for $\bm{C}_1$ to be a
+constant independent of $t$ is that $\omega_1=0$.  Next, by setting the
+derivative of $\bm{C}_2$ with respect to $t$ to 0:
+
+\begin{equation}\label{eq:C2d}
+  r_1 \omega_1 e^{ \bm{j} (\omega_1 t + \phi_1)}
+  + r_2 \omega_2 e^{ \bm{j} (\omega_2 t + \phi_2)}=0
+\end{equation}
+
+Multiply both sides by $e^{ -\bm{j} (\omega_1 t + \phi_1)}$ and further
+differentiate by $t$.
+
+\begin{equation*}
+  r_2 \omega_2 (\omega_2-\omega_1)
+  e^{ \bm{j} \left\{( 
+  (\omega_2-\omega_1) t + \phi_2 - \phi_1)
+  \right\}
+  }=0
+\end{equation*}
+
+This is equivalent to $\omega_2 (\omega_2-\omega_1)=0$. Thus, $\\omega_1
+=\omega_2$ is obtained. In particular, if $\\omega_1=\omega_2=0$, then the
+equation\ref{eq:C2d} is satisfied for any $r_1$, $r_2$, $\phi_1$, $\phi_1$.
 Also, when $\omega_1$ and $\omega_2$ are non-zero:
-\begin{align*}
-r_1 e^{ \bm{j} \phi_1} + r_2 e^{ \bm{j} \phi_2} =0
-\end{align*}
+
+\begin{equation*}
+  r_1 e^{ \bm{j} \phi_1} + r_2 e^{ \bm{j} \phi_2} =0
+\end{equation*}
+
 This is equivalent to $r_1=r_2$ and $|\phi_2-\phi_1| = \pi$.
 
-Finally, consider $\bm{C}_3$.
-As before, by setting the derivative of $\bm{C}_2$ with respect to $t$ to 0
-\begin{align}\label{eq:C3d}
-r_1 \omega_1 e^{ \bm{j} (\omega_1 t + \phi_1)}
-+ r_2 \omega_2 e^{ \bm{j} (\omega_2 t + \phi_2)}
-+ r_3 \omega_3 e^{ \bm{j} (\omega_3 t + \phi_3)}=0
-\end{align}
-Multiply both sides by $e^{ -\bm{j} (\omega_1 t + \phi_1)}$ and further differentiate by $t$.
-\begin{align*}
-r_2 \omega_2 (\omega_2-\omega_1)
-e^{ \bm{j} \left\{ 
-(\omega_2-\omega_1) t + \phi_2 - \phi_1)
-\right\}
-} +
-r_3 \omega_3 (\omega_3-\omega_1)
-e^{ \bm{j} \left\{ 
-(\omega_3-\omega_1) t + \phi_3 - \phi_1)
-\right\}
-}=0
-\end{align*}
-Similarly, multiplying both sides by $e^{ -\bm{j} \{(\omega_2-\omega_1) t + \phi_2 - \phi_1\}}$ and further differentiating by $t$ yields
-\begin{align*}
-r_3 \omega_3 (\omega_3-\omega_1) (\omega_3-\omega_2)
-e^{ \bm{j} \left\{ 
-(\omega_3-\omega_2) t + \phi_3 - \phi_2)
-\right\}
-}=0
-\end{align*}
+Finally, consider $\bm{C}_3$. As before, by setting the derivative of
+$\bm{C}_2$ with respect to $t$ to 0
+
+\begin{equation}\label{eq:C3d}
+  r_1 \omega_1 e^{ \bm{j} (\omega_1 t + \phi_1)}
+  + r_2 \omega_2 e^{ \bm{j} (\omega_2 t + \phi_2)}
+  + r_3 \omega_3 e^{ \bm{j} (\omega_3 t + \phi_3)}=0
+\end{equation}
+
+Multiply both sides by $e^{ -\bm{j} (\omega_1 t + \phi_1)}$ and further
+differentiate by $t$.
+
+\begin{equation*}
+  r_2 \omega_2 (\omega_2-\omega_1)
+  e^{ \bm{j} \left\{ 
+  (\omega_2-\omega_1) t + \phi_2 - \phi_1)
+  \right\}
+  } +
+  r_3 \omega_3 (\omega_3-\omega_1)
+  e^{ \bm{j} \left\{ 
+  (\omega_3-\omega_1) t + \phi_3 - \phi_1)
+  \right\}
+  }=0
+\end{equation*}
+
+Similarly, multiplying both sides by $e^{ -\bm{j} \{(\omega_2-\omega_1) t +
+\phi_2 - \phi_1\}}$ and further differentiating by $t$ yields
+
+\begin{equation*}
+  r_3 \omega_3 (\omega_3-\omega_1) (\omega_3-\omega_2)
+  e^{ \bm{j} \left\{ 
+  (\omega_3-\omega_2) t + \phi_3 - \phi_2)
+  \right\}
+  }=0
+\end{equation*}
+
 This is because $\omega_3\neq0$.
+
 \begin{subequations}\label{eq:omegas}
-\begin{align}
-(\omega_3-\omega_1) (\omega_3-\omega_2)=0
-\end{align}
-By a similar procedure, from Equation \ref{eq:C3d}
-\begin{align}
-(\omega_2-\omega_1) (\omega_3-\omega_2)=0
-,\qquad
-(\omega_3-\omega_1) (\omega_2-\omega_1)=0
-\end{align}
+  \begin{equation}
+    (\omega_3-\omega_1) (\omega_3-\omega_2)=0
+  \end{equation}
+
+  By a similar procedure, from Equation \ref{eq:C3d}
+
+  \begin{equation}
+    (\omega_2-\omega_1) (\omega_3-\omega_2)=0
+    ,\qquad
+    (\omega_3-\omega_1) (\omega_2-\omega_1)=0
+  \end{equation}
 \end{subequations}
-Equation\ref{eq:omegas} is equivalent to $\omega_1=\omega_2=\omega_3$.
-In this case, since $\\omega_1$,$\omega_2$,$\omega_3$ are non-zero, the Equation \ref{eq:C3d} becomes:
-\begin{align*}
-\sum_{i=1}^n r_i e^{\bm{j}\phi_i}
-=0
-\end{align*}
+
+Equation\ref{eq:omegas} is equivalent to $\omega_1=\omega_2=\omega_3$.  In this
+case, since $\\omega_1$,$\omega_2$,$\omega_3$ are non-zero, the Equation
+\ref{eq:C3d} becomes:
+
+\begin{equation*}
+  \sum_{i=1}^n r_i e^{\bm{j}\phi_i}
+  =0
+\end{equation*}
 \end{proof}
 
 

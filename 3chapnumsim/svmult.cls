@@ -1081,7 +1081,7 @@ passing it to article class \MessageBreak
 \def\corollaryname{Corollary}%
 \def\definitionname{Definition}%
 \def\emailname{e-mail}%
-\def\examplename{Example}%
+% \def\examplename{Example}%
 \def\exercisename{Exercise}%
 \def\figurename{Fig.}%
 \def\forewordname{Foreword}%
@@ -1706,7 +1706,7 @@ to\z@{\kern0.55\wd0\vrule\@height0.45\ht0\hss}\box0}}}}
 \spn@wtheorem{conjecture}{Conjecture}{\itshape}{\rmfamily}
 \spn@wtheorem{corollary}{Corollary}{\bfseries}{\itshape}
 \spn@wtheorem{definition}{Definition}{\bfseries}{\rmfamily}
-\spn@wtheorem{example}{Example}{\itshape}{\rmfamily}
+% \spn@wtheorem{example}{Example}{\itshape}{\rmfamily}
 \spn@wtheorem{exercise}{Exercise}{\bfseries}{\rmfamily}
 \spn@wtheorem{lemma}{Lemma}{\bfseries}{\itshape}
 \spn@wtheorem{note}{Note}{\itshape}{\rmfamily}
@@ -2379,7 +2379,7 @@ to\z@{\kern0.55\wd0\vrule\@height0.45\ht0\hss}\box0}}}}
 \RequirePackage[x11names]{xcolor}
 
 \definecolor{trailer}{gray}{0.9}
-\definecolor{example}{gray}{0.85}
+% \definecolor{example}{gray}{0.85}
 \definecolor{question}{gray}{0.8}
 \definecolor{important}{gray}{0.75}
 \definecolor{warning}{gray}{0.7}
@@ -2404,8 +2404,8 @@ to\z@{\kern0.55\wd0\vrule\@height0.45\ht0\hss}\box0}}}}
 \newenvironment{trailer}[1]{\ignorespaces\def\stmtopen##1{##1}%
 \formtmp{trailer}{#1}}{\par\noindent\textcolor{trailer}{\rule{\columnwidth}{1pt}}\vskip2pt\par\addvspace{\baselineskip}}%
 
-\renewenvironment{example}[1]{\ignorespaces\def\stmtopen##1{##1}%
-\formtmp{example}{#1}}{\par\noindent\textcolor{example}{\rule{\columnwidth}{1pt}}\vskip2pt\par\addvspace{\baselineskip}}%
+% \renewenvironment{example}[1]{\ignorespaces\def\stmtopen##1{##1}%
+% \formtmp{example}{#1}}{\par\noindent\textcolor{example}{\rule{\columnwidth}{1pt}}\vskip2pt\par\addvspace{\baselineskip}}%
 
 \renewenvironment{question}[1]{\ignorespaces\def\stmtopen##1{##1}%
 \formtmp{question}{\ \circledmark[white]{\textcolor{black}{\sf\bfseries?}}{\kern6pt}#1}}{\par\noindent\textcolor{question}{\rule{\columnwidth}{1pt}}\vskip2pt\par\addvspace{\baselineskip}}%
@@ -2645,6 +2645,13 @@ to\z@{\kern0.55\wd0\vrule\@height0.45\ht0\hss}\box0}}}}
   \hss}\box\scscb@x\hbox to.6pt{\hss\vbox to\dimen0{\@vrf@{10pt}{.9pt}}}%
   \hss}\egroup}
 %%
+
+\spn@wtheorem{examplebox}{Example}{\bfseries}{\rmfamily}
+\@addtoreset{examplebox}{chapter}
+\newenvironment{example}
+  {\medskip\hrule\smallskip\begin{examplebox}}
+  {\end{examplebox}\smallskip\hrule\medskip}
+
 
 \newcounter{EXECUTION}[chapter]
 \renewcommand{\theEXECUTION}{\thechapter.\@arabic\c@EXECUTION}
