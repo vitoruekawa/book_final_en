@@ -1175,65 +1175,77 @@ with a specific eigenvalue.
 \end{COLUMN}
 
 
-\begin{definition}[Small signal stability of the linear approximation model]
+\begin{definition}[Small-signal stability of the linear approximation model]
 \label{def:stalin}
-Let us consider the linear approximation model of Equation \ref{eq:lindynu0}.
-For an arbitrary initial value, when the internal state converges on one of the points of the equilibrium point set $\mathcal{M}$ of Equation \ref{eq:eqset}, the linear approximation model is said to be \textbf{statically stable}.
+
+Consider the linearized model given by Equation \ref{eq:lindynu0}. For any
+initial values, if the internal state converges to one of the equilibrium points
+in the set $\mathcal{M}$ defined by Equation \ref{eq:eqset}, the linearized
+model is said to be \textbf{steady-state stable}\index{steady-state stability}.
 %\footnote{
 %電力系統工学では,微小な外乱に対する電力系統の安定性を近似線形モデルを用いて議論する場合に広く「定態安定性」という用語が用いられる。
 %ただし,definition\ref{def:stalin}のように数学的なdefinitionを導入することは一般的ではない。
 %}。
 \end{definition}
-Small signal stability according to the definition \ref{def:stalin} indicates that Equation \ref{eq:linmconv} is true for an arbitrary initial value.
-Since the value of $c_0$ is arbitrary in Equation \ref{eq:linmconv}, this arbitrary nature is expressed as “converging on one of the points of $\mathcal{M}$”.
+The small-signal stability in Definition \ref{def:stalin} means that for any
+initial condition, Equation \ref{eq:linmconv} holds. Note that the value of
+$c_0$ in Equation \ref{eq:linmconv} is arbitrary, so we express its
+arbitrariness as "converging to one of the equilibrium points in $\mathcal{M}$."
 
-In electrical power system engineering, if discussing the stability of an electrical power system against minute disturbances, the word “small signal stability” is widely used.
-However, mathematical definitions, such as definition \ref{def:stalin}, are not typically introduced.
+In power system engineering, the term "small-signal stability" is widely used to
+discuss the stability of a power system against small disturbances using an
+approximate linear model. However, introducing a mathematical definition like
+Definition \ref{def:stalin} is not common practice.
 
-In the discussion below, we assumed that the nuclear space of $\Psi$ in Equation \ref{eq:lindynu0} is one-dimensional, and the following is true:
-\begin{align}\label{eq:nesconker}
-\sfker \Psi = \mathcal{M}
-\end{align}
-The structure of matrix $\Psi$ shows that $\mathcal{M} \subseteq \sfker \Psi $, but here, we assume that $\sfker \Psi$ is one-dimensional and the equal sign holds.
-If this nuclear space is at least two-dimensional, the invariant eigenspace becomes larger than $\mathcal{M}$, and the linear approximation model is not statically stable.
+In the following discussion, we assume that the kernel space of $\Psi$ in
+Equation \ref{eq:lindynu0} is one-dimensional and that Equation
+\ref{eq:nesconker} holds:
+\begin{equation}\label{eq:nesconker}
+  \sfker \Psi = \mathcal{M}
+\end{equation}
+It is clear from the structure of the matrix $\Psi$ that $\mathcal{M}$ is a
+subset of $\sfker \Psi$, but it should be noted that we are assuming that
+$\sfker \Psi$ is one-dimensional and that the equality holds. If the kernel
+space were two-dimensional or greater, the invariant eigenspace would be larger
+than $\mathcal{M}$, and the approximate linear model would not be in a steady
+state stability.
 %\footnote{
 %行列$\Psi$の構造から,$\mathcal{M} \subseteq \sfker \Psi $であることは明らかであるが,ここでは$\sfker \Psi$が1次元であり,等号が成り立つことを仮定している。
 %この核空間が2次元以上であると,不変な固有空間が$\mathcal{M}$よりも大きくなり,近似線形モデルは定態安定とならない。
 %}
 %。
-Therefore, the equation \ref{eq: nesconker} is a necessary condition for the approximate linear model to be stationary and stable.
-Specifically, if $A$ is nonsingular:
-\begin{align}\label{eq:defL0}
-L_0:= L-CA^{-1}B 
-\end{align}
-Thus, this condition is equivalent to Equation \ref{eq:nescon}. 
-\begin{align}\label{eq:nescon}
-\sfker L_0 = \sfspan
-\left\{
-\mathds{1}
-\right\}
-\end{align}
-This matrix $L_0$ plays an important role in the later analysis.
-For the following discussions, let us introduce basic terminology.
+Therefore, equation \ref{eq:nesconker} is a necessary condition for the
+steady-state stability of the linear approximation model. In particular, when
+$A$ is invertible, and using the definition of $L_0:= L-CA^{-1}B$, the
+necessary condition can be equivalently expressed as:
+\begin{equation}\label{eq:nescon}
+  \sfker L_0 = \sfspan
+  \left\{
+  \mathds{1}
+  \right\}
+\end{equation}
+Note that this matrix $L_0$ plays an important role in the subsequent analysis.
 
-\red{Translated with DeepL}
-The relation between Equation\ref{eq:defL0} and Equation\ref{eq:nescon} can be verified as follows.
-Since the $(1,2)$ block of the matrix $\Psi$ is regular
-\begin{align*}%\label{eq:nescon0}
-\sfker \mat{
--L & -C \\
-B & A
-}
-= \sfspan
-\left\{
-\mat{
-\mathds{1}\\
-0
-}
-\right\}
-\end{align*}
-is a necessary and sufficient condition for the nuclear space of $\Psi$ to be just $\mathcal{M}$.
-In particular, if $A$ is regular, then
+The relationship between equation \ref{eq:defL0} and equation \ref{eq:nescon}
+can be verified as follows. Because the $(1,2)$ block of the matrix $\Psi$ is
+invertible, the necessary and sufficient condition for the kernel of $\Psi$ to
+be equal to $\mathcal{M}$ is:
+
+\begin{equation*}%\label{eq:nescon0}
+  \sfker \mat{
+  -L & -C \\
+  B & A
+  }
+  = \sfspan
+  \left\{
+  \mat{
+  \mathds{1}\\
+  0
+  }
+  \right\}
+\end{equation*}
+
+In particular, when $A$ is invertible, we have
 \begin{align*}
 \mat{
 -L & -C \\
@@ -1247,19 +1259,22 @@ L_0 x=0,
 \qquad
 y=-A^{-1}Bx
 \end{align*}
-This is equivalent to Equation \ref{eq:nescon}.
+Thus, the necessary condition is equivalent to equation \ref{eq:nescon}.
 
-For the purpose of the following discussion, the following basic terms are introduced.
+For the following discussion, we introduce the following fundamental
+terminology.
 
-\begin{definition}[Stability of a square matrix]
+\begin{definition}[Stability of square matrix]
 \label{def:matsta}
-For a square matrix $A$, if the real part of all eigenvalues is negative, $A$ is \textbf{stable}.
+For a square matrix $A$, if all the real parts of its eigenvalues are negative,
+$A$ is called \textbf{stable}\index{stable} or \textbf{asymptotically
+stable}\index{asymptotically stable}.
 \end{definition}
 
-\subsection{Passivity of a linear approximation model\advanced}\label{sec:linpasana}
+\subsection{Passivity of approximate linear models\advanced}\label{sec:linpasana}
 
 \smallskip
-\subsubsection{Expression with a feedback system of a linear approximation model}
+\subsubsection{Representation of Approximate Linear Models with Feedback}
 
 \begin{figure}[t]
 \centering
@@ -1270,113 +1285,141 @@ For a square matrix $A$, if the real part of all eigenvalues is negative, $A$ is
 \medskip
 \end{figure}
 
+Let us consider describing the approximate linear model of Equation
+\ref{eq:lindynu0} as a feedback system of two subsystems (Figure
+\ref{fig:GandG}).  The first subsystem is described as a system of differential
+equations for the deviation of the angular frequency:
 
-Let us consider describing the linear approximation model of Equation \ref{eq:lindynu0} as a feedback system with two subsystems (Figure \ref{fig:GandG}).
-The first subsystem is a differential equation system related to frequency deviation.
-\begin{align}\label{eq:Fss}
-F: \simode{
-M \Delta \dot{\omega}^{\rm lin} &= -D \Delta \omega^{\rm lin}
-+
-u_F \\
-y_F &= \omega_0 \Delta \omega^{\rm lin}
-}
-\end{align}
-In this book, this subsystem is called a \textbf{mechanical subsystem}.
-A mechanical subsystem is only determined by the physical constants of generators, $(M_i,D_i)_{i\in \mathcal{I}_{\rm G}}$, or reference frequency $\omega_0$, and does not depend on the steady value of the internal state $(\delta^{\star},E^{\star})$.
+\begin{equation}\label{eq:Fss}
+  F: \simode{
+  M \Delta \dot{\omega}^{\rm lin} &= -D \Delta \omega^{\rm lin}
+  +
+  u_F \\
+  y_F &= \omega_0 \Delta \omega^{\rm lin}
+  }
+\end{equation}
 
-The second subsystem is a differential equation system related to the rotor argument and internal voltage:
-\begin{align}\label{eq:Gss}
-G: \simode{
-\dot{\delta}^{\rm lin} & = u_G \\
-\taud \dot{E}^{\rm lin} &= A E^{\rm lin} + B \delta^{\rm lin} \\
-y_G &= C E^{\rm lin} + L \delta^{\rm lin}
-}
-\end{align}
+In this book, we refer to this subsystem as the \textbf{mechanical
+subsystem}\index{mechanical subsystem}. The mechanical subsystem is determined
+solely by the physical constants of the generator set $(M_i, D_i){i \in
+\mathcal{I}\text{G}}$ and the reference angular frequency $\omega_0$, and does
+not depend on the steady-state values of the internal state $(\delta^{\star},
+E^{\star})$.
 
-This subsystem is called an \textbf{electrical subsystem}.
-\footnote{
-The “mechanical subsystem” and “electrical subsystem” introduced here are terms unique to this book.
-}。
-An electrical subsystem depends not only on the physical constants of generators, $(\taudi)_{i\in \mathcal{I}_{\rm G}}$, but also on the steady value of the internal state $(\delta^{\star},E^{\star})$.
-Actually, the system matrix $(L,A,B,C)$ of Equation \ref{eq:sysmats} is a function of $(\delta^{\star},E^{\star})$.
-If we negative-feedback combine the input and output of these two subsystems:
+The second subsystem is described as a system of differential equations with
+respect to the rotor angle and internal voltage as follows:
+\begin{equation}\label{eq:Gss}
+  G: \simode{
+  \dot{\delta}^{\rm lin} & = u_G \\
+  \taud \dot{E}^{\rm lin} &= A E^{\rm lin} + B \delta^{\rm lin} \\
+  y_G &= C E^{\rm lin} + L \delta^{\rm lin}
+  }
+\end{equation}
+
+We call this subsystem the \textbf{electrical subsystem}\index{Electrical
+subsystem} \footnote{The terms "mechanical subsystem" and "electrical subsystem"
+introduced here are unique to this book.}.  The electrical subsystem not only
+depends on the physical constants of the generator group, $(\taudi){i\in
+\mathcal{I}{\rm G}}$, but also on the steady-state values of the internal
+states, $(\delta^{\star},E^{\star})$. In fact, the system matrix $(L,A,B,C)$ in
+equation \ref{eq:sysmats} is a function of $(\delta^{\star},E^{\star})$.
+
+If the two subsystems' inputs and outputs are coupled through negative feedback
+as follows:
 \begin{align}\label{eq:nfedcon}
-u_F = -y_G,\qquad
-u_G = y_F
+  u_F = -y_G,\qquad
+  u_G = y_F
 \end{align}
-the linear approximation model of Equation \ref{eq:lindynu0} is expressed.
-The subsequent solution for the small signal stability is based on the property of the mechanical subsystem and electrical subsystem called passivity.
-It is known that a negative-feedback system of a passive subsystem is stable. 
-
+the approximate linear model of Equation \ref{eq:lindynu0} is represented. The
+subsequent analysis of steady-state stability is based on the property called
+the \textit{passivity} of the mechanical and electrical subsystems. It is
+well-known that a negative feedback system of a passive subsystem is stable.
 
 \smallskip
-\subsubsection{Passivity of a mechanical subsystem}
+\subsubsection{Passivity of the mechanical subsystem}
 
-The mechanical subsystem $F$ of Equation \ref{eq:Fss} has a strict passivity defined as follows:
+The mechanical subsystem $F$ in Equation \ref{eq:Fss} has the following strong
+passivity:
 
-\begin{definition}[Passivity of a linear system]\label{def:passivelin}
-Let us consider a linear system:
-\begin{align}\label{eq:siglin}
-\Sigma: \simode{
-\dot{x} &= Ax + Bu \\
-y &= Cx 
-}
-\end{align}
-Using a symmetric matrix $P$, a function is defined:
-\begin{align}\label{eq:defstlin}
-W(x):= \frac{1}{2}x^{\sf T}Px
-\end{align}
-For arbitrary $u$, if there is a positive semi-definite matrix $P$ that satisfies:
+\begin{definition}[Passivity of linear systems]\label{def:passivelin}
+
+Consider the linear system
+\begin{equation}\label{eq:siglin}
+  \Sigma: \simode{
+  \dot{x} &= Ax + Bu \\
+  y &= Cx 
+  }
+\end{equation}
+
+Using the symmetric matrix $P$, define the function:
+\begin{equation}\label{eq:defstlin}
+  W(x):= \frac{1}{2}x^{\sf T}Px
+\end{equation}
+
+For any $u$, if there exists a semi-positive definite matrix $P$ that satisfies:
 \begin{align}\label{eq:conpvlin}
 \frac{d}{dt} W\bigl( x(t) \bigr) \leq u^{\sf T}(t) y(t)
 ,\qquad
 \forall t \geq 0
 \end{align}
-$\Sigma$ is called \textbf{passive}.
-Specifically, in addition to the above-described positive semi=definite matrix, if there are positive definite numbers $\rho$ that satisfy:
+Then, we call $\Sigma$ \textbf{passive}\index{passive}.
+
+In particular, when there exists a positive definite number $\rho$ such that in
+addition to the semi-positive definite matrix, the inequality:
 \begin{align}\label{eq:conosplin}
 \frac{d}{dt} W\bigl( x(t) \bigr) \leq u^{\sf T}(t) y(t) -\rho \left\|y(t) \right\|^2
 ,\qquad
 \forall t \geq 0
 \end{align}
-$\Sigma$ is called \textbf{strictly passive}.
+is satisfied, then we call $\Sigma$ \textbf{strictly passive}\index{strictly
+passive}.
+
 \end{definition}
 
-Function $W(x)$ of Equation \ref{def:passivelin} is usually called the \textbf{storage function}.
-The inequality of Equation \ref{eq:conosplin} has passivity where a type of energy expressed with function $W(x)$ dissipates more for terms that are proportional to the square of the output compared to Equation \ref{eq:conpvlin}.
-Such passivity is strictly called \textbf{output-strict passivity}.
+The function $W(x)$ in Definition \ref{def:passivelin} is generally called the
+\textbf{storage function}\index{storage function}. Moreover, the inequality in
+Equation \ref{eq:conosplin} describes a type of passivity that is more strictly
+called \textbf{output-strict passivity}\index{output-strict passivity}, where
+the energy represented by the storage function $W(x)$ dissipates more quickly in
+proportion to the square of the output compared to the passivity in Equation
+\ref{eq:conpvlin}.
 
-The mechanical subsystem $F$ of Equation\ref{eq:Fss} having strong passivity can be confirmed as follows.
-First, the subsystem is written as below:
+The mechanical subsystem $F$ of Equation\ref{eq:Fss} having strong passivity can
+be confirmed as follows. First, the subsystem is written as below:
 \begin{align}
-F: \simode{
-\dot{x}_F & = A_F x_F + B_F u_F \\
-y_F &= C_F x_F
-}
+  F: \simode{
+  \dot{x}_F & = A_F x_F + B_F u_F \\
+  y_F &= C_F x_F
+  }
 \end{align}
-where state $x_F$ expresses $\Delta \omega^{\rm lin}$, and the system matrix is:
+where state $x_F$ represents $\Delta \omega^{\rm lin}$, and the system matrices
+are:
 \[
-A_F := -M^{-1}D,\qquad
-B_F := M^{-1},\qquad
-C_F := \omega_0 I
+  A_F := -M^{-1}D,\qquad
+  B_F := M^{-1},\qquad
+  C_F := \omega_0 I
 \]
-Also, the symmetric matrix $P_F$ can be denoted by
+
+Additionally, we define the symmetric matrix $P_F$ as:
 \[
-P_F := \omega_0 M
+  P_F := \omega_0 M
 \]
-The symmetric matrix $P_F$ is defined as:
+and since $M$ is positive definite, $P_F$ is also positive definite.
+Then, the following inequalities hold:
+
 \[
-A^{\sf T}_F P_F + P_F A_F \preceq  
-- \frac{ 2 \sfmin \left\{ D_i \right\}}{\omega_0} C_F^{\sf T} C_F
-,\qquad
-P_F B_F = C_F^{\sf T}
+  A^{\sf T}_F P_F + P_F A_F \preceq  
+  - \frac{ 2 \sfmin \left\{ D_i \right\}}{\omega_0} C_F^{\sf T} C_F
+  ,\qquad
+  P_F B_F = C_F^{\sf T}
 \]
-Since the matrix $M$ is positive definite, this $P_F$ is positive definite.
-At this time, the following is true:
+
+Therefore, when the storage function is defined as:
 \begin{align}\label{eq:WFdef}
 W_F(x_F):= \frac{1}{2}x_F^{\sf T}P_Fx_F
 \end{align}
-The time derivative along the solution trajectory of $F$ can be evaluated as:
+the time derivative along the solution trajectory of $F$ is evaluated as:
+
 \begin{align}\label{eq:Flyapeq}
 \spliteq{
 \frac{d}{dt} W_F \bigl( x_F (t) \bigr)
@@ -1392,9 +1435,12 @@ y_F^{\sf T}(t) u_F(t)
 \|y_F(t) \|^2
 }
 \end{align}
-where, $\nabla W_F(x_F)$ is a gradient function, where $W_F(x_F)$ is partially differentiated with $x_F$ and aligned in a column.
-As such, we can see that the mechanical subsystem $F$ of Equation \ref{eq:Fss} is strictly passive against an arbitrary positive definite number $(M_i,D_i)_{i \in \mathcal{I}_{\rm G}}$.
-This function $W_F(x_F)$ expresses the mechanical kinetic energy of an electrical power system.
+where $\nabla W_F(x_F)$ is the gradient function obtained by partially
+differentiating $W_F(x_F)$ with respect to its elements and arranging them
+vertically. From this, it can be seen that the machine subsystem $F$ in Equation
+\ref{eq:Fss} is strongly passive for any positive definite $(M_i,D_i)_{i \in
+\mathcal{I}_{\rm G}}$. Note that the function $W_F(x_F)$ represents the
+mechanical kinetic energy of the power system.
 
 \smallskip
 \subsubsection{Passivity of an electrical subsystem}
