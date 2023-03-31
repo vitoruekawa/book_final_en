@@ -2612,6 +2612,8 @@ to\z@{\kern0.55\wd0\vrule\@height0.45\ht0\hss}\box0}}}}
 \end{COFFEEbreakbox}
 }
 %\ifvoid\COFFEEbk@bxb
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%% eclbkbox %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[thmmarks,thref]{ntheorem} 

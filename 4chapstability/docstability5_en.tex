@@ -1038,11 +1038,11 @@ red}{ij}$ and the reduced susceptance $G^{\rm red}{ij}$ in equation
 Table \ref{table:parasetcom}.
 
 Let us numerically analyze the stability of the approximate linear model by
-varying the parameters $(\theta_1, \theta_2)$ for each case (a)-(d) in
-\TABref{table:parasetcom}. Specifically, we will check whether the approximate
+varying the parameters $(\theta_1, \theta_2)$ for each case (a)-(d) in Table
+\ref{table:parasetcom}. Specifically, we will check whether the approximate
 linear model is stable or not by examining the eigenvalues of $\Psi$ in Equation
 \ref{eq:lindynu0} by varying $\theta_1$ and $\theta_2$ on a grid of 100
-equidistant points each. The results are shown in \FIGref{fig:stacheck}. The
+equidistant points each. The results are shown in Figure \ref{fig:stacheck}. The
 blue area represents the parameter region where the approximate linear model is
 stable. First, in the case of (a), we see that the approximate linear model is
 stable regardless of the size of the conductance matrix specified by $\theta_2$,
@@ -1443,82 +1443,100 @@ vertically. From this, it can be seen that the machine subsystem $F$ in Equation
 mechanical kinetic energy of the power system.
 
 \smallskip
-\subsubsection{Passivity of an electrical subsystem}
-Next, let us consider the electrical subsystem of Equation \ref{eq:Gss}.
-Unlike the mechanical subsystem $F$, the electrical subsystem $G$ only has passivity under limited conditions.
-Though this comes out of nowhere, let us consider a case where reduced conductance of Equation \ref{eq:figi} is all 0; in other words:
-\begin{align}\label{eq:Gredcon}
-G^{\rm red}_{ij}=0,\qquad 
-\forall (i, j) \in \mathcal{I}_{\rm G} \times \mathcal{I}_{\rm G}
-\end{align}
+\subsubsection{Passivity of the electrical subsystem}
+Next, we consider the electrical subsystem $G$ in Equation \ref{eq:Gss}. Unlike
+the mechanical subsystem $F$, the electrical subsystem $G$ only possesses
+passivity under limited conditions. While this may seem arbitrary, we consider
+the case where all reduced conductances in Equation \ref{eq:figi} are zero, in
+other words:
 
-Excluding special situations, the conditions of Equation \ref{eq:Gredcon} only hold when the conductance of all transmission lines in an electrical power system is 0; in other words, the resistance of all transmission lines is 0.
-At this time, the following is true for the function $k_{ij}(\delta_{ij})$,$h_{ij}(\delta_{ij})$ of Equation \ref{eq:defkh}:
-\begin{align*}
-k_{ij}(\delta_{ij}^{\star}) =
-k_{ji}(\delta_{ji}^{\star})
-,\qquad
-h_{ij}(\delta_{ij}^{\star}) = 
-- h_{ji}(\delta_{ji}^{\star}),\qquad
-h_{ii}(\delta_{ii}^{\star}) = 0
-\end{align*}
+\begin{equation}\label{eq:Gredcon}
+  G^{\rm red}_{ij}=0,\qquad 
+  \forall (i, j) \in \mathcal{I}_{\rm G} \times \mathcal{I}_{\rm G}
+\end{equation}
 
-Therefore, the following is true for the system matrix of $(L,A,B,C)$ of Equation \ref{eq:sysmats}.
-\begin{align}\label{eq:sysmatst}
-L=L^{\sf T} ,\qquad
-\hat{A} = \hat{A}^{\sf T},\qquad
-C= -\hat{B}^{\sf T}
-\end{align}
-Below, we analyze the passivity of an electrical subsystem by using a symmetrical structure of a special system matrix. 
+Excluding special cases, the condition in Equation \ref{eq:Gredcon} only holds
+when the conductance of all transmission lines in the power system is zero, or
+equivalently, the resistance of all transmission lines is zero. In this case,
+for the functions $k_{ij}(\delta_{ij})$ and $h_{ij}(\delta_{ij})$ defined in
+Equation \ref{eq:defkh}, the following holds: 
 
-First, let us express the electrical subsystem $G$ of Equation \ref{eq:Gss} as follows:
+\begin{equation*}
+  k_{ij}(\delta_{ij}^{\star}) =
+  k_{ji}(\delta_{ji}^{\star})
+  ,\qquad
+  h_{ij}(\delta_{ij}^{\star}) = 
+  - h_{ji}(\delta_{ji}^{\star}),\qquad
+  h_{ii}(\delta_{ii}^{\star}) = 0
+\end{equation*}
+
+Therefore, for the system matrix $(L,A,B,C)$ in Equation \ref{eq:sysmats}, it
+holds that:
+\begin{equation}\label{eq:sysmatst}
+  L=L^{\sf T} ,\qquad
+  \hat{A} = \hat{A}^{\sf T},\qquad
+  C= -\hat{B}^{\sf T}
+\end{equation}
+In the following, we use the symmetric structure of this special system matrix
+to analyze the passivity of the electrical subsystem.
+
+First, let us express the electrical subsystem $G$ of Equation \ref{eq:Gss} as
+follows:
 \begin{align}
-G: \simode{
-\dot{x}_G & = A_G x_G + B_G u_G \\
-y_G &= C_G x_G
-}
+  G: \simode{
+  \dot{x}_G & = A_G x_G + B_G u_G \\
+  y_G &= C_G x_G
+  }
 \end{align}
+where the state $x_G$ is a column vector obtained by concatenating
+${\delta}^{\rm lin}$ and $ E^{\rm lin} $, and $\Omega$ is a positive definite
+diagonal matrix defined as follows:
 
-where state $x_G$ is a column vector with ${\delta}^{\rm lin}$ and $ E^{\rm lin} $,
-where a system matrix is expressed as below using a diagonal matrix that is positive definite:
 \[
- \Omega :=
-\sfdiag \left( \sqrt{\frac{ \Xsi - \Xti }{ \taudi } } \right)_{i \in \mathcal{I}_{\rm G} }
+  \Omega :=
+  \sfdiag \left( \sqrt{\frac{ \Xsi - \Xti }{ \taudi } } \right)_{i \in \mathcal{I}_{\rm G} }
 \]
-The symmetric matrix $P_G$ is defined as:
-\[
-A_G := 
-\mat{
-0 & 0 \\
- \Omega^2 \hat{B}   &  \Omega^2 \hat{A} 
-},\qquad
-B_G := 
-\mat{
-I \\
-0
-},\qquad
-C_G := 
-\mat{
-L & -\hat{B}^{\sf T}
-}
-\]
-For these matrices, the following is true:
-\begin{align}\label{eq:defPG}
-P_G := 
-\mat{
-L  &  - \hat{B}^{\sf T} \\
-- \hat{B} & -\hat{A}
-}
-\end{align}
-The fact that the left matrix inequality holds can be confirmed as follows:
-\begin{align}\label{eq:lyapinG}
-A^{\sf T}_G P_G + P_G A_G \preceq 
-0
-,\qquad
-P_G B_G = C_G^{\sf T}
-\end{align}
 
-If we calculated the left of the inequality, it can be expressed as follows using a symmetric matrix $\hat{A}_{\Omega} := \Omega \hat{A} \Omega$:
+The system matrices are expressed as:
+
+\[
+  A_G := 
+  \mat{
+  0 & 0 \\
+  \Omega^2 \hat{B}   &  \Omega^2 \hat{A} 
+  },\qquad
+  B_G := 
+  \mat{
+  I \\
+  0
+  },\qquad
+  C_G := 
+  \mat{
+  L & -\hat{B}^{\sf T}
+  }
+\]
+
+Furthermore, we define the symmetric matrix $P_G$ as follows:
+
+\begin{equation}\label{eq:defPG}
+  P_G := 
+  \mat{
+    L  &  - \hat{B}^{\sf T} \\
+    - \hat{B} & -\hat{A}
+  }
+\end{equation}
+
+The following inequalities hold for these matrices:
+
+\begin{equation}\label{eq:lyapinG}
+  A^{\sf T}_G P_G + P_G A_G \preceq 
+  0
+  ,\qquad
+  P_G B_G = C_G^{\sf T}
+\end{equation}
+
+If we calculated the left of the inequality, it can be expressed as follows
+using a symmetric matrix $\hat{A}_{\Omega} := \Omega \hat{A} \Omega$:
 \[
 \frac{
 A^{\sf T}_G P_G + P_G A_G
@@ -1540,122 +1558,158 @@ A^{\sf T}_G P_G + P_G A_G
 }
 \]
 
-Since the top left block $- I$ of $Y$ is negative definite and the Schur complement related to $-I$ of $Y$ is 0, $Y$ is negative semi-definite.
+Here, the top-left block $- I$ of $Y$ is negative definite, and the Schur
+complement of $Y$ with respect to $-I$ is 0, which implies that $Y$ is negative
+semi-definite. Therefore, the matrix inequality in Equation \ref{eq:lyapinG}
+holds.
+
 \begin{COLUMN}
-\noindent \textbf{Shur complement}:
-The symmetric matrix $M$ is sorted as follows:
+\noindent \textbf{Schur complement}:
+
+Let a symmetric matrix $M$ be partitioned as
 \[
-M =\mat{
-M_{11} & M_{12} \\
-M_{12}^{\sf T} & M_{22}
-}
+  M =\mat{
+    M_{11} & M_{12} \\
+    M_{12}^{\sf T} & M_{22}
+  }
 \]
-At this time:
+
+Then, the \textbf{Schur complement}\index{Schur complement} of $M$ with respect
+to $M_{22}$ is defined as:
+
 \[
-M/M_{22} := M_{11} - M_{12} M_{22}^{-1} M_{12}^{\sf T}
+  M/M_{22} := M_{11} - M_{12} M_{22}^{-1} M_{12}^{\sf T}
 \]
-is called the \textbf{Schur complement} related to $M_{22}$ of $M$.
-Similarly, 
+
+Similarly, the Schur complement of $M$ with respect to $M_{11}$ is defined as:
+
 \[
-M/M_{11} := M_{22} - M_{12}^{\sf T} M_{11}^{-1} M_{12}
+  M/M_{11} := M_{22} - M_{12}^{\sf T} M_{11}^{-1} M_{12}
 \]
-is called the Schur complement related to $M_{11}$ of $M$.
-When matrix $M_{22}$ is positive definite, the condition necessary for $M$ to be positive semi-definite is for $M/M_{22}$ to be positive semi-definite.
-A similar fact is true for $M/M_{11}$\cite{bernstein2009matrix}.
-In addition, it is true when a positive semi-definite is replaced with a positive definite.
+
+If the matrix $M_{22}$ is positive definite, then $M$ is positive semidefinite
+if and only if $M/M_{22}$ is positive semidefinite. The same fact holds for the
+Schur complement of $M$ with respect to $M_{11}$ \cite{bernstein2009matrix}. The
+same fact holds if we replace positive semidefinite with positive definite.
 
 \smallskip
 \noindent \textbf{Properties of semidefinite matrices}:
-For negative semi-definite matrix $Y\in \mathbb{R}^{n\times n}$ and arbitrary matrix $X\in \mathbb{R}^{n\times m}$, $X^{\sf T}YX$ is negative semi-definite.
-This can be confirmed by:
+
+For any positive semidefinite (or negative semidefinite) matrix $Y\in
+\mathbb{R}^{n\times n}$ and any matrix $X\in \mathbb{R}^{n\times m}$, the matrix
+$X^{\sf T}YX$ is positive semidefinite (or negative semidefinite). This can be
+shown from the fact that
+
 \[
-v^{\sf T}Yv\geq 0, \quad \forall v\in \mathbb{R}^n
-\qquad
-\Longrightarrow
-\qquad
-(Xw)^{\sf T} Y (Xw) \geq 0, \quad \forall w\in \mathbb{R}^m
+  v^{\sf T}Yv\geq 0, \quad \forall v\in \mathbb{R}^n
+  \qquad
+  \Longrightarrow
+  \qquad
+  (Xw)^{\sf T} Y (Xw) \geq 0, \quad \forall w\in \mathbb{R}^m
 \]
 \end{COLUMN}
 
-Using the relationship of Equation \ref{eq:lyapinG}, the time derivative of the storage function: 
-\begin{align}\label{eq:WGdef}
-W_G(x_G):= \frac{1}{2}x_G^{\sf T}P_Gx_G
-\end{align}
-along with the solution trajectory of $G$ can be assessed as below in the same way as Equation \ref{eq:Flyapeq}: 
+By using the relationship given by Equation \ref{eq:lyapinG}, the time
+derivative of the storage function $W_G(x_G)$ along the solution trajectory of
+$G$ can be evaluated, where $W_G(x_G)$ is defined by Equation \ref{eq:WGdef},
+similarly to Equation \ref{eq:Flyapeq}:
+
+\begin{equation}\label{eq:WGdef}
+  W_G(x_G):= \frac{1}{2}x_G^{\sf T}P_Gx_G
+\end{equation}
+
 \begin{align}\label{eq:Glyapeq}
 \frac{d}{dt} W_G \bigl( x_G (t) \bigr)
  \leq 
 y_G^{\sf T}(t) u_G(t)
 \end{align}
-However, to show the passivity of $G$, $P_G$ of Equation \ref{eq:defPG} must be positive semi-definite.
-Here, if the matrix $A$ of Equation \ref{eq:sysmats} is stable:
+
+However, to show the passivity of $G$, $P_G$ in equation \ref{eq:defPG} must be
+positive semi-definite. If the matrix $A$ in equation \ref{eq:sysmats} is
+stable, then it can be shown that:
+
 \[
-A= S^2 \hat{A}
-\qquad \Longleftrightarrow \qquad S^{-1} A S = S \hat{A} S
+  A= S^2 \hat{A}
+  \qquad \Longleftrightarrow \qquad S^{-1} A S = S \hat{A} S
 \]
-Thus, eigenvalues of $S \hat{A} S$ are all negative.
-However:
-\[
-S:=\sfdiag \left( \sqrt{ \Xsi -  \Xti }\right)_{i \in \mathcal{I}_{\rm G} } 
-\]
-This means that $ \hat{A} $ is negative definite.
-A condition necessary for $P_G$ of Equation \ref{eq:defPG} to be positive semi-definite is that the Schur complement related to $ -\hat{A} $ is positive semi-definite; in other words, the following is true:
+where $S:=\sfdiag \left( \sqrt{ \Xsi - \Xti }\right){i \in \mathcal{I}{\rm G} }$.
+Here, $\hat{A}$ is negative definite. Under this condition, the necessary and
+sufficient condition for $P_G$ in Equation \ref{eq:defPG} to be positive
+semi-definite is that the Schur complement of $-\hat{A}$ is positive
+semi-definite, in other words:
+
 \begin{align}\label{eq:pdsp}
 L_0 =L_0^{\sf T} \succeq 0
 \end{align}
-However, for $L_0$ of Equation \ref{eq:defL0}, we used the fact that:
-\[
-L_0 = L + \hat{B}^{\sf T} \hat{A}^{-1} \hat{B}
-\]
-from Equation \ref{eq:sysmatst}.
-To summarize the above discussion, the following term is introduced.
+where $L_0$ is defined by Equation \ref{eq:defL0} and can be expressed as $L_0 =
+L + \hat{B}^{\sf T} \hat{A}^{-1} \hat{B}$ using Equation \ref{eq:sysmatst}. To
+summarize the above discussion, the following definition is introduced.
 
-\begin{definition}[Passive power transmission conditions]\label{def:passtrans}
-For the system matrix $(L,A,B,C)$ of Equation \ref{eq:sysmats}, the following three conditions are together called \textbf{passive power transmission conditions}.
+\begin{definition}[Passive power transmission condition]\label{def:passtrans}
+For the system matrix $(L,A,B,C)$ of Equation \ref{eq:sysmats}, the following
+three conditions are together called \textbf{passive power transmission
+conditions}.
 \footnote{
-“Passive power transmission conditions” is a term unique to this book.
-}。
+"Passive power transmission conditions" is a term unique to this book.
+}
 \begin{itemize}
-\item[(i)] Matrix $A$ is stable.
-\item[(ii)] As in Equation \ref{eq:Gredcon}, reduced conductance is all 0.
-\item[(iii)] For the matrix $L_0$ of Equation \ref{eq:defL0}, the matrix inequality of Equation \ref{eq:pdsp} hold. 
+  \item[(i)] Matrix $A$ is stable.
+  \item[(ii)] As in Equation \ref{eq:Gredcon}, all reduced conductances are zero. 
+  \item[(iii)] For the matrix $L_0$ of Equation \ref{eq:defL0}, the matrix inequality of Equation \ref{eq:pdsp} holds. 
 \end{itemize}
-Individually, it may be called a passive power transmission condition (i), and so on.
+
+Each of these conditions may be referred to individually as the passive
+transmission condition (i), and so on.
 \end{definition}
 
-Based on the above discussions, we can see that the passive power transmission conditions describe the conditions necessary for the electrical system $G$ of Equation \ref{eq:Gss} to be passive.
-Furthermore, these conditions are necessary for the linear approximation model to be statically stable for the passivity of an electrical subsystem and arbitrary physical constant.
-The details are discussed in Section \ref{sec:nesconana} and Section \ref{sec:nesconsta}.
-Function $W_G(x_G)$ indicates the electrical potential energy of an electrical power system.
+Based on the above discussions, we can see that the passive power transmission
+conditions describe the conditions necessary for the electrical system $G$ of
+Equation \ref{eq:Gss} to be passive. Furthermore, these conditions are necessary
+for the linear approximation model to be statically stable for the passivity of
+an electrical subsystem and arbitrary physical constant. The details are
+discussed in Section \ref{sec:nesconana} and Section \ref{sec:nesconsta}.
+Function $W_G(x_G)$ indicates the electrical potential energy of an electrical
+power system.
 
 \subsection{Analysis of small signal stability based on passivity\advanced}
 
 \smallskip
-\subsubsection{Stability analysis for a feedback system}
+\subsubsection{Stability analysis of feedback systems}
 
-Below, when an electrical subsystem is passive under the passive power transmission conditions of definition \ref{def:passtrans}, the stability of their feedback system, in other words, the small signal stability of the linear approximation model of Equation \ref{eq:lindynu0}, is analyzed.
-Since the inequality of Equation \ref{eq:Flyapeq} and Equation \ref{eq:Glyapeq} holds, the sum is:
+In the following, under the passive power transmission conditions defined in
+Definition \ref{def:passtrans}, the small signal stability of the linear
+approximation model given in Equation \ref{eq:lindynu0} is analyzed for electric
+subsystems that are passive. The stability of their feedback systems is also
+analyzed.
+
+Since the inequalities in Equations \ref{eq:Flyapeq} and \ref{eq:Glyapeq} hold,
+their sum is given by:
+
 \smallskip
-\begin{align*}
-\spliteq{
- \frac{d}{dt} \bigl\{ W_F \bigl( x_F (t) \bigr)
-& +
- W_G \bigl( x_G (t) \bigr)
- \bigr\} \\
-& \leq 
-\underbrace{
-y_F^{\sf T}(t) u_F(t)
-+
-y_G^{\sf T}(t) u_G(t)
-}_{\star}
-- \tfrac{\sfmin \left\{ D_i \right\}}{\omega_0}
-\|y_F(t) \|^2
-}
-\end{align*}
-If the equation of the feedback connection of Equation \ref{eq:nfedcon} is substituted into this inequality,
-the term shown in “$\star$” is cancelled, and as the inequality for the entire feedback system,
-the following is obtained:
-\begin{align}\label{eq:FGlyapeq}
+\begin{equation*}
+  \begin{aligned}
+    \spliteq{
+      \frac{d}{dt} \bigl\{ W_F \bigl( x_F (t) \bigr)
+      & +
+      W_G \bigl( x_G (t) \bigr)
+      \bigr\} \\
+      & \leq 
+      \underbrace{
+      y_F^{\sf T}(t) u_F(t)
+      +
+      y_G^{\sf T}(t) u_G(t)
+      }_{\star}
+      - \tfrac{\sfmin \left\{ D_i \right\}}{\omega_0}
+      \|y_F(t) \|^2
+    }
+  \end{aligned}
+\end{equation*}
+
+By substituting the feedback coupling equation in Equation \ref{eq:nfedcon} into
+this inequality, the term indicated by "$\star$" is cancelled out, and the
+inequality for the entire feedback system can be expressed as:
+
+\begin{equation}\label{eq:FGlyapeq}
  \frac{d}{dt} \bigl\{ W_F \bigl( x_F (t) \bigr)
  +
  W_G \bigl( x_G (t) \bigr)
@@ -1663,104 +1717,145 @@ the following is obtained:
  \leq 
 - \tfrac{\sfmin \left\{ D_i \right\}}{\omega_0}
 \|y_F(t) \|^2
-\end{align}
-In other words, the sum of function $W_F(x_F)$ and function $W_G(x_G)$ is monotonous non-increasing with the temporal changes along the solution trajectory of the feedback system.
-Since the lower limits of $W_F(x_F)$ and $W_G(x_G)$ are 0, when enough time passes, the sum asymptotically converges to a value.
-This means that the time derivative on the left of Equation \ref{eq:FGlyapeq} asymptotically converges to 0.
-The right side of Equation \ref{eq:FGlyapeq} is negative when $y_F(t)\neq 0$, and 0 only when $y_F(t)=0$; thus, the following is obtained:
-\begin{align}\label{eq:yFlim0}
-\lim_{t\rightarrow \infty} y_F(t)  =0
-\end{align}
-Furthermore, if we focus on the output equation of Equation \ref{eq:Fss}, the output $y_F$ is a constant factor of the internal state $\Delta \omega^{\rm lin}$; 
-thus, the following holds for the mechanical subsystem $F$:
-\begin{align}\label{eq:Fobs}
-y_F(t)  =0,\quad \forall t\geq 0 
-\qquad \Longrightarrow \qquad
-\Delta \omega^{\rm lin}(t)  =0,\quad \forall t\geq 0 
-\end{align}
-This is a property called \textbf{observability} in control systems engineering.
-Therefore, from Equation \ref{eq:yFlim0} and Equation \ref{eq:Fobs}, we can see that the following
-is true for the arbitrary initial value $(\Delta \omega^{\rm lin}(0),\delta^{\rm lin}(0),E^{\rm lin}(0))$ for the linear approximation model of Equation \ref{eq:lindynu0}:
-\begin{align}\label{eq:Delom0}
-\lim_{t\rightarrow \infty} \Delta \omega^{\rm lin}(t)  =0
-\end{align}
-In other words, the internal state of the mechanical subsystem $F$ of Equation \ref{eq:Fss} in a feedback system that asymptotically converges to 0.
+\end{equation}
+
+In other words, the sum of the functions $W_F(x_F)$ and $W_G(x_G)$ is
+monotonically non-increasing with respect to the time evolution along the
+feedback system trajectory. Furthermore, since the lower bounds of $W_F(x_F)$
+and $W_G(x_G)$ are both 0, their sum asymptotically converges to a certain value
+as time passes sufficiently. This means that the value of the time derivative on
+the left-hand side of Equation \ref{eq:FGlyapeq} converges to 0. Additionally,
+since the right-hand side of Equation \ref{eq:FGlyapeq} is negative when $y_F(t)
+\neq 0$ and is only 0 when $y_F(t) = 0$, the following is obtained: 
+
+\begin{equation}\label{eq:yFlim0}
+  \lim_{t\rightarrow \infty} y_F(t)  =0
+\end{equation}
+
+Furthermore, focusing on the output equation of Equation \ref{eq:Fss}, since the
+output $y_F$ is a constant multiple of the internal state $\Delta \omega^{\rm
+lin}$, it can be understood that for the mechanical subsystem $F$:
+
+\begin{equation}\label{eq:Fobs}
+  y_F(t)  =0,\quad \forall t\geq 0 
+  \qquad \Longrightarrow \qquad
+  \Delta \omega^{\rm lin}(t)  =0,\quad \forall t\geq 0 
+\end{equation}
+
+This is a property called \textbf{observability} in system control engineering.
+Therefore, from Equations \ref{eq:yFlim0} and \ref{eq:Fobs}, for the
+approximated linear model of Equation \ref{eq:lindynu0}, for any initial value
+$(\Delta \omega^{\rm lin}(0),\delta^{\rm lin}(0),E^{\rm lin}(0))$, the following
+holds:
+
+\begin{equation}\label{eq:Delom0}
+  \lim_{t\rightarrow \infty} \Delta \omega^{\rm lin}(t)  =0
+\end{equation}
+
+In other words, the internal state of the mechanical subsystem $F$ in Equation
+\ref{eq:Fss} in the feedback system converges to 0 asymptotically.
 
 \begin{COLUMN}
 \noindent \textbf{Observability}:
-For the linear system $\Sigma$ of Equation \ref{eq:siglin}, if the output $y(t)$ is identically 0 and the internal state $x(t)$ is also identically 0, $\Sigma$ is called \textbf{observable}.
-Conditions necessary for $\Sigma$ to be observable are:
+For a linear system $\Sigma$ described by Equation \ref{eq:siglin}, if the
+output $y(t)$ is identically zero, then the internal state $x(t)$ is also
+identically zero, and $\Sigma$ is said to be \textbf{observable}
+\index{observability} in this case. The necessary and sufficient condition for
+$\Sigma$ to be observable is given by Equation \ref{eq:condobs}, where $n$ is
+the dimension of the state.
+
 \begin{align}\label{eq:condobs}
-\sfker \mat{
-C \\
-CA \\
-\vdots \\
-CA^{n-1}
-}
-=\{0\}
+  \sfker \mat{
+  C \\
+  CA \\
+  \vdots \\
+  CA^{n-1}
+  }
+  =\{0\}
 \end{align}
-where $n$ is the dimension of the state.
-By context, a pair of matrices satisfying the Equation \ref{eq:condobs} is called an observable pair $(C,A)$.
+
+In some contexts, a pair of matrices that satisfies Equation \ref{eq:condobs} is
+referred to as an observable pair $(C,A)$.
 
 \smallskip
 \noindent \textbf{Controllability}:
-For the linear system $\Sigma$ of Equation \ref{eq:siglin}, if there is an input $u(t)$, where $x(T) = 0$ for a certain time $T > 0$ for each and every initial value $x(0)$, $\Sigma$ is called \textbf{controllable}.
-Conditions necessary for $\Sigma$ to be controllable are:
+For a linear system $\Sigma$ described by Equation \ref{eq:siglin}, if there
+exists an input $u(t)$ such that for all initial states $x(0)$, there exists a
+time $T>0$ such that $x(T) = 0$, then $\Sigma$ is said to be
+\textbf{controllable} \index{controllability}. The necessary and sufficient
+condition for $\Sigma$ to be controllable is given by Equation \ref{eq:condcon},
+where $n$ is the dimension of the state.
+
 \begin{align}\label{eq:condcon}
 \sfim \mat{
 B & AB & \cdots &A^{n-1}B
 }
 = \mathbb{R}^n
 \end{align}
-where $n$ is the dimension of the state. $\sfim$ expresses the \textbf{image} of a matrix
-Depending on the context, a pair of matrices satisfying the Equation \ref{eq:condcon} is called a controllable pair $(A,B)$.
+
+Here, $\sfim$ denotes the \textbf{image} \index{image} of the matrix. In some
+contexts, a pair of matrices that satisfies Equation \ref{eq:condcon} is
+referred to as a controllable pair $(A,B)$
 
 \smallskip
 \noindent \textbf{Lyapunov function}:
-Let us consider an observable linear system $\Sigma$ of Equation
-\ref{eq:siglin}. However, the input $u(t)$ is identically 0. In addition, we
-consider a positive semi-definite value function that satisfies $V(x)\geq0$ for
-arbitrary $x$ and $V(x)=0$. If there is a positive definite number $\rho$, and:
+Consider the observable linear system $\Sigma$ described by Equation
+\ref{eq:siglin}, where the input $u(t)$ is identically zero. Let $V(x)$ be a
+positive semi-definite function that satisfies $V(x)\geq 0$ for all $x$ and
+$V(0)=0$. If there exists a positive constant $\rho$ such that the derivative of
+$V(x)$ along the solution trajectory of $\Sigma$ satisfies
+
 \[
-\frac{d}{dt} V \bigl( x (t) \bigr) 
-=
-\nabla V^{\sf T}(x) \frac{d x}{dt} (t)
-\leq  - \rho \|y(t)\|^2,\qquad
-\forall t \geq0
+  \frac{d}{dt} V \bigl( x (t) \bigr) 
+  =
+  \nabla V^{\sf T}(x) \frac{d x}{dt} (t)
+  \leq  - \rho \|y(t)\|^2,\qquad
+  \forall t \geq0
 \]
-is true for the differential along the solution trajectory of $\Sigma$ of function $V(x)$, the solution trajectory $x(t)$ for the arbitrary initial value asymptotically converges to 0.
-This function $V(x)$ is called the \textbf{Lyapunov function}.
+then the solution trajectory $x(t)$ converges asymptotically to zero for any initial state.
+Such a function $V(x)$ is called a \textbf{Lyapunov function} \index{Lyapunov function}.
 
 \begin{figure}[h]
-\centering
-\includegraphics[width = .35\linewidth]{figs/cone}
-\caption{\textbf{Monotonically decreasing values along the solution trajectory of the Lyapunov function}}
-\label{fig:conelyap}
-\medskip
+  \centering
+  \includegraphics[width = .35\linewidth]{figs/cone}
+  \caption{\textbf{Monotonically decreasing values along the solution trajectory of the Lyapunov function}}
+  \label{fig:conelyap}
+  \medskip
 \end{figure}
 
-
-The fact that the value of the Lyapunov function monotonically decreases along the solution trajectory of the system can be interpreted as some type of energy dissipating with time (Figure \ref{fig:conelyap}).
-Stability analysis based on a similar argument can be applied to a nonlinear system as well.
+The fact that the value of the Lyapunov function decreases monotonically along
+the solution trajectory of the system can be interpreted as a type of energy
+dissipation over time (Figure \ref{fig:conelyap}). Similar stability analyses
+based on Lyapunov functions can also be applied to nonlinear systems.
 
 \end{COLUMN}
 
-On the other hand, the fact that the internal state of the electrical subsystem $G$ of Equation \ref{eq:Gss} asymptotically converges to 0 cannot be derived from the above argument.
-Specifically, the following is derived for the input and output of two subsystems from asymptotic convergence of Equation \ref{eq:Delom0} and the relationship of Equation \ref{eq:nfedcon}:
+On the one hand, it is not possible to deduce from the above discussion whether
+the internal state of the electric subsystem $G$ in Equation \ref{eq:Gss}
+converges asymptotically to 0.  Specifically, from the relation in Equation
+\ref{eq:nfedcon} and the asymptotic convergence in Equation \ref{eq:Delom0}, it
+can be derived that the input and output of the two subsystems satisfy:
+
 \[
-\lim_{t\rightarrow \infty} u_F(t)  =0,\qquad
-\lim_{t\rightarrow \infty} u_G(t)  =0,\qquad
-\lim_{t\rightarrow \infty} y_G(t)  =0
+  \lim_{t\rightarrow \infty} u_F(t)  =0,\qquad
+  \lim_{t\rightarrow \infty} u_G(t)  =0,\qquad
+  \lim_{t\rightarrow \infty} y_G(t)  =0
 \]
-However, since the electrical subsystem is not observable, we cannot conclude that its internal system asymptotically converges.
-If we assume that the electrical subsystem is observable, for the arbitrary initial value: 
+
+However, since the electric subsystem is not observable, it cannot be concluded
+that its internal state converges asymptotically to zero.  Assuming that the
+electric subsystem is observable, it can be concluded that for any initial
+values:
+
 \[
-\lim_{t\rightarrow \infty}  \delta^{\rm lin}(t)  =0,\qquad
-\lim_{t\rightarrow \infty}  E^{\rm lin}(t)  =0
+  \lim_{t\rightarrow \infty}  \delta^{\rm lin}(t)  =0,\qquad
+  \lim_{t\rightarrow \infty}  E^{\rm lin}(t)  =0
 \]
-This means that for Equation \ref{eq:linmconv}, it is always $c_0=0$.
-This fact is inconsistent with the idea that $\Psi$ of Equation \ref{eq:lindynu0} has a zero eigenvalue and is unstable.
-Excluding special situations, the electrical subsystem is controllable.
+
+However, this implies that $c_0$ must always be equal to 0 in Equation
+\ref{eq:linmconv}. This fact contradicts the instability of Equation
+\ref{eq:lindynu0} due to the zero eigenvalue of $\Psi$. It should be noted that
+except for some special cases, the electric subsystem is controllable.
 
 
 \begin{figure}[t]
@@ -1787,111 +1882,151 @@ Excluding special situations, the electrical subsystem is controllable.
 \end{figure}
 
 
-\begin{example}[Temporal change in accumulated energy]\label{ex:energylin}
-Let us consider the linear approximation model discussed in the first half of the Example \ref{ex:linsyssim}.
-First, let us consider a case where the passive power transmission condition (ii) is satisfied; in other words, the conductance of two transmission lines is 0.
-Specifically, we set the admittance of the transmission line as:
-\begin{align}\label{eq:bothlossless}
-\bm{y}_{12} = - \bm{j} 11.6041, \qquad
-\bm{y}_{23} =  - \bm{j} 10.5107
-\end{align}
-This corresponds to a case where parameter $\theta_2$ is 0 in Equation \ref{eq:Y0theta2}.
-At this time, matrix $A$ is stable. All eigenvalues of $L_0$ in Equation \ref{eq:defL0} become non-negative.
-In other words, this means that passive power transmission conditions (i) and (iii) hold. 
+\begin{example}{Time evolution of stored energy}\label{ex:energylin}
+Consider the approximated linear model discussed in the first half of Example
+\ref{ex:linsyssim}. First, consider the case where the passive transmission
+condition (ii) is satisfied, i.e., when the conductance of both transmission
+lines is 0. Specifically, set the admittance values of the transmission lines
+to:
 
-For the time response to the initial value of Equation \ref{eq:linmini}, we calculate the temporal change in the kinetic energy $W_F(x_F)$ of Equation \ref{eq:WFdef} and potential energy $W_G(x_G)$ of Equation \ref{eq:WGdef}.
-The result is shown in Figure \ref{fig:LyapW}(a). The solid blue and red lines show $W_F(x_F)$ and $W_G(x_G)$, respectively.
-The broken black line shows their sum. This figure shows that the kinetic and potential energy alternately increase and decrease, while their sum, the total energy of the entire system, monotonically decreases. 
-The decrease of the total energy over time can be interpreted as energy loss via friction by the damping factor.
+\begin{equation}\label{eq:bothlossless}
+  \bm{y}_{12} = - \bm{j} 11.6041, \qquad
+  \bm{y}_{23} =  - \bm{j} 10.5107
+\end{equation}
 
-Next, as a reference, let us look at the result when the passive power transmission condition (ii) is not satisfied.
-Specifically, we set $\bm{Y}_0(1)$ as the admittance matrix $\bm{Y}$ for Equation \ref{eq:Y0theta2}, where $\theta_2$ is 1.
-This is equivalent to calculating the temporal changes in the kinetic and potential energy against the initial response of Figure \ref{fig:timeex}.
-If the passive power transmission condition (ii) is not satisfied, $P_G$ of Equation \ref{eq:defPG} is not a symmetric matrix, but potential energy $W_G(x_G)$ is calculated by using the definition of Equation \ref{eq:WGdef} as is.
-The calculation result Figure \ref{fig:LyapW}(b) is almost the same as Figure \ref{fig:LyapW}(a).
-This fact indicates that even when the conductance of the transmission lines is not 0, the electrical potential energy can be approximated based on the definition of Equation \ref{eq:WGdef}.
+This corresponds to setting the parameter $\theta_2$ to 0 in Equation
+\ref{eq:Y0theta2}. In this case, the matrix $A$ becomes stable. Also, all the
+eigenvalues of $L_0$ in Equation \ref{eq:defL0} become non-negative. Thus, the
+passive transmission conditions (i) and (iii) hold.
+
+Consider the time response of the initial values in Equation \ref{eq:linmini}
+and calculate the time variation of the kinetic energy $W_F(x_F)$ in Equation
+\ref{eq:WFdef} and the potential energy $W_G(x_G)$ in Equation \ref{eq:WGdef}.
+The calculation results are shown in Figure \ref{fig:LyapW}(a) where the blue
+and red solid lines represent $W_F(x_F)$ and $W_G(x_G)$, respectively, and the
+black dashed line represents their sum, which is the total energy of the system.
+From this figure, it can be seen that while the kinetic and potential energies
+increase and decrease alternatively, the total energy of the system, which is
+the sum of these energies, decreases monotonically. The decrease in total energy
+over time can be interpreted as energy loss due to friction caused by the
+damping coefficient.
+
+Next, as a reference, let us show the results when the passive power
+transmission condition (ii) is not satisfied. Specifically, we set $\bm{Y}_0(1)$
+in Equation \ref{eq:Y0theta2} to be the admittance matrix $\bm{Y}$ by setting
+$\theta_2$ to 1. This is equivalent to calculating the time variation of the
+kinetic and potential energies for the initial value response in Figure
+\ref{fig:timeex}. Note that when the passive power transmission condition (ii)
+is not satisfied, $P_G$ in Equation \ref{eq:defPG} does not become a symmetric
+matrix, but the potential energy $W_G(x_G)$ can still be calculated using the
+definition in Equation \ref{eq:WGdef}. The calculation result in Figure
+\ref{fig:LyapW}(b) is almost identical to that in Figure \ref{fig:LyapW}(a).
+This fact suggests that even when the conductance of the transmission line is
+not zero, the electrical potential energy can be approximately calculated based
+on the definition in Equation \ref{eq:WGdef}.
 \end{example}
 
 \smallskip
-\subsubsection{Change of basis that separates unobservable state variables}
+\subsubsection{Basis transformation for separating unobservable state variables}
 
-Let us consider deriving an observable subsystem by removing the common component of the unobservable rotor argument from the electrical subsystem $G$ of Equation \ref{eq:Gss}.
-Specifically, by applying the change of basis to the state $\delta^{\rm lin}$ of Equation \ref{eq:lindyn}, a differential equation system that only describes the deviation of the rotor argument is derived.
+Let us consider deriving an observable subsystem from the electrical subsystem
+$G$ in Equation \ref{eq:Gss} by removing the common component of unobservable
+rotor angles. Specifically, we apply a basis transformation to the state
+$\delta^{\rm lin}$ in Equation \ref{eq:lindyn} to derive a set of differential
+equations describing only the deviations of the rotor angles. Note that the
+following basis transformation is always applicable regardless of whether the
+passive power delivery condition holds or not.
 
 \begin{COLUMN}
 \noindent \textbf{Basis transformation of linear systems}:
-The change in basis for a linear system is the following operation.
-For the equation of state:
+
+In the state equation:
+
 \[
-\dot{x}(t)=Ax(t)+Bu(t)
+  \dot{x}(t)=Ax(t)+Bu(t)
 \]
-each element $x_i(t)$ of the $n$-dimensional state vector $x(t)$ expresses the
-component when expanded by the basis $\{e_1,\ldots,e_n\}$:
+each element $x_i(t)$ of the $n$-dimensional state vector $x(t)$ can be
+represented as the component of the expansion with respect to the basis
+${e_1,\ldots,e_n}$, such as:
+
 \[
-x(t)
-=
-e_1 x_1(t) + \cdots + e_n x_n(t)
+  x(t)
+  =
+  e_1 x_1(t) + \cdots + e_n x_n(t)
 \]
-where $e_i$ is the $n$-dimensional vector where only the $i$th element has 1.
-This basis is called the \textbf{standard basis}.
-The equation of state expresses the temporal expansion of the “component” when the state vector is expressed with a certain basis.
-Let us consider expressing this state vector $x(t)$ with a different basis $\{v_1,\ldots,v_n\}$;
-in other words:
+where $e_i$ is an $n$-dimensional vector with only the $i$-th element being $1$.
+This basis is called the \textbf{standard basis} and represents the time
+evolution of the "components" of the state vector $x(t)$ in a certain basis.  We
+now consider representing $x(t)$ in another basis ${v_1,\ldots,v_n}$ such that
+
 \[
-x(t)
-=
-v_1 \xi_1(t) + \cdots + v_n \xi_n(t)
+  x(t)
+  =
+  v_1 \xi_1(t) + \cdots + v_n \xi_n(t)
 \]
-where $\xi_i(t)$ is a component of the base vector $v_i$.
-If a matrix with vectors $v_i$ in a row is $V$ and if a vector with $\xi_i(t)$ in a column is $\xi(t)$, it corresponds to a linear transformation called $x(t)=V\xi(t)$.
-At this time, the equation of state is transformed to:
+where $\xi_i(t)$ is the component of the basis vector $v_i$. Let us denote the
+matrix obtained by arranging the vectors $v_i$ horizontally as $V$ and the
+vector obtained by arranging $\xi_i(t)$ vertically as $\xi(t)$. Then, the linear
+transformation $x(t)=V\xi(t)$ corresponds to this representation. In this case,
+the state equation is transformed as:
+
 \[
-\dot{\xi}(t)=V^{-1}AV \xi(t) + V^{-1} Bu(t)
+  \dot{\xi}(t)=V^{-1}AV \xi(t) + V^{-1} Bu(t)
 \]
-This differential equation system describes the temporal expansion of components with the new basis.
-Note that the basis is divided into two parts like $\mathcal{V}_a:=\{v_1,\ldots,v_k\}$, $\mathcal{V}_b:=\{v_{k+1},\ldots,v_n\}$, and so on.
+where $V_{a}$ and $V_{b}$ are the matrices obtained by arranging the basis
+vectors of $\mathcal{V}_a$ and $\mathcal{V}_b$ horizontally, respectively, the
+transformed state equation is obtained as:
+
 \[
-x(t)=
-V_{a} \xi_{a}(t) +
- V_{b} \xi_{b}(t)
+  x(t)=
+  V_{a} \xi_{a}(t) +
+  V_{b} \xi_{b}(t)
 \]
-then the basis-transformed equation of state is:
+where $W_{a}$ and $W_{b}$ are matrices that satisfy:
+
 \[
-\mat{
-\dot{\xi}_{a}(t) \\
-\dot{\xi}_{b}(t)
-}
-=
-\mat{
-W_{a} A V_{a} & W_{a} A V_{b} \\
-W_{b} A V_{a} & W_{b} A W_{b}
-}
-\mat{
-{\xi}_{a}(t) \\
-{\xi}_{b}(t)
-}
+  \mat{
+    \dot{\xi}_{a}(t) \\
+    \dot{\xi}_{b}(t)
+  }
+  =
+  \mat{
+    W_{a} A V_{a} & W_{a} A V_{b} \\
+    W_{b} A V_{a} & W_{b} A W_{b}
+  }
+  \mat{
+    {\xi}_{a}(t) \\
+    {\xi}_{b}(t)
+  }
 \]
-However, $V_{a}$ and $V_{b}$ are the matrices of the basis vectors of $\mathcal{V}_a$ and $\mathcal{V}_b$, and $W_{a}$ and $W_{b}$ are:
+
+However, $V_{a}$ and $V_{b}$ are matrices consisting of the basis vectors of
+$\mathcal{V}a$ and $\mathcal{V}b$, respectively. $W{a}$ and $W{b}$ are matrices
+that satisfy:
+
 \[
-\mat{
-W_{a} \\
-W_{b}
-}
-=\mat{
-V_{a} & V_{b}
-}^{-1}
-\qquad
-\Longleftrightarrow
-\qquad
-\mat{
-V_{a} & V_{b}
-}\mat{
-W_{a} \\
-W_{b}
-}=I
+  \mat{
+    W_{a} \\
+    W_{b}
+  }
+  =\mat{
+    V_{a} & V_{b}
+  }^{-1}
+  \qquad
+  \Longleftrightarrow
+  \qquad
+  \mat{
+    V_{a} & V_{b}
+  }\mat{
+    W_{a} \\
+    W_{b}
+  }=I
 \]
-In this representation, $\xi_a(t)$ is the component of $x(t)$ with respect to the subspace $\sfspan \mathcal{V}_a$.
-Also, $\xi_b(t)$ is a component with respect to $\sfspan \mathcal{V}_b$.
+
+In this representation, $\xi_a(t)$ represents the component of $x(t)$ with
+respect to the subspace $\sfspan \mathcal{V}_a$. Similarly, $\xi_b(t)$
+represents the component of $x(t)$ with respect to the subspace $\sfspan
+\mathcal{V}_b$.
 \end{COLUMN}
 
 The change of basis explained below can be applied regardless of whether passive power transmission conditions hold.
