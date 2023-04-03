@@ -2029,88 +2029,118 @@ represents the component of $x(t)$ with respect to the subspace $\sfspan
 \mathcal{V}_b$.
 \end{COLUMN}
 
-The change of basis explained below can be applied regardless of whether passive power transmission conditions hold.
-$\delta^{\rm lin}$ is expanded using a matrix $W \in \mathbb{R}^{N\times (N-1)}$:
-\begin{align}\label{eq:batrinv}
-\delta^{\rm lin}
-=
-W
-\delta^{\rm lin}_{\rm e} +
-\mathds{1}
-\overline{\delta}^{\rm lin}_{\rm e}
-\end{align}
-Here, $\mathds{1}$ is a base vector that expresses the common component of $\delta^{\rm lin}$, while $W$ is a matrix with base vectors that express other deviation components.
-In other words, the common component of $\delta^{\rm lin}$ is $\overline{\delta}^{\rm lin}_{\rm e}$, and deviation components are $\delta^{\rm lin}_{\rm e}$.
-The common component $\overline{\delta}^{\rm lin}_{\rm e}$ is one-dimensional, while deviation components $\delta^{\rm lin}_{\rm e}$ are $(N-1)$-dimensional.
+The change of basis explained below can be applied regardless of whether passive
+power transmission conditions hold. $\delta^{\rm lin}$ is expanded using a
+matrix $W \in \mathbb{R}^{N\times (N-1)}$:
+
+\begin{equation}\label{eq:batrinv}
+  \delta^{\rm lin}
+  =
+  W
+  \delta^{\rm lin}_{\rm e} +
+  \mathds{1}
+  \overline{\delta}^{\rm lin}_{\rm e}
+\end{equation}
+
+Here, $\mathds{1}$ is a base vector that expresses the common component of
+$\delta^{\rm lin}$, while $W$ is a matrix with base vectors that express other
+deviation components. In other words, the common component of $\delta^{\rm
+lin}$ is $\overline{\delta}^{\rm lin}_{\rm e}$, and deviation components are
+$\delta^{\rm lin}_{\rm e}$. The common component $\overline{\delta}^{\rm
+lin}_{\rm e}$ is one-dimensional, while deviation components $\delta^{\rm
+lin}_{\rm e}$ are $(N-1)$-dimensional.
 
 Next, let us consider the inverse transformation of Equation \ref{eq:batrinv}.
-Specifically, let us consider a matrix $W^{\dagger} \in \mathbb{R}^{(N-1)\times N}$:
+Specifically, let us consider a matrix $W^{\dagger} \in \mathbb{R}^{(N-1)\times
+N}$:
 \[
-\delta^{\rm lin}
-=
-\underbrace{
-\mat{
-W & \mathds{1}
-}
-}_{T}
-\mat{
-\delta^{\rm lin}_{\rm e} \\
-\overline{\delta}^{\rm lin}_{\rm e}
-}
-\quad
-\Longleftrightarrow
-\quad
-\mat{
-\delta^{\rm lin}_{\rm e} \\
-\overline{\delta}^{\rm lin}_{\rm e}
-}
-=
-\underbrace{
-\mat{
-W^{\dagger} \\
-\frac{1}{N} \mathds{1}^{\sf T}
-}
-}_{T^{-1}}
-\delta^{\rm lin}
+  \delta^{\rm lin}
+  =
+  \underbrace{
+  \mat{
+  W & \mathds{1}
+  }
+  }_{T}
+  \mat{
+  \delta^{\rm lin}_{\rm e} \\
+  \overline{\delta}^{\rm lin}_{\rm e}
+  }
+  \quad
+  \Longleftrightarrow
+  \quad
+  \mat{
+  \delta^{\rm lin}_{\rm e} \\
+  \overline{\delta}^{\rm lin}_{\rm e}
+  }
+  =
+  \underbrace{
+  \mat{
+  W^{\dagger} \\
+  \frac{1}{N} \mathds{1}^{\sf T}
+  }
+  }_{T^{-1}}
+  \delta^{\rm lin}
 \]
-For this inverse transformation to exist, the column vector of $W$ must be orthogonal to $\mathds{1}$.
-This can be confirmed as follows. From the relationship of inverse transformation:
-\begin{align*}
-T^{-1}T
-=\mat{
-W^{\dagger}W & W^{\dagger} \mathds{1}\\
-\frac{1}{N} \mathds{1}^{\sf T} W & \frac{1}{N} \mathds{1}^{\sf T} \mathds{1}
-}
-=\mat{
-I & 0\\
-0 & 1
-}
-\end{align*}
-must hold. In other words, $W$ and $W^{\dagger}$ are matrices that satisfy:
-\[
-\mathds{1}^{\sf T} W=0,\qquad
-W^{\dagger}W=I,\qquad
-W^{\dagger} \mathds{1}=0
-\]
-Therefore, from the first equation, we can see that the column vector of $W$ is orthogonal to $\mathds{1}$.
-$W$ and $W^{\dagger}$ can be constructed by using an appropriate matrix, $U\in \mathbb{R}^{N\times (N-1)}$, that satisfies
-\[
-W = U(U^{\sf T}U)^{-1},\qquad
-W^{\dagger}=U^{\sf T}
-\]
-At this time, the product $WW^{\dagger}$ is an orthogonal projection matrix to the orthogonal complement of $\sfspan\{\mathds{1}\}$; thus, this can be expressed as:
-\begin{align}\label{eq:psudinv}
-WW^{\dagger} = I - \frac{1}{N} \mathds{1} \mathds{1}^{\sf T}
-\end{align}
-Such a pseudo inverse matrix of $W$, $W^{\dagger}$, is called a \textbf{Moore-Penrose pseudoinverse}.
 
-The concept of orthogonal projection is shown in Figure \ref{fig:orthogonal}.
-The black arrow shows the space of $\sfspan\{\mathds{1}\}$, as the orthogonal complement $\sfspan\{\mathds{1}\}^{\perp}$, a plane that is orthogonal to the space.
-If the vector $v$ is multiplied by orthogonal projection matrix $WW^{\dagger}$, $WW^{\dagger}v$ is obtained as an image projected perpendicular to $\sfspan\{\mathds{1}\}^{\perp}$ from $v$.
+For this inverse transformation to exist, the column vector of $W$ must be
+orthogonal to $\mathds{1}$. This can be confirmed as follows. From the
+relationship of inverse transformation, the following must hold:
+
+\begin{equation*}
+  T^{-1}T
+  =\mat{
+  W^{\dagger}W & W^{\dagger} \mathds{1}\\
+  \frac{1}{N} \mathds{1}^{\sf T} W & \frac{1}{N} \mathds{1}^{\sf T} \mathds{1}
+  }
+  =\mat{
+  I & 0\\
+  0 & 1
+  }
+\end{equation*}
+
+In other words, $W$ and $W^{\dagger}$ are matrices that satisfy:
+
 \[
-I-WW^{\dagger}=\tfrac{1}{N}\mathds{1} \mathds{1}^{\sf T}
+  \mathds{1}^{\sf T} W=0,\qquad
+  W^{\dagger}W=I,\qquad
+  W^{\dagger} \mathds{1}=0
 \]
-in a complimentary relationship is an orthogonal projection matrix to $\sfspan\{\mathds{1}\}$.
+
+Therefore, from the first equation, we can see that the column vectors of $W$
+must be orthogonal to $\mathds{1}$. Note that $W$ and $W^{\dagger}$ can be
+constructed using an appropriate matrix $U\in \mathbb{R}^{N\times (N-1)}$ that
+satisfies $\mathds{1}^{\sf T} U=0$ and $U^{\sf T}U$ is invertible, as follows:
+
+\[
+  W = U(U^{\sf T}U)^{-1},\qquad
+  W^{\dagger}=U^{\sf T}
+\]
+
+In this case, the product $WW^{\dagger}$ can be expressed as the
+\textbf{orthogonal projection matrix}\index{orthogonal projection matrix} onto
+the orthogonal complement of $\sfspan{\mathds{1}}$:
+
+\begin{equation}\label{eq:psudinv}
+  WW^{\dagger} = I - \frac{1}{N} \mathds{1} \mathds{1}^{\sf T}
+\end{equation}
+
+The pseudoinverse of $W$ obtained in this way is called the
+\textbf{Moore-Penrose pseudoinverse}\index{Moore-Penrose pseudoinverse}
+\cite{bernstein2009matrix}.
+
+In Figure \ref{fig:orthogonal}, the subspace $\sfspan{\mathds{1}}$ is shown by a
+black arrow, and the orthogonal complement space $\sfspan{\mathds{1}}^{\perp}$
+is shown as a plane perpendicular to it. When a vector $v$ is multiplied by the
+orthogonal projection matrix $WW^{\dagger}$, the projection of $v$ onto
+$\sfspan{\mathds{1}}^{\perp}$, which is the shadow cast by $v$ in the direction
+perpendicular to $\sfspan{\mathds{1}}$, is obtained as $WW^{\dagger}v$.
+Furthermore, the complementary relationship, shown below, indicates that it is
+the orthogonal projection matrix onto $\sfspan{\mathds{1}}$'s orthogonal
+complement, that is, $\sfspan{\mathds{1}}$.
+
+\[
+  I-WW^{\dagger}=\tfrac{1}{N}\mathds{1} \mathds{1}^{\sf T}
+\]
 
 \begin{figure}[t]
 \centering
@@ -2121,392 +2151,437 @@ in a complimentary relationship is an orthogonal projection matrix to $\sfspan\{
 \medskip
 \end{figure}
 
-We apply the above-mentioned change of basis to the electrical subsystem $G$ of Equation \ref{eq:Gss}.
-irst, if we substitute Equation \ref{eq:batrinv} into a differential equation related to $\delta^{\rm lin}$, the following is obtained:
-\[
-W
-\dot{\delta}^{\rm lin}_{\rm e} +
-\mathds{1}
-\dot{\overline{\delta}}^{\rm lin}_{\rm e}=u_G
-\]
-If this differential equation is multiplied by $W^{\dagger}$ or $\tfrac{1}{N} \mathds{1}^{\sf T}$ from the left, the following is obtained:
-\[
-\dot{\delta}^{\rm lin}_{\rm e} = W^{\dagger} u_G,\qquad
-\dot{\overline{\delta}}^{\rm lin}_{\rm e} = \frac{1}{N} \mathds{1}^{\sf T} u_G
-\]
-Next, if we pay attention such that the relationship of Equation \ref{eq:LBker} holds for matrices $L$ and $B$, the differential equation and output equation related to $E^{\rm lin}$ can be rewritten as:
-\[
-\taud \dot{E}^{\rm lin} = A E^{\rm lin} + 
-B W {\delta}^{\rm lin}_{\rm e}
-, \qquad
-y_G = C E^{\rm lin} + 
-L W {\delta}^{\rm lin}_{\rm e}
-\]
-Therefore, the electrical subsystem with a changed basis is obtained as:
-\begin{align}\label{eq:Gsstr}
-G: \simode{
-\dot{\overline{\delta}}^{\rm lin}_{\rm e} & = \tfrac{1}{N} \mathds{1}^{\sf T} u_G \\
-\dot{\delta}^{\rm lin}_{\rm e} & = W^{\dagger}u_G \\
-\taud \dot{E}^{\rm lin} &= A E^{\rm lin} + B W {\delta}^{\rm lin}_{\rm e} \\
-y_G &= C E^{\rm lin} + L W {\delta}^{\rm lin}_{\rm e}
-}
-\end{align}
-What we need to focus on in this system expression is that ${\overline{\delta}}^{\rm lin}_{\rm e}$ that expresses the common component of $\delta^{\rm lin}$ is impacted by the input $u_G$, but not the output $y_G$.
-In other words, ${\overline{\delta}}^{\rm lin}_{\rm e}$ is an unobservable state variable.
+We apply the above-mentioned change of basis to the electrical subsystem $G$ of
+Equation \ref{eq:Gss}. First, if we substitute Equation \ref{eq:batrinv} into a
+differential equation related to $\delta^{\rm lin}$, the following is obtained:
 
-By removing the differential equation of ${\overline{\delta}}^{\rm lin}_{\rm e}$ from Equation \ref{eq:Gsstr}, $(N-1)$-dimensional controllable and observable subsystem is obtained as:
-\begin{align}\label{eq:Gsstrmin}
-G_{\rm e}: \simode{
-\dot{\delta}^{\rm lin}_{\rm e} & = W^{\dagger} u_G \\
-\taud \dot{E}^{\rm lin} &= A E^{\rm lin} + B W {\delta}^{\rm lin}_{\rm e} \\
-y_G &= C E^{\rm lin} + L W {\delta}^{\rm lin}_{\rm e}
-}
-\end{align}
+\[
+  W
+  \dot{\delta}^{\rm lin}_{\rm e} +
+  \mathds{1}
+  \dot{\overline{\delta}}^{\rm lin}_{\rm e}=u_G
+\]
+
+By multiplying the left-hand side of this differential equation by $W^{\dagger}$
+or $\tfrac{1}{N} \mathds{1}^{\sf T}$, we obtain:
+
+\[
+  \dot{\delta}^{\rm lin}_{\rm e} = W^{\dagger} u_G,\qquad
+  \dot{\overline{\delta}}^{\rm lin}_{\rm e} = \frac{1}{N} \mathds{1}^{\sf T} u_G
+\]
+
+Next, noting that the relationship in Equation \ref{eq:LBker} holds for matrices
+$L$ and $B$, the differential equation and output equation with respect to
+$E^{\rm lin}$ can be rewritten as:
+
+
+\[
+  \taud \dot{E}^{\rm lin} = A E^{\rm lin} + 
+  B W {\delta}^{\rm lin}_{\rm e}
+  , \qquad
+  y_G = C E^{\rm lin} + 
+  L W {\delta}^{\rm lin}_{\rm e}
+\]
+
+Therefore, the transformed electric subsystem is given by:
+
+\begin{equation}\label{eq:Gsstr}
+  G: \simode{
+  \dot{\overline{\delta}}^{\rm lin}_{\rm e} & = \tfrac{1}{N} \mathds{1}^{\sf T} u_G \\
+  \dot{\delta}^{\rm lin}_{\rm e} & = W^{\dagger}u_G \\
+  \taud \dot{E}^{\rm lin} &= A E^{\rm lin} + B W {\delta}^{\rm lin}_{\rm e} \\
+  y_G &= C E^{\rm lin} + L W {\delta}^{\rm lin}_{\rm e}
+  }
+\end{equation}
+
+One notable point about this system representation is that the common component
+of $\delta^{\rm lin}$, represented by ${\overline{\delta}}^{\rm lin}_{\rm e}$,
+is affected by the input $u_G$ but has no effect on the output $y_G$. In other
+words, ${\overline{\delta}}^{\rm lin}_{\rm e}$ is an unobservable state
+variable.
+
+By removing the differential equation of ${\overline{\delta}}^{\rm lin}_{\rm e}$
+from Equation \ref{eq:Gsstr}, $(N-1)$-dimensional controllable and observable
+subsystem is obtained as:
+
+\begin{equation}\label{eq:Gsstrmin}
+  G_{\rm e}: \simode{
+  \dot{\delta}^{\rm lin}_{\rm e} & = W^{\dagger} u_G \\
+  \taud \dot{E}^{\rm lin} &= A E^{\rm lin} + B W {\delta}^{\rm lin}_{\rm e} \\
+  y_G &= C E^{\rm lin} + L W {\delta}^{\rm lin}_{\rm e}
+  }
+\end{equation}
+
 Here, please note that from observability of $G_{\rm e}$, the following holds.
-\begin{align}\label{eq:Geobs}
-y_G(t)  =0,\quad \forall t\geq 0 
-\qquad \Longrightarrow \qquad
-\mat{
-{\delta}^{\rm lin}_{\rm e}(t)   \\
-E^{\rm lin}(t)  
-}
-=0
-,\quad 
-\forall t\geq 0 
-\end{align}
-For the analysis of the small signal stability of the linear approximation model of Equation \ref{eq:lindynu0}, this fact is important.
-For reference, Figure \ref{fig:GandGe} shows a block diagram of the linear approximation model with a change of basis.
 
-The set $(\taud^{-1}A,\taud^{-1}B)$ being controllable while the set $(C,\taud^{-1}A)$ being observable is the necessary condition for $G_{\rm e}$ to be controllable and observable.
-Below, we assume this controllability and observability in our discussions.
-Strict proof is not easy, but since the rank of $B$ and $C$ is $(N-1)$ or higher except for special situations, such assumptions do not interfere with a realistic analysis.
+\begin{equation}\label{eq:Geobs}
+  y_G(t)  =0,\quad \forall t\geq 0 
+  \qquad \Longrightarrow \qquad
+  \mat{
+  {\delta}^{\rm lin}_{\rm e}(t)   \\
+  E^{\rm lin}(t)  
+  }
+  =0
+  ,\quad 
+  \forall t\geq 0 
+\end{equation}
 
+The fact mentioned above is important for the analysis of the steady-state
+stability of the approximate linear model in equation \ref{eq:lindynu0}. As a
+reference, the block diagram of the approximate linear model transformed by the
+change of basis is shown in Figure \ref{fig:GandGe}.
+
+It should be noted that it is a necessary and sufficient condition for $G_{\rm
+e}$ to be controllable and observable that the pair $(\taud^{-1}A,\taud^{-1}B)$
+is controllable and the pair $(C,\taud^{-1}A)$ is observable. In the following,
+we assume controllability and observability. Note that an exact proof is not
+always easy, but assuming that the rank of $B$ and $C$ is $(N-1)$ or higher in
+most situations, there are no practical obstacles to analysis.
 
 \begin{figure}[t]
-\centering
-\includegraphics[width = .90\linewidth]{figs/FandGe2}
-\medskip
-\caption{\textbf{Basis-transformed approximate linear model}}
-\label{fig:GandGe}
-\medskip
+  \centering
+  \includegraphics[width = .90\linewidth]{figs/FandGe2}
+  \medskip
+  \caption{\textbf{Basis-transformed approximate linear model}}
+  \label{fig:GandGe}
+  \medskip
 \end{figure}
 
 
 \smallskip
-\subsubsection{Analysis of small signal stability based on passivity}
+\subsubsection{Small signal stability analysis based on passivity}
 
-Below, we assume the passive power transmission conditions of definition \ref{def:passtrans} and show the passivity of $G_{\rm e}$ of Equation \ref{eq:Gsstrmin} using the same steps as the electrical system $G$ of Equation \ref{eq:Gss}.
-To that end, we used the following expression:
-\begin{align}\label{eq:Gecomdef}
-G_{\rm e}: \simode{
-\dot{x}_{G_{\rm e}} & = A_{G_{\rm e}} x_{G_{\rm e}} + B_{G_{\rm e}} u_G \\
-y_G &= C_{G_{\rm e}} x_{G_{\rm e}}
-}
-\end{align}
-$x_{G_{\rm e}}$ and ${\delta}^{\rm lin}_{\rm e}$ are vectors with $E^{\rm lin}$:
+In the following, assuming the passive power transfer condition defined in
+Definition \ref{def:passtrans}, we show the passivity of $G_{\rm e}$ in Equation
+\ref{eq:Gsstrmin} using the same procedure as that of the electrical subsystem
+$G$ in Equation \ref{eq:Gss}. To this end, we express $G_{\rm e}$ in the form
+of:
+
+\begin{equation}\label{eq:Gecomdef}
+  G_{\rm e}: \simode{
+    \dot{x}_{G_{\rm e}} & = A_{G_{\rm e}} x_{G_{\rm e}} + B_{G_{\rm e}} u_G \\
+    y_G &= C_{G_{\rm e}} x_{G_{\rm e}}
+  }
+\end{equation}
+
+where $x_{G_{\rm e}}$ is a vector composed of ${\delta}^{\rm lin}_{\rm e}$ and
+$E^{\rm lin}$, and:
+
 \[
-A_{G_{\rm e}} := 
-\mat{
-0 & 0 \\
- \Omega^2 \hat{B} W  &  \Omega^2 \hat{A} 
-},\quad
-B_{G_{\rm e}} := 
-\mat{
-W^{\dagger} \\
-0
-},\quad
-C_{G_{\rm e}} := 
-\mat{
-LW & -\hat{B}^{\sf T}
+  A_{G_{\rm e}} := 
+  \mat{
+  0 & 0 \\
+  \Omega^2 \hat{B} W  &  \Omega^2 \hat{A} 
+  },\quad
+  B_{G_{\rm e}} := 
+  \mat{
+  W^{\dagger} \\
+  0
+  },\quad
+  C_{G_{\rm e}} := 
+  \mat{
+  LW & -\hat{B}^{\sf T}
 }
 \]
-A positive semi-definite matrix $P_{G_{\rm e}}$ is defined as:
-\begin{align}\label{eq:defPGe}
-P_{G_{\rm e}} := 
-\mat{
-W & 0 \\
-0 & I
-}^{\sf T}
-\underbrace{
-\mat{
-L  &  - \hat{B}^{\sf T} \\
-- \hat{B} & -\hat{A}
-}
-}_{P_G}
-\mat{
-W & 0 \\
-0 & I
-}
-\end{align}
-If $P_G$ of Equation \ref{eq:defPG} is positive semi-definite, $P_{G_{\rm e}}$ is also positive semi-definite.
-\begin{align}\label{eq:Gelmi}
-A^{\sf T}_{G_{\rm e}} P_{G_{\rm e}} + P_{G_{\rm e}} A_{G_{\rm e}} \preceq 
-0
-,\qquad
-P_{G_{\rm e}} B_{G_{\rm e}} = C_{G_{\rm e}}^{\sf T}
-\end{align}
-At this time, because of the relationship of Equation \ref{eq:psudinv}, we can see that:
+
+Additionally, we define the positive semidefinite matrix $P_{G_{\rm e}}$ as:
+
+\begin{equation}\label{eq:defPGe}
+  P_{G_{\rm e}} := 
+  \mat{
+  W & 0 \\
+  0 & I
+  }^{\sf T}
+  \underbrace{
+  \mat{
+  L  &  - \hat{B}^{\sf T} \\
+  - \hat{B} & -\hat{A}
+  }
+  }_{P_G}
+  \mat{
+  W & 0 \\
+  0 & I
+  }
+\end{equation}
+
+Note that if $P_G$ in Equation \ref{eq:defPG} is positive semi-definite, then
+$P_{G_{\rm e}}$ is also positive semi-definite. In this case, by noting that
+$\hat{B}WW^{\dagger}=\hat{B}$ and $LWW^{\dagger}=L$ from the relationship in
+Equation \ref{eq:psudinv}, we can see that the following equation holds:
+
+\begin{equation}\label{eq:Gelmi}
+  A^{\sf T}_{G_{\rm e}} P_{G_{\rm e}} + P_{G_{\rm e}} A_{G_{\rm e}} \preceq 
+  0
+  ,\qquad
+  P_{G_{\rm e}} B_{G_{\rm e}} = C_{G_{\rm e}}^{\sf T}
+\end{equation}
+
+Note that the left matrix inequality is shown from the same equation as
+\ref{eq:lyapinG}:
+
 \[
-\frac{
-A^{\sf T}_{G_{\rm e}} P_{G_{\rm e}} + P_{G_{\rm e}} A_{G_{\rm e}}
-}{2}
-=
-\mat{
-\Omega \hat{B}W &0\\
-0 & \Omega^{-1}
-}^{\sf T}
-\underbrace{
-\mat{
--I & -\hat{A}_{\Omega} \\
--\hat{A}_{\Omega} & - \hat{A}_{\Omega}^2
-}
-}_{Y}
-\mat{
-\Omega \hat{B}W  &0\\
-0 & \Omega^{-1}
-}
+  \frac{
+  A^{\sf T}_{G_{\rm e}} P_{G_{\rm e}} + P_{G_{\rm e}} A_{G_{\rm e}}
+  }{2}
+  =
+  \mat{
+  \Omega \hat{B}W &0\\
+  0 & \Omega^{-1}
+  }^{\sf T}
+  \underbrace{
+  \mat{
+  -I & -\hat{A}_{\Omega} \\
+  -\hat{A}_{\Omega} & - \hat{A}_{\Omega}^2
+  }
+  }_{Y}
+  \mat{
+  \Omega \hat{B}W  &0\\
+  0 & \Omega^{-1}
+  }
 \]
-Therefore, the time derivative along the solution trajectory of $G_{\rm e}$ of the storage function:
+
+Therefore, the time derivative along the solution trajectory of $G_{\rm e}$ of
+the storage function:
+
 \[
-W_{G_{\rm e}}(x_{G_{\rm e}}):= \frac{1}{2}x_{G_{\rm e}}^{\sf T}P_{G_{\rm e}}x_{G_{\rm e}}
+  W_{G_{\rm e}}(x_{G_{\rm e}}):= \frac{1}{2}x_{G_{\rm e}}^{\sf T}P_{G_{\rm e}}x_{G_{\rm e}}
 \]
 can be evaluated as:
-\begin{align}\label{eq:Glyapeq2}
-\frac{d}{dt} W_{G_{\rm e}} \bigl( x_{G_{\rm e}} (t) \bigr)
- \leq 
-y_G^{\sf T}(t) u_G(t)
-\end{align}
-In other words, $G_{\rm e}$ of Equation \ref{eq:Gsstrmin} is passive.
-This inequality and inequality of Equation \ref{eq:Glyapeq} are equivalent, and the following is true for the values of two storage functions:
+
+\begin{equation}\label{eq:Glyapeq2}
+  \frac{d}{dt} W_{G_{\rm e}} \bigl( x_{G_{\rm e}} (t) \bigr)
+  \leq 
+  y_G^{\sf T}(t) u_G(t)
+\end{equation}
+
+Thus, $G_{\rm e}$ in Equation \ref{eq:Gsstrmin} is passive. Note that this
+inequality is equivalent to the inequality in Equation \ref{eq:Glyapeq}, and the
+values of the two storage functions satisfy:
+
 \[
-W_{G} \bigl( x_{G} (t) \bigr) =
-W_{G_{\rm e}} \bigl( x_{G_{\rm e}} (t) \bigr),\qquad
-\forall t\geq 0
+  W_{G} \bigl( x_{G} (t) \bigr) =
+  W_{G_{\rm e}} \bigl( x_{G_{\rm e}} (t) \bigr),\qquad
+  \forall t\geq 0
 \]
 
-By considering the observability of $G_{\rm e}$ shown by Equation \ref{eq:Geobs},
-the following is true for the arbitrary initial value of the solution trajectory of the linear approximation model of Equation \ref{eq:lindynu0}:
-\begin{align}\label{eq:allzero}
-\lim_{t\rightarrow \infty} \Delta \omega^{\rm lin}(t)  =0,\qquad
-\lim_{t\rightarrow \infty} \mat{
-{\delta}^{\rm lin}_{\rm e}(t)   \\
-E^{\rm lin}(t)  
-}
- =0
-\end{align}
-Therefore, from the relationship of the change of basis of Equation \ref{eq:batrinv}, we can see that Equation \ref{eq:linmconv} holds for the arbitrary initial value.
-In other words, the linear approximation model of Equation \ref{eq:lindynu0} is statically stable.
-Also:
+By considering the observability of $G_{\rm e}$ shown by Equation
+\ref{eq:Geobs}, the following is true for the arbitrary initial value of the
+solution trajectory of the linear approximation model of Equation
+\ref{eq:lindynu0}:
+
+\begin{equation}\label{eq:allzero}
+  \lim_{t\rightarrow \infty} \Delta \omega^{\rm lin}(t)  =0,\qquad
+  \lim_{t\rightarrow \infty} \mat{
+  {\delta}^{\rm lin}_{\rm e}(t)   \\
+  E^{\rm lin}(t)  
+  }
+  =0
+\end{equation}
+
+Therefore, from the relationship of the change of basis of Equation
+\ref{eq:batrinv}, we can see that Equation \ref{eq:linmconv} holds for the
+arbitrary initial value. In other words, the linear approximation model of
+Equation \ref{eq:lindynu0} is statically stable. Also:
+
 \[
-c_0 = \lim_{t\rightarrow \infty}\overline{\delta}^{\rm lin}_{\rm e}(t)
+  c_0 = \lim_{t\rightarrow \infty}\overline{\delta}^{\rm lin}_{\rm e}(t)
 \]
-and state variables $\overline{\delta}^{\rm lin}_{\rm e}$ follow the differential equation of Equation \ref{eq:Gsstr}.
+and state variables $\overline{\delta}^{\rm lin}_{\rm e}$ follow the
+differential equation of Equation \ref{eq:Gsstr}.
 
-Let us theorize the above discussion in the following Theorem.
+We summarize the previous discussion in the following theorem.
 
-\begin{定理}[Small signal stability of the linear approximation model based on passivity]\label{thm:stasufcon}
-For the arbitrary steady value $(\delta^{\star},E^{\star})$ that satisfies the passive power transmission conditions of definition \ref{def:passtrans}, the electrical subsystem $G$ of Equation \ref{eq:Gss} is passive.
-For the arbitrary positive definite numbers $(M_i,D_i,\taudi )_{i \in \mathcal{I}_{\rm G}}$, the linear approximation model of Equation\ref{eq:lindynu0} is statically stable.
-\end{定理}
+\begin{theorem}[Small signal stability of the linear approximation model based
+on passivity]\label{thm:stasufcon}
+For any steady-state value $(\delta^{\star},E^{\star})$ that satisfies the
+passive power transfer condition defined in Definition \ref{def:passtrans}, the
+electrical subsystem $G$ given in equation \ref{eq:Gss} is passive.
+Additionally, for any positive constants $(M_i,D_i,\taudi ){i \in
+\mathcal{I}{\rm G}}$, the approximate linear model given in equation
+\ref{eq:lindynu0} is steady-state stable.
+\end{theorem}
 
-As discussed in Theorem \ref{thm:stasufcon}, under the passive power transmission conditions, the linear approximation model is statically stable for combinations of all physical constants $(M_i,D_i,\taudi )_{i \in \mathcal{I}_{\rm G}}$.
-Analysis based on passivity allows stability independent of model parameters.
+As discussed in Theorem \ref{thm:stasufcon}, under the passive power
+transmission conditions, the linear approximation model is statically stable for
+combinations of all physical constants $(M_i,D_i,\taudi )_{i \in
+\mathcal{I}_{\rm G}}$.  Analysis based on passivity allows stability independent
+of model parameters.
 
-
-%\begin{example}[基底変換による定態安定性の解析]
-%\red{$W$の選び方に依らず等価な解析が可能であることを示す。}
-%\end{example}
-
-\subsection{Necessary conditions for the linear approximation model to be passive\advanced}\label{sec:nesconana}
+\subsection{Necessary conditions for the approxiamte linear model to be
+passive\advanced}\label{sec:nesconana}
 
 \smallskip
 \subsubsection{Passivity and positive realness}
 
-Passivity of a linear system is mathematically equivalent to a property called positive realness of a transfer function.
-In this Section, based on this equivalence, the necessity of the passive power transmission conditions of definition \ref{def:passtrans} is discussed from the viewpoint of the passivity of an electrical subsystem.
+It is known that the passivity of a linear system is mathematically equivalent
+to the property called positive realness of its transfer function. In this
+section, we consider the necessity of the passive power transmission condition
+defined in Definition \ref{def:passtrans} from the viewpoint of the passivity of
+the electrical subsystem based on this equivalence.
 
 \begin{COLUMN}
 \noindent \textbf{Transfer function}:
 For a linear system:
-\begin{align*}
-\simode{
-\dot{x}(t) & = Ax(t)+Bu(t) \\
-y(t)&= Cx(t) + Du(t)
-}
-\end{align*}
+
+\begin{equation*}
+  \simode{
+    \dot{x}(t) & = Ax(t)+Bu(t) \\
+    y(t)&= Cx(t) + Du(t)
+  }
+\end{equation*}
 its \textbf{transfer function} is defined as:
+
 \[
-Q(s):=C(sI-A)^{-1}B +D
+  Q(s):=C(sI-A)^{-1}B +D
 \]
-When the Laplace transform of the input $u(t)$ is $U(s)$, and the Laplace transform of the output $y(t)$ is $Y(s)$, there is a relationship, $Y(s)=Q(s)U(s)$, with a transfer function.
-The input/output characteristics of a linear system are characterized by the transfer function.
+
+When the Laplace transform of the input $u(t)$ is $U(s)$ and the Laplace
+transform of the output $y(t)$ is $Y(s)$, the transfer function relates to the
+system as $Y(s)=Q(s)U(s)$. The input-output behavior of a linear system is
+characterized by its transfer function.
 \end{COLUMN}
 
+The transfer function from the input $u_G$ to the output $y_G$ of the electrical
+subsystem $G$ in Equation \ref{eq:Gss} is given by:
 
-The transfer function from the input $u_G$ to output $y_G$ of the electrical subsystem $G$ of Equation
-\ref{eq:Gss} is:
-\begin{align}\label{eq:trGs}
-G(s) :=  - \frac{1}{s} 
-\underbrace{
-\left\{ -C \bigl( \taud s -A \bigr)^{-1} B - L \right\}
-}_{H(s)}
-\end{align}
-Since unobservable state variables are not related to input/output characteristics, please note that the transfer function of $G_{\rm e}$ of Equation \ref{eq:Gsstrmin} is also equal to $G(s)$.
-Below, let us consider a situation where the transfer function $H(s)$ of Equation \ref{eq:trGs} is stable.
-The stability of the transfer function is defined as follows:
+\begin{equation}\label{eq:trGs}
+  G(s) :=  - \frac{1}{s} 
+  \underbrace{
+  \left\{ -C \bigl( \taud s -A \bigr)^{-1} B - L \right\}
+  }_{H(s)}
+\end{equation}
+
+Note that since unobservable state variables are not relevant to the
+input-output characteristics, the transfer function of $G_e$ in Equation
+\ref{eq:Gsstrmin} is also equal to $G(s)$. Hereafter, we consider the case where
+the transfer function $H(s)$ in Equation \ref{eq:trGs} is stable. The stability
+of the transfer function is defined as follows.
 
 \begin{definition}[Stability of a transfer function]\label{def:trsta}
-When the real part of all poles of the transfer function $Q(s)$ is negative, $Q(s)$ is called \textbf{stable}.
+When the real part of all poles of the transfer function $Q(s)$ is negative,
+$Q(s)$ is called \textbf{stable}.
 \end{definition}
 
-The pole of a transfer function is the zero point of a denominator polynomial. The fact that $H(s)$ of Equation \ref{eq:trGs} is stable is equivalent to the
-real part of all eigenvalues of the matrix $\taud^{-1}A$ being negative.
+The poles of a transfer function are the zeros of the denominator polynomial. It
+is known that $H(s)$ in equation \ref{eq:trGs} being stable is equivalent to all
+the real parts of the eigenvalues of the matrix $\taud^{-1}A$ being negative.
 
-\textbf{Positive realness} of a transfer function is defined as follows:
+Furthermore, the \textbf{Positive realness} of a transfer function is defined as
+follows.
 
 \begin{definition}[Positive realness of a transfer function]\label{def:trpf}
 For a square transfer function $Q(s)$, the following is defined:
-\begin{align}\label{eq:defOm0}
-\Omega_0 := \left\{
-\omega_0 \in \mathbb{R}: 
-\mbox{ 純虚数$\bm{j} \omega_0$が$Q(s)$の極である}
-\right\}
-\end{align}
-When the following three conditions are satisfied, $Q(s)$ is called \textbf{positive real}.
+
+\begin{equation}\label{eq:defOm0}
+  \Omega_0 := \left\{
+  \omega_0 \in \mathbb{R}: 
+  \mbox{ The pure imaginary number $\bm{j} \omega_0$ is a pole of $Q(s)$}
+  \right\}
+\end{equation}
+
+$Q(s)$ is called \textbf{positive real} if the following three conditions are
+satisfied.
+
 \begin{itemize}
-\item The real part of all poles of $Q(s)$ is nonpositive.
-\item For all $\omega \in [0,\infty)\setminus \Omega_0$, $Q(\bm{j} \omega) + Q^{\sf T}(-\bm{j} \omega)$ is positive semi-definite.
-\item When there are poles of a pure imaginary number, their multiplicity is 1, and the following is true for the remaining number: 
-\begin{align*}
-\lim_{s \rightarrow \bm{j} \omega_0} (s-\bm{j} \omega_0) Q(s) = \lim_{s\rightarrow \bm{j} \omega_0} \{ (s-\bm{j} \omega_0) Q(s)\}^{\sf *}\succeq 0
-,\qquad
-\forall \omega_0 \in \Omega_0
-\end{align*}
+  \item The real part of all poles of $Q(s)$ is nonpositive.
+  \item For all $\omega \in [0,\infty)\setminus \Omega_0$, $Q(\bm{j} \omega) + Q^{\sf T}(-\bm{j} \omega)$ is positive semi-definite.
+  \item When there are poles of a pure imaginary number, their multiplicity is 1, and the following is true for the remaining number: 
+  \begin{equation*}
+    \lim_{s \rightarrow \bm{j} \omega_0} (s-\bm{j} \omega_0) Q(s) = \lim_{s\rightarrow \bm{j} \omega_0} \{ (s-\bm{j} \omega_0) Q(s)\}^{\sf *}\succeq 0
+    ,\qquad
+    \forall \omega_0 \in \Omega_0
+  \end{equation*}
 \end{itemize}
 \end{definition}
 
+In Definition \ref{def:trpf}, the two most important conditions are the first
+and second ones. The first condition expresses the stability of the transfer
+function. However, it also includes the case where the real part of the pole is
+0. The second condition concerns the positive definiteness of the complex
+symmetric part of the transfer function evaluated on the imaginary axis. In
+particular, if $Q(s)$ is a scalar, that is, both the input and output are
+scalars, the second condition expresses that the real part of $Q(\bm{j}\omega)$
+is non-negative for all $\omega \in [0,\infty)\setminus \Omega_0$. However, it
+should be noted that for matrix-valued $Q(s)$, in general,
 
-With definition \ref{def:trpf}, what is especially important is the first and second conditions.
-The first condition shows the stability of a transfer function.
-However, this includes the cases where the real part of the pole is 0.
-The second condition is related to the positive definite nature of the Hermitian part when a transfer function is evaluated on an imaginary axis.
+\begin{equation*}
+  Q(\bm{j} \omega) + Q^{\sf T}(-\bm{j} \omega) \neq 2 \real\left[ Q(\bm{j} \omega) \right]
+\end{equation*}
 
-Specifically, when $Q(s)$ is a scalar; in other words, when input and output are both scalar, two conditions show that the real part of $Q(\bm{j}\omega)$ of all $\omega \in [0,\infty)\setminus \Omega_0$ is non-negative.
-But please note that when $Q(s)$ is a matrix, it is usually:
-\begin{align*}
-Q(\bm{j} \omega) + Q^{\sf T}(-\bm{j} \omega) \neq 2 \real\left[ Q(\bm{j} \omega) \right]
-\end{align*}
-For $Q(s)$ with a real number coefficient, $Q^{\sf T}( -\bm{j} \omega)$ is equal to $\{Q(\bm{j} \omega)\}^*$.
-The third condition is exceptions where $Q(s)$ has a pole of a pure imaginary number.
-For example, as in $G(s)$ of Equation \ref{eq:trGs}, it is used to analyze the transfer functions with a pole at the origin.
+Also, for $Q(s)$ with real coefficients, $Q^{\sf T}( -\bm{j} \omega)$ is equal
+to ${Q(\bm{j} \omega)}^*$. The third condition is exceptional in the case when
+$Q(s)$ has pure imaginary poles. However, it is necessary to analyze transfer
+functions with poles at the origin, such as $G(s)$ in Equation \ref{eq:trGs}.
 
 \begin{COLUMN}
-\noindent \textbf{Complex symmetric and complex skew-symmetric parts of a square matrix}:
-Arbitrary square matrix $M$ can be broken down to
+\noindent \textbf{Complex Symmetric and Skew Hermitian Parts of a Square Matrix}:
+Any square matrix $M$ can be decomposed as:
+
 \[
 M=\frac{M+M^*}{2}+\frac{M-M^*}{2}
 \]
-This $\tfrac{M+M^*}{2}$ is called the \textbf{Hermitian part} of $M$, while $\tfrac{M-M^*}{2}$ is called the \textbf{skew Hermitian part} of $M$.
+where $\tfrac{M+M^*}{2}$ is called the \textbf{complex symmetric part} (Hermitian
+part) \index{Hermitian part} of $M$, and $\tfrac{M-M^*}{2}$ is called the
+\textbf{complex skew-symmetric part} (skew Hermitian part) \index{skew Hermitian
+part} of $M$.
 \end{COLUMN}
 
-In control systems engineering, it is known that the passivity in definition \ref{def:passivelin} and positive realness of definition \ref{def:trpf} are equivalent.
-%\footnote{
-%証明は\cite[Theorem 5.31]{antoulas2005approximation}や\cite[Theorem 3]{anderson1967system}などを参照されたい。
-%また,\cite{kottenstette2010relationships}では,関連する一連の結果が細かく整理されている。
-%\begin{補題*}
-%安定かつ正方な伝達関数
-%\[
-%Q(s)=C(sI-A)^{-1}B + D
-%\]
-%を考える。
-%ただし,$(A,B)$は可制御であり,$(C,A)$は可観測であるものとする。
-%このとき,$Q(s)$が正実であるための必要十分条件は,
-%ある正定対称行列$P$が存在して
-%\begin{align*}%\label{eq:prlem}
-%\mat{
-%A^{\sf T}P+PA & PB-C^{\sf T} \\
-%B^{\sf T} P -C & -(D+D^{\sf T})
-%}\preceq 0
-%\end{align*}
-%が満たされることである。
-%\end{補題*}
-%}
-%。
-In the discussion in this Section, the necessary condition for $G(s)$ of Equation \ref{eq:trGs} to be positive real is that there is a positive definite matrix $P_{G_{\rm e}}$ that satisfies Equation \ref{eq:allzero} for $G_{\rm e}$ of Equation \ref{eq:Gecomdef}, which is a controllable and observable realization of state space.
-This is equivalent to the passivity of $G_{\rm e}$ defined by the inequality of Equation \ref{eq:Glyapeq2}.
-The fact that $P_{G_{\rm e}}$ of Equation \ref{eq:defPGe} is positive definite is shown by Schur complements related to $-\hat{A}$ and $-\hat{A}$:
-\[
-W^{\sf T} \left(L+\hat{B}^{\sf T} \hat{A}^{-1} \hat{B} \right) W
-=  W^{\sf T} L_0 W
-\]
-being both positive definite.
-However, since $L_0$ of Equation \ref{eq:defL0} satisfies \ref{eq:nescon} and the column vector of $W$ in Equation \ref{eq:batrinv} is orthogonal to $\mathds{1}$, $W^{\sf T} L_0 W$ is nonsingular.
-
-
-
+In system control engineering, it is known that passivity in Definition
+\ref{def:passivelin} and positive realness in Definition \ref{def:trpf} are
+equivalent. If we apply Lemma \ref{lem:prlem} at the end of this chapter to the
+discussion in this section, the necessary and sufficient condition for $G(s)$ in
+Equation \ref{eq:trGs} to be positive real is the existence of a positive
+definite matrix $P_{G_{\rm e}}$ that satisfies Equation \ref{eq:allzero} for the
+controllable and observable state space realization $G_{\rm e}$ in Equation
+\ref{eq:Gecomdef}. This is equivalent to the passivity of $G_{\rm e}$ defined by
+the inequality in Equation \ref{eq:Glyapeq2}. Furthermore, the positive
+realness of $P_{G_{\rm e}}$ in Equation \ref{eq:defPGe} is shown by the fact
+that both the Schur complements with respect to $-\hat{A}$ and $-\hat{A}$ of the
+matrix $W^{\sf T} \left(L+\hat{B}^{\sf T} \hat{A}^{-1} \hat{B} \right) W$ are
+positive definite, where $W^{\sf T} L_0 W$ satisfies Equation \ref{eq:nescon}
+and the column vectors of $W$ in Equation \ref{eq:batrinv} are orthogonal to
+$\mathds{1}$.
 
 \smallskip
-\subsubsection{Necessary conditions for a transfer function of an electrical subsystem to be positive real}
+\subsubsection{Necessary condition for the transfer function of the electrical
+subsystem to be positive-real}
 
-
-As a mathematical preparation to derive necessary conditions, we introduce \textbf{negative imaginariness} of a transfer function, which is a similar concept to positive realness \cite{petersen2010feedback,xiong2010negative}.
+As a mathematical preparation for deriving necessary conditions, we introduce
+the concept of \textbf{negative imaginaryness}\index{negative imaginaryness} of
+transfer functions, which is similar to positive-realness
+\cite{petersen2010feedback,xiong2010negative}.
 
 \begin{definition}[Negative imaginariness of a transfer function]
-\label{def:trni}
-For a square transfer function $Q(s)$ without a pole at the origin, we define $\Omega_0$ of Equation \ref{eq:defOm0}.
-When the following three conditions are satisfied, $Q(s)$ is called \textbf{negative imaginary}.
-\begin{itemize}
-\item The real part of all poles of $Q(s)$ is nonpositive.
-\item For all $\omega \in (0,\infty)\setminus \Omega_0$, $\bm{j}\left\{Q(\bm{j} \omega) - Q^{\sf T}(-\bm{j} \omega) \right\}$ is positive semi-definite.
-\item When there is a pole of a pure imaginary number, their multiplicity is 1, and the following holds for the remaining numbers:
-\begin{align*}
-\lim_{s \rightarrow \bm{j} \omega_0} (s-\bm{j} \omega_0) \bm{j} Q(s) = 
-\lim_{s\rightarrow \bm{j} \omega_0} \{ (s-\bm{j} \omega_0) \bm{j} Q(s)\}^{\sf *}\succeq 0
-,\quad
-\forall \omega_0 \in \Omega_0
-\end{align*}
-\end{itemize}
+  \label{def:trni}
+  For a square transfer function $Q(s)$ without a pole at the origin, we define $\Omega_0$ of Equation \ref{eq:defOm0}.
+  When the following three conditions are satisfied, $Q(s)$ is called \textbf{negative imaginary}.
+  \begin{itemize}
+    \item The real part of all poles of $Q(s)$ is nonpositive.
+    \item For all $\omega \in (0,\infty)\setminus \Omega_0$, $\bm{j}\left\{Q(\bm{j} \omega) - Q^{\sf T}(-\bm{j} \omega) \right\}$ is positive semi-definite.
+    \item When there is a pole of a pure imaginary number, their multiplicity is 1, and the following holds for the remaining numbers:
+    \begin{equation*}
+      \lim_{s \rightarrow \bm{j} \omega_0} (s-\bm{j} \omega_0) \bm{j} Q(s) = 
+      \lim_{s\rightarrow \bm{j} \omega_0} \{ (s-\bm{j} \omega_0) \bm{j} Q(s)\}^{\sf *}\succeq 0
+      ,\quad
+      \forall \omega_0 \in \Omega_0
+    \end{equation*}
+  \end{itemize}
 \end{definition}
 
-While the positive realness of definition \ref{def:trpf} was defined by the positive semi-definite nature related to the Hermitian part of a transfer function, the negative imaginariness of definition \ref{def:trni} is defined by the positive semi-definite nature of the skew Hermitian part of a
-Specifically, when $Q(s)$ is scalar, the following is true:
-\begin{align*}
-\bm{j}\left\{Q(\bm{j} \omega) - Q^{\sf T}(-\bm{j} \omega) \right\}
-= -2 \imag[Q(\bm{j} \omega)]
-\end{align*}
-thus, the second condition shows that for all $\omega \in (0,\infty)\setminus \Omega_0$, the imaginary part of $Q(\bm{j}\omega)$ is nonpositive.
-Definition \ref{def:trni} includes a case where $Q(s)$ has a pole on an imaginary axis to contrast with definition \ref{def:trpf}, but in the following discussion, we need to only focus on the second condition to consider the negative imaginariness of a stable transfer function.
-Similar to positive realness, the negative imaginariness of the transfer function is characterized as a possibility of matrix inequality. 
-For more information, please refer to the supplemental title at the end of the Chapter \ref{lem:nilem}.
-%\footnote{
-%証明は\cite[Lemma 7]{xiong2010negative}などを参照されたい。
-%\begin{補題*}
-%安定かつ正方な伝達関数
-%\[
-%Q(s)=C(sI-A)^{-1}B + D
-%\]
-%を考える。
-%ただし,$(A,B)$は可制御であり,$(C,A)$は可観測であるものとする。
-%このとき,$Q(s)$が負虚であるための必要十分条件は,$D$が対称であり,かつ,
-%ある対称正定行列$P$が存在して
-%\begin{align*}
-%A^{\sf T}P+PA \preceq 0
-%,\qquad
-%-PA^{-1}B = C^{\sf T}
-%\end{align*}
-%が満たされることである。
-%\end{補題*}
-%}
-%。
-%具体的には,式\ref{eq:siglin}の線形システム$\Sigma$の伝達関数が負虚であるための必要十分条件は,
-%\[
-%A^{\sf T} P  + PA \preceq 0 ,\qquad -PA^{-1}B = C^{\sf T}
-%\]
-%を満たす正定対称行列$P$が存在することである。
-%ただし,式\ref{eq:siglin}の$\Sigma$は可制御かつ可観測であるものとする。
-
-
-
+While Definition \ref{def:trpf} defines positive-realness based on the
+positive-definiteness of the complex symmetric part of a transfer function,
+Definition \ref{def:trni} defines negative-imaginaryness based on the
+positive-semidefiniteness of the complex anti-symmetric part of the transfer
+function multiplied by the imaginary unit. Note that since the eigenvalues of a
+complex anti-symmetric matrix are purely imaginary, their product with the
+imaginary unit is real. In particular, when $Q(s)$ is a scalar transfer
+function, the second condition implies that the imaginary part of
+$Q(\bm{j}\omega)$ is non-positive for all $\omega \in (0,\infty)\setminus
+\Omega_0$. Furthermore, in the following discussion, we focus only on the second
+condition to consider the negative-imaginaryness of stable transfer functions.
+Similar to positive-realness, negative-imaginaryness can also be characterized
+as the solvability of matrix inequalities, as described in Lemma \ref{lem:nilem}
+at the end of this chapter.
 
 \begin{figure}[t]
   \centering
@@ -2532,41 +2607,59 @@ For more information, please refer to the supplemental title at the end of the C
 
 
 \begin{COLUMN}
-\noindent \textbf{Nyquist trajectory}:
-When the trajectory related to $\omega \in \mathbb{R}$ of the frequency response function $Q(\bm{j} \omega)$ is plotted on a complex plane, it is called the \textbf{Nyquist curve}.
-The Nyquist curve is often used for geometrical analysis related to the stability of a feedback system.
-This analytical method is called the \textbf{Nyquist stability criterion}.
-When $Q(s)$ is scalar, and the coefficient of the numerator polynomial and denominator polynomial is a real number, the trajectory of $Q(\bm{j} \omega)$ against negative $\omega$ is symmetrical to the trajectory and the real axis against positive $\omega$.
+\noindent \textbf{Nyquist plot}:
+The plot of the frequency response function $Q(\bm{j}\omega)$ for
+$\omega\in\mathbb{R}$ on the complex plane is called the \textbf{Nyquist
+plot}\index{Nyquist plot}. It is often used in geometric analysis of stability
+for feedback systems. The analysis method is called the \textbf{Nyquist
+stability criterion}\index{Nyquist stability criterion}. Note that when $Q(s)$
+is a scalar and the coefficients of the numerator and denominator polynomials
+are real, the plot of $Q(\bm{j}\omega)$ for negative $\omega$ is symmetrical to
+the plot for positive $\omega$ with respect to the real axis.
 \end{COLUMN}
 
-The relationship of positive realness and negative imaginariness is explained with Figure \ref{fig:PRandNI}.
-If the transfer function $Q(s)$ is scalar, $Q(s)$ being positive real can be understood as the trajectory related to non-negative $\omega$ of the frequency response function $Q(\bm{j} \omega)$ is included in the range $\mathcal{D}_{\rm PR}$ shown in \ref{fig:PRandNI}(a).
-\[
-\mathcal{D}_{\rm PR} = \bm{j} \mathcal{D}_{\rm NI}
-\]
-and $-\tfrac{1}{\bm{j}}=\bm{j}$ for $G(s)$ and $H(s)$ of Equation \ref{eq:trGs}, the following is derived:
-\[
-G(\bm{j} \omega) \in \mathcal{D}_{\rm PR}, 
-\quad \forall \omega >0
-\qquad
-\Longleftrightarrow
-\qquad
-H(\bm{j} \omega) \in \mathcal{D}_{\rm NI} ,
-\quad \forall \omega >0
-\]
-Therefore, a negative imaginariness analysis of $H(s)$ is equivalent to a positive realness analysis of $G(s)$.
-To be accurate, $G(\bm{j} \omega)$ and $H(\bm{j} \omega)$ are complex matrices; thus, $\mathcal{D}_{\rm PR}$ and $\mathcal{D}_{\rm NI}$ should be redefined with a set of positive semi-definite matrices.
+The relationship of positive realness and negative imaginariness is explained
+with Figure \ref{fig:PRandNI}. If the transfer function $Q(s)$ is scalar,
+$Q(s)$ being positive real can be understood as the trajectory related to
+non-negative $\omega$ of the frequency response function $Q(\bm{j} \omega)$ is
+included in the range $\mathcal{D}_{\rm PR}$ shown in \ref{fig:PRandNI}(a).
 
-Therefore, a negative imaginariness analysis of $H(s)$ is equivalent to a positive realness analysis of $G(s)$. Based on this fact, the passive power transmission conditions (ii) and (iii) are necessary conditions for $G(s)$ to be positive real.
+\[
+  \mathcal{D}_{\rm PR} = \bm{j} \mathcal{D}_{\rm NI}
+\]
 
-\begin{定理}[Positive realness of the transfer function of an electrical subsystem]
+and $-\tfrac{1}{\bm{j}}=\bm{j}$ for $G(s)$ and $H(s)$ of Equation \ref{eq:trGs},
+the following is derived:
+
+\[
+  G(\bm{j} \omega) \in \mathcal{D}_{\rm PR}, 
+  \quad \forall \omega >0
+  \qquad
+  \Longleftrightarrow
+  \qquad
+  H(\bm{j} \omega) \in \mathcal{D}_{\rm NI} ,
+  \quad \forall \omega >0
+\]
+
+Therefore, a negative imaginariness analysis of $H(s)$ is equivalent to a
+positive realness analysis of $G(s)$. To be accurate, $G(\bm{j} \omega)$ and
+$H(\bm{j} \omega)$ are complex matrices; thus, $\mathcal{D}_{\rm PR}$ and
+$\mathcal{D}_{\rm NI}$ should be redefined with a set of positive semi-definite
+matrices.
+
+Therefore, a negative imaginariness analysis of $H(s)$ is equivalent to a
+positive realness analysis of $G(s)$. Based on this fact, the passive power
+transmission conditions (ii) and (iii) are necessary conditions for $G(s)$ to be
+positive real.
+
+\begin{theorem}[Positive realness of the transfer function of an electrical subsystem]
 \label{thm:EdynNI}
 \red{Translated with DeepL}
 For an arbitrary $(\delta^{\star},E^{\star})$ where the transfer function $H(s)$ of Equation \ref{eq:trGs} becomes stable, a condition necessary for $H(s)$ to be negative imaginary is that the passive power transmission condition (ii) of definition \ref{def:passtrans} holds.
 In addition, a condition necessary for the transfer function $G(s)$ of Equation \ref{eq:trGs} to be positive real is that the passive power transmission conditions (ii) and (iii) hold.
-\end{定理}
+\end{theorem}
 
-\begin{証明}
+\begin{proof}
 First, we show that for any $(\delta^{\star},E^{\star})$ for which $H(s)$ is stable, if $H(s)$ is negative imaginary, then the passive transmission condition (ii), i.e., the Equation \ref{eq:Gredcon}, holds.
 Now
 \[
@@ -2711,7 +2804,7 @@ H(\bm{j}(\omega_0 + \alpha )) - H^{\sf T}(-\bm{j}(\omega_0 + \alpha ))
 \end{align*}
 where $\lambda_{\rm min}$ denotes the smallest eigenvalue.
 Thus, for all $\omega \in (\omega_0, \omega_0+\epsilon] $ that are not 0, the complex symmetric part of $G(\bm{j} \omega) $ is not semidefinite.
-\end{証明}
+\end{proof}
 
 \begin{figure}[t]
   \centering
@@ -2899,16 +2992,16 @@ Below, we call this generalized condition the passive power transmission conditi
 When $L_0$ is symmetrical, the passive power transmission conditions (iii) and (iii)$'$ are equivalent.
 The following lemma is presented.
 
-\begin{補題}[Necessary condition for the small signal stability of a second-order oscillator system]\label{thm:2ndsys}
+\begin{lemma}[Necessary condition for the small signal stability of a second-order oscillator system]\label{thm:2ndsys}
 Let us consider a second-order oscillator system of Equation \ref{eq:spamodel}.
 For an arbitrary initial value and arbitrary positive definite number $(M_i,D_i)_{i \in \mathcal{I}_{\rm G}}$, a condition necessary for a certain constant $c_0$ to exist and the following to hold:
 \begin{align}\label{eq:delhat0}
 \lim_{t\rightarrow \infty} \hat{\delta}^{\rm lin}(t)= c_0 \mathds{1}
 \end{align}
 is that the passive power transmission condition (iii)$'$ holds.
-\end{補題}
+\end{lemma}
 
-\begin{証明}
+\begin{proof}
 \red{Translated with DeepL}
 If the passive transmission condition (iii)$'$ does not hold, then there exists a certain positive constant $(M_i,D_i)_{i \in \mathcal{I}_{\rm G}}$ such that the Equation \ref{eq:delhat0}.
 For this purpose, the following two cases will be discussed.
@@ -2974,7 +3067,7 @@ If you transfer $ -d $ on the left side and square both sides:
 \]
 This equation is satisfied by choosing $ \omega = 2 \sqrt {\alpha} $, $ d =-\tfrac {\beta} {\sqrt {\alpha}} $.
 Therefore, since the secondary oscillator system has a steady-state vibration solution, the equation \ref{eq: delhat0} does not hold.
-\end{証明}
+\end{proof}
 
 
 Lemma \ref{thm:2ndsys} shows that, for a limit where the time constant of the internal voltage is sufficiently small, the passive power transmission condition (iii)$'$ is a necessary condition for the linear approximation model to be statically stable against the arbitrary physical constants of generators.
@@ -2982,10 +3075,10 @@ Furthermore, with Theorem \ref{thm:stasufcon}, when the passive power transmissi
 Based on these facts, the conclusion of this Section is summarized in the following Theorem.
 
 
-\begin{定理}[Small signal stability of the linear approximation model]\label{thm:sync}
+\begin{theorem}[Small signal stability of the linear approximation model]\label{thm:sync}
 For an arbitrary positive definite number $(M_i,D_i,\taudi)_{i \in \mathcal{I}_{\rm G}}$, a necessary condition for the linear approximation model of Equation \ref{eq:lindynu0} to be statically stable is that the passive power transmission conditions (i) and (iii)$'$ of definition \ref{def:passtrans} hold.
 Specifically, when the passive power transmission condition (ii) holds, the above-mentioned necessary condition for the small signal stability is that the passive power transmission conditions (i) and (iii)$'$ hold.
-\end{定理}
+\end{theorem}
 
 We present an analytical example of the small signal stability of the linear approximate model using Theorem \ref{thm:sync}.
 
@@ -3056,8 +3149,7 @@ However, in a realistic setting, it has been confirmed that $L_0$ often only has
 
 
 \section*{Mathematical Supplement}
-\red{Translated with DeepL}
-\begin{補題}\label{lem:prlem}
+\begin{lemma}\label{lem:prlem}
 Stable and square transfer function
 \[
 Q(s)=C(sI-A)^{-1}B + D
@@ -3073,7 +3165,7 @@ B^{\sf T} P -C & -(D+D^{\sf T})
 }\preceq 0
 \end{align*}
 が満たされることである。
-\end{補題}
+\end{lemma}
 
 証明は\cite[Theorem 5.31]{antoulas2005approximation}や\cite[Theorem 3]{anderson1967system}などを参照されたい。
 また,\cite{kottenstette2010relationships}では,関連する一連の結果が細かく整理されている。
