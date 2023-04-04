@@ -2652,158 +2652,203 @@ positive realness analysis of $G(s)$. Based on this fact, the passive power
 transmission conditions (ii) and (iii) are necessary conditions for $G(s)$ to be
 positive real.
 
-\begin{theorem}[Positive realness of the transfer function of an electrical subsystem]
+\begin{theorem}{Positive realness of electrical subsystem transfer function}
 \label{thm:EdynNI}
-\red{Translated with DeepL}
-For an arbitrary $(\delta^{\star},E^{\star})$ where the transfer function $H(s)$ of Equation \ref{eq:trGs} becomes stable, a condition necessary for $H(s)$ to be negative imaginary is that the passive power transmission condition (ii) of definition \ref{def:passtrans} holds.
-In addition, a condition necessary for the transfer function $G(s)$ of Equation \ref{eq:trGs} to be positive real is that the passive power transmission conditions (ii) and (iii) hold.
+For any $(\delta^{\star},E^{\star})$ where the transfer function $H(s)$ given by
+Equation \ref{eq:trGs} is stable, a necessary and sufficient condition for
+$H(s)$ to be negative imaginary is that the passive power transmission condition
+(ii) in Definition \ref{def:passtrans} holds. Furthermore, a necessary and
+sufficient condition for the transfer function $G(s)$ given by Equation
+\ref{eq:trGs} to be positive real is that both passive power transmission
+conditions (ii) and (iii) in Definition \ref{def:passtrans} hold.
 \end{theorem}
 
 \begin{proof}
-First, we show that for any $(\delta^{\star},E^{\star})$ for which $H(s)$ is stable, if $H(s)$ is negative imaginary, then the passive transmission condition (ii), i.e., the Equation \ref{eq:Gredcon}, holds.
-Now
+First, we show that if $H(s)$ is negative imaginary for any
+$(\delta^{\star},E^{\star})$ where $H(s)$ is stable, then the passive power
+transmission condition (ii), which is expressed in equation \ref{eq:Gredcon},
+holds true. Now, since:
+
 \[
-\lim_{\omega \rightarrow \infty} \bm{j}
-\left\{
-H(\bm{j}\omega)-H^{\sf T}(-\bm{j}\omega)
-\right\}
-=\bm{j}
-\left(
--L+L^{\sf T}
-\right) \succeq 0
+  \lim_{\omega \rightarrow \infty} \bm{j}
+  \left\{
+  H(\bm{j}\omega)-H^{\sf T}(-\bm{j}\omega)
+  \right\}
+  =\bm{j}
+  \left(
+  -L+L^{\sf T}
+  \right) \succeq 0
 \]
+
+$L$ must be symmetric for $H(s)$ to be negative imaginary. Therefore, we obtain
+$k_{ij}(\delta_{ij}^{\star}) = k_{ji}(\delta_{ji}^{\star})$.
+
 Therefore, $L$ must be symmetric for $H(s)$ to be negative vacuity.
 Thus, we have $K_{IJ}(\delta_{IJ}^{\star}) = K_{JI}(\delta_{JI}^{\star})$.
-In other words
-\[
-G^{\rm red}_{ij} \sfsin \delta_{ij}^{\star} = 0 ,\qquad
-\forall (i, j) \in \mathcal{I}_{\rm G} \times \mathcal{I}_{\rm G}
-\]
-This implies $\delta_{i}^{\star}\neq \delta_{j}^{\star}$ for $(i,j)$ where $G^{\rm red}_{ij}=0$.
-Also, when $\delta_{i}^{\star}= \delta_{j}^{\star}$, continuity regarding parameter variation of eigenvalues for matrices with parameters implies that $\taud^{-1}A$ for $\delta^{\star}+\gamma e_i$ is There exists a sufficiently small $\gamma>0$ such that it is stable.
-However, $e_i$ denotes a vector where only the $i$th $i$-element is 1 and the rest are 0.
-Therefore, there exists a vector
 
-\begin{align}\label{eq:Gij0t}
-G^{\rm red}_{ij}=0, \qquad
-\forall i\neq j
-\end{align}
-Furthermore, if $H(s)$ is negative imaginary, then
+In other words:
 \[
-\lim_{\omega \rightarrow 0} \bm{j}
-\left\{
-H(\bm{j}\omega)-H^{\sf T}(-\bm{j}\omega)
-\right\}
-=\bm{j}
-\left(
--L_0+L_0^{\sf T}
-\right) \succeq 0
+  G^{\rm red}_{ij} \sfsin \delta_{ij}^{\star} = 0 ,\qquad
+  \forall (i, j) \in \mathcal{I}_{\rm G} \times \mathcal{I}_{\rm G}
 \]
-Therefore, $L_0$ in equation\ref{eq:defL0} must also be symmetric.
-When the Equation\ref{eq:Gij0t} holds.
+
+This implies $\delta_{i}^{\star}\neq \delta_{j}^{\star}$ for $(i,j)$ where
+$G^{\rm red}_{ij}=0$. Also, even in the case where $\delta_{i}^{\star}=
+\delta_{j}^{\star}$, there exists a sufficiently small $\gamma>0$ such that
+$\taud^{-1}A$ is stable for $\delta^{\star}+\gamma e_i$ due to the continuity of
+the eigenvalue parameter variation for matrices with parameters. Here, $e_i$
+represents a vector with only the $i$-th element being 1 and the others being 0.
+Therefore, we obtain:
+
+\begin{equation}\label{eq:Gij0t}
+  G^{\rm red}_{ij}=0, \qquad
+  \forall i\neq j
+\end{equation}
+
+Furthermore, if $H(s)$ is negative imaginary, then $L_0$ in equation
+\ref{eq:defL0} must also be symmetric, because we have:
+
 \[
-C = \sfdiag \left(
-2E_i^{\star} G^{\rm red}_{ii}
-\right)  - \hat{B}^{\sf T}
+  \lim_{\omega \rightarrow 0} \bm{j}
+  \left\{
+  H(\bm{j}\omega)-H^{\sf T}(-\bm{j}\omega)
+  \right\}
+  =\bm{j}
+  \left(
+  -L_0+L_0^{\sf T}
+  \right) \succeq 0
 \]
-Note that $L_0$ is given by:
+
+When equation \ref{eq:Gij0t} holds, it should be noted that $L_0$ can be
+expressed as follows:
+
 \[
-L_0 = \underbrace{ L + \hat{B}^{\sf T} \hat{A}^{-1} \hat{B} }_{L_1}
--
-\underbrace{ \sfdiag (
-2 E_i^{\star} G^{\rm red}_{ii}
-) \hat{A}^{-1} \hat{B}
-}_{L_2}
+  C = \sfdiag \left(
+  2E_i^{\star} G^{\rm red}_{ii}
+  \right)  - \hat{B}^{\sf T}
+  \]
+  Note that $L_0$ is given by:
+  \[
+  L_0 = \underbrace{ L + \hat{B}^{\sf T} \hat{A}^{-1} \hat{B} }_{L_1}
+  -
+  \underbrace{ \sfdiag (
+  2 E_i^{\star} G^{\rm red}_{ii}
+  ) \hat{A}^{-1} \hat{B}
+  }_{L_2}
 \]
-However, $\hat{A}$ is a symmetric matrix defined by the Equation \ref{eq:sysmats}.
-On the other hand, for $L_2$ to be symmetric for any $E^{\star}$, it must have $G^{\rm red}_{ii}=0$ for all $i$.
-From this, for any $(\delta^{\star},E^{\star})$ for which $H(s)$ is stable, if $H(s)$ is negative imaginary, then the expression \ref{eq:Gredcon} holds.
+where $\hat{A}$ is a symmetric matrix defined in equation \ref{eq:sysmats}.
+Therefore, $L_1$ is symmetric. On the other hand, for $L_2$ to be symmetric for
+any $E^{\star}$, it must be the case that $G^{\rm red}_{ii} \neq 0$ for all $i$.
+From this, it follows that if $H(s)$ is negative imaginary for any
+$(\delta^{\star},E^{\star})$ such that $H(s)$ is stable, then equation
+\ref{eq:Gredcon} holds.
 
-Next, we show that $H(s)$ is negative imaginary for any $(\delta^{\star},E^{\star})$ for which $H(s)$ is stable if the expression\ref{eq:Gredcon} holds.
-This requires that $L$ is symmetric and:
-\begin{align}\label{eq:cndQ}
-\tilde{A}^{\sf T}P + P\tilde{A} \preceq 0
-,\qquad
-P\tilde{A}^{-1}\tilde{B}=C^{\sf T}
-\end{align}
-It is enough to show that there exists a positive definite matrix $P$ satisfying.
-However, we need to show that there exists a positive definite matrix $P$ such that
-\begin{align*}
-\tilde{A}:= \taud^{-1}A
-,\qquad
-\tilde{B}:= \taud^{-1}B
-\end{align*}
-とする。
-ここで,式\ref{eq:Gredcon}が成り立つならば
-\begin{align*}
-k_{ij}(\delta_{ij}^{\star}) =
-k_{ji}(\delta_{ji}^{\star})
-,\qquad
-h_{ij}(\delta_{ij}^{\star}) = 
-- h_{ji}(\delta_{ji}^{\star}),\qquad
-h_{ii}(\delta_{ii}^{\star}) = 0
-\end{align*}
-Since $L$ is symmetric, it follows that $L$ is symmetric.
-Also, since $H(s)$ is stable
-\begin{align*}
-\tilde{A} = 
-\sfdiag \left( \frac{ \Xsi -  \Xti }{ \taudi } \right)
-\hat{A}
-\end{align*}
-Since $\Xsi > \Xti$, $\hat{A}$ in Equation \ref{eq:sysmats} is negative definite.
-Therefore, we can choose $-\hat{A}$ as the positive definite matrix $P$ satisfying Equation \ref{eq:cndQ}, which shows that $H(s)$ is negative-definite.
+Next, we will show that if Equation \ref{eq:Gredcon} holds, then $H(s)$ is
+negative imaginary for any $(\delta^{\star},E^{\star})$ that makes $H(s)$
+stable. For this purpose, it is enough to show that there exists a positive
+definite matrix $P$ that satisfies $L$ is symmetric and
 
+\begin{equation}\label{eq:cndQ}
+  \tilde{A}^{\sf T}P + P\tilde{A} \preceq 0
+  ,\qquad
+  P\tilde{A}^{-1}\tilde{B}=C^{\sf T}
+\end{equation}
 
-Next, we show the equivalence for $G(s)$.
-Since $H(s)$ is stable, the only pole on the imaginary axis of $G(s)$ is the origin, and its degree of overlap is 1.
-Therefore, $G(s)$ is
-The necessary and sufficient condition for being positively real is:
-\begin{align}\label{eq:Gpr}
-G(\bm{j}\omega) + G^{\sf T}(-\bm{j}\omega) \succeq 0
-,\qquad \forall \omega \in \mathbb{R}\setminus\{0\}
-\end{align}
-is valid, and the following can be established:
-\begin{align}\label{eq:cndG0}
-\lim_{s\rightarrow 0} s G(s) = \lim_{s\rightarrow 0} \{ s G(s)\}^{\sf T}\succeq 0
-\end{align}
+\begin{equation*}
+  \tilde{A}:= \taud^{-1}A
+  ,\qquad
+  \tilde{B}:= \taud^{-1}B
+\end{equation*}
+
+Note that if equation \ref{eq:Gredcon} holds, then
+
+\begin{equation*}
+  k_{ij}(\delta_{ij}^{\star}) =
+  k_{ji}(\delta_{ji}^{\star})
+  ,\qquad
+  h_{ij}(\delta_{ij}^{\star}) = 
+  - h_{ji}(\delta_{ji}^{\star}),\qquad
+  h_{ii}(\delta_{ii}^{\star}) = 0
+\end{equation*}
+which implies that $L$ is symmetric. Moreover, since $H(s)$ is stable, we have
+
+\begin{equation*}
+  \tilde{A} = 
+  \sfdiag \left( \frac{ \Xsi -  \Xti }{ \taudi } \right)
+  \hat{A}
+\end{equation*}
+and since $\Xsi > \Xti$, the matrix $\hat{A}$ in Equation \ref{eq:sysmats} is
+negative definite. Therefore, we can choose $P=-\hat{A}$ as a positive definite
+matrix that satisfies Equation \ref{eq:cndQ}, which implies that $H(s)$ is
+negative imaginary.
+
+Next, we show the equivalence of $G(s)$. Since $H(s)$ is stable, the poles of
+$G(s)$ on the imaginary axis are only at the origin and have a multiplicity of
+1. Therefore, the necessary and sufficient condition for $G(s)$ to be positive
+real is:
+
+\begin{equation}\label{eq:Gpr}
+  G(\bm{j}\omega) + G^{\sf T}(-\bm{j}\omega) \succeq 0
+  ,\qquad \forall \omega \in \mathbb{R}\setminus\{0\}
+\end{equation}
+
+Then the following can be established:
+
+\begin{equation}\label{eq:cndG0}
+  \lim_{s\rightarrow 0} s G(s) = \lim_{s\rightarrow 0} \{ s G(s)\}^{\sf T}\succeq 0
+\end{equation}
+
 When the Equation \ref{eq:Gredcon} holds, then the Equation \ref{eq:Gpr} holds.
-\begin{align}\label{eq:NIineq}
-G(\bm{j}\omega) + G^{\sf T}(-\bm{j}\omega)
-=
-\frac{\bm{j}}{\omega} \left\{
-H(\bm{j}\omega) - H^{\sf T}(-\bm{j}\omega)
-\right\}
-,\qquad \forall \omega \in \mathbb{R}\setminus\{0\}
-\end{align}
-It is shown from $H(s)$ that $H(s)$ is negative imaginary.
-And,
-\begin{align*}
-\lim_{s\rightarrow 0} s G(s) =
-L - C\tilde{A}^{-1}\tilde{B} = L - C A^{-1} B
-\end{align*}
-Therefore, the semi-positive definiteness of equation \ref{eq:cndG0} is equivalent to the passive transmission condition (iii), i.e., the condition of equation \ref{eq:pdsp}.
-Note that when the passive transmission condition (ii) holds, $L$ is symmetric and:
-\begin{align*}
-C\tilde{A}^{-1}\tilde{B} = C P^{-1} C^{\sf T}
-\end{align*}
-is also symmetric, which also shows the symmetry of the expression \ref{eq:cndG0}.
 
-Conversely, if the passive power transmission conditions (ii) or (iii) do not hold, then $G(s)$ is not positively real.
-The latter is evident from the fact that the condition in equation \ref{eq:pdsp} is equal to the condition in equation \ref{eq:cndG0}.
-Also, when the passive power transmission condition (ii) does not hold, since $H(s)$ is not negative vacuous, 
-there exists a point $\omega_0\geq 0$ and a sufficiently small $\epsilon >0$ such that:
-\begin{align*}
-\lambda_{\rm min}\left[
-\bm{j}
-\left\{
-H(\bm{j}(\omega_0 + \alpha )) - H^{\sf T}(-\bm{j}(\omega_0 + \alpha ))
-\right\}
-\right] < 0
-,\qquad
-\forall \alpha \in (0,\epsilon] 
-\end{align*}
-where $\lambda_{\rm min}$ denotes the smallest eigenvalue.
-Thus, for all $\omega \in (\omega_0, \omega_0+\epsilon] $ that are not 0, the complex symmetric part of $G(\bm{j} \omega) $ is not semidefinite.
+\begin{equation}\label{eq:NIineq}
+  G(\bm{j}\omega) + G^{\sf T}(-\bm{j}\omega)
+  =
+  \frac{\bm{j}}{\omega} \left\{
+  H(\bm{j}\omega) - H^{\sf T}(-\bm{j}\omega)
+  \right\}
+  ,\qquad \forall \omega \in \mathbb{R}\setminus\{0\}
+\end{equation}
+
+It is shown from $H(s)$ that $H(s)$ is negative imaginary. Moreover: 
+
+\begin{equation*}
+  \lim_{s\rightarrow 0} s G(s) =
+  L - C\tilde{A}^{-1}\tilde{B} = L - C A^{-1} B
+\end{equation*}
+
+Therefore, the positive semi-dfiniteness of equation \ref{eq:cndG0} is
+equivalent to the passive transmission condition (iii), i.e., the condition of
+Equation \ref{eq:pdsp}. Note that when the passive transmission condition (ii)
+holds, $L$ is symmetric and:
+
+\begin{equation*}
+  C\tilde{A}^{-1}\tilde{B} = C P^{-1} C^{\sf T}
+\end{equation*}
+is also symmetric, which also shows the symmetry of the expression
+\ref{eq:cndG0}.
+
+On the contrary, if either the passive power transmission condition (ii) or
+(iii) is not satisfied, it indicates that $G(s)$ is not positive real. As for
+the latter, it is evident from the fact that the condition in Equation
+\ref{eq:pdsp} is equivalent to the condition in Equation \ref{eq:cndG0}.
+Additionally, when the passive power transmission condition (ii) is not
+satisfied, $H(s)$ is not purely imaginary, and there exist some point
+$\omega_0\geq 0$ and sufficiently small $\epsilon >0$ such that:
+
+\begin{equation*}
+  \lambda_{\rm min}\left[
+  \bm{j}
+  \left\{
+  H(\bm{j}(\omega_0 + \alpha )) - H^{\sf T}(-\bm{j}(\omega_0 + \alpha ))
+  \right\}
+  \right] < 0
+  ,\qquad
+  \forall \alpha \in (0,\epsilon] 
+\end{equation*}
+
+where $\lambda_{\rm min}$ denotes the minimum eigenvalue. Therefore, for all
+non-zero $\omega \in (\omega_0, \omega_0+\epsilon]$, the complex symmetric part
+of $G(\bm{j} \omega)$ is not semi-positive definite.
 \end{proof}
 
 \begin{figure}[t]
@@ -2812,75 +2857,108 @@ Thus, for all $\omega \in (\omega_0, \omega_0+\epsilon] $ that are not 0, the co
   \begin{minipage}{0.49\linewidth}
     \centering
     \includegraphics[width = 1.0\linewidth]{figs/eigG}
-    \subcaption{ $\tfrac{G(\bm{j} \omega) + G^{\sf T}(-\bm{j} \omega)}{2} $の固有値}
+    \subcaption{ Eigenvalue of $\tfrac{G(\bm{j} \omega) + G^{\sf T}(-\bm{j} \omega)}{2} $}
     \medskip
   \end{minipage}
   \begin{minipage}{0.49\linewidth}
     \centering
     \includegraphics[width = 1.0\linewidth]{figs/eigH}
-    \subcaption{ $\tfrac{H(\bm{j}\omega) - H^{\sf T}(-\bm{j}\omega)}{2\bm{j}}$の固有値}
+    \subcaption{ Eigenvalue of $\tfrac{H(\bm{j}\omega) - H^{\sf T}(-\bm{j}\omega)}{2\bm{j}}$}
     \medskip
   \end{minipage}
   }
   \medskip
-  \caption{\textbf{$\bm{G(s)}$の正実性と$\bm{H(s)}$の負虚性}
+  \caption{\textbf{Positive realness of $\bm{G(s)}$ and negative imaginariness of$\bm{H(s)}$}
   \\  \centering(Blue: passive transmission condition (ii) is satisfied, Red: not satisfied)}
   \label{fig:eigGH}
 \medskip
 \end{figure}
 
+Let us confirm the result of Theorem \ref{thm:EdynNI} with the following
+example.
 
-Let us confirm the result of Theorem \ref{thm:EdynNI} with an example.
+\begin{example}{Transmission loss and positive realness of transfer function of
+electrical subsystem}
 
-\begin{example}[Transmission loss and positive realness of the transfer function of an electrical subsystemTransmission loss and positive realness of the transfer function of an electrical subsystem]
-For the electrical power system model consisting of three generators discussed in the Example \ref{ex:linsyssim}, let us examine the positive realness of $G(s)$ and negative imaginariness of $H(s)$.
-For comparison, we will calculate a case where the passive power transmission condition (ii) is satisfied, and when it is not satisfied.
-Specifically, similar to the Example \ref{ex:energylin}, we set $\bm{Y}_0(0)$ and $\bm{Y}_0(1)$ as the admittance matrix $\bm{Y}$ of the power grid.
-With the horizontal axis as frequency $\omega$, the eigenvalue of the Hermitian part of $G(\bm{j}\omega)$ is shown in Figure \ref{fig:eigGH}(a), while the imaginary part of the eigenvalue of the skew Hermitian part of $H(\bm{j}\omega)$ is shown in Figure \ref{fig:eigGH}(b).
-The blue circle indicates when the passive power transmission condition (ii) is satisfied, while red indicates when it is not satisfied.
-With this Figure, we can see that when the conductance of a transmission line is not 0, the Hermitian part of $G(\bm{j}\omega)$ is positive semi-definite in a low frequency band.
-\end{example}
+Let's examine the positive realness of $G(s)$ and the negative imaginary
+property of $H(s)$ for the power system model composed of three generators that
+we dealt with in Example \ref{ex:linsyssim}. We will calculate these properties
+in two cases: when the passive power transmission condition (ii) is satisfied
+and when it is not, for comparison purposes. Specifically, as in Example
+\ref{ex:energylin}, we set two types of $\bm{Y}_0(0)$ and $\bm{Y}_0(1)$ as the
+admittance matrix $\bm{Y}$ of the transmission network. The eigenvalues of the
+complex symmetric part of $G(\bm{j}\omega)$ and the imaginary parts of the
+eigenvalues of the complex skew-symmetric part of $H(\bm{j}\omega)$ are plotted
+against the frequency $\omega$ on the horizontal axis in Figure
+\ref{fig:eigGH}(a) and Figure \ref{fig:eigGH}(b), respectively. The blue circles
+indicate when the passive power transmission condition (ii) is satisfied, and
+the red asterisks indicate when it is not. From this figure, we can see that if
+the conductance of the transmission lines is non-zero, the complex symmetric
+part of $G(\bm{j}\omega)$ is not semi-positive definite in the low-frequency
+band.  \end{example}
 
-The significance of the passive power transmission condition (iii), which appeared as a condition for $P_G$ of Equation \ref{eq:defPG} to be positive semi-definite, can be explained as follows.
-In the electrical subsystem $G$ of Equation \ref{eq:Gss}, let us look at the equation of state for the internal voltage: 
-\begin{align*}
-\taud
- \dot{E}^{\rm lin} = 
-A E^{\rm lin} + B \delta^{\rm lin}
-\end{align*}
-With this differential equation, let us consider a limit at which the time constant $( \taudi )_{i \in \mathcal{I}_{\rm G}}$ asymptotically approaches 0.
-This is equivalent to “a limit for which the time it takes for the internal voltage to reach a steady state is sufficiently shorter than the fluctuations in $\delta^{\rm lin}$”.
-At this time, the following approximation holds:
-\begin{align}\label{eq:spa}
-E^{\rm lin}(t) \simeq  -A^{-1} B\delta^{\rm lin}(t)
-,\qquad
-\forall t\geq 0
-\end{align}
-If $A$ is not stable; in other words, if the passive power transmission condition (i) does not hold, state $E^{\rm lin}$ dissipates.
-The method to approximate a differential equation with an algebraic equation using such a difference in the timescale of state variables is called \textbf{singular perturbation approximation} in control systems engineering.
-Actually, the dynamic characteristics of the internal voltage often have smaller time constants compared to the dynamic characteristics of mechanical turbines.
+The meaning of the passive power transmission condition (iii), which appeared as
+a condition for $P_G$ in Equation \ref{eq:defPG} to be semi-positive definite,
+can also be explained as follows. Consider the state equation of the internal
+voltage in the electrical subsystem $G$ given in Equation \ref{eq:Gss}:
 
-If we assume Equation \ref{eq:spa} establishes an equation and substitutes as an output equation of Equation \ref{eq:Gss}, the following low-dimensional approximation of the electrical system is obtained:
-\begin{align}\label{eq:Gsssp}
-\hat{G}: \simode{
-\dot{\hat{\delta}}^{\rm lin} & = u_G \\
-y_G &= L_0 \hat{\delta}^{\rm lin}
-}
-\end{align}
-To show that it is an approximation, we classified state variables as $\hat{\delta}^{\rm lin}$.
-%また,内部電圧の近似的な値は
-%\begin{align*}
-%\hat{E}^{\rm lin}:=  -A^{-1} B \hat{\delta}^{\rm lin}
-%\end{align*}
-%として与えられる。
-The entire linear approximation model of Equation \ref{eq:lindynu0} is approximated as a differential equation system where the second-order oscillator is combined by this singular perturbation approximation:
-\begin{align}\label{eq:spamodel}
-M \ddot{\hat{\delta}}^{\rm lin}
-+ D \dot{\hat{\delta}}^{\rm lin}
-+\omega_0 L_0 \hat{\delta}^{\rm lin}=0
-\end{align}
-This result shows that the passive power transmission condition (iii) shows the “positive semi-definite nature of a spring constant matrix” when the time constant is small.
-It can be interpreted as equivalent to a dynamic spring constant of the electrical subsystem $G$ of Equation \ref{eq:Gss}.
+\begin{equation*}
+  \taud
+  \dot{E}^{\rm lin} = 
+  A E^{\rm lin} + B \delta^{\rm lin}
+\end{equation*}
+
+Let us focus on the limit where the time constant $( \taudi )_{i \in
+\mathcal{I}_{\rm G}}$ tends to 0. This corresponds to considering the limit where
+"the time it takes for the internal voltage to reach a steady state is much
+shorter than the variation of $\delta^{\rm lin}$." In this case, the following
+approximation holds:
+
+\begin{equation}\label{eq:spa}
+  E^{\rm lin}(t) \simeq  -A^{-1} B\delta^{\rm lin}(t)
+  ,\qquad
+  \forall t\geq 0
+\end{equation}
+
+However, if $A$ is unstable, i.e., if the passive power transmission condition
+(i) does not hold, the state $E^{\rm lin}$ diverges. Systems with state
+variables that have different time scales are called \textbf{singularly
+perturbed systems} \cite{kokotovic1987singular} in the field of control
+engineering. A differential equation system with sufficiently small time
+constants can be approximated by an algebraic equation system. In fact, the
+dynamic characteristics of internal voltage often have smaller time constants
+than the mechanical turbine dynamics.
+
+Assuming that equation \ref{eq:spa} holds as an equality, substituting it into
+the output equation of equation \ref{eq:Gss} yields a low-dimensional
+approximation of the electrical subsystem as follows:
+
+\begin{equation}\label{eq:Gsssp}
+  \hat{G}: \simode{
+    \dot{\hat{\delta}}^{\rm lin} & = u_G \\
+    y_G &= L_0 \hat{\delta}^{\rm lin}
+  }
+\end{equation}
+
+However, to indicate that this is an approximation, the state variable is
+distinguished as $\hat{\delta}^{\rm lin}$.
+
+Using the low-dimensional approximation of this singular perturbation system,
+the entire approximate linear model of equation \ref{eq:lindynu0} is
+approximated as a system of coupled differential equations with two second-order
+oscillators:
+
+\begin{equation}\label{eq:spamodel}
+  M \ddot{\hat{\delta}}^{\rm lin}
+  + D \dot{\hat{\delta}}^{\rm lin}
+  +\omega_0 L_0 \hat{\delta}^{\rm lin}=0
+\end{equation}
+
+From this result, it can be understood that the passive power transmission
+condition (iii) represents the "semi-positive definiteness of the spring
+constant matrix" in the case of small time constants. Furthermore, the
+electrical subsystem $G$ of Equation \ref{eq:Gss} can be interpreted as
+corresponding to a dynamic spring constant.
 
 \begin{figure}[t]
   \centering
@@ -2917,193 +2995,253 @@ It can be interpreted as equivalent to a dynamic spring constant of the electric
 \medskip
 \end{figure}
 
+\begin{example}{Low-dimensional approximation for an approximate linear model}
+As a reference, the time response of the second-order oscillator system of
+Equation \ref{eq:spamodel} for the approximate linear model discussed in Example
+\ref{ex:linsyssim} is shown in Figure \ref{fig:timeexsp}. The solid lines
+represent the response of the original approximate linear model, while the
+dashed lines represent the response of the second-order oscillator system
+obtained by applying the low-dimensional approximation of the singular
+perturbation system. In addition,
 
-%\begin{figure}[t]
-%  \centering
-%  {
-%  \begin{minipage}{0.49\linewidth}
-%    \centering
-%    \includegraphics[width = 1.0\linewidth]{figs/deltasp}
-%    \subcaption{ $\hat{\delta}^{\rm lin}$ }
-%    \medskip
-%  \end{minipage}
-%  \begin{minipage}{0.49\linewidth}
-%    \centering
-%    \includegraphics[width = 1.0\linewidth]{figs/omegasp}
-%    \subcaption{ $\Delta \hat{\omega}^{\rm lin}$ }
-%    \medskip
-%  \end{minipage}
-%%  \begin{minipage}{0.32\linewidth}
-%    \centering
-%    \includegraphics[width = .49\linewidth]{figs/Esp}
-%    \subcaption{ $\hat{E}^{\rm lin}$ }
-%%  \end{minipage}
-%  }
-%  \medskip
-%  \caption{\textbf{特異摂動近似モデルの初期値応答}}
-%  \label{fig:timeexsp}
-%\medskip
-%\end{figure}
-
-
-\begin{example}[Singular perturbation approximation of a linear approximation model]
-As a reference, Figure \ref{fig:timeexsp} shows the time response of a second-order oscillator system of Equation \ref{eq:spamodel} to the linear approximation model discussed in the Example \ref{ex:linsyssim}.
-The solid line is the response of the original linear approximation model, while the dashed line is the response of a second-order oscillator system after applying the singular perturbation approximation.
-Also:
 \[
-\Delta \hat{\omega}^{\rm lin}:=\omega_0^{-1} \dot{\hat{\delta}}^{\rm lin},\qquad
-\hat{E}^{\rm lin}:=-A^{-1}B\hat{\delta}^{\rm lin},\qquad
-\hat{P}^{\rm lin}:= L \hat{\delta}^{\rm lin} + C \hat{E}^{\rm lin}
+  \Delta \hat{\omega}^{\rm lin}:=\omega_0^{-1} \dot{\hat{\delta}}^{\rm lin},\qquad
+  \hat{E}^{\rm lin}:=-A^{-1}B\hat{\delta}^{\rm lin},\qquad
+  \hat{P}^{\rm lin}:= L \hat{\delta}^{\rm lin} + C \hat{E}^{\rm lin}
 \]
-The initial value of the linear approximation model is given as follows in response to Equation \ref{eq:linmini}:
+
+The initial values for the approximate linear model are given by:
+
 \[
-\hat{\delta}^{\rm lin}(0)
- =
-\mat{
-\tfrac{\pi}{6} \\
-0 \\
-0
-},\qquad
-\Delta \hat{\omega}^{\rm lin}(0)
- =
-\mat{
-0 \\
-0 \\
-0
-}
+  \hat{\delta}^{\rm lin}(0)
+  =
+  \mat{
+  \tfrac{\pi}{6} \\
+  0 \\
+  0
+  },\qquad
+  \Delta \hat{\omega}^{\rm lin}(0)
+  =
+  \mat{
+  0 \\
+  0 \\
+  0
+  }
 \]
-Figure \ref{fig:timeexsp} shows that the time response of both is largely consistent with the peak value of the oscillations and attenuation rate.
+
+From Figure \ref{fig:timeexsp}, it can be seen that the time response of both
+systems matches well in terms of the peak values and decay rates of the
+oscillations.
 \end{example}
 
-\subsection{Necessary conditions for the linear approximation model to be statically stable\advanced}\label{sec:nesconsta}
+\subsection{Necessary condition for the steady-state stability of the
+approximate linear model \advanced}\label{sec:nesconsta}
+In the following, we discuss the necessity of the passive power transmission
+condition (iii) for the steady-state stability of the approximate linear model
+in equation \ref{eq:lindynu0}.  Specifically, we show that the passive power
+transmission condition (iii) is a necessary condition for the steady-state
+stability of the approximate linear model regardless of the physical constants
+of the generator group.
 
-Below, we discuss the necessity of the passive power transmission condition (iii) from the viewpoint of small signal stability of the linear approximation model of Equation \ref{eq:lindynu0}.
-Specifically, it shows that the passive power transmission condition (iii) is a necessary condition for the linear approximation model to be statically stable regardless of the physical constants of generators.
-As shown in the discussions of Section \ref{sec:nesconana}, the passive power transmission condition (i) is a necessary condition for the linear approximation model to not be unstable for the time constant $(\taudi)_{i \in \mathcal{I}_{\rm G}}$ at a sufficiently small limit.
-When the matrix $A$ is not stable, this can be confirmed from the dissipation of the internal voltage since the singular perturbation approximation of Equation \ref{eq:spa} cannot be applied. 
+Note that as shown in section \ref{sec:nesconana}, the passive power
+transmission condition (i) is a necessary condition for the stability of the
+approximate linear model even in the limit where the time constants $(\taudi){i
+\in \mathcal{I}{\rm G}}$ are sufficiently small.  This can be verified by the
+fact that if the matrix $A$ is unstable, the low-dimensional approximation of
+the singular perturbation system in equation \ref{eq:spa} cannot be applied, and
+the internal voltage diverges.
 
-When the passive power transmission condition (ii) does not hold, since $L_0$ is usually not symmetrical, we consider generalization of the passive power transmission condition (iii) so that it can be applied to unsymmetrical $L_0$:
-\begin{align}\label{eq:eigreal}
-\bm{\Lambda}(L_0)\subseteq [0,\infty)
-\end{align}
-However, $\bm{\Lambda}(L_0)$ shows a set of eigenvalues of $L_0$.
-The conditions of Equation \ref{eq:eigreal} show that all eigenvalues of $L_0$ are “non-negative real numbers”.
-Below, we call this generalized condition the passive power transmission condition (iii) $'$ of definition \ref{def:passtrans}.
-When $L_0$ is symmetrical, the passive power transmission conditions (iii) and (iii)$'$ are equivalent.
-The following lemma is presented.
+When the passive power transmission condition (ii) does not hold, $L_0$ is
+generally not symmetric, so a generalized version of the passive power
+transmission condition (iii) was introduced to apply it to non-symmetric $L_0$
+as well:
 
-\begin{lemma}[Necessary condition for the small signal stability of a second-order oscillator system]\label{thm:2ndsys}
-Let us consider a second-order oscillator system of Equation \ref{eq:spamodel}.
-For an arbitrary initial value and arbitrary positive definite number $(M_i,D_i)_{i \in \mathcal{I}_{\rm G}}$, a condition necessary for a certain constant $c_0$ to exist and the following to hold:
-\begin{align}\label{eq:delhat0}
-\lim_{t\rightarrow \infty} \hat{\delta}^{\rm lin}(t)= c_0 \mathds{1}
-\end{align}
-is that the passive power transmission condition (iii)$'$ holds.
+\begin{equation}\label{eq:eigreal}
+  \bm{\Lambda}(L_0)\subseteq [0,\infty)
+\end{equation}
+
+Here, $\bm{\Lambda}(L_0)$ denotes the set of eigenvalues of $L_0$. The condition
+in Equation \ref{eq:eigreal} represents that all eigenvalues of $L_0$ are
+"non-negative real numbers". In the following, we refer to this generalized
+condition as the passive electrical condition (iii)$'$, defined in Definition
+\ref{def:passtrans}. Note that when $L_0$ is symmetric, the passive electrical
+conditions (iii) and (iii)$'$ are equivalent. The following lemma is proven.
+
+\begin{lemma}[Necessary condition for the small signal stability of a
+second-order oscillator system]\label{thm:2ndsys}
+Consider the second-order oscillator system given by Equation \ref{eq:spamodel}.
+For any initial conditions and any positive definite $(M_i,D_i){i \in
+\mathcal{I}{\rm G}}$, the necessary condition for the existence of a constant
+$c_0$ such that Equation \ref{eq:delhat0} holds as $t\rightarrow \infty$ is that
+the passive power condition (iii)$'$ holds.
+
+\begin{equation}\label{eq:delhat0}
+  \lim_{t\rightarrow \infty} \hat{\delta}^{\rm lin}(t)= c_0 \mathds{1}
+\end{equation}
+
 \end{lemma}
 
 \begin{proof}
-\red{Translated with DeepL}
-If the passive transmission condition (iii)$'$ does not hold, then there exists a certain positive constant $(M_i,D_i)_{i \in \mathcal{I}_{\rm G}}$ such that the Equation \ref{eq:delhat0}.
-For this purpose, the following two cases will be discussed.
+If the passive transmission condition (iii)$'$ does not hold, we show that there
+exist positive constants $(M_i,D_i)_{i \in \mathcal{I}_{\rm G}}$ such that
+Equation \ref{eq:delhat0} does not hold. For this purpose, we discuss the
+following two cases:
 \begin{itemize}
-\item[(a)] Among the eigenvalues of $L_0$, there exist eigenvalues whose real part is negative or pure imaginary.
-\item[(b)] There exist eigenvalues of $L_0$ whose real part is positive and whose imaginary part is nonzero.
+  \item[(a)] There exist eigenvalues of $L_0$ with negative real part or purely imaginary part.
+  \item[(b)] There exist eigenvalues of $L_0$ with positive real part and nonzero imaginary part.
 \end{itemize}
-First, let's consider the case (a).
-In the following, we choose constant matrices as $M=\omega_0 I$ and $D=\omega_0 d I$.
-In this case, the eigen equation of the equation \ref{eq:spamodel} are
-\begin{align*}
-\mat{
-0 & I \\
--L_0 & -d I
-}
-\mat{v\\w}
-=
-\lambda \mat{v\\w}
-\end{align*}
-If $ w $ is eliminated from this equation by substitution, the following is obtained:
-\begin{align*}
-\left(\lambda^2 I +d \lambda I + L_0
-\right) v =0
-\end{align*}
-This eigenvalue is an eigenvector with $ v $ of $ L_0 $ and for that eigenvalue $ \kappa $, and therefore the following is true.
-\begin{align}\label{eq:lamsq}
-\lambda^2 + d\lambda +\kappa =0
-\qquad
-\Longleftrightarrow
-\qquad
-\lambda = \frac{-d \pm \sqrt{d^2-4\kappa} }{2}
-\end{align}
-Therefore, in the case of (a), it is sufficient to show that the real part of $ \sqrt{d^2--4\kappa} $ is larger than $ d $.
-In general, for any complex number $ \bm{z} $
-\begin{align*}
-\real[\bm{z}] = \sqrt{ \real[\bm{z}^2 ] + (\imag[\bm{z}])^2 }
-\end{align*}
-Since it can be expressed as $ \bm{z} = \sqrt{d^2--4\kappa} $, the following result can be obtained:
-\begin{align*}
-\real \Bigl[
-\sqrt{d^2 - 4\kappa }
-\Bigr]
-=\sqrt{
-d^2 - 4 \real[\kappa]
-+
-(\imag[ \bm{z} ])^2
-}
-\end{align*}
-This value is in case (a), that is, when the real part of $ \kappa $ is negative, or the real part of $ \kappa $ is 0 and the imaginary part of $ \kappa $ is non-zero.Must be greater than $ d $.
-Therefore, the secondary oscillator system of the equation \ref{eq: spamodel} is unstable.
 
-Next, consider the case of (b).
-In the following, it is shown that there exists a positive constant $ d $ such that the eigenvalue $ \lambda $ of the expression \ref{eq: lamsq} is a pure imaginary number.
-When $ L_0 $ in the execution column has a complex eigenvalue, there is always something with a negative imaginary part.
-The eigenvalue is expressed as $ \kappa = \alpha + \beta \bm {j} $ using $ \alpha> 0 $ and $ \beta <0 $.
-For this $ \kappa $, there exists $ \omega \neq 0 $ and $ d> 0 $ that satisfy: 
+First, let us consider case (a). In what follows, we choose the constant
+matrices $M =\omega_0 I$ and $D = \omega_0 dI$. Then, the eigenvalue equation
+for Equation \ref{eq:spamodel} is given by:
+
+\begin{equation*}
+  \mat{
+  0 & I \\
+  -L_0 & -d I
+  }
+  \mat{v\\w}
+  =
+  \lambda \mat{v\\w}
+\end{equation*}
+
+Eliminating $w$ by substitution from this equation, we obtain:
+
+\begin{equation*}
+  \left(\lambda^2 I +d \lambda I + L_0
+  \right) v =0
+\end{equation*}
+
+This eigenvalue equation implies that $v$ is an eigenvector of $L_0$, and for
+its eigenvalue $\kappa$, we have:
+
+\begin{equation}\label{eq:lamsq}
+  \lambda^2 + d\lambda +\kappa =0
+  \qquad
+  \Longleftrightarrow
+  \qquad
+  \lambda = \frac{-d \pm \sqrt{d^2-4\kappa} }{2}
+\end{equation}
+
+Therefore, to show that the real part of $\sqrt{d^2 - 4\kappa}$ is greater than
+$d$ in case (a), it suffices to prove that $\sqrt{d^2 - 4\kappa}$ has a larger
+real part than $d$ in the case where the real part of $\kappa$ is negative or
+the real part of $\kappa$ is zero and the imaginary part of $\kappa$ is nonzero.
+In general, for any complex number $\bm{z}$, we have:
+
+\begin{equation*}
+  \real[\bm{z}] = \sqrt{ \real[\bm{z}^2 ] + (\imag[\bm{z}])^2 }
+\end{equation*}
+
+Using this formula with $ \bm{z} = \sqrt{d^2--4\kappa} $, we obtain:
+
+\begin{equation*}
+  \real \Bigl[
+  \sqrt{d^2 - 4\kappa }
+  \Bigr]
+  =\sqrt{
+  d^2 - 4 \real[\kappa]
+  +
+  (\imag[ \bm{z} ])^2
+  }
+\end{equation*}
+
+This value is always greater than $d$ in case (a), where the real part of
+$\kappa$ is negative or the real part of $\kappa$ is zero and the imaginary part
+of $\kappa$ is nonzero. Therefore, the 2-degree-of-freedom oscillator system in
+equation \ref{eq:spamodel} is unstable in case (a).
+
+Next, consider the case (b). Below, it is shown that there exists a positive
+definite number $d$ such that the eigenvalue $\lambda$ of Equation
+\ref{eq:lamsq} becomes purely imaginary. If the real matrix $L_0$ has complex
+eigenvalues, there must be at least one with a negative imaginary part. Denote
+this eigenvalue by $\kappa = \alpha + \beta \bm{j}$, where $\alpha>0$ and
+$\beta<0$.  It is shown that there exist some $\omega \neq 0$ and $d>0$ that
+satisfy
+
 \[
--d + \sqrt{d^2-4\kappa}  = \omega \bm{j}
+  -d + \sqrt{d^2-4\kappa}  = \omega \bm{j}
 \]
-If you transfer $ -d $ on the left side and square both sides:
+
+Moving $-d$ to the left-hand side and squaring both sides gives:
+
 \[
--4 (\alpha + \beta \bm{j}) = 2d \omega \bm{j} -\omega^2
+  -4 (\alpha + \beta \bm{j}) = 2d \omega \bm{j} -\omega^2
 \]
-This equation is satisfied by choosing $ \omega = 2 \sqrt {\alpha} $, $ d =-\tfrac {\beta} {\sqrt {\alpha}} $.
-Therefore, since the secondary oscillator system has a steady-state vibration solution, the equation \ref{eq: delhat0} does not hold.
+
+This equation is satisfied if we choose $\omega = 2\sqrt{\alpha}$ and
+$d=-\tfrac{\beta}{\sqrt{\alpha}}$. Therefore, the second-order oscillator
+system has a steady-state oscillatory solution, and Equation \ref{eq:delhat0}
+does not hold.
 \end{proof}
 
+Lemma \ref{thm:2ndsys} shows that the passive power transfer condition (iii)$'$
+is a necessary condition for the steady-state stability of an approximate linear
+model for any generator group's physical parameters in the limit of small
+internal voltage time constants. Furthermore, Theorem \ref{thm:stasufcon}
+demonstrates that when the passive power transfer conditions (i)--(iii) hold,
+the approximate linear model is stable for any physical parameters. Based on
+these facts, the conclusion of this section is summarized in the following
+theorem.
 
-Lemma \ref{thm:2ndsys} shows that, for a limit where the time constant of the internal voltage is sufficiently small, the passive power transmission condition (iii)$'$ is a necessary condition for the linear approximation model to be statically stable against the arbitrary physical constants of generators.
-Furthermore, with Theorem \ref{thm:stasufcon}, when the passive power transmission conditions (i)--(iii) hold, the linear approximation model is stable against arbitrary physical constants.
-Based on these facts, the conclusion of this Section is summarized in the following Theorem.
+\begin{theorem}[Small signal stability of linearized models]\label{thm:sync}
+For any positive parameters $(M_i,D_i,\taudi){i \in \mathcal{I}{\rm G}}$, the
+necessary condition for the steady-state stability of the linearized model in
+Equation \ref{eq:lindynu0} is that the passive power transmission conditions (i)
+and (iii)$'$ in Definition \ref{def:passtrans} hold.
 
-
-\begin{theorem}[Small signal stability of the linear approximation model]\label{thm:sync}
-For an arbitrary positive definite number $(M_i,D_i,\taudi)_{i \in \mathcal{I}_{\rm G}}$, a necessary condition for the linear approximation model of Equation \ref{eq:lindynu0} to be statically stable is that the passive power transmission conditions (i) and (iii)$'$ of definition \ref{def:passtrans} hold.
-Specifically, when the passive power transmission condition (ii) holds, the above-mentioned necessary condition for the small signal stability is that the passive power transmission conditions (i) and (iii)$'$ hold.
+In particular, if the passive power transmission condition (ii) holds, then the
+necessary and sufficient condition for the above steady-state stability is that
+the passive power transmission conditions (i) and (iii)$'$ hold.
 \end{theorem}
 
-We present an analytical example of the small signal stability of the linear approximate model using Theorem \ref{thm:sync}.
+We present an analytical example of the small signal stability of the linear
+approximate model using Theorem \ref{thm:sync}.
 
-\begin{example}[Small signal stability analysis based on the passive power transmission conditions]\label{ex:linthm}
-Using Theorem \ref{thm:sync}, let us analyze the small signal stability of the linear approximation model consisting of three generators discussed in the Example \ref{ex:linsyssim}.
-The physical constants of generators are set to the same value as Example \ref{ex:linsyssim}.
-Since the passive power transmission condition (i) was satisfied for all parameters, we also plotted the range or parameters where the passive power transmission condition (iii) $'$ is not satisfied in Figure \ref{fig:stacheckX}.
-When the eigenvalue of $L_0$ of Equation \ref{eq:defL0} includes those where the real part is negative, it is shown in red.
-When the eigenvalue of complex numbers is included, it is shown with purple.
-This shows when the passive power transmission condition (ii) holds for the range on the horizontal axis where $\theta_2$ is 0.
+\begin{example}{Small signal stability analysis based on the passive power
+transmission conditions}\label{ex:linthm}
 
-Theorem \ref{thm:sync} shows that the ranges shown with red and purple are “dangerous parameter ranges where the linear approximation model is always unstable with some physical constant settings”.
-When the passive power transmission condition (ii) holds; in other words, for parameters on the horizontal axis where $\theta_2$ is 0, as long as $\theta_1$ is set to a value that is not red, the linear approximation model has a small signal stability regardless of the value of these constants.
+Using Theorem \ref{thm:sync}, let's analyze the small signal stability of the
+approximate linear model consisting of three generators discussed in Example
+\ref{ex:linsyssim}. The physical constants of the generators are set to the same
+values as in Example \ref{ex:linsyssim}. Since the passive power transmission
+condition (i) is satisfied for all parameters, the region of parameters where
+passive power transmission condition (iii)$'$ is not satisfied is overlaid on
+Figure \ref{fig:stacheckX}. However, the red region shows eigenvalues of $L_0$
+in which the real part is negative, while the purple region shows eigenvalues of
+$L_0$ that are complex. The region on the horizontal axis where $\theta_2$ is
+zero represents the case where the passive power transmission condition (ii)
+holds.
 
-What we need to pay attention to in the result of Figure \ref{fig:stacheckX} is that the parameter range shown in red accurately captures some or all of the boundaries with the blue parameter range, where static stability is achieved with the above-described physical constants.
-The necessity of the passive power transmission condition (iii)$'$ shown with Theorem \ref{thm:sync} means that there is at least one setting of physical constants for generators where the linear approximation model is unstable.
-Therefore, for the specific constants set in the Example \ref{ex:linsyssim}, the parameter ranges for static stability cannot always be captured accurately.
-On the other hand, the fact that the some boundaries of the blue range are accurately captured indicates that when the real part of $L_0$ has negative eigenvalues, in many cases, the linear approximation model is unstable.
+Theorem \ref{thm:sync} shows that the red and purple regions are "dangerous
+parameter regions where the approximate linear model will always become unstable
+for a certain setting of physical constants." Additionally, when the passive
+power transmission condition (ii) holds, i.e., for parameters on the horizontal
+axis where $\theta_2$ is zero, it is shown that the approximate linear model
+will always be steady-state stable regardless of the values of these constants
+as long as $\theta_1$ is set to a non-red value.
 
-In the cases of (a) and (b), there is no blue range.
-In other words, for the searched parameters, the eigenvalue of $L_0$ is a real number.
-Generally, as long as $\theta_2$ is not 0, $L_0$ is a non-symmetrical matrix; thus, it is unclear whether only $L_0$ has a real eigenvalue.
-On the other hand, in (c) and (d) where the admittance matrix is multiplied by $\tfrac{1}{100}$, if $\theta_1$ and $\theta_2$ are relatively large, $L_0$ has a complex eigenvalue.
-However, in a realistic setting, it has been confirmed that $L_0$ often only has real eigenvalues.
-%なお,アドミタンス行列はインピーダンス行列と逆行列の関係にあるため,アドミタンス行列の大きさが小さいことは,送電線のレジスタンスやリアクタンスが大きいことを表している。
+The noteworthy point from the result in Figure \ref{fig:stacheckX} is that the
+red parameter region accurately captures part or all of the boundary of the blue
+parameter region, where the model is steady-state stable under the physical
+constants mentioned above. The necessity of the passive power transmission
+condition (iii)$'$ shown in Theorem \ref{thm:sync} implies that there is at
+least one setting of physical constants for which the approximate linear model
+becomes unstable. Therefore, it is not always possible to accurately capture the
+parameter region that ensures steady-state stability for specific constants set
+in Example \ref{ex:linsyssim}. On the other hand, the fact that part of the
+boundary of the blue region is accurately captured suggests that the approximate
+linear model is often unstable when $L_0$ has eigenvalues with negative real
+parts.
+
+Also, in cases (a) and (b), it can be seen that there is no purple region.  That
+is, for all the explored parameters, the eigenvalues of $L_0$ are real numbers.
+Generally, unless $\theta_2$ is zero, $L_0$ is an asymmetric matrix, so it is
+not obvious that $L_0$ only has real eigenvalues. On the other hand, in cases
+(c) and (d) where the admittance matrix is multiplied by $\frac{1}{100}$, it is
+also known that $L_0$ has complex eigenvalues when $\theta_1$ and $\theta_2$ are
+relatively large. However, in realistic settings, it has been confirmed that
+$L_0$ mostly has real eigenvalues.
 \end{example}
 
 
@@ -3148,45 +3286,47 @@ However, in a realistic setting, it has been confirmed that $L_0$ often only has
 %\bibliography{reference}	% your bib database
 
 
-\section*{Mathematical Supplement}
+\section*{Mathematical Appendix}
 \begin{lemma}\label{lem:prlem}
-Stable and square transfer function
+Consider a stable and square transfer function:
+
 \[
-Q(s)=C(sI-A)^{-1}B + D
+  Q(s)=C(sI-A)^{-1}B + D
 \]
-を考える。
-ただし,$(A,B)$は可制御であり,$(C,A)$は可観測であるものとする。
-このとき,$Q(s)$が正実であるための必要十分条件は,
-ある正定対称行列$P$が存在して
-\begin{align*}%\label{eq:prlem}
+where $(A,B)$ is controllable and $(C,A)$ is observable.
+The necessary and sufficient condition for $Q(s)$ to be positive real is the
+existence of a positive definite symmetric matrix $P$ such that:
+
+\begin{equation*}%\label{eq:prlem}
 \mat{
 A^{\sf T}P+PA & PB-C^{\sf T} \\
 B^{\sf T} P -C & -(D+D^{\sf T})
 }\preceq 0
-\end{align*}
-が満たされることである。
+\end{equation*}
 \end{lemma}
 
-証明は\cite[Theorem 5.31]{antoulas2005approximation}や\cite[Theorem 3]{anderson1967system}などを参照されたい。
-また,\cite{kottenstette2010relationships}では,関連する一連の結果が細かく整理されている。
+The proof can be found in \cite[Theorem 5.31]{antoulas2005approximation} or
+\cite[Theorem 3]{anderson1967system}, among others. Also,
+\cite{kottenstette2010relationships} provides a detailed overview of related
+results.
 
-\begin{補題}\label{lem:nilem}
-安定かつ正方な伝達関数
+
+\begin{lemma}\label{lem:nilem}
+Consider a stable and square transfer function
+
 \[
-Q(s)=C(sI-A)^{-1}B + D
+  Q(s)=C(sI-A)^{-1}B + D
 \]
-を考える。
-ただし,$(A,B)$は可制御であり,$(C,A)$は可観測であるものとする。
-このとき,$Q(s)$が負虚であるための必要十分条件は,$D$が対称であり,かつ,
-ある正定対称行列$P$が存在して
-\begin{align*}
-A^{\sf T}P+PA \preceq 0
-,\qquad
--PA^{-1}B = C^{\sf T}
-\end{align*}
-が満たされることである。
-\end{補題}
+where $(A,B)$ is controllable and $(C,A)$ is observable.  The necessary and
+sufficient condition for $Q(s)$ to be negative imaginary is that $D$ is
+symmetric and there exists a positive definite symmetric matrix $P$ such that:
 
-証明は\cite[Lemma 7]{xiong2010negative}などを参照されたい。
+\begin{equation*}
+  A^{\sf T}P+PA \preceq 0
+  ,\qquad
+  -PA^{-1}B = C^{\sf T}
+\end{equation*}
+\end{lemma}
 
+The proof can be found in \cite[Lemma 7]{xiong2010negative}, among others.
 \end{document}
