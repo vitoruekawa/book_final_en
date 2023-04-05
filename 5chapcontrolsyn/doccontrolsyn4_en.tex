@@ -1,111 +1,163 @@
 \documentclass[graybox, envcountchap]{svmult}
 \input{../settings}
 
-
-\input{../settings}
-
 \begin{document}
 
-\chapter{Stabilization control of an electrical power system model}\label{ch:stabcont}
-
-In this Chapter, we explain the frequency stabilization control and transient stabilization control of the electrical power system model.
-This Chapter is structured as follows. First, in Section \ref{sec:agcover}, as a typical example of the frequency stabilization control, we discuss the outline of automatic generation control to control frequency deviations caused by load fluctuations and so on.
-In addition, we confirm that the actual steady power flow distribution is changed by adjusting the controller parameters using a numerical simulation.
-Next, in Section \ref{sec:mathnpas}, as a developmental topic, we perform a mathematical analysis of the stability related to the frequency stabilization control.
-Specifically, we show the relationship of the stable range of the electrical power system model and the convex range of the potential energy function based on the passivity independent of the equilibrium points of a nonlinear system.
-Furthermore, in Section \ref{sec:transcont}, we explain the structure and function of a standard auto-voltage adjustor and a system stabilization device used for the transient stabilization control.
-Finally, as a developmental topic in Section \ref{sec:retrofit}, we explain the design method of a system stabilization device based on a retrofit control theory.
-
+\chapter{Stabilization control of power system models}\label{ch:stabcont}
+In this Chapter, we will explain frequency stabilization control and transient
+stabilization control of power system models. The structure of this chapter is
+as follows. First, in Section \ref{sec:agcover}, we outline the automatic
+generation control, which is a representative example of frequency stabilization
+control, to suppress the deviation of angular frequency caused by load
+variations, and confirm through numerical simulations that the steady-state
+power flow state changes by adjusting the parameters of the controller. Next, in
+Section \ref{sec:mathnpas}, as an advanced topic, we perform mathematical
+stability analysis of frequency stabilization control. In particular, based on
+passivity that does not depend on equilibrium points for nonlinear systems, we
+show the relationship between the stability region of the power system model and
+the convex region of potential energy function. Furthermore, in Section
+\ref{sec:transcont}, we explain the configuration and functions of standard
+automatic voltage regulators and power system stabilizers used for transient
+stabilization control. Finally, in Section \ref{sec:retrofit}, as an advanced
+topic, we explain the design methodology of power system stabilizers based on
+retrofit control theory. <|endoftext|>
 
 \section{Frequency stabilization control}\label{sec:agcover}
-\subsection{Automatic generation control by a broadcast-type PI controller}\label{sec:broadPI}
+\subsection{Automatic generation control using broadcast-type PI controller}\label{sec:broadPI}
+
+\smallskip
+\subsubsection{Overview of Automatic Generation Control}
+
+In this section, we will explain the principle of \textbf{Automatic Generation
+Control (AGC)}\index{Automatic Generation Control} which adjusts the generation
+output appropriately in response to unknown load variations. Automatic
+Generation Control adjusts the generation output by performing control actions
+such as increasing the generation output when the power supply is insufficient
+compared to the demand, and decreasing the generation output when the power
+supply is excessive, based on the observed frequency deviations of multiple
+generators. This control action is based on the general characteristic of power
+systems that negative frequency deviations occur when the power supply is
+insufficient compared to the demand, and positive frequency deviations occur
+when the power supply is excessive. In power system engineering, the overall
+control to asymptotically converge the frequency deviation to zero is generally
+referred to as \textbf{Frequency Stabilization Control}\index{Frequency
+Stabilization Control}.  Automatic Generation Control is one of the methods for
+Frequency Stabilization Control.
+
+In actual power system operation, the central dispatch center performs Automatic
+Generation Control. Although the basic operating principle is common, there are
+several methods depending on the objectives. The target is to maintain the
+frequency within a range of about $\pm$0.2Hz with respect to the reference
+frequency of 50Hz or 60Hz. Note that the frequency deviation of the voltage
+phasor at a nearby substation is often observed instead of the frequency
+deviation of the generator, because the frequency of the voltage phasor at the
+substation is generally close to that of the generator. Also, one of the
+challenges of Automatic Generation Control is that there are many unknown
+constants and variables in the actual power system. For example, it is possible
+to roughly predict the total amount of load in a time scale of about 30 minutes,
+but it is not possible to accurately grasp the values of individual loads that
+change every moment. It is also difficult to accurately know all the constants
+such as the impedance of each transmission line. Therefore, it is necessary to
+design control algorithms that can be applied without knowing the accurate model
+of the entire power system. In actual power system operation, weather forecast
+information, temperature data, historical data, and other information are used
+to predict changes in total demand for certain areas to some extent. The size of
+the area and the method used vary, but it is impossible to predict the demand
+completely.
+
+On the other hand, as confirmed in the numerical examples in Section
+\ref{sec:numsimtr}, when the supply-demand balance is not maintained, various
+problems such as frequency deviation and tie-line power flow deviation may
+occur. Therefore, it is important to establish an effective Automatic Generation
+Control method that can mitigate the impact of unknown load variations and
+maintain the stability of the power system. In this section, we will explain the
+principle of Automatic Generation Control using a broadcast-type PI controller,
+which is one of the methods for Frequency Stabilization Control. Therefore, it
+is necessary to design a control algorithm that can be applied without knowing
+the accurate model of the entire power system. In actual power system operation,
+weather forecast information, temperature data, historical data, and other
+information are used to predict changes in total demand for certain areas to
+some extent. The size of the area and the method used vary, but it is impossible
+to predict the demand completely.
 
 
 \smallskip
-\subsubsection{What is automatic generation control?}
+\subsubsection{Formulation of automatic generation control}
+In the following, we consider a generator model with the bus voltage phasor as
+the input, as discussed in Section \ref{sec:genfund}. The dynamic
+characteristics of the generator are restated as follows:
 
-In this Section, we explain the operating principle of \textbf{automatic generation control} to appropriately adjust the power generation relative to unknown load fluctuations.
-With the automatic generation control, by observing the frequency deviation of several generators, a control operation is performed whereby the power generation is increased if the supply is too low for the electric power demand and decreased if the supply is excessive.
-
-In actual operation of an electrical power system, a central power supply command center performs automatic generation control.
-The basic operating principle is common, but there are several methods depending on the purpose.
-The goal is to maintain the frequency at around $\pm$ 0.2Hz relative to the standard frequency of 50 Hz or 60 Hz.
-
-
-A difficulty of the automatic generation control is that there are many unknown constants and variables in an actual electrical power system.
-For example, with a time scale of about 30 minutes, total load can be roughly predicted, but changes in individual load cannot be accurately understood.
-It is also difficult to accurately know all the constants, such as the impedance of each transmission line.
-Therefore, a control algorithm design method that can be applied without knowing the exact model of the entire power system is needed.
-In actual power system operation, changes in total demand for a certain area are forecasted using weather forecast information, such as weather and temperature, and past performance information.
-Although the size of the area varies depending on the method used, it is impossible to predict demand completely.
-
-
-On the other hand, as we confirmed with the numerical example of Section \ref{sec:numsimtr}, even in a situation where a supply-demand balance is not achieved, the frequency of generators asymptotically synchronizes.
-This fact means that if the external input of one or more generators is appropriately controlled to achieve 0 for their frequency deviation, the frequency deviation of the remaining generators automatically becomes 0.
-Specifically, if we calculate the mean frequency deviation of several generators and control the external input of generators so that the mean would be 0, the frequency deviation of all generators can be asymptotically converged at 0.
-Such a control operation can be achieved with PI control.
-
-
-\smallskip
-\subsubsection{Formulation of the automatic generation control}
-
-Below, we consider a generator model that uses the voltage phasor of Section \ref{sec:genfund} as the input.
-If we discuss the dynamic characteristics again:
 \begin{subequations}\label{eq:gendifagc}
-\begin{align}
-\simode{
-\dot{\delta}_i&= \omega_0  \Delta \omega_i \\
-M_i   \Delta \dot{\omega}_i&= 
- - D_i \Delta\omega_i  
- - P_i
-+P_{{\rm mech}i}
-\\
-\taudi \dot{E}_i & = 
- -\tfrac{ \Xsi }{ \Xti }E_i
-+\left(
-\tfrac{ \Xsi }{ \Xti }-1
-\right)
-|\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
-+ V_{{\rm field}i}
-}
-\end{align}
-If active power and reactive power are the output:
-\begin{align}\label{eq:PQoutagc}
-\spliteq{
-P_i &=  \frac{E_i |\bm{V}_i|}{ \Xti } \sfsin (\delta_i - \angle \bm{V}_i), \\
-Q_i &=  \frac{E_i|\bm{V}_i|}{ \Xti } \sfcos (\delta_i - \angle \bm{V}_i)
--\frac{|\bm{V}_i|^2}{ \Xti }
-}
-\end{align}
+\begin{equation}
+  \simode{
+    \dot{\delta}_i&= \omega_0  \Delta \omega_i \\
+    M_i   \Delta \dot{\omega}_i&= 
+    - D_i \Delta\omega_i  
+    - P_i
+    +P_{{\rm mech}i}
+    \\
+    \taudi \dot{E}_i & = 
+    -\tfrac{ \Xsi }{ \Xti }E_i
+    +\left(
+    \tfrac{ \Xsi }{ \Xti }-1
+    \right)
+    |\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
+    + V_{{\rm field}i}
+  }
+\end{equation}
+
+When considering active power and reactive power as outputs, we have:
+
+\begin{equation}\label{eq:PQoutagc}
+  \spliteq{
+    P_i &=  \frac{E_i |\bm{V}_i|}{ \Xti } \sfsin (\delta_i - \angle \bm{V}_i), \\
+    Q_i &=  \frac{E_i|\bm{V}_i|}{ \Xti } \sfcos (\delta_i - \angle \bm{V}_i)
+    -\frac{|\bm{V}_i|^2}{ \Xti }
+  }
+\end{equation}
 \end{subequations}
-With this expression, we discuss the load model that uses the voltage phasor as the input and the active and reactive power as the output again.
-The constant impedance model is:
+
+According to this expression, the load model for inputting the phase of the
+busbar voltage and outputting the active and reactive powers is also shown
+again. The constant impedance model is given by:
+
 \begin{subequations}\label{eq:lmodelsagc}
-\begin{align}
-P_i =  - 
-\frac{|\bm{V}_i|^2}{ \real \left[ \overline{\bm{z}}^{\star}_{{\rm load}i} \right] } 
-,\qquad
-Q_i = - 
-\frac{|\bm{V}_i|^2}{ \imag \left[ \overline{\bm{z}}^{\star}_{{\rm load}i} \right] } 
-\end{align}
-where, $\bm{z}_{{\rm load}i}^{\star}$ is the constant that expresses the impedance of the load.
-Similarly, the constant current model is written as a constant $\bm{I}_{{\rm load}i}^{\star}$ that expresses the current phasor of the load:
-\begin{align}
-P_i = |\bm{V}_i| \real \left[
-\bm{I}_{{\rm load}i}^{\star} 
-\right],\qquad
-Q_i = - |\bm{V}_i| \imag \left[
-\bm{I}_{{\rm load}i}^{\star}
-\right]
-\end{align}
-The constant power model uses $P_{{\rm load}i}^{\star}$ and $Q_{{\rm load}i}^{\star} $ as constants:
-\begin{align}\label{eq:contpwmod}
+\begin{equation}
+  P_i =  - 
+  \frac{|\bm{V}_i|^2}{ \real \left[ \overline{\bm{z}}^{\star}_{{\rm load}i} \right] } 
+  ,\qquad
+  Q_i = - 
+  \frac{|\bm{V}_i|^2}{ \imag \left[ \overline{\bm{z}}^{\star}_{{\rm load}i} \right] } 
+\end{equation}
+where $\bm{z}_{{\rm load}i}^{\star}$ is a constant representing the impedance of
+the load.
+
+Similarly, the constant current model is expressed as:
+
+\begin{equation}
+  P_i = |\bm{V}_i| \real \left[
+  \bm{I}_{{\rm load}i}^{\star} 
+  \right],\qquad
+  Q_i = - |\bm{V}_i| \imag \left[
+  \bm{I}_{{\rm load}i}^{\star}
+  \right]
+\end{equation}
+where $\bm{I}_{{\rm load}i}^{\star}$ is a constant representing the current phase of the load.
+
+The constant power model is given by:
+
+\begin{equation}\label{eq:contpwmod}
 P_i=P_{{\rm load}i}^{\star} ,\qquad
  Q_i= Q_{{\rm load}i}^{\star} 
-\end{align}
+\end{equation}
+where $P_{{\rm load}i}^{\star}$ and $Q_{{\rm load}i}^{\star}$ are constants.
 \end{subequations}
-As these generator model and load model are combined with algebraic equations: 
-\begin{align}\label{eq:PQVgenagc}
+
+These generator models and load models are combined to describe the entire power
+system using a differential-algebraic equation (DAE) model, as shown in the
+algebraic equation system:
+
+\begin{equation}\label{eq:PQVgenagc}
 \simode{
 P_1 + \bm{j} Q_1 &= 
 \sum_{j=1}^{N} \overline{\bm{Y}}_{1j} |\bm{V}_1| |\bm{V}_j | e^{\bm{j} (\angle \bm{V}_1 - \angle \bm{V}_j )} \\ 
@@ -113,16 +165,19 @@ P_1 + \bm{j} Q_1 &=
 P_N + \bm{j} Q_N &= 
 \sum_{j=1}^{N} \overline{\bm{Y}}_{Nj} |\bm{V}_N| |\bm{V}_j | e^{\bm{j} (\angle \bm{V}_N - \angle \bm{V}_j )}
 }
-\end{align}
-we can obtain a differential-algebraic equation system model that describes the entire electrical power system.
-However, when a subscript set of generator buses is $\mathcal{I}_{\rm G}$ and a subscript set of load bus bars is $\mathcal{I}_{\rm L}$:
+\end{equation}
+where the generator bus indices are denoted by the set $\mathcal{I}{\rm G}$ and
+the load bus indices are denoted by the set $\mathcal{I}{\rm L}$, and without
+loss of generality, we can define:
+
 \[
-\mathcal{I}_{\rm G} :=  \{1,\ldots, n\}
-,\qquad
-\mathcal{I}_{\rm L} := \{n+1,\ldots, n+m\}
+  \mathcal{I}_{\rm G} :=  \{1,\ldots, n\}
+  ,\qquad
+  \mathcal{I}_{\rm L} := \{n+1,\ldots, n+m\}
 \]
-The number of generator buses is $n$ and the number of load bus bars is $m$.
-Also, $N$ denotes the total number of busbars $n+m$.
+where $n$ represents the total number of generator buses and $m$ represents the
+total number of load buses. Furthermore, $N$ represents the total number of
+buses, which is equal to $n+m$.
 
 \begin{figure}[t]
 \centering
@@ -133,71 +188,118 @@ Also, $N$ denotes the total number of busbars $n+m$.
 \medskip
 \end{figure}
 
-The automatic generation control is a control algorithm that adjusts the mechanical torque $P_{{\rm mech}i}$ of Equation (\ref{eq:gendifagc}).
-Below, we observe the weighted sum of the frequency deviations related to all generators and consider the broadcast-type PI controller that transmits the control input with an appropriate weight to all generators.
-Specifically, for each $i\in \mathcal{I}_{\rm G}$:
+The automatic generation control (AGC) is a control algorithm that adjusts the
+mechanical input $P_{{\rm mech}i}$ in Equation (\ref{eq:gendifagc}). Here, we
+consider a broadcast-type PI controller that observes the weighted sum of
+frequency deviations for all generators and sends a control input with
+appropriate weighting to all generators. Specifically, for each $i \in
+\mathcal{I}_{\rm G}$, we set:
+
 \begin{subequations}\label{eq:agccon}
-\begin{align}\label{eq:agccona}
-P_{{\rm mech}i}(t)=
-P_{{\rm mech}i}^{\star} - \alpha_i
-\underbrace{
-\left\{
-k_{\rm P} \Delta \omega_{\rm sum}(t) +
-k_{\rm I}
-\int_0^t \Delta \omega_{\rm sum}(\tau) d \tau
-\right\}
-}_{P_{0}(t)}
-\end{align}
-where $P_{{\rm mech}i}^{\star} $ is a constant that expresses the standard setting of mechanical torque.
-$\alpha_i $ is a non-negative constant that specifies the contributions of the generator $i$, and:
+\begin{equation}\label{eq:agccona}
+  P_{{\rm mech}i}(t)=
+  P_{{\rm mech}i}^{\star} - \alpha_i
+  \underbrace{
+  \left\{
+  k_{\rm P} \Delta \omega_{\rm sum}(t) +
+  k_{\rm I}
+  \int_0^t \Delta \omega_{\rm sum}(\tau) d \tau
+  \right\}
+  }_{P_{0}(t)}
+\end{equation}
+where $P_{{\rm mech}i}^{\star}$ is a constant representing the standard setting
+value of the mechanical input. Moreover, $\alpha_i$ is a non-negative constant
+specifying the contribution of generator $i$, and:
+
 \[
-\Delta \omega_{\rm sum}(t) := 
-\sum_{i =1}^n \beta_i \Delta \omega_{i}(t)
+  \Delta \omega_{\rm sum}(t) := 
+  \sum_{i =1}^n \beta_i \Delta \omega_{i}(t)
 \]
-is the weighted sum of the frequency deviation related to the non-negative constant $\beta_i$.
-Furthermore, $k_{\rm P}$，$k_{\rm I}$ is a positive definite number that expresses the gain of the PI controller.
-This automatic generation contrller has a structure that broadcasts the signals $P_0(t)$ generated by a single PI controller under the weight of $\alpha_i$ and $\beta_i$ to all generators (\FIGref{fig:bcAGC}).
-If Equation \ref{eq:agccona} is expressed with differential equations:
-\begin{align}
-\simode{
-\dot{\xi}&=  \Delta \omega_{\rm sum} \\
-P_{{\rm mech}i} &= P_{{\rm mech}i}^{\star} - \alpha_i \left(k_{\rm P} \Delta \omega_{\rm sum} +  k_{\rm I} \xi \right)
-}
-\end{align}
+is the weighted sum of frequency deviations with non-negative weights $\beta_i$.
+Furthermore, $k_{\rm P}$ and $k_{\rm I}$ are positive constants representing the
+gains of the PI controller. This AGC controller has a structure where the
+generated signal $P_0(t)$, which is produced by a single PI controller with
+weighting of $\alpha_i$ and $\beta_i$, is simultaneously broadcasted to all
+generators (Figure \ref{fig:bcAGC}). Note that Equation \ref{eq:agccona} can be
+expressed as a differential equation as follows:
+
+\begin{equation}
+  \simode{
+  \dot{\xi}&=  \Delta \omega_{\rm sum} \\
+  P_{{\rm mech}i} &= P_{{\rm mech}i}^{\star} - \alpha_i \left(k_{\rm P} \Delta \omega_{\rm sum} +  k_{\rm I} \xi \right)
+  }
+\end{equation}
 \end{subequations}
-With real thermal and nuclear power plants, high-pressure steam generated by the thermal and nuclear power rotates the turbines and generates mechanical torque in a \textbf{prime mover}.
-The prime mover has a built-in \textbf{governor} that automatically controls the rotational speed of the generators.
-In a more realistic analysis of the automatic generation control, a prime mover model that uses a command from the central power supply command center as the input and the mechanical torque on generators as the output needs to be considered \cite[Chapter 3]{taniguchi2011power}.
 
-By changing the rate of the participation factor, active power supplied by each generator under a steady power flow distribution (wherein supply and demand are balanced) can be adjusted.
-From the perspective of control systems engineering, it can be interpreted as “moving a stable equilibrium point of the electrical power system model by switching the controller".
-As analyzed in Chapter \ref{sec:staana}, the stability of the electrical power system changes according to the choice of equilibrium points.
-In addition, the power generation cost and transmission loss of the entire electrical power system also depend on the way equilibrium points are selected.
-Therefore, appropriately switching the participation factor based on the demand distribution improves system stability and lowers the financial cost. 
+In electric power systems engineering, the non-negative constant $\alpha_i$ is
+referred to as the \textbf{participation factor}\index{participation factor} of
+generator $i$. It should be noted that in real-world thermal power generation
+and nuclear power generation, there is a \textbf{prime mover}\index{prime mover}
+that generates mechanical input by rotating a turbine using high-pressure steam
+generated by thermal or nuclear power. The prime mover incorporates a
+\textbf{governor}\index{governor} that automatically controls the rotation speed
+of the generator. In order to analyze more realistic automatic generation
+control, it is necessary to consider a prime mover model that takes input from
+the central dispatch center as setpoint and outputs mechanical input to the
+generator \cite[Chapter 3]{taniguchi2011power}.
 
-In the actual operation of an electrical power system, updates to the participation factor are usually made at an interval of several minutes to dozens of minutes \cite[Section 11.1]{kundur1994power}.
-With the terminology of electrical power system engineering, the system to update the participation factor is called \textbf{Economic Load Dispatching Control}.
-In addition, a control algorithm that uses the participation factor as a constant between the update interval is called \textbf{Load Frequency Control}.
-However, attention must be paid since the Economic Load Dispatching Control and Load Frequency Control might not be clearly discriminated, or the Economic Load Dispatching Control might be considered as a different system, depending on the literature. 
+By changing the ratio of participation factors, it is possible to adjust the
+values of effective power supplied by each generator in a balanced steady-state
+load flow condition. From the perspective of system control engineering, this
+can be interpreted as "moving the stable equilibrium point of the power system
+model by switching controllers." As analyzed in Chapter \ref{sec:staana}, the
+stability of the power system depends on the choice of equilibrium point. The
+total generation cost and transmission loss of the power system also depend on
+the choice of equilibrium point. Therefore, appropriately switching the
+participation factors according to the distribution of load can lead to improved
+system stability and reduced economic costs.
+
+In actual power system operation, the updating of participation factors is
+typically done at intervals of several minutes to several tens of minutes
+\cite[Section 11.1]{kundur1994power}. In the terminology of power system
+engineering, the scheme for updating these participation factors is called
+\textbf{economic load dispatching control} (EDC)\index{economic load dispatching
+control}. The control algorithm that uses the participation factors as constants
+during the updating interval is called \textbf{load frequency control}
+(LFC)\index{load frequency control}. However, it should be noted that there may
+be cases where there is no clear distinction between economic load dispatching
+control and load frequency control in the literature, or where economic load
+dispatching control is considered as a different scheme, so caution is
+necessary.
 
 
 \subsection{Numerical simulation of frequency stabilization control}
 
-Using a simple example, let us confirm the effect of frequency stabilization control.
+Let's verify the effectiveness of frequency stabilization control using a simple
+example.
 
-\begin{例}[Stabilization of frequency by the automatic generation control]\label{ex:agcdemo}
-Let us consider an electrical power system model consisting of three bus bars discussed in the Example \ref{ex:inires}.
-The physical constants of generators and transmission lines are set to the same values as the Example \ref{ex:inires}, and the steady value of \ref{table:genst13b} is set as the initial value of the internal state of generators.
-In addition, the field voltage is constant at \ref{table:genst13b}.
+\begin{example}{Frequency stabilization by Automatic Generation Control}\label{ex:agcdemo}
+Consider the power system model consisting of 3 busbars as discussed in Examples
+\ref{ex:derY}, \ref{ex:pf3bus}, and \ref{ex:inires}. The physical constants of
+the generators and transmission lines are set to the same values as in Example
+\ref{ex:inires}, and the initial values of the internal states of the generators
+are set to the steady-state values shown in Table \ref{table:genst13b}. In
+addition, the field input is assumed to be constant at the values shown in Table
+\ref{table:genst13b}.
 
-Let us consider a 1\% increase in active power consumption from the steady power flow distribution with the initial value from the load of bus bar 2 as the constant power model.
-First, the time response of frequency deviation is shown in \FIGref{fig:agcPdemo}(a) when the mechanical torque of the generators is constant at \ref{table:genst13b} and the automatic generation control is not incorporated.
-We can see that, as the consumption of electric power increases with the load, supply and demand become unbalanced, and the steady value of the frequency deviation stops being 0.
+The load at busbar 2 is set to a constant power model, and we consider a case
+where the consumption of active power increases by 1\% from the initial
+steady-state load flow condition. First, we show the time response of the
+frequency deviation when there is no automatic generation control and the
+mechanical input of the generators is constant at the values shown in Table
+\ref{table:genst13b}, as shown in Figure \ref{fig:agcPdemo}(a). It can be seen
+that the steady-state value of the frequency deviation does not become zero
+because the supply and demand are not balanced due to the increased power
+consumption by the load.
 
-Next, \FIGref{fig:agcPdemo}(b) shows the result when the broadcast-type PI controller of Equation (\ref{eq:agccon}) is incorporated as the automatic generation control.
-The parameters of the controller are set to the values of \ref{table:agcpara}(a).
-This Figure shows that, even if the consumed electric power of the load changes due to the effect of the automatic generation control, the frequency deviation is barely generated.
-\end{例}
+Next, we show the results when the broadcast-type PI controller of Equation
+\ref{eq:agccon} is incorporated as automatic generation control, with the
+parameters of the controller set to the values shown in Table
+\ref{table:agcpara}(a), as shown in Figure \ref{fig:agcPdemo}(b). From this
+figure, it can be seen that the frequency deviation hardly occurs even when the
+consumption of load power changes, due to the effectiveness of automatic
+generation control.
+\end{example}
 
 
 \begin{figure}[t]
@@ -237,12 +339,16 @@ Setup &  $k_{\rm P}$ & $k_{\rm I}$ & $\alpha_1$ & $\alpha_3$ &$\beta_1$ & $\beta
   \end{tabular}
 \end{table}
 
-Next, let us confirm that the steady power flow distribution that achieves the supply-demand balance changes by adjusting the participation factor of the broadcast-type PI controller in Equation  (\ref{eq:agccon}).
+Next, let us confirm the change in steady-state power flow conditions by
+adjusting the contribution coefficients of the broadcast-type PI controller in
+Equation \ref{eq:agccon} to achieve supply-demand balance.
 
-\begin{例}[Changes in the steady power flow distribution due to adjustment of the participation factor]\label{ex:pfvary}
-As in the Example \ref{ex:agcdemo}, let us consider an electrical power system model consisting of two generators and one load.
-Here, we confirm that the ratio of active power supplied by generator 1 and generator 3 changes by changing the participation factor of the broadcast-type PI controller in Equation (\ref{eq:agccon}).
-Specifically, we switch the participation factor as follows.
+\begin{example}{Change in steady-state power flow conditions by adjusting contribution coefficients}\label{ex:pfvary}
+Consider a power system model consisting of two generators and one load, similar
+to Example \ref{ex:agcdemo}. Here, we confirm that the ratio of active power
+supplied by Generator 1 and Generator 3 changes by varying the contribution
+coefficients of the broadcast-type PI controller in Equation \ref{eq:agccon}.
+Specifically, we switch the contribution coefficients as follows:
 
 \begin{itemize}
 \item Parameters of \ref{table:agcpara} (b) are set for 0 [s] to 20 [s].
@@ -250,15 +356,27 @@ Specifically, we switch the participation factor as follows.
 \item Parameters of \ref{table:agcpara} (c) are set for 40 [s] to 60 [s].
 \end{itemize}
 
-\FIGref{fig:agcPvary}(a) shows the obtained time response.
-The solid blue line shows the value of active power $P_1$ supplied by generator 1, while the broken red line shows the value of active power $P_3$ supplied by generator 3.
-This result shows that the ratio of $P_1$ and $P_3$ achieved by the steady power flow distribution is consistent to the ratio of $\alpha_1$ and $\alpha_3$ of the participation factor.
+The resulting time response is shown in Figure \ref{fig:agcPvary}(a). The solid
+blue line represents the value of active power supplied by Generator 1 ($P_1$),
+and the dashed red line represents the value of active power supplied by
+Generator 3 ($P_3$). From this result, it can be seen that the ratio of $P_1$
+and $P_3$ in the steady-state power flow conditions matches the ratio of
+contribution coefficients $\alpha_1$ and $\alpha_3$.
 
-Next, \FIGref{fig:agcPvary}(b) shows the time response of $P_1+P_2+P_3$ that expresses the transmission loss of active power.
-$P_2$ is the active power consumed by the load, and its value is constant at $-3$.
-This Figure shows that the size of transmission loss of active power varies based on the achieved steady power flow distribution.
-Specifically, if the parameters of the broadcast-type PI controller are set to the values of \ref{table:agcpara} (a); in other words, if the electric power is supplied by using the transmission line without resistance where bus bar 2 and bus bar 3 are the end points, the overall transmission loss of the electrical power system becomes small. This result is the same as what was discussed in the Example \ref{ex:pf3bus}. The admittance of transmission lines is set to the value of Equation \ref{eq:rightlossless}.
-\end{例}
+Next, the time response of the total active power transmission loss
+$P_1+P_2+P_3$, which represents the power transmission loss due to active power,
+is shown in Figure \ref{fig:agcPvary}(b). Note that $P_2$ is the active power
+consumed by the load and its value is constant at $-3$.
+
+From this figure, it can be seen that the magnitude of active power transmission
+loss varies depending on the realized steady-state power flow conditions. In
+particular, when the parameters of the broadcast-type PI controller are set to
+the values in Table \ref{table:agcpara} (a), i.e., when power is mainly supplied
+using the lossless transmission line between Bus 2 and Bus 3, the total power
+transmission loss of the entire power system is smaller, which is consistent
+with the discussion in Example \ref{ex:pf3bus}. The admittance of the
+transmission lines is set to the values in Equation (\ref{eq:rightlossless}).
+\end{example}
 
 \begin{figure}[t]
   \centering
@@ -280,121 +398,168 @@ Specifically, if the parameters of the broadcast-type PI controller are set to t
 \medskip
 \end{figure}
 
+As shown in Example \ref{ex:pfvary}, by adjusting the contribution coefficients
+of a broadcast-type PI controller, it is possible to change the steady-state
+power flow condition. At the same time, the magnitude of transmission losses and
+the required generation cost for each steady-state power flow condition also
+change. Therefore, by appropriately controlling the contribution coefficients,
+it is possible to achieve more economical system operation. However, it should
+be noted that a steady-state power flow condition with lower economic costs is
+not necessarily a highly stable equilibrium point, so it is important to
+carefully consider trade-offs between economic efficiency and stability. 
 
-As shown in the Example \ref{ex:pfvary}, by adjusting the participation factor of the broadcast-type PI controller, the achieved steady power flow distribution can be changed.
-At this time, the size of transmission loss and necessary power generation cost for each steady power flow distribution change.
-Therefore, by appropriately controlling the participation factor, more economic system operation can be achieved.
-However, since the steady power flow distribution with low economic cost is not necessarily an equilibrium point with a high degree of stability, tradeoff between economy and stability must be appropriately considered.
+\section{Mathematical stability analysis of frequency stabilization control
+system\advanced}\label{sec:mathnpas}
 
-\section{Mathematical stability analysis of a frequency stabilization control system\advanced}\label{sec:mathnpas}
-
-\subsection{The target electrical power system model\advanced}\label{sec:objmod}
-
-\smallskip
-\subsubsection{Assumptions for the electrical power system model and the automatic generation control}
-
-In Section \ref{sec:stalin}, we assumed that the electrical power system model is near a steady power flow distribution, derived a linear approximation model, and analyzed necessary and adequate conditions for the small signal stability.
-In this Section, we use a concept of passivity for a nonlinear system and analyze the frequency stability of an electrical power system model described as a differential-algebraic equation system.
-Specifically, we consider the stability of an entire feedback control system where the automatic generation control is incorporated, and conduct a stability analysis with the following assumptions.
-
-\begin{itemize}
-\item All generators are expressed with the generator model of Equation (\ref{eq:lmodelsagc}). However, it is assumed that the field voltage of each generator is set to a constant.
-\item All loads are expressed with the constant power model of Equation \ref{eq:contpwmod}.
-\item For algebraic equations for the power grid of Equation \ref{eq:PQVgenagc}, conductance of all transmission lines is assumed to be 0.
-\item For the broadcast-type PI controller of Equation (\ref{eq:agccon}), automatic generation control is performed.
-However, it is assumed that $\alpha_i$ and $\beta_i$ are equal for all $i\in \mathcal{I}_{\rm G}$ for the weight of the participation factor and
-frequency deviation.
-\end{itemize}
-
-The first and second assumptions mean that a standard model is considered for generators and loads.
-The third assumption on the power grid means that the transmission loss is 0, which is essential in performing a mathematical stability analysis.
-In fact, many papers have pointed out that when there is transmission loss, stability analysis of the electrical power system model must rely on a numerical method \cite{narasimhamurthi1984existence,chang1995direct,chiang2011direct,yang2019distributed}.
-The fourth assumption is necessary for the input/output properties of the broadcast-type PI controller to be passive.
-If participation factor $\alpha_i$ is positive for at least one $i\in \mathcal{I}_{\rm G}$, several coefficients can be 0.
-
-As shown by the analysis of Section \ref{sec:phsync},
-\begin{itemize}
-\item The frequency deviation of all generators become equalize under a steady power flow distribution.
-\end{itemize}
-The following frequency stability analysis assumes this fact.
-Specifically, for one integrator included in the broadcast-type PI controller to make the steady frequency deviation of all generators 0, a property is necessary whereby the above-described frequency deviation automatically synchronizes.
+\subsection{Power system model under consideration\advanced}\label{sec:objmod}
 
 \smallskip
-\subsubsection{Expression by feedback system of an electrical power system with automatic generation control}
+\subsubsection{Assumptions on Power System Model and Automatic Generation Control}
 
-Similar to the discussion of Section \ref{sec:linpasana}, let us consider describing the electrical power system model as a feedback system of two subsystems.
-The first subsystem is:
-\begin{align}\label{eq:sys1}
-\mathds{F}:
-\simode{
-M \Delta \dot{\omega}&= 
-- 
-D
-\Delta\omega 
- + 
-u_{\mathds{F}}
-+P_{{\rm mech}}^{\star}
-\\
-y_{\mathds{F}}&= \omega_0 \Delta\omega 
-}
-\end{align}
-$\Delta\omega$ is a vector with $\Delta\omega_i$ in a column, while $M$ and $D$ are vectors where $M_i$ and $D_i$ are placed diagonally.
-$P_{{\rm mech}}^{\star}$ is a vector with $P_{{\rm mech}i}^{\star}$.
-$\mathds{F}$ is equal to the mechanical system in Section \ref{sec:linpasana} excluding the difference in the constant vector $P_{{\rm mech}}^{\star}$.
-The second subsystem expresses the electrical subsystem of Section \ref{sec:linpasana} as a nonlinear differential-algebraic equation system:
+In Section \ref{sec:stalin}, an approximate linear model was derived under the
+assumption that the power system model is in the vicinity of steady-state power
+flow conditions, and necessary and sufficient conditions for steady-state
+stability were analyzed. In this section, using the concept of passivity for
+nonlinear systems, we analyze the frequency stability of the power system model
+described as a system of differential-algebraic equations, taking into
+consideration the stability of the entire feedback control system with automatic
+generation control. Specifically, we conduct stability analysis under the
+following assumptions.
+
+\begin{itemize}
+  \item All generators are expressed with the generator model of Equation (\ref{eq:lmodelsagc}). However, it is assumed that the field voltage of each generator is set to a constant.
+  \item All loads are expressed with the constant power model of Equation \ref{eq:contpwmod}.
+  \item For algebraic equations for the power grid of Equation \ref{eq:PQVgenagc}, conductance of all transmission lines is assumed to be 0.
+  \item For the broadcast-type PI controller of Equation (\ref{eq:agccon}), automatic generation control is performed.
+  However, it is assumed that $\alpha_i$ and $\beta_i$ are equal for all $i\in \mathcal{I}_{\rm G}$ for the weight of the participation factor and
+  frequency deviation.
+\end{itemize}
+
+The first and second assumptions refer to considering a standard model for the
+generator and load in the power system. The third assumption regarding the
+transmission network implies that transmission losses are assumed to be zero,
+which is essential for conducting stability analysis mathematically. In reality,
+it is not possible to completely eliminate transmission losses in a power
+system, but reducing transmission losses can be achieved by transmitting power
+at higher voltages with lower currents. The discussion in this section assumes
+that transmission losses can be approximately considered as zero due to
+high-voltage transmission. The fourth assumption is necessary for the
+input-output characteristics of the broadcast-type PI controller to be passive.
+However, it should be noted that even if some coefficients are zero, as long as
+at least one contribution coefficient $\alpha_i$ for $i\in \mathcal{I}_{\rm G}$
+is positive, it is acceptable. 
+
+Furthermore, as shown in the analysis of Section \ref{sec:phsync}:
+
+\begin{itemize}
+  \item The frequency deviation of all generators become equalize under a steady power flow distribution.
+\end{itemize}
+
+The following frequency stability analysis is based on this fact. Specifically,
+in order for the integral controller in the broadcast-type PI controller to make
+the steady-state angular frequency deviations of all generators zero, it is
+necessary for the above-mentioned angular frequency deviations to automatically
+synchronize with each other. Note that this requires the characteristic of
+automatic synchronization among the angular frequency deviations using only one
+integrator included in the broadcast-type PI controller.
+
+\smallskip
+\subsubsection{Representation of power system with automatic generation control
+as a feedback system}
+
+Similar to the discussion in Section \ref{sec:linpasana}, we consider
+representing the power system model as a feedback system consisting of two
+subsystems. The first subsystem is described by the following equations:
+\begin{equation}\label{eq:sys1}
+  \mathds{F}:
+  \simode{
+  M \Delta \dot{\omega}&= 
+  - 
+  D
+  \Delta\omega 
+  + 
+  u_{\mathds{F}}
+  +P_{{\rm mech}}^{\star}
+  \\
+  y_{\mathds{F}}&= \omega_0 \Delta\omega 
+  }
+\end{equation}
+
+However, $\Delta\omega$ is a vector composed of $\Delta\omega_i$ stacked
+vertically, and $M$ and $D$ are matrices formed by diagonally arranging $M_i$
+and $D_i$. Also, $P_{{\rm mech}}^{\star}$ is a constant vector composed of
+$P_{{\rm mech}i}^{\star}$. This $\mathds{F}$ is equivalent to the mechanical
+subsystem in Section \ref{sec:linpasana}, except for the difference in the
+constant vector $P_{{\rm mech}}^{\star}$. The second subsystem is represented by
+the nonlinear differential-algebraic equation system of the electrical subsystem
+in Section \ref{sec:linpasana}, given by:
+
 \begin{subequations}\label{eq:sys2G}
-\begin{align}\label{eq:sys2}
-\mathds{G}_i : 
-\simode{ 
-\dot{\delta}_i &= u_{\mathds{G}_i}
-\\
-\taudi \dot{E}_i & = 
- -\tfrac{ \Xsi }{ \Xti }E_i
-+\left(
-\tfrac{ \Xsi }{ \Xti }-1
-\right)
-|\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
-+ V_{{\rm field}i}^{\star}
-\\
-y_{\mathds{G}_i}&= \tfrac{E_i |\bm{V}_i|}{ \Xti} \sfsin (\delta_i - \angle \bm{V}_i)
-}
-\end{align}
-The voltage phasor of the bus bars in Equation \ref{eq:sys2} must simultaneously satisfy simultaneous equations related to all generator buses:
-\begin{align}\label{eq:gVeq}
-\simode{
-P_i &=
-\sum_{j=1}^{N} B_{ij} |\bm{V}_i| |\bm{V}_j| \sfsin(\angle \bm{V}_i -\angle \bm{V}_j)
-\\
-Q_i &= 
- -\sum_{j=1}^{N} B_{ij} |\bm{V}_i| |\bm{V}_j| \sfcos(\angle \bm{V}_i -\angle \bm{V}_j)
-}\qquad
-i \in \mathcal{I}_{\rm G}
-\end{align}
-and simultaneous equations related to all load bus bars:
-\begin{align}\label{eq:lVeq}
-\simode{
-&P_{{\rm load}i}^{\star} =
-\sum_{j=1}^{N} B_{ij} |\bm{V}_i| |\bm{V}_j| \sfsin(\angle \bm{V}_i -\angle \bm{V}_j)
-\\
-&Q_{{\rm load}i}^{\star} = 
--\sum_{j=1}^{N} B_{ij} |\bm{V}_i| |\bm{V}_j| \sfcos(\angle \bm{V}_i -\angle \bm{V}_j)
-}\qquad
-i \in \mathcal{I}_{\rm L}
-\end{align}
-\end{subequations}
-The active power $P_i$ and reactive power $Q_i$ of Equation \ref{eq:gVeq} are defined by Equation \ref{eq:PQoutagc}.
-$B_{ij}$ expresses the $(i,j)$th element of the susceptance matrix $B$, which is the imaginary part of the admittance matrix $\bm{Y}$.
-Below, for all generator buses $i \in \mathcal{I}_{\rm G}$, we consider a summary of Equation \ref{eq:sys2} to Equation \ref{eq:lVeq} as one subsystem and express it as the electrical subsystem $\mathds{G}$.
+\begin{equation}\label{eq:sys2}
+  \mathds{G}_i : 
+  \simode{ 
+    \dot{\delta}_i &= u_{\mathds{G}_i}
+    \\
+    \taudi \dot{E}_i & = 
+    -\tfrac{ \Xsi }{ \Xti }E_i
+    +\left(
+    \tfrac{ \Xsi }{ \Xti }-1
+    \right)
+    |\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
+    + V_{{\rm field}i}^{\star}
+    \\
+    y_{\mathds{G}_i}&= \tfrac{E_i |\bm{V}_i|}{ \Xti} \sfsin (\delta_i - \angle \bm{V}_i)
+  }
+\end{equation}
 
-In addition, the dynamic characteristics of the broadcast-type PI controller of Equation (\ref{eq:agccon}) are expressed as:
-\begin{align}\label{eq:condsK}
-\mathds{K}: \simode{
-\dot{\xi}&=  h^{\sf T} u_{\mathds{K}} \\
-y_{\mathds{K}} &= h \left(k_{\rm P} h^{\sf T}u_{\mathds{K}} +  k_{\rm I} \xi \right)
-}
-\end{align}
-where $h$ is a column vector with $\alpha_i$.
-At this time, if the input and output of the above subsystems $\mathds{F}$ and $\mathds{G}$ and the controller $\mathds{K}$ are combined as follows:
+The voltage phasor of the bus in Equation \ref{eq:sys2} satisfies a set of
+simultaneous equations for all generator buses as follows:
+
+\begin{equation}\label{eq:gVeq}
+  \simode{
+    P_i &=
+    \sum_{j=1}^{N} B_{ij} |\bm{V}_i| |\bm{V}_j| \sfsin(\angle \bm{V}_i -\angle \bm{V}_j)
+    \\
+    Q_i &= 
+    -\sum_{j=1}^{N} B_{ij} |\bm{V}_i| |\bm{V}_j| \sfcos(\angle \bm{V}_i -\angle \bm{V}_j)
+  }\qquad
+  i \in \mathcal{I}_{\rm G}
+\end{equation}
+and a set of coupled equations for all load bus bars given by:
+
+\begin{equation}\label{eq:lVeq}
+  \simode{
+    &P_{{\rm load}i}^{\star} =
+    \sum_{j=1}^{N} B_{ij} |\bm{V}_i| |\bm{V}_j| \sfsin(\angle \bm{V}_i -\angle \bm{V}_j)
+    \\
+    &Q_{{\rm load}i}^{\star} = 
+    -\sum_{j=1}^{N} B_{ij} |\bm{V}_i| |\bm{V}_j| \sfcos(\angle \bm{V}_i -\angle \bm{V}_j)
+  }\qquad
+  i \in \mathcal{I}_{\rm L}
+\end{equation}
+\end{subequations}
+
+In addition, the active power $P_i$ and reactive power $Q_i$ in Equation
+(\ref{eq:gVeq}) are defined by Equation (\ref{eq:PQoutagc}). Also, $B_{ij}$
+represents the $(i,j)$ element of the susceptance matrix $B$, which is the
+imaginary part of the admittance matrix $\bm{Y}$. In the following, we consider
+the combination of Equations (\ref{eq:sys2}) to (\ref{eq:lVeq}) for all
+generator buses $i \in \mathcal{I}_{\rm G}$ as one subsystem, and denote it as
+the electrical subsystem $\mathds{G}$.
+
+Furthermore, the dynamic characteristics of the broadcast-type PI controller in
+Equation (\ref{eq:agccon}) are represented as follows:
+\begin{equation}\label{eq:condsK}
+  \mathds{K}: \simode{
+  \dot{\xi}&=  h^{\sf T} u_{\mathds{K}} \\
+  y_{\mathds{K}} &= h \left(k_{\rm P} h^{\sf T}u_{\mathds{K}} +  k_{\rm I} \xi \right)
+  }
+\end{equation}
+where $h$ is a column vector consisting of $\alpha_i$.
+
+In this case, the inputs and outputs of the aforementioned subsystems
+$\mathds{F}$, $\mathds{G}$, and controller $\mathds{K}$ are interconnected as
+follows:
 \begin{subequations}\label{eq:connds}
 \begin{align}
 u_{\mathds{F}} = - y_{\mathds{K}} + v_{\mathds{F}}&
@@ -405,10 +570,14 @@ u_{\mathds{G}} = y_{\mathds{F}}&
 v_{\mathds{F}} = - y_{\mathds{G}}		\label{eq:connds2}
 \end{align}
 \end{subequations}
-we can express an entire feedback control system that incorporates the automatic generation control.
-However, $u_{\mathds{G}}$ and $y_{\mathds{G}}$ are vectors with $u_{\mathds{G}_i}$ and $y_{\mathds{G}_i}$.
-\FIGref{fig:nonlinBD} shows a block diagram of the entire feedback control system.
-Please note that the block of “electric power balance equation” includes unknown model parameters, such as consumed electric power of loads and admittance of transmission lines. 
+
+This represents the entire feedback control system incorporating automatic
+generation control. However, it should be noted that the "power balance
+equation" block includes unknown model parameters such as load consumption power
+and transmission line admittance. The block diagram of the entire feedback
+control system is shown in Figure \ref{fig:nonlinBD}. Please note that the block
+representing the "power balance equation" includes unknown model parameters such
+as load consumption power and transmission line admittance.
 
 \begin{figure}[t]
 \centering
@@ -421,86 +590,125 @@ Please note that the block of “electric power balance equation” includes unk
 
 
 
-\subsection{Passivity independent of the equilibrium point of the electrical power system\advanced}
+\subsection{Equilibrium-independent passivity of power system models\advanced}
 
 \smallskip
-\subsubsection{Passivity independent of the equilibrium point}
+\subsubsection{Equilibrium-independent passivity}
 
-The discussion of Section \ref{sec:linpasana} was an analysis by the linear approximation model; thus, the internal state asymptotically converging to 0 expressed the asymptotic convergence to a specific steady power flow distribution of the original nonlinear model.
-On the other hand, with the electrical power system model expressed as a nonlinear differential-algebraic equation system, the internal state does not become 0 even with a steady power flow distribution where the supply and demand of electric power are balanced.
-Furthermore, the steady power flow distribution itself changes based on the setting of mechanical torque and so on.
-Therefore, a stability analysis independent of the choice of each steady power flow distribution (equilibrium point) is desirable. A concept proposed by control systems engineering to perform this analysis is called \textbf{equilibrium-independent passivity} \cite{hines2011equilibrium,simpson2019equilibrium}. Depending on the paper, it is also called \textbf{shifted passivity}. Its definition is as follows:
+The discussion in Section \ref{sec:linpasana} was based on an approximate linear
+model, and the convergence to zero of the internal state represented the
+asymptotic convergence to a specific steady-state power flow condition in the
+original nonlinear model. On the other hand, in power system models represented
+as nonlinear differential-algebraic equation systems, the internal state does
+not necessarily converge to zero even at steady-state power flow conditions
+where power supply and demand are balanced. Furthermore, the steady-state power
+flow condition itself can change depending on set values such as mechanical
+inputs. Therefore, it is desirable to conduct stability analysis that does not
+depend on the selection of individual steady-state power flow conditions
+(equilibrium points). A concept proposed in control engineering for such
+analysis is called \textbf{equilibrium-independent
+passivity}\index{equilibrium-independent passivity}
+\cite{hines2011equilibrium,simpson2019equilibrium}.  Note that in some
+literature, it is also referred to as \textbf{shifted passivity}\index{shifted
+passivity} \cite{monshizadeh2019conditions}.  Its definition is given as
+follows.
 
-\begin{定義}[Equilibrium-independent passivity]\label{def:eipassive}
+\begin{definition}[Equilibrium-independent passivity]\label{def:eipassive}
 Let us consider a nonlinear system:
-\begin{align}\label{eq:nlsig}
-\Sigma: \simode{
-E\dot{x} &= f(x) + Bu + R d^{\star}\\
-y &= h(x)
-}
-\end{align}
-$f:\mathcal{X} \rightarrow \mathbb{R}^{n}$ and $h:\mathcal{X} \rightarrow \mathbb{R}^{m}$ are smooth functions, and $B \in \mathbb{R}^{n\times m}$, $E \in \mathbb{R}^{n\times n}$, and $R \in \mathbb{R}^{n\times p}$ are matrices.
-\begin{align*}%\label{eq:asbleq}
-\mathcal{E}_{\Sigma} :=
-\left\{
-x^{\star} \in \mathcal{X}: 
-\mbox{$0 = f(x^{\star})+B u^{\star}+ R d^{\star}$を満たす$u^{\star}$が存在する}
-\right\}
-\end{align*}
-$\Sigma$ of Equation \ref{eq:nlsig} expresses:
-\begin{align*}%\label{eq:eiconpv}
-\frac{d}{dt} W_{x^{\star}} \bigl( x(t) \bigr) \leq \bigl(u(t)-u^{\star}\bigr)^{\sf T} \bigl(y(t)-y^{\star}\bigr)
-,\qquad
-\forall t \geq 0
-\end{align*}
-of the differential-algebraic equation system.
-If applied to an electrical subsystem $\mathds{G}$, $x_1$ is a vector with all $\delta_i$ and $E_i$, while $x_2$ is a vector with all $|\bm{V}_i|$ and $\angle \bm{V}_i$.
-On the other hand, when $E$ is nonsingular, it expresses an ordinary differential equation system, such as a mechanical subsystem $\mathds{F}$ of Equation \ref{eq:sys1}.
-Such a system expression is called a \textbf{descriptor representation}.
-\begin{align*}%\label{eq:uystar}
-u^{\star} := -(B^{\sf T}B)^{-1}B^{\sf T} \bigl\{f(x^{\star}) + R d^{\star} \bigr\}
-,\qquad
-y^{\star} := h(x^{\star}) 
-\end{align*}
-と表している。
-特に，上記の半正定値関数$W_{x^{\star}}(x)$に加えて
-\begin{align*}%\label{eq:eiconosp}
-\frac{d}{dt} W_{x^{\star}} \bigl( x(t) \bigr) \leq \bigl(u(t)-u^{\star}\bigr)^{\sf T} \bigl(y(t)-y^{\star}\bigr)
--\rho \bigl\|y(t)-y^{\star} \bigr\|^2
-,\qquad
-\forall t \geq 0
-\end{align*}
-For an arbitrary input $u $ for each and every equilibrium point $x^{\star} \in \mathcal{E}_{\Sigma}$ where $W_{x^{\star}} (x^{\star})$ is 0, $\Sigma$ is called \textbf{passive independent of the equilibrium point}.
-Steady input and output for the equilibrium point $x^{\star}$ are expressed as:
-\end{定義}
 
-With definition \ref{def:eipassive}, we can interpret that the passivity is defined with the equilibrium point $x^{\star} \in \mathcal{E}_{\Sigma}$ of the system as the reference.
-With a category of a linear system, as long as the system does not have a zero eigenvalue, it is an equivalent definition to the passivity of Section \ref{sec:linpasana}.
-The above function $W_{x^{\star}}(x)$ is called a storage function in the same manner as the regular passivity.
-Please note that this storage function $W_{x^{\star}}(x)$ is an implicit function of the equilibrium point $x^{\star}$.  In the literature \cite{simpson2019equilibrium}, if the system is passive independent of the equilibrium point , its storage function can be expressed with:
+\begin{equation}\label{eq:nlsig}
+  \Sigma: \simode{
+  E\dot{x} &= f(x) + Bu + R d^{\star}\\
+  y &= h(x)
+  }
+\end{equation}
+where $f:\mathcal{X} \rightarrow \mathbb{R}^{n}$ and $h:\mathcal{X} \rightarrow
+\mathbb{R}^{m}$ are smooth functions, and $B \in \mathbb{R}^{n\times m}$, $E \in
+\mathbb{R}^{n\times n}$, $R \in \mathbb{R}^{n\times p}$ are matrices. Also,
+$d^{\star}\in \mathbb{R}^p$ is a constant vector. Here, $\mathcal{X}$ represents
+the admissible state space.
+
+The set of achievable equilibrium points by constant inputs is denoted as:
+
+\begin{equation*}%\label{eq:asbleq}
+  \mathcal{E}_{\Sigma} :=
+  \left\{
+  x^{\star} \in \mathcal{X}: 
+  \mbox{there exists $u^{\star}$ satisfying $0 = f(x^{\star})+B u^{\star}+ R d^{\star}$}
+  \right\}
+\end{equation*}
+
+For each equilibrium point $x^{\star} \in \mathcal{E}{\Sigma}$, if there exists
+a differentiable positive semi-definite function $W{x^{\star}}:\mathcal{X}
+\rightarrow \mathbb{R}{\geq 0}$ such that $W{x^{\star}} (x^{\star}) = 0$ and for
+any input $u$, the following inequality holds for all $t \geq 0$:
+
+\begin{equation*}%\label{eq:eiconpv}
+  \frac{d}{dt} W_{x^{\star}} \bigl( x(t) \bigr) \leq \bigl(u(t)-u^{\star}\bigr)^{\sf T} \bigl(y(t)-y^{\star}\bigr)
+  ,\qquad
+  \forall t \geq 0
+\end{equation*}
+then $\Sigma$ is called \textbf{equilibrium-independent passive}. Here,
+$u^{\star}$ and $y^{\star}$ denote the steady-state input and output at the
+equilibrium point, respectively, and are defined as:
+
+\begin{equation*}%\label{eq:uystar}
+  u^{\star} := -(B^{\sf T}B)^{-1}B^{\sf T} \bigl\{f(x^{\star}) + R d^{\star} \bigr\}
+  ,\qquad
+  y^{\star} := h(x^{\star}) 
+\end{equation*}
+
+In particular, if there exists a positive constant $\rho$ such that the
+following inequality holds for all $t \geq 0$:
+
+\begin{equation*}%\label{eq:eiconosp}
+  \frac{d}{dt} W_{x^{\star}} \bigl( x(t) \bigr) \leq \bigl(u(t)-u^{\star}\bigr)^{\sf T} \bigl(y(t)-y^{\star}\bigr)
+  -\rho \bigl\|y(t)-y^{\star} \bigr\|^2
+  ,\qquad
+  \forall t \geq 0
+\end{equation*}
+then $\Sigma$ is called \textbf{equilibrium-independent strictly passive}.
+\end{definition}
+
+In Definition \ref{def:eipassive}, the passivity of the system is defined with
+respect to the equilibrium point $x^{\star} \in \mathcal{E}{\Sigma}$ as a
+reference. In the context of linear systems, it is known that this definition of
+passivity is equivalent to the definition of passivity in Section
+\ref{sec:linpasana}, unless the system has a zero eigenvalue
+\cite{hines2011equilibrium}. Note that the function $W_{x^{\star}}(x)$ mentioned
+above is called the storage function, similar to conventional passivity
+definitions. It should be noted that this storage function $W_{x^{\star}}(x)$ is
+an implicit function of the equilibrium point $x^{\star}$.
 
 \begin{COLUMN}
-\noindent \textbf{ディスクリプタ形式}：
-Matrix $E$ was introduced to express an electrical subsystem $\mathds{G}$ of Equation (\ref{eq:sys2G}), which is a differential-algebraic equation system.
-Specifically, if:
+\noindent \textbf{Descriptor representation}:
+The matrix $E$ in Equation \ref{eq:nlsig} is introduced to represent the
+electrical subsystem $\mathds{G}$ of the differential-algebraic equation system
+given by Equation (\ref{eq:sys2G}). Specifically, by setting:
+
 \[
-E=\mat{
-I & 0 \\
-0 & 0\\ 
-}
+  E=\mat{
+  I & 0 \\
+  0 & 0\\ 
+  }
 \]
-$\Sigma$ of Equation \ref{eq:nlsig} expresses:
-\begin{align*}
-\simode{
-\dot{x}_1 &= f_1(x_1,x_2) + B_1u + R_1 d^{\star}\\
-0 &= f_2(x_1,x_2) \\
-y &= h(x_1,x_2)
-}
-\end{align*}
-of the differential-algebraic equation system.
-If applied to an electrical subsystem $\mathds{G}$, $x_1$ is a vector with all $\delta_i$ and $E_i$, while $x_2$ is a vector with all $|\bm{V}_i|$ and $\angle \bm{V}_i$.
-On the other hand, when $E$ is nonsingular, it expresses an ordinary differential equation system, such as a mechanical subsystem $\mathds{F}$ of Equation \ref{eq:sys1}.
-Such a system expression is called a \textbf{descriptor representation}. 
+the system $\Sigma$ in Equation \ref{eq:nlsig} represents the following
+differential-algebraic equation system:
+
+\begin{equation*}
+  \simode{
+    \dot{x}_1 &= f_1(x_1,x_2) + B_1u + R_1 d^{\star}\\
+    0 &= f_2(x_1,x_2) \\
+    y &= h(x_1,x_2)
+  }
+\end{equation*}
+
+When applied to the electrical subsystem $\mathds{G}$, $x_1$ is a vector
+containing all $\delta_i$ and $E_i$, and $x_2$ is a vector containing all
+$|\bm{V}_i|$ and $\angle \bm{V}_i$. On the other hand, when $E$ is regular, it
+represents a differential equation system like the mechanical subsystem
+$\mathds{F}$ given by Equation \ref{eq:sys1}. This type of system
+representation is called the \textbf{descriptor representation}.
 \end{COLUMN}
 
 \red{Translated with DeepL}
