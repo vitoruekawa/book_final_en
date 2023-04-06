@@ -427,12 +427,18 @@ generation control. Specifically, we conduct stability analysis under the
 following assumptions.
 
 \begin{itemize}
-  \item All generators are expressed with the generator model of Equation (\ref{eq:lmodelsagc}). However, it is assumed that the field voltage of each generator is set to a constant.
-  \item All loads are expressed with the constant power model of Equation \ref{eq:contpwmod}.
-  \item For algebraic equations for the power grid of Equation \ref{eq:PQVgenagc}, conductance of all transmission lines is assumed to be 0.
-  \item For the broadcast-type PI controller of Equation (\ref{eq:agccon}), automatic generation control is performed.
-  However, it is assumed that $\alpha_i$ and $\beta_i$ are equal for all $i\in \mathcal{I}_{\rm G}$ for the weight of the participation factor and
-  frequency deviation.
+  \item All generators are expressed with the generator model of Equation
+  (\ref{eq:lmodelsagc}). However, it is assumed that the field voltage of each
+  generator is set to a constant.
+  \item All loads are expressed with the constant power model of Equation
+  \ref{eq:contpwmod}.
+  \item For algebraic equations for the power grid of Equation
+  \ref{eq:PQVgenagc}, conductance of all transmission lines is assumed to be 0.
+  \item For the broadcast-type PI controller of Equation (\ref{eq:agccon}),
+  automatic generation control is performed.
+  However, it is assumed that $\alpha_i$ and $\beta_i$ are equal for all $i\in
+  \mathcal{I}_{\rm G}$ for the weight of the participation factor and frequency
+  deviation.
 \end{itemize}
 
 The first and second assumptions refer to considering a standard model for the
@@ -711,264 +717,346 @@ $\mathds{F}$ given by Equation \ref{eq:sys1}. This type of system
 representation is called the \textbf{descriptor representation}.
 \end{COLUMN}
 
-\red{Translated with DeepL}
-In the literature \cite{simpson2019equilibrium}, if the system is passive independent of the equilibrium point, its accumulation function is a function $U(x)$ given by:
-\begin{align}\label{eq:paraW}
-W_{x^{\star}}(x) = U(x) - U(x^{\star}) - \nabla U^{\sf T}(x^{\star}) (x-x^{\star})
-\end{align}
-With definition \ref{def:eipassive}, the storage function $W_{x^{\star}}(x)$ of Equation \ref{eq:paraW} being a positive semi-definite function is a condition.
-Specifically, the following must hold:
-\begin{align}\label{eq:Uineqst}
-U(x) \geq  U(x^{\star}) + \nabla U^{\sf T}(x^{\star}) (x-x^{\star})
-\end{align}
-If this inequality holds for an arbitrary set $(x,x^{\star}) \in \mathcal{X} \times \mathcal{X}$, $W_{x^{\star}}(x)$ is a positive semi-definite function for each and every equilibrium point $x^{\star} \in \mathcal{E}_{\Sigma}$.
-The inequality of Equation \ref{eq:Uineqst} expresses that $U(x)$ is a \textbf{convex function}
+In reference \cite{simpson2019equilibrium}, it is shown that when a system is
+passive regardless of its equilibrium point, its storage function can be
+expressed in the form of Equation \ref{eq:paraW} using a certain function
+$U(x)$:
+
+\begin{equation}\label{eq:paraW}
+  W_{x^{\star}}(x) = U(x) - U(x^{\star}) - \nabla U^{\sf T}(x^{\star}) (x-x^{\star})
+\end{equation}
+
+In Definition \ref{def:eipassive}, it is a requirement that the storage function
+$W_{x^{\star}}(x)$ in Equation \ref{eq:paraW} is a positive semi-definite
+function. Specifically, the condition is that Equation \ref{eq:Uineqst} holds:
+
+\begin{equation}\label{eq:Uineqst}
+  U(x) \geq  U(x^{\star}) + \nabla U^{\sf T}(x^{\star}) (x-x^{\star})
+\end{equation}
+
+If this inequality holds for any pair $(x,x^{\star}) \in \mathcal{X} \times
+\mathcal{X}$, then for each equilibrium point $x^{\star} \in
+\mathcal{E}{\Sigma}$, $W{x^{\star}}(x)$ is a positive semi-definite function.
+The inequality in Equation \ref{eq:Uineqst} expresses the convexity of the
+function $U(x)$. As will be explained later, the region $\mathcal{X}$ where
+$U(x)$ is convex plays an important role in stability analysis using passivity
+that does not depend on the equilibrium point.
 
 \begin{COLUMN}
 \noindent \textbf{Convex function}:
-If the following is true for a set of two arbitrary points $(x,y)$ selected from a defined range for the function $f(x)$:
+A function $f(x)$ is called \textbf{convex} if, for any two points $(x,y)$ in
+its domain and any $\theta \in [0,1]$, the following inequality holds:
+
 \[
-f\bigl(
-\theta x + (1-\theta) y
-\bigr)
-\leq \theta f(x) + (1- \theta) f(y)
-,\qquad
-\forall \theta \in [0,1]
-\]
-$f(x)$ is called a \textbf{convex function}. Specifically, when $f(x)$ is differentiable, the condition for $f(x)$ to be a convex function is that the following is true for a set of two arbitrary points $(x,y)$:
-\[
-f(x) \geq f(y) + \nabla f^{\sf T}(y)(x-y)
+  f\bigl(
+  \theta x + (1-\theta) y
+  \bigr)
+  \leq \theta f(x) + (1- \theta) f(y)
+  ,\qquad
+  \forall \theta \in [0,1]
 \]
 
+In particular, if $f(x)$ is differentiable, a necessary and sufficient condition
+for $f(x)$ to be convex is that, for any two points $(x,y)$,
+
+\[
+  f(x) \geq f(y) + \nabla f^{\sf T}(y)(x-y)
+\]
+
+This inequality means that the graph of $f(x)$ is always above the tangent line
+to $f(x)$ at the point $x=y$.
+
 \smallskip
-\noindent \textbf{Bregman distance}：
-In statistics, the amount on the right side of Equation \ref{eq:paraW} for a convex function $U(x)$ is called the \textbf{Bregman distance} related to $U(x)$ of $x$ and $x^{\star}$ \cite{bregman1967relaxation}.
-When $U(x)$ is $\|x\|^2$, $W_{x^{\star}}(x)$ is consistent with Euclidean distance $\|x-x^{\star}\|^2$.
+\noindent \textbf{Bregman Distance}:
+In statistics, the quantity on the right-hand side of equation \ref{eq:paraW}
+for a convex function $U(x)$ is called the \textbf{Bregman distance}
+\cite{bregman1967relaxation} between $x$ and $x^{\star}$ with respect to $U(x)$.
+If $U(x)$ is chosen to be $|x|^2$, then the Bregman distance $W_{x^{\star}}(x)$
+reduces to the Euclidean distance $|x-x^{\star}|^2$.
 \end{COLUMN}
 
-
-
 \smallskip
-\subsubsection{Analysis of a mechanical subsystem}
+\subsubsection{Analysis of the mechanical subsystem}
 
-As shown in Section \ref{sec:linpasana}, the mechanical subsystem $\mathds{F}$ is strictly passive.
-Similarly, confirm that $\mathds{F}$ of Equation \ref{eq:sys1} is strictly passive and independent of the equilibrium point.
-First, write the mechanical subsystem as follows:
-\begin{align}
-\mathds{F}: \simode{
-\dot{x}_{\mathds{F}} & = A_{\mathds{F}} x_{\mathds{F}} + B_{\mathds{F}} u_{\mathds{F}} 
-+ R_{\mathds{F}} d_{\mathds{F}}^{\star} \\
-y_{\mathds{F}} &= C_{\mathds{F}} x_{\mathds{F}}
-}
-\end{align}
-State $x_{\mathds{F}}$ is a vector with $\Delta \omega_i$, and $u_{\mathds{F}}$ and $y_{\mathds{F}}$ are vectors with $u_{\mathds{F}_i}$ and $y_{\mathds{F}_i}$.  $d_{\mathds{F}}^{\star}$ expresses $P_{\rm mech}^{\star}$, and the system matrix is:
+As shown in Section \ref{sec:linpasana}, the mechanical subsystem $\mathds{F}$
+is strongly passive. Similarly, we confirm that $\mathds{F}$ in Equation
+\ref{eq:sys1} is also strongly passive regardless of the equilibrium point.
+First, the mechanical subsystem is represented in the form:
+
+\begin{equation}
+  \mathds{F}: \simode{
+  \dot{x}_{\mathds{F}} & = A_{\mathds{F}} x_{\mathds{F}} + B_{\mathds{F}} u_{\mathds{F}} 
+  + R_{\mathds{F}} d_{\mathds{F}}^{\star} \\
+  y_{\mathds{F}} &= C_{\mathds{F}} x_{\mathds{F}}
+  }
+\end{equation}
+
+Here, the state $x_{\mathds{F}}$ is a vector consisting of $\Delta \omega_i$,
+and $u_{\mathds{F}}$ and $y_{\mathds{F}}$ are vectors consisting of
+$u_{\mathds{F}i}$ and $y{\mathds{F}i}$, respectively. Also,
+$d{\mathds{F}}^{\star}$ represents $P_{\rm mech}^{\star}$, and the system
+matrices are:
+
 \[
-A_{\mathds{F}} := -M^{-1}D,\qquad
-B_{\mathds{F}} := M^{-1},\qquad
-R_{\mathds{F}} := M^{-1},\qquad
-C_{\mathds{F}} := \omega_0 I
+  A_{\mathds{F}} := -M^{-1}D,\qquad
+  B_{\mathds{F}} := M^{-1},\qquad
+  R_{\mathds{F}} := M^{-1},\qquad
+  C_{\mathds{F}} := \omega_0 I
 \]
-Matrices $M$ and $D$ are matrices with $M_i$ and $D_i$ in diagonal. We select a storage function for the arbitrarily selected equilibrium point $x^{\star}_{\mathds{F}} \in \mathcal{E}_{\mathds{F}}$:
-\begin{align}\label{eq:WxFst}
+
+Note that the matrices $M$ and $D$ are diagonal matrices composed of $M_i$ and
+$D_i$. For an arbitrarily selected equilibrium point $x^{\star}{\mathds{F}} \in
+\mathcal{E}{\mathds{F}}$, the storage function is chosen as:
+
+\begin{equation}\label{eq:WxFst}
 W_{x^{\star}_{\mathds{F}}}(x_{\mathds{F}})
 = \frac{\omega_0}{2}
 (x_{\mathds{F}} -x^{\star}_{\mathds{F}})^{\sf T}
 M
 (x_{\mathds{F}} -x^{\star}_{\mathds{F}})
-\end{align}
-However, $(x^{\star}_{\mathds{F}},u^{\star}_{\mathds{F}},y^{\star}_{\mathds{F}})$ related to the equilibrium point satisfies:
-\begin{align}\label{eq:xFsteady}
-0=
-A_{\mathds{F}} x^{\star}_{\mathds{F}}
-+
-B_{\mathds{F}} u^{\star}_{\mathds{F}}
-+ R_{\mathds{F}} d_{\mathds{F}}^{\star}
-,\qquad
-y^{\star}_{\mathds{F}} = C_{\mathds{F}} x^{\star}_{\mathds{F}}
-\end{align}
-If expressing in the form of Equation \ref{eq:paraW}, with:
-\[
-U_{\mathds{F}}(x_{\mathds{F}}):= \frac{\omega_0}{2} x_{\mathds{F}}^{\sf T} M x_{\mathds{F}}
-\]
-the storage function can be expressed as:
-\[
-W_{x^{\star}_{\mathds{F}}}(x_{\mathds{F}}) = U_{\mathds{F}}(x_{\mathds{F}}) 
-- U_{\mathds{F}}(x^{\star}_{\mathds{F}}) 
-- \nabla U^{\sf T}_{\mathds{F}}(x^{\star}_{\mathds{F}}) (x_{\mathds{F}}-x^{\star}_{\mathds{F}})
-\]
-A gradient function of this storage function is:
-\begin{align*}%\label{eq:nabW}
-\nabla W_{x^{\star}_{\mathds{F}}}(x_{\mathds{F}}) = \omega_0 M (x_{\mathds{F}} -x^{\star}_{\mathds{F}})
-\end{align*}
-thus, the time derivative of the storage function can be evaluated as:
-\begin{align}\label{eq:tdFds}
-\spliteq{
-\frac{d}{dt} W_{x^{\star}_{\mathds{F}}} \bigl( x_{\mathds{F}}(t) \bigr) 
-&= 
-\nabla W_{x^{\star}_{\mathds{F}}}^{\sf T}\left( x_{\mathds{F}}(t) \right) \dot{x}_{\mathds{F}}(t) \\
-&= 
-\nabla W_{x^{\star}_{\mathds{F}}}^{\sf T}\left( x_{\mathds{F}}(t) \right)
- \left\{
-A_{\mathds{F}} \left( x_{\mathds{F}}(t) -x^{\star}_{\mathds{F}} \right)
-+
-B_{\mathds{F}} \left( u_{\mathds{F}}(t) -u^{\star}_{\mathds{F}} \right)
-\right\}
-\\
-& \leq \textstyle
-(y_{\mathds{F}}(t) -y^{\star}_{\mathds{F}})^{\sf T}
-(u_{\mathds{F}}(t) -u^{\star}_{\mathds{F}})
- - \tfrac{\sfmin \left\{ D_i \right\}}{\omega_0}
-\|y_{\mathds{F}}(t) -y^{\star}_{\mathds{F}}\|^2
-}
-\end{align}
-To derive the second equal sign, the relationship of Equation \ref{eq:xFsteady} was used.
+\end{equation}
 
+Here, $(x^{\star}{\mathds{F}},u^{\star}{\mathds{F}},y^{\star}{\mathds{F}})$ with
+respect to the equilibrium point satisfies:
+
+\begin{equation}\label{eq:xFsteady}
+  0=
+  A_{\mathds{F}} x^{\star}_{\mathds{F}}
+  +
+  B_{\mathds{F}} u^{\star}_{\mathds{F}}
+  + R_{\mathds{F}} d_{\mathds{F}}^{\star}
+  ,\qquad
+  y^{\star}_{\mathds{F}} = C_{\mathds{F}} x^{\star}_{\mathds{F}}
+\end{equation}
+
+If expressed in the form of Equation \ref{eq:paraW}, the storage function can be
+written as:
+
+\[
+  U_{\mathds{F}}(x_{\mathds{F}}):= \frac{\omega_0}{2} x_{\mathds{F}}^{\sf T} M x_{\mathds{F}}
+\]
+
+Therefore, the storage function can be expressed as:
+
+\[
+  W_{x^{\star}_{\mathds{F}}}(x_{\mathds{F}}) = U_{\mathds{F}}(x_{\mathds{F}}) 
+  - U_{\mathds{F}}(x^{\star}_{\mathds{F}}) 
+  - \nabla U^{\sf T}_{\mathds{F}}(x^{\star}_{\mathds{F}}) (x_{\mathds{F}}-x^{\star}_{\mathds{F}})
+\]
+
+The gradient function of this storage function can be expressed as:
+
+\begin{equation*}%\label{eq:nabW}
+  \nabla W_{x^{\star}_{\mathds{F}}}(x_{\mathds{F}}) = \omega_0 M (x_{\mathds{F}} -x^{\star}_{\mathds{F}})
+\end{equation*}
+
+Hence, the time derivative of the storage function can be evaluated as:
+
+\begin{equation}\label{eq:tdFds}
+  \spliteq{
+    \frac{d}{dt} W_{x^{\star}_{\mathds{F}}} \bigl( x_{\mathds{F}}(t) \bigr) 
+    &= 
+    \nabla W_{x^{\star}_{\mathds{F}}}^{\sf T}\left( x_{\mathds{F}}(t) \right) \dot{x}_{\mathds{F}}(t) \\
+    &= 
+    \nabla W_{x^{\star}_{\mathds{F}}}^{\sf T}\left( x_{\mathds{F}}(t) \right)
+    \left\{
+    A_{\mathds{F}} \left( x_{\mathds{F}}(t) -x^{\star}_{\mathds{F}} \right)
+    +
+    B_{\mathds{F}} \left( u_{\mathds{F}}(t) -u^{\star}_{\mathds{F}} \right)
+    \right\}
+    \\
+    & \leq \textstyle
+    (y_{\mathds{F}}(t) -y^{\star}_{\mathds{F}})^{\sf T}
+    (u_{\mathds{F}}(t) -u^{\star}_{\mathds{F}})
+    - \tfrac{\sfmin \left\{ D_i \right\}}{\omega_0}
+    \|y_{\mathds{F}}(t) -y^{\star}_{\mathds{F}}\|^2
+  }
+\end{equation}
+
+Here, the derivation of the second equality used the relationship in Equation \ref{eq:xFsteady}.
 
 \smallskip
-\subsubsection{Analysis of a feedback system of a mechanical subsystem and automatic generation controller}
+\subsubsection{Analysis of feedback system for mechanical subsystem and automatic power generation controller}
 
-In the same way as the mechanical subsystem, the passivity of the broadcast-type PI controller of Equation \ref{eq:condsK} can be shown as well.
-If we define the storage function as: 
-\begin{align}\label{eq:Wxist}
-W_{\xi^{\star}}(\xi) := \frac{1}{2} k_{\rm I} (\xi-\xi^{\star} )^2
-\end{align}
+Similar to the mechanical subsystem, the passivity of the broadcast-type PI
+controller in equation \ref{eq:condsK} can also be demonstrated. By defining the
+storage function as:
+
+\begin{equation}\label{eq:Wxist}
+  W_{\xi^{\star}}(\xi) := \frac{1}{2} k_{\rm I} (\xi-\xi^{\star} )^2
+\end{equation}
 its time derivative can be evaluated as:
-\begin{align}\label{eq:tdKds}
-\spliteq{
-\frac{d}{dt} W_{\xi^{\star}} \bigl( \xi(t) \bigr) 
-&=
-(y_{\mathds{K}} - y_{\mathds{K}}^{\star})^{\sf T} (u_{\mathds{K}} - u_{\mathds{K}}^{\star})
-- k_{\rm P} u_{\mathds{K}}^{\sf T} hh^{\sf T} u_{\mathds{K}} \\
-& \leq (y_{\mathds{K}} - y_{\mathds{K}}^{\star})^{\sf T} (u_{\mathds{K}} - u_{\mathds{K}}^{\star})
-}
-\end{align}
-We used the fact that the following holds for $(\xi^{\star},u_{\mathds{K}}^{\star},y_{\mathds{K}}^{\star})$ at the equilibrium point:
-\begin{align}\label{eq:Kdseq}
-\simode{
-0 &=  h^{\sf T} u_{\mathds{K}}^{\star} \\
-y_{\mathds{K}}^{\star} &= h \left(k_{\rm P} h^{\sf T}u_{\mathds{K}}^{\star} +  k_{\rm I} \xi^{\star} \right)
-}
-\end{align}
 
-In control systems engineering, it is known that a negative feedback system of two passive systems will be passive again.
-Based on this fact, the feedback connection of the mechanical subsystem $\mathds{F}$ of Equation \ref{eq:sys1} and the broadcast-type PI controller $\mathds{K}$ of Equation \ref{eq:condsK}:
-\begin{align}\label{eq:sysFKds}
-\mathds{F}_+:
-\simode{
-M \Delta \dot{\omega}&= 
-- 
-D
-\Delta\omega 
-- h \left(k_{\rm P} h^{\sf T}\Delta\omega  +  k_{\rm I} \xi \right)  + P_{{\rm mech}}^{\star} + v_{\mathds{F}}
-\\
-\dot{\xi} &= h^{\sf T}\Delta\omega\\
-y_{\mathds{F}}&= \omega_0 \Delta\omega 
-}
-\end{align}
-can be shown to be strictly passive and independent of the equilibrium point.
-In actual fact, by combining the inequality of Equations \ref{eq:tdFds} and \ref{eq:tdKds}, the following is obtained:
-\begin{align}\label{eq:disineqFp}
-\spliteq{
-& \frac{d}{dt}  \left\{
-W_{x^{\star}_{\mathds{F}}}  \bigl( x_{\mathds{F}}(t) \bigr) 
-+
-\omega_0
-W_{\xi^{\star}} \bigl( \xi(t) \bigr) 
-\right\} \\
-& \hspace{3em} \leq 
-(y_{\mathds{F}}(t) -y^{\star}_{\mathds{F}})^{\sf T}
-(v_{\mathds{F}}(t) -v^{\star}_{\mathds{F}})  
-- \tfrac{\sfmin \left\{ D_i \right\}}{\omega_0}
-\|y_{\mathds{F}}(t) -y^{\star}_{\mathds{F}}\|^2
-}
-\end{align}
-We used the input-output relationship of Equation \ref{eq:connds1}.
+\begin{equation}\label{eq:tdKds}
+  \spliteq{
+    \frac{d}{dt} W_{\xi^{\star}} \bigl( \xi(t) \bigr) 
+    &=
+    (y_{\mathds{K}} - y_{\mathds{K}}^{\star})^{\sf T} (u_{\mathds{K}} - u_{\mathds{K}}^{\star})
+    - k_{\rm P} u_{\mathds{K}}^{\sf T} hh^{\sf T} u_{\mathds{K}} \\
+    & \leq (y_{\mathds{K}} - y_{\mathds{K}}^{\star})^{\sf T} (u_{\mathds{K}} - u_{\mathds{K}}^{\star})
+  }
+\end{equation}
+where $(\xi^{\star},u_{\mathds{K}}^{\star},y_{\mathds{K}}^{\star})$ represents
+the equilibrium point and Equation \ref{eq:Kdseq} is used. 
 
-If we connect $\mathds{F}_+$ of Equation \ref{eq:sysFKds} and $\mathds{G}$ of Equation (\ref{eq:sys2G}) from the input-output relationship of Equation \ref{eq:connds2}, the entire feedback control system with the automatic generation control can be expressed.
-Based on this fact, we analyse the equilibrium-independent passivity of $\mathds{G}$.
+\begin{equation}\label{eq:Kdseq}
+  \simode{
+    0 &=  h^{\sf T} u_{\mathds{K}}^{\star} \\
+    y_{\mathds{K}}^{\star} &= h \left(k_{\rm P} h^{\sf T}u_{\mathds{K}}^{\star} +  k_{\rm I} \xi^{\star} \right)
+  }
+\end{equation}
+
+In system control engineering, it is known that a negative feedback system
+between two passive systems becomes passive again. Based on this fact, a
+feedback connection is made between the mechanical subsystem $\mathds{F}$ in
+Equation \ref{eq:sys1} and the broadcast-type PI controller $\mathds{K}$ in
+Equation \ref{eq:condsK}, resulting in the system:
+
+\begin{equation}\label{eq:sysFKds}
+  \mathds{F}_+:
+  \simode{
+    M \Delta \dot{\omega}&= 
+    - 
+    D
+    \Delta\omega 
+    - h \left(k_{\rm P} h^{\sf T}\Delta\omega  +  k_{\rm I} \xi \right)  + P_{{\rm mech}}^{\star} + v_{\mathds{F}}
+    \\
+    \dot{\xi} &= h^{\sf T}\Delta\omega\\
+    y_{\mathds{F}}&= \omega_0 \Delta\omega 
+  }
+\end{equation}
+which is strongly passive regardless of the equilibrium point. In fact, adding
+the inequalities in Equation \ref{eq:tdFds} and Equation \ref{eq:tdKds}, we
+obtain:
+
+\begin{equation}\label{eq:disineqFp}
+  \spliteq{
+    & \frac{d}{dt}  \left\{
+    W_{x^{\star}_{\mathds{F}}}  \bigl( x_{\mathds{F}}(t) \bigr) 
+    +
+    \omega_0
+    W_{\xi^{\star}} \bigl( \xi(t) \bigr) 
+    \right\} \\
+    & \hspace{3em} \leq 
+    (y_{\mathds{F}}(t) -y^{\star}_{\mathds{F}})^{\sf T}
+    (v_{\mathds{F}}(t) -v^{\star}_{\mathds{F}})  
+    - \tfrac{\sfmin \left\{ D_i \right\}}{\omega_0}
+    \|y_{\mathds{F}}(t) -y^{\star}_{\mathds{F}}\|^2
+  }
+\end{equation}
+where Equation \ref{eq:connds1} is used for the input-output relationship.
+
+Furthermore, by using the input-output relationship in equation
+\ref{eq:connds2}, combining the machine subsystem $\mathds{F}_+$ in equation
+\ref{eq:sysFKds} with $\mathds{G}$ in equation \ref{eq:sys2G} represents the
+entire feedback control system incorporating automatic generation control. Based
+on this fact, we analyze the passivity of $\mathds{G}$ independent of the
+equilibrium point below.
 
 \smallskip
-\subsubsection{Analysis of an electrical subsystem}
+\subsubsection{Analysis of the electrical subsystem}
 
-Let us analyze the equilibrium-independent passivity of the electrical subsystem $\mathds{G}$ of Equation (\ref{eq:sys2G}).
-Below, we express a column vector with all time variables $\delta_i$，$E_i$, $|\bm{V}_i|$, $\angle \bm{V}_i$ related to the generator buses and load bus bars of $\mathds{G}$ is expressed as $x_{\mathds{G}}$.
-With this description, we define a potential energy function as:
-\begin{align}\label{eq:potWx}
-\spliteq{
-U_{\mathds{G}}(x_{\mathds{G}})  := 
-&  \sum_{i=1}^n
-\left\{
-\frac{ \Xsi E_i^2 }{2 \Xti ( \Xsi - \Xti )}  
-- 
-\frac{E_i |\bm{V}_i|}{ \Xti } \sfcos (\delta_i - \angle \bm{V}_i)
-+\frac{|\bm{V}_i|^2}{2 \Xti }
-\right\}
-\\
-- & 
-\sum_{i=n+1}^{n+m}
-\left\{
- P_{{\rm load}i}^{\star} \angle \bm{V}_i
-+ Q_{{\rm load}i}^{\star} \ln \left|\bm{V}_i \right|
-\right\} \\
-- & \sum_{i=1}^{N}
-\sum_{j=1}^{N} \frac{B_{ij} }{2} |\bm{V}_i| |\bm{V}_j| \sfcos(\angle \bm{V}_i -\angle \bm{V}_j)
-%\left\{
-% \frac{B_{ii} }{2} |\bm{V}_i|^2  
-%+ \sum_{j=1,j\neq i}^{N} \frac{B_{ij} }{2} |\bm{V}_i| |\bm{V}_j| \sfcos(\angle \bm{V}_i -\angle \bm{V}_j)
-%\right\}
-}
-\end{align}
-This potential energy function, for example, is used to analyze the stability of an electrical power system consisting of a uniaxial generator model and constant electric power load model in \cite{tsolas1985structure,varaiya1985direct,chiang2011direct}.
-A candidate for the storage function is structured as follows based on the expression of Equation \ref{eq:paraW}: 
-\begin{align}\label{eq:stops}
-W_{x^{\star}_{\mathds{G}}}(x_{\mathds{G}}) = U_{\mathds{G}}(x_{\mathds{G}}) 
-- U_{\mathds{G}}(x^{\star}_{\mathds{G}}) 
-- \nabla U_{\mathds{G}}^{\sf T}(x^{\star}_{\mathds{G}}) (x_{\mathds{G}}-x^{\star}_{\mathds{G}})
-\end{align}
+We analyze the passivity of the electrical subsystem $\mathds{G}$ in equation
+(\ref{eq:sys2G}) independent of its equilibrium point. Here, we represent the
+column vector containing the time-varying variables $\delta_i$, $E_i$,
+$|\bm{V}_i|$, and $\angle \bm{V}i$ related to the generator bus and load bus of
+$\mathds{G}$ as $x{\mathds{G}}$. Under this notation, we define the potential
+energy function as follows:
+
+\begin{equation}\label{eq:potWx}
+  \spliteq{
+    U_{\mathds{G}}(x_{\mathds{G}})  := 
+    &  \sum_{i=1}^n
+    \left\{
+    \frac{ \Xsi E_i^2 }{2 \Xti ( \Xsi - \Xti )}  
+    - 
+    \frac{E_i |\bm{V}_i|}{ \Xti } \sfcos (\delta_i - \angle \bm{V}_i)
+    +\frac{|\bm{V}_i|^2}{2 \Xti }
+    \right\}
+    \\
+    - & 
+    \sum_{i=n+1}^{n+m}
+    \left\{
+    P_{{\rm load}i}^{\star} \angle \bm{V}_i
+    + Q_{{\rm load}i}^{\star} \ln \left|\bm{V}_i \right|
+    \right\} \\
+    - & \sum_{i=1}^{N}
+    \sum_{j=1}^{N} \frac{B_{ij} }{2} |\bm{V}_i| |\bm{V}_j| \sfcos(\angle \bm{V}_i -\angle \bm{V}_j)
+  }
+\end{equation}
+
+This potential energy function has been used, for example, in the stability
+analysis of power systems consisting of a single-axis generator model and a
+constant power load model, as described in
+\cite{tsolas1985structure,varaiya1985direct,chiang2011direct}. Based on the
+expression in Equation (\ref{eq:paraW}), a candidate storage function is
+constructed as follows:
+
+\begin{equation}\label{eq:stops}
+  W_{x^{\star}_{\mathds{G}}}(x_{\mathds{G}}) = U_{\mathds{G}}(x_{\mathds{G}}) 
+  - U_{\mathds{G}}(x^{\star}_{\mathds{G}}) 
+  - \nabla U_{\mathds{G}}^{\sf T}(x^{\star}_{\mathds{G}}) (x_{\mathds{G}}-x^{\star}_{\mathds{G}})
+\end{equation}
+
 Its gradient function is:
+
 \[
-\nabla W_{x^{\star}_{\mathds{G}}}(x_{\mathds{G}}) =
-\nabla U_{\mathds{G}}(x_{\mathds{G}}) 
-- \nabla U_{\mathds{G}}(x^{\star}_{\mathds{G}}) 
+  \nabla W_{x^{\star}_{\mathds{G}}}(x_{\mathds{G}}) =
+  \nabla U_{\mathds{G}}(x_{\mathds{G}}) 
+  - \nabla U_{\mathds{G}}(x^{\star}_{\mathds{G}}) 
 \]
-To calculate the time derivative of the storage function, we obtain the gradient function of the potential energy function.
-First, if we calculate the partial differential related to $\delta_i$ and $E_i$ of $ U_{\mathds{G}}(x_{\mathds{G}}) $:
-\begin{align*}
-\frac{\partial U_{\mathds{G}}}{\partial \delta_i}(x_{\mathds{G}}) &= \frac{E_i |\bm{V}_i|}{ \Xti } \sfsin (\delta_i - \angle \bm{V}_i) ,
-\\
-\frac{\partial U_{\mathds{G}}}{\partial E_i} (x_{\mathds{G}})&= - \frac{1}{ \Xsi - \Xti }
-\left\{
--\frac{ \Xsi }{ \Xti }E_i
-+\left(
-\frac{ \Xsi }{ \Xti }-1
-\right)
-|\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
-\right\}
-\end{align*}
-Therefore, if each variable follows the differential-algebraic equation of Equation (\ref{eq:sys2G}), because of Equation \ref{eq:sys2}, the following is true for all $i\in \mathcal{I}_{\rm G}$:
-\begin{align*}
+
+To calculate the time derivative of the storage function, we need to find the
+gradient function of the potential energy function. First, we calculate the
+partial derivatives of $U_{\mathds{G}}(x_{\mathds{G}})$ with respect to
+$\delta_i$ and $E_i$, which are given by:
+
+\begin{equation*}
+  \frac{\partial U_{\mathds{G}}}{\partial \delta_i}(x_{\mathds{G}}) &= \frac{E_i |\bm{V}_i|}{ \Xti } \sfsin (\delta_i - \angle \bm{V}_i) ,
+  \\
+  \frac{\partial U_{\mathds{G}}}{\partial E_i} (x_{\mathds{G}})&= - \frac{1}{ \Xsi - \Xti }
+  \left\{
+  -\frac{ \Xsi }{ \Xti }E_i
+  +\left(
+  \frac{ \Xsi }{ \Xti }-1
+  \right)
+  |\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
+  \right\}
+\end{equation*}
+
+Therefore, if each variable follows the differential-algebraic equation of
+Equation (\ref{eq:sys2G}), because of Equation \ref{eq:sys2}, the following is
+true for all $i\in \mathcal{I}_{\rm G}$:
+
+\begin{equation*}
 \frac{\partial U_{\mathds{G}}}{\partial \delta_i}(x_{\mathds{G}})  = y_{\mathds{G}_i}
 ,\qquad
 \frac{\partial U_{\mathds{G}}}{\partial E_i} (x_{\mathds{G}})= 
 \frac{V_{{\rm field}i}^{\star} - \taudi\dot{E}_i  }{ \Xsi - \Xti }
-\end{align*}
-Also, for $i\in \mathcal{I}_{\rm G}$, the partial derivative of the potential energy function with respect to the voltage phasor variable is:
-\begin{align*}
-\spliteq{
-\frac{\partial U_{\mathds{G}}}{\partial |\bm{V}_i| }(x_{\mathds{G}}) &= 
--
-\sum_{j=1}^{N} B_{ij}  |\bm{V}_j| \sfcos(\angle \bm{V}_i -\angle \bm{V}_j)- \frac{Q_i}{|\bm{V}_i|}
-\\
-\frac{\partial U_{\mathds{G}}}{\partial \angle \bm{V}_i } (x_{\mathds{G}})&= 
-\sum_{j=1}^{N}
-B_{ij} |\bm{V}_i| |\bm{V}_j| \sfsin(\angle \bm{V}_i -\angle \bm{V}_j)
--
-P_i
-}
-\end{align*}
-Therefore, we can see that because of Equation \ref{eq:gVeq}, these are all 0.
-Similarly, from Equation \ref{eq:lVeq}, we can see that the following is 0 for $i\in \mathcal{I}_{\rm L}$:
-\begin{align*}
+\end{equation*}
+
+The partial derivatives of the potential energy function with respect to the
+voltage phase variables for $i\in \mathcal{I}_{\rm G}$ are given by:
+
+\begin{equation*}
+  \spliteq{
+    \frac{\partial U_{\mathds{G}}}{\partial |\bm{V}_i| }(x_{\mathds{G}}) &= 
+    -
+    \sum_{j=1}^{N} B_{ij}  |\bm{V}_j| \sfcos(\angle \bm{V}_i -\angle \bm{V}_j)- \frac{Q_i}{|\bm{V}_i|}
+    \\
+    \frac{\partial U_{\mathds{G}}}{\partial \angle \bm{V}_i } (x_{\mathds{G}})&= 
+    \sum_{j=1}^{N}
+    B_{ij} |\bm{V}_i| |\bm{V}_j| \sfsin(\angle \bm{V}_i -\angle \bm{V}_j)
+    -
+    P_i
+  }
+\end{equation*}
+
+Therefore, from Equation \ref{eq:gVeq}, it can be seen that these are equal to
+0. Similarly, from Equation \ref{eq:lVeq}, for $i\in \mathcal{I}_{\rm L}$, it
+can be seen that:
+
+\begin{equation*}
 \spliteq{
 \frac{\partial U_{\mathds{G}}}{\partial |\bm{V}_i| }(x_{\mathds{G}}) &= 
 - \sum_{j=1}^{N} B_{ij}  |\bm{V}_j| \sfcos(\angle \bm{V}_i -\angle \bm{V}_j)
@@ -979,177 +1067,217 @@ Similarly, from Equation \ref{eq:lVeq}, we can see that the following is 0 for $
 -
 P_{{\rm load}i}^{\star}
 }
-\end{align*}
-Thus, the following holds for all $i\in \mathcal{I}_{\rm G} \cup \mathcal{I}_{\rm L}$:
-\begin{align*}
-\frac{\partial U_{\mathds{G}}}{\partial |\bm{V}_i| } (x_{\mathds{G}})= 0
-,\qquad
-\frac{\partial U_{\mathds{G}}}{\partial \angle \bm{V}_i } (x_{\mathds{G}})= 0
-\end{align*}
+\end{equation*}
+
+Therefore, it can be seen that for all $i\in \mathcal{I}_{\rm G} \cup \mathcal{I}_{\rm L}$:
+
+\begin{equation*}
+  \frac{\partial U_{\mathds{G}}}{\partial |\bm{V}_i| } (x_{\mathds{G}})= 0
+  ,\qquad
+  \frac{\partial U_{\mathds{G}}}{\partial \angle \bm{V}_i } (x_{\mathds{G}})= 0
+\end{equation*}
 
 \begin{subequations}\label{eq:eqeq}
-Next, let us consider a set $(x^{\star}_{\mathds{G}},u^{\star}_{\mathds{G}},y^{\star}_{\mathds{G}})$ related to the steady state of $\mathds{G}$ in terms of $\nabla U_{\mathds{G}}(x^{\star}_{\mathds{G}}) $.
-From the relationship of the equilibrium point, there are voltage phasor variables $(|\bm{V}_i^{\star}|, \angle \bm{V}_i^{\star})_{i\in \mathcal{I}_{\rm G} \cup \mathcal{I}_{\rm L} }$, and the following holds:
-\begin{align}\label{eq:eqeqa}
-&\simode{
-0 & = u_{\mathds{G}_i}^{\star} \\
- 0 & =
--\tfrac{ \Xsi }{ \Xti }E_i^{\star}
-+\left(
-\tfrac{ \Xsi }{ \Xti }-1
-\right)
-|\bm{V}_i^{\star}| \sfcos (\delta_i^{\star} - \angle \bm{V}_i^{\star} ) 
-+V_{{\rm field}i}^{\star}
-} \\
-&\simode{
-P_i^{\star} 
-& =
-\sum_{j=1}^{N} B_{ij} |\bm{V}_i^{\star}| |\bm{V}_j^{\star}| \sfsin(\angle \bm{V}_i^{\star} -\angle \bm{V}_j^{\star})
-\\
-Q_i^{\star} 
-&=
- - \sum_{j=1}^{N} B_{ij} |\bm{V}_i^{\star}| |\bm{V}_j^{\star}| \sfcos(\angle \bm{V}_i^{\star} -\angle \bm{V}_j^{\star})
-}
-\end{align}
-However, $ i \in \mathcal{I}_{\rm G} $, and the steady values of active power and reactive power are:
-\begin{align*}%\label{eq:PQoutagcst}
-P_i^{\star}  :=  \frac{E_i^{\star}  |\bm{V}_i^{\star} |}{ \Xti } 
-\sfsin (\delta_i^{\star}  - \angle \bm{V}_i^{\star} ), \qquad
-Q_i^{\star}  :=  \frac{ E_i^{\star} |\bm{V}_i^{\star} | }{ \Xti } 
-\sfcos (\delta_i^{\star}  - \angle \bm{V}_i^{\star} )
--\frac{|\bm{V}_i^{\star} |^2}{ \Xti }
-\end{align*}
-In addition, $y_{\mathds{G}_i}^{\star}$ expresses $P_i^{\star}$.
-Therefore, the following holds for $ i \in \mathcal{I}_{\rm G} $:
-\begin{align*}
-\frac{\partial U_{\mathds{G}}}{\partial \delta_i}(x^{\star}_{\mathds{G}}) = y_{\mathds{G}_i}^{\star}
-,\qquad
-\frac{\partial U_{\mathds{G}}}{\partial E_i}(x^{\star}_{\mathds{G}}) = 
-\frac{V_{{\rm field}i}^{\star}  }{ \Xsi - \Xti }
-\end{align*}
-Similarly, since the following holds for all $ i \in \mathcal{I}_{\rm L} $:
-\begin{align}
-\simode{
-&P_{{\rm load}i}^{\star}=
-\sum_{j=1}^{N} B_{ij} |\bm{V}_i^{\star}| |\bm{V}_j^{\star}| \sfsin(\angle \bm{V}_i^{\star} -\angle \bm{V}_j^{\star}) 
-\\
-&Q_{{\rm load}i}^{\star}
-=
--\sum_{j=1}^{N} B_{ij} |\bm{V}_i^{\star}| |\bm{V}_j^{\star}| \sfcos(\angle \bm{V}_i^{\star} -\angle \bm{V}_j^{\star})
-}
-\end{align}
-\end{subequations}
-The partial differential related to the voltage phasor variables of the bus bars becomes:
-\begin{align*}
-\frac{\partial U_{\mathds{G}}}{\partial |\bm{V}_i| }(x^{\star}_{\mathds{G}})= 0
-,\qquad
-\frac{\partial U_{\mathds{G}}}{\partial \angle \bm{V}_i } (x^{\star}_{\mathds{G}})= 0
-\end{align*}
-for all $i\in \mathcal{I}_{\rm G} \cup \mathcal{I}_{\rm L}$.
-Because of the above calculation, the time derivative along the solution trajectory of storage function $\mathds{G}$ can be evaluated as:
-\begin{align}\label{eq:disineqGds}
-\spliteq{
-\frac{d}{dt}W_{x^{\star}_{\mathds{G}}} \bigl(x_{\mathds{G}}(t) \bigr)
-& =
-\nabla W_{x^{\star}_{\mathds{G}}}^{\sf T} \bigl(x_{\mathds{G}}(t) \bigr)
-\dot{x}_{\mathds{G}}(t) \\
-&=
-\sum_{i=1}^n
-\left(
-(u_{\mathds{G}_i}- u_{\mathds{G}_i}^{\star}) (y_{\mathds{G}_i}-y_{\mathds{G}_i}^{\star})
--
-\frac{\taudi}{ \Xsi - \Xti }
-\dot{E}_i^2
-\right)\\
-& \leq 
-(y_{\mathds{G}}-y_{\mathds{G}}^{\star})^{\sf T} (u_{\mathds{G}}- u_{\mathds{G}}^{\star})
-}
-\end{align}
-Because of Equation \ref{eq:eqeqa}, we used the fact that $u_{\mathds{G}}^{\star}$ is 0.
-As such, we can see that the function $W_{x^{\star}_{\mathds{G}}}(x_{\mathds{G}})$ of Equation \ref{eq:stops} becomes the storage function against the equilibrium-independent passivity of the electrical subsystem $\mathds{G}$.
-However, please note that the ranges of $x_{\mathds{G}}$ and $x_{\mathds{G}}^{\star}$ are limited to the range where $W_{x^{\star}_{\mathds{G}}}(x_{\mathds{G}})$ becomes the positive semi-definite function; in other words, the range where the potential energy function $U_{\mathds{G}}(x_{\mathds{G}})$ of Equation \ref{eq:potWx} becomes the convex function.
-This point will be discussed in the next Section.
 
-\subsection{Stability analysis of a frequency stabilization control system\advanced}\label{sec:potconv}
+Next, consider the set
+$(x^{\star}_{\mathds{G}},u^{\star}_{\mathds{G}},y^{\star}_{\mathds{G}})$ related
+to the steady-state of $\mathds{G}$ with respect to $\nabla
+U{\mathds{G}}(x^{\star}{\mathds{G}})$. From the equilibrium condition, there
+exists a set of voltage phasors $(|\bm{V}_i^{\star}|, \angle
+\bm{V}_i^{\star})_{i\in \mathcal{I}_{\rm G} \cup \mathcal{I}_{\rm L} }$ such
+that:
+
+\begin{equation}\label{eq:eqeqa}
+  &\simode{
+  0 & = u_{\mathds{G}_i}^{\star} \\
+  0 & =
+  -\tfrac{ \Xsi }{ \Xti }E_i^{\star}
+  +\left(
+  \tfrac{ \Xsi }{ \Xti }-1
+  \right)
+  |\bm{V}_i^{\star}| \sfcos (\delta_i^{\star} - \angle \bm{V}_i^{\star} ) 
+  +V_{{\rm field}i}^{\star}
+  } \\
+  &\simode{
+  P_i^{\star} 
+  & =
+  \sum_{j=1}^{N} B_{ij} |\bm{V}_i^{\star}| |\bm{V}_j^{\star}| \sfsin(\angle \bm{V}_i^{\star} -\angle \bm{V}_j^{\star})
+  \\
+  Q_i^{\star} 
+  &=
+  - \sum_{j=1}^{N} B_{ij} |\bm{V}_i^{\star}| |\bm{V}_j^{\star}| \sfcos(\angle \bm{V}_i^{\star} -\angle \bm{V}_j^{\star})
+}
+\end{equation}
+
+However, $i \in \mathcal{I}_{\rm G}$ and the steady-state values of active and
+reactive power are:
+
+\begin{equation*}%\label{eq:PQoutagcst}
+  P_i^{\star}  :=  \frac{E_i^{\star}  |\bm{V}_i^{\star} |}{ \Xti } 
+  \sfsin (\delta_i^{\star}  - \angle \bm{V}_i^{\star} ), \qquad
+  Q_i^{\star}  :=  \frac{ E_i^{\star} |\bm{V}_i^{\star} | }{ \Xti } 
+  \sfcos (\delta_i^{\star}  - \angle \bm{V}_i^{\star} )
+  -\frac{|\bm{V}_i^{\star} |^2}{ \Xti }
+\end{equation*}
+
+In addition, $y_{\mathds{G}_i}^{\star}$ represents $P_i^{\star}$. Therefore,
+the following holds for $ i \in \mathcal{I}_{\rm G} $:
+
+\begin{equation*}
+  \frac{\partial U_{\mathds{G}}}{\partial \delta_i}(x^{\star}_{\mathds{G}}) = y_{\mathds{G}_i}^{\star}
+  ,\qquad
+  \frac{\partial U_{\mathds{G}}}{\partial E_i}(x^{\star}_{\mathds{G}}) = 
+  \frac{V_{{\rm field}i}^{\star}  }{ \Xsi - \Xti }
+\end{equation*}
+
+Similarly, since the following holds for all $ i \in \mathcal{I}_{\rm L} $:
+
+\begin{equation}
+  \simode{
+    &P_{{\rm load}i}^{\star}=
+    \sum_{j=1}^{N} B_{ij} |\bm{V}_i^{\star}| |\bm{V}_j^{\star}| \sfsin(\angle \bm{V}_i^{\star} -\angle \bm{V}_j^{\star}) 
+    \\
+    &Q_{{\rm load}i}^{\star}
+    =
+    -\sum_{j=1}^{N} B_{ij} |\bm{V}_i^{\star}| |\bm{V}_j^{\star}| \sfcos(\angle \bm{V}_i^{\star} -\angle \bm{V}_j^{\star})
+  }
+\end{equation}
+\end{subequations}
+
+The partial differential related to the voltage phasor variables of the bus bars becomes:
+
+\begin{equation*}
+  \frac{\partial U_{\mathds{G}}}{\partial |\bm{V}_i| }(x^{\star}_{\mathds{G}})= 0
+  ,\qquad
+  \frac{\partial U_{\mathds{G}}}{\partial \angle \bm{V}_i } (x^{\star}_{\mathds{G}})= 0
+\end{equation*}
+for all $i\in \mathcal{I}_{\rm G} \cup \mathcal{I}_{\rm L}$.
+
+Based on the above calculation results, the time derivative along the solution
+trajectory of the storage function for $\mathds{G}$ can be evaluated as follows:
+
+\begin{equation}\label{eq:disineqGds}
+  \spliteq{
+    \frac{d}{dt}W_{x^{\star}_{\mathds{G}}} \bigl(x_{\mathds{G}}(t) \bigr)
+    & =
+    \nabla W_{x^{\star}_{\mathds{G}}}^{\sf T} \bigl(x_{\mathds{G}}(t) \bigr)
+    \dot{x}_{\mathds{G}}(t) \\
+    &=
+    \sum_{i=1}^n
+    \left(
+    (u_{\mathds{G}_i}- u_{\mathds{G}_i}^{\star}) (y_{\mathds{G}_i}-y_{\mathds{G}_i}^{\star})
+    -
+    \frac{\taudi}{ \Xsi - \Xti }
+    \dot{E}_i^2
+    \right)\\
+    & \leq 
+    (y_{\mathds{G}}-y_{\mathds{G}}^{\star})^{\sf T} (u_{\mathds{G}}- u_{\mathds{G}}^{\star})
+  }
+\end{equation}
+where we used $u_{\mathds{G}}^{\star}=0$ from equation \ref{eq:eqeqa}. This
+implies that the function $W_{x^{\star}_{\mathds{G}}}(x{\mathds{G}})$ in
+Equation \ref{eq:stops} is a passive storage function independent of the
+equilibrium point of the electrical subsystem $\mathds{G}$. Note that the
+domains of $x_{\mathds{G}}$ and $x_{\mathds{G}}^{\star}$ are limited to the
+region where $W_{x^{\star}_{\mathds{G}}}(x_{\mathds{G}})$ is a semi-positive
+definite function, that is, the region where the potential energy function
+$U_{\mathds{G}}(x_{\mathds{G}})$ in Equation \ref{eq:potWx} is a convex
+function. This will be discussed in the next section.
+
+\subsection{Stability analysis of frequency stabilization control system\advanced}\label{sec:potconv}
 
 \smallskip
-\subsubsection{Stability analysis of an unknown equilibrium point based on passivity}
+\subsubsection{Stability analysis of unknown equilibrium points based on passivity}
 
-Below, we analyze the stability of a feedback control system with automatic generation control with the same step as the stability analysis based on the passivity of the linear approximation model of Section \ref{sec:linmathana} using equilibrium-independent passivity.
-However, we discuss assuming that the storage function value $W_{x^{\star}_{\mathds{G}}}\bigl(x_{\mathds{G}}(t) \bigr)$ of \ref{eq:stops} is non-negative at all time $t$.
-This point will be discussed in the next section.
+In the following, we analyze the stability of a feedback control system with
+automatic generation control, using passivity-based stability analysis of the
+linearized model as in Section \ref{sec:linmathana}, but assuming that the value
+of the storage function given by equation \ref{eq:stops},
+$W_{x^{\star}_{\mathds{G}}}\bigl(x_{\mathds{G}}(t) \bigr)$, is non-negative for
+all times $t$, for the trajectory $x_{\mathds{G}}(t)$ of the electrical
+subsystem $\mathds{G}$. We discuss this assumption in the next subsection.
 
-If we use the relationship of the connection of Equation \ref{eq:connds2} for the sum of inequality of Equations \ref{eq:disineqFp} and \ref{eq:disineqGds}, for the entire feedback control system, the following is obtained:
-%\begin{align}\label{eq:disineqall}
-%\spliteq{
-%& \frac{d}{dt}  \left\{
-%W_{x^{\star}_{\mathds{F}}}  \bigl( x_{\mathds{F}}(t) \bigr) 
-%+
-%\omega_0
-%W_{\xi^{\star}} \bigl( \xi(t) \bigr) 
-%+
-%W_{x^{\star}_{\mathds{G}}} \bigl(x_{\mathds{G}}(t) \bigr)
-%\right\} \\
-%& \hspace{3em} \leq 
-%(y_{\mathds{F}}(t) -y^{\star}_{\mathds{F}})^{\sf T}
-%(v_{\mathds{F}}(t) -v^{\star}_{\mathds{F}})  
-%- \tfrac{\sfmin \left\{ D_i \right\}}{\omega_0}
-%\|y_{\mathds{F}}(t) -y^{\star}_{\mathds{F}}\|^2
-%}
-%\end{align}
+Using the relationship of Equation \ref{eq:connds2} to the sum of inequalities
+in Equation \ref{eq:disineqFp} and Equation \ref{eq:disineqGds}, we obtain the
+following for the entire feedback control system.
+
 \[
- \frac{d}{dt}  \left\{
-W_{x^{\star}_{\mathds{F}}}  \bigl( x_{\mathds{F}}(t) \bigr) 
-+
-\omega_0
-W_{\xi^{\star}} \bigl( \xi(t) \bigr) 
-+
-W_{x^{\star}_{\mathds{G}}} \bigl(x_{\mathds{G}}(t) \bigr)
-\right\} 
- \leq 
-- \tfrac{\sfmin \left\{ D_i \right\}}{\omega_0}
-\|y_{\mathds{F}}(t) -y^{\star}_{\mathds{F}}\|^2
+  \frac{d}{dt}  \left\{
+  W_{x^{\star}_{\mathds{F}}}  \bigl( x_{\mathds{F}}(t) \bigr) 
+  +
+  \omega_0
+  W_{\xi^{\star}} \bigl( \xi(t) \bigr) 
+  +
+  W_{x^{\star}_{\mathds{G}}} \bigl(x_{\mathds{G}}(t) \bigr)
+  \right\} 
+  \leq 
+  - \tfrac{\sfmin \left\{ D_i \right\}}{\omega_0}
+  \|y_{\mathds{F}}(t) -y^{\star}_{\mathds{F}}\|^2
 \]
-From this inequality, we can see that the sum of the storage function is monotonous non-increasing.
-Since its lower limit is 0, when enough time passes, its sum asymptotically converges to a certain value.
-In other words, the time derivative on the left side asymptotically converges to 0.
-Therefore, the following is derived:
+
+From this inequality, it can be seen that the sum of the storage functions is
+monotonically non-increasing. Moreover, since the lower bound is 0, the sum
+asymptotically converges to a certain value as time passes. That is, the time
+derivative of the left-hand side asymptotically approaches 0. Therefore, it
+follows that:
+
 \[
-\lim_{t\rightarrow \infty}
-y_{\mathds{F}}(t) = y^{\star}_{\mathds{F}}
+  \lim_{t\rightarrow \infty}
+  y_{\mathds{F}}(t) = y^{\star}_{\mathds{F}}
 \]
-If we focus on the output equation of Equation \ref{eq:sys1}, since the output $y_{\mathds{F}}$ is a constant factor of the internal state $\Delta \omega$, the following holds for the mechanical subsystem $\mathds{F}$:
-\begin{align}\label{eq:Fobsnl}
+
+Furthermore, focusing on the output equation of equation \ref{eq:sys1}, the
+output $y_{\mathds{F}}$ is a constant multiple of the internal state $\Delta
+\omega$, and therefore for the mechanical subsystem $\mathds{F}$, the following
+holds: 
+
+\begin{equation}\label{eq:Fobsnl}
 y_{\mathds{F}}(t)  =y^{\star}_{\mathds{F}},\quad \forall t\geq 0 
 \qquad \Longrightarrow \qquad
 \Delta \omega(t)  =\frac{1}{\omega_0} y^{\star}_{\mathds{F}},\quad \forall t\geq 0 
-\end{align}
-Furthermore, as analyzed in Section \ref{sec:phsync}, the frequency derivation of all generators converges on the same value.
-This fact means that the following is true for a certain constant $\gamma_0$:
+\end{equation}
+
+Furthermore, as analyzed in Section \ref{sec:phsync}, the frequency derivation
+of all generators converges on the same value. This fact implies that there
+exists a constant $\gamma_0$ such that:
+
 \[
-y^{\star}_{\mathds{F}} = \gamma_0 \mathds{1}
+  y^{\star}_{\mathds{F}} = \gamma_0 \mathds{1}
 \]
-On the other hand, because of the first equation of Equation \ref{eq:Kdseq}, the following is true:
+
+On the other hand, from the first equation of Equation \ref{eq:Kdseq}, we have:
+
 \[
-0=h^{\sf T} u_{\mathds{K}}^{\star} 
-= \frac{1}{\omega_0}h^{\sf T} y^{\star}_{\mathds{F}}
-=\frac{\gamma_0}{\omega_0} h^{\sf T} \mathds{1}
+  0=h^{\sf T} u_{\mathds{K}}^{\star} 
+  = \frac{1}{\omega_0}h^{\sf T} y^{\star}_{\mathds{F}}
+  =\frac{\gamma_0}{\omega_0} h^{\sf T} \mathds{1}
 \]
-Here, since $h^{\sf T} \mathds{1}$ is not 0, we can derive that $\gamma_0$ is 0.
-As such, it is shown that the frequency derivation of all generators asymptotically approaches 0; meaning:
+
+Here, since $h^{\sf T} \mathds{1}$ is not zero, it is inferred that $\gamma_0$
+is zero. Therefore, it is shown that the angular frequency deviation of all
+generators converges to zero asymptotically, that is:
+
 \[
-\lim_{t\rightarrow \infty}
-\Delta \omega (t) = 0
+  \lim_{t\rightarrow \infty}
+  \Delta \omega (t) = 0
 \]
-We can also see that the following is true for all $i\in \mathcal{I}_{\rm G}$:
+
+Additionally, it is also understood that, for all $i\in \mathcal{I}_{\rm G}$,
+the following holds:
+
 \[
-\lim_{t\rightarrow \infty}
-P_{{\rm mech}i}(t) 
-=
-\lim_{t\rightarrow \infty} P_i (t)
+  \lim_{t\rightarrow \infty}
+  P_{{\rm mech}i}(t) 
+  =
+  \lim_{t\rightarrow \infty} P_i (t)
 \]
-However, since the convergence values of these mechanical torque and active power have practically unknown load electric power and transmission line impedance, it is usually not possible to calculate ahead of time.
-Similarly, the internal state of the electrical subsystem $\mathds{G}$ of Equation (\ref{eq:sys2G}) and voltage phasor variables of bus bars also asymptotically convergence.
+
+However, the convergence values of the mechanical inputs and effective power are
+generally impossible to calculate in advance because the power consumption of
+loads and the impedance of transmission lines, etc., are unknown in reality.
+Similarly, the internal states of the electrical subsystem $\mathds{G}$ and the
+voltage phase variables of the busbars in Equation \ref{eq:sys2G} also converge
+to unknown values asymptotically.
 
 \begin{table}[h]
 \medskip
@@ -1171,7 +1299,7 @@ Similarly, the internal state of the electrical subsystem $\mathds{G}$ of Equati
    $\angle \bm{V}_i^{\star}$ & 0 & $-0.0539$ & $-0.0420$ \\
    \hline
   \end{tabular}
-  \subcaption{Steady-state tidal current condition 1}
+  \subcaption{Steady-state power flow state 1}
   \end{minipage}
   \begin{minipage}{0.49\linewidth}
     \centering
@@ -1188,23 +1316,35 @@ Similarly, the internal state of the electrical subsystem $\mathds{G}$ of Equati
    $\angle \bm{V}_i^{\star}$ & $-0.0488$ & $-0.0595$ & 0 \\
    \hline
   \end{tabular}
-   \subcaption{Steady-state tidal flow condition 2}
+   \subcaption{Steady-state power flow state 2}
   \end{minipage}
   }
 \end{table}
 
-\begin{例}[Temporal change of accumulated energy]\label{ex:nonlinene}
-Similar to Examples \ref{ex:agcdemo} and \ref{ex:pfvary}, let us consider an electrical power system model consisting of two generators and one constant power model load.
-However, the admittance of transmission lines is set to the value of Equation \ref{eq:bothlossless} in Equations \ref{eq:defadpara} and \ref{eq:rightlossless}, where the conductance component is 0.
-The physical constants of the generators, field voltage, and initial values are set in the same way as in Examples \ref{ex:agcdemo} and \ref{ex:pfvary}.
-For the broadcast-type PI controller of Equation (\ref{eq:agccon}), we set the parameters from \TABref{table:agcpara} (b).
+\begin{example}{Time variation of stored energy}\label{ex:nonlinene}
+Consider a power system model consisting of two generators and a constant power
+load model, as in Examples \ref{ex:agcdemo} and \ref{ex:pfvary}. The admittance
+value of the transmission line is set to the value in Equation
+\ref{eq:bothlossless} with the conductance component set to 0. The physical
+constants of the generators are set as in Examples \ref{ex:agcdemo} and
+\ref{ex:pfvary}.  The broadcast-type PI controller in Equation \ref{eq:agccon}
+is set with the parameters in Table \ref{table:agcpara} (b).
 
-
-For the initial value of the generators, we set the steady value corresponding to the two steady power flow distributions shown in \TABref{table:pflownl}.
-For the time response of the electrical power system for each initial value, we calculated $W_{x^{\star}_{\mathds{F}}}(x_{\mathds{F}})$ of Equation \ref{eq:WxFst}, $W_{\xi^{\star}}(\xi)$ of \ref{eq:Wxist}, and $W_{x^{\star}_{\mathds{G}}}(x_{\mathds{G}})$ of Equation \ref{eq:stops}.
-The results are shown in \FIGref{fig:LyapWnlin} (a) and (b).
-The solid blue, red, and green lines show $W_{x^{\star}_{\mathds{F}}}(x_{\mathds{F}})$, $W_{x^{\star}_{\mathds{G}}}(x_{\mathds{G}})$, and $W_{\xi^{\star}}(\xi)$, respectively. The broken black line shows their sum. From these Figures, we can see that the total energy of the entire electrical power system monotonically decreases while exchanging the energy among the three.
-\end{例}
+For the initial values of the generators, the steady-state values corresponding
+to the two steady-state flow states shown in Table \ref{table:pflownl} are set.
+The time response of the power system until the steady-state flow state in which
+the active power of generators 1 and 3 are equal is achieved is then calculated.
+The values of $W_{x^{\star}_{\mathds{F}}}(x_{\mathds{F}})$ in Equation
+\ref{eq:WxFst}, $W_{\xi^{\star}}(\xi)$ in Equation \ref{eq:Wxist}, and
+$W_{x^{\star}_{\mathds{G}}}(x_{\mathds{G}})$ in Equation \ref{eq:stops} are
+calculated for the time response, and the results are shown in Figure
+\ref{fig:LyapWnlin} (a) and (b).  The blue, red, and green solid lines represent
+$W_{x^{\star}_{\mathds{F}}}(x_{\mathds{F}})$,
+$W_{x^{\star}_{\mathds{G}}}(x_{\mathds{G}})$, and $W_{\xi^{\star}}(\xi)$,
+respectively.  The black dashed line represents their sum.  From these figures,
+it can be seen that while exchanging energy among the three components, the
+total energy of the entire power system monotonically decreases.
+\end{example}
 
 
 \begin{figure}[t]
@@ -1213,94 +1353,87 @@ The solid blue, red, and green lines show $W_{x^{\star}_{\mathds{F}}}(x_{\mathds
   \begin{minipage}{0.49\linewidth}
     \centering
     \includegraphics[width = 1.0\linewidth]{figs/Wnlin1}
-    \subcaption{Initial value corresponding to steady tidal current state 1}
+    \subcaption{Initial values corresponding to steady-state condition 1}
 %    \medskip
   \end{minipage}
   \begin{minipage}{0.49\linewidth}
     \centering
     \includegraphics[width = 1.0\linewidth]{figs/Wnlin2}
-    \subcaption{Initial value corresponding to steady tidal current state 2}
+    \subcaption{Initial values corresponding to steady-state condition 2}
 %    \medskip
   \end{minipage}
   }
   \medskip
-  \caption{\textbf{Time variation of the accumulation function with respect to the initial value response}
-  \\  \centering(Blue: $W_{x^{\star}_{\mathds{F}}}$, Red：$W_{x^{\star}_{\mathds{G}}}$，
+  \caption{\textbf{The time variation of the storage function for the initial value response}
+  \\  \centering(Blue: $W_{x^{\star}_{\mathds{F}}}$, Red:$W_{x^{\star}_{\mathds{G}}}$,
   Green: $W_{\xi^{\star}}$, Black: Total sum)}
   \label{fig:LyapWnlin}
 \medskip
 \end{figure}
 
-
-
-%式(\ref{eq:sys2G})の電気サブシステム$\mathds{G}$の平衡点に依らない受動性を解析する。
-%以下では，$\mathds{G}$のすべての時間変数である$(\delta_i, E_i)_{i\in \mathcal{I}_{\rm G}}$と
-%$(|\bm{V}_i|, \angle \bm{V}_i)_{i\in \mathcal{I}_{\rm G} \cup \mathcal{I}_{\rm L}}$を並べた列ベクトルを$x_{\mathds{G}}$と表す。
-%
-%
-%なお，ここまでの議論の結果から，式(\ref{eq:connds})における入出力信号はそれらの定常値
-%\[
-%u_{\mathds{F}}^{\star} =0
-%,\qquad
-%y_{\mathds{F}}^{\star} =0
-%,\qquad
-%u_{\mathds{K}}^{\star} =0
-%,\qquad
-%y_{\mathds{K}}^{\star} =v_{\mathds{F}}^{\star}
-%= -y_{\mathds{G}}^{\star}
-%,\qquad
-%u_{\mathds{G}}^{\star} =0
-%\]
-%に漸近収束することもわかる。
-
 \smallskip
 \subsubsection{The range where the potential energy function is convex}
 
-Below, we show that the condition necessary for the potential energy function $U_{\mathds{G}}(x_{\mathds{G}})$ of Equation \ref{eq:potWx} to be a convex function corresponds to the passive power transmission conditions (i) and (iii) of definition \ref{def:passtrans} discussed in the passive analysis of the linear approximation model.
-In the present discussion, the passive power transmission condition (ii) is assumed.
+In the following, we show that the conditions for the potential energy function
+$U_{\mathds{G}}(x_{\mathds{G}})$ in Equation \ref{eq:potWx} to be a convex
+function correspond to the passive power transmission conditions (i) and (iii)
+discussed in Definition \ref{def:passtrans} in the analysis of the passive
+properties of the linear approximation model. Note that assumption (ii) of the
+passive power transmission conditions is assumed in this section.
 
-In the setting of the linear approximation model of Section \ref{sec:linpasana}, we consider a situation wherein the generator is connected to all of the bus bars.
-In other words, the subscript sets of the generator buses and load bus bars are:
+We consider the case where generators are connected to all buses, in accordance
+with the setting of the linear approximation model in Section
+\ref{sec:linpasana}. That is, the subscripts for the generator buses and load
+buses are
 
 \[
-\mathcal{I}_{\rm G} = \{1,\ldots,N\}
-,\qquad
-\mathcal{I}_{\rm L} = \emptyset
+  \mathcal{I}_{\rm G} = \{1,\ldots,N\}
+  ,\qquad
+  \mathcal{I}_{\rm L} = \emptyset
 \]
-At this time, by applying the Kron reduction of generator buses, the electrical subsystem $\mathds{G}$ of Equation (\ref{eq:sys2G}) and the equivalent ordinary differential equation system can be obtained as:
-\begin{align*}%\label{eq:kronGds}
-\mathds{G}_i : 
-\simode{
-\dot{\delta}_i &= u_{\mathds{G}_i}
-\\
-\taudi \dot{E}_i & = 
- -\tfrac{ \Xsi }{ \Xti }E_i
- - \left(
-\Xsi - \Xti
-\right)
-\sum_{j=1}^{N}
-E_j 
-B_{ij}^{\rm red}
-\sfcos \delta_{ij}
-+ V_{{\rm field}i}^{\star}
-\\
-y_{\mathds{G}_i}&=  -E_i \sum_{j=1}^{N}
- E_j 
-B_{ij}^{\rm red}
-\sfsin \delta_{ij}
-}
-\end{align*}
-related to $i \in \mathcal{I}_{\rm G}$, where $\delta_{ij}$ expresses $\delta_i -\delta_j$.
-When the susceptance matrix of the power grid that summarizes $B_{ij}$ of Equation (\ref{eq:sys2G}), $B$, is being expressed, the reduced susceptance $B_{ij}^{\rm red}$ is defined as the $(i,j)$th element of:
-\begin{align}\label{eq:susred}
-B^{\rm red}
-:= -
-\bigl\{
-\sfdiag \left( \Xti \right)   
--
-\sfdiag \left( \Xti \right) B \sfdiag \left( \Xti \right)
-\bigr\}^{-1}
-\end{align}
+
+In this case, applying the Kron reduction to the generator buses allows us to
+obtain an equivalent system of ordinary differential equations for the
+electrical subsystem $\mathds{G}$ in Equation \ref{eq:sys2G}, with respect to $i
+\in \mathcal{I}_{\rm G}$, given by:
+
+\begin{equation*}%\label{eq:kronGds}
+  \mathds{G}_i : 
+  \simode{
+    \dot{\delta}_i &= u_{\mathds{G}_i}
+    \\
+    \taudi \dot{E}_i & = 
+    -\tfrac{ \Xsi }{ \Xti }E_i
+    - \left(
+    \Xsi - \Xti
+    \right)
+    \sum_{j=1}^{N}
+    E_j 
+    B_{ij}^{\rm red}
+    \sfcos \delta_{ij}
+    + V_{{\rm field}i}^{\star}
+    \\
+    y_{\mathds{G}_i}&=  -E_i \sum_{j=1}^{N}
+    E_j 
+    B_{ij}^{\rm red}
+    \sfsin \delta_{ij}
+  }
+\end{equation*}
+where $\delta_{ij}$ denotes $\delta_i -\delta_j$. Also, the reduced susceptance
+$B_{ij}^{\rm red}$ is defined as the $(i,j)$-th element of the matrix $B^{\rm
+red}$, which is obtained by combining the susceptance matrix $B$ of the power
+network in Eq. (\ref{eq:sys2G}), and is defined as follows:
+
+\begin{equation}\label{eq:susred}
+  B^{\rm red}
+  := -
+  \bigl\{
+  \sfdiag \left( \Xti \right)   
+  -
+  \sfdiag \left( \Xti \right) B \sfdiag \left( \Xti \right)
+  \bigr\}^{-1}
+\end{equation}
+
 The potential energy function of Equation \ref{eq:potWx} corresponding to the expression of this ordinary differential equation system is:
 \begin{align}\label{eq:potWxred}
 U_{\mathds{G}}^{\rm red} (z_{\mathds{G}})  := 
