@@ -1434,323 +1434,406 @@ network in Eq. (\ref{eq:sys2G}), and is defined as follows:
   \bigr\}^{-1}
 \end{equation}
 
-The potential energy function of Equation \ref{eq:potWx} corresponding to the expression of this ordinary differential equation system is:
-\begin{align}\label{eq:potWxred}
-U_{\mathds{G}}^{\rm red} (z_{\mathds{G}})  := 
- \frac{1}{2} 
-\sum_{i=1}^N
-\left\{
-\frac{ \Xsi E_i^2 }{ \Xti ( \Xsi - \Xti )}  
-+ E_i \sum_{j=1}^{N}
- E_j 
-B_{ij}^{\rm red}
-\sfcos \delta_{ij}
-\right\}
-\end{align}
+The potential energy function corresponding to the representation of this system
+of ordinary differential equations is given by Equation \ref{eq:potWx}. It is
+expressed as follows in Equation \ref{eq:potWxred}:
+
+\begin{equation}\label{eq:potWxred}
+  U_{\mathds{G}}^{\rm red} (z_{\mathds{G}})  := 
+  \frac{1}{2} 
+  \sum_{i=1}^N
+  \left\{
+  \frac{ \Xsi E_i^2 }{ \Xti ( \Xsi - \Xti )}  
+  + E_i \sum_{j=1}^{N}
+  E_j 
+  B_{ij}^{\rm red}
+  \sfcos \delta_{ij}
+  \right\}
+\end{equation}
 where the vector with all $\delta_i$ and $E_i$ is expressed as $z_{\mathds{G}}$.
-If we calculate the partial differential related to the internal state, the following is obtained:
-\begin{align*}
-\frac{\partial U_{\mathds{G}}^{\rm red} }{\partial \delta_i}(z_{\mathds{G}})  = y_{\mathds{G}_i}
-,\qquad
-\frac{\partial U_{\mathds{G}}^{\rm red} }{\partial E_i} (z_{\mathds{G}}) = 
-\frac{V_{{\rm field}i}^{\star} - \taudi\dot{E}_i  }{ \Xsi - \Xti }
-\end{align*}
-Similarly, the following is true for the steady state:
-\begin{align*}
+If we calculate the partial differential related to the internal state, the
+following is obtained:
+
+\begin{equation*}
+  \frac{\partial U_{\mathds{G}}^{\rm red} }{\partial \delta_i}(z_{\mathds{G}})  = y_{\mathds{G}_i}
+  ,\qquad
+  \frac{\partial U_{\mathds{G}}^{\rm red} }{\partial E_i} (z_{\mathds{G}}) = 
+  \frac{V_{{\rm field}i}^{\star} - \taudi\dot{E}_i  }{ \Xsi - \Xti }
+\end{equation*}
+
+Similarly, for the steady state, we have:
+
+\begin{equation*}
 \frac{\partial U_{\mathds{G}}^{\rm red} }{\partial \delta_i} ( z^{\star}_{\mathds{G}} )
 = y_{\mathds{G}_i}^{\star}
 ,\qquad
 \frac{\partial U_{\mathds{G}}^{\rm red} }{\partial E_i} ( z^{\star}_{\mathds{G}} ) = 
 \frac{V_{{\rm field}i}^{\star}  }{ \Xsi - \Xti }
-\end{align*}
+\end{equation*}
+
 Therefore, if we define the corresponding storage function as:
+
 \[ 
-W_{z^{\star}_{\mathds{G}}}^{\rm red} (z_{\mathds{G}}) = U_{\mathds{G}}^{\rm red} (z_{\mathds{G}}) 
-- U_{\mathds{G}}^{\rm red} (z^{\star}_{\mathds{G}}) 
-- \left\{ \nabla U_{\mathds{G}}^{\rm red}(z^{\star}_{\mathds{G}}) \right\}^{\sf T}
- (z_{\mathds{G}}-z^{\star}_{\mathds{G}})
+  W_{z^{\star}_{\mathds{G}}}^{\rm red} (z_{\mathds{G}}) = U_{\mathds{G}}^{\rm red} (z_{\mathds{G}}) 
+  - U_{\mathds{G}}^{\rm red} (z^{\star}_{\mathds{G}}) 
+  - \left\{ \nabla U_{\mathds{G}}^{\rm red}(z^{\star}_{\mathds{G}}) \right\}^{\sf T}
+  (z_{\mathds{G}}-z^{\star}_{\mathds{G}})
 \]
-similar to Equation \ref{eq:disineqGds}, its time derivative can be evaluated as:
+
+Then, similarly to Equation \ref{eq:disineqGds}, its time derivative can be
+bounded as:
+
 \[
-\frac{d}{dt}W_{z^{\star}_{\mathds{G}}}^{\rm red} \bigl(z_{\mathds{G}}(t) \bigr)
- \leq 
-(y_{\mathds{G}}-y_{\mathds{G}}^{\star})^{\sf T} (u_{\mathds{G}}- u_{\mathds{G}}^{\star})
+  \frac{d}{dt}W_{z^{\star}_{\mathds{G}}}^{\rm red} \bigl(z_{\mathds{G}}(t) \bigr)
+  \leq 
+  (y_{\mathds{G}}-y_{\mathds{G}}^{\star})^{\sf T} (u_{\mathds{G}}- u_{\mathds{G}}^{\star})
 \]
-Note that all elements of the contracted susceptance matrix $B^{\rm red}$ in Equation \ref{eq:susred} are nonpositive.
-This fact can be shown as follows
-From the discussion in the \ref{sec:admathp} clause, the susceptance matrix $B$ is a negative definite matrix with non-diagonal elements that are nonnegative.
+
+Note that all elements of the reduced susceptance matrix $B^{\rm red}$ in
+Equation \ref{eq:susred} are non-positive. This fact can be shown as follows.
+From the discussion in the Section \ref{sec:admathp}, the susceptance matrix $B$
+is a negative definite matrix with non-diagonal elements that are nonnegative.
 Therefore:
+
 \[
-B_{-}:= \sfdiag \left( \Xti \right)   
--
-\sfdiag \left( \Xti \right) B \sfdiag \left( \Xti \right)
+  B_{-}:= \sfdiag \left( \Xti \right)   
+  -
+  \sfdiag \left( \Xti \right) B \sfdiag \left( \Xti \right)
 \]
-is a positive definite matrix with non-diagonal elements that are nonpositive,\textbf{M-matrix}.
-It is known that all the elements of the inverse of the M-matrix are nonnegative \cite{kodama1981system}.
-Therefore, all elements of $B^{\rm red}=-B_-^{-1}$ are nonpositive.
+is a positive definite matrix with non-positive off-diagonal elements, known as
+an \textbf{M-matrix}\index{M-matrix}. It is known that all elements of the
+inverse of an M-matrix are non-negative \cite{kodama1981system}. Therefore, all
+elements of $B^{\rm red}=-B_-^{-1}$ are non-positive.
 
 \begin{COLUMN}
-\noindent \textbf{Hessian matrix}：
-A condition necessary for a second-order differentiable function $f:\mathbb{R}^n\rightarrow \mathbb{R}$ to be a convex function over a certain range $\mathcal{X}$ is that the following is positive semi-definite for all $x\in \mathcal{X}$:
+\noindent \textbf{Hessian matrix}:
+A condition necessary for a twice-differentiable function
+$f:\mathbb{R}^n\rightarrow \mathbb{R}$ to be a convex over a certain range
+$\mathcal{X}$ is that the following matrix is positive semi-definite for all
+$x\in \mathcal{X}$:
+
 \[
-\nabla^2 f(x):=
-\mat{
-\tfrac{\partial^2 f}{\partial x_1^2} (x) & \cdots & \tfrac{\partial^2 f}{\partial x_1 \partial x_n} (x) \\
-\vdots & \ddots & \vdots \\
-\tfrac{\partial^2 f}{\partial x_n \partial x_1} (x) & \cdots &\tfrac{\partial^2 f}{\partial x_n^2} (x)
-}
+  \nabla^2 f(x):=
+  \mat{
+  \tfrac{\partial^2 f}{\partial x_1^2} (x) & \cdots & \tfrac{\partial^2 f}{\partial x_1 \partial x_n} (x) \\
+  \vdots & \ddots & \vdots \\
+  \tfrac{\partial^2 f}{\partial x_n \partial x_1} (x) & \cdots &\tfrac{\partial^2 f}{\partial x_n^2} (x)
+  }
 \]
-This matrix is called the \textbf{Hessian matrix} of the function $f$ \cite{boyd2004convex}.
+
+This matrix is called the \textbf{Hessian matrix} of the function $f$
+\cite{boyd2004convex}.
 \end{COLUMN}
 
-The fact that the potential energy function $U_{\mathds{G}}^{\rm red} (z_{\mathds{G}})$ of Equation \ref{eq:potWxred} being a convex function is characterized by the fact that the Hessian matrix $\nabla^2 U_{\mathds{G}}^{\rm red} (z_{\mathds{G}})$ is a positive semi-definite matrix.
-\begin{align}\label{eq:UGhess}
-\nabla^2 U_{\mathds{G}}^{\rm red} (z_{\mathds{G}})
-=
-\mat{
-L(z_{\mathds{G}})  &  - \hat{B}^{\sf T}(z_{\mathds{G}}) \\
-- \hat{B}(z_{\mathds{G}}) & -\hat{A}(z_{\mathds{G}})
-}
-\end{align}
-in the $(i,j)$th element.
-\begin{align*}
-\spliteq{
-L_{ij}(z_{\mathds{G}}) & := 
-\frac{\partial^2 U_{\mathds{G}}^{\rm red} }{\partial \delta_i \partial \delta_j} (z_{\mathds{G}})
-=
-\left\{
-\begin{array}{cl}
--E_i \sum_{j=1, j\neq i}^{N} E_j B_{ij}^{\rm red} \sfcos(\delta_{ij}), &\quad i=j \\
-E_i  E_j B_{ij}^{\rm red} \sfcos(\delta_{ij}), & \quad i\neq j
-\end{array}
-\right.
-  \\
-\hat{A}_{ij}(z_{\mathds{G}}) &:=  
-- \frac{\partial^2 U_{\mathds{G}}^{\rm red} }{\partial E_i \partial E_j} (z_{\mathds{G}})
-=
-\left\{
-\begin{array}{cl}
--\left(B_{ii}^{\rm red}+\tfrac{ \Xsi }{ \Xti ( \Xsi - \Xti )} \right), &\quad i=j \\
--B_{ij}^{\rm red} \sfcos(\delta_{ij}), & \quad i\neq j
-\end{array}
-\right. \\
-\hat{B}_{ij}(z_{\mathds{G}})  &:= 
-- \frac{\partial^2 U_{\mathds{G}}^{\rm red} }{\partial E_i \partial \delta_j} (z_{\mathds{G}})
-=
-\left\{
-\begin{array}{cl}
-\sum_{j=1, j\neq i}^{N} E_j B_{ij}^{\rm red} \sfsin(\delta_{ij}), &\quad i=j \\
--E_j B_{ij}^{\rm red} \sfsin(\delta_{ij}), & \quad i\neq j
-\end{array}
-\right. 
-}
-\end{align*}
-$\nabla^2 U_{\mathds{G}}^{\rm red} (z_{\mathds{G}}^{\star})$, which is an evaluation of the Hessian matrix of Equation \ref{eq:UGhess} with the equilibrium point, is the same as the matrix $P_G$ of Equation \ref{eq:defPG} which appeared in the passivity analysis of the electrical subsystem that was linearly approximated in Section \ref{sec:linpasana}.
-The positive semi-definite nature of this $P_G$ guaranteed that the storage function that shows the passivity of the linear approximation model of $\mathds{G}$ is a positive semi-definite function.
-As such, a condition necessary for $U_{\mathds{G}}^{\rm red} (z_{\mathds{G}}^{\star})$ to be a convex function is equal to the condition necessary for $P_G$ to be positive semi-definite, which is also equal to the passive power transmission conditions (i) and (iii) holding.
+The convexity of the potential energy function $U_{\mathds{G}}^{\rm red}
+(z_{\mathds{G}})$ in Equation \ref{eq:potWxred} is characterized by the positive
+semidefiniteness of its Hessian matrix $\nabla^2 U_{\mathds{G}}^{\rm red}
+(z_{\mathds{G}})$. Computing this Hessian matrix yields to:
 
-If we consider this along with the result of Section \ref{sec:linmathana}, it is defined as a range where the potential energy function $U_{\mathds{G}}^{\rm red} (z_{\mathds{G}})$ of Equation \ref{eq:potWxred} becomes a convex function:
+\begin{equation}\label{eq:UGhess}
+  \nabla^2 U_{\mathds{G}}^{\rm red} (z_{\mathds{G}})
+  =
+  \mat{
+  L(z_{\mathds{G}})  &  - \hat{B}^{\sf T}(z_{\mathds{G}}) \\
+  - \hat{B}(z_{\mathds{G}}) & -\hat{A}(z_{\mathds{G}})
+  }
+\end{equation}
+
+However, the matrix constituting each block has the element $(i,j)$ given by:
+
+\begin{equation*}
+  \spliteq{
+  L_{ij}(z_{\mathds{G}}) & := 
+  \frac{\partial^2 U_{\mathds{G}}^{\rm red} }{\partial \delta_i \partial \delta_j} (z_{\mathds{G}})
+  =
+  \left\{
+  \begin{array}{cl}
+  -E_i \sum_{j=1, j\neq i}^{N} E_j B_{ij}^{\rm red} \sfcos(\delta_{ij}), &\quad i=j \\
+  E_i  E_j B_{ij}^{\rm red} \sfcos(\delta_{ij}), & \quad i\neq j
+  \end{array}
+  \right.
+    \\
+  \hat{A}_{ij}(z_{\mathds{G}}) &:=  
+  - \frac{\partial^2 U_{\mathds{G}}^{\rm red} }{\partial E_i \partial E_j} (z_{\mathds{G}})
+  =
+  \left\{
+  \begin{array}{cl}
+  -\left(B_{ii}^{\rm red}+\tfrac{ \Xsi }{ \Xti ( \Xsi - \Xti )} \right), &\quad i=j \\
+  -B_{ij}^{\rm red} \sfcos(\delta_{ij}), & \quad i\neq j
+  \end{array}
+  \right. \\
+  \hat{B}_{ij}(z_{\mathds{G}})  &:= 
+  - \frac{\partial^2 U_{\mathds{G}}^{\rm red} }{\partial E_i \partial \delta_j} (z_{\mathds{G}})
+  =
+  \left\{
+  \begin{array}{cl}
+  \sum_{j=1, j\neq i}^{N} E_j B_{ij}^{\rm red} \sfsin(\delta_{ij}), &\quad i=j \\
+  -E_j B_{ij}^{\rm red} \sfsin(\delta_{ij}), & \quad i\neq j
+  \end{array}
+  \right. 
+  }
+\end{equation*}
+
+The Hessian matrix evaluated at the equilibrium point in Equation
+\ref{eq:UGhess}, $\nabla^2 U_{\mathds{G}}^{\rm red} (z_{\mathds{G}}^{\star})$,
+is identical to the matrix $P_G$ in Equation \ref{eq:defPG}, which appeared in
+the passive analysis of the linearized electric subsystem in Section
+\ref{sec:linpasana}. Note that the positive semi-definiteness of $P_G$
+guarantees that the accumulation function for demonstrating the passivity of the
+linearized model of $\mathds{G}$ is a positive semi-definite function.
+Therefore, it is understood that the necessary and sufficient condition for
+$U_{\mathds{G}}^{\rm red} (z_{\mathds{G}}^{\star})$ to be a convex function is
+equivalent to the necessary and sufficient condition for $P_G$ to be positive
+semi-definite, which is equivalent to the passive power transmission conditions
+(i) and (iii) being satisfied.
+
+In combination with the results from Section \ref{sec:linmathana}, it can be
+understood that the region defined as the convex set of the potential energy
+function $U_{\mathds{G}}^{\rm red} (z_{\mathds{G}})$ given in Equation
+\ref{eq:potWxred}:
+
 \[
-\mathcal{E}_{\mathds{G}}:=
-\left\{
-z_{\mathds{G}}^{\star} : \nabla^2 U_{\mathds{G}}^{\rm red} (z_{\mathds{G}}^{\star}) 
-\succeq 0
-\right\}
+  \mathcal{E}_{\mathds{G}}:=
+  \left\{
+  z_{\mathds{G}}^{\star} : \nabla^2 U_{\mathds{G}}^{\rm red} (z_{\mathds{G}}^{\star}) 
+  \succeq 0
+  \right\}
 \]
-however, it is also the “maximum” equilibrium point set that is able to present frequency stability based on passivity.
-The reason for this is, as was shown in Section \ref{sec:nesconana}, is that the passive power transmission conditions are conditions necessary for an electrical subsystem that was linearly approximated near a specific equilibrium point to be passive.
-In other words, at an equilibrium point $z_{\mathds{G}}^{\star}$, where $\nabla^2 U_{\mathds{G}}^{\rm red} (z_{\mathds{G}}^{\star}) $ is not positive semi-definite, the electrical subsystem $\mathds{G}$ does not become passive.
+is also the "maximum" set of equilibrium points that can demonstrate frequency
+stability based on passivity.
 
-In contrast, if the initial value $z_{\mathds{G}}(0)$ of the electrical subsystem is set near the equilibrium point $z_{\mathds{G}}^{\star}$ belonging to the set $\mathcal{E}_{\mathds{G}}$,
-for all combinations of physical parameters $(M_,D_i,\taudi)_{i \in \mathcal{I}_{\rm G}}$,
-the entire feedback control system asymptotically converges to a steady power flow distribution where supply and demand are balanced.
+The reason for this is that the passive power transmission conditions are
+necessary conditions for the linearized electric subsystem to be passive in the
+vicinity of a specific equilibrium point, as shown in Section
+\ref{sec:nesconana}.  Therefore, for equilibrium points $z_{\mathds{G}}^{\star}$
+where $\nabla^2 U_{\mathds{G}}^{\rm red} (z_{\mathds{G}}^{\star}) $ is not
+positive semi-definite, the electric subsystem $\mathds{G}$ cannot be passive.
 
-\section{Transient stabilization control}\label{sec:transcont}
+On the other hand, if the initial value of the electrical subsystem
+$z_{\mathds{G}}(0)$ is set in the vicinity of a certain equilibrium point
+$z_{\mathds{G}}^{\star}$ belonging to the set $\mathcal{E}_{\mathds{G}}$, then
+for all combinations of physical parameters $(M_i, D_i, \taudi)_{i \in
+\mathcal{I}_{\rm G}}$, the entire feedback control system will asymptotically
+converge to a steady-state power flow state where demand and supply are
+balanced.
+
+For example, consider a situation where the power consumption of a certain load
+changes in a stepwise and small manner from a steady-state power flow state
+where demand and supply are balanced. In this case, since the equilibrium point
+of the electrical subsystem $\mathds{G}$ undergoes a small variation from the
+original steady-state power flow state to the new one, the initial time can be
+regarded as the time when the power consumption changes and the initial value of
+$\mathds{G}$ can be set in the vicinity of the equilibrium point.
+
+From the above analytical result, it can be concluded that as long as the time
+variation of model parameters such as loads and controller parameters is
+sufficiently gradual and the power system state remains in the region where the
+potential energy function becomes a convex function, frequency stability is
+maintained by automatic generation control.
+
+\section{Transient stability control}\label{sec:transcont}
 
 \subsection{Decentralized control of generators with excitation system}
 
-In an electrical power system, when discussing the stable range size for an equilibrium point and the level of stability, the term \textbf{transient stability} is often used.
-In this Section, we provide an outline of the mathematical model and the properties of the \textbf{excitation system} implemented to improve the transient stability of an electrical power system.
-The excitation system is a localized controller that is usually installed “individually” to each generator.
-It locally measures the voltage phasor and current phasor of the bus bar to which the generator is connected, and the internal state of the generator, to control by automatically adjusting the field voltage. The main element of the excitation system is a control equipment called an \textbf{automatic voltage regulator (AVR)} that maintains the desired bus bar voltage. Furthermore, an additional control algorithm, called a \textbf{power system stabilizer (PSS)} might be incorporated to control the disturbance caused by the AVR.
-From Section \ref{sec:avrov} to Section \ref{sec:pssov}, we explain the standard models and control effects.
+In power system engineering, the term \textbf{transient
+stability}\index{transient stability} is widely used when discussing the size
+and stability of the stability region of the equilibrium point. In this section,
+we outline the mathematical models and characteristics of \textbf{excitation
+systems}\index{excitation system} implemented for the purpose of increasing the
+transient stability of the power system. Excitation systems are generally local
+controllers implemented "individually" for each generator, which perform control
+operations that automatically adjust the field input by locally measuring the
+voltage phase or current phase of the bus to which the generator is connected,
+as well as the internal state of the generator. The main element of an
+excitation system is the \textbf{Automatic Voltage Regulator}
+(AVR)\index{Automatic Voltage Regulator}, a control device that maintains the
+bus voltage at the desired value. In addition, to suppress oscillations caused
+by the AVR, additional control algorithms called \textbf{Power System
+Stabilizers} (PSS)\index{Power System Stabilizer} may also be incorporated. In
+Sections \ref{sec:avrov} to \ref{sec:pssov}, we will explain these standard
+models and control effects.
 
-%\[
-%\tau_{{\rm d}} \dot{E}  = 
-% - \left\{ \tfrac{X_{{\rm d}}}{X_{{\rm d}}'}E
-%-\left(
-%\tfrac{X_{{\rm d}i}}{X_{{\rm d}i}'}-1
-%\right)
-%|\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
-%\right\}
-%+ V_{{\rm field}i}
-%\]
-%
-%\[
-%\taudi \dot{E}_i  = 
-% - E_i
-%-(
-%X_{{\rm d}i} - X_{{\rm d}i}'
-%)
-%|\bm{I}_i| \sfsin (\delta_i - \angle \bm{I}_i ) 
-%+ V_{{\rm field}i}
-%\]
-%
-%
+\subsection{Standard Automatic Voltage Regulator model}\label{sec:avrov}
 
+There are many standardized models for automatic voltage regulators. For
+example, the IEEE's standardization report \cite{ieee2016ieee} lists more than
+40 standard models. Automatic voltage regulator models are broadly classified
+into direct current (DC), alternating current (AC), and static types. In the
+following, we describe representative models of DC and static types.
 
+First, we describe the \textbf{IEEE Type DC1 excitation system model}\index{IEEE
+Type DC1 excitation system model}, which is a direct current (DC) model of the
+automatic voltage regulator. For detailed modeling, please refer to
+\cite[Section 7.9.2]{anderson2008power} or \cite[Section
+8.6.3]{kundur1994power}. Here, we discuss the automatic voltage regulator for a
+generator connected to bus $i$. To simplify the notation, we omit the subscript
+$i$. Specifically, we use the generator model discussed in Section
+\ref{sec:genfund}:
 
+\begin{equation}\label{eq:gendifavr}
+  \simode{
+    \dot{\delta}&= \omega_0  \Delta \omega\\
+    M   \Delta \dot{\omega}&= 
+    - D \Delta\omega  
+    - P
+    +P_{{\rm mech}}
+    \\
+    \taud \dot{E} & = 
+    - \Ifd 
+    + V_{{\rm field}}
+  }
+\end{equation}
 
-\subsection{Standard AVR model}\label{sec:avrov}
+However, for the sake of the following discussion, we define the value of the
+excitation current of the generator in the units of pu as:
 
-There are many standardized AVR models.
-For example, a report on standardization by the IEEE \cite{ieee2016ieee} lists more than 40 types of standard models.
-AVR models are roughly divided into DC, AC, and Static models.
-Below, we discuss typical DC and static models.
+\begin{equation}\label{eq:efield}
+  \Ifd := \frac{ \Xs }{ \Xt }E
+  -\left(
+  \frac{ \Xs }{ \Xt }-1
+  \right)
+  |\bm{V}| \sfcos (\delta - \angle \bm{V} )
+\end{equation}
 
+The active and reactive powers output by the generator are given by:
 
-First, let us talk about the \textbf{IEEE Type DC1 excitation system model}, which is an AVR DC model.
-Please see \cite[Section 7.9.2]{anderson2008power} and \cite[Section 8.6.3]{kundur1994power} for the model details.
-Here, we discuss AVR of generators connected to the bus bar $i$, but for the sake of simplification, we omit subscripts $i$.
-Specifically, we use the generator model discussed in Section \ref{sec:genfund}:
-\begin{align}\label{eq:gendifavr}
-\simode{
-\dot{\delta}&= \omega_0  \Delta \omega\\
-M   \Delta \dot{\omega}&= 
- - D \Delta\omega  
- - P
-+P_{{\rm mech}}
-\\
-\taud \dot{E} & = 
-- \Ifd 
-+ V_{{\rm field}}
-}
-\end{align}
-For the purpose of discussion, we defined: which is equivalent to the value of the field current of generators with the unit system of pu.
-\begin{align}\label{eq:efield}
-\Ifd := \frac{ \Xs }{ \Xt }E
--\left(
-\frac{ \Xs }{ \Xt }-1
-\right)
-|\bm{V}| \sfcos (\delta - \angle \bm{V} )
-\end{align}
-The active power and reactive power output by generators are:
-%\begin{align*}
-%\spliteq{
-%P & =  \frac{E |\bm{V} |}{ \Xt } \sfsin(\delta -  \angle \bm{V}), \\
-%Q & =  \frac{E |\bm{V} |}{ \Xt } \sfcos (\delta - \angle \bm{V}) - \frac{|\bm{V}|^2}{ \Xt }
-%}
-%\end{align*}
 \[
-P  =  \frac{E |\bm{V} |}{ \Xt } \sfsin(\delta -  \angle \bm{V}), \qquad
-Q  =  \frac{E |\bm{V} |}{ \Xt } \sfcos (\delta - \angle \bm{V}) - \frac{|\bm{V}|^2}{ \Xt }
+  P  =  \frac{E |\bm{V} |}{ \Xt } \sfsin(\delta -  \angle \bm{V}), \qquad
+  Q  =  \frac{E |\bm{V} |}{ \Xt } \sfcos (\delta - \angle \bm{V}) - \frac{|\bm{V}|^2}{ \Xt }
 \]
-In a case involving a salient pole generator model discussed in Section \ref{sec:genmodadv}, $\Ifd$ is defined by substituting $\Xt$ and $\Xs$ of Equation \ref{eq:efield} with $X_{{\rm d}}'$，$X_{\rm d}$.
 
-As shown in \FIGref{fig:avrdc1}, the IEEE Type DC1 excitation system model is a regulator that inputs the absolute value $|\bm{V}|$ of the bus bar voltage phasor and outputs the field voltage $V_{\rm field}$ of generators.
-However, as supplementary input signals, reference signal $V_{\rm ref}^{\star}$ that adjusts the absolute value of bus bar voltage phasor to the desired value and control signal $V_{\rm pss}$ output by PSS are added.
-The IEEE Type DC1 excitation system model of AVR consists of four basic types of equipment — \textbf{voltage transformer}, \textbf{comparator}, \textbf{amplifier}, and \textbf{exciter} — as well as a supplementary \textbf{stabilizing circuit}.
-Below, we explain the dynamic characteristics of each.
+It should be noted that for the salient-pole generator model discussed in
+section \ref{sec:genmodadv}, we replace $\Xt$ and $\Xs$ in Equation
+\ref{eq:efield} with $X_{{\rm d}}'$ and $X_{\rm d}$, respectively, to define
+$\Ifd$.
 
+As shown in Figure \ref{fig:avrdc1}, the IEEE DC1 model of the automatic voltage
+regulator is a controller that takes the magnitude $|\bm{V}|$ of the bus voltage
+phasor as input and outputs the field excitation input $V_{\rm field}$ of the
+generator. However, as additional input signals, a reference signal $V_{\rm
+ref}^{\star}$ for adjusting the magnitude of the bus voltage phasor to the
+desired value and a control signal $V_{\rm pss}$ output by the power system
+stabilizer are applied. The IEEE DC1 model of the automatic voltage regulator
+consists of four basic devices: a voltage transformer, a comparator, an
+amplifier, and an exciter, as well as an auxiliary stabilizing circuit. In the
+following, we will explain the dynamic characteristics of each device.
 
 \begin{figure}[t]
-\centering
-\includegraphics[width = 0.99\linewidth]{figs/avrdc1}
-\medskip
-\caption{\textbf{IEEE DC1 type model of automatic voltage regulator}}
-\label{fig:avrdc1}
-\medskip
+  \centering
+  \includegraphics[width = 0.99\linewidth]{figs/avrdc1}
+  \medskip
+  \caption{\textbf{IEEE DC1 type model of automatic voltage regulator}}
+  \label{fig:avrdc1}
+  \medskip
 \end{figure}
-
 
 \smallskip
 \subsubsection{Voltage transformer}
 
 \begin{subequations}\label{eq:stanAVR}
-This is a piece of equipment that lowers the bus bar voltage to a usable voltage for the control circuit, and its dynamic characteristic is modelled as a first-order lag filter:
-\begin{align}\label{eq:trnsmod}
-\tau_{\rm tr} \dot{V}_{\rm tr} = - V_{\rm tr} +  |\bm{V}|
-\end{align}
-Generally, the time constant $\tau_{\rm tr}$ is sufficiently small; thus, an output $V_{\rm tr}$ of the voltage transformer is almost the same as the absolute value $|\bm{V}|$ of the bus bar voltage phasor.
+The voltage transformer is a device that reduces the bus voltage to a voltage
+that can be used by the control circuit, and its dynamic characteristics is
+modeled as a first-order lag filter:
+
+\begin{equation}\label{eq:trnsmod}
+  \tau_{\rm tr} \dot{V}_{\rm tr} = - V_{\rm tr} +  |\bm{V}|
+\end{equation}
+
+Generally, the time constant $\tau_{\rm tr}$ is sufficiently small, and the
+output $V_{\rm tr}$ of the voltage transformer is almost equal to the
+absolute value of the bus voltage $|\bm{V}|$.
 
 \smallskip
 \subsubsection{Comparator}
 
-This is a piece of equipment that outputs the difference between the voltage transformer output $V_{\rm tr}$ and the reference signal $V_{\rm ref}^{\star}$.
-PSS output $V_{\rm pss}$ discussed below is added as a signal that adjusts a constant, $V_{\rm ref}^{\star}$.
-In addition, if a stabilizing circuit of the excitation system is to be incorporated, its output $V_{\rm st}$ is also fed back.
-In other words, the comparator is modelled as:
-\begin{align}\label{eq:compmod}
-V_{\rm com} = V_{\rm ref}^{\star} + V_{\rm pss}- V_{\rm tr}
-- V_{\rm st}
-\end{align}
-As discussed, since $V_{\rm tr}$ is almost the same as $|\bm{V}|$, if PSS output $V_{\rm pss}$ and the stabilizing circuit output $V_{\rm tr}$ are 0, the comparator output $V_{\rm com}$ is almost the same as the difference between the reference signal and the absolute value of the bus bar voltage phasor $V_{\rm ref}^{\star} - |\bm{V}|$
+The comparator is a device that outputs the difference between the output
+$V_{\rm tr}$ of the voltage transformer and the reference signal $V_{\rm
+ref}^{\star}$. The output $V_{\rm pss}$ of the power system stabilizer mentioned
+later is applied as a signal to adjust the constant $V_{\rm ref}^{\star}$. In
+addition, when incorporating a stabilizing circuit for the excitation system,
+its output $V_{\rm st}$ is also fed back. That is, the comparator is modeled as
+
+\begin{equation}\label{eq:compmod}
+  V_{\rm com} = V_{\rm ref}^{\star} + V_{\rm pss}- V_{\rm tr}
+  - V_{\rm st}
+\end{equation}
+
+As mentioned above, since $V_{\rm tr}$ is almost equal to $|\bm{V}|$ because the
+time constant $\tau_{\rm tr}$ is usually very small, if the output $V_{\rm pss}$
+of the power system stabilizer and the output $V_{\rm st}$ of the stabilizing
+circuit are zero, the output $V_{\rm com}$ of the comparator is almost equal to
+the difference between the reference signal and the absolute value of the bus
+voltage phase $V_{\rm ref}^{\star} - |\bm{V}|$.
 
 \smallskip
 \subsubsection{Amplifier}
 
-This is a piece of equipment to drive the exciter by multiplying the output of the comparator $V_{\rm com}$. There are many types such as rotary and electromagnetic types, but in most cases, it is modelled as:
-\begin{align}\label{eq:ampmod}
-\tau_{\rm ap} \dot{V}_{\rm ap}=
-\left\{
-\begin{array}{cl}
-- V_{\rm ap} + k_{\rm ap} V_{\rm com}, & \mbox{$V_{\rm ap}^{\rm min} < V_{\rm ap} < V_{\rm ap}^{\rm max}$ ~or~ $V_{\rm ap} V_{\rm com}\leq 0$ } \\
-0, & \mbox{otherwise}
-\end{array}
-\right.
-\end{align}
-%\begin{align}\label{eq:ampmod}
-%\tau_{\rm ap} \dot{V}_{\rm ap}=
-%\left\{
-%\begin{array}{cl}
-%0, & V_{\rm ap}\in \{ V_{\rm ap}^{\rm min},V_{\rm ap}^{\rm max} \},\ V_{\rm ap}V_{\rm com}>0\\
-%- V_{\rm ap} + k_{\rm ap} V_{\rm com}, & \mbox{otherwise}
-%\end{array}
-%\right.
-%\end{align}
-%\begin{align}\label{eq:ampmod}
-%\simode{
-%\tau_{\rm ap} \dot{V}_{\rm ap} & = - V_{\rm ap} + k_{\rm ap} V_{\rm com} \\
-%V_{\rm ap}^{\rm sat} & = \sfsat(V_{\rm ap};V_{\rm ap}^{\rm min},V_{\rm ap}^{\rm max})
-%}
-%\end{align}
-Time constant $\tau_{\rm ap}$ and gain $k_{\rm ap}$ are non-negative constants, and saturation that limits the internal state $V_{\rm ap}$ within the range of $[V_{\rm ap}^{\rm min},V_{\rm ap}^{\rm max}]$ is expressed by conditional branching. 
-Saturation might be set for output instead of the internal state.
-In a transient state relative to large disturbances, such as ground faults, the range of the upper and lower limits of saturation might be set to be large \cite[Section 4.3]{sauer2017power}.
+The amplifier is a device that amplifies the output $V_{\rm com}$ of the
+comparator to drive the excitation system. There are various types, such as
+rotary and electromagnetic types, but in many cases, it is modeled as:
+
+\begin{equation}\label{eq:ampmod}
+  \tau_{\rm ap} \dot{V}_{\rm ap}=
+  \left\{
+  \begin{array}{cl}
+  - V_{\rm ap} + k_{\rm ap} V_{\rm com}, & \mbox{$V_{\rm ap}^{\rm min} < V_{\rm ap} < V_{\rm ap}^{\rm max}$ ~or~ $V_{\rm ap} V_{\rm com}\leq 0$ } \\
+  0, & \mbox{otherwise}
+  \end{array}
+  \right.
+\end{equation}
+where the time constant $\tau_{\rm ap}$ and gain $k_{\rm ap}$ are non-negative
+constants, and the saturation that constrains the internal state $V_{\rm ap}$ to
+the range $[V_{\rm ap}^{\rm min},V_{\rm ap}^{\rm max}]$ is expressed by the
+conditional branching. Note that in some cases, saturation is applied to the
+output instead of the internal state, and in transient states with large
+disturbances such as ground faults, the width of the saturation limits may be
+set large \cite[Section 4.3]{sauer2017power}.
 
 \smallskip
 \subsubsection{Exciter}
+The exciter is a device that generates the field input $V_{\rm field}$ from the
+output $V_{\rm ap}^{\rm sat}$ of the amplifier, modeled as a nonlinear
+first-order system given by:
 
-This is a piece of equipment that generates field voltage from the amplifier output $V_{\rm ap}^{\rm sat}$, and is modelled as a nonlinear first-order system:
-\begin{align}\label{eq:extmod}
-\tau_{\rm ex}\dot{V}_{\rm field} =
-- \Bigl( 
-a_{\rm ex} + 
-\underbrace{\alpha_{\rm ex} e^{\beta_{\rm ex} V_{\rm field}}}_{\ast} 
-\Bigr) V_{\rm field}
-+V_{\rm ap}
-\end{align}
-Though $\tau_{\rm ex}$ is a positive constant, the sign of $a_{\rm ex}$ varies between papers.
-In addition, the term expressed with “$\ast$” is nonlinear because of the impact of magnetic saturation in the exciter, and $\alpha_{\rm ex}$ and $\beta_{\rm ex}$ are both non-negative.
-Each constant is set so that dynamic characteristic of the exciter is stable near the usual operating point.
+\begin{equation}\label{eq:extmod}
+  \tau_{\rm ex}\dot{V}_{\rm field} =
+  - \Bigl( 
+  a_{\rm ex} + 
+  \underbrace{\alpha_{\rm ex} e^{\beta_{\rm ex} V_{\rm field}}}_{\ast} 
+  \Bigr) V_{\rm field}
+  +V_{\rm ap}
+\end{equation}
+
+Here, $\tau_{\rm ex}$ is a positive constant, but the sign of $a_{\rm ex}$ may
+vary depending on the literature. The term denoted by "$\ast$" represents the
+nonlinearity due to magnetic saturation and other effects within the exciter,
+and $\alpha_{\rm ex}$ and $\beta_{\rm ex}$ are both non-negative constants.
+These constants are typically set to ensure stable dynamic behavior of the
+exciter in the vicinity of the normal operating point.
 
 \smallskip
 \subsubsection{Stabilizing circuit}
+The stabilizing circuit is a circuit that is implemented to enhance the
+stability of the excitation system. In the IEEE DC1 model, it is represented as
+a mechanism that feeds back the differential value of the field input. That is,
+its dynamic characteristics are expressed as:
 
-This is a supplementary circuit installed to improve the stability of the excitation system.
-In the IEEE Type DC1 excitation system model, it is expressed as a feedback mechanism of the differential value of the field voltage; in other words, its dynamic characteristic is expressed as:
-\begin{align}\label{eq:stcmod}
-\tau_{\rm st}\dot{V}_{\rm st} =
-- V_{\rm st}
-+ k_{\rm st} \dot{V}_{\rm field}
-\end{align}
-The time constant $\tau_{\rm st}$ and gain $k_{\rm st}$ are non-negative This output of the stabilizing circuit $V_{\rm st}$ is fed back to the comparator of Equation \ref{eq:compmod}.
+\begin{equation}\label{eq:stcmod}
+  \tau_{\rm st}\dot{V}_{\rm st} =
+  - V_{\rm st}
+  + k_{\rm st} \dot{V}_{\rm field}
+\end{equation}
+where the time constant $\tau_{\rm st}$ and gain $k_{\rm st}$ are non-negative
+constants. The output $V_{\rm st}$ of this stabilization circuit is fed back to
+the comparator in Equation \ref{eq:compmod}.
+
 \end{subequations}
 
-The IEEE Type DC1 excitation system model of AVR is a combination of Equation \ref{eq:trnsmod} to Equation \ref{eq:stcmod} discussed above.
-The reference values of each parameter are summarized in \ref{table:AVRpara1} and \ref{table:AVRpara2}.
-The unit of the time constant is [s] while other units are [pu].
-
+The IEEE Type DC1 excitation system model of AVR is a combination of Equation
+\ref{eq:trnsmod} to Equation \ref{eq:stcmod} discussed above. The reference
+values of each parameter are summarized in \ref{table:AVRpara1} and
+\ref{table:AVRpara2}. The unit of the time constant is [s] while other units are
+[pu].
 
 \begin{table}[h]
 \medskip
@@ -1761,9 +1844,8 @@ The unit of the time constant is [s] while other units are [pu].
    \hline
  &  $\tau_{\rm tr}$ & $\tau_{\rm ap}$ & $k_{\rm ap}$ & $V_{\rm ap}^{\rm max}$ & $V_{\rm ap}^{\rm min}$ \\
    \hline \hline
-   例1 \cite[Table D.3. Unit F2]{anderson2008power}& 0.00 & 0.05 & 57.1 & 1.00 & $-1.00$\\
-   例2 \cite[Table 7.3]{sauer2017power}& 0.00 & 0.2 & 20 & $\infty$ & $-\infty$\\
-%   例2 \cite[8.6.3節]{kundur1994power}& 0.05 & 0.89 & 187 & 1.70 & $ -1.70 $\\
+   Example 1 \cite[Table D.3. Unit F2]{anderson2008power}& 0.00 & 0.05 & 57.1 & 1.00 & $-1.00$\\
+   Exapmle 2 \cite[Table 7.3]{sauer2017power}& 0.00 & 0.2 & 20 & $\infty$ & $-\infty$\\
    \hline
   \end{tabular}
 \end{table}
@@ -1777,41 +1859,11 @@ The unit of the time constant is [s] while other units are [pu].
    \hline
 &    $\tau_{\rm ex}$ & $a_{\rm ex}$ & $\alpha_{\rm ex}$ & $\beta_{\rm ex}$ & $\tau_{\rm st}$ & $k_{\rm st}$\\
    \hline \hline
-  例1 \cite[Table D.3. Unit F2]{anderson2008power}& 0.50 & $-0.045$ & 0.0012 & 1.21 & 1.00 & 0.08\\
-   例2 \cite[Table 7.3]{sauer2017power}& 0.314 & $1.0$ & 0.0039 & 1.555 & 0.35 & 0.063 \\
-%  例2 \cite[8.6.3節]{kundur1994power}& 1.15 & $-0.30$ & 0.014 & 1.55 & 0.62 & 0.058 \\
+   Example 1 \cite[Table D.3. Unit F2]{anderson2008power}& 0.50 & $-0.045$ & 0.0012 & 1.21 & 1.00 & 0.08\\
+   Example 2 \cite[Table 7.3]{sauer2017power}& 0.314 & $1.0$ & 0.0039 & 1.555 & 0.35 & 0.063 \\
    \hline 
   \end{tabular}
 \end{table}
-
-
-%\begin{table}[h]
-%\medskip
-% \caption{計器用変圧器と増幅器のパラメータ範囲（参考値）}
-% \label{table:AVRpara1}
-% \centering
-%  \begin{tabular}{|c|c|c|c|c|c|}
-%   \hline
-%   $\tau_{\rm tr}$ & $\tau_{\rm ap}$ & $k_{\rm ap}$ & $V_{\rm ap}^{\rm max}$ & $V_{\rm ap}^{\rm min}$ \\
-%   \hline \hline
-%   0 -- 0.06 & 0.02 -- 0.25 & 25 -- 400 & 1.0 -- 8.2 & $V_{\rm ap}^{\rm max} \times (-1)$\\
-%   \hline
-%  \end{tabular}
-%\end{table}
-%
-%\begin{table}[h]
-%\medskip
-% \caption{励磁器と安定化回路のパラメータ範囲（参考値）}
-% \label{table:AVRpara2}
-% \centering
-%  \begin{tabular}{|c|c|c|c|c|c|}
-%   \hline
-%    $\tau_{\rm ex}$ & $a_{\rm ex}$ & $\alpha_{\rm ex}$ & $\beta_{\rm ex}$ & $\tau_{\rm st}$ & $k_{\rm st}$\\
-%   \hline \hline
-%   0.5 -- 1.3 & $-0.17$ -- $-0.05$ & 0.0016 -- 0.011 & 0.79 -- 1.56 & 0.35 -- 1.0 & 0.01 -- 0.08\\
-%   \hline
-%  \end{tabular}
-%\end{table}
 
 \begin{figure}[t]
 \centering
@@ -1822,58 +1874,61 @@ The unit of the time constant is [s] while other units are [pu].
 \medskip
 \end{figure}
 
-Next, let us talk about the \textbf{IEEE Type ST1 excitation system model}, which is a static model with a faster response, although its structure is the same as the IEEE Type DC1 excitation system model.
-With this AVR model, the exciter model of Equation \ref{eq:extmod} is expressed as a static relationship with a sufficiently small time constant for the exciter:
-\[
-V_{\rm field} = \sfsat \bigl( V_{\rm ap};V_{\rm field}^{\rm min},V_{\rm field}^{\rm max} \bigr)
-\]
-%\[
-%V_{\rm field} = 
-%\left\{
-%\begin{array}{cl}
-%V_{\rm field}^{\rm min}, & V_{\rm ap} \leq V_{\rm field}^{\rm min} \\
-%V_{\rm ap}, & V_{\rm field}^{\rm min} < V_{\rm ap} \leq V_{\rm field}^{\rm max} \\
-%V_{\rm field}^{\rm max}, & V_{\rm ap} > V_{\rm field}^{\rm max}
-%\end{array}
-%\right.
-%\]
-$\sfsat$ is a saturation constant of output and is defined by:
-\[
-\sfsat(x;\underline{\alpha},\overline{\alpha}) := \left\{
-\begin{array}{cl}
-\underline{\alpha}, & x \leq \underline{\alpha} \\
-x, & \underline{\alpha} < x \leq \overline{\alpha} \\
-\overline{\alpha}, & x> \overline{\alpha}
-\end{array}
-\right.
-\]
-The upper and lower limits of the output saturation are modelled to be dependent on the absolute value of the bus bar voltage phasor \cite[Section 8.3]{kundur1994power}.
-Specifically, this is expressed as:
-\[
-V_{\rm field}^{\rm min} = \gamma_{-} |\bm{V}|, \qquad
-V_{\rm field}^{\rm max} = \gamma_{+} |\bm{V}|
--
-k_0 \Ifd
-\]
-using $\Ifd$ of Equation \ref{eq:gendifavr} in addition to $|\bm{V}|$, where $\gamma_{-}$，$\gamma_{+}$，$k_{0}$ is a non-negative constant.
-\FIGref{fig:avrst1} shows the block diagram of this model.
-Since $|\bm{V}|$ becomes 0 during the ground fault of bus bars, field voltage $V_{\rm field}$ is not output because of AVR.
+Next, we will explain the \textbf{IEEE Type ST1 excitation system model} which
+has a similar structure to the IEEE DC1 type but is a static model with faster
+response. In this automatic voltage regulator model, the excitation system time
+constant is sufficiently small, and the excitation system model in Equation
+\ref{eq:extmod} is expressed as a static relationship:
 
-Since the response speed of the exciter is sufficiently fast in the IEEE Type ST1 Excitation System Model, the stabilizing circuit is often unnecessary.
-When time constant $\tau_{\rm ap}$ of the amplifier is sufficiently small, and its dynamic characteristic can be ignored: 
-\begin{align}\label{eq:avrst1}
-\simode{
-\tau_{\rm tr} \dot{V}_{\rm tr} & = - V_{\rm tr} +  |\bm{V}|  \\
-V_{\rm ap} &= k_{\rm ap} ( V_{\rm ref}^{\star} + V_{\rm pss}- V_{\rm tr} )\\
-V_{\rm field} & = \sfsat \left(
-V_{\rm ap};
-V_{\rm field}^{\rm min},V_{\rm field}^{\rm max} 
-\right)
-}
-\end{align}
-is used as the simplified first-order model.
-For example, this model is used in \cite[Section 12.4]{kundur1994power} and \cite[Section 4.2.2]{pal2006robust}.
-Parameter examples are shown in the Examples 1 and 2 in \ref{table:AVRparast1}.
+\[
+  V_{\rm field} = \sfsat \bigl( V_{\rm ap};V_{\rm field}^{\rm min},V_{\rm field}^{\rm max} \bigr)
+\]
+where $\sfsat$ is the output saturation function defined by:
+
+\[
+  \sfsat(x;\underline{\alpha},\overline{\alpha}) := \left\{
+  \begin{array}{cl}
+  \underline{\alpha}, & x \leq \underline{\alpha} \\
+  x, & \underline{\alpha} < x \leq \overline{\alpha} \\
+  \overline{\alpha}, & x> \overline{\alpha}
+  \end{array}
+  \right.
+\]
+
+Additionally, the upper and lower limits of output saturation are modeled to
+mainly depend on the absolute value of the bus voltage phase angle \cite[Section
+8.63]{kundur1994power}. Specifically, using $|\bm{V}|$ and $\Ifd$ in Equation
+\ref{eq:gendifavr}, they are given by
+
+\[
+  V_{\rm field}^{\rm min} = \gamma_{-} |\bm{V}|, \qquad
+  V_{\rm field}^{\rm max} = \gamma_{+} |\bm{V}|
+  -
+  k_0 \Ifd
+\]
+where $\gamma_{-}$, $\gamma_{+}$, and $k_{0}$ are non-negative constants. The
+block diagram of this model is shown in Figure \ref{fig:avrst1}. Note that during
+a ground fault on the bus, $|\bm{V}|$ becomes 0, and the excitation input
+$V_{\rm field}$ is not outputted from the AVR.
+
+Since the excitation response of the IEEE ST1 model is fast enough, stabilizing
+circuits are often unnecessary. When the amplifier time constant $\tau_{\rm ap}$
+is small enough that its dynamic characteristics can be ignored, a simplified
+first-order model given by Equation \ref{eq:avrst1} is used. For example, this
+model is used in \cite[Section 12.4]{kundur1994power} and \cite[Section
+4.2.2]{pal2006robust}. Examples of parameters are shown in Examples 1 and 2 of
+Table \ref{table:AVRparast1}.
+
+\begin{equation}\label{eq:avrst1}
+  \simode{
+    \tau_{\rm tr} \dot{V}_{\rm tr} & = - V_{\rm tr} +  |\bm{V}|  \\
+    V_{\rm ap} &= k_{\rm ap} ( V_{\rm ref}^{\star} + V_{\rm pss}- V_{\rm tr} )\\
+    V_{\rm field} & = \sfsat \left(
+    V_{\rm ap};
+    V_{\rm field}^{\rm min},V_{\rm field}^{\rm max} 
+    \right)
+  }
+\end{equation}
 
 \begin{table}[h]
 \medskip
@@ -1892,80 +1947,121 @@ Parameter examples are shown in the Examples 1 and 2 in \ref{table:AVRparast1}.
   \end{tabular}
 \end{table}
 
-Though the time constant $\tau_{\rm ap}$ of the amplifier is not 0, models with the time constant $\tau_{\rm tr}$ of the voltage transformer being 0 and models without output saturation are sometimes used.
-In such a case, it can be expressed as:
-\begin{align}\label{eq:avrst1s}
-\simode{
-\tau_{\rm ap} \dot{V}_{\rm ap}&=
-- V_{\rm ap} + k_{\rm ap} (V_{\rm ref}^{\star} + V_{\rm pss}- |\bm{V}|)\\
-{V}_{\rm field}&=V_{\rm ap}
-}
-\end{align}
-Parameter examples of this model are shown in Examples 3 and 4 in \ref{table:AVRparast1}.
+When the time constant of the amplifier $\tau_{\rm ap}$ is not zero, but the
+time constant of the instrument transformer $\tau_{\rm tr}$ is zero or a model
+that excludes output saturation is often used
+\cite{chow2004power,sauer2017power,sadamoto2019dynamic}, the following equation
+can be used:
 
-The value of the reference signal $V_{{\rm ref}}^{\star}$ in Equations \ref{eq:avrst1} and \ref{eq:avrst1s} is determined as:
-\begin{align}\label{eq:avrref}
-V_{{\rm ref}}^{\star} = \frac{V_{{\rm field}}^{\star}}{k_{{\rm ap}}}+|\bm{V}^{\star}|
-\end{align}
-when the steady value $V_{{\rm field}}^{\star}$ of the desired field voltage and the steady value $|\bm{V}^{\star}|$ of the absolute value for the bus bar voltage are given, in a real system operation, the steady values of the bus bar voltage and field voltage are unknown values that change by load distribution and so on;
-thus, the value of the reference signal $V_{{\rm ref}}^{\star}$ is specified by using the value of the standard bus bar voltage and field voltage.
+\begin{equation}\label{eq:avrst1s}
+  \simode{
+    \tau_{\rm ap} \dot{V}_{\rm ap}&=
+    - V_{\rm ap} + k_{\rm ap} (V_{\rm ref}^{\star} + V_{\rm pss}- |\bm{V}|)\\
+    {V}_{\rm field}&=V_{\rm ap}
+  }
+\end{equation}
 
-\subsection{Control effect of AVR}
+Parameter examples of this model are shown in Example 3 and Example 4 of Table
+\ref{table:AVRparast1}.
 
-Let us analyze the control effect of AVR using a simple electrical power system model.
+Note that when the desired steady-state value of the excitation input $V_{{\rm
+field}}^{\star}$ and the absolute value of the bus voltage
+$\left|\bm{V}^{\star}\right|$ are given, the reference signal $V_{{\rm
+ref}}^{\star}$ for the reference is determined as follows:
 
-\begin{例}[自動電圧調整器による定態安定性と過渡安定度の変化]\label{ex:avreffect}
-Let us consider an electrical power system model consisting of three bus bars discussed in the Examples \ref{ex:derY}, \ref{ex:pf3bus} and \ref{ex:inires}.
-The physical constants of generators and transmission lines are set to the same value as the Example \ref{ex:inires}.
-In addition, loads connected to bus bar 2 are set to the constant impedance model, and the values from the first row of \ref{table:loadpara1} are used as impedance.
-AVR is set to the IEEE Type ST1 Excitation System Model of Equation \ref{eq:avrst1}. AVR incorporated into generator 1 and generator 3 is the same, and values from Example 1 in \ref{table:AVRparast1} are used as parameters.
+\begin{equation}\label{eq:avrref}
+  V_{{\rm ref}}^{\star} = \frac{V_{{\rm field}}^{\star}}{k_{{\rm ap}}}+|\bm{V}^{\star}|
+\end{equation}
 
-First, let us confirm the change in the set of the steady power flow distribution (stable equilibrium point) that is statically stable against AVR.
-Specifically, the steady value of the interval voltage of generators, $E_1^{\star}$ and $E_3^{\star}$, are fixed to the values in the rightmost column of \ref{table:genst13a}, and the difference of the steady value of the rotor argument, $\delta_3^{\star}-\delta_1^{\star}$, is changed as a parameter.
-In this manner, the small signal stability of the steady power flow distribution in a corresponding electrical power system is determined based on approximate linearization.
+However, in actual power system operation, the steady-state values of bus
+voltage and excitation input are unknown and can vary due to load distribution,
+and other factors, so the value of the reference signal $V_{{\rm ref}}^{\star}$
+is specified using standard values for bus voltage and excitation input.
 
-Without losing generality, $\delta_1^{\star}$ or $\delta_3^{\star}$ can be set to 0.
-If the steady value of the internal state of each generator is determined, the steady value of the corresponding mechanical torque and field voltage can be determined by:
-\begin{align*}
-\simode{
-P_{{\rm mech}i}^{\star} &= %\textstyle
-  f_i \left( \delta^{\star},E^{\star} \right)
-\\
-V_{{\rm field}i}^{\star} & = %\textstyle
-   \tfrac{ \Xsi }{\Xti }  E_i^{\star}  - \left(
-\Xsi - \Xti
-\right)
-g_i \left( \delta^{\star},E^{\star} \right)
-}
-\qquad
- i \in \{1,3\}
-\end{align*}
-$\delta^{\star}$ and $E^{\star}$ are vectors with $\delta_i^{\star}$ and $E_i^{\star}$, and functions $f_i$ and $g_i$ are defined by Equation \ref{eq:figidef}.
-Furthermore, the steady value of the generator bus voltage phasor can be obtained as:
-\begin{align*}
-\mat{
-\bm{V}_1^{\star}\\
-\bm{V}_3^{\star}
-} =
-\left(
-\mat{
-\tfrac{1}{\bm{j} \Xt_1 } & 0\\
-0 & \tfrac{1}{\bm{j} \Xt_3 }
-} + 
-\bm{Y}_{\rm Kron}
-\right)^{-1}
-\mat{
-\tfrac{e^{\bm{j} \delta_1^{\star}}}{\bm{j} \Xt_1 } & 0 \\
-0 & \tfrac{e^{\bm{j} \delta_3^{\star}}}{\bm{j} \Xt_3 }
-}
-\mat{
-E_1^{\star}  \\
-E_3^{\star} 
-}
-\end{align*}
-by using Equation \ref{eq:colVi}.
-$\bm{Y}_{\rm Kron}$ is the admittance matrix where the load bus bar defined by \ref{eq:Kron} is Kron reduced.
-The value of the reference signal $V_{{\rm ref}i}^{\star}$ is determined by Equation \ref{eq:avrref}.
+\subsection{Control effectiveness of AVR}
+
+Let's analyze the control effectiveness of the Automatic Voltage Regulator (AVR)
+using a simple power system model.
+
+\begin{example}{Effect of automatic voltage regulator on steady-state and
+transient stability}\label{ex:avreffect}
+
+Consider the three-bus power system model discussed in Examples \ref{ex:derY},
+\ref{ex:pf3bus}, and \ref{ex:inires}. The physical constants of the generator
+and transmission lines are set to the same values as in Example \ref{ex:inires}.
+Furthermore, the load connected to bus 2 is modeled as a constant impedance, and
+the impedance value is set to the first row of Table \ref{table:loadpara1}.  The
+automatic voltage regulator is set to the IEEE ST1 type model in Equation
+\ref{eq:avrst1}. The automatic voltage regulator incorporated in generators 1
+and 3 is identical, and the parameter values are those of Example 1 in Table
+\ref{table:AVRparast1}.
+
+First, let us examine the change in the set of steady-state stable equilibrium
+points due to the presence or absence of the automatic voltage regulator.
+Specifically, the steady-state stability of the corresponding power system is
+determined based on the approximate linearization by varying the difference in
+steady-state values of the rotor angle, $\delta_3^{\star}-\delta_1^{\star}$,
+while fixing the steady-state values of the internal voltage of the generators,
+$E_1^{\star}$ and $E_3^{\star}$, to the values in the rightmost column of
+Table \ref{table:genst13a}. By calculating the range of
+$\delta_3^{\star}-\delta_1^{\star}$ where the approximate linear model is
+stable, it is found that without the automatic voltage regulator, the range is
+as shown in (i) of \TABref{table:stableeqs}, while with the automatic voltage
+regulator, the range is as shown in (ii) of \TABref{table:stableeqs}.  From this
+result, it is understood that the set of stable equilibrium points tends to
+decrease due to the automatic voltage regulator.
+
+Note that without loss of generality, $\delta_1^{\star}$ or $\delta_3^{\star}$
+can be set to zero.  In addition, if the steady-state values of the internal
+states of each generator are determined, the corresponding steady-state values
+of the mechanical and field inputs can be determined by
+
+\begin{equation*}
+  \simode{
+    P_{{\rm mech}i}^{\star} &= %\textstyle
+      f_i \left( \delta^{\star},E^{\star} \right)
+    \\
+    V_{{\rm field}i}^{\star} & = %\textstyle
+      \tfrac{ \Xsi }{\Xti }  E_i^{\star}  - \left(
+    \Xsi - \Xti
+    \right)
+    g_i \left( \delta^{\star},E^{\star} \right)
+  }
+  \qquad
+  i \in \{1,3\}
+\end{equation*}
+where $\delta^{\star}$ and $E^{\star}$ are vectors with $\delta_i^{\star}$ and
+$E_i^{\star}$, and functions $f_i$ and $g_i$ are defined by Equation
+\ref{eq:figidef}.
+
+Furthermore, the steady-state value of the voltage phase of the generator bus
+can be obtained using Equation \ref{eq:colVi} as follows:
+
+\begin{equation*}
+  \mat{
+    \bm{V}_1^{\star}\\
+    \bm{V}_3^{\star}
+  } =
+  \left(
+    \mat{
+    \tfrac{1}{\bm{j} \Xt_1 } & 0\\
+    0 & \tfrac{1}{\bm{j} \Xt_3 }
+    } + 
+    \bm{Y}_{\rm Kron}
+  \right)^{-1}
+  \mat{
+    \tfrac{e^{\bm{j} \delta_1^{\star}}}{\bm{j} \Xt_1 } & 0 \\
+    0 & \tfrac{e^{\bm{j} \delta_3^{\star}}}{\bm{j} \Xt_3 }
+  }
+  \mat{
+    E_1^{\star}  \\
+    E_3^{\star} 
+  }
+\end{equation*}
+
+Here, $\bm{Y}{\rm Kron}$ is the admittance matrix obtained by Kron reduction of
+the load bus defined in equation \ref{eq:Kron}. The value of the reference
+signal $V_{{\rm ref}i}^{\star}$ is determined by equation \ref{eq:avrref}.
 
 \begin{table}[h]
 \medskip
@@ -1984,55 +2080,74 @@ The value of the reference signal $V_{{\rm ref}i}^{\star}$ is determined by Equa
 \end{table}
 
 \begin{COLUMN}
-\noindent \textbf{$\mathcal{L}_2$ norm}：
-$\mathcal{L}_2$ norm of function $y:[0,\infty) \rightarrow \mathbb{R}^n$ is
-expressed as:
+\noindent \textbf{$\mathcal{L}_2$ norm}:
+The \textbf{$\mathcal{L}_2$ norm}\index{L2 norm@$\mathcal{L}_2$ norm} of a
+function $y:[0,\infty) \rightarrow \mathbb{R}^n$ is defined as
+
 \[
-\|y\|_{\mathcal{L}_2} := \sqrt{
-\int^{\infty}_{0}
-\| y(\tau)\|^2  d \tau
+  \|y\|_{\mathcal{L}_2} := \sqrt{
+  \int^{\infty}_{0}
+  \| y(\tau)\|^2  d \tau
 }
 \]
-と定義される。
-この値は，時変な信号のエネルギーを表すものとして解釈できる。
-一般に，時刻の経過にしたがって振幅が減衰する信号でない限り，$\mathcal{L}_2$ノルムの値は無限大となる。
-なお，``$\mathcal{L}$"の文字は，ルベーグ積分の理論で知られるアンリ・ルベーグ（Henri Lebesgue）の名前に由来する。
+
+This value can be interpreted as the energy of a time-varying signal. Unless the
+signal's amplitude decays over time, the $\mathcal{L}_2$ norm will generally be
+infinite. The letter "$\mathcal{L}$" comes from the name of Henri Lebesgue, who is known for
+his work on the theory of Lebesgue integration.
 \end{COLUMN}
 
-Next, let us confirm an increase in the transient stability by AVR.
-Specifically, we perform the following analysis.
-First, as a statically stable steady power flow distribution regardless of AVR, we consider where the steady value of the rotor argument difference $\delta_3^{\star}-\delta_1^{\star}$ is $-\tfrac{\pi}{6}$~[rad].
-However, the steady value of internal voltage is set to the above value.
-Next, the initial value of the electrical power system is changed as a parameter, and $\|\Delta\omega\|_{\mathcal{L}_2}$ is calculated for the obtained time response of the frequency deviation.
-$\Delta \omega$ is a vector with $\Delta \omega_1$ and $\Delta \omega_3$.
-Similarly, $\||\bm{V}|-|\bm{V}^{\star}| \|_{\mathcal{L}_2}$ is calculated for the time response of the bus bar voltage phasor.
-$|\bm{V}|$ is a vector with $|\bm{V}_1|$ and $|\bm{V}_3|$, while $|\bm{V}^{\star}|$ is a vector with $|\bm{V}_1^{\star}|$ and $|\bm{V}_3^{\star}|$.
+Next, let us confirm the improvement of transient stability by the automatic
+voltage regulator. Specifically, we will conduct the following analysis. First,
+regardless of the presence of the automatic voltage regulator, we consider a
+steady-state stability with a steady-state value of the rotor angle difference
+$\delta_3^{\star}-\delta_1^{\star}$ equal to $-\tfrac{\pi}{6}$~[rad]. The
+steady-state value of the internal voltage is set to the above value. Next, we
+change the initial values of the power system model as parameters and calculate
+$\|\Delta\omega\|_{\mathcal{L}_2}$ for the time response of the obtained angular
+frequency deviation. Here, $\Delta \omega$ is a vector consisting of $\Delta
+\omega_1$ and $\Delta \omega_3$. Similarly, we calculate
+$||\bm{V}|-|\bm{V}^{\star}||{\mathcal{L}_2}$ for the time response of the main
+bus voltage phase deviation. Here, $|\bm{V}|$ is a vector consisting of
+$\||\bm{V}|-|\bm{V}^{\star}| \|_{\mathcal{L}_2}$ is a vector consisting of
+$|\bm{V}_1^{\star}|$ and $|\bm{V}_3^{\star}|$. Note that when the initial value
+is given inside the stable region of the equilibrium point of interest, the
+$\mathcal{L}_2$ norm values of the angular frequency deviation and the main bus
+voltage phase deviation are finite. Moreover, it is known that the higher the
+$\mathcal{L}_2$ norm values of these quantities, the higher the transient
+stability of the equilibrium point for the given initial values. On the other
+hand, when the initial value is given outside the stable region, the
+$\mathcal{L}_2$ norm values become infinite.
 
+The analysis results of the transient stability are shown in
+Figure \ref{fig:transientL2}. The horizontal axis represents the initial value of
+$\delta_3-\delta_1$ set, and the vertical axis represents the $\mathcal{L}_2$
+norm value of the angular frequency deviation and the main bus voltage phase
+deviation generated for the set initial value. The case without the automatic
+voltage regulator corresponding to (i) in Table \ref{table:stableeqs} is
+represented by a solid blue line, and the case with the automatic voltage
+regulator corresponding to (ii) is represented by a dashed black line. Note that
+the plots are shown for the range of initial values for which the
+$\mathcal{L}_2$ norm values are finite. The initial values of the internal
+voltage $E_1$ and $E_3$ are set to the same value as their steady-state value
+$E_1^{\star}$ and $E_3^{\star}$, respectively. The initial values of the angular
+frequency deviation $\Delta \omega_1$ and $\Delta \omega_3$ are both set to 0.
+From this result, it can be seen that the transient stability of the angular
+frequency deviation and the main bus voltage phase deviation has improved by
+incorporating the automatic voltage regulator. It can also be seen that the
 
-\FIGref{fig:transientL2} shows the result of the transient stability analysis.
-The horizontal axis shows the initial value of the set $\delta_3-\delta_1$, while the vertical axis shows values of $\mathcal{L}_2$ norms for frequency deviation and bus bar voltage phasor deviation generated to the set initial value.
-The solid blue line shows a case corresponding to \ref{table:stableeqs}(i) without AVR, and the broken black line shows the case corresponding to (ii) with AVR.
-These are plotted in the range of initial values where values of $\mathcal{L}_2$ are finite.
-The initial values of the internal voltage $E_1$，$E_3$ are set to the same values as their steady values $E_1^{\star}$，$E_3^{\star}$.
-The initial values of frequency deviations $\Delta \omega_1$ and $\Delta \omega_3$ are both set to 0.
-From this result, we can see that the transient stability of the frequency deviation and bus bar voltage phasor is improved by AVR.
-We can also see that the stable range is somewhat narrowed by AVR.
-
-As a reference, \FIGref{fig:avrsmalld} and \FIGref{fig:avrlarged} show the time response of frequency deviations when the initial value of $\delta_3-\delta_1$ is set to $-1$ and $-\tfrac{\pi}{2}$: (a) is without AVR and (b) is with AVR.
-The result shows that by incorporating AVR, the low frequency component of frequency deviation oscillation (central value of oscillation) tends to converge to 0 faster.
-On the other hand, regardless of AVR, the attenuation rate of the high frequency component of oscillation does not change notably.
-\end{例}
-
-
-
-%\begin{figure}[t]
-%\centering
-%\includegraphics[width = .65\linewidth]{figs/transientL2}
-%\medskip
-%\caption{\textbf{ 自動電圧調整器による過渡安定度の変化} }
-%\label{fig:transientL2}
-%\medskip
-%\end{figure}
+As a reference, the time response of the angular frequency deviation that occurs
+when the initial value of $\delta_3-\delta_1$ is set to $-1$ and
+$-\frac{\pi}{2}$, respectively, is shown in Figures \ref{fig:avrsmalld} and
+\ref{fig:avrlarged}. (a) represents the case without automatic voltage regulator
+and (b) represents the case with automatic voltage regulator. From these
+results, it can be seen that incorporating an automatic voltage regulator tends
+to make the low-frequency component (the center value) of the oscillation of the
+angular frequency deviation converge to 0 more quickly. On the other hand, it is
+also found that there is no significant change in the decay rate of the
+high-frequency component of the oscillation, regardless of the presence or
+absence of the automatic voltage regulator.
+\end{example}
 
 \begin{figure}[t]
   \centering
@@ -2054,8 +2169,6 @@ On the other hand, regardless of AVR, the attenuation rate of the high frequency
   }
 \medskip
 \end{figure}
-
-
 
 \begin{figure}[t]
   \centering

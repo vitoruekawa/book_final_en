@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  6 APR 2023 13:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  7 APR 2023 13:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1457,239 +1457,217 @@ Package amsmath Warning: Cannot use `split' here;
 LaTeX Warning: Reference `eq:sys2G' on page 21 undefined on input line 1425.
 
 
-LaTeX Warning: Reference `eq:potWx' on page 21 undefined on input line 1437.
+LaTeX Warning: Reference `eq:potWx' on page 21 undefined on input line 1438.
 
 
-LaTeX Warning: Reference `eq:disineqGds' on page 21 undefined on input line 1473.
+LaTeX Warning: Reference `eq:potWxred' on page 21 undefined on input line 1439.
 
 
-LaTeX Warning: Reference `eq:susred' on page 21 undefined on input line 1479.
+LaTeX Warning: Reference `eq:disineqGds' on page 21 undefined on input line 1483.
 
 
-LaTeX Warning: Reference `sec:admathp' on page 21 undefined on input line 1481.
+LaTeX Warning: Reference `eq:susred' on page 21 undefined on input line 1493.
 
 
-LaTeX Warning: Citation `kodama1981system' on page 21 undefined on input line 1489.
+LaTeX Warning: Reference `sec:admathp' on page 21 undefined on input line 1494.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1493: LaTeX Error: Unicode character ： (U+FF1A)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1493 \noindent \textbf{Hessian matrix}：
-                                           
-You may provide a definition with
-\DeclareUnicodeCharacter 
+LaTeX Warning: Citation `kodama1981system' on page 21 undefined on input line 1505.
 
 
-LaTeX Warning: Citation `boyd2004convex' on page 21 undefined on input line 1503.
+LaTeX Warning: Citation `boyd2004convex' on page 21 undefined on input line 1525.
 
 [21]
 
-LaTeX Warning: Reference `eq:potWxred' on page 22 undefined on input line 1506.
+LaTeX Warning: Reference `eq:potWxred' on page 22 undefined on input line 1529.
 
 
-LaTeX Warning: Reference `eq:UGhess' on page 22 undefined on input line 1548.
+LaTeX Warning: Reference `eq:UGhess' on page 22 undefined on input line 1578.
 
 
-LaTeX Warning: Reference `eq:defPG' on page 22 undefined on input line 1548.
+LaTeX Warning: Reference `eq:defPG' on page 22 undefined on input line 1579.
 
 
-LaTeX Warning: Reference `sec:linpasana' on page 22 undefined on input line 1548.
+LaTeX Warning: Reference `sec:linpasana' on page 22 undefined on input line 1581.
 
 
-LaTeX Warning: Reference `sec:linmathana' on page 22 undefined on input line 1552.
+LaTeX Warning: Reference `sec:linmathana' on page 22 undefined on input line 1590.
 
 
-LaTeX Warning: Reference `eq:potWxred' on page 22 undefined on input line 1552.
+LaTeX Warning: Reference `eq:potWxred' on page 22 undefined on input line 1593.
 
 [22]
 
-LaTeX Warning: Reference `sec:nesconana' on page 23 undefined on input line 1561.
+LaTeX Warning: Reference `sec:nesconana' on page 23 undefined on input line 1608.
 
 
-LaTeX Warning: Reference `sec:avrov' on page 23 undefined on input line 1576.
+LaTeX Warning: Reference `sec:avrov' on page 23 undefined on input line 1653.
 
 
-LaTeX Warning: Reference `sec:pssov' on page 23 undefined on input line 1576.
-
-
-LaTeX Warning: Citation `ieee2016ieee' on page 23 undefined on input line 1607.
-
-
-LaTeX Warning: Citation `anderson2008power' on page 23 undefined on input line 1613.
-
-
-LaTeX Warning: Citation `kundur1994power' on page 23 undefined on input line 1613.
-
-
-LaTeX Warning: Reference `sec:genfund' on page 23 undefined on input line 1615.
+LaTeX Warning: Reference `sec:pssov' on page 23 undefined on input line 1653.
 
 [23]
 
-LaTeX Warning: Reference `sec:genmodadv' on page 24 undefined on input line 1648.
+LaTeX Warning: Citation `ieee2016ieee' on page 24 undefined on input line 1659.
 
 
-LaTeX Warning: Reference `eq:efield' on page 24 undefined on input line 1648.
+LaTeX Warning: Citation `anderson2008power' on page 24 undefined on input line 1667.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1648: LaTeX Error: Unicode character ， (U+FF0C)
-               not set up for use with LaTeX.
+LaTeX Warning: Citation `kundur1994power' on page 24 undefined on input line 1668.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1648 ...n \ref{eq:efield} with $X_{{\rm d}}'$，
-                                                  $X_{\rm d}$.
-You may provide a definition with
-\DeclareUnicodeCharacter 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1650: Undefined control sequence.
-l.1650 As shown in \FIGref
-                          {fig:avrdc1}, the IEEE Type DC1 excitation system ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+LaTeX Warning: Reference `sec:genfund' on page 24 undefined on input line 1671.
 
-<figs/avrdc1.pdf, id=244, 1198.46243pt x 541.58434pt>
+
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 1684.
+
+
+LaTeX Warning: Reference `sec:genmodadv' on page 24 undefined on input line 1706.
+
+
+LaTeX Warning: Reference `eq:efield' on page 24 undefined on input line 1707.
+
+
+LaTeX Warning: Reference `fig:avrdc1' on page 24 undefined on input line 1710.
+
+<figs/avrdc1.pdf, id=243, 1198.46243pt x 541.58434pt>
 File: figs/avrdc1.pdf Graphic file (type pdf)
 <use figs/avrdc1.pdf>
-Package pdftex.def Info: figs/avrdc1.pdf  used on input line 1658.
+Package pdftex.def Info: figs/avrdc1.pdf  used on input line 1723.
 (pdftex.def)             Requested size: 329.57008pt x 148.932pt.
-[24 <./figs/avrdc1.pdf>]
+[24] [25 <./figs/avrdc1.pdf>]
 
-LaTeX Warning: Citation `sauer2017power' on page 25 undefined on input line 1719.
-
-[25]
-
-LaTeX Warning: Reference `eq:compmod' on page 26 undefined on input line 1747.
+LaTeX Warning: Citation `sauer2017power' on page 26 undefined on input line 1790.
 
 
-LaTeX Warning: Reference `eq:trnsmod' on page 26 undefined on input line 1750.
-
-
-LaTeX Warning: Reference `eq:stcmod' on page 26 undefined on input line 1750.
-
-
-LaTeX Warning: Reference `table:AVRpara1' on page 26 undefined on input line 1751.
-
-
-LaTeX Warning: Reference `table:AVRpara2' on page 26 undefined on input line 1751.
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1764: LaTeX Error: Unicode character 例 (U+4F8B)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1764    例
-             1 \cite[Table D.3. Unit F2]{anderson2008power}& 0.00 & 0.05 & 5...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Citation `anderson2008power' on page 26 undefined on input line 1764.
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1765: LaTeX Error: Unicode character 例 (U+4F8B)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1765    例
-             2 \cite[Table 7.3]{sauer2017power}& 0.00 & 0.2 & 20 & $\infty$ ...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Citation `sauer2017power' on page 26 undefined on input line 1765.
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1780: LaTeX Error: Unicode character 例 (U+4F8B)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1780   例
-            1 \cite[Table D.3. Unit F2]{anderson2008power}& 0.50 & $-0.045$ ...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Citation `anderson2008power' on page 26 undefined on input line 1780.
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1781: LaTeX Error: Unicode character 例 (U+4F8B)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1781    例
-             2 \cite[Table 7.3]{sauer2017power}& 0.314 & $1.0$ & 0.0039 & 1....
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Citation `sauer2017power' on page 26 undefined on input line 1781.
-
-<figs/avrst1.pdf, id=270, 979.64597pt x 441.40709pt>
-File: figs/avrst1.pdf Graphic file (type pdf)
-<use figs/avrst1.pdf>
-Package pdftex.def Info: figs/avrst1.pdf  used on input line 1818.
-(pdftex.def)             Requested size: 282.96468pt x 127.49962pt.
-
-LaTeX Warning: Reference `eq:extmod' on page 26 undefined on input line 1826.
+LaTeX Warning: Reference `eq:compmod' on page 26 undefined on input line 1828.
 
 [26]
 
-LaTeX Warning: Citation `kundur1994power' on page 27 undefined on input line 1850.
+LaTeX Warning: Reference `eq:trnsmod' on page 27 undefined on input line 1833.
 
 
-LaTeX Warning: Reference `eq:gendifavr' on page 27 undefined on input line 1858.
+LaTeX Warning: Reference `eq:stcmod' on page 27 undefined on input line 1833.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1858: LaTeX Error: Unicode character ， (U+FF0C)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1858 ...ion to $|\bm{V}|$, where $\gamma_{-}$，
-                                                  $\gamma_{+}$，$k_{0}$ is ...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+LaTeX Warning: Reference `table:AVRpara1' on page 27 undefined on input line 1834.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1858: LaTeX Error: Unicode character ， (U+FF0C)
-               not set up for use with LaTeX.
+LaTeX Warning: Reference `table:AVRpara2' on page 27 undefined on input line 1835.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1858 ...|$, where $\gamma_{-}$，$\gamma_{+}$，
-                                                  $k_{0}$ is a non-negative ...
-You may provide a definition with
-\DeclareUnicodeCharacter 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1859: Undefined control sequence.
-l.1859 \FIGref
-              {fig:avrst1} shows the block diagram of this model.
+LaTeX Warning: Citation `anderson2008power' on page 27 undefined on input line 1847.
+
+
+LaTeX Warning: Citation `sauer2017power' on page 27 undefined on input line 1848.
+
+
+LaTeX Warning: Citation `anderson2008power' on page 27 undefined on input line 1862.
+
+
+LaTeX Warning: Citation `sauer2017power' on page 27 undefined on input line 1863.
+
+<figs/avrst1.pdf, id=279, 979.64597pt x 441.40709pt>
+File: figs/avrst1.pdf Graphic file (type pdf)
+<use figs/avrst1.pdf>
+Package pdftex.def Info: figs/avrst1.pdf  used on input line 1870.
+(pdftex.def)             Requested size: 282.96468pt x 127.49962pt.
+
+LaTeX Warning: Reference `eq:extmod' on page 27 undefined on input line 1881.
+
+[27 <./figs/avrst1.pdf>]
+
+LaTeX Warning: Citation `kundur1994power' on page 28 undefined on input line 1900.
+
+
+LaTeX Warning: Reference `eq:gendifavr' on page 28 undefined on input line 1901.
+
+
+LaTeX Warning: Reference `fig:avrst1' on page 28 undefined on input line 1910.
+
+
+LaTeX Warning: Reference `eq:avrst1' on page 28 undefined on input line 1917.
+
+
+LaTeX Warning: Citation `kundur1994power' on page 28 undefined on input line 1918.
+
+
+LaTeX Warning: Citation `pal2006robust' on page 28 undefined on input line 1919.
+
+
+LaTeX Warning: Reference `table:AVRparast1' on page 28 undefined on input line 1920.
+
+
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 1930.
+
+
+LaTeX Warning: Citation `kundur1994power' on page 28 undefined on input line 1942.
+
+
+LaTeX Warning: Citation `ieee2016ieee' on page 28 undefined on input line 1943.
+
+
+LaTeX Warning: Citation `chow2004power' on page 28 undefined on input line 1944.
+
+
+LaTeX Warning: Citation `sadamoto2019dynamic' on page 28 undefined on input line 1945.
+
+
+LaTeX Warning: Citation `chow2004power' on page 28 undefined on input line 1953.
+
+
+LaTeX Warning: Citation `sauer2017power' on page 28 undefined on input line 1953.
+
+
+LaTeX Warning: Citation `sadamoto2019dynamic' on page 28 undefined on input line 1953.
+
+
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 1961.
+
+
+LaTeX Warning: Reference `table:AVRparast1' on page 28 undefined on input line 1965.
+
+[28]
+
+LaTeX Warning: Reference `ex:derY' on page 29 undefined on input line 1989.
+
+
+LaTeX Warning: Reference `ex:pf3bus' on page 29 undefined on input line 1990.
+
+
+LaTeX Warning: Reference `ex:inires' on page 29 undefined on input line 1990.
+
+
+LaTeX Warning: Reference `ex:inires' on page 29 undefined on input line 1991.
+
+
+LaTeX Warning: Reference `table:loadpara1' on page 29 undefined on input line 1993.
+
+
+LaTeX Warning: Reference `eq:avrst1' on page 29 undefined on input line 1995.
+
+
+LaTeX Warning: Reference `table:AVRparast1' on page 29 undefined on input line 1997.
+
+
+LaTeX Warning: Reference `table:genst13a' on page 29 undefined on input line 2006.
+
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2009: Undefined control sequence.
+l.2009 as shown in (i) of \TABref
+                                 {table:stableeqs}, while with the automatic...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2010: Undefined control sequence.
+l.2010 ...the range is as shown in (ii) of \TABref
+                                                  {table:stableeqs}.  From this
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1697,1703 +1675,642 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `kundur1994power' on page 27 undefined on input line 1875.
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 2029.
 
 
-LaTeX Warning: Citation `pal2006robust' on page 27 undefined on input line 1875.
+LaTeX Warning: Reference `eq:figidef' on page 29 undefined on input line 2035.
 
 
-LaTeX Warning: Reference `table:AVRparast1' on page 27 undefined on input line 1876.
+LaTeX Warning: Reference `eq:colVi' on page 29 undefined on input line 2038.
+
+[29]
+
+LaTeX Warning: Reference `eq:Kron' on page 30 undefined on input line 2063.
 
 
-LaTeX Warning: Citation `kundur1994power' on page 27 undefined on input line 1887.
+LaTeX Warning: Reference `eq:avrref' on page 30 undefined on input line 2064.
+
+[30]
+
+LaTeX Warning: Reference `fig:transientL2' on page 31 undefined on input line 2123.
 
 
-LaTeX Warning: Citation `ieee2016ieee' on page 27 undefined on input line 1888.
+LaTeX Warning: Reference `table:stableeqs' on page 31 undefined on input line 2127.
 
 
-LaTeX Warning: Citation `chow2004power' on page 27 undefined on input line 1889.
+LaTeX Warning: Reference `fig:avrsmalld' on page 31 undefined on input line 2141.
 
 
-LaTeX Warning: Citation `sadamoto2019dynamic' on page 27 undefined on input line 1890.
+LaTeX Warning: Reference `fig:avrlarged' on page 31 undefined on input line 2142.
 
-[27 <./figs/avrst1.pdf>]
+<figs/transientL2w.pdf, id=313, 670.505pt x 407.5225pt>
+File: figs/transientL2w.pdf Graphic file (type pdf)
+<use figs/transientL2w.pdf>
+Package pdftex.def Info: figs/transientL2w.pdf  used on input line 2157.
+(pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
+<figs/transientL2V.pdf, id=314, 670.505pt x 407.5225pt>
+File: figs/transientL2V.pdf Graphic file (type pdf)
+<use figs/transientL2V.pdf>
+Package pdftex.def Info: figs/transientL2V.pdf  used on input line 2162.
+(pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
+<figs/woAVRsmall.pdf, id=315, 670.505pt x 407.5225pt>
+File: figs/woAVRsmall.pdf Graphic file (type pdf)
+<use figs/woAVRsmall.pdf>
+Package pdftex.def Info: figs/woAVRsmall.pdf  used on input line 2178.
+(pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
+<figs/wAVRsmall.pdf, id=316, 670.505pt x 407.5225pt>
+File: figs/wAVRsmall.pdf Graphic file (type pdf)
+<use figs/wAVRsmall.pdf>
+Package pdftex.def Info: figs/wAVRsmall.pdf  used on input line 2183.
+(pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
+<figs/woAVRlarge.pdf, id=317, 670.505pt x 407.5225pt>
+File: figs/woAVRlarge.pdf Graphic file (type pdf)
+<use figs/woAVRlarge.pdf>
+Package pdftex.def Info: figs/woAVRlarge.pdf  used on input line 2200.
+(pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
+<figs/wAVRlarge.pdf, id=318, 670.505pt x 407.5225pt>
+File: figs/wAVRlarge.pdf Graphic file (type pdf)
+<use figs/wAVRlarge.pdf>
+Package pdftex.def Info: figs/wAVRlarge.pdf  used on input line 2205.
+(pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
 
-LaTeX Warning: Reference `table:AVRparast1' on page 28 undefined on input line 1904.
+LaTeX Warning: Reference `ex:avreffect' on page 31 undefined on input line 2217.
+
+[31 <./figs/transientL2w.pdf> <./figs/transientL2V.pdf>]
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2223: Undefined control sequence.
+l.2223 ...ol signal $V_{\rm pss}$ shown in \FIGref
+                                                  {fig:avrdc1} and \FIGref{f...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2223: Undefined control sequence.
+l.2223 ...shown in \FIGref{fig:avrdc1} and \FIGref
+                                                  {fig:avrst1}.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Reference `eq:avrst1' on page 28 undefined on input line 1906.
+LaTeX Warning: Citation `ieee2016ieee' on page 32 undefined on input line 2225.
+
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2227: Undefined control sequence.
+l.2227 \FIGref
+              {fig:pss1} shows the block diagram.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+<figs/pss1.pdf, id=337, 999.2191pt x 231.2389pt>
+File: figs/pss1.pdf Graphic file (type pdf)
+<use figs/pss1.pdf>
+Package pdftex.def Info: figs/pss1.pdf  used on input line 2231.
+(pdftex.def)             Requested size: 329.57008pt x 76.27025pt.
+[32 <./figs/woAVRsmall.pdf> <./figs/wAVRsmall.pdf> <./figs/woAVRlarge.pdf> <./figs/wAVRlarge.pdf>]
+
+LaTeX Warning: Reference `table:psspara' on page 33 undefined on input line 2295.
 
 
-LaTeX Warning: Reference `eq:avrst1s' on page 28 undefined on input line 1906.
+LaTeX Warning: Reference `sec:onemachine' on page 33 undefined on input line 2298.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Environment 例 undefined.
+LaTeX Warning: Citation `kundur1994power' on page 33 undefined on input line 2300.
+
+
+LaTeX Warning: Citation `chow2004power' on page 33 undefined on input line 2301.
+
+[33 <./figs/pss1.pdf>]
+
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2312: LaTeX Error: Unicode character 例 (U+4F8B)
+               not set up for use with LaTeX.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1917 \begin{例}
-                  [自動電圧調整器による定態安定性と過渡安...
+l.2312    例
+             1 \cite[12.5節]{kundur1994power}& 9.50 & 1.4 & 0.033 & 0.154 &...
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+LaTeX Warning: Citation `kundur1994power' on page 34 undefined on input line 2312.
+
+
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2312: LaTeX Error: Unicode character 節 (U+7BC0)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2312    例1 \cite[12.5節]{kundur1994power}
+                                              & 9.50 & 1.4 & 0.033 & 0.154 &...
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2313: LaTeX Error: Unicode character 例 (U+4F8B)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2313    例
+             2 \cite[12.8節]{kundur1994power}& 20.0 & 10.0 & 0.02 & 0.05 & ...
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+LaTeX Warning: Citation `kundur1994power' on page 34 undefined on input line 2313.
+
+
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2313: LaTeX Error: Unicode character 節 (U+7BC0)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2313    例2 \cite[12.8節]{kundur1994power}
+                                              & 20.0 & 10.0 & 0.02 & 0.05 & ...
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2314: LaTeX Error: Unicode character 例 (U+4F8B)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2314    例
+             3 \cite[III節]{chow2004power}& 1.57 & 10.0 & 0.03 & 0.34 & 0.0...
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+LaTeX Warning: Citation `chow2004power' on page 34 undefined on input line 2314.
+
+
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2314: LaTeX Error: Unicode character 節 (U+7BC0)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2314    例3 \cite[III節]{chow2004power}
+                                           & 1.57 & 10.0 & 0.03 & 0.34 & 0.0...
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2315: LaTeX Error: Unicode character 例 (U+4F8B)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2315    例
+             4 \cite[Table H.3]{ieee2016ieee}& 3.15 & 10.0 & 0.01 & 0.76 & 0...
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+LaTeX Warning: Citation `ieee2016ieee' on page 34 undefined on input line 2315.
+
+
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2324: LaTeX Error: Environment 例 undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2324 \begin{例}
+                  [Changes in the small signal stability and the transient s...
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 自 (U+81EA)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 \begin{例}[自
-                      動電圧調整器による定態安定性と過渡安...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+LaTeX Warning: Reference `ex:avreffect' on page 34 undefined on input line 2325.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 動 (U+52D5)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 \begin{例}[自動
-                         電圧調整器による定態安定性と過渡安...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+LaTeX Warning: Reference `table:psspara' on page 34 undefined on input line 2326.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 電 (U+96FB)
-               not set up for use with LaTeX.
+LaTeX Warning: Reference `table:stableeqs' on page 34 undefined on input line 2327.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 \begin{例}[自動電
-                            圧調整器による定態安定性と過渡安...
-You may provide a definition with
-\DeclareUnicodeCharacter 
 
+LaTeX Warning: Reference `ex:avreffect' on page 34 undefined on input line 2331.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 圧 (U+5727)
-               not set up for use with LaTeX.
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2331: Undefined control sequence.
+l.2331 ... the result with PSS is shown in \FIGref
+                                                  {fig:transientL2} with the...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 \begin{例}[自動電圧
-                               調整器による定態安定性と過渡安...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2334: Undefined control sequence.
+l.2334 As a reference, \FIGref
+                              {fig:PSSomega} (a) and (b) show the time respo...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 調 (U+8ABF)
-               not set up for use with LaTeX.
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2337: LaTeX Error: \begin{document} ended by \end{例}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1917 \begin{例}[自動電圧調
-                                  整器による定態安定性と過渡安...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+l.2337 \end{例}
+                
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
+<figs/wPSSsmall.pdf, id=382, 670.505pt x 407.5225pt>
+File: figs/wPSSsmall.pdf Graphic file (type pdf)
+<use figs/wPSSsmall.pdf>
+Package pdftex.def Info: figs/wPSSsmall.pdf  used on input line 2344.
+(pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
+<figs/wPSSlarge.pdf, id=383, 670.505pt x 407.5225pt>
+File: figs/wPSSlarge.pdf Graphic file (type pdf)
+<use figs/wPSSlarge.pdf>
+Package pdftex.def Info: figs/wPSSlarge.pdf  used on input line 2349.
+(pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 整 (U+6574)
-               not set up for use with LaTeX.
+LaTeX Warning: Reference `fig: avrsmalld' on page 34 undefined on input line 2354.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 \begin{例}[自動電圧調整
-                                     器による定態安定性と過渡安...
-You may provide a definition with
-\DeclareUnicodeCharacter 
 
+LaTeX Warning: Reference `fig: avrsmalld' on page 34 undefined on input line 2354.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 器 (U+5668)
-               not set up for use with LaTeX.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 \begin{例}[自動電圧調整器
-                                        による定態安定性と過渡安...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2360.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character に (U+306B)
-               not set up for use with LaTeX.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 2360.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 \begin{例}[自動電圧調整器に
-                                           よる定態安定性と過渡安...
-You may provide a definition with
-\DeclareUnicodeCharacter 
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2360.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character よ (U+3088)
-               not set up for use with LaTeX.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 \begin{例}[自動電圧調整器によ
-                                              る定態安定性と過渡安...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2362.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character る (U+308B)
-               not set up for use with LaTeX.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 2362.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 \begin{例}[自動電圧調整器による
-                                                 定態安定性と過渡安...
-You may provide a definition with
-\DeclareUnicodeCharacter 
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2362.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 定 (U+5B9A)
-               not set up for use with LaTeX.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 ...n{例}[自動電圧調整器による定
-                                                  態安定性と過渡安�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+LaTeX Warning: Citation `ishizaki2018retrofit' on page 34 undefined on input line 2367.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 態 (U+614B)
-               not set up for use with LaTeX.
+LaTeX Warning: Citation `sadamoto2018retrofit' on page 34 undefined on input line 2367.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 ...��}[自動電圧調整器による定態
-                                                  安定性と過渡安定�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
 
+LaTeX Warning: Citation `sasahara2019damping' on page 34 undefined on input line 2367.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 安 (U+5B89)
-               not set up for use with LaTeX.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 ...[自動電圧調整器による定態安
-                                                  定性と過渡安定度�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+LaTeX Warning: Citation `ishizaki2019retrofit' on page 34 undefined on input line 2367.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 定 (U+5B9A)
-               not set up for use with LaTeX.
+LaTeX Warning: Citation `ishizaki2021modularity' on page 34 undefined on input line 2367.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 ...�動電圧調整器による定態安定
-                                                  性と過渡安定度の�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+[34]
 
+LaTeX Warning: Reference `eq:avrst1' on page 35 undefined on input line 2374.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 性 (U+6027)
-               not set up for use with LaTeX.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 ...�電圧調整器による定態安定性
-                                                  と過渡安定度の変�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+LaTeX Warning: Reference `eq:gendifavr' on page 35 undefined on input line 2374.
 
+[35 <./figs/wPSSsmall.pdf> <./figs/wPSSlarge.pdf>]
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character と (U+3068)
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2389: LaTeX Error: Unicode character ， (U+FF0C)
                not set up for use with LaTeX.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1917 ...�圧調整器による定態安定性と
-                                                  過渡安定度の変化]\...
+l.2389 ...rator model $\delta$, $\Delta \omega$，
+                                                  $E$, and the state of the ...
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 過 (U+904E)
-               not set up for use with LaTeX.
+LaTeX Warning: Reference `eq:sigintvw' on page 36 undefined on input line 2409.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 ...�調整器による定態安定性と過
-                                                  渡安定度の変化]\lab...
-You may provide a definition with
-\DeclareUnicodeCharacter 
 
+LaTeX Warning: Reference `eq:desmodl' on page 36 undefined on input line 2410.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 渡 (U+6E21)
-               not set up for use with LaTeX.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 ...�整器による定態安定性と過渡
-                                                  安定度の変化]\label{...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+LaTeX Warning: Reference `eq:desmodl' on page 36 undefined on input line 2442.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 安 (U+5B89)
-               not set up for use with LaTeX.
+LaTeX Warning: Reference `eq:matlocalm' on page 36 undefined on input line 2443.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 ...�器による定態安定性と過渡安
-                                                  定度の変化]\label{ex:...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+<figs/retconsys2.pdf, id=410, 615.94319pt x 229.68611pt>
+File: figs/retconsys2.pdf Graphic file (type pdf)
+<use figs/retconsys2.pdf>
+Package pdftex.def Info: figs/retconsys2.pdf  used on input line 2462.
+(pdftex.def)             Requested size: 329.57008pt x 122.8966pt.
+[36]
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2476: Undefined control sequence.
+l.2476 ...f the generators of interest” (\FIGref
+                                                  {fig:retconsys}).
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 定 (U+5B9A)
-               not set up for use with LaTeX.
+LaTeX Warning: Citation `ishizaki2019retrofit' on page 37 undefined on input line 2482.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 ...�による定態安定性と過渡安定
-                                                  度の変化]\label{ex:avr...
-You may provide a definition with
-\DeclareUnicodeCharacter 
 
+LaTeX Warning: Reference `eq:Gbapxst' on page 37 undefined on input line 2491.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 度 (U+5EA6)
-               not set up for use with LaTeX.
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2492: Undefined control sequence.
+l.2492 ... the local linear subsystem $G$ (\FIGref
+                                                  {fig:explocalG}).
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 ...�よる定態安定性と過渡安定度
-                                                  の変化]\label{ex:avreff...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+[37 <./figs/retconsys2.pdf>]
 
+LaTeX Warning: Reference `eq:matlocalm' on page 38 undefined on input line 2513.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character の (U+306E)
-               not set up for use with LaTeX.
+<figs/explocalG2.pdf, id=434, 338.46852pt x 233.87375pt>
+File: figs/explocalG2.pdf Graphic file (type pdf)
+<use figs/explocalG2.pdf>
+Package pdftex.def Info: figs/explocalG2.pdf  used on input line 2517.
+(pdftex.def)             Requested size: 166.44861pt x 115.01665pt.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 ...�る定態安定性と過渡安定度の
-                                                  変化]\label{ex:avreffect}
-You may provide a definition with
-\DeclareUnicodeCharacter 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2524.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 変 (U+5909)
-               not set up for use with LaTeX.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 2524.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 ...�定態安定性と過渡安定度の変
-                                                  化]\label{ex:avreffect}
-You may provide a definition with
-\DeclareUnicodeCharacter 
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2524.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1917: LaTeX Error: Unicode character 化 (U+5316)
-               not set up for use with LaTeX.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1917 ...�態安定性と過渡安定度の変化
-                                                  ]\label{ex:avreffect}
-You may provide a definition with
-\DeclareUnicodeCharacter 
+LaTeX Warning: Reference `eq:Gbapxst' on page 38 undefined on input line 2529.
 
 
-LaTeX Warning: Reference `ex:derY' on page 28 undefined on input line 1918.
+LaTeX Warning: Citation `fairman1998linear' on page 38 undefined on input line 2533.
 
 
-LaTeX Warning: Reference `ex:pf3bus' on page 28 undefined on input line 1918.
+LaTeX Warning: Reference `eq:Gplus' on page 38 undefined on input line 2533.
 
+[38 <./figs/explocalG2.pdf>]
 
-LaTeX Warning: Reference `ex:inires' on page 28 undefined on input line 1918.
+LaTeX Warning: Reference `eq:locKhat' on page 39 undefined on input line 2556.
 
 
-LaTeX Warning: Reference `ex:inires' on page 28 undefined on input line 1919.
+LaTeX Warning: Reference `eq:locKhat' on page 39 undefined on input line 2576.
 
 
-LaTeX Warning: Reference `table:loadpara1' on page 28 undefined on input line 1920.
+LaTeX Warning: Reference `eq:Gplus' on page 39 undefined on input line 2576.
 
 
-LaTeX Warning: Reference `eq:avrst1' on page 28 undefined on input line 1921.
+LaTeX Warning: Citation `ishizaki2019retrofit' on page 39 undefined on input line 2577.
 
 
-LaTeX Warning: Reference `table:AVRparast1' on page 28 undefined on input line 1921.
+LaTeX Warning: Reference `eq:Gbapxst' on page 39 undefined on input line 2582.
 
 
-LaTeX Warning: Reference `table:genst13a' on page 28 undefined on input line 1924.
+LaTeX Warning: Reference `eq:sigintvw' on page 39 undefined on input line 2582.
 
-[28]
+[39]
 
-LaTeX Warning: Reference `eq:figidef' on page 29 undefined on input line 1943.
+LaTeX Warning: Reference `eq:Gbapxst' on page 40 undefined on input line 2619.
 
 
-LaTeX Warning: Reference `eq:colVi' on page 29 undefined on input line 1966.
+LaTeX Warning: Reference `eq:agccon' on page 40 undefined on input line 2631.
 
+[40]
 
-LaTeX Warning: Reference `eq:Kron' on page 29 undefined on input line 1967.
+LaTeX Warning: Reference `sec:allgen' on page 41 undefined on input line 2671.
 
 
-LaTeX Warning: Reference `eq:avrref' on page 29 undefined on input line 1968.
+LaTeX Warning: Reference `eq:thetaV' on page 41 undefined on input line 2716.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1987: LaTeX Error: Unicode character ： (U+FF1A)
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2716: LaTeX Error: Unicode character ， (U+FF0C)
                not set up for use with LaTeX.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1987 \noindent \textbf{$\mathcal{L}_2$ norm}：
-                                                 
+l.2716 ...l |\bm{V}| }{\partial \Delta \omega}$，
+                                                  $\tfrac{\partial \angle \b...
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1996: LaTeX Error: Unicode character と (U+3068)
-               not set up for use with LaTeX.
+LaTeX Warning: Reference `eq:ThetaV' on page 41 undefined on input line 2717.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1996 と
-          定義される。
-You may provide a definition with
-\DeclareUnicodeCharacter 
 
+LaTeX Warning: Reference `eq:ThetaV' on page 41 undefined on input line 2718.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1996: LaTeX Error: Unicode character 定 (U+5B9A)
-               not set up for use with LaTeX.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1996 と定
-             義される。
-You may provide a definition with
-\DeclareUnicodeCharacter 
+LaTeX Warning: Reference `eq:basenvm' on page 41 undefined on input line 2719.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1996: LaTeX Error: Unicode character 義 (U+7FA9)
-               not set up for use with LaTeX.
+LaTeX Warning: Reference `eq:ThetaV' on page 41 undefined on input line 2721.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1996 と定義
-                される。
-You may provide a definition with
-\DeclareUnicodeCharacter 
 
+LaTeX Warning: Reference `eq:Gbapxst' on page 41 undefined on input line 2725.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1996: LaTeX Error: Unicode character さ (U+3055)
-               not set up for use with LaTeX.
+[41]
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1996 と定義さ
-                   れる。
-You may provide a definition with
-\DeclareUnicodeCharacter 
+LaTeX Warning: Reference `eq:retroK' on page 42 undefined on input line 2732.
 
+<figs/timedeltamodel.pdf, id=471, 670.505pt x 407.5225pt>
+File: figs/timedeltamodel.pdf Graphic file (type pdf)
+<use figs/timedeltamodel.pdf>
+Package pdftex.def Info: figs/timedeltamodel.pdf  used on input line 2755.
+(pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
+<figs/timeEmodel.pdf, id=472, 670.505pt x 407.5225pt>
+File: figs/timeEmodel.pdf Graphic file (type pdf)
+<use figs/timeEmodel.pdf>
+Package pdftex.def Info: figs/timeEmodel.pdf  used on input line 2761.
+(pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
+<figs/heatdelta.pdf, id=473, 686.565pt x 411.5375pt>
+File: figs/heatdelta.pdf Graphic file (type pdf)
+<use figs/heatdelta.pdf>
+Package pdftex.def Info: figs/heatdelta.pdf  used on input line 2779.
+(pdftex.def)             Requested size: 163.12146pt x 97.77257pt.
+<figs/heatE.pdf, id=474, 686.565pt x 411.5375pt>
+File: figs/heatE.pdf Graphic file (type pdf)
+<use figs/heatE.pdf>
+Package pdftex.def Info: figs/heatE.pdf  used on input line 2785.
+(pdftex.def)             Requested size: 163.12146pt x 97.77257pt.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1996: LaTeX Error: Unicode character れ (U+308C)
-               not set up for use with LaTeX.
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2812: LaTeX Error: Environment 例 undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1996 と定義され
-                      る。
-You may provide a definition with
-\DeclareUnicodeCharacter 
+l.2812 \begin{例}
+                  [Identification of the approximate linear environment mode...
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1996: LaTeX Error: Unicode character る (U+308B)
-               not set up for use with LaTeX.
+LaTeX Warning: Reference `ex:avreffect' on page 42 undefined on input line 2813.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1996 と定義される
-                         。
-You may provide a definition with
-\DeclareUnicodeCharacter 
 
+LaTeX Warning: Reference `eq:agccon' on page 42 undefined on input line 2814.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1996: LaTeX Error: Unicode character 。 (U+3002)
-               not set up for use with LaTeX.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1996 と定義される。
-                            
-You may provide a definition with
-\DeclareUnicodeCharacter 
+LaTeX Warning: Reference `table:agcpara' on page 42 undefined on input line 2814.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character こ (U+3053)
-               not set up for use with LaTeX.
+LaTeX Warning: Reference `table:pflow2' on page 42 undefined on input line 2815.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 こ
-          の値は，時変な信号のエネルギーを表すものとし...
-You may provide a definition with
-\DeclareUnicodeCharacter 
 
+LaTeX Warning: Reference `eq:thetaV' on page 42 undefined on input line 2817.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character の (U+306E)
-               not set up for use with LaTeX.
+[42 <./figs/timedeltamodel.pdf> <./figs/timeEmodel.pdf> <./figs/heatdelta.pdf> <./figs/heatE.pdf>]
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 この
-             値は，時変な信号のエネルギーを表すものとし...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+LaTeX Warning: Reference `eq:ThetaV' on page 43 undefined on input line 2825.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character 値 (U+5024)
-               not set up for use with LaTeX.
+LaTeX Warning: Reference `eq:Gplus' on page 43 undefined on input line 2854.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 この値
-                は，時変な信号のエネルギーを表すものとし...
-You may provide a definition with
-\DeclareUnicodeCharacter 
 
+LaTeX Warning: Reference `eq:desmodl' on page 43 undefined on input line 2854.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character は (U+306F)
-               not set up for use with LaTeX.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 この値は
-                   ，時変な信号のエネルギーを表すものとし...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+LaTeX Warning: Reference `eq:Thetasum' on page 43 undefined on input line 2855.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character ， (U+FF0C)
-               not set up for use with LaTeX.
+LaTeX Warning: Reference `eq:Gplus' on page 43 undefined on input line 2856.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 この値は，
-                      時変な信号のエネルギーを表すものとし...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2865: Undefined control sequence.
+l.2865 The blue line in \FIGref
+                               {fig:timeVmodel} shows the time series data o...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2867: Undefined control sequence.
+l.2867 ...ven interval of 0.01 is shown in \FIGref
+                                                  {fig:datamodeling}.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character 時 (U+6642)
-               not set up for use with LaTeX.
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2885: Undefined control sequence.
+l.2885 ...lues correspond to "$\times$" of \FIGref
+                                                  {fig:datamodeling}.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 この値は，時
-                         変な信号のエネルギーを表すものとし...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2886: Undefined control sequence.
+l.2886 ...hown with the broken red line in \FIGref
+                                                  {fig:timeVmodel}.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character 変 (U+5909)
-               not set up for use with LaTeX.
+/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2888: LaTeX Error: \begin{document} ended by \end{例}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1997 この値は，時変
-                            な信号のエネルギーを表すものとし...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+l.2888 \end{例}
+                
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character な (U+306A)
-               not set up for use with LaTeX.
+LaTeX Warning: Reference `ex:modelingV' on page 43 undefined on input line 2891.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 この値は，時変な
-                               信号のエネルギーを表すものとし...
-You may provide a definition with
-\DeclareUnicodeCharacter 
 
+LaTeX Warning: Reference `chap:largesim' on page 43 undefined on input line 2892.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character 信 (U+4FE1)
-               not set up for use with LaTeX.
+[43] [44]
+\tf@thm=\write5
+\openout5 = `doccontrolsyn4_en.thm'.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 この値は，時変な信
-                                  号のエネルギーを表すものとし...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character 号 (U+53F7)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 この値は，時変な信号
-                                     のエネルギーを表すものとし...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character の (U+306E)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 この値は，時変な信号の
-                                        エネルギーを表すものとし...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character エ (U+30A8)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 この値は，時変な信号のエ
-                                           ネルギーを表すものとし...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character ネ (U+30CD)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 この値は，時変な信号のエネ
-                                              ルギーを表すものとし...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character ル (U+30EB)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 この値は，時変な信号のエネル
-                                                 ギーを表すものとし...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character ギ (U+30AE)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 ...�値は，時変な信号のエネルギ
-                                                  ーを表すものとし�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character ー (U+30FC)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 ...�は，時変な信号のエネルギー
-                                                  を表すものとして�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character を (U+3092)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 ...�，時変な信号のエネルギーを
-                                                  表すものとして解�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character 表 (U+8868)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 ...�時変な信号のエネルギーを表
-                                                  すものとして解釈�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character す (U+3059)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 ...�変な信号のエネルギーを表す
-                                                  ものとして解釈で�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character も (U+3082)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 ...�な信号のエネルギーを表すも
-                                                  のとして解釈でき�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character の (U+306E)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 ...�信号のエネルギーを表すもの
-                                                  として解釈できる。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character と (U+3068)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 ...�号のエネルギーを表すものと
-                                                  して解釈できる。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character し (U+3057)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 ...�のエネルギーを表すものとし
-                                                  て解釈できる。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character て (U+3066)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 ...�エネルギーを表すものとして
-                                                  解釈できる。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character 解 (U+89E3)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 ...�ネルギーを表すものとして解
-                                                  釈できる。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character 釈 (U+91C8)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 ...�ルギーを表すものとして解釈
-                                                  できる。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character で (U+3067)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 ...�ギーを表すものとして解釈で
-                                                  きる。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character き (U+304D)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 ...�ーを表すものとして解釈でき
-                                                  る。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character る (U+308B)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 ...�を表すものとして解釈できる
-                                                  。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1997: LaTeX Error: Unicode character 。 (U+3002)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1997 ...�表すものとして解釈できる。
-                                                  
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 一 (U+4E00)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 一
-          般に，時刻の経過にしたがって振幅が減衰する信...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 般 (U+822C)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 一般
-             に，時刻の経過にしたがって振幅が減衰する信...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character に (U+306B)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 一般に
-                ，時刻の経過にしたがって振幅が減衰する信...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character ， (U+FF0C)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 一般に，
-                   時刻の経過にしたがって振幅が減衰する信...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 時 (U+6642)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 一般に，時
-                      刻の経過にしたがって振幅が減衰する信...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 刻 (U+523B)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 一般に，時刻
-                         の経過にしたがって振幅が減衰する信...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character の (U+306E)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 一般に，時刻の
-                            経過にしたがって振幅が減衰する信...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 経 (U+7D4C)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 一般に，時刻の経
-                               過にしたがって振幅が減衰する信...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 過 (U+904E)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 一般に，時刻の経過
-                                  にしたがって振幅が減衰する信...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character に (U+306B)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 一般に，時刻の経過に
-                                     したがって振幅が減衰する信...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character し (U+3057)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 一般に，時刻の経過にし
-                                        たがって振幅が減衰する信...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character た (U+305F)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 一般に，時刻の経過にした
-                                           がって振幅が減衰する信...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character が (U+304C)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 一般に，時刻の経過にしたが
-                                              って振幅が減衰する信...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character っ (U+3063)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 一般に，時刻の経過にしたがっ
-                                                 て振幅が減衰する信...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character て (U+3066)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�に，時刻の経過にしたがって
-                                                  振幅が減衰する信�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 振 (U+632F)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�，時刻の経過にしたがって振
-                                                  幅が減衰する信号�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 幅 (U+5E45)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�時刻の経過にしたがって振幅
-                                                  が減衰する信号で�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character が (U+304C)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�刻の経過にしたがって振幅が
-                                                  減衰する信号でな�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 減 (U+6E1B)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�の経過にしたがって振幅が減
-                                                  衰する信号でない�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 衰 (U+8870)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�経過にしたがって振幅が減衰
-                                                  する信号でない限�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character す (U+3059)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�過にしたがって振幅が減衰す
-                                                  る信号でない限り�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character る (U+308B)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�にしたがって振幅が減衰する
-                                                  信号でない限り，$\...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 信 (U+4FE1)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�したがって振幅が減衰する信
-                                                  号でない限り，$\mat...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 号 (U+53F7)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�たがって振幅が減衰する信号
-                                                  でない限り，$\mathca...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character で (U+3067)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�がって振幅が減衰する信号で
-                                                  ない限り，$\mathcal{L...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character な (U+306A)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�って振幅が減衰する信号でな
-                                                  い限り，$\mathcal{L}_2...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character い (U+3044)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�て振幅が減衰する信号でない
-                                                  限り，$\mathcal{L}_2$�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 限 (U+9650)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�振幅が減衰する信号でない限
-                                                  り，$\mathcal{L}_2$ノ�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character り (U+308A)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�幅が減衰する信号でない限り
-                                                  ，$\mathcal{L}_2$ノル�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character ， (U+FF0C)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�が減衰する信号でない限り，
-                                                  $\mathcal{L}_2$ノルム�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character ノ (U+30CE)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�号でない限り，$\mathcal{L}_2$ノ
-                                                  ルムの値は無限大�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character ル (U+30EB)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�でない限り，$\mathcal{L}_2$ノル
-                                                  ムの値は無限大と�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character ム (U+30E0)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�ない限り，$\mathcal{L}_2$ノルム
-                                                  の値は無限大とな�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character の (U+306E)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�い限り，$\mathcal{L}_2$ノルムの
-                                                  値は無限大となる。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 値 (U+5024)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�限り，$\mathcal{L}_2$ノルムの値
-                                                  は無限大となる。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character は (U+306F)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�り，$\mathcal{L}_2$ノルムの値は
-                                                  無限大となる。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 無 (U+7121)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�，$\mathcal{L}_2$ノルムの値は無
-                                                  限大となる。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 限 (U+9650)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...�$\mathcal{L}_2$ノルムの値は無限
-                                                  大となる。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 大 (U+5927)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...mathcal{L}_2$ノルムの値は無限大
-                                                  となる。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character と (U+3068)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...hcal{L}_2$ノルムの値は無限大と
-                                                  なる。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character な (U+306A)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...l{L}_2$ノルムの値は無限大とな
-                                                  る。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character る (U+308B)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...}_2$ノルムの値は無限大となる
-                                                  。
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1998: LaTeX Error: Unicode character 。 (U+3002)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1998 ...$ノルムの値は無限大となる。
-                                                  
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character な (U+306A)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 な
-          お，``$\mathcal{L}$"の文字は，ルベーグ積分の理論�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character お (U+304A)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 なお
-             ，``$\mathcal{L}$"の文字は，ルベーグ積分の理論�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character ， (U+FF0C)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 なお，
-                ``$\mathcal{L}$"の文字は，ルベーグ積分の理論�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character の (U+306E)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 なお，``$\mathcal{L}$"の
-                                   文字は，ルベーグ積分の理論�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character 文 (U+6587)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 なお，``$\mathcal{L}$"の文
-                                      字は，ルベーグ積分の理論�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character 字 (U+5B57)
-               not set up for use with LaTeX.
+ (./doccontrolsyn4_en.aux)
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 なお，``$\mathcal{L}$"の文字
-                                         は，ルベーグ積分の理論�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character は (U+306F)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 なお，``$\mathcal{L}$"の文字は
-                                            ，ルベーグ積分の理論�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character ， (U+FF0C)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 なお，``$\mathcal{L}$"の文字は，
-                                               ルベーグ積分の理論�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character ル (U+30EB)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 なお，``$\mathcal{L}$"の文字は，ル
-                                                  ベーグ積分の理論�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character ベ (U+30D9)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 ...，``$\mathcal{L}$"の文字は，ルベ
-                                                  ーグ積分の理論で�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character ー (U+30FC)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 ...``$\mathcal{L}$"の文字は，ルベー
-                                                  グ積分の理論で知�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character グ (U+30B0)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 ...\mathcal{L}$"の文字は，ルベーグ
-                                                  積分の理論で知ら�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character 積 (U+7A4D)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 ...thcal{L}$"の文字は，ルベーグ積
-                                                  分の理論で知られ�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character 分 (U+5206)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 ...al{L}$"の文字は，ルベーグ積分
-                                                  の理論で知られる�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character の (U+306E)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 ...L}$"の文字は，ルベーグ積分の
-                                                  理論で知られるア�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+LaTeX Warning: There were undefined references.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character 理 (U+7406)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 ..."の文字は，ルベーグ積分の理
-                                                  論で知られるアン�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character 論 (U+8AD6)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 ...�文字は，ルベーグ積分の理論
-                                                  で知られるアンリ�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character で (U+3067)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 ...�字は，ルベーグ積分の理論で
-                                                  知られるアンリ・�...
-You may provide a definition with
-\DeclareUnicodeCharacter 
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999: LaTeX Error: Unicode character 知 (U+77E5)
-               not set up for use with LaTeX.
+Package rerunfilecheck Warning: File `doccontrolsyn4_en.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1999 ...�は，ルベーグ積分の理論で知
-                                                  られるアンリ・ル�...
-(That makes 100 errors; please try again.) 
+Package rerunfilecheck Info: Checksums for `doccontrolsyn4_en.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  59185FD7294750792FDEC6CF9DCEEB17;4982.
+ ) 
 Here is how much of TeX's memory you used:
- 18939 strings out of 478268
- 288502 string characters out of 5846346
- 596308 words of memory out of 5000000
- 36675 multiletter control sequences out of 15000+600000
- 585771 words of font info for 253 fonts, out of 8000000 for 9000
+ 19133 strings out of 478268
+ 293076 string characters out of 5846346
+ 601308 words of memory out of 5000000
+ 36784 multiletter control sequences out of 15000+600000
+ 594142 words of font info for 267 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,24n,134p,634b,608s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 88i,26n,134p,474b,640s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-rm.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/doublestroke/dsrom8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txbsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexas.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/txsya.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb>
+Output written on doccontrolsyn4_en.pdf (44 pages, 1401425 bytes).
+PDF statistics:
+ 748 PDF objects out of 1000 (max. 8388607)
+ 508 compressed objects within 6 object streams
+ 184 named destinations out of 1000 (max. 500000)
+ 126 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1999:  ==> Fatal error occurred, no output PDF file produced!

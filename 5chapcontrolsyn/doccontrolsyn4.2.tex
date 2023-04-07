@@ -1374,15 +1374,8 @@ M   \Delta \dot{\omega}&=
 \right)
 |\bm{V}| \sfcos (\delta - \angle \bm{V} )
 \end{align}
-を定義した
-。
+を定義した 。
 なお，発電機が出力する有効電力と無効電力は
-%\begin{align*}
-%\spliteq{
-%P & =  \frac{E |\bm{V} |}{ \Xt } \sfsin(\delta -  \angle \bm{V}), \\
-%Q & =  \frac{E |\bm{V} |}{ \Xt } \sfcos (\delta - \angle \bm{V}) - \frac{|\bm{V}|^2}{ \Xt }
-%}
-%\end{align*}
 \[
 P  =  \frac{E |\bm{V} |}{ \Xt } \sfsin(\delta -  \angle \bm{V}), \qquad
 Q  =  \frac{E |\bm{V} |}{ \Xt } \sfcos (\delta - \angle \bm{V}) - \frac{|\bm{V}|^2}{ \Xt }
@@ -1444,21 +1437,6 @@ V_{\rm com} = V_{\rm ref}^{\star} + V_{\rm pss}- V_{\rm tr}
 \end{array}
 \right.
 \end{align}
-%\begin{align}\label{eq:ampmod}
-%\tau_{\rm ap} \dot{V}_{\rm ap}=
-%\left\{
-%\begin{array}{cl}
-%0, & V_{\rm ap}\in \{ V_{\rm ap}^{\rm min},V_{\rm ap}^{\rm max} \},\ V_{\rm ap}V_{\rm com}>0\\
-%- V_{\rm ap} + k_{\rm ap} V_{\rm com}, & \mbox{otherwise}
-%\end{array}
-%\right.
-%\end{align}
-%\begin{align}\label{eq:ampmod}
-%\simode{
-%\tau_{\rm ap} \dot{V}_{\rm ap} & = - V_{\rm ap} + k_{\rm ap} V_{\rm com} \\
-%V_{\rm ap}^{\rm sat} & = \sfsat(V_{\rm ap};V_{\rm ap}^{\rm min},V_{\rm ap}^{\rm max})
-%}
-%\end{align}
 としてモデル化される。
 時定数$\tau_{\rm ap}$とゲイン$k_{\rm ap}$は非負定数であり，内部状態$V_{\rm ap}$を$[V_{\rm ap}^{\rm min},V_{\rm ap}^{\rm max}]$の範囲に制約する飽和が条件分岐で表現されている\footnote{
 内部状態ではなく出力に飽和を設定する場合もある。
@@ -1577,16 +1555,6 @@ IEEE DC1型モデルでは，界磁入力の微分値をフィードバックす
 \[
 V_{\rm field} = \sfsat \bigl( V_{\rm ap};V_{\rm field}^{\rm min},V_{\rm field}^{\rm max} \bigr)
 \]
-%\[
-%V_{\rm field} = 
-%\left\{
-%\begin{array}{cl}
-%V_{\rm field}^{\rm min}, & V_{\rm ap} \leq V_{\rm field}^{\rm min} \\
-%V_{\rm ap}, & V_{\rm field}^{\rm min} < V_{\rm ap} \leq V_{\rm field}^{\rm max} \\
-%V_{\rm field}^{\rm max}, & V_{\rm ap} > V_{\rm field}^{\rm max}
-%\end{array}
-%\right.
-%\]
 で表現される。
 ただし，$\sfsat$は出力の飽和関数であり
 \[
