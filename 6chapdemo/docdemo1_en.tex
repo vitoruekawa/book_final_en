@@ -1,23 +1,24 @@
-\documentclass[tombow,dvipdfmx]{corona-a5-1.1}
-% dvipdfmxを追加（川口）
-
+\documentclass[graybox, envcountchap]{svmult}
 \input{../settings}
 
 \begin{document}
 
-\chapter{Numerical simulation example of a large-scale model}\label{chap:largesim}
-\red{Entire chapter translated with DeepL}
+\chapter{Numerical simulation examples of a large-scale model}\label{chap:largesim}
 
-In this chapter, we apply the basic items explained so far to perform numerical simulation of a standard large-scale model called the IEEE68 bus system model.
-The structure of this chapter is as follows.
-First, in the \ref{sec: IEEE68} section, the numerical data of the transmission line, load, and generator of the IEEE68 bus system model are organized.
-Next, in the \ref{sec: IEEE68AGC} section, the effect of automatic power generation control on load fluctuations is analyzed.
-Specifically, we analyze changes in generator variables and bus variables when the impedance of the load changes slowly over several hours.
-Finally, in the \ref{sec: IEEE68PSS} clause, the transient stability for the generatrix ground fault is analyzed.
-In particular, based on the retrofit control theory, it is shown that the system stability is appropriately improved by incorporating an independently designed system stabilizer into each generator.
+In this Chapter, we apply the fundamentals explained so far to perform numerical
+simulations of a standard large-scale model called the IEEE 68-bus system model.
+The structure of this chapter is as follows. First, in Section \ref{sec:IEEE68},
+we organize the numerical data of transmission lines, loads, and generators in
+the IEEE 68-bus system model. Next, in Section \ref{sec:IEEE68AGC}, we analyze
+the effect of automatic generation control on load fluctuations. Specifically,
+we analyze the changes in generator and bus variables when the load impedance
+changes gradually over a few hours. Finally, in Section \ref{sec:IEEE68PSS}, we
+analyze the transient stability of the system with respect to bus grounding. In
+particular, we demonstrate that incorporating system stabilizing devices
+independently designed for each generator based on retrofit control theory can
+significantly improve system stability.
 
-
-\section{Target power system model}\label{sec:IEEE68}
+\section{Power system model under consideration}\label{sec:IEEE68}
 
 \begin{figure}[t]
 \centering
@@ -30,51 +31,69 @@ In particular, based on the retrofit control theory, it is shown that the system
 
 \subsection{IEEE68 bus system model}
 
-This section exemplifies the numerical simulation results using the IEEE68 bus system model (\FIGref{fig: IEEE68bus}).
-This model consists of 68 bus lines, of which 16 bus bars are connected to the generator and 35 bus bars are connected to the load.
-In \FIGref{fig: IEEE68bus}, "Area 1" represents the power system in the New England region of the northeastern United States, and "Area 2" represents the power system in New York.
-Areas 3 to 5 represent the power systems around New York State as a set of generators and loads, respectively.
+In this section, we present numerical simulation results using the IEEE68 bus
+power system model (Figure \ref{fig:IEEE68bus}). This model consists of 68
+buses, with generators connected to 16 buses and loads connected to 35 buses.
+The "Area 1" in Figure \ref{fig:IEEE68bus} represents the power system in the
+northeastern United States, while "Area 2" represents the power system in the
+state of New York. In addition, Areas 3 to 5 represent the power systems around
+New York State, each represented by one set of generators and loads.
 
-The transmission line is set as a model considering the ground capacitance explained in the \ref{sec: transmodc} section.
-Set the constant of each transmission line to the value of \TABref{table: ieee68lines}.
-The first column shows the bus number at the end of the transmission line, and the second, third, and fourth columns show the resistance, reactance, and capacitance to ground of the transmission line, respectively.
-These are the standard values shown in \cite[Appendix A]{pal2006robust}.
-For the generator, the salient pole type generator model explained in the \ref{sec: genmodadv} section is adopted.
-Set the constant of each generator to the value of \TABref{table: ieee68genpara}.
-These are also the values shown in the above literature.
+The transmission lines are modeled considering the ground capacitance as
+explained in Section \ref{sec:transmodc}. The constants of each transmission
+line are set to the values shown in Table \ref{table:ieee68lines}. The first
+column shows the bus numbers at both ends of the transmission line, and the
+second, third, and fourth columns show the resistance, reactance, and ground
+capacitance values of the transmission line, respectively. These are standard
+values shown in \cite[Appendix A]{pal2006robust}. Furthermore, we use the
+salient-pole generator model explained in Section \ref{sec:genmodadv} for the
+generators.  The constants for each generator are set to the values shown in
+Table \ref{table:ieee68genpara}, which are also shown in the aforementioned
+literature.
 
-\subsection{Data sheet used for tidal current calculation}
+\subsection{Data sheet for power flow calculation}
 
-
-The data sheet of the generator bus used for power flow calculation is shown in \TABref{table: ieee68datag}.
-Similarly, the data sheet of the load bus is shown in \TABref{table: ieee68datal}.
-These also quote the values shown in \cite[Appendix A]{pal2006robust}.
-
+The data sheets for the generator buses used in power flow calculations are
+shown in Table \ref{table:ieee68datag}. Similarly, the data sheet for the load
+buses is shown in Table \ref{table:ieee68datal}. These values are also cited
+from \cite[Appendix A]{pal2006robust}.
 
 \subsection{Load model}
 
-The constant impedance model explained in the \ref{sec: loadpr} section is adopted as the load model.
-For the data sheets of \TABref{table: ieee68datag} and \TABref{table: ieee68datal}, the impedance value of the load determined from the result of the power flow calculation is \TABref{table: ieee68loads}.
-Note that the bus 16 is set as the slack bus, and the value of $ P_ {16} ^ {\ star} $ is calculated to be 33.68.
+The constant impedance load model described in Section \ref{sec:loadpr} is
+adopted for the load model. The impedance values of the loads determined from
+the power flow calculation results for the data sheets in Table
+\ref{table:ieee68datag} and Table \ref{table:ieee68datal} are shown in Table
+\ref{table:ieee68loads}. Note that bus 16 is set as the slack bus, and the value
+of $P_{16}^{\star}$ is calculated as 33.68.
 
 \section{Frequency stability analysis for load fluctuations}\label{sec:IEEE68AGC}
 
 \subsection{Load fluctuation settings}
 
-In this section, we observe the time response of the angular frequency deviation when the impedance value of the load is changed.
-The load impedance is linearly increased by 10 \% per hour based on the value of \TABref{table: ieee68loads}.
-That is, the impedance of each load is
-\begin{align}\label{eq:loadvary68}
-z_{{\rm load}i}(t) = \left(1+\tfrac{1}{36000}t \right) \left( r_{{\rm load}i} + \bm{j} x_{{\rm load}i} \right)
-\end{align}
-The unit of time $ t $ is [s].
+In this section, we observe the time response of the angular frequency deviation
+when the impedance values of the loads are changed. The impedance values of the
+loads are increased linearly by 10\% per hour based on the values in
+Table \ref{table:ieee68loads}. That is, the impedance of each load is set as:
+
+\begin{equation}\label{eq:loadvary68}
+  z_{{\rm load}i}(t) = \left(1+\tfrac{1}{36000}t \right) \left( r_{{\rm load}i} + \bm{j} x_{{\rm load}i} \right)
+\end{equation}
+where $t$ is the time in [s].
 
 \subsection{When the machine input and field input of the generator are constant}\label{sec:constPV}
 
-Consider the case where the machine input and the field input, which are the external inputs of the generator, are all constants.
-Angular frequencies for all generators when the load impedance changes according to the equation \ref{eq: loadvary68} from the steady-state to the datasheets of \TABref{table: ieee68datag} and \TABref{table: ieee68datal}. The time response of the deviation is shown in \FIGref{fig: omegasAGC}(a).
-In this case, it can be seen that the angular frequency deviation does not become 0 because the supply-demand balance is not satisfied when the load fluctuates.
-In addition, the angular frequency deviation increases in the negative direction for the first 7 seconds due to the increase in power consumption due to the increase in the impedance value of the load, and then the power system model becomes unstable and diverges in the positive direction. is doing.
+Consider the case where both the mechanical and excitation inputs to the
+generator, which are external inputs, are constant. From the steady-state power
+flow solution given in the data sheets of Table \ref{table:ieee68datag} and
+Table \ref{table:ieee68datal}, the time response of the frequency deviation for
+all generators is shown in Figure \ref{fig:omegasAGC}(a) when the impedance of
+the load changes according to Equation \ref{eq:loadvary68}. In this case, since
+the load disturbance causes an imbalance in supply and demand, the frequency
+deviation does not converge to zero. Moreover, due to the increase in power
+consumption as the impedance of the load increases, the frequency deviation
+initially increases in the negative direction for about 7 seconds, and then
+diverges in the positive direction as the power system model becomes unstable.
 
 \begin{figure}[t]
   \centering
@@ -82,188 +101,118 @@ In addition, the angular frequency deviation increases in the negative direction
   \begin{minipage}{0.49\linewidth}
     \centering
     \includegraphics[width = 1.0\linewidth]{figs/WOavrWOagc}
-    \subcaption{When machine input and field input are constants}
+    \subcaption{Case where mechanical input and excitation input of the generator are constant}
     \medskip
   \end{minipage}
   \begin{minipage}{0.49\linewidth}
     \centering
     \includegraphics[width = 1.0\linewidth]{figs/WavrWOagc}
-    \subcaption{If the machine input is a constant}
+    \subcaption{Case where mechanical input of the generator is constant}
     \medskip
   \end{minipage}
  \begin{minipage}{0.49\linewidth}
     \centering
     \includegraphics[width = 1.0\linewidth]{figs/WavrWagc}
-    \subcaption{To control machine inputs}
+    \subcaption{Case where mechanical input of the generator is controlled}
     \medskip
   \end{minipage}
   \begin{minipage}{0.49\linewidth}
     \centering
     \includegraphics[width = 1.0\linewidth]{figs/WavrWagcL}
-    \subcaption{When controlling machine inputs (zoom in)}
+    \subcaption{Case where mechanical input of the generator is controlled (zoomed in)}
     \medskip
   \end{minipage}
   }
   \medskip
-  \caption{\textbf{Time response of angular frequency deviation to load variations}}
+  \caption{\textbf{Time response of angular frequency deviation to load variation}}
   \label{fig:omegasAGC}
 \medskip
 \end{figure}
 
+\subsection{Case where the Mechanical Input is Constant}\label{sec:onlyAVR}
 
-%\begin{table}[h]
-%\medskip
-%%\caption{\textbf{潮流計算に用いるデータシート（発電機母線）}} \label{table:xxx}
-% \centering
-%  {
-%  \begin{minipage}{0.64\linewidth}
-% \caption{\textbf{IEEE ST1型モデルのパラメータ}}
-% \label{table:AVRparaset}
-% \centering
-%  \begin{tabular}{ccccccccc}
-%   \hline
-%$\tau_{\rm tr}$ & $\tau_{\rm ap}$ & $k_{\rm ap}$ & $\gamma_{+}$ & $\gamma_{-}$ & $k_{0}$ & $\tau_{\rm st}$ & $k_{\rm st}$\\
-%   \hline \hline
-% 0.015 & 0 & 20 & $\infty$ & $-\infty$ & 0 & 0 & 0 \\
-%   \hline
-%  \end{tabular}
-%  \end{minipage}
-%  \begin{minipage}{0.35\linewidth}
-% \caption{\textbf{自動発電制御のパラメータ}}
-% \label{table:agcparaset}
-% \centering
-%  \begin{tabular}{ccccccccc}
-%   \hline
-%  $k_{\rm P}$ & $k_{\rm I}$ & $\alpha_i$  \\
-%   \hline \hline
-%100 & 500 & 1  \\
-%   \hline
-%  \end{tabular}
-%  \end{minipage}
-%  }
-%\end{table}
+Consider the case where an automatic voltage regulator that controls the
+excitation input of the generator and a power system stabilizer are installed in
+all generators. The automatic voltage regulator is set to the IEEE ST1 model
+described in Section \ref{sec:avrov}.  Specifically, for all generator buses
+$i$, it is set to:
 
+\begin{equation*}
+  \simode{
+    0.015 \dot{V}_{{\rm tr}i} & = - V_{{\rm tr} i} +  |\bm{V}_i|  \\
+    V_{{\rm field}i} &= 20 ( V_{{\rm ref}i}^{\star} + V_{{\rm pss}i}- V_{{\rm tr}i} )
+  }
+\end{equation*}
 
+In addition, the power system stabilizer is set to the IEEE PSS1 model described
+in Section \ref{sec:pssintro}. Specifically, for all generator buses $i$, it is
+set to:
 
-%\begin{table}[h]
-%\medskip
-% \caption{\textbf{自動発電制御のパラメータ設定}}
-% \label{table:agcparaset}
-% \centering
-%  \begin{tabular}{ccccccccc}
-%   \hline
-%  $k_{\rm P}$ & $k_{\rm I}$ & $\alpha_i$  \\
-%   \hline \hline
-%100 & 500 & 1  \\
-%   \hline
-%  \end{tabular}
-%\end{table}
-%
-%\begin{table}[h]
-%\medskip
-% \caption{\textbf{IEEE ST1型モデルのパラメータ}}
-% \label{table:AVRparaset}
-% \centering
-%  \begin{tabular}{ccccccccc}
-%   \hline
-%$\tau_{\rm tr}$ & $\tau_{\rm ap}$ & $k_{\rm ap}$ & $\gamma_{+}$ & $\gamma_{-}$ & $k_{0}$ & $\tau_{\rm st}$ & $k_{\rm st}$\\
-%   \hline \hline
-% 0.015 & 0 & 20 & $\infty$ & $-\infty$ & 0 & 0 & 0 \\
-%   \hline
-%  \end{tabular}
-%\end{table}
+\begin{equation*}
+  \simode{
+    1.4 \dot{\xi}_{{\rm ws}i} &=
+    - \xi_{{\rm ws}i}
+    + 9.5 \Delta \omega_i \\
+    v_{{\rm ws}i} &= 9.5 \Delta \omega_i - \xi_{{\rm ws}i}
+  }
+  \qquad
+  \simode{
+    0.033 \dot{\xi}_{i} &=
+    - \xi_{i}
+    + 0.79 %\tfrac{ 0.033 }{ 0.154 }
+    v_{{\rm ws}i} \\
+    V_{{\rm pss}i} &= 4.67 ( v_{{\rm ws}i} - \xi_{i} )
+  }
+\end{equation*}
 
-%\begin{table}[h]
-%\medskip
-% \caption{\textbf{IEEE PSS1型モデルのパラメータ}}
-% \label{table:pssparaset}
-% \centering
-%  \begin{tabular}{ccccccccccccc}
-%   \hline
-%$k_{\rm pss}$ & $\tau_{\rm ws}$ & $\tau_{{\rm d}1}$ & $\tau_{{\rm n}1}$ & $\tau_{{\rm d}2}$ & $\tau_{{\rm n}2}$ & $V_{\rm pss}^{\rm min}$ & $V_{\rm pss}^{\rm min}$ \\
-%   \hline \hline
-%9.50 & 1.4 & 0.033 & 0.154 & 0.00 & 0.00 & $-\infty$ & $\infty$ \\   \hline
-%  \end{tabular}
-%\end{table}
+The time response of the frequency deviation in this case is shown in Figure
+\ref{fig:omegasAGC}(b). Similar to Figure \ref{fig:omegasAGC}(a), it can be seen
+that due to load fluctuations, the supply-demand balance is not satisfied, and
+the frequency deviation does not become zero.  Note that the mechanical input of
+the generator is also set to be constant for all generators, as described in
+Section \ref{sec:constPV}.
 
+\subsection{Case where machine input is controlled by an automatic generation controller}
 
+Consider incorporating an automatic generator control to control the mechanical
+input of a generator. Here, for each area in Figure \ref{fig:IEEE68bus}, we will
+incorporate the broadcast-type PI controller explained in Section
+\ref{sec:broadPI}. Specifically, let $\mathcal{I}^{(l)}_{\rm G}$ denote the
+index set of generator buses in area $l$. Then, for the automatic generator
+control in area $l$, we set:
 
+\begin{equation*}
+  \simode{
+    \dot{\xi}^{(l)}&=  \Delta \omega_{\rm ave}^{(l)}\\
+    P_{{\rm mech}i} &= P_{i}^{\star} 
+    - \tfrac{ P_{i}^{\star} }{ P_{{\rm ave}}^{{\star}} } \left(  100 \Delta \omega_{\rm ave}^{(l)} +  500  \xi^{(l)} \right),
+    \qquad i \in \mathcal{I}^{(l)}_{\rm G}
+  }
+\end{equation*}
+where we define the average of the deviation of angular frequency and the
+average of the active power in steady-state for the generators in area $l$ as
+follows:
 
-
-\subsection{If the machine input is a constant}\label{sec:onlyAVR}
-
-Consider the case where an automatic voltage regulator and a system stabilizer, each of which controls the field input of a generator, are built into every generator.
-The automatic voltage regulator is set to the IEEE ST1 type model described in section \ref{sec:avrov}.
-Specifically, for all generator bus lines $i$, the
-\begin{align*}
-\simode{
-0.015 \dot{V}_{{\rm tr}i} & = - V_{{\rm tr} i} +  |\bm{V}_i|  \\
-V_{{\rm field}i} &= 20 ( V_{{\rm ref}i}^{\star} + V_{{\rm pss}i}- V_{{\rm tr}i} )
-}
-\end{align*}
-In addition, the grid stabilizer is assumed to be the IEEE PSS1 type model of the \ref{sec:pssintro} clause.
-Specifically, for all generator bus lines $i$, the
-%\begin{align*}
-%\simode{
-%1.4 \dot{\xi}_{{\rm ws}i} &=
-%- \xi_{{\rm ws}i}
-%+ 9.5 \Delta \omega_i \\
-%v_{{\rm ws}i} &= 9.5 \Delta \omega_i - \xi_{{\rm ws}i}
-%}
-%\end{align*}
-%で表される
-\begin{align*}
-\simode{
-1.4 \dot{\xi}_{{\rm ws}i} &=
-- \xi_{{\rm ws}i}
-+ 9.5 \Delta \omega_i \\
-v_{{\rm ws}i} &= 9.5 \Delta \omega_i - \xi_{{\rm ws}i}
-}
-\qquad
-\simode{
-0.033 \dot{\xi}_{i} &=
-- \xi_{i}
-+ 0.79 %\tfrac{ 0.033 }{ 0.154 }
-v_{{\rm ws}i} \\
-V_{{\rm pss}i} &= 4.67 ( v_{{\rm ws}i} - \xi_{i} )
-}
-\end{align*}
-The time response of the angular frequency deviation in this case is shown in \FIGref{fig:omegasAGC}(b).
-It can be seen that the angular frequency deviation does not become zero because the supply-demand balance is not satisfied due to load fluctuations, as in the case of \FIGref{fig:omegasAGC}(a).
-Note that all the mechanical inputs of the generator are assumed to be constants as in the \FIGref{sec:constPV} clause.
-
-\subsection{When machine input is controlled by an automatic generation controller}
-
-Consider the case of incorporating an automatic generation controller that controls the mechanical inputs of a generator.
-Here, we incorporate the broadcast-type PI controller described in the \FIGref{sec:broadPI} clause for each and every area of the \FIGref{fig:IEEE68bus}.
-Specifically, the subscript set of generator bus lines belonging to area $l$ is denoted by $\mathcal{I}^{(l)}_{\rm G}$, and the automatic generation controller in area $l$ is
-\begin{align*}
-\simode{
-\dot{\xi}^{(l)}&=  \Delta \omega_{\rm ave}^{(l)}\\
-P_{{\rm mech}i} &= P_{i}^{\star} 
-- \tfrac{ P_{i}^{\star} }{ P_{{\rm ave}}^{{\star}} } \left(  100 \Delta \omega_{\rm ave}^{(l)} +  500  \xi^{(l)} \right),
-\qquad i \in \mathcal{I}^{(l)}_{\rm G}
-}
-\end{align*}
-However, the average value of the angular frequency deviations of the generators belonging to the area $ l $ and the average value of the active power in the steady state are used.
 \[
-\Delta \omega_{\rm ave}^{(l)}(t) := 
-\frac{ 1 }{|\mathcal{I}^{(l)}_{\rm G}|}
-\sum_{i \in \mathcal{I}^{(l)}_{\rm G}}  \Delta \omega_{i}(t)
-,\qquad
-P_{{\rm ave}}^{{\star}} := 
-\frac{ 1 }{ 16 }
-\sum_{i =1}^{16}  P_{i}^{\star}
+  \Delta \omega_{\rm ave}^{(l)}(t) := 
+  \frac{ 1 }{|\mathcal{I}^{(l)}_{\rm G}|}
+  \sum_{i \in \mathcal{I}^{(l)}_{\rm G}}  \Delta \omega_{i}(t)
+  ,\qquad
+  P_{{\rm ave}}^{{\star}} := 
+  \frac{ 1 }{ 16 }
+  \sum_{i =1}^{16}  P_{i}^{\star}
 \]
-%また，$k_{\rm P}^{(l)}$，$k_{\rm I}^{(l)}$はコントローラゲインである。
-It is assumed that the same automatic voltage regulator as the \ref{sec: onlyAVR} clause is built into each generator.
-%また，$P_{{\rm mech}i}^{\star}$の値は\TABref{table:ieee68datag}の$P_i^{\star}$の値に等しい。
 
-The time response of the angular frequency deviation in this case is shown in \FIGref{fig: omegasAGC}(c).
-Note that \FIGref{fig: omegasAGC}(d) is an enlargement of the scale of the vertical axis.
-It can be seen that the angular frequency deviation is maintained at a value near 0 due to the function of automatic power generation control.
-Since the impedance value of the load is continuously changing, the angular frequency deviation does not become exactly 0, but it becomes a small value of about $ -1 \times 10^{-6}$ ~ [pu].
-You can also see that there is.
+It is assumed that each generator is equipped with an automatic voltage
+regulator as explained in Section \ref{sec:onlyAVR}.
+
+The time response of the frequency deviation in this case is shown in Figure
+\ref{fig:omegasAGC}(c). Note that Figure \ref{fig:omegasAGC}(d) is an enlarged
+version of the y-axis scale. As a result of the automatic generation control, it
+can be seen that the frequency deviation is maintained around 0. Although the
+impedance value of the load continues to change, the frequency deviation does
+not become exactly 0, but remains at a small value of about $-1\times 10^{-6}$
+[pu].
 
 \begin{figure}[t!]
   \centering
@@ -294,73 +243,75 @@ You can also see that there is.
   \end{minipage}
   }
   \medskip
-  \caption{\textbf{Changes in generator variables and bus variables with respect to load fluctuations}
+  \caption{\textbf{Changes in generator and bus variables due to load variations.  }
   \\  \centering(Circle: initial time, square: end time)}
   \label{fig:polars}
 \medskip
 \end{figure}
 
-
-Next, the changes in the generator variable and the bus variable from the initial time to the lapse of 3 hours are shown in \FIGref{fig: polars}.
-\FIGref{fig: polars}(a)-(d) are $ E_i e^{\bm{j}\delta_i} $, $ \bm{V}_i $, $ \bm{I}_i $, respectively. ， $ P_i + \bm{j} Q_i $ is displayed in polar coordinates on the complex plane.
-The value at the initial time $ t = 0 $ is indicated by a circle, and the value at the end time $ t = 10800 $ is indicated by a square.
-The following can be read from this figure.
+Next, the changes in generator variables and bus variables from the initial time
+to 3 hours later are shown in Figure \ref{fig:polars}. Figures
+\ref{fig:polars}(a)-(d) represent the changes in $E_ie^{\bm{j}\delta_i}$,
+$\bm{V}_i$, $\bm{I}_i$, and $P_i+\bm{j}Q_i$, respectively, on a polar coordinate
+plane. The circle marks indicate the values at the initial time $t=0$, and the
+square marks indicate the values at the final time $t=10800$. The following can
+be observed from this figure:
 
 \begin{itemize}
-\item \FIGref{fig:polars}(a):The internal voltage of all generators is maintained at a magnitude of 0.7 to 1.5 to [pu], and the rotor declination changes gently clockwise.
-\item \FIGref{fig:polars}(b):The absolute value of the bus voltage is maintained in the vicinity of 1 to [pu], and the phase changes slowly clockwise in the same way as the rotor declination.
-\item \FIGref{fig:polars}(c):The absolute value of the bus current increases as the power consumption increases with the increase in the impedance value of the load.
-\item \FIGref{fig:polars}(d):As the impedance value of the load increases, the active power and reactive power supplied to the bus increase.
+  \item Figure \ref{fig:polars}(a):The internal voltage of all generators is
+  maintained at around 0.7 to 1.5 [pu], and the rotor angle changes gradually in
+  a clockwise direction.
+  \item Figure \ref{fig:polars}(b):The absolute value of the bus voltage is
+  maintained around 1 [pu], and its phase changes gradually in a clockwise
+  direction like the rotor angle.
+  \item Figure \ref{fig:polars}(c):The absolute value of the bus current
+  increases as the consumption power increases with the increase in the
+  impedance value of the load.
+  \item Figure \ref{fig:polars}(d):As the impedance value of the load increases,
+  the supplied active power and reactive power to the bus increase.
 \end{itemize}
 
-From the above results, it can be seen that frequency stabilization is properly realized by automatic power generation control.
-In addition, it can be seen that the internal state of the generator also changes slowly without vibration in response to gradual load fluctuations, that is, the entire power system is in a quasi-steady state.
+From these results, it can be seen that frequency stabilization is appropriately
+achieved by automatic generation control. In addition, for gradual load changes,
+it can be seen that the internal state of the generators changes gradually
+without oscillation, i.e., the entire power system is in a quasi-steady state.
 
+\section{Transient stability analysis for bus ground faults}\label{sec:IEEE68PSS}
 
-\section{Transient stability analysis for generatrix ground faults}\label{sec:IEEE68PSS}
+\subsection{Setting of ground fault}
 
-\subsection{Setting of busbar ground fault}
+In this section, we conduct a transient stability analysis of bus grounding.
+The transient stability of a power system is evaluated as follows: Let $\Delta
+\omega_i^{(k)}$ denote the angular frequency deviation of generator $i$ at bus
+$k$ caused by a ground fault. Then, the sensitivity of the angular frequency
+deviation of the entire power system to the grounding of bus $k$ is evaluated by
+the $\mathcal{L}_2$-norm of $\Delta \omega^{(k)}$, where $\Delta \omega^{(k)}$
+is a vector consisting of the angular frequency deviations $\Delta
+\omega_1^{(k)},\ldots,\Delta \omega_{16}^{(k)}$ of all generators at bus $k$.
+Furthermore, we define the sets of $\|\Delta \omega^{(k)}\|_{\mathcal{L}2}$ for
+all generator buses and load buses, respectively, as
 
-In this section, we analyze the transient stability against bus line ground faults.
-The transient stability of the power system is evaluated as follows.
-Denote the angular frequency deviation of generator $i$ caused by a ground fault in the busbar $k$ as $\Delta \omega_i^{(k)}$.
-The sensitivity of the angular frequency deviation of the entire power system to a ground fault in the busbar $k$ is evaluated by $\|\Delta \omega^{(k)}\|_{\mathcal{L}_2}$.
-However, $\Delta \omega^{(k)}$ is a vector of all generator angular frequency deviations $\Delta \omega_1^{(k)},\ldots,\Delta \omega_{16}^{(k)}$.
-Also, the set of aligned values of $\|\Delta \omega^{(k)}\|_{\mathcal{L}_2}$ with respect to all generator busbars and load busbars are respectively
-\begin{align*}%\label{eq:JGJL}
-\mathcal{J}_{\rm G}:=
-\left\{
-\| \Delta \omega^{(k)} \|_{\mathcal{L}_2}
-\right\}_{k\in \{1,\ldots,16\} }
-,\qquad
-\mathcal{J}_{\rm L}
-:=
-\left\{
-\| \Delta \omega^{(k)} \|_{\mathcal{L}_2}
-\right\}_{k\in \{17,\ldots,68\} }
-\end{align*}
-%\begin{align}\label{eq:JGJL}
-%\spliteq{
-%\mathcal{J}_{\rm G}
-%&:=
-%\left\{
-%\| \Delta \omega^{(1)} \|_{\mathcal{L}_2}
-%,\ldots, 
-%\| \Delta \omega^{(16)}\|_{\mathcal{L}_2}
-%\right\}
-%\\
-%\mathcal{J}_{\rm L}
-%&:=
-%\left\{
-%\| \Delta \omega^{(17)} \|_{\mathcal{L}_2}
-%,\ldots, 
-%\| \Delta \omega^{(68)}\|_{\mathcal{L}_2}
-%\right\}
-%}
-%\end{align}
-Considering that ground faults can occur on all bus bars rather than only on a particular bus bar, the high transient stability against bus bar ground faults can be evaluated as the data sets $\mathcal{J}_{\rm G}$ and $\mathcal{J}_{\rm L}$ being small in an appropriate sense.
-In this section, $\mathcal{J}_{\rm G}$ and $\mathcal{J}_{\rm L}$ are displayed in a box-and-whisker diagram to visualize the magnitude of the data variability, and their maximum, minimum, and quartiles are used to compare transient stability levels.
-Note that the duration of all ground faults should be set to 70~[ms].
+\begin{equation*}%\label{eq:JGJL}
+  \mathcal{J}_{\rm G}:=
+  \left\{
+  \| \Delta \omega^{(k)} \|_{\mathcal{L}_2}
+  \right\}_{k\in \{1,\ldots,16\} }
+  ,\qquad
+  \mathcal{J}_{\rm L}
+  :=
+  \left\{
+  \| \Delta \omega^{(k)} \|_{\mathcal{L}_2}
+  \right\}_{k\in \{17,\ldots,68\} }
+\end{equation*}
+
+Considering that a ground fault can occur at any bus, not just a specific bus,
+the transient stability of bus grounding can be evaluated by considering the
+smallness of the data sets $\mathcal{J}_{\rm G}$ and $\mathcal{J}_{\rm L}$ in an
+appropriate sense. In this section, we use the maximum value, minimum value, and
+quartiles of $\mathcal{J}_{\rm G}$ and $\mathcal{J}_{\rm L}$ shown in box plots
+to compare the transient stability, in order to visualize the size of the data
+dispersion. Note that the duration of the ground fault is set to 70~[ms] for all
+buses.
 
 \begin{figure}[t!]
   \centering
@@ -368,38 +319,51 @@ Note that the duration of all ground faults should be set to 70~[ms].
   \begin{minipage}{0.49\linewidth}
     \centering
     \includegraphics[width = 1.0\linewidth]{figs/boxplotgen}
-    \subcaption{ $\mathcal{J}_{\rm G}$: Ground fault in generator bus bar}
+    \subcaption{ $\mathcal{J}_{\rm G}$: Ground fault on generator buses}
   \end{minipage}
   \begin{minipage}{0.49\linewidth}
     \centering
     \includegraphics[width = 1.0\linewidth]{figs/boxplotload}
-    \subcaption{ $\mathcal{J}_{\rm L}$: load bus bar ground fault}
+    \subcaption{ $\mathcal{J}_{\rm L}$: Ground fault on load buses}
   \end{minipage}
   \medskip
-  \caption{\textbf{Evaluation of system stability against bus-bar ground faults} }
+  \caption{\textbf{Evaluation of system stability with respect to bus ground fault} }
   \label{fig:boxplots}
   }
 \medskip
 \end{figure}
 
-%\subsection{標準的な自動電圧調整器と系統安定化装置を組み込む場合}
+First, we analyze the transient stability when all generators are equipped with
+standard automatic voltage regulators and system stabilizers. The parameter
+settings are the same as in Section \ref{sec:onlyAVR}. The results of the
+obtained data sets $\mathcal{J}_{\rm G}$ and $\mathcal{J}_{\rm L}$ displayed as
+boxplots are shown in the first column of Figure \ref{fig:boxplots}. Figure
+\ref{fig:boxplots}(a) shows $\mathcal{J}_{\rm G}$ regarding the ground fault on
+the generator bus, and Figure \ref{fig:boxplots}(b) shows $\mathcal{J}_{\rm L}$
+regarding the ground fault on the load bus. Subsequently, we evaluate the
+improvement of transient stability due to the addition of local controllers
+based on these values as a reference.
 
-First, we analyze the transient stability when all generators have standard automatic voltage regulators and grid stabilizers built in.
-The parameter settings are assumed to be the same as in the \ref{sec:onlyAVR} clause.
-The obtained datasets $\mathcal{J}_{\rm G}$ and $\mathcal{J}_{\rm L}$ are displayed as box plots and the results are shown in the first column of the \FIGref{fig:boxplots}.
-The \FIGref{fig:boxplots}(a) is the $\mathcal{J}_{\rm G}$ for the earth fault in the generator bus bar and the \FIGref{fig:boxplots}(b) is the $\mathcal{J}_{\rm L}$ for the earth fault in the load bus bar.
-In the following, we use these values as a basis to evaluate the improvement in transient stability due to the addition of local controllers.
+\subsection{Effect of power system stabilizers bassed on retrofit control theory}
 
-\subsection{Effectiveness of grid stabilizer based on retrofit control theory}
+We analyze the transient stability when power system stabilizers based on the
+retrofit control theory explained in Section \ref{sec:retrofit} are incorporated
+into each generator. The retrofit controllers incorporated into each generator
+use the parameters of the approximate linear environment model identified from
+measurement data using the procedure described in Example \ref{ex:modelingV}. In
+addition to the automatic voltage regulator, the model of the power system
+stabilizer is also used in the local linear subsystem $G_i$. Furthermore, the
+controller that stabilizes each design model $G_i^+$ is designed based on the
+linear quadratic regulator design method explained in Section
+\ref{sec:designret}.
 
-The transient stability is analyzed when a system stabilizer based on the retrofit control theory described in section \ref{sec:retrofit} is incorporated in each generator.
-The retrofit controller incorporated in each generator uses the parameters of the approximate linear environmental model identified from the measurement data by the procedure in the example \ref{ex:modelingV}.
-For the local linear subsystem $G_i$, the model of the grid stabilizer is used in addition to the automatic voltage regulator.
-The controllers that stabilize the individual design models $G^+_i$ are designed based on the linear quadratic regulator design method described in section \ref{sec:designret}.
-
-The obtained data sets $\mathcal{J}_{\rm G}$ and $\mathcal{J}_{\rm L}$ are displayed as box plots, and the results are shown in columns 2 through 17 of the boxplots of the \FIGref{fig:boxplots}.
-The "C$i$" on the horizontal axis represents the case where a retrofit controller is built into each and every generator from generator 1 to generator $i$.
-The results show that the degree of grid stability increases step by step with the number of retrofit controllers incorporated.
+In this case, we show the results of displaying the obtained data sets
+$\mathcal{J}_{\rm G}$ and $\mathcal{J}_{\rm L}$ as box-and-whisker plots in the
+second to seventeenth columns of Figure \ref{fig:boxplots}. The horizontal axis
+"C$i$" represents the case where retrofit controllers are incorporated into all
+generators from generator 1 to generator $i$. From these results, we can see
+that the transient stability gradually improves as the number of retrofit
+controllers incorporated increases.
 
 \begin{table}[h]
 \medskip

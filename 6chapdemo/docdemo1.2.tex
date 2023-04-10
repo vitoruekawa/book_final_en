@@ -118,86 +118,6 @@ z_{{\rm load}i}(t) = \left(1+\tfrac{1}{36000}t \right) \left( r_{{\rm load}i} + 
 \medskip
 \end{figure}
 
-
-%\begin{table}[h]
-%\medskip
-%%\caption{\textbf{潮流計算に用いるデータシート（発電機母線）}} \label{table:xxx}
-% \centering
-%  {
-%  \begin{minipage}{0.64\linewidth}
-% \caption{\textbf{IEEE ST1型モデルのパラメータ}}
-% \label{table:AVRparaset}
-% \centering
-%  \begin{tabular}{ccccccccc}
-%   \hline
-%$\tau_{\rm tr}$ & $\tau_{\rm ap}$ & $k_{\rm ap}$ & $\gamma_{+}$ & $\gamma_{-}$ & $k_{0}$ & $\tau_{\rm st}$ & $k_{\rm st}$\\
-%   \hline \hline
-% 0.015 & 0 & 20 & $\infty$ & $-\infty$ & 0 & 0 & 0 \\
-%   \hline
-%  \end{tabular}
-%  \end{minipage}
-%  \begin{minipage}{0.35\linewidth}
-% \caption{\textbf{自動発電制御のパラメータ}}
-% \label{table:agcparaset}
-% \centering
-%  \begin{tabular}{ccccccccc}
-%   \hline
-%  $k_{\rm P}$ & $k_{\rm I}$ & $\alpha_i$  \\
-%   \hline \hline
-%100 & 500 & 1  \\
-%   \hline
-%  \end{tabular}
-%  \end{minipage}
-%  }
-%\end{table}
-
-
-
-%\begin{table}[h]
-%\medskip
-% \caption{\textbf{自動発電制御のパラメータ設定}}
-% \label{table:agcparaset}
-% \centering
-%  \begin{tabular}{ccccccccc}
-%   \hline
-%  $k_{\rm P}$ & $k_{\rm I}$ & $\alpha_i$  \\
-%   \hline \hline
-%100 & 500 & 1  \\
-%   \hline
-%  \end{tabular}
-%\end{table}
-%
-%\begin{table}[h]
-%\medskip
-% \caption{\textbf{IEEE ST1型モデルのパラメータ}}
-% \label{table:AVRparaset}
-% \centering
-%  \begin{tabular}{ccccccccc}
-%   \hline
-%$\tau_{\rm tr}$ & $\tau_{\rm ap}$ & $k_{\rm ap}$ & $\gamma_{+}$ & $\gamma_{-}$ & $k_{0}$ & $\tau_{\rm st}$ & $k_{\rm st}$\\
-%   \hline \hline
-% 0.015 & 0 & 20 & $\infty$ & $-\infty$ & 0 & 0 & 0 \\
-%   \hline
-%  \end{tabular}
-%\end{table}
-
-%\begin{table}[h]
-%\medskip
-% \caption{\textbf{IEEE PSS1型モデルのパラメータ}}
-% \label{table:pssparaset}
-% \centering
-%  \begin{tabular}{ccccccccccccc}
-%   \hline
-%$k_{\rm pss}$ & $\tau_{\rm ws}$ & $\tau_{{\rm d}1}$ & $\tau_{{\rm n}1}$ & $\tau_{{\rm d}2}$ & $\tau_{{\rm n}2}$ & $V_{\rm pss}^{\rm min}$ & $V_{\rm pss}^{\rm min}$ \\
-%   \hline \hline
-%9.50 & 1.4 & 0.033 & 0.154 & 0.00 & 0.00 & $-\infty$ & $\infty$ \\   \hline
-%  \end{tabular}
-%\end{table}
-
-
-
-
-
 \subsection{機械入力が定数である場合}\label{sec:onlyAVR}
 
 発電機の界磁入力を制御する自動電圧調整器と系統安定化装置が，各々すべての発電機に組み込まれた場合を考える。
@@ -212,15 +132,6 @@ V_{{\rm field}i} &= 20 ( V_{{\rm ref}i}^{\star} + V_{{\rm pss}i}- V_{{\rm tr}i} 
 に設定する。
 また，系統安定化装置は\ref{sec:pssintro}節のIEEE PSS1 型モデルとする。
 具体的には，すべての発電機母線$i$に対して
-%\begin{align*}
-%\simode{
-%1.4 \dot{\xi}_{{\rm ws}i} &=
-%- \xi_{{\rm ws}i}
-%+ 9.5 \Delta \omega_i \\
-%v_{{\rm ws}i} &= 9.5 \Delta \omega_i - \xi_{{\rm ws}i}
-%}
-%\end{align*}
-%で表される
 \begin{align*}
 \simode{
 1.4 \dot{\xi}_{{\rm ws}i} &=
@@ -232,7 +143,7 @@ v_{{\rm ws}i} &= 9.5 \Delta \omega_i - \xi_{{\rm ws}i}
 \simode{
 0.033 \dot{\xi}_{i} &=
 - \xi_{i}
-+ 0.79 %\tfrac{ 0.033 }{ 0.154 }
++ 0.79 
 v_{{\rm ws}i} \\
 V_{{\rm pss}i} &= 4.67 ( v_{{\rm ws}i} - \xi_{i} )
 }
@@ -270,9 +181,7 @@ P_{{\rm ave}}^{{\star}} :=
 \sum_{i =1}^{16}  P_{i}^{\star}
 \]
 と定義している。
-%また，$k_{\rm P}^{(l)}$，$k_{\rm I}^{(l)}$はコントローラゲインである。
 なお，自動電圧調整器は，\ref{sec:onlyAVR}節と同じものが各発電機に組み込まれているものとする。
-%また，$P_{{\rm mech}i}^{\star}$の値は\TABref{table:ieee68datag}の$P_i^{\star}$の値に等しい。
 
 この場合の角周波数偏差の時間応答を\FIGref{fig:omegasAGC}(c)に示す。
 なお，\FIGref{fig:omegasAGC}(d)は縦軸のスケールを拡大したものである。
@@ -355,25 +264,6 @@ P_{{\rm ave}}^{{\star}} :=
 \| \Delta \omega^{(k)} \|_{\mathcal{L}_2}
 \right\}_{k\in \{17,\ldots,68\} }
 \end{align*}
-%\begin{align}\label{eq:JGJL}
-%\spliteq{
-%\mathcal{J}_{\rm G}
-%&:=
-%\left\{
-%\| \Delta \omega^{(1)} \|_{\mathcal{L}_2}
-%,\ldots, 
-%\| \Delta \omega^{(16)}\|_{\mathcal{L}_2}
-%\right\}
-%\\
-%\mathcal{J}_{\rm L}
-%&:=
-%\left\{
-%\| \Delta \omega^{(17)} \|_{\mathcal{L}_2}
-%,\ldots, 
-%\| \Delta \omega^{(68)}\|_{\mathcal{L}_2}
-%\right\}
-%}
-%\end{align}
 と定義する。
 地絡は特定の母線のみではなく，すべての母線に生じる可能性があることを考慮すると，母線地絡に対する過渡安定度の高さは，データ集合$\mathcal{J}_{\rm G}$と$\mathcal{J}_{\rm L}$が適切な意味で小さいこととして評価できる。
 本節では，データのばらつきの大きさを可視化するために，$\mathcal{J}_{\rm G}$と$\mathcal{J}_{\rm L}$を箱ひげ図で表示することにより，それらの最大値，最小値，四分位数を用いて過渡安定度の比較に用いる。
@@ -398,8 +288,6 @@ P_{{\rm ave}}^{{\star}} :=
   }
 \medskip
 \end{figure}
-
-%\subsection{標準的な自動電圧調整器と系統安定化装置を組み込む場合}
 
 まず，すべての発電機に標準的な自動電圧調整器と系統安定化装置が組み込まれている場合の過渡安定度を解析する。
 パラメータの設定は，\ref{sec:onlyAVR}節と同様であるものとする。
@@ -713,7 +601,6 @@ $i$ & $P_i^{\star}$  &  $Q_i^{\star}$ \\
 \\
    \hline
   \end{tabular}
-%   \subcaption{潮流計算結果}
   \end{minipage}
   }
 \end{table}
@@ -755,7 +642,6 @@ $i$ & $r_{{\rm load}i}$  &  $x_{{\rm load}i}$ \\
 \multicolumn{1}{c}{34}  & \multicolumn{1}{r}{0} & \multicolumn{1}{r}{0} \\
    \hline
   \end{tabular}
-%  \subcaption{データシート}
   \end{minipage}
   \begin{minipage}{0.32\linewidth}
     \centering
@@ -783,7 +669,6 @@ $i$ & $r_{{\rm load}i}$  &  $x_{{\rm load}i}$ \\
 \multicolumn{1}{c}{52}  & \multicolumn{1}{r}{$-$1.58} & \multicolumn{1}{r}{$-$0.30} \\
    \hline
   \end{tabular}
-%   \subcaption{潮流計算結果}
   \end{minipage}
     \begin{minipage}{0.32\linewidth}
     \centering
@@ -811,13 +696,9 @@ $i$ & $r_{{\rm load}i}$  &  $x_{{\rm load}i}$ \\
 \\
    \hline
   \end{tabular}
-%   \subcaption{潮流計算結果}
   \end{minipage}
   }
 \end{table}
 
 \newpage
-%\printindex
-%
-%
 \end{document}
