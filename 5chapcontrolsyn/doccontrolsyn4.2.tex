@@ -1906,7 +1906,7 @@ v_{\rm pl} &= \tfrac{\tau_{{\rm n}2}}{\tau_{{\rm d}2}} (v_{1} - \xi_{2} )
 }
 \end{align}
 で表される。
-%ただし，時定数は$\tau_{{\rm d}1} \leq \tau_{{\rm n}1}$，$\tau_{{\rm d}2} \leq \tau_{{\rm n}2}$となるように設定される。
+
 さいごに，位相進み補償器の出力$v_{\rm pl}$を飽和関数に作用させて
 \begin{align}\label{eq:psssat}
 V_{\rm pss} = \sfsat \left(
@@ -2081,7 +2081,6 @@ L &:=
 K : (y,v,w)\mapsto u
 \]
 を設計することを考えよう。
-%ただし，式\ref{eq:desmodl}の局所線形サブシステム$G$では，出力$w$は出力$y$に包含されることに注意されたい。
 以下では，このコントローラ$K$を\textbf{レトロフィットコントローラ}（retrofit controller）\index{ れとろふぃっとこんとろーら@レトロフィットコントローラ}と呼ぶ。
 なお，レトロフィット（retrofit）はretroactive とrefitに由来する単語であり，既存のシステムなどに対して部分的な増築や改築を行うことを意味する。
 
@@ -2134,17 +2133,6 @@ G^+: \simode{
 }
 \end{align}
 である。
-%ただし，システム行列は
-%\[
-%A_+ :=
-%A+L \overline{\mathit{\Theta}} 
-%\mathit{\Gamma}
-%,\qquad
-%B_+ := B
-%,\qquad
-%C_+ := C
-%\]
-%である。
 ただし，$\hat{u}$，$\hat{y}$はコントローラ設計用の仮想的な入出力信号であるため，ハット記号をつけて$u$，$y$と区別した。
 なお，式\ref{eq:matlocalm}において$C$は単位行列であることから，出力$\hat{y}$は$G^+$の内部状態$\hat{\xi}$に等しい。
 

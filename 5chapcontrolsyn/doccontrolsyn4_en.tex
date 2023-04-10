@@ -2214,91 +2214,120 @@ absence of the automatic voltage regulator.
 \medskip
 \end{figure}
 
-The Example \ref{ex:avreffect} shows that while part of the equilibrium point that was stable before becomes unstable by incorporating AVR, the low frequency component of the frequency deviation oscillation is suppressed.
-In this sense, the transient stability of the electrical power system improves.
-PSS, as explained in the next Section, has a suppressing effect on the high frequency component of oscillation which could not be controlled by AVR.
+From Example \ref{ex:avreffect}, it can be seen that incorporating an automatic
+voltage regulator tends to destabilize some of the equilibrium points that were
+stable before implementation, while suppressing the low-frequency components of
+the oscillation of the angular frequency deviation. This means that the
+transient stability of the power system has improved. The system stabilization
+device described in the next section has the effect of suppressing the
+high-frequency components of the oscillation that could not be suppressed by the
+automatic voltage regulator.
 
-\subsection{PSS}\label{sec:pssintro}
+\subsection{Power System Stabilizer}\label{sec:pssintro}
 
-PSS is a piece of equipment that outputs additional control signal $V_{\rm pss}$ shown in \FIGref{fig:avrdc1} and \FIGref{fig:avrst1}.
-Generally, the frequency deviation, active power, and bus bar voltage phasor are calculated for generators to feedback to PSS.
-Below, we explain a typical PSS model called the \textbf{IEEE Type PSS1 power system stabilizer model} \cite[Section 9.2]{ieee2016ieee}.
-This model mainly consists of a \textbf{washout filter} and \textbf{phase-lead compensator}.
-\FIGref{fig:pss1} shows the block diagram. 
+A power system stabilizer (PSS) is a device that outputs an additional control
+signal $V_{\rm pss}$ as shown in Figures \ref{fig:avrdc1} and \ref{fig:avrst1}.
+Generally, measurements such as generator's angular frequency deviation, active
+power, and bus voltage phase are fed back to the PSS. Here we explain the model
+of a standard PSS called the \textbf{IEEE Type PSS1 power system stabilizer
+model}\index{IEEE Type PSS1 power system stabilizer model} \cite[Section
+9.2]{ieee2016ieee}. This model mainly consists of two parts: a \textbf{washout
+filter}\index{washout filter} and a \textbf{phase-lead
+compensator}\index{phase-lead compensator}. The block diagram is shown in Figure 
+\ref{fig:pss1}.
 
 \begin{figure}[t]
-\centering
-\includegraphics[width = .99\linewidth]{figs/pss1}
-\medskip
-\caption{\textbf{IEEE PSS1 type model of system stabilizer}}
-\label{fig:pss1}
-\medskip
+  \centering
+  \includegraphics[width = .99\linewidth]{figs/pss1}
+  \medskip
+  \caption{\textbf{IEEE PSS1 type model of system stabilizer}}
+  \label{fig:pss1}
+  \medskip
 \end{figure}
 
 
 \smallskip
 \subsubsection{Washout filter}
 
+The washout filter is a high-pass filter used in the power system stabilizer to
+maintain a steady-state gain of 0. It takes the generator's angular frequency
+deviation $\Delta \omega$, which is multiplied by a constant gain $k_{\rm pss}$,
+as input, and its dynamic characteristics are expressed by the following
+differential equation:
 
-It is a high-pass filter to make the steady gain of PSS 0, and its dynamic characteristic is expressed as the following with the frequency deviation $\Delta \omega$ of a generator that has been constant factored by gain $k_{\rm pss}$ as the input: 
 \begin{subequations}\label{eq:pss1mod}
-\begin{align}\label{eq:washmod}
-\simode{
-\tau_{\rm ws} \dot{\xi}_{\rm ws} &=
-- \xi_{\rm ws}
-+ k_{\rm pss} \Delta \omega \\
-v_{\rm ws} &= k_{\rm pss} \Delta \omega - \xi_{\rm ws}
-}
-\end{align}
-Clearly, if $\Delta \omega$ is a constant, the output of washout filter $v_{\rm ws}^{\star}$ under a steady state becomes 0.
-The role of this filter is to identify the frequency deviation of the electrical power system under a transient state.
-Therefore, the time constant $\tau_{\rm ws}$ is often set in a range of 1 to 20 [s] considering the settling time for frequency deviation.
+\begin{equation}\label{eq:washmod}
+  \simode{
+    \tau_{\rm ws} \dot{\xi}_{\rm ws} &=
+    - \xi_{\rm ws}
+    + k_{\rm pss} \Delta \omega \\
+    v_{\rm ws} &= k_{\rm pss} \Delta \omega - \xi_{\rm ws}
+  }
+\end{equation}
 
+The steady-state output $v_{\rm ws}^{\star}$ of the washout filter is zero when
+the input $\Delta \omega$ is constant. The function of the filter is to extract
+the angular frequency deviation of the power system in the transient state. The
+time constant $\tau_{\rm ws}$ is typically set between 1 and 20 seconds,
+considering the settling time of the angular frequency deviation
+\cite[12.5]{kundur1994power}.
 
 \smallskip
 \subsubsection{Phase-lead compensator}
-This is a compensator incorporated to alleviate a phase lag from the bus bar voltage phasor to the active power of generators.
-To achieve the desired phase lead, one to two phase-lead compensators are often connected in a series.
-Specifically, with the washout filter output $v_{\rm ws}$ as the input, its dynamic characteristic is expressed by:
 
-\begin{align}\label{eq:phldmod}
-\simode{
-\tau_{{\rm d}1} \dot{\xi}_{1} &=
-- \xi_{1}
-+ \left( 
-1- \tfrac{\tau_{{\rm d}1}}{\tau_{{\rm n}1}}
-\right)
-v_{\rm ws} \\
-v_{1} &= \tfrac{\tau_{{\rm n}1}}{\tau_{{\rm d}1}} (v_{\rm ws} - \xi_{1} )
-}
-\qquad
-\simode{
-\tau_{{\rm d}2} \dot{\xi}_{2} &=
-- \xi_{2}
-+ \left( 
-1- \tfrac{\tau_{{\rm d}2}}{\tau_{{\rm n}2}}
-\right)
-v_{1} \\
-v_{\rm pl} &= \tfrac{\tau_{{\rm n}2}}{\tau_{{\rm d}2}} (v_{1} - \xi_{2} )
-}
-\end{align}
-%ただし，時定数は$\tau_{{\rm d}1} \leq \tau_{{\rm n}1}$，$\tau_{{\rm d}2} \leq \tau_{{\rm n}2}$となるように設定される。
-Finally, the phase-lead compensator output $v_{\rm pl}$ is applied to a saturation function:
-\begin{align}\label{eq:psssat}
-V_{\rm pss} = \sfsat \left(
-v_{\rm pl};
-V_{\rm pss}^{\rm min},V_{\rm pss}^{\rm max} 
-\right)
-\end{align}
+The phase-lead compensator is incorporated to alleviate the phase lag from the
+bus voltage phase to the generator's active power. Typically, one or two phase
+lead compensators are connected in series to achieve the desired phase lead.
+Specifically, the dynamic characteristics of the compensator with input $v_{\rm
+ws}$ from the washout filter is given by:
+
+\begin{equation}\label{eq:phldmod}
+  \simode{
+  \tau_{{\rm d}1} \dot{\xi}_{1} &=
+  - \xi_{1}
+  + \left( 
+  1- \tfrac{\tau_{{\rm d}1}}{\tau_{{\rm n}1}}
+  \right)
+  v_{\rm ws} \\
+  v_{1} &= \tfrac{\tau_{{\rm n}1}}{\tau_{{\rm d}1}} (v_{\rm ws} - \xi_{1} )
+  }
+  \qquad
+  \simode{
+  \tau_{{\rm d}2} \dot{\xi}_{2} &=
+  - \xi_{2}
+  + \left( 
+  1- \tfrac{\tau_{{\rm d}2}}{\tau_{{\rm n}2}}
+  \right)
+  v_{1} \\
+  v_{\rm pl} &= \tfrac{\tau_{{\rm n}2}}{\tau_{{\rm d}2}} (v_{1} - \xi_{2} )
+  }
+\end{equation}
+
+Finally, the output of the power system stabilizer can be obtained by applying
+the output $v_{\rm pl}$ of the phase-lead compensator to a saturation function:
+
+\begin{equation}\label{eq:psssat}
+  V_{\rm pss} = \sfsat \left(
+  v_{\rm pl};
+  V_{\rm pss}^{\rm min},V_{\rm pss}^{\rm max} 
+  \right)
+\end{equation}
 \end{subequations}
-to obtain the PSS output.
-\ref{table:psspara} shows parameter examples of this model.
-However, PSS parameters must be determined by considering various elements, such as the dynamic characteristic of each generator, the dynamic characteristic of AVR, load distribution, and power grid properties.
-Thus, depending on the illustrated parameter setting, the desired system stability might not be achieved.
-In addition, the standard parameter design guidelines of PSS are often based on the single machine infinite bus system model explained in Section \ref{sec:onemachine}.
-Thus, one must be aware that the result may be unclear when multiple generators are connected.
-For example, in the literature \cite[Section 12.5]{kundur1994power}, parameter design guidelines based on the classic control theory are shown using the single machine infinite bus system model.
-In the literature \cite{chow2004power}, design guidelines based on modern control theory are explained.
+
+An example of the parameters for this model is shown in Table
+\ref{table:psspara}. However, it should be noted that the parameters for the
+power system stabilizer need to be determined by considering various factors
+such as the dynamic characteristics of each generator, automatic voltage
+regulator, load distribution, and characteristics of the transmission network,
+and that the desired system stability may not necessarily be achieved by the
+parameter settings shown in the example. In addition, the standard design
+guidelines for power system stabilizers are often based on the one-machine
+infinite-bus system model explained in Section \ref{sec:onemachine}, and caution
+is required regarding the results when multiple generators are interconnected.
+For example, in \cite[Section 12.5]{kundur1994power}, design guidelines for
+parameters based on classical control theory using the one-machine infinite-bus
+system model are presented.  In \cite{chow2004power}, design guidelines based on
+modern control theory are also explained.
 
 \begin{table}[h]
 \medskip
@@ -2309,32 +2338,32 @@ In the literature \cite{chow2004power}, design guidelines based on modern contro
    \hline
  &  $k_{\rm pss}$ & $\tau_{\rm ws}$ & $\tau_{{\rm d}1}$ & $\tau_{{\rm n}1}$ & $\tau_{{\rm d}2}$ & $\tau_{{\rm n}2}$ & $V_{\rm pss}^{\rm min}$ & $V_{\rm pss}^{\rm min}$ \\
    \hline \hline
-   例1 \cite[12.5節]{kundur1994power}& 9.50 & 1.4 & 0.033 & 0.154 & 0.00 & 0.00 & $-\infty$ & $\infty$ \\
-   例2 \cite[12.8節]{kundur1994power}& 20.0 & 10.0 & 0.02 & 0.05 & 5.40 & 3.00 & $-\infty$ & $\infty$ \\
-   例3 \cite[III節]{chow2004power}& 1.57 & 10.0 & 0.03 & 0.34 & 0.03 & 0.34 & $-\infty$ & $\infty$ \\
-   例4 \cite[Table H.3]{ieee2016ieee}& 3.15 & 10.0 & 0.01 & 0.76 & 0.01 & 0.76 & $-0.09$ & 0.09\\
+   Example 1 \cite[Section 12.5]{kundur1994power}& 9.50 & 1.4 & 0.033 & 0.154 & 0.00 & 0.00 & $-\infty$ & $\infty$ \\
+   Example 2 \cite[Section 12.8]{kundur1994power}& 20.0 & 10.0 & 0.02 & 0.05 & 5.40 & 3.00 & $-\infty$ & $\infty$ \\
+   Example 3 \cite[Section III]{chow2004power}& 1.57 & 10.0 & 0.03 & 0.34 & 0.03 & 0.34 & $-\infty$ & $\infty$ \\
+   Example 4 \cite[Table H.3]{ieee2016ieee}& 3.15 & 10.0 & 0.01 & 0.76 & 0.01 & 0.76 & $-0.09$ & 0.09\\
    \hline
   \end{tabular}
 \end{table}
 
-\subsection{Control effect of PSS}\label{sec:pssov}
+\subsection{Control Effect of Power System Stabilization Device}\label{sec:pssov}
 
-Let us analyze the control effect of PSS using a simple electrical power system model.
+Let's analyze the control effect of the power system stabilization device using
+a simple power system model.
 
-\begin{例}[Changes in the small signal stability and the transient stability by PSS]\label{ex:psseffect}
-With the same setting as the Example \ref{ex:avreffect}, let us think about incorporating PSS with AVR.
-The PSS incorporated into generator 1 and generator 3 is the same, and the parameters are values from Example 2 of \ref{table:psspara}.
-First, if we confirm the change in the set of stable equilibrium points regardless of PSS, they are in the range of \ref{table:stableeqs}(iii).
-This result shows that by incorporating PSS, the stable equilibrium point set is expanded.
+\begin{example}{Changes in the small signal stability and the transient stability due to PSS}\label{ex:psseffect}
 
-Next, the analytical result of the transient stability is shown.
-With the same setting as the Example \ref{ex:avreffect}, the result with PSS is shown in \FIGref{fig:transientL2} with the red line with two dashes.
-This result shows that the transient stability of the frequency deviation and bus bar voltage phasor has further increased.
-On the other hand, we can see that the size of the stable range has not changed notably by PSS.
-As a reference, \FIGref{fig:PSSomega} (a) and (b) show the time response of the frequency deviation when the initial value of $\delta_1-\delta_3$ is set to $-1$ and $-1.
-7$, respectively.
-The convergence rate of frequency deviation has increased with PSS.
-\end{例}
+Let us consider incorporating a power system stabilization device into the
+system along with an automatic voltage regulator under the same conditions as
+Example \ref{ex:avreffect}. The power system stabilization devices installed in
+generators 1 and 3 are identical, and the parameters use the values of Example 2
+in Table \ref{table:psspara}. First, let us confirm the change in the set of
+stable equilibrium points due to the presence of the power system stabilization
+device, which is shown in the range of (iii) in Table \ref{table:stableeqs}. From
+this result, it can be seen that the set of stable equilibrium points has
+expanded by incorporating the power system stabilization device.
+
+\end{example}
 
 \begin{figure}[t]
   \centering
@@ -2359,158 +2388,209 @@ The convergence rate of frequency deviation has increased with PSS.
 
 \section{PSS based on the retrofit control theory\advanced}\label{sec:retrofit}
 
-\subsection{The electrical power system model used to design PSS\advanced}
+\subsection{Power system model used in the design of PSS\advanced}
 
 \smallskip
-\subsubsection{Characteristics of PSS based on the retrofit control theory}
+\subsubsection{Features of PSS based on the retrofit control theory}
 
-In this Section, we explain the design method of PSS based on the retrofit control theory \cite{ishizaki2018retrofit,sadamoto2018retrofit,sasahara2019damping,ishizaki2019retrofit,ishizaki2021modularity}.
-PSS designed with this method is able to stably maintain the steady power flow distribution of interest even when multiple generators are incorporated in parallel.
-Specifically, each PSS is characterized as follows:
+In this section, we describe the design methodology of the power system
+stabilizer based on retrofit control theory
+\cite{ishizaki2018retrofit,sadamoto2018retrofit,sasahara2019damping,ishizaki2019retrofit,ishizaki2021modularity}.
+The power system stabilizer designed using this methodology can maintain the
+steady-state power flow condition in a stable manner even when multiple
+generators are simultaneously incorporated. In particular, each power system
+stabilizer has the following features:
+
 \begin{itemize}
 \item Distributed design is possible with just a mathematical model of generators and AVR that incorporates it.
 \item Distributed implementation is possible with just the local measurement signal of the voltage phasor and current phasor of generator buses.
 \end{itemize}
-Below, let us consider a situation where the IEEE ST1 Type AVR model of Equation \ref{eq:avrst1} is incorporated into the generator model of Equation \ref{eq:gendifavr}.
-However, for a simpler explanation, we exclude the saturation of AVR.
-If not only the cases with saturation but also other forms of AVR are incorporated, an existing PSS is incorporated, or more detailed generator models are used, the same discussion applies.
+
+Next, we consider the case where the IEEE ST1 type AVR model in Equation
+\ref{eq:avrst1} is incorporated into the generator model in Equation
+\ref{eq:gendifavr}. However, for the sake of simplicity, we exclude saturation
+of the AVR. Note that the same discussion applies not only to the case with
+saturation but also to the case where other types of AVRs are incorporated, the
+case where existing power system stabilizers are incorporated, and the case
+where a more detailed generator model is used.
 
 \smallskip
 \subsubsection{Localized linear subsystem}
+By designing the interaction inputs appropriately, we consider representing the
+local subsystem, which is coupled with an AVR of the target generator, as a
+linear system in the form of:
 
-Let us consider expressing a localized subsystem with AVR connected to generators of interest as a linear system by improving the setting of interaction input:
-\begin{align}\label{eq:desmodl}
-G:\simode{
-\dot{x} &= Ax + Bu + Lv \\
-w &= \mathit{\Gamma} x \\
-y &= Cx
-}
-\end{align}
-where state $x$ is a vector with the state of the generator model $\delta$, $\Delta \omega$，$E$, and the state of the AVR model $V_{\rm tr}$ in that order.
-Input $u$ expresses the output of PSS $V_{\rm pss}$, and input and output of interaction, $v$ and $w$, are defined as follows:
-\begin{align}\label{eq:sigintvw}
-v:=
-\mat{
-P_{\rm mech} - \tfrac{E |\bm{V} |}{ \Xt } \sfsin(\delta -  \angle \bm{V}) \\
-k_{\rm ap} V_{\rm ref}^{\star} + 
-\left(
-\tfrac{ \Xs }{ \Xt }-1
-\right)
-|\bm{V}| \sfcos (\delta - \angle \bm{V} )\\
-|\bm{V}|
-}
-,\qquad
-w:=\mat{
-\delta \\
-\Delta \omega \\
-E 
-}
-\end{align}
-Please note that the interaction input $v$ of Equation \ref{eq:sigintvw} includes the nonlinear term of generators and variables of the bus bar voltage phasor.
-With the definition of these signals, the system matrix of Equation \ref{eq:desmodl} is defined as:
-\begin{align}\label{eq:matlocalm}
-\spliteq{
-A&:=\mat{
-0 & \omega_0 & 0 & 0 \\
-0 & -\tfrac{D}{M} & 0 & 0 \\
-0 & 0 & -\tfrac{ \Xs }{ \taud \Xt } & -\tfrac{k_{\rm ap}}{ \taud } \\
-0 & 0 & 0 & -\tfrac{1}{\tau_{\rm tr}}
-}, \quad
-B:=
-\mat{
-0 \\
-0 \\
-\tfrac{k_{\rm ap}}{ \taud } \\
-0 
-},\quad
-C:= I \\
-L &:=
-\mat{
-0 & 0 & 0 \\
-\tfrac{1}{M} & 0 & 0 \\
-0 & \tfrac{1}{ \taud } & 0 \\
-0 & 0 & \tfrac{1}{\tau_{\rm tr} }
-}, \quad
-\mathit{\Gamma} :=
-\mat{
-1 & 0 & 0 & 0 \\
-0 & 1 & 0 & 0 \\
-0 & 0 & 1 & 0 
-}
-}
-\end{align}
-$G$ of Equation \ref{eq:desmodl} is called a \textbf{local linear subsystem}.
-It is assumed that the parameters of the system matrix of Equation \ref{eq:matlocalm}, in other words, the model parameters of the local linear subsystem, are known and can be used to design and implement PSS.
+\begin{equation}\label{eq:desmodl}
+  G:\simode{
+  \dot{x} &= Ax + Bu + Lv \\
+  w &= \mathit{\Gamma} x \\
+  y &= Cx
+  }
+\end{equation}
+where the state vector $x$ is a concatenation of the states of the generator
+model $\delta$, $\Delta \omega$, $E$, and the AVR model $V_{\rm tr}$.
 
+In addition, the input $u$ represents the output $V_{\rm pss}$ of the PSS, and
+the input-output interactions $v$ and $w$ are defined as:
+
+\begin{equation}\label{eq:sigintvw}
+  v:=
+  \mat{
+  P_{\rm mech} - \tfrac{E |\bm{V} |}{ \Xt } \sfsin(\delta -  \angle \bm{V}) \\
+  k_{\rm ap} V_{\rm ref}^{\star} + 
+  \left(
+  \tfrac{ \Xs }{ \Xt }-1
+  \right)
+  |\bm{V}| \sfcos (\delta - \angle \bm{V} )\\
+  |\bm{V}|
+  }
+  ,\qquad
+  w:=\mat{
+  \delta \\
+  \Delta \omega \\
+  E 
+  }
+\end{equation}
+
+Note that the interaction input $v$ in Equation \ref{eq:sigintvw} contains the
+non-linear terms of the generator and the variables of the bus voltage phase. It
+should be noted that the system matrix in Equation \ref{eq:desmodl} is defined
+in accordance with the definitions of these signals as follows:
+
+\begin{equation}\label{eq:matlocalm}
+  \spliteq{
+    A&:=\mat{
+    0 & \omega_0 & 0 & 0 \\
+    0 & -\tfrac{D}{M} & 0 & 0 \\
+    0 & 0 & -\tfrac{ \Xs }{ \taud \Xt } & -\tfrac{k_{\rm ap}}{ \taud } \\
+    0 & 0 & 0 & -\tfrac{1}{\tau_{\rm tr}}
+    }, \quad
+    B:=
+    \mat{
+    0 \\
+    0 \\
+    \tfrac{k_{\rm ap}}{ \taud } \\
+    0 
+    },\quad
+    C:= I \\
+    L &:=
+    \mat{
+    0 & 0 & 0 \\
+    \tfrac{1}{M} & 0 & 0 \\
+    0 & \tfrac{1}{ \taud } & 0 \\
+    0 & 0 & \tfrac{1}{\tau_{\rm tr} }
+    }, \quad
+    \mathit{\Gamma} :=
+    \mat{
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 
+    }
+  }
+\end{equation}
+
+The $G$ in Equation \ref{eq:desmodl} is called a \textbf{local linear
+subsystem}. It should be noted that the nonlinear terms of the generator and the
+variables of the bus voltage phase are included in the interaction input $v$ in
+Equation \ref{eq:sigintvw}. The system matrix of Equation \ref{eq:matlocalm} is
+defined for the local linear subsystem. The model parameters of the local linear
+subsystem, i.e., the system matrix parameters in Equation \ref{eq:matlocalm},
+are assumed to be known and available for the design and implementation of the
+power system stabilizer.
 
 \smallskip
-\subsubsection{Environment and the approximate linear environment model}
+\subsubsection{Environment and approximate linear environment model}
 
-Under the assumption that the output $y$ and input and output of interaction, $v$ and $w$, can be calculated, let us design a local controller that expresses PSS:
+Let us consider designing a local controller $K$ for the power system stabilization
+device, under the assumption that the output $y$ and interaction input/output
+$v$ and $w$ are measurable.
+
 \[
-K : (y,v,w)\mapsto u
+  K : (y,v,w)\mapsto u
 \]
-%ただし，式\ref{eq:desmodl}の局所線形サブシステム$G$では，出力$w$は出力$y$に包含されることに注意されたい。
-Hereafter, we call this controller $K$ as a \textbf{retrofit controller}.
-The word retrofit was derived from retroactive and refit, meaning performing partial expansions and renovations to an existing system.
 
-For design and implementation of the retrofit controller, not only the model of the local linear subsystem $G$, but also a linear model that plays a role in the internal estimate of interaction input $v$ based on the information of interaction output $w$ is used.
-Below, we called this estimate model the \textbf{approximate linear environment model}.
+In the following, we call this controller $K$ a \textbf{retrofit
+controller}\index{retrofit controller}, which derives from the words retroactive
+and refit and refers to performing partial expansion or reconstruction of an
+existing system.
+
+In designing and implementing the retrofit controller, not only the model of the
+local linear subsystem $G$ is used, but also a linear model that estimates the
+interaction input $v$ from the interaction output $w$ is utilized. We call this
+estimation model an \textbf{approximate linear environment
+model}\index{approximate linear environment model}.
 
 \begin{figure}[t]
-\centering
-\includegraphics[width = .99\linewidth]{figs/retconsys2}
-\medskip
-\caption{\textbf{Coupling system of local linear subsystem and environment}}
-\label{fig:retconsys}
-\medskip
+  \centering
+  \includegraphics[width = .99\linewidth]{figs/retconsys2}
+  \medskip
+  \caption{\textbf{Coupling system of local linear subsystem and environment}}
+  \label{fig:retconsys}
+  \medskip
 \end{figure}
 
+To explain the approximate linear environment model, we introduce a nonlinear
+subsystem called the \textbf{environment} \index{environment}, which represents
+the global subsystem of the entire system except for the local linear subsystem.
+The environment is a nonlinear system that takes the interaction output $w$ of
+the local linear subsystem as input and outputs the interaction input $v$.
+Formally, we represent the dynamic input-output relationship of the environment
+as:
 
-In preparation for explaining the approximate linear environment model, we introduce a nonlinear subsystem called the \textbf{environment}.
-The environment is a global subsystem that expresses “the entire system excluding the local linear subsystem”, which is a nonlinear system that uses the interaction output of the local linear subsystem $w$ as the input, and interaction input $v$ as the output.
-Formally, we will present the dynamic relationship of the environment input and output as:
 \[
-\overline{G} : w\mapsto v
+  \overline{G}: w \mapsto v
 \]
-Here, the feedback connection system of the local linear subsystem $G$ and the environment $\overline{G}$ expresses “the entire electrical power system from a viewpoint of the generators of interest” (\FIGref{fig:retconsys}).
 
-Since the environment $\overline{G}$ includes multiple elements, such as power grids, loads, and other generators, it is not realistic to assume that the perfect nonlinear model of environment could be used to design and implement PSS for generators of interest.
-Considering this fact, let us imagine a situation where “only the approximate linear environment model” is usable.
-Before, for simplification, we consider expressing the approximate linear environment model with a static input-output relationship.
-A dynamic approximate linear environment model can be used as well.
-Please see \cite{ishizaki2019retrofit} for further details.
+In this case, the feedback coupling system between the local linear subsystem
+$G$ and the environment $\overline{G}$ represents the entire power system from
+the perspective of the generator under consideration, as shown in Figure
+\ref{fig:retconsys}.
 
-Specifically, when expressing the steady value of the interaction input-output under a steady power flow distribution of interest as $(v^{\star},w^{\star})$, the approximate linear environment model is parameterized as:
-\begin{align}\label{eq:Gbapxst}
-\overline{G}_{\rm apx}:
-v_{\rm apx} = v^{\star} + \overline{\mathit{\Theta}} \left(w-w^{\star}\right)
-%+ \overline{v}
-\end{align}
-Here, $\overline{\mathit{\Theta}}$ is a matrix that expresses the model parameters.
-The approximate linear environment model $\overline{G}_{\rm apx}$ of Equation \ref{eq:Gbapxst} generates the value $v_{\rm apx}$ that estimates the steady values $(v^{\star},w^{\star})$ of impact of the interaction output $w$ on the interaction input $v$ by approximate linear prediction.
-The electrical power system model used to design the retrofit controller is created through feedback connection of the parameters of this approximate linear environmental model $\overline{\mathit{\Theta}}$ and the model of the local linear subsystem $G$ (\FIGref{fig:explocalG}).
-Specifically:
-\begin{align}\label{eq:Gplus}
-G^+: \simode{
-\dot{\hat{\xi}} &=  \left( A+L \overline{\mathit{\Theta}} 
-\mathit{\Gamma} \right) \hat{\xi} + B \hat{u} \\
-\hat{y} & = C \hat{\xi}
-}
-\end{align}
-%ただし，システム行列は
-%\[
-%A_+ :=
-%A+L \overline{\mathit{\Theta}} 
-%\mathit{\Gamma}
-%,\qquad
-%B_+ := B
-%,\qquad
-%C_+ := C
-%\]
-%である。
-However, since $\hat{u}$ and $\hat{y}$ are virtual input and output signals to design the controller, we differentiated them from $u$ and $y$ with \^{ }.
-Since $C$ is an identity matrix in Equation \ref{eq:matlocalm}, output $\hat{y}$ is equal to the internal state $\hat{\xi}$ of $G^+$.
+Considering that the environment $\overline{G}$ includes numerous elements such
+as power transmission networks, loads, and other generators, it is not practical
+to assume that the complete nonlinear model of the environment is available for
+the design and implementation of a system stabilizing device for a specific
+generator. Taking this fact into consideration, let us assume a situation where
+only an approximate linear model of the environment is available. For
+simplicity, we will describe the approximate linear environment model using a
+static input-output relationship. However, it is also possible to use a dynamic
+approximate linear environment model. For further details, please refer to
+\cite{ishizaki2019retrofit}.
+
+When the steady-state values of the input-output interaction in the steady-state
+power flow state of interest are denoted as $(v^{\star}, w^{\star})$, the
+approximated linearized environmental model is parameterized as follows:
+
+\begin{equation}\label{eq:Gbapxst}
+  \overline{G}_{\rm apx}:
+  v_{\rm apx} = v^{\star} + \overline{\mathit{\Theta}} \left(w-w^{\star}\right)
+\end{equation}
+
+Here, $\overline{\mathit{\Theta}}$ is a matrix representing the parameters of
+the model. The approximated linearized environmental model $\overline{G}_{\rm
+apx}$ in Equation \ref{eq:Gbapxst} generates the predicted value $v_{\rm apx}$ of
+the impact of the interaction output $w$ on the interaction input $v$ in the
+vicinity of their steady-state values $(v^{\star},w^{\star})$ by linear
+prediction.
+
+The power system model used for retrofit controller design is constructed by
+feedback coupling the parameters of this approximated linearized environmental
+model $\overline{\mathit{\Theta}}$ with the model of a local linear subsystem
+$G$ as shown in Figure \ref{fig:explocalG}. Specifically, it is given by:
+
+\begin{equation}\label{eq:Gplus}
+  G^+: \simode{
+    \dot{\hat{\xi}} &=  \left( A+L \overline{\mathit{\Theta}} 
+    \mathit{\Gamma} \right) \hat{\xi} + B \hat{u} \\
+    \hat{y} & = C \hat{\xi}
+  }
+\end{equation}
+
+Here, $\hat{u}$ and $\hat{y}$ are virtual input-output signals used for
+controller design, and are distinguished from $u$ and $y$ by the use of a hat
+symbol. Note that since $C$ is the identity matrix in Equation
+\ref{eq:matlocalm}, the output $\hat{y}$ is equal to the internal state
+$\hat{\xi}$ of $G^+$.
 
 \begin{figure}[t]
 \centering
@@ -2524,57 +2604,88 @@ Since $C$ is an identity matrix in Equation \ref{eq:matlocalm}, output $\hat{y}$
 \subsection{PSS design based on the retrofit control theory\advanced}\label{sec:designret}
 
 \smallskip
-\subsubsection{Retrofit controller design method}
+\subsubsection{Design method of retrofit controller}
 
-In this part, we assume that the approximate linear environment parameters $\overline{\mathit{\Theta}}$ of Equation \ref{eq:Gbapxst} are determined with an appropriate method and explain the design method for the retrofit controller.
-The specific steps to create the approximate linear environment model are explained in the next part.
+Assuming that the approximate linear environment parameter
+$\overline{\mathit{\Theta}}$ in Equation \ref{eq:Gbapxst} is identified by an
+appropriate method, we explain the design method of the retrofit controller. The
+specific construction method of the approximate linear environment model is
+described in the next section.
 
-To design a retrofit controller that corresponds to PSS, the standard control system design method in control systems engineering can be used.
-For example, let us apply the design method \cite[Section 5.3]{fairman1998linear} of \textbf{ linear-quadratic regulator (LQR)} to the controller design model $G^+$ of Equation \ref{eq:Gplus}.
-With LQR, as a state feedback-style control algorithm to minimize the cost function related to the state and input:
+The design of the retrofit controller corresponding to the system stabilization
+device can utilize the standard control system design method in the field of
+system control engineering. For instance, let us apply the design method of the
+\textbf{Linear Quadratic Regulator} (LQR) \index{Linear Quadratic Regulator}
+\cite[Section 5.3]{fairman1998linear} to the controller design model $G^+$ in
+Equation \ref{eq:Gplus}. In LQR, we use a state-feedback form control algorithm
+that minimizes the cost function on state and input as follows:
+
 \[
-J(\hat{\xi},\hat{u}) :=\int_0^{\infty} \left(
-\hat{\xi}^{\sf T}(t) Q \hat{\xi}(t)
-+
-\hat{u}^{\sf T}(t) R \hat{u}(t)
-\right) dt
+  J(\hat{\xi},\hat{u}) :=\int_0^{\infty} \left(
+  \hat{\xi}^{\sf T}(t) Q \hat{\xi}(t)
+  +
+  \hat{u}^{\sf T}(t) R \hat{u}(t)
+  \right) dt
 \]
-we use the following:
-\begin{align}\label{eq:locKhat}
-\hat{u}=\underbrace{-R^{-1}B^{\sf T}P(\overline{\mathit{\Theta}}) }_{\hat{K}(\overline{\mathit{\Theta}}) }
-\hat{\xi}
-\end{align}
-where, $Q$ is a positive semi-definite vector and $R$ is a positive definite vector.
-The matrix $P(\overline{\mathit{\Theta}})$ is a positive definite solution that satisfies the \textbf{algebraic Riccati equation}.
+
+Using the state feedback form in equation \ref{eq:locKhat}:
+
+\begin{equation}\label{eq:locKhat}
+  \hat{u}=\underbrace{-R^{-1}B^{\sf T}P(\overline{\mathit{\Theta}}) }_{\hat{K}(\overline{\mathit{\Theta}}) }
+  \hat{\xi}
+\end{equation}
+
+
+Here, $Q$ is a semi-positive definite matrix, $R$ is a positive definite matrix,
+and the matrix $P(\overline{\mathit{\Theta}})$ satisfies the \textbf{Algebraic
+Riccati Equation} \index{Algebraic Riccati Equation} as follows:
+
 \[
-\left( A+L \overline{\mathit{\Theta}} 
-\mathit{\Gamma} \right)^{\sf T} P +
-P \left( A+L \overline{\mathit{\Theta}} 
-\mathit{\Gamma} \right)
--PB R^{-1} B^{\sf T} P +Q = 0
+  \left( A+L \overline{\mathit{\Theta}} 
+  \mathit{\Gamma} \right)^{\sf T} P +
+  P \left( A+L \overline{\mathit{\Theta}} 
+  \mathit{\Gamma} \right)
+  -PB R^{-1} B^{\sf T} P +Q = 0
 \]
-At this time, using the gain matrix $\hat{K}(\overline{\mathit{\Theta}})$ of Equation \ref{eq:locKhat}, the retrofit controller is built as follows:
-\begin{align}\label{eq:retroK}
+
+This equation has a positive definite solution. Then, using the gain matrix
+$\hat{K}(\overline{\mathit{\Theta}})$ in Equation \ref{eq:locKhat}, the retrofit
+controller is constructed as follows:
+
+\begin{equation}\label{eq:retroK}
 K: \simode{
 \dot{\hat{x}} &=  A \hat{x} + L \left\{
 v - \overline{\mathit{\Theta}} (w- \mathit{\Gamma} \hat{x}) 
 \right\}\\
 u &= \hat{K}(\overline{\mathit{\Theta}}) (y - C\hat{x})
 }
-\end{align}
-PSS based on this retrofit control theory has the following characteristics with any matrix $\overline{\mathit{\Theta}}$ used:
-\begin{itemize}
-\item If the electrical power system is in a steady power flow distribution, input $u$ becomes 0.
-\item Before and after implementation, the stability of the steady power flow distribution (equilibrium point) does not change.
-\end{itemize}
-The first item means that the retrofit controller does not change the steady state.
-The second term means that the equilibrium point that was asymptotically stable before the implementation of the local controller does not change to an unstable equilibrium point because of the local controller.
-With the retrofit control theory, it aims to “improve the stability” with robustness against disturbances and the size of the stable range as indicators while maintaining the asymptotic stability of the equilibrium point.
-With this method, asymptotic stabilization of unstable equilibrium points is not possible.
+\end{equation}
 
-Generally, as the prediction accuracy of interaction signals by the approximate linear environment model improves, the system stability improves greatly.
-The control algorithm of Equation \ref{eq:locKhat} can be designed with other control system design methods as long as $G^+$ of Equation \ref{eq:Gplus} is stabilized.
-$\hat{K}(\overline{\mathit{\Theta}})$ does not have to be static and can be used as a dynamic control algorithm \cite{ishizaki2019retrofit}.
+Based on this retrofit control theory, the system stabilization device has the
+following characteristics for any matrix $\overline{\mathit{\Theta}}$:
+
+\begin{itemize}
+  \item When the power system is in steady-state, the input $u$ becomes zero.
+  \item The stability of the steady-state (equilibrium point) does not change before and after implementation.
+\end{itemize}
+
+The first item means that the retrofit controller does not change the
+steady-state condition, while the second item means that the implementation of
+the retrofit controller does not change an asymptotically stable equilibrium
+point to an unstable one. The objective of retrofit control theory is to improve
+stability while maintaining the asymptotic stability of the equilibrium point
+and using indicators such as robustness to disturbances and the size of the
+stability region. Note that this method cannot asymptotically stabilize an
+unstable equilibrium point before controller implementation.
+
+Furthermore, it has been shown that the larger the predictive accuracy of the
+interaction signal by the approximate linear environmental model, the greater
+the improvement in system stability. Note that if the control algorithm in
+equation \ref{eq:locKhat} stabilizes $G^+$ in equation \ref{eq:Gplus}, it is not
+necessary to use the linear quadratic regulator (LQR) method introduced in
+section 5.3 of \cite{fairman1998linear}. Additionally,
+$\hat{K}(\overline{\mathit{\Theta}})$ can be a dynamic control algorithm, and it
+does not need to be static \cite{ishizaki2019retrofit}.
 
 \smallskip
 \subsubsection{Method to build the approximate linear environment model}

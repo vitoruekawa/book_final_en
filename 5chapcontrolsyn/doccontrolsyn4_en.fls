@@ -1260,12 +1260,12 @@ INPUT ./figs/wPSSlarge.pdf
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntx-Italic-tlf-ot1.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntx-Italic-tlf-ot1.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntx-Italic-tlf-ot1.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/vf/public/newtx/ntx-Italic-tlf-ot1.vf
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntx-Italic-tlf-ot1r.tfm
 INPUT ./figs/retconsys2.pdf
 INPUT figs/retconsys2.pdf
 INPUT ./figs/retconsys2.pdf
 INPUT ./figs/retconsys2.pdf
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/vf/public/newtx/ntx-Italic-tlf-ot1.vf
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntx-Italic-tlf-ot1r.tfm
 INPUT ./figs/explocalG2.pdf
 INPUT figs/explocalG2.pdf
 INPUT ./figs/explocalG2.pdf
