@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  10 APR 2023 13:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  10 APR 2023 18:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -783,6 +783,7 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 4.
 LaTeX Info: Redefining \pageref on input line 4.
 LaTeX Info: Redefining \nameref on input line 4.
+ (./doccontrolsyn4_en.out) (./doccontrolsyn4_en.out)
 \@outlinefile=\write4
 \openout4 = `doccontrolsyn4_en.out'.
 
@@ -814,21 +815,6 @@ LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 6
  (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.0pt on input line 9.
-
-
-LaTeX Warning: Reference `sec:agcover' on page 1 undefined on input line 9.
-
-
-LaTeX Warning: Reference `sec:mathnpas' on page 1 undefined on input line 14.
-
-
-LaTeX Warning: Reference `sec:transcont' on page 1 undefined on input line 19.
-
-
-LaTeX Warning: Reference `sec:retrofit' on page 1 undefined on input line 21.
-
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 (Font)              scaled to size 12.0pt on input line 25.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
@@ -837,9 +823,11 @@ LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 (Font)              scaled to size 11.0pt on input line 26.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
 (Font)              scaled to size 11.0pt on input line 26.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 10.0pt on input line 29.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 (Font)              scaled to size 8.5pt on input line 46.
-[1
+ [1
 
 
 
@@ -869,7 +857,7 @@ LaTeX Font Info:    Font shape `OT1/qhv/m/n' will be
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 167.
 
-<figs/bcAGC.pdf, id=22, 856.22583pt x 406.78273pt>
+<figs/bcAGC.pdf, id=91, 856.22583pt x 406.78273pt>
 File: figs/bcAGC.pdf Graphic file (type pdf)
 <use figs/bcAGC.pdf>
 Package pdftex.def Info: figs/bcAGC.pdf  used on input line 184.
@@ -877,15 +865,6 @@ Package pdftex.def Info: figs/bcAGC.pdf  used on input line 184.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
 (Font)              scaled to size 8.5pt on input line 186.
 [3]
-
-LaTeX Warning: Reference `eq:gendifagc' on page 4 undefined on input line 192.
-
-
-LaTeX Warning: Reference `fig:bcAGC' on page 4 undefined on input line 223.
-
-
-LaTeX Warning: Reference `eq:agccona' on page 4 undefined on input line 223.
-
 
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 230.
@@ -921,20 +900,8 @@ LaTeX Warning: Reference `table:genst13b' on page 5 undefined on input line 283.
 
 LaTeX Warning: Reference `table:genst13b' on page 5 undefined on input line 290.
 
-
-LaTeX Warning: Reference `fig:agcPdemo' on page 5 undefined on input line 290.
-
 [5]
-
-LaTeX Warning: Reference `eq:agccon' on page 6 undefined on input line 296.
-
-
-LaTeX Warning: Reference `table:agcpara' on page 6 undefined on input line 298.
-
-
-LaTeX Warning: Reference `fig:agcPdemo' on page 6 undefined on input line 298.
-
-<figs/woagcPinc.pdf, id=64, 670.505pt x 407.5225pt>
+<figs/woagcPinc.pdf, id=139, 670.505pt x 407.5225pt>
 File: figs/woagcPinc.pdf Graphic file (type pdf)
 <use figs/woagcPinc.pdf>
 Package pdftex.def Info: figs/woagcPinc.pdf  used on input line 310.
@@ -946,65 +913,34 @@ LaTeX Font Info:    Font shape `OT1/qhv/m/n' will be
 (Font)              scaled to size 5.83267pt on input line 312.
 LaTeX Font Info:    Font shape `OT1/qhv/m/n' will be
 (Font)              scaled to size 4.39452pt on input line 312.
-<figs/wagcPinc.pdf, id=65, 670.505pt x 407.5225pt>
+<figs/wagcPinc.pdf, id=140, 670.505pt x 407.5225pt>
 File: figs/wagcPinc.pdf Graphic file (type pdf)
 <use figs/wagcPinc.pdf>
 Package pdftex.def Info: figs/wagcPinc.pdf  used on input line 315.
 (pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
-
-LaTeX Warning: Reference `eq:agccon' on page 6 undefined on input line 344.
-
-
-LaTeX Warning: Reference `ex:agcdemo' on page 6 undefined on input line 348.
-
-
-LaTeX Warning: Reference `eq:agccon' on page 6 undefined on input line 350.
-
 LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 354.
-(/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
 (Font)              scaled to size 10.0pt on input line 354.
-
-
-LaTeX Warning: Reference `table:agcpara' on page 6 undefined on input line 354.
-
-[6 <./figs/woagcPinc.pdf> <./figs/wagcPinc.pdf>]
-
-LaTeX Warning: Reference `table:agcpara' on page 7 undefined on input line 355.
-
-
-LaTeX Warning: Reference `table:agcpara' on page 7 undefined on input line 356.
-
-
-LaTeX Warning: Reference `fig:agcPvary' on page 7 undefined on input line 359.
-
-
-LaTeX Warning: Reference `fig:agcPvary' on page 7 undefined on input line 368.
-
-
-LaTeX Warning: Reference `table:agcpara' on page 7 undefined on input line 374.
-
+ [6 <./figs/woagcPinc.pdf> <./figs/wagcPinc.pdf>]
 
 LaTeX Warning: Reference `ex:pf3bus' on page 7 undefined on input line 377.
 
 
 LaTeX Warning: Reference `eq:rightlossless' on page 7 undefined on input line 378.
 
-<figs/varyalphaP.pdf, id=83, 670.505pt x 407.5225pt>
+<figs/varyalphaP.pdf, id=168, 670.505pt x 407.5225pt>
 File: figs/varyalphaP.pdf Graphic file (type pdf)
 <use figs/varyalphaP.pdf>
 Package pdftex.def Info: figs/varyalphaP.pdf  used on input line 386.
 (pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
-<figs/varyalphaloss.pdf, id=84, 670.505pt x 407.5225pt>
+<figs/varyalphaloss.pdf, id=169, 670.505pt x 407.5225pt>
 File: figs/varyalphaloss.pdf Graphic file (type pdf)
 <use figs/varyalphaloss.pdf>
 Package pdftex.def Info: figs/varyalphaloss.pdf  used on input line 391.
 (pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
-
-LaTeX Warning: Reference `ex:pfvary' on page 7 undefined on input line 401.
-
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 412.
@@ -1034,18 +970,6 @@ LaTeX Warning: Reference `sec:stalin' on page 7 undefined on input line 419.
 
 [7 <./figs/varyalphaP.pdf> <./figs/varyalphaloss.pdf>]
 
-LaTeX Warning: Reference `eq:lmodelsagc' on page 8 undefined on input line 431.
-
-
-LaTeX Warning: Reference `eq:contpwmod' on page 8 undefined on input line 434.
-
-
-LaTeX Warning: Reference `eq:PQVgenagc' on page 8 undefined on input line 436.
-
-
-LaTeX Warning: Reference `eq:agccon' on page 8 undefined on input line 437.
-
-
 LaTeX Warning: Reference `sec:phsync' on page 8 undefined on input line 458.
 
 [8]
@@ -1071,9 +995,6 @@ Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 518.
 
 
-LaTeX Warning: Reference `eq:sys2' on page 9 undefined on input line 521.
-
-
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 531.
 
@@ -1081,30 +1002,12 @@ Package amsmath Warning: Cannot use `split' here;
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 543.
 
-
-LaTeX Warning: Reference `eq:gVeq' on page 9 undefined on input line 549.
-
-
-LaTeX Warning: Reference `eq:PQoutagc' on page 9 undefined on input line 549.
-
-
-LaTeX Warning: Reference `eq:sys2' on page 9 undefined on input line 552.
-
-
-LaTeX Warning: Reference `eq:lVeq' on page 9 undefined on input line 552.
-
 [9]
-
-LaTeX Warning: Reference `eq:agccon' on page 10 undefined on input line 557.
-
 
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 562.
 
-
-LaTeX Warning: Reference `fig:nonlinBD' on page 10 undefined on input line 584.
-
-<figs/nonlinBD.pdf, id=122, 708.89844pt x 607.70538pt>
+<figs/nonlinBD.pdf, id=217, 708.89844pt x 607.70538pt>
 File: figs/nonlinBD.pdf Graphic file (type pdf)
 <use figs/nonlinBD.pdf>
 Package pdftex.def Info: figs/nonlinBD.pdf  used on input line 590.
@@ -1140,52 +1043,19 @@ Package amsmath Warning: Cannot use `split' here;
 
 [11 <./figs/nonlinBD.pdf>]
 
-LaTeX Warning: Reference `def:eipassive' on page 12 undefined on input line 679.
-
-
 LaTeX Warning: Reference `sec:linpasana' on page 12 undefined on input line 683.
 
 
 LaTeX Warning: Citation `hines2011equilibrium' on page 12 undefined on input line 684.
 
 
-LaTeX Warning: Reference `eq:nlsig' on page 12 undefined on input line 691.
-
-
-LaTeX Warning: Reference `eq:sys2G' on page 12 undefined on input line 693.
-
-
-LaTeX Warning: Reference `eq:nlsig' on page 12 undefined on input line 701.
-
-
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 709.
 
 
-LaTeX Warning: Reference `eq:sys1' on page 12 undefined on input line 716.
-
-
 LaTeX Warning: Citation `simpson2019equilibrium' on page 12 undefined on input line 720.
 
-
-LaTeX Warning: Reference `eq:paraW' on page 12 undefined on input line 722.
-
 [12]
-
-LaTeX Warning: Reference `def:eipassive' on page 13 undefined on input line 729.
-
-
-LaTeX Warning: Reference `eq:paraW' on page 13 undefined on input line 730.
-
-
-LaTeX Warning: Reference `eq:Uineqst' on page 13 undefined on input line 731.
-
-
-LaTeX Warning: Reference `eq:Uineqst' on page 13 undefined on input line 740.
-
-
-LaTeX Warning: Reference `eq:paraW' on page 13 undefined on input line 771.
-
 
 LaTeX Warning: Citation `bregman1967relaxation' on page 13 undefined on input line 773.
 
@@ -1193,60 +1063,17 @@ LaTeX Warning: Citation `bregman1967relaxation' on page 13 undefined on input li
 LaTeX Warning: Reference `sec:linpasana' on page 13 undefined on input line 781.
 
 
-LaTeX Warning: Reference `eq:sys1' on page 13 undefined on input line 783.
-
-
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 791.
 
-[13]
-
-LaTeX Warning: Reference `eq:paraW' on page 14 undefined on input line 832.
-
-
-LaTeX Warning: Reference `eq:xFsteady' on page 14 undefined on input line 876.
-
-
-LaTeX Warning: Reference `eq:condsK' on page 14 undefined on input line 882.
-
-[14]
-
-LaTeX Warning: Reference `eq:Kdseq' on page 15 undefined on input line 900.
-
+[13] [14]
 
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 906.
 
 
-LaTeX Warning: Reference `eq:sys1' on page 15 undefined on input line 912.
-
-
-LaTeX Warning: Reference `eq:condsK' on page 15 undefined on input line 913.
-
-
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 926.
-
-
-LaTeX Warning: Reference `eq:tdFds' on page 15 undefined on input line 929.
-
-
-LaTeX Warning: Reference `eq:tdKds' on page 15 undefined on input line 929.
-
-
-LaTeX Warning: Reference `eq:connds1' on page 15 undefined on input line 947.
-
-
-LaTeX Warning: Reference `eq:connds2' on page 15 undefined on input line 950.
-
-
-LaTeX Warning: Reference `eq:sysFKds' on page 15 undefined on input line 951.
-
-
-LaTeX Warning: Reference `eq:sys2G' on page 15 undefined on input line 951.
-
-
-LaTeX Warning: Reference `eq:sys2G' on page 15 undefined on input line 960.
 
 [15]
 
@@ -1258,885 +1085,426 @@ LaTeX Warning: Citation `varaiya1985direct' on page 16 undefined on input line 9
 
 LaTeX Warning: Citation `chiang2011direct' on page 16 undefined on input line 991.
 
-
-LaTeX Warning: Reference `eq:paraW' on page 16 undefined on input line 992.
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1015: Misplaced alignment tab character &.
-l.1015 ...}}}{\partial \delta_i}(x_{\mathds{G}}) &
-                                                  = \frac{E_i |\bm{V}_i|}{ \...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1017: Misplaced alignment tab character &.
-l.1017 ...hds{G}}}{\partial E_i} (x_{\mathds{G}})&
-                                                  = - \frac{1}{ \Xsi - \Xti }
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-
-Overfull \hbox (62.76982pt too wide) detected at line 1025
-[]\LMS/ntxsy/m/n/10 ¹\OML/ntxmi/m/it/10 x[]\LMS/ntxsy/m/n/10 º \U/ntxmia/m/it/10 = [] []\LMS/ntxsy/m/n/10 ¹\OML/ntxmi/m/it/10 ^^N[] \LMS/ntxsy/m/n/10 ^^@ \U/ntxsym/m/n/10 Ü[][]\LMS/ntxsy/m/n/10 º\OML/ntxmi/m/it/10 ; [] []\LMS/ntxsy/m/n/10 ¹\OML/ntxmi/m/it/10 x[]\LMS/ntxsy/m/n/10 º \U/ntxmia/m/it/10 = \LMS/ntxsy/m/n/10 ^^@[] []
- []
-
-
-LaTeX Warning: Reference `eq:sys2G' on page 16 undefined on input line 1028.
-
-
-LaTeX Warning: Reference `eq:sys2' on page 16 undefined on input line 1028.
-
-
-LaTeX Warning: Reference `eq:gVeq' on page 16 undefined on input line 1055.
-
-
-LaTeX Warning: Reference `eq:lVeq' on page 16 undefined on input line 1056.
-
 [16]
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1091: Misplaced alignment tab character &.
-l.1091   &
-          \simode{
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
+
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 1103.
 
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1100.
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:1101: Misplaced alignment tab character &.
-<recently read> &
-                 
-l.1101   &
-          \simode{
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
+(amsmath)                trying to recover with `aligned' on input line 1112.
 
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1109.
-
-
-Overfull \hbox (78.65427pt too wide) detected at line 1110
-[][][] []  []
- []
-
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1143.
+(amsmath)                trying to recover with `aligned' on input line 1147.
 
 [17]
 
-LaTeX Warning: Reference `eq:eqeqa' on page 18 undefined on input line 1177.
-
-
-LaTeX Warning: Reference `eq:stops' on page 18 undefined on input line 1179.
-
-
-LaTeX Warning: Reference `eq:potWx' on page 18 undefined on input line 1184.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1191.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1187.
+(hyperref)                removing `superscript' on input line 1191.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 1187.
+(hyperref)                removing `math shift' on input line 1191.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1187.
-
-
-LaTeX Warning: Reference `sec:linmathana' on page 18 undefined on input line 1194.
-
-
-LaTeX Warning: Reference `eq:stops' on page 18 undefined on input line 1195.
-
-
-LaTeX Warning: Reference `eq:connds2' on page 18 undefined on input line 1200.
-
-
-LaTeX Warning: Reference `eq:disineqFp' on page 18 undefined on input line 1201.
-
-
-LaTeX Warning: Reference `eq:disineqGds' on page 18 undefined on input line 1201.
-
-
-LaTeX Warning: Reference `eq:sys1' on page 18 undefined on input line 1229.
+LaTeX Warning: Reference `sec:linmathana' on page 18 undefined on input line 1198.
 
 [18]
 
-LaTeX Warning: Reference `sec:phsync' on page 19 undefined on input line 1240.
+LaTeX Warning: Reference `sec:phsync' on page 19 undefined on input line 1244.
 
 
-LaTeX Warning: Reference `eq:Kdseq' on page 19 undefined on input line 1248.
-
-
-LaTeX Warning: Reference `eq:sys2G' on page 19 undefined on input line 1279.
-
-
-LaTeX Warning: Reference `ex:agcdemo' on page 19 undefined on input line 1326.
-
-
-LaTeX Warning: Reference `ex:pfvary' on page 19 undefined on input line 1326.
-
-
-LaTeX Warning: Reference `eq:bothlossless' on page 19 undefined on input line 1328.
-
-
-LaTeX Warning: Reference `ex:agcdemo' on page 19 undefined on input line 1329.
-
-
-LaTeX Warning: Reference `ex:pfvary' on page 19 undefined on input line 1330.
-
-
-LaTeX Warning: Reference `eq:agccon' on page 19 undefined on input line 1330.
-
-
-LaTeX Warning: Reference `table:agcpara' on page 19 undefined on input line 1331.
-
-
-LaTeX Warning: Reference `table:pflownl' on page 19 undefined on input line 1334.
-
-
-LaTeX Warning: Reference `eq:WxFst' on page 19 undefined on input line 1338.
-
-
-LaTeX Warning: Reference `eq:Wxist' on page 19 undefined on input line 1338.
-
-
-LaTeX Warning: Reference `eq:stops' on page 19 undefined on input line 1339.
-
-
-LaTeX Warning: Reference `fig:LyapWnlin' on page 19 undefined on input line 1341.
+LaTeX Warning: Reference `eq:bothlossless' on page 19 undefined on input line 1332.
 
 [19]
-<figs/Wnlin1.pdf, id=208, 682.55pt x 461.725pt>
+<figs/Wnlin1.pdf, id=352, 682.55pt x 461.725pt>
 File: figs/Wnlin1.pdf Graphic file (type pdf)
 <use figs/Wnlin1.pdf>
-Package pdftex.def Info: figs/Wnlin1.pdf  used on input line 1355.
+Package pdftex.def Info: figs/Wnlin1.pdf  used on input line 1359.
 (pdftex.def)             Requested size: 163.12146pt x 110.34422pt.
-<figs/Wnlin2.pdf, id=209, 682.55pt x 461.725pt>
+<figs/Wnlin2.pdf, id=353, 682.55pt x 461.725pt>
 File: figs/Wnlin2.pdf Graphic file (type pdf)
 <use figs/Wnlin2.pdf>
-Package pdftex.def Info: figs/Wnlin2.pdf  used on input line 1361.
+Package pdftex.def Info: figs/Wnlin2.pdf  used on input line 1365.
 (pdftex.def)             Requested size: 163.12146pt x 110.34422pt.
 
 
-LaTeX Warning: Reference `eq:potWx' on page 20 undefined on input line 1378.
+LaTeX Warning: Reference `def:passtrans' on page 20 undefined on input line 1384.
 
 
-LaTeX Warning: Reference `def:passtrans' on page 20 undefined on input line 1380.
-
-
-LaTeX Warning: Reference `sec:linpasana' on page 20 undefined on input line 1386.
-
-
-LaTeX Warning: Reference `eq:sys2G' on page 20 undefined on input line 1397.
-
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1420.
+LaTeX Warning: Reference `sec:linpasana' on page 20 undefined on input line 1390.
 
 [20 <./figs/Wnlin1.pdf> <./figs/Wnlin2.pdf>]
 
-LaTeX Warning: Reference `eq:sys2G' on page 21 undefined on input line 1425.
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 1424.
 
 
-LaTeX Warning: Reference `eq:potWx' on page 21 undefined on input line 1438.
-
-
-LaTeX Warning: Reference `eq:potWxred' on page 21 undefined on input line 1439.
-
-
-LaTeX Warning: Reference `eq:disineqGds' on page 21 undefined on input line 1483.
-
-
-LaTeX Warning: Reference `eq:susred' on page 21 undefined on input line 1493.
-
-
-LaTeX Warning: Reference `sec:admathp' on page 21 undefined on input line 1494.
-
-
-LaTeX Warning: Citation `kodama1981system' on page 21 undefined on input line 1505.
-
-
-LaTeX Warning: Citation `boyd2004convex' on page 21 undefined on input line 1525.
+LaTeX Warning: Reference `sec:admathp' on page 21 undefined on input line 1498.
 
 [21]
 
-LaTeX Warning: Reference `eq:potWxred' on page 22 undefined on input line 1529.
+LaTeX Warning: Citation `kodama1981system' on page 22 undefined on input line 1509.
 
 
-LaTeX Warning: Reference `eq:UGhess' on page 22 undefined on input line 1578.
+LaTeX Warning: Citation `boyd2004convex' on page 22 undefined on input line 1529.
 
 
-LaTeX Warning: Reference `eq:defPG' on page 22 undefined on input line 1579.
+LaTeX Warning: Reference `eq:defPG' on page 22 undefined on input line 1583.
 
 
-LaTeX Warning: Reference `sec:linpasana' on page 22 undefined on input line 1581.
-
-
-LaTeX Warning: Reference `sec:linmathana' on page 22 undefined on input line 1590.
-
-
-LaTeX Warning: Reference `eq:potWxred' on page 22 undefined on input line 1593.
+LaTeX Warning: Reference `sec:linpasana' on page 22 undefined on input line 1585.
 
 [22]
 
-LaTeX Warning: Reference `sec:nesconana' on page 23 undefined on input line 1608.
+LaTeX Warning: Reference `sec:linmathana' on page 23 undefined on input line 1594.
 
 
-LaTeX Warning: Reference `sec:avrov' on page 23 undefined on input line 1653.
-
-
-LaTeX Warning: Reference `sec:pssov' on page 23 undefined on input line 1653.
+LaTeX Warning: Reference `sec:nesconana' on page 23 undefined on input line 1612.
 
 [23]
 
-LaTeX Warning: Citation `ieee2016ieee' on page 24 undefined on input line 1659.
+LaTeX Warning: Citation `ieee2016ieee' on page 24 undefined on input line 1663.
 
 
-LaTeX Warning: Citation `anderson2008power' on page 24 undefined on input line 1667.
+LaTeX Warning: Citation `anderson2008power' on page 24 undefined on input line 1671.
 
 
-LaTeX Warning: Citation `kundur1994power' on page 24 undefined on input line 1668.
+LaTeX Warning: Citation `kundur1994power' on page 24 undefined on input line 1672.
 
 
-LaTeX Warning: Reference `sec:genfund' on page 24 undefined on input line 1671.
+LaTeX Warning: Reference `sec:genfund' on page 24 undefined on input line 1675.
 
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1684.
+(amsmath)                trying to recover with `aligned' on input line 1688.
 
 
-LaTeX Warning: Reference `sec:genmodadv' on page 24 undefined on input line 1706.
+LaTeX Warning: Reference `sec:genmodadv' on page 24 undefined on input line 1710.
 
-
-LaTeX Warning: Reference `eq:efield' on page 24 undefined on input line 1707.
-
-
-LaTeX Warning: Reference `fig:avrdc1' on page 24 undefined on input line 1710.
-
-<figs/avrdc1.pdf, id=243, 1198.46243pt x 541.58434pt>
+[24]
+<figs/avrdc1.pdf, id=407, 1198.46243pt x 541.58434pt>
 File: figs/avrdc1.pdf Graphic file (type pdf)
 <use figs/avrdc1.pdf>
-Package pdftex.def Info: figs/avrdc1.pdf  used on input line 1723.
+Package pdftex.def Info: figs/avrdc1.pdf  used on input line 1727.
 (pdftex.def)             Requested size: 329.57008pt x 148.932pt.
-[24] [25 <./figs/avrdc1.pdf>]
+ [25 <./figs/avrdc1.pdf>]
 
-LaTeX Warning: Citation `sauer2017power' on page 26 undefined on input line 1790.
-
-
-LaTeX Warning: Reference `eq:compmod' on page 26 undefined on input line 1828.
+LaTeX Warning: Citation `sauer2017power' on page 26 undefined on input line 1794.
 
 [26]
 
-LaTeX Warning: Reference `eq:trnsmod' on page 27 undefined on input line 1833.
+LaTeX Warning: Citation `anderson2008power' on page 27 undefined on input line 1851.
 
 
-LaTeX Warning: Reference `eq:stcmod' on page 27 undefined on input line 1833.
+LaTeX Warning: Citation `sauer2017power' on page 27 undefined on input line 1852.
 
 
-LaTeX Warning: Reference `table:AVRpara1' on page 27 undefined on input line 1834.
+LaTeX Warning: Citation `anderson2008power' on page 27 undefined on input line 1866.
 
 
-LaTeX Warning: Reference `table:AVRpara2' on page 27 undefined on input line 1835.
+LaTeX Warning: Citation `sauer2017power' on page 27 undefined on input line 1867.
 
-
-LaTeX Warning: Citation `anderson2008power' on page 27 undefined on input line 1847.
-
-
-LaTeX Warning: Citation `sauer2017power' on page 27 undefined on input line 1848.
-
-
-LaTeX Warning: Citation `anderson2008power' on page 27 undefined on input line 1862.
-
-
-LaTeX Warning: Citation `sauer2017power' on page 27 undefined on input line 1863.
-
-<figs/avrst1.pdf, id=279, 979.64597pt x 441.40709pt>
+<figs/avrst1.pdf, id=439, 979.64597pt x 441.40709pt>
 File: figs/avrst1.pdf Graphic file (type pdf)
 <use figs/avrst1.pdf>
-Package pdftex.def Info: figs/avrst1.pdf  used on input line 1870.
+Package pdftex.def Info: figs/avrst1.pdf  used on input line 1874.
 (pdftex.def)             Requested size: 282.96468pt x 127.49962pt.
-
-LaTeX Warning: Reference `eq:extmod' on page 27 undefined on input line 1881.
-
 [27 <./figs/avrst1.pdf>]
 
-LaTeX Warning: Citation `kundur1994power' on page 28 undefined on input line 1900.
+LaTeX Warning: Citation `kundur1994power' on page 28 undefined on input line 1904.
 
 
-LaTeX Warning: Reference `eq:gendifavr' on page 28 undefined on input line 1901.
+LaTeX Warning: Citation `kundur1994power' on page 28 undefined on input line 1922.
 
 
-LaTeX Warning: Reference `fig:avrst1' on page 28 undefined on input line 1910.
-
-
-LaTeX Warning: Reference `eq:avrst1' on page 28 undefined on input line 1917.
-
-
-LaTeX Warning: Citation `kundur1994power' on page 28 undefined on input line 1918.
-
-
-LaTeX Warning: Citation `pal2006robust' on page 28 undefined on input line 1919.
-
-
-LaTeX Warning: Reference `table:AVRparast1' on page 28 undefined on input line 1920.
+LaTeX Warning: Citation `pal2006robust' on page 28 undefined on input line 1923.
 
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1930.
+(amsmath)                trying to recover with `aligned' on input line 1934.
 
 
-LaTeX Warning: Citation `kundur1994power' on page 28 undefined on input line 1942.
+LaTeX Warning: Citation `kundur1994power' on page 28 undefined on input line 1946.
 
 
-LaTeX Warning: Citation `ieee2016ieee' on page 28 undefined on input line 1943.
+LaTeX Warning: Citation `ieee2016ieee' on page 28 undefined on input line 1947.
 
 
-LaTeX Warning: Citation `chow2004power' on page 28 undefined on input line 1944.
+LaTeX Warning: Citation `chow2004power' on page 28 undefined on input line 1948.
 
 
-LaTeX Warning: Citation `sadamoto2019dynamic' on page 28 undefined on input line 1945.
+LaTeX Warning: Citation `sadamoto2019dynamic' on page 28 undefined on input line 1949.
 
 
-LaTeX Warning: Citation `chow2004power' on page 28 undefined on input line 1953.
+LaTeX Warning: Citation `chow2004power' on page 28 undefined on input line 1957.
 
 
-LaTeX Warning: Citation `sauer2017power' on page 28 undefined on input line 1953.
+LaTeX Warning: Citation `sauer2017power' on page 28 undefined on input line 1957.
 
 
-LaTeX Warning: Citation `sadamoto2019dynamic' on page 28 undefined on input line 1953.
+LaTeX Warning: Citation `sadamoto2019dynamic' on page 28 undefined on input line 1957.
 
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 1961.
-
-
-LaTeX Warning: Reference `table:AVRparast1' on page 28 undefined on input line 1965.
+(amsmath)                trying to recover with `aligned' on input line 1965.
 
 [28]
 
-LaTeX Warning: Reference `ex:derY' on page 29 undefined on input line 1989.
+LaTeX Warning: Reference `ex:derY' on page 29 undefined on input line 1993.
 
 
-LaTeX Warning: Reference `ex:pf3bus' on page 29 undefined on input line 1990.
+LaTeX Warning: Reference `ex:pf3bus' on page 29 undefined on input line 1994.
 
 
-LaTeX Warning: Reference `ex:inires' on page 29 undefined on input line 1990.
+LaTeX Warning: Reference `ex:inires' on page 29 undefined on input line 1994.
 
 
-LaTeX Warning: Reference `ex:inires' on page 29 undefined on input line 1991.
+LaTeX Warning: Reference `ex:inires' on page 29 undefined on input line 1995.
 
 
-LaTeX Warning: Reference `table:loadpara1' on page 29 undefined on input line 1993.
+LaTeX Warning: Reference `table:loadpara1' on page 29 undefined on input line 1997.
 
 
-LaTeX Warning: Reference `eq:avrst1' on page 29 undefined on input line 1995.
-
-
-LaTeX Warning: Reference `table:AVRparast1' on page 29 undefined on input line 1997.
-
-
-LaTeX Warning: Reference `table:genst13a' on page 29 undefined on input line 2006.
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2009: Undefined control sequence.
-l.2009 as shown in (i) of \TABref
-                                 {table:stableeqs}, while with the automatic...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2010: Undefined control sequence.
-l.2010 ...the range is as shown in (ii) of \TABref
-                                                  {table:stableeqs}.  From this
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+LaTeX Warning: Reference `table:genst13a' on page 29 undefined on input line 2010.
 
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 2029.
+(amsmath)                trying to recover with `aligned' on input line 2033.
 
 
-LaTeX Warning: Reference `eq:figidef' on page 29 undefined on input line 2035.
+LaTeX Warning: Reference `eq:figidef' on page 29 undefined on input line 2039.
 
 
-LaTeX Warning: Reference `eq:colVi' on page 29 undefined on input line 2038.
+LaTeX Warning: Reference `eq:colVi' on page 29 undefined on input line 2042.
 
 [29]
 
-LaTeX Warning: Reference `eq:Kron' on page 30 undefined on input line 2063.
-
-
-LaTeX Warning: Reference `eq:avrref' on page 30 undefined on input line 2064.
+LaTeX Warning: Reference `eq:Kron' on page 30 undefined on input line 2067.
 
 [30]
-
-LaTeX Warning: Reference `fig:transientL2' on page 31 undefined on input line 2123.
-
-
-LaTeX Warning: Reference `table:stableeqs' on page 31 undefined on input line 2127.
-
-
-LaTeX Warning: Reference `fig:avrsmalld' on page 31 undefined on input line 2141.
-
-
-LaTeX Warning: Reference `fig:avrlarged' on page 31 undefined on input line 2142.
-
-<figs/transientL2w.pdf, id=313, 670.505pt x 407.5225pt>
+<figs/transientL2w.pdf, id=487, 670.505pt x 407.5225pt>
 File: figs/transientL2w.pdf Graphic file (type pdf)
 <use figs/transientL2w.pdf>
-Package pdftex.def Info: figs/transientL2w.pdf  used on input line 2157.
+Package pdftex.def Info: figs/transientL2w.pdf  used on input line 2161.
 (pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
-<figs/transientL2V.pdf, id=314, 670.505pt x 407.5225pt>
+<figs/transientL2V.pdf, id=488, 670.505pt x 407.5225pt>
 File: figs/transientL2V.pdf Graphic file (type pdf)
 <use figs/transientL2V.pdf>
-Package pdftex.def Info: figs/transientL2V.pdf  used on input line 2162.
+Package pdftex.def Info: figs/transientL2V.pdf  used on input line 2166.
 (pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
-<figs/woAVRsmall.pdf, id=315, 670.505pt x 407.5225pt>
+<figs/woAVRsmall.pdf, id=489, 670.505pt x 407.5225pt>
 File: figs/woAVRsmall.pdf Graphic file (type pdf)
 <use figs/woAVRsmall.pdf>
-Package pdftex.def Info: figs/woAVRsmall.pdf  used on input line 2178.
+Package pdftex.def Info: figs/woAVRsmall.pdf  used on input line 2182.
 (pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
-<figs/wAVRsmall.pdf, id=316, 670.505pt x 407.5225pt>
+<figs/wAVRsmall.pdf, id=490, 670.505pt x 407.5225pt>
 File: figs/wAVRsmall.pdf Graphic file (type pdf)
 <use figs/wAVRsmall.pdf>
-Package pdftex.def Info: figs/wAVRsmall.pdf  used on input line 2183.
+Package pdftex.def Info: figs/wAVRsmall.pdf  used on input line 2187.
 (pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
-<figs/woAVRlarge.pdf, id=317, 670.505pt x 407.5225pt>
+<figs/woAVRlarge.pdf, id=491, 670.505pt x 407.5225pt>
 File: figs/woAVRlarge.pdf Graphic file (type pdf)
 <use figs/woAVRlarge.pdf>
-Package pdftex.def Info: figs/woAVRlarge.pdf  used on input line 2200.
+Package pdftex.def Info: figs/woAVRlarge.pdf  used on input line 2204.
 (pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
-<figs/wAVRlarge.pdf, id=318, 670.505pt x 407.5225pt>
+<figs/wAVRlarge.pdf, id=492, 670.505pt x 407.5225pt>
 File: figs/wAVRlarge.pdf Graphic file (type pdf)
 <use figs/wAVRlarge.pdf>
-Package pdftex.def Info: figs/wAVRlarge.pdf  used on input line 2205.
+Package pdftex.def Info: figs/wAVRlarge.pdf  used on input line 2209.
 (pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
+ [31 <./figs/transientL2w.pdf> <./figs/transientL2V.pdf>]
 
-LaTeX Warning: Reference `ex:avreffect' on page 31 undefined on input line 2217.
+LaTeX Warning: Citation `ieee2016ieee' on page 32 undefined on input line 2238.
 
-[31 <./figs/transientL2w.pdf> <./figs/transientL2V.pdf>]
-
-LaTeX Warning: Reference `fig:avrdc1' on page 32 undefined on input line 2229.
-
-
-LaTeX Warning: Reference `fig:avrst1' on page 32 undefined on input line 2229.
-
-
-LaTeX Warning: Citation `ieee2016ieee' on page 32 undefined on input line 2234.
-
-
-LaTeX Warning: Reference `fig:pss1' on page 32 undefined on input line 2237.
-
-<figs/pss1.pdf, id=337, 999.2191pt x 231.2389pt>
+<figs/pss1.pdf, id=517, 999.2191pt x 231.2389pt>
 File: figs/pss1.pdf Graphic file (type pdf)
 <use figs/pss1.pdf>
-Package pdftex.def Info: figs/pss1.pdf  used on input line 2241.
+Package pdftex.def Info: figs/pss1.pdf  used on input line 2245.
 (pdftex.def)             Requested size: 329.57008pt x 76.27025pt.
 [32 <./figs/woAVRsmall.pdf> <./figs/wAVRsmall.pdf> <./figs/woAVRlarge.pdf> <./figs/wAVRlarge.pdf>]
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 2265.
+(amsmath)                trying to recover with `aligned' on input line 2269.
 
 
-LaTeX Warning: Citation `kundur1994power' on page 33 undefined on input line 2273.
-
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 2293.
+LaTeX Warning: Citation `kundur1994power' on page 33 undefined on input line 2277.
 
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 2303.
+(amsmath)                trying to recover with `aligned' on input line 2297.
 
 
-LaTeX Warning: Reference `table:psspara' on page 33 undefined on input line 2318.
+Package amsmath Warning: Cannot use `split' here;
+(amsmath)                trying to recover with `aligned' on input line 2307.
 
 
-LaTeX Warning: Reference `sec:onemachine' on page 33 undefined on input line 2325.
+LaTeX Warning: Reference `sec:onemachine' on page 33 undefined on input line 2329.
 
 
-LaTeX Warning: Citation `kundur1994power' on page 33 undefined on input line 2327.
+LaTeX Warning: Citation `kundur1994power' on page 33 undefined on input line 2331.
 
 
-LaTeX Warning: Citation `chow2004power' on page 33 undefined on input line 2329.
+LaTeX Warning: Citation `chow2004power' on page 33 undefined on input line 2333.
 
 [33 <./figs/pss1.pdf>]
 
-LaTeX Warning: Citation `kundur1994power' on page 34 undefined on input line 2341.
+LaTeX Warning: Citation `kundur1994power' on page 34 undefined on input line 2345.
 
 
-LaTeX Warning: Citation `kundur1994power' on page 34 undefined on input line 2342.
+LaTeX Warning: Citation `kundur1994power' on page 34 undefined on input line 2346.
 
 
-LaTeX Warning: Citation `chow2004power' on page 34 undefined on input line 2343.
+LaTeX Warning: Citation `chow2004power' on page 34 undefined on input line 2347.
 
 
-LaTeX Warning: Citation `ieee2016ieee' on page 34 undefined on input line 2344.
+LaTeX Warning: Citation `ieee2016ieee' on page 34 undefined on input line 2348.
 
-
-LaTeX Warning: Reference `ex:avreffect' on page 34 undefined on input line 2358.
-
-
-LaTeX Warning: Reference `table:psspara' on page 34 undefined on input line 2360.
-
-
-LaTeX Warning: Reference `table:stableeqs' on page 34 undefined on input line 2362.
-
-<figs/wPSSsmall.pdf, id=382, 670.505pt x 407.5225pt>
+<figs/wPSSsmall.pdf, id=564, 670.505pt x 407.5225pt>
 File: figs/wPSSsmall.pdf Graphic file (type pdf)
 <use figs/wPSSsmall.pdf>
-Package pdftex.def Info: figs/wPSSsmall.pdf  used on input line 2373.
+Package pdftex.def Info: figs/wPSSsmall.pdf  used on input line 2377.
 (pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
-<figs/wPSSlarge.pdf, id=383, 670.505pt x 407.5225pt>
+<figs/wPSSlarge.pdf, id=565, 670.505pt x 407.5225pt>
 File: figs/wPSSlarge.pdf Graphic file (type pdf)
 <use figs/wPSSlarge.pdf>
-Package pdftex.def Info: figs/wPSSlarge.pdf  used on input line 2378.
+Package pdftex.def Info: figs/wPSSlarge.pdf  used on input line 2382.
 (pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
 
-LaTeX Warning: Reference `fig: avrsmalld' on page 34 undefined on input line 2383.
+LaTeX Warning: Reference `fig: avrsmalld' on page 34 undefined on input line 2387.
 
 
-LaTeX Warning: Reference `fig: avrsmalld' on page 34 undefined on input line 2383.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2389.
+LaTeX Warning: Reference `fig: avrsmalld' on page 34 undefined on input line 2387.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 2389.
+(hyperref)                removing `math shift' on input line 2393.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2389.
+(hyperref)                removing `superscript' on input line 2393.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2391.
+(hyperref)                removing `math shift' on input line 2393.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 2391.
+(hyperref)                removing `math shift' on input line 2395.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2391.
+(hyperref)                removing `superscript' on input line 2395.
 
 
-LaTeX Warning: Citation `ishizaki2018retrofit' on page 34 undefined on input line 2398.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2395.
 
 
-LaTeX Warning: Citation `sadamoto2018retrofit' on page 34 undefined on input line 2398.
+LaTeX Warning: Citation `ishizaki2018retrofit' on page 34 undefined on input line 2402.
 
 
-LaTeX Warning: Citation `sasahara2019damping' on page 34 undefined on input line 2398.
+LaTeX Warning: Citation `sadamoto2018retrofit' on page 34 undefined on input line 2402.
 
 
-LaTeX Warning: Citation `ishizaki2019retrofit' on page 34 undefined on input line 2398.
+LaTeX Warning: Citation `sasahara2019damping' on page 34 undefined on input line 2402.
 
 
-LaTeX Warning: Citation `ishizaki2021modularity' on page 34 undefined on input line 2398.
+LaTeX Warning: Citation `ishizaki2019retrofit' on page 34 undefined on input line 2402.
+
+
+LaTeX Warning: Citation `ishizaki2021modularity' on page 34 undefined on input line 2402.
 
 [34]
 
-LaTeX Warning: Reference `eq:avrst1' on page 35 undefined on input line 2410.
-
-
-LaTeX Warning: Reference `eq:gendifavr' on page 35 undefined on input line 2411.
-
-
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 2428.
+(amsmath)                trying to recover with `aligned' on input line 2432.
 
-[35 <./figs/wPSSsmall.pdf> <./figs/wPSSlarge.pdf>]
-
-LaTeX Warning: Reference `eq:sigintvw' on page 36 undefined on input line 2455.
-
-
-LaTeX Warning: Reference `eq:desmodl' on page 36 undefined on input line 2457.
-
-
-LaTeX Warning: Reference `eq:desmodl' on page 36 undefined on input line 2492.
-
-
-LaTeX Warning: Reference `eq:sigintvw' on page 36 undefined on input line 2495.
-
-
-LaTeX Warning: Reference `eq:matlocalm' on page 36 undefined on input line 2495.
-
-
-LaTeX Warning: Reference `eq:matlocalm' on page 36 undefined on input line 2497.
-
-[36]
-<figs/retconsys2.pdf, id=419, 615.94319pt x 229.68611pt>
+[35 <./figs/wPSSsmall.pdf> <./figs/wPSSlarge.pdf>] [36]
+<figs/retconsys2.pdf, id=605, 615.94319pt x 229.68611pt>
 File: figs/retconsys2.pdf Graphic file (type pdf)
 <use figs/retconsys2.pdf>
-Package pdftex.def Info: figs/retconsys2.pdf  used on input line 2525.
+Package pdftex.def Info: figs/retconsys2.pdf  used on input line 2529.
 (pdftex.def)             Requested size: 329.57008pt x 122.8966pt.
 
 
-LaTeX Warning: Reference `fig:retconsys' on page 37 undefined on input line 2547.
-
-
-LaTeX Warning: Citation `ishizaki2019retrofit' on page 37 undefined on input line 2558.
+LaTeX Warning: Citation `ishizaki2019retrofit' on page 37 undefined on input line 2562.
 
 [37 <./figs/retconsys2.pdf>]
 
-LaTeX Warning: Reference `eq:Gbapxst' on page 38 undefined on input line 2571.
-
-
-LaTeX Warning: Reference `fig:explocalG' on page 38 undefined on input line 2579.
-
-
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 2586.
+(amsmath)                trying to recover with `aligned' on input line 2590.
 
-
-LaTeX Warning: Reference `eq:matlocalm' on page 38 undefined on input line 2592.
-
-<figs/explocalG2.pdf, id=434, 338.46852pt x 233.87375pt>
+<figs/explocalG2.pdf, id=624, 338.46852pt x 233.87375pt>
 File: figs/explocalG2.pdf Graphic file (type pdf)
 <use figs/explocalG2.pdf>
-Package pdftex.def Info: figs/explocalG2.pdf  used on input line 2597.
+Package pdftex.def Info: figs/explocalG2.pdf  used on input line 2601.
 (pdftex.def)             Requested size: 166.44861pt x 115.01665pt.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2604.
+(hyperref)                removing `math shift' on input line 2608.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 2604.
+(hyperref)                removing `superscript' on input line 2608.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2604.
+(hyperref)                removing `math shift' on input line 2608.
 
 
-LaTeX Warning: Reference `eq:Gbapxst' on page 38 undefined on input line 2610.
-
-
-LaTeX Warning: Citation `fairman1998linear' on page 38 undefined on input line 2619.
-
-
-LaTeX Warning: Reference `eq:Gplus' on page 38 undefined on input line 2620.
+LaTeX Warning: Citation `fairman1998linear' on page 38 undefined on input line 2623.
 
 [38 <./figs/explocalG2.pdf>]
 
-LaTeX Warning: Reference `eq:locKhat' on page 39 undefined on input line 2631.
-
-
-LaTeX Warning: Reference `eq:locKhat' on page 39 undefined on input line 2652.
-
-
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 2661.
+(amsmath)                trying to recover with `aligned' on input line 2665.
 
 
-LaTeX Warning: Reference `eq:locKhat' on page 39 undefined on input line 2684.
+LaTeX Warning: Citation `fairman1998linear' on page 39 undefined on input line 2690.
 
 
-LaTeX Warning: Reference `eq:Gplus' on page 39 undefined on input line 2684.
+LaTeX Warning: Citation `ishizaki2019retrofit' on page 39 undefined on input line 2692.
 
+[39] [40]
 
-LaTeX Warning: Citation `fairman1998linear' on page 39 undefined on input line 2686.
-
-
-LaTeX Warning: Citation `ishizaki2019retrofit' on page 39 undefined on input line 2688.
-
-
-LaTeX Warning: Reference `eq:Gbapxst' on page 39 undefined on input line 2693.
-
-
-LaTeX Warning: Reference `eq:sigintvw' on page 39 undefined on input line 2693.
-
-[39]
-
-LaTeX Warning: Reference `eq:Gbapxst' on page 40 undefined on input line 2730.
-
-
-LaTeX Warning: Reference `eq:agccon' on page 40 undefined on input line 2742.
-
-[40]
-
-LaTeX Warning: Reference `sec:allgen' on page 41 undefined on input line 2782.
-
-
-LaTeX Warning: Reference `eq:thetaV' on page 41 undefined on input line 2827.
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2827: LaTeX Error: Unicode character ï¼Œ (U+FF0C)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2827 ...l |\bm{V}| }{\partial \Delta \omega}$ï¼Œ
-                                                  $\tfrac{\partial \angle \b...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-LaTeX Warning: Reference `eq:ThetaV' on page 41 undefined on input line 2828.
-
-
-LaTeX Warning: Reference `eq:ThetaV' on page 41 undefined on input line 2829.
-
-
-LaTeX Warning: Reference `eq:basenvm' on page 41 undefined on input line 2830.
-
-
-LaTeX Warning: Reference `eq:ThetaV' on page 41 undefined on input line 2832.
+LaTeX Warning: Reference `sec:allgen' on page 41 undefined on input line 2818.
 
 [41]
 
-LaTeX Warning: Reference `eq:Gbapxst' on page 42 undefined on input line 2836.
+LaTeX Warning: Citation `ljung1998system' on page 42 undefined on input line 2885.
 
-
-LaTeX Warning: Reference `eq:retroK' on page 42 undefined on input line 2843.
-
-<figs/timedeltamodel.pdf, id=472, 670.505pt x 407.5225pt>
+<figs/timedeltamodel.pdf, id=678, 670.505pt x 407.5225pt>
 File: figs/timedeltamodel.pdf Graphic file (type pdf)
 <use figs/timedeltamodel.pdf>
-Package pdftex.def Info: figs/timedeltamodel.pdf  used on input line 2866.
+Package pdftex.def Info: figs/timedeltamodel.pdf  used on input line 2912.
 (pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
-<figs/timeEmodel.pdf, id=473, 670.505pt x 407.5225pt>
+<figs/timeEmodel.pdf, id=679, 670.505pt x 407.5225pt>
 File: figs/timeEmodel.pdf Graphic file (type pdf)
 <use figs/timeEmodel.pdf>
-Package pdftex.def Info: figs/timeEmodel.pdf  used on input line 2872.
+Package pdftex.def Info: figs/timeEmodel.pdf  used on input line 2918.
 (pdftex.def)             Requested size: 163.12146pt x 99.1381pt.
-<figs/heatdelta.pdf, id=474, 686.565pt x 411.5375pt>
+<figs/heatdelta.pdf, id=680, 686.565pt x 411.5375pt>
 File: figs/heatdelta.pdf Graphic file (type pdf)
 <use figs/heatdelta.pdf>
-Package pdftex.def Info: figs/heatdelta.pdf  used on input line 2890.
+Package pdftex.def Info: figs/heatdelta.pdf  used on input line 2936.
 (pdftex.def)             Requested size: 163.12146pt x 97.77257pt.
-<figs/heatE.pdf, id=475, 686.565pt x 411.5375pt>
+<figs/heatE.pdf, id=681, 686.565pt x 411.5375pt>
 File: figs/heatE.pdf Graphic file (type pdf)
 <use figs/heatE.pdf>
-Package pdftex.def Info: figs/heatE.pdf  used on input line 2896.
+Package pdftex.def Info: figs/heatE.pdf  used on input line 2942.
 (pdftex.def)             Requested size: 163.12146pt x 97.77257pt.
 
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2923: LaTeX Error: Environment ä¾‹ undefined.
+LaTeX Warning: Reference `table:pflow2' on page 42 undefined on input line 2962.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2923 \begin{ä¾‹}
-                  [Identification of the approximate linear environment mode...
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+[42 <./figs/timedeltamodel.pdf> <./figs/timeEmodel.pdf>] [43 <./figs/heatdelta.pdf> <./figs/heatE.pdf>]
 
-
-LaTeX Warning: Reference `ex:avreffect' on page 42 undefined on input line 2924.
-
-
-LaTeX Warning: Reference `eq:agccon' on page 42 undefined on input line 2925.
-
-
-LaTeX Warning: Reference `table:agcpara' on page 42 undefined on input line 2925.
-
-
-LaTeX Warning: Reference `table:pflow2' on page 42 undefined on input line 2926.
-
-[42 <./figs/timedeltamodel.pdf> <./figs/timeEmodel.pdf> <./figs/heatdelta.pdf> <./figs/heatE.pdf>]
-
-LaTeX Warning: Reference `eq:thetaV' on page 43 undefined on input line 2928.
-
-
-LaTeX Warning: Reference `eq:ThetaV' on page 43 undefined on input line 2936.
-
-
-LaTeX Warning: Reference `eq:Gplus' on page 43 undefined on input line 2965.
-
-
-LaTeX Warning: Reference `eq:desmodl' on page 43 undefined on input line 2965.
-
-
-LaTeX Warning: Reference `eq:Thetasum' on page 43 undefined on input line 2966.
-
-
-LaTeX Warning: Reference `eq:Gplus' on page 43 undefined on input line 2967.
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2976: Undefined control sequence.
-l.2976 The blue line in \FIGref
-                               {fig:timeVmodel} shows the time series data o...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2978: Undefined control sequence.
-l.2978 ...ven interval of 0.01 is shown in \FIGref
-                                                  {fig:datamodeling}.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2996: Undefined control sequence.
-l.2996 ...lues correspond to "$\times$" of \FIGref
-                                                  {fig:datamodeling}.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2997: Undefined control sequence.
-l.2997 ...hown with the broken red line in \FIGref
-                                                  {fig:timeVmodel}.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-/Users/vuekawa/repos/book_final_en/5chapcontrolsyn/doccontrolsyn4_en.tex:2999: LaTeX Error: \begin{document} ended by \end{ä¾‹}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2999 \end{ä¾‹}
-                
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-[43]
-
-LaTeX Warning: Reference `ex:modelingV' on page 44 undefined on input line 3002.
-
-
-LaTeX Warning: Reference `chap:largesim' on page 44 undefined on input line 3003.
+LaTeX Warning: Reference `chap:largesim' on page 44 undefined on input line 3069.
 
 [44]
 \tf@thm=\write5
@@ -2146,31 +1514,22 @@ LaTeX Warning: Reference `chap:largesim' on page 44 undefined on input line 3003
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `doccontrolsyn4_en.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `doccontrolsyn4_en.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  B9C34D70B613CABA16CBF027F9131626;5207.
+Package rerunfilecheck Info: File `doccontrolsyn4_en.out' has not changed.
+(rerunfilecheck)             Checksum: B9C34D70B613CABA16CBF027F9131626;5207.
  ) 
 Here is how much of TeX's memory you used:
- 19131 strings out of 478268
- 293064 string characters out of 5846346
- 599309 words of memory out of 5000000
- 36781 multiletter control sequences out of 15000+600000
+ 19153 strings out of 478268
+ 293452 string characters out of 5846346
+ 604618 words of memory out of 5000000
+ 36798 multiletter control sequences out of 15000+600000
  594142 words of font info for 267 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,26n,134p,474b,640s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 88i,27n,134p,553b,638s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-rm.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/doublestroke/dsrom8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txbsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexas.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/txsya.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb>
-Output written on doccontrolsyn4_en.pdf (44 pages, 1402252 bytes).
+Output written on doccontrolsyn4_en.pdf (44 pages, 1409559 bytes).
 PDF statistics:
- 749 PDF objects out of 1000 (max. 8388607)
- 509 compressed objects within 6 object streams
- 185 named destinations out of 1000 (max. 500000)
- 126 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 971 PDF objects out of 1000 (max. 8388607)
+ 729 compressed objects within 8 object streams
+ 186 named destinations out of 1000 (max. 500000)
+ 262 words of extra memory for PDF output out of 10000 (max. 10000000)
 

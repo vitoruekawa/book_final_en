@@ -2373,21 +2373,6 @@ z_{\mathds G}:=(\delta,\overline{\delta},E,\overline{E})
 
 
 \begin{figure}[t]
-%  \centering
-%  {
-%  \begin{minipage}{0.49\linewidth}
-%    \centering
-%    \includegraphics[width = 1.0\linewidth]{figs/timedeltamodel}
-%    \subcaption{ $\delta_1$の時系列データ}
-%     \medskip
-%  \end{minipage}
-%  \begin{minipage}{0.49\linewidth}
-%    \centering
-%    \includegraphics[width = 1.0\linewidth]{figs/timeEmodel}
-%    \subcaption{ $E_1$の時系列データ}
-%     \medskip
-%  \end{minipage}
-%    }
   \centering
   {
   \begin{minipage}{0.49\linewidth}
@@ -2428,22 +2413,6 @@ z_{\mathds G}:=(\delta,\overline{\delta},E,\overline{E})
     \medskip
   \end{minipage}
 }
-%  \centering
-%  {
-%  \begin{minipage}{0.49\linewidth}
-%      \centering
-%    \includegraphics[width = 1\linewidth]{figs/angVdelta}
-%    \subcaption{ $\bigl(\delta_1(\tfrac{k}{100}),\angle \bm{V}_1(\tfrac{k}{100}) \bigr)$ }
-%    \medskip
-%  \end{minipage}
-%  \begin{minipage}{0.49\linewidth}
-%    \centering
-%    \includegraphics[width = 1\linewidth]{figs/angVE}
-%    \subcaption{ $\bigl(E_1(\tfrac{k}{100}), \angle \bm{V}_1(\tfrac{k}{100}) \bigr)$ }
-%    \medskip
-%  \end{minipage}
-%}
-% \medskip
  \caption{\textbf{同定パラメータに対する内部状態の近似誤差}}
  \label{fig:datamodeling}
 \medskip
@@ -2502,12 +2471,6 @@ $\overline{\mathit{\Theta}}_3$のフィードバック系として，式\ref{eq:
 ただし，$\overline{\mathit{\Theta}}_3$は，式\ref{eq:Thetasum}で定義される。
 このとき，式\ref{eq:Gplus}の入力$\hat{u}_3$として$V_{{\rm pss}3}$の励振に用いた信号を印加した場合の$\hat{y}_3$の第1要素，第3要素として，$(\hat{\delta}_3,\hat{E}_3)$の時系列データが得られる。
 パラメータ$(\theta_1,\theta_2)$は，データを取得した時間区間におけるすべての時刻$t$に対して，$\hat{\delta}_3(t)$と$\hat{E}_3(t)$がそれぞれ，$\delta_3(t)$と$E_3(t)$のよい近似となるように最適化する。
-%\[
-%\delta_3(t) \simeq \hat{\delta}_3(t)
-%,\qquad
-%E_3(t) \simeq \hat{E}_3(t)
-%\]
-%となるように最適化する。
 
 \FIGref{fig:timeVmodel}の青線により，0~[s]から10~[s]の間で$V_{{\rm pss}3}$を無作為に励振した場合の$(\delta_3,E_3)$の時系列データを示す。
 ただし，定常値$(\delta_3^{\star},E_3^{\star})$に対する偏差が示されている。
@@ -2541,7 +2504,4 @@ x\left(
 
 
 \newpage
-%\printindex
-%
-%
 \end{document}

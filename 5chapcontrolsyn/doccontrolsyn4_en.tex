@@ -20,7 +20,7 @@ the convex region of potential energy function. Furthermore, in Section
 automatic voltage regulators and power system stabilizers used for transient
 stabilization control. Finally, in Section \ref{sec:retrofit}, as an advanced
 topic, we explain the design methodology of power system stabilizers based on
-retrofit control theory. <|endoftext|>
+retrofit control theory.
 
 \section{Frequency stabilization control}\label{sec:agcover}
 \subsection{Automatic generation control using broadcast-type PI controller}\label{sec:broadPI}
@@ -1012,16 +1012,18 @@ partial derivatives of $U_{\mathds{G}}(x_{\mathds{G}})$ with respect to
 $\delta_i$ and $E_i$, which are given by:
 
 \begin{equation*}
-  \frac{\partial U_{\mathds{G}}}{\partial \delta_i}(x_{\mathds{G}}) &= \frac{E_i |\bm{V}_i|}{ \Xti } \sfsin (\delta_i - \angle \bm{V}_i) ,
-  \\
-  \frac{\partial U_{\mathds{G}}}{\partial E_i} (x_{\mathds{G}})&= - \frac{1}{ \Xsi - \Xti }
-  \left\{
-  -\frac{ \Xsi }{ \Xti }E_i
-  +\left(
-  \frac{ \Xsi }{ \Xti }-1
-  \right)
-  |\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
-  \right\}
+  \begin{aligned}
+    \frac{\partial U_{\mathds{G}}}{\partial \delta_i}(x_{\mathds{G}}) &= \frac{E_i |\bm{V}_i|}{ \Xti } \sfsin (\delta_i - \angle \bm{V}_i) ,
+    \\
+    \frac{\partial U_{\mathds{G}}}{\partial E_i} (x_{\mathds{G}})&= - \frac{1}{ \Xsi - \Xti }
+    \left\{
+    -\frac{ \Xsi }{ \Xti }E_i
+    +\left(
+    \frac{ \Xsi }{ \Xti }-1
+    \right)
+    |\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
+    \right\}
+  \end{aligned}
 \end{equation*}
 
 Therefore, if each variable follows the differential-algebraic equation of
@@ -1088,25 +1090,27 @@ exists a set of voltage phasors $(|\bm{V}_i^{\star}|, \angle
 that:
 
 \begin{equation}\label{eq:eqeqa}
-  &\simode{
-  0 & = u_{\mathds{G}_i}^{\star} \\
-  0 & =
-  -\tfrac{ \Xsi }{ \Xti }E_i^{\star}
-  +\left(
-  \tfrac{ \Xsi }{ \Xti }-1
-  \right)
-  |\bm{V}_i^{\star}| \sfcos (\delta_i^{\star} - \angle \bm{V}_i^{\star} ) 
-  +V_{{\rm field}i}^{\star}
-  } \\
-  &\simode{
-  P_i^{\star} 
-  & =
-  \sum_{j=1}^{N} B_{ij} |\bm{V}_i^{\star}| |\bm{V}_j^{\star}| \sfsin(\angle \bm{V}_i^{\star} -\angle \bm{V}_j^{\star})
-  \\
-  Q_i^{\star} 
-  &=
-  - \sum_{j=1}^{N} B_{ij} |\bm{V}_i^{\star}| |\bm{V}_j^{\star}| \sfcos(\angle \bm{V}_i^{\star} -\angle \bm{V}_j^{\star})
-}
+  \begin{aligned}
+    &\simode{
+    0 & = u_{\mathds{G}_i}^{\star} \\
+    0 & =
+    -\tfrac{ \Xsi }{ \Xti }E_i^{\star}
+    +\left(
+    \tfrac{ \Xsi }{ \Xti }-1
+    \right)
+    |\bm{V}_i^{\star}| \sfcos (\delta_i^{\star} - \angle \bm{V}_i^{\star} ) 
+    +V_{{\rm field}i}^{\star}
+    } \\
+    &\simode{
+    P_i^{\star} 
+    & =
+    \sum_{j=1}^{N} B_{ij} |\bm{V}_i^{\star}| |\bm{V}_j^{\star}| \sfsin(\angle \bm{V}_i^{\star} -\angle \bm{V}_j^{\star})
+    \\
+    Q_i^{\star} 
+    &=
+    - \sum_{j=1}^{N} B_{ij} |\bm{V}_i^{\star}| |\bm{V}_j^{\star}| \sfcos(\angle \bm{V}_i^{\star} -\angle \bm{V}_j^{\star})
+    }
+  \end{aligned}
 \end{equation}
 
 However, $i \in \mathcal{I}_{\rm G}$ and the steady-state values of active and
@@ -2002,13 +2006,13 @@ Specifically, the steady-state stability of the corresponding power system is
 determined based on the approximate linearization by varying the difference in
 steady-state values of the rotor angle, $\delta_3^{\star}-\delta_1^{\star}$,
 while fixing the steady-state values of the internal voltage of the generators,
-$E_1^{\star}$ and $E_3^{\star}$, to the values in the rightmost column of
-Table \ref{table:genst13a}. By calculating the range of
+$E_1^{\star}$ and $E_3^{\star}$, to the values in the rightmost column of Table
+\ref{table:genst13a}. By calculating the range of
 $\delta_3^{\star}-\delta_1^{\star}$ where the approximate linear model is
 stable, it is found that without the automatic voltage regulator, the range is
-as shown in (i) of \TABref{table:stableeqs}, while with the automatic voltage
-regulator, the range is as shown in (ii) of \TABref{table:stableeqs}.  From this
-result, it is understood that the set of stable equilibrium points tends to
+as shown in (i) of Table \ref{table:stableeqs}, while with the automatic voltage
+regulator, the range is as shown in (ii) of Table \ref{table:stableeqs}.  From
+this result, it is understood that the set of stable equilibrium points tends to
 decrease due to the automatic voltage regulator.
 
 Note that without loss of generality, $\delta_1^{\star}$ or $\delta_3^{\star}$
@@ -2688,177 +2692,219 @@ $\hat{K}(\overline{\mathit{\Theta}})$ can be a dynamic control algorithm, and it
 does not need to be static \cite{ishizaki2019retrofit}.
 
 \smallskip
-\subsubsection{Method to build the approximate linear environment model}
+\subsubsection{Construction method of approximate linear environmental model}
 
-One of the practical approaches to identify parameters $\overline{\mathit{\Theta}}$ of Equation \ref{eq:Gbapxst} is a method to estimate the relationship between signals $w$ and $v$ of Equation \ref{eq:sigintvw} with approximate linearization.
-Specifically, partial differential of $v$ related to each element of $w$ is calculated as follows:
-\begin{align}
-\spliteq{
-\frac{\partial v }{\partial \delta} &= 
-\mat{
-- \tfrac{E |\bm{V} |}{ \Xt } \sfcos(\delta -  \angle \bm{V})  \\
-- \left( \tfrac{\Xs }{ \Xt }-1 \right)
-|\bm{V}| \sfsin (\delta - \angle \bm{V} ) \\
-0
-}
-, \qquad
-\frac{\partial v }{\partial \Delta \omega} = \mat{0 \\0\\0} \\
-\frac{\partial v }{\partial E} &= 
-\mat{
-- \tfrac{|\bm{V} |}{ \Xt } \sfsin(\delta -  \angle \bm{V}) \\
-0\\
-0
-}
-}
-\end{align}
-Therefore, if we assume that the internal state of the generators of interest and the voltage phasor of the generator buses are near steady power flow distribution, the following is obtained:
-\begin{align}\label{eq:basenvm}
-\overline{\mathit{\Theta}}^{\rm int} :=
-\mat{
-- \tfrac{E^{\star} |\bm{V}^{\star} |}{ \Xt } \sfcos(\delta^{\star} -  \angle \bm{V}^{\star}) &
-0   & 
-- \tfrac{|\bm{V}^{\star} |}{ \Xt } \sfsin(\delta^{\star} -  \angle \bm{V}^{\star})
-\\
-- \left( \tfrac{ \Xs }{ \Xt }-1 \right) 
-|\bm{V}^{\star}| \sfsin (\delta^{\star} - \angle \bm{V}^{\star} ) 
-& 0 
-& 0 
-\\
-0 & 0 &0
-}
-\end{align}
-where the steady value $(\delta^{\star},E^{\star})$ of the internal state of the generators and the steady value $(|\bm{V}^{\star}|,\angle \bm{V}^{\star})$ of the bus bar voltage phasor are the values from the same steady power flow distribution of $(v^{\star},w^{\star})$ in Equation \ref{eq:Gbapxst}.
-With the matrix $\overline{\mathit{\Theta}}^{\rm int}$ of Equation ref{eq:basenvm}, “a local feedback structure of the internal state of generators on itself” can be modelled.
-Since a regular electrical power system is operated near a steady power flow distribution, the steady value necessary to build the model can be identified based on measurement data.
+One practical approach for identifying the parameter
+$\overline{\mathit{\Theta}}$ in Equation \ref{eq:Gbapxst} is to estimate the
+relationship between the signals $w$ and $v$ using linearization. Specifically,
+the partial derivatives of $v$ with respect to each element of $w$ are
+calculated as:
 
-Next, let us estimate the indirect impact of the signal $w$ on the signal $v$ through the automatic generation control.  The partial differential of $v$ related to the input $P_{\rm mech}$ of the automatic generation control is:
+\begin{equation}
+  \spliteq{
+    \frac{\partial v }{\partial \delta} &= 
+    \mat{
+    - \tfrac{E |\bm{V} |}{ \Xt } \sfcos(\delta -  \angle \bm{V})  \\
+    - \left( \tfrac{\Xs }{ \Xt }-1 \right)
+    |\bm{V}| \sfsin (\delta - \angle \bm{V} ) \\
+    0
+    }
+    , \qquad
+    \frac{\partial v }{\partial \Delta \omega} = \mat{0 \\0\\0} \\
+    \frac{\partial v }{\partial E} &= 
+    \mat{
+    - \tfrac{|\bm{V} |}{ \Xt } \sfsin(\delta -  \angle \bm{V}) \\
+    0\\
+    0
+    }
+  }
+\end{equation}
+
+Therefore, assuming that the internal state of the generator and the voltage
+phase of the generator bus are in the vicinity of the steady-state conditions,
+we obtain:
+
+\begin{equation}\label{eq:basenvm}
+  \overline{\mathit{\Theta}}^{\rm int} :=
+  \mat{
+    - \tfrac{E^{\star} |\bm{V}^{\star} |}{ \Xt } \sfcos(\delta^{\star} -  \angle \bm{V}^{\star}) &
+    0   & 
+    - \tfrac{|\bm{V}^{\star} |}{ \Xt } \sfsin(\delta^{\star} -  \angle \bm{V}^{\star})
+    \\
+    - \left( \tfrac{ \Xs }{ \Xt }-1 \right) 
+    |\bm{V}^{\star}| \sfsin (\delta^{\star} - \angle \bm{V}^{\star} ) 
+    & 0 
+    & 0 
+    \\
+    0 & 0 &0
+  }
+\end{equation}
+
+Here, the steady-state values of the internal state $(\delta^{\star},E^{\star})$
+of the generator and the steady-state value of the bus voltage phase
+$(|\bm{V}^{\star}|,\angle \bm{V}^{\star})$ are the same as those of
+$(v^{\star},w^{\star})$ in Equation \ref{eq:Gbapxst} under the steady-state
+conditions. By using the matrix $\overline{\mathit{\Theta}}^{\rm int}$ in
+Equation \ref{eq:basenvm}, we can model the "local feedback structure that the
+internal state of the generator itself exerts". Since the normal power system
+is operated in the vicinity of the steady-state conditions, the steady-state
+values required for modeling can be identified based on measured data.
+
+Next, let's consider estimating the indirect effect that signal $w$ has on
+signal $v$ through automatic generation control. The partial derivative of $v$
+with respect to the input $P_{\rm mech}$ of automatic generation control is
+given by:
+
 \[
-\frac{\partial v}{\partial P_{\rm mech}}
-=
-\mat{
-1\\0\\0
+  \frac{\partial v}{\partial P_{\rm mech}}
+  =
+  \mat{
+  1\\0\\0
 }
 \]
-If the broadcast-type PI controller of Equation (\ref{eq:agccon}) is incorporated as the automatic generation control, since the time integral of $\omega_0 \Delta \omega$ is equivalent to $\delta$:
+
+When the broadcast-type PI controller in Equation \ref{eq:agccon} is
+incorporated as automatic generation control, the time integral of $\omega_0
+\Delta \omega$ corresponds to $\delta$, so we have:
+
 \[
-\frac{\partial P_{\rm mech}}{\partial \delta} = -  \frac{\alpha \beta k_{\rm I}}{\omega_0} 
-,\qquad
-\frac{\partial P_{\rm mech}}{\partial \Delta \omega}= - \alpha \beta k_{\rm P}
-,\qquad
-\frac{\partial P_{\rm mech}}{\partial E}= 0
+  \frac{\partial P_{\rm mech}}{\partial \delta} = -  \frac{\alpha \beta k_{\rm I}}{\omega_0} 
+  ,\qquad
+  \frac{\partial P_{\rm mech}}{\partial \Delta \omega}= - \alpha \beta k_{\rm P}
+  ,\qquad
+  \frac{\partial P_{\rm mech}}{\partial E}= 0
 \]
-Thus, because of the chain rule of differentials, the impact of the signal $w$ on the signal $v$ through the broadcast-type PI controller can be modelled as:
-\begin{align}
-\overline{\mathit{\Theta}}^{\rm agc}:=
--  \alpha \beta \mat{
-\tfrac{k_{\rm I}}{\omega_0} & k_{\rm P}  & 0\\
-0 & 0 & 0\\
-0 & 0 & 0
-}
-\end{align}
-To obtain this parameter, the controller gain of the automatic generation control must be acquired with an appropriate method.
 
-Similarly, let us estimate the indirect impact of the signal $w$ on the signal $v$ through the bus bar voltage phasor $\bm{V}$.
-The partial differential of $v$ related to voltage phasor variables $(|\bm{V}|,\angle \bm{V})$ can be calculated as:
-\begin{align}
-\spliteq{
-\frac{\partial v }{\partial |\bm{V}|} &= 
-\mat{
--\tfrac{E }{ \Xt } \sfsin(\delta -  \angle \bm{V})  \\
-\left( \tfrac{ \Xs }{ \Xt }-1 \right)
-\sfcos (\delta - \angle \bm{V} ) \\
-1
-}
-\\
-\frac{\partial v }{\partial \angle \bm{V}} &= 
-\mat{
-\tfrac{E|\bm{V} |}{ \Xt } \sfcos(\delta -  \angle \bm{V}) \\
-\left( \tfrac{ \Xs }{ \Xt }-1 \right)
-|\bm{V}|\sfsin (\delta - \angle \bm{V} ) \\
-0
-}
-}
-\end{align}
-Meanwhile, as analyzed in Section \ref{sec:allgen}, the bus bar voltage phasor
-changes not only based on the internal state of the connected generator but also
-dependent on the internal state of all the other generators. Specifically, when
-the vectors of the internal state of all generators excluding the generator of
-interest are expressed as $\overline{\delta}$, $\overline{E}$, the four partial
-differentials
-$\tfrac{\partial |\bm{V}| }{\partial \delta}$,
-$\tfrac{\partial \angle \bm{V} }{\partial \delta}$,
-$\tfrac{\partial |\bm{V}| }{\partial E}$,
-$\tfrac{\partial \angle \bm{V} }{\partial E}$become a function that depends on the summary of the
-internal state of all generators:
+Therefore, by the chain rule of differentiation, the effect of signal $w$ on
+signal $v$ through the broadcast-type PI controller can be modeled as:
+
+\begin{equation}
+  \overline{\mathit{\Theta}}^{\rm agc}:=
+  -  \alpha \beta \mat{
+  \tfrac{k_{\rm I}}{\omega_0} & k_{\rm P}  & 0\\
+  0 & 0 & 0\\
+  0 & 0 & 0
+  }
+\end{equation}
+
+Note that to obtain this parameter, it is necessary to obtain the values of the
+controller gains for automatic generation control through an appropriate method.
+
+Similarly, let us consider estimating the indirect effect of signal $w$ on
+signal $v$ through the bus voltage phasor $\bm{V}$.  The partial derivatives of
+$v$ with respect to the voltage phasor variables $(|\bm{V}|,\angle \bm{V})$ are
+given by:
+
+\begin{equation}
+  \spliteq{
+    \frac{\partial v }{\partial |\bm{V}|} &= 
+    \mat{
+    -\tfrac{E }{ \Xt } \sfsin(\delta -  \angle \bm{V})  \\
+    \left( \tfrac{ \Xs }{ \Xt }-1 \right)
+    \sfcos (\delta - \angle \bm{V} ) \\
+    1
+    }
+    \\
+    \frac{\partial v }{\partial \angle \bm{V}} &= 
+    \mat{
+    \tfrac{E|\bm{V} |}{ \Xt } \sfcos(\delta -  \angle \bm{V}) \\
+    \left( \tfrac{ \Xs }{ \Xt }-1 \right)
+    |\bm{V}|\sfsin (\delta - \angle \bm{V} ) \\
+    0
+    }
+  }
+\end{equation}
+
+On the other hand, as analyzed in Section \ref{sec:allgen}, the bus voltage
+phase not only depends on the internal state of the connected generator but also
+on the internal states of all other generators. Specifically, let
+$\overline{\delta}$ and $\overline{E}$ denote the vector of internal states of
+all generators except the one of interest. Then, the four partial derivatives
+$\tfrac{\partial |\bm{V}| }{\partial \delta}$, $\tfrac{\partial \angle \bm{V}
+}{\partial \delta}$, $\tfrac{\partial |\bm{V}| }{\partial E}$, and
+$\tfrac{\partial \angle \bm{V} }{\partial E}$ depend on the vector $z_{\mathds
+G}$ that combines the internal states of all generators as:
+
 \[
-z_{\mathds G}:=(\delta,\overline{\delta},E,\overline{E})
+  z_{\mathds G}:=(\delta,\overline{\delta},E,\overline{E})
 \]
-It is not easy to analytically obtain these partial derivatives for a typical electrical power system model, but if the values:
-\begin{align}\label{eq:thetaV}
-\theta
-:=
-\mat{
-\tfrac{\partial |\bm{V}| }{\partial \delta}(z_{\mathds G}^{\star}) &
-0 &
-\tfrac{\partial |\bm{V}| }{\partial E}(z_{\mathds G}^{\star}) \\
-\tfrac{\partial \angle \bm{V} }{\partial \delta}(z_{\mathds G}^{\star}) &
-0 &
-\tfrac{\partial \angle \bm{V} }{\partial E}(z_{\mathds G}^{\star})
-}
-\end{align}
-Could be determined using measurement data near a steady power flow distribution, the impact of the signal $w$ on the signal $v$ through the bus bar voltage phasor $\bm{V}$ can be modelled by:
-\begin{align}\label{eq:ThetaV}
-\overline{\mathit{\Theta}}^{\rm ext}:=
-\mat{
--\tfrac{E^{\star} }{ \Xt } \sfsin(\delta^{\star} -  \angle \bm{V}^{\star}) 
- &
-\tfrac{E^{\star}|\bm{V}^{\star} |}{ \Xt } \sfcos(\delta^{\star} -  \angle \bm{V}^{\star}) 
-\\
-\left( \tfrac{ \Xs }{ \Xt }-1 \right)
-\sfcos (\delta^{\star} - \angle \bm{V}^{\star} )  
-&
-\left( \tfrac{ \Xs }{ \Xt }-1 \right)
-|\bm{V}^{\star}|\sfsin (\delta^{\star} - \angle \bm{V}^{\star} )
-\\
-1 & 0
-}
-\hat{\theta}
-\end{align}
-$z_{\mathds G}^{\star}$ of Equation \ref{eq:thetaV} expresses the steady value of $z_{\mathds G}$, and the 0 element on the second column corresponds to $\tfrac{\partial |\bm{V}| }{\partial \Delta \omega}$，$\tfrac{\partial \angle \bm{V} }{\partial \Delta \omega}$.
-$\hat{\theta}$ of Equation \ref{eq:ThetaV} expresses the identified values of $\theta$.
-$\overline{\mathit{\Theta}}^{\rm ext}$ of Equation \ref{eq:ThetaV} models “a global feedback structure the internal state of generators provides to itself.
-This is in contrast to $\overline{\mathit{\Theta}}^{\rm int}$ of Equation \ref{eq:basenvm} that models the local feedback structure.
 
-Since the electrical power system must be always in a stable operation, parameters $\hat{\theta}$ of Equation \ref{eq:ThetaV} must be determined using the data measured in operation.
-In control systems engineering, determination of the subsystem in an operating feedback system is called \textbf{closed-loop identification}.
-Since closed-loop identification cannot freely excite the input of the identification target, it is often more difficult than identification when excitation of input is possible.
+While it is difficult to obtain analytical expressions for these partial
+derivatives for general power system models, if we can measure the numerical
+values of the following matrix in the neighborhood of the steady-state power
+flow $z_{\mathds G}^{\star}$ using measurement data:
 
-If using the above estimates by approximate linearization simultaneously, model parameters of Equation \ref{eq:Gbapxst} are structured as follows:
-\begin{align}\label{eq:Thetasum}
-\overline{\mathit{\Theta}}=
-\overline{\mathit{\Theta}}^{\rm int}+
-\overline{\mathit{\Theta}}^{\rm agc}+
-\overline{\mathit{\Theta}}^{\rm ext}
-\end{align}
-As discussed in the previous part, the retrofit controller of Equation \ref{eq:retroK} does not change the stability of the steady power flow distribution for any matrix $\overline{\mathit{\Theta}}$.
-In contrast, to maintain the prediction accuracy by the approximate linear environment model, $\overline{\mathit{\Theta}}$ should be updated at a frequency appropriate for the changes in the power flow distribution.
+\begin{equation}\label{eq:thetaV}
+  \theta
+  :=
+  \mat{
+  \tfrac{\partial |\bm{V}| }{\partial \delta}(z_{\mathds G}^{\star}) &
+  0 &
+  \tfrac{\partial |\bm{V}| }{\partial E}(z_{\mathds G}^{\star}) \\
+  \tfrac{\partial \angle \bm{V} }{\partial \delta}(z_{\mathds G}^{\star}) &
+  0 &
+  \tfrac{\partial \angle \bm{V} }{\partial E}(z_{\mathds G}^{\star})
+  }
+\end{equation}
+then we can model the indirect effect of signal $w$ on signal $v$ through the
+bus voltage phase $\bm{V}$ as:
+
+\begin{equation}\label{eq:ThetaV}
+  \overline{\mathit{\Theta}}^{\rm ext}:=
+  \mat{
+  -\tfrac{E^{\star} }{ \Xt } \sfsin(\delta^{\star} -  \angle \bm{V}^{\star}) 
+  &
+  \tfrac{E^{\star}|\bm{V}^{\star} |}{ \Xt } \sfcos(\delta^{\star} -  \angle \bm{V}^{\star}) 
+  \\
+  \left( \tfrac{ \Xs }{ \Xt }-1 \right)
+  \sfcos (\delta^{\star} - \angle \bm{V}^{\star} )  
+  &
+  \left( \tfrac{ \Xs }{ \Xt }-1 \right)
+  |\bm{V}^{\star}|\sfsin (\delta^{\star} - \angle \bm{V}^{\star} )
+  \\
+  1 & 0
+  }
+  \hat{\theta}
+\end{equation}
+where $z_{\mathds G}^{\star}$ in Equation \ref{eq:thetaV} denotes the
+steady-state value of $z_{\mathds G}$.
+
+The 0 element in the second column corresponds to $\frac{\partial
+|\bm{V}|}{\partial \Delta \omega}$ and $\frac{\partial \angle \bm{V}}{\partial
+\Delta \omega}$. Furthermore, $\hat{\theta}$ in Equation \ref{eq:ThetaV}
+represents the identified value of $\theta$. $\overline{\mathit{\Theta}}^{\rm
+ext}$ in Equation \ref{eq:ThetaV} models the "global feedback structure that the
+internal state of the generator exerts on itself," in contrast to
+$\overline{\mathit{\Theta}}^{\rm int}$ in Equation \ref{eq:basenvm}, which
+models the local feedback structure.
+
+It is necessary to identify the parameter $\hat{\theta}$ using data measured
+during operation, as the power system must always be operated stably. In control
+engineering, identifying subsystems within an operating feedback system is
+called "closed-loop identification" \index{closed-loop identification}
+\cite{ljung1998system}. Closed-loop identification is often more difficult than
+identification when input excitation is possible, as it is generally not
+possible to freely excite the input of the system being identified.
+
+When using all the estimates obtained from the aforementioned linearization
+approximations simultaneously, the model parameters in Equation \ref{eq:Gbapxst}
+are composed of:
+
+\begin{equation}\label{eq:Thetasum}
+  \overline{\mathit{\Theta}}=
+  \overline{\mathit{\Theta}}^{\rm int}+
+  \overline{\mathit{\Theta}}^{\rm agc}+
+  \overline{\mathit{\Theta}}^{\rm ext}
+\end{equation}
+
+As previously explained, the retrofit controller in Equation \ref{eq:retroK}
+does not change the stability of the steady-state power flow for any matrix
+$\overline{\mathit{\Theta}}$. However, to maintain the predicted accuracy of the
+interaction signals obtained from the linearized environment model, it is
+desirable to update $\overline{\mathit{\Theta}}$ at appropriate intervals to
+respond to changes in the power flow state.
 
 \begin{figure}[t]
-%  \centering
-%  {
-%  \begin{minipage}{0.49\linewidth}
-%    \centering
-%    \includegraphics[width = 1.0\linewidth]{figs/timedeltamodel}
-%    \subcaption{ $\delta_1$の時系列データ}
-%     \medskip
-%  \end{minipage}
-%  \begin{minipage}{0.49\linewidth}
-%    \centering
-%    \includegraphics[width = 1.0\linewidth]{figs/timeEmodel}
-%    \subcaption{ $E_1$の時系列データ}
-%     \medskip
-%  \end{minipage}
-%    }
   \centering
   {
   \begin{minipage}{0.49\linewidth}
@@ -2898,112 +2944,129 @@ In contrast, to maintain the prediction accuracy by the approximate linear envir
     \medskip
   \end{minipage}
 }
-%  \centering
-%  {
-%  \begin{minipage}{0.49\linewidth}
-%      \centering
-%    \includegraphics[width = 1\linewidth]{figs/angVdelta}
-%    \subcaption{ $\bigl(\delta_1(\tfrac{k}{100}),\angle \bm{V}_1(\tfrac{k}{100}) \bigr)$ }
-%    \medskip
-%  \end{minipage}
-%  \begin{minipage}{0.49\linewidth}
-%    \centering
-%    \includegraphics[width = 1\linewidth]{figs/angVE}
-%    \subcaption{ $\bigl(E_1(\tfrac{k}{100}), \angle \bm{V}_1(\tfrac{k}{100}) \bigr)$ }
-%    \medskip
-%  \end{minipage}
-%}
-% \medskip
  \caption{\textbf{Approximation error of internal state with respect to identification parameter}}
  \label{fig:datamodeling}
 \medskip
 \end{figure}
 
 
-\begin{例}[Identification of the approximate linear environment model based on measurement data]\label{ex:modelingV}
-Similar to Example \ref{ex:avreffect}, let us consider the same AVR incorporated in generator 1 and generator 3 for the electrical power system model consisting of three bus bars.
-Here, the broadcast-type PI controller of Equation (\ref{eq:agccon}), for which parameters of \ref{table:agcpara}(b) are set, is incorporated as the automatic generation control.
-The steady power flow distribution corresponds to the power flow calculation result of \ref{table:pflow2}.
+\begin{example}{Identification of approximate linear environment model based on
+measurement data}\label{ex:modelingV}
 
-Below, we focus on generator 3, and identify the partial differential values, the element of $\theta_3$ of Equation \ref{eq:thetaV}, from measurement data. However, since the size of $\tfrac{\partial |\bm{V}_3|}{\partial \delta_3}(z_{\mathds G}^{\star})$ and $\tfrac{\partial \angle \bm{V}_3}{\partial E_3}(z_{\mathds G}^{\star})$ is relatively small, only two values of:
+Similar to Example \ref{ex:avreffect}, we consider a power system model
+consisting of three buses, with the same AVR incorporated into generators 1 and
+3. We also assume that a broadcast-type PI controller with parameter values
+given in Table \ref{table:agcpara}(b) is incorporated as automatic generation
+control according to Equation (\ref{eq:agccon}). The steady-state power flow
+condition corresponds to the results of the power flow calculation in Table
+\ref{table:pflow2}.
+
+In the following, we focus on generator 3 and identify the values of partial
+derivatives of $\theta_3$ in Equation \ref{eq:thetaV} from measurement data.
+However, the magnitudes of $\tfrac{\partial |\bm{V}3|}{\partial
+\delta_3}(z{\mathds G}^{\star})$ and $\tfrac{\partial \angle \bm{V}3}{\partial
+E_3}(z{\mathds G}^{\star})$ are relatively small, so we identify only two values
+of $\theta_1$ and $\theta_2$ from the data, where:
+
 \[
-\theta_1:=
-\frac{\partial | \bm{V}_3|}{\partial E_3}(z_{\mathds G}^{\star})
-,\qquad
-\theta_2:=
-\frac{\partial \angle \bm{V}_3}{\partial \delta_3}(z_{\mathds G}^{\star})
+  \theta_1:=
+  \frac{\partial | \bm{V}_3|}{\partial E_3}(z_{\mathds G}^{\star})
+  ,\qquad
+  \theta_2:=
+  \frac{\partial \angle \bm{V}_3}{\partial \delta_3}(z_{\mathds G}^{\star})
 \]
-are identified from the data. At this time, $\overline{\mathit{\Theta}}^{\rm ext}_3$ of Equation \ref{eq:ThetaV} is parametrized as:
-\begin{align}\label{eq:Thext1para}
-\overline{\mathit{\Theta}}^{\rm ext}_3=
-\mat{
-\tfrac{E_3^{\star}|\bm{V}_3^{\star} |}{ \Xt_3 } \Delta^{\sf cos}_3 \theta_2
-& 
-0
-&
-- \tfrac{ E_3^{\star} }{ \Xt_3 } \Delta^{\sf sin}_3 \theta_1
-\\
-\left( \tfrac{ \Xs_3 }{ \Xt_3 }-1 \right)
-|\bm{V}_3^{\star}| \Delta^{\sf sin}_3 \theta_2
-&
-0
-&
-\left( \tfrac{ \Xs_3 }{ \Xt_3 }-1 \right)
- \Delta^{\sf cos}_3 \theta_1
-\\
-0 & 0 & \theta_1
-}
-\end{align}
+
+At this time, $\overline{\mathit{\Theta}}^{\rm ext}_3$ in Equation
+\ref{eq:ThetaV} is parameterized as:
+
+\begin{equation}\label{eq:Thext1para}
+  \overline{\mathit{\Theta}}^{\rm ext}_3=
+  \mat{
+    \tfrac{E_3^{\star}|\bm{V}_3^{\star} |}{ \Xt_3 } \Delta^{\sf cos}_3 \theta_2
+    & 
+    0
+    &
+    - \tfrac{ E_3^{\star} }{ \Xt_3 } \Delta^{\sf sin}_3 \theta_1
+    \\
+    \left( \tfrac{ \Xs_3 }{ \Xt_3 }-1 \right)
+    |\bm{V}_3^{\star}| \Delta^{\sf sin}_3 \theta_2
+    &
+    0
+    &
+    \left( \tfrac{ \Xs_3 }{ \Xt_3 }-1 \right)
+    \Delta^{\sf cos}_3 \theta_1
+    \\
+    0 & 0 & \theta_1
+  }
+\end{equation}
 where $\Delta^{\sf sin}_3$ and $\Delta^{\sf cos}_3$ are constants defined by:
+
 \[
-\Delta^{\sf sin}_3 := \sfsin(\delta_3^{\star} -  \angle \bm{V}_3^{\star}) ,\qquad
-\Delta^{\sf cos}_3 := \sfcos (\delta_3^{\star} - \angle \bm{V}_3^{\star} )
+  \Delta^{\sf sin}_3 := \sfsin(\delta_3^{\star} -  \angle \bm{V}_3^{\star}) ,\qquad
+  \Delta^{\sf cos}_3 := \sfcos (\delta_3^{\star} - \angle \bm{V}_3^{\star} )
 \]
 
-The optimization of parameters $(\theta_1,\theta_2)$ is performed with the following steps.
-The time series data of $(\delta_3,E_3)$ obtained when the input of AVR $V_{{\rm pss}3}$ is randomly excited is acquired from the electrical power system.
-In addition, for generator 3, a controller design model $G_{3}^+$ of Equation \ref{eq:Gplus} is built as a feedback system of parameters $\overline{\mathit{\Theta}}_3$ of the local linear subsystem $G_3$ of Equation \ref{eq:desmodl} and the approximate linear environment model.
-$\overline{\mathit{\Theta}}_3$ is defined by Equation \ref{eq:Thetasum}.
-At this time, as the first and the third elements of $\hat{y}_3$, when signals are added to the excitation of $V_{{\rm pss}3}$ as the input $\hat{u}_3$ of Equation \ref{eq:Gplus}, time series data of $(\hat{\delta}_3,\hat{E}_3)$ is obtained.
-Parameters $(\theta_1,\theta_2)$ are optimized so that $\hat{\delta}_3(t)$ and $\hat{E}_3(t)$ become good approximations of $\delta_3(t)$ and $E_3(t)$ for all the time $t$ in the interval where the data was obtained.
+The optimization of the parameters $(\theta_1, \theta_2)$ is carried out using
+the following procedure. Time series data of $(\delta_3, E_3)$ obtained by
+randomly exciting the input $V_{{\rm pss}3}$ of the AVR is obtained from the
+power system model. Furthermore, a controller design model $G_{3}^+$ for the
+feedback system of the local linear subsystem $G_3$ and the approximate linear
+environmental model parameters $\overline{\mathit{\Theta}}_3$ of Equation
+\ref{eq:desmodl} is constructed for generator 3 using Equation \ref{eq:Gplus}.
+Here, $\overline{\mathit{\Theta}}_3$ is defined by Equation \ref{eq:Thetasum}.
+Then, time series data of $(\hat{\delta}_3, \hat{E}_3)$ are obtained as the
+first and third elements of $\hat{y}3$ when the signal used to excite $V{{\rm
+pss}3}$ is applied as the input $\hat{u}_3$ of Equation \ref{eq:Gplus}. The
+parameters $(\theta_1, \theta_2)$ are optimized such that for all time instants
+$t$ in the time interval where the data is obtained, $\hat{\delta}_3(t)$ and
+$\hat{E}_3(t)$ are good approximations of $\delta_3(t)$ and $E_3(t)$,
+respectively.
 
-%\[
-%\delta_3(t) \simeq \hat{\delta}_3(t)
-%,\qquad
-%E_3(t) \simeq \hat{E}_3(t)
-%\]
+The time series data of $(\delta_3,E_3)$ is shown for the period from 0~[s] to
+10~[s] when $V_{{\rm pss}3}$ is randomly excited, as indicated by the blue line
+in Figure \ref{fig:timeVmodel}. However, the deviations from the steady-state
+values $(\delta_3^{\star},E_3^{\star})$ are also shown. The results of an
+exhaustive search for the optimal parameters $(\theta_1,\theta_2)$ on an evenly
+spaced grid with a width of 0.01 for this data are shown in Figure
+\ref{fig:datamodeling}. The horizontal and vertical axes represent the values
+set for $\theta_1$ and $\theta_2$, respectively, and the colors in regions (a)
+and (b) represent the values of the error functions $Q(\delta_3,\hat{\delta}_3)$
+and $Q(E_3,\hat{E}_3)$, respectively.
 
-The blue line in \FIGref{fig:timeVmodel} shows the time series data of $(\delta_3,E_3)$ when $V_{{\rm pss}3}$ is randomly excited between 0 [s] to 10 [s].
-The deviation against the steady value $(\delta_3^{\star},E_3^{\star})$ is being shown.
-The result of a comprehensive search for the optimal parameters for this data $(\theta_1,\theta_2)$ over an even interval of 0.01 is shown in \FIGref{fig:datamodeling}.
-The horizontal and vertical axes show the set values of $\theta_1$ and $\theta_2$, respectively, where the colors of the range of (a) and (b) show the errors $Q(\delta_3,\hat{\delta}_3)$,$Q(E_3,\hat{E}_3)$.
-However, the following:
+Here, the error function $Q(x,\hat{x})$ is defined as follows:
+
 \[
-Q(x,\hat{x}):=
-\sum_{k=1}^{1000}
-\left\|
-x\left(
-\tfrac{k}{100}
-\right)
--
-\hat{x}\left(
-\tfrac{k}{100}
-\right)
-\right\|^2
+  Q(x,\hat{x}):=
+  \sum_{k=1}^{1000}
+  \left\|
+  x\left(
+  \tfrac{k}{100}
+  \right)
+  -
+  \hat{x}\left(
+  \tfrac{k}{100}
+  \right)
+  \right\|^2
 \]
-is a function that evaluates the error of 1,000 discrete time signals where continuous time signals $x(t)$,$\hat{x}(t)$ of $t\in [0,10]$ were sampled over a period of 0.01 [s].
-Based on this result, we set the parameter values to $(0.215,0.675)$.
-These parameter values correspond to "$\times$" of \FIGref{fig:datamodeling}.
-The time series data of $(\hat{\delta}_3,\hat{E}_3)$ corresponding to this parameter setting is shown with the broken red line in \FIGref{fig:timeVmodel}.
-With the obtained approximate linear environment model, we can see that the behavior of the internal state of generator 3 is captured.
-\end{例}
 
+It evaluates the error of the continuous-time signal $x(t)$ for $t \in [0,10]$
+with respect to the discrete-time signal $\hat{x}(t)$ sampled at 1,000 points
+with a period of 0.01~[s].
 
-In Example \ref{ex:modelingV}, the parameters of the approximate linear environment model are identified as the index of the precision by which the internal state of the generators is approximated.
-The effect of the retrofit control based on this identification method is presented in Chapter \ref{chap:largesim}.
+Based on these results, the parameter values are set to $(0.215,0.675)$. Note
+that this parameter value corresponds to the "x" mark in Figure
+\ref{fig:datamodeling}. The time series data of $(\hat{\delta}_3,\hat{E}_3)$ for
+this parameter setting is shown as the red dashed line in Figure
+\ref{fig:timeVmodel}. It can be seen that the behavior of the internal state of
+generator 3 is captured by the obtained approximate linear environment model.
+
+\end{example}
+
+In Example \ref{ex:modelingV}, the parameters of the approximate linear
+environment model are identified as the index of the precision by which the
+internal state of the generators is approximated. The effect of the retrofit
+control based on this identification method is presented in Chapter
+\ref{chap:largesim}.
 
 \newpage
-%\printindex
-%
-%
 \end{document}
