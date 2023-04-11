@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  22 FEB 2023 15:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  11 APR 2023 12:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -829,18 +829,18 @@ LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<figs/circres2.pdf, id=115, 306.14375pt x 404.64775pt>
+<figs/circres2.pdf, id=108, 306.14375pt x 404.64775pt>
 File: figs/circres2.pdf Graphic file (type pdf)
 <use figs/circres2.pdf>
 Package pdftex.def Info: figs/circres2.pdf  used on input line 42.
 (pdftex.def)             Requested size: 69.90881pt x 92.40018pt.
 LaTeX Font Info:    Calculating math sizes for size <8.5> on input line 45.
-<figs/circcoil.pdf, id=116, 309.81245pt x 404.64775pt>
+<figs/circcoil.pdf, id=109, 309.81245pt x 404.64775pt>
 File: figs/circcoil.pdf Graphic file (type pdf)
 <use figs/circcoil.pdf>
 Package pdftex.def Info: figs/circcoil.pdf  used on input line 48.
 (pdftex.def)             Requested size: 69.90881pt x 91.30731pt.
-<figs/circcond.pdf, id=117, 315.35516pt x 404.64775pt>
+<figs/circcond.pdf, id=110, 315.35516pt x 404.64775pt>
 File: figs/circcond.pdf Graphic file (type pdf)
 <use figs/circcond.pdf>
 Package pdftex.def Info: figs/circcond.pdf  used on input line 54.
@@ -860,13 +860,13 @@ LaTeX Font Info:    Font shape `OT1/qhv/m/n' will be
 LaTeX Font Info:    Font shape `OT1/qhv/m/n' will be
 (Font)              scaled to size 5.17001pt on input line 101.
  [2 <./figs/circres2.pdf> <./figs/circcoil.pdf> <./figs/circcond.pdf>]
-<figs/phasorrep.pdf, id=157, 1103.46347pt x 372.19952pt>
+<figs/phasorrep.pdf, id=150, 1103.46347pt x 372.19952pt>
 File: figs/phasorrep.pdf Graphic file (type pdf)
 <use figs/phasorrep.pdf>
 Package pdftex.def Info: figs/phasorrep.pdf  used on input line 144.
 (pdftex.def)             Requested size: 329.57008pt x 111.16661pt.
  [3] [4 <./figs/phasorrep.pdf>]
-<figs/3busex.pdf, id=188, 359.74602pt x 187.4483pt>
+<figs/3busex.pdf, id=181, 359.74602pt x 187.4483pt>
 File: figs/3busex.pdf Graphic file (type pdf)
 <use figs/3busex.pdf>
 Package pdftex.def Info: figs/3busex.pdf  used on input line 233.
@@ -885,19 +885,19 @@ LaTeX Font Info:    Font shape `OT1/ntxsups/m/n' will be
 LaTeX Font Info:    Font shape `OT1/ntxsups/m/n' will be
 (Font)              scaled to size 8.5pt on input line 247.
  [5 <./figs/3busex.pdf>] [6]
-<figs/overview.pdf, id=214, 635.0877pt x 258.46765pt>
+<figs/overview.pdf, id=207, 635.0877pt x 258.46765pt>
 File: figs/overview.pdf Graphic file (type pdf)
 <use figs/overview.pdf>
 Package pdftex.def Info: figs/overview.pdf  used on input line 378.
 (pdftex.def)             Requested size: 266.31879pt x 108.39001pt.
  [7 <./figs/overview.pdf>]
-<figs/overviewPQ.pdf, id=232, 635.08868pt x 258.46765pt>
+<figs/overviewPQ.pdf, id=225, 635.08868pt x 258.46765pt>
 File: figs/overviewPQ.pdf Graphic file (type pdf)
 <use figs/overviewPQ.pdf>
 Package pdftex.def Info: figs/overviewPQ.pdf  used on input line 427.
 (pdftex.def)             Requested size: 266.31879pt x 108.39001pt.
  [8 <./figs/overviewPQ.pdf>]
-<figs/line_pix3.pdf, id=253, 1284.8pt x 549.05125pt>
+<figs/line_pix3.pdf, id=246, 1284.8pt x 549.05125pt>
 File: figs/line_pix3.pdf Graphic file (type pdf)
 <use figs/line_pix3.pdf>
 Package pdftex.def Info: figs/line_pix3.pdf  used on input line 488.
@@ -918,18 +918,28 @@ LaTeX Font Info:    Trying to load font information for U+dsrom on input line 60
  (/usr/local/texlive/2022/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 ) [10]
-<figs/congraph.pdf, id=280, 111.41624pt x 99.37125pt>
+
+LaTeX Warning: Citation `mesbahi2010graph' on page 11 undefined on input line 637.
+
+<figs/congraph.pdf, id=272, 111.41624pt x 99.37125pt>
 File: figs/congraph.pdf Graphic file (type pdf)
 <use figs/congraph.pdf>
 Package pdftex.def Info: figs/congraph.pdf  used on input line 646.
 (pdftex.def)             Requested size: 83.89058pt x 74.8224pt.
-<figs/notcongraph.pdf, id=281, 111.41624pt x 99.37125pt>
+<figs/notcongraph.pdf, id=273, 111.41624pt x 99.37125pt>
 File: figs/notcongraph.pdf Graphic file (type pdf)
 <use figs/notcongraph.pdf>
 Package pdftex.def Info: figs/notcongraph.pdf  used on input line 653.
 (pdftex.def)             Requested size: 83.89058pt x 74.8224pt.
- [11 <./figs/congraph.pdf> <./figs/notcongraph.pdf>] [12]
-<figs/generatorbus.pdf, id=318, 133.53287pt x 113.18988pt>
+[11 <./figs/congraph.pdf> <./figs/notcongraph.pdf>]
+
+LaTeX Warning: Citation `sauer2017power' on page 12 undefined on input line 726.
+
+
+LaTeX Warning: Citation `anderson2008power' on page 12 undefined on input line 727.
+
+[12]
+<figs/generatorbus.pdf, id=305, 133.53287pt x 113.18988pt>
 File: figs/generatorbus.pdf Graphic file (type pdf)
 <use figs/generatorbus.pdf>
 Package pdftex.def Info: figs/generatorbus.pdf  used on input line 754.
@@ -941,11 +951,15 @@ File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
 (Font)              scaled to size 10.0pt on input line 1006.
- [16] [17] [18]
+
+
+LaTeX Warning: Citation `anderson2008power' on page 16 undefined on input line 1015.
+
+[16] [17] [18]
 
 LaTeX Warning: Reference `sec:pfcal' on page 19 undefined on input line 1348.
 
-<figs/kronredgen.pdf, id=409, 566.04271pt x 208.23697pt>
+<figs/kronredgen.pdf, id=395, 566.04271pt x 208.23697pt>
 File: figs/kronredgen.pdf Graphic file (type pdf)
 <use figs/kronredgen.pdf>
 Package pdftex.def Info: figs/kronredgen.pdf  used on input line 1353.
@@ -963,69 +977,88 @@ LaTeX Warning: Reference `sec:powerflow' on page 21 undefined on input line 1461
 
 LaTeX Warning: Reference `chap:numcal' on page 22 undefined on input line 1593.
 
-<figs/Domega0.pdf, id=461, 685.90654pt x 526.19284pt>
+<figs/Domega0.pdf, id=447, 685.90654pt x 526.19284pt>
 File: figs/Domega0.pdf Graphic file (type pdf)
 <use figs/Domega0.pdf>
 Package pdftex.def Info: figs/Domega0.pdf  used on input line 1600.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/delangV0.pdf, id=462, 685.90654pt x 526.19284pt>
+<figs/delangV0.pdf, id=448, 685.90654pt x 526.19284pt>
 File: figs/delangV0.pdf Graphic file (type pdf)
 <use figs/delangV0.pdf>
 Package pdftex.def Info: figs/delangV0.pdf  used on input line 1606.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/EabsV0.pdf, id=463, 685.90654pt x 526.19284pt>
+<figs/EabsV0.pdf, id=449, 685.90654pt x 526.19284pt>
 File: figs/EabsV0.pdf Graphic file (type pdf)
 <use figs/EabsV0.pdf>
 Package pdftex.def Info: figs/EabsV0.pdf  used on input line 1612.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/PQ0.pdf, id=464, 686.18657pt x 526.19284pt>
+<figs/PQ0.pdf, id=450, 686.18657pt x 526.19284pt>
 File: figs/PQ0.pdf Graphic file (type pdf)
 <use figs/PQ0.pdf>
 Package pdftex.def Info: figs/PQ0.pdf  used on input line 1618.
 (pdftex.def)             Requested size: 163.12146pt x 125.0845pt.
 [22]
-<figs/DomegaP.pdf, id=471, 685.90654pt x 526.19284pt>
+<figs/DomegaP.pdf, id=457, 685.90654pt x 526.19284pt>
 File: figs/DomegaP.pdf Graphic file (type pdf)
 <use figs/DomegaP.pdf>
 Package pdftex.def Info: figs/DomegaP.pdf  used on input line 1635.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/delangVP.pdf, id=472, 685.90654pt x 526.19284pt>
+<figs/delangVP.pdf, id=458, 685.90654pt x 526.19284pt>
 File: figs/delangVP.pdf Graphic file (type pdf)
 <use figs/delangVP.pdf>
 Package pdftex.def Info: figs/delangVP.pdf  used on input line 1641.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/EabsVP.pdf, id=473, 685.90654pt x 526.19284pt>
+<figs/EabsVP.pdf, id=459, 685.90654pt x 526.19284pt>
 File: figs/EabsVP.pdf Graphic file (type pdf)
 <use figs/EabsVP.pdf>
 Package pdftex.def Info: figs/EabsVP.pdf  used on input line 1647.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/PQP.pdf, id=474, 686.2689pt x 526.19284pt>
+<figs/PQP.pdf, id=460, 686.2689pt x 526.19284pt>
 File: figs/PQP.pdf Graphic file (type pdf)
 <use figs/PQP.pdf>
 Package pdftex.def Info: figs/PQP.pdf  used on input line 1653.
 (pdftex.def)             Requested size: 163.12146pt x 125.06844pt.
-<figs/DomegaV.pdf, id=475, 685.90654pt x 526.19284pt>
+<figs/DomegaV.pdf, id=461, 685.90654pt x 526.19284pt>
 File: figs/DomegaV.pdf Graphic file (type pdf)
 <use figs/DomegaV.pdf>
 Package pdftex.def Info: figs/DomegaV.pdf  used on input line 1670.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/delangVV.pdf, id=476, 685.90654pt x 526.19284pt>
+<figs/delangVV.pdf, id=462, 685.90654pt x 526.19284pt>
 File: figs/delangVV.pdf Graphic file (type pdf)
 <use figs/delangVV.pdf>
 Package pdftex.def Info: figs/delangVV.pdf  used on input line 1676.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/EabsVV.pdf, id=477, 685.90654pt x 526.19284pt>
+<figs/EabsVV.pdf, id=463, 685.90654pt x 526.19284pt>
 File: figs/EabsVV.pdf Graphic file (type pdf)
 <use figs/EabsVV.pdf>
 Package pdftex.def Info: figs/EabsVV.pdf  used on input line 1682.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/PQV.pdf, id=478, 686.2689pt x 526.19284pt>
+<figs/PQV.pdf, id=464, 686.2689pt x 526.19284pt>
 File: figs/PQV.pdf Graphic file (type pdf)
 <use figs/PQV.pdf>
 Package pdftex.def Info: figs/PQV.pdf  used on input line 1688.
 (pdftex.def)             Requested size: 163.12146pt x 125.06844pt.
- [23 <./figs/Domega0.pdf> <./figs/delangV0.pdf> <./figs/EabsV0.pdf> <./figs/PQ0.pdf>] [24 <./figs/DomegaP.pdf> <./figs/delangVP.pdf> <./figs/EabsVP.pdf> <./figs/PQP.pdf>] [25 <./figs/DomegaV.pdf> <./figs/delangVV.pdf> <./figs/EabsVV.pdf> <./figs/PQV.pdf>]
-<figs/inf1bus.pdf, id=571, 418.70929pt x 79.33139pt>
+ [23 <./figs/Domega0.pdf> <./figs/delangV0.pdf> <./figs/EabsV0.pdf> <./figs/PQ0.pdf>]
+
+LaTeX Warning: Citation `kuramoto1975self' on page 24 undefined on input line 1764.
+
+
+LaTeX Warning: Citation `kuramoto2003chemical' on page 24 undefined on input line 1764.
+
+
+LaTeX Warning: Citation `dorfler2012synchronization' on page 24 undefined on input line 1767.
+
+
+LaTeX Warning: Citation `dorfler2013synchronization' on page 24 undefined on input line 1767.
+
+
+LaTeX Warning: Citation `nagata2014node' on page 24 undefined on input line 1767.
+
+
+LaTeX Warning: Citation `nishikawa2015comparative' on page 24 undefined on input line 1767.
+
+[24 <./figs/DomegaP.pdf> <./figs/delangVP.pdf> <./figs/EabsVP.pdf> <./figs/PQP.pdf>] [25 <./figs/DomegaV.pdf> <./figs/delangVV.pdf> <./figs/EabsVV.pdf> <./figs/PQV.pdf>]
+<figs/inf1bus.pdf, id=553, 418.70929pt x 79.33139pt>
 File: figs/inf1bus.pdf Graphic file (type pdf)
 <use figs/inf1bus.pdf>
 Package pdftex.def Info: figs/inf1bus.pdf  used on input line 1774.
@@ -1044,37 +1077,54 @@ LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/it' will be
 (Font)              scaled to size 10.0pt on input line 1937.
 Package hyperref Info: bookmark level for unknown proof defaults to 0 on input line 1937.
- [28] [29] [30]
-<figs/loadbus.pdf, id=654, 130.4875pt x 85.08487pt>
+
+
+LaTeX Warning: Citation `tsolas1985structure' on page 28 undefined on input line 1989.
+
+
+LaTeX Warning: Citation `varaiya1985direct' on page 28 undefined on input line 1989.
+
+
+LaTeX Warning: Citation `chang1995direct' on page 28 undefined on input line 1989.
+
+
+LaTeX Warning: Citation `chiang2011direct' on page 28 undefined on input line 1989.
+
+[28] [29]
+
+LaTeX Warning: Citation `sauer2017power' on page 30 undefined on input line 2274.
+
+[30]
+<figs/loadbus.pdf, id=627, 130.4875pt x 85.08487pt>
 File: figs/loadbus.pdf Graphic file (type pdf)
 <use figs/loadbus.pdf>
 Package pdftex.def Info: figs/loadbus.pdf  used on input line 2284.
 (pdftex.def)             Requested size: 83.2243pt x 54.26717pt.
- [31] [32 <./figs/loadbus.pdf>]
+ [31]
+
+LaTeX Warning: Citation `kundur1994power' on page 32 undefined on input line 2351.
+
+[32 <./figs/loadbus.pdf>]
 Overfull \hbox (3.0pt too wide) detected at line 2367
  [] 
  []
 
-[33] [34] [35]
-
-LaTeX Warning: Reference `eq: Y0' on page 36 undefined on input line 2692.
-
-
-LaTeX Warning: Reference `eq: loadys' on page 36 undefined on input line 2692.
-
-[36]
+[33] [34] [35] [36]
 Overfull \hbox (3.0pt too wide) detected at line 2722
  [] 
  []
 
 [37]
 
+LaTeX Warning: Citation `kron1939tensor' on page 38 undefined on input line 2824.
+
+
 LaTeX Warning: Reference `sec:howtocal' on page 38 undefined on input line 2826.
 
-[38] [39] [40] [41] (./docmathmodel7_en.bbl
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
-(Font)              scaled to size 8.5pt on input line 5.
-)
+
+LaTeX Warning: Citation `dorfler2013kron' on page 38 undefined on input line 2828.
+
+[38] [39] [40] [41]
 \tf@thm=\write5
 \openout5 = `docmathmodel7_en.thm'.
 
@@ -1083,21 +1133,21 @@ LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `docmathmodel7_en.out' has not changed.
-(rerunfilecheck)             Checksum: C821E44BA32DC98F89C3158E754B829A;7007.
+(rerunfilecheck)             Checksum: 3BB80B724E330B8F9B800823D7ECB687;6797.
  ) 
 Here is how much of TeX's memory you used:
- 19129 strings out of 478268
- 292832 string characters out of 5846346
- 620914 words of memory out of 5000000
- 36768 multiletter control sequences out of 15000+600000
- 568481 words of font info for 211 fonts, out of 8000000 for 9000
+ 19100 strings out of 478268
+ 292273 string characters out of 5846346
+ 620273 words of memory out of 5000000
+ 36761 multiletter control sequences out of 15000+600000
+ 566660 words of font info for 208 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  88i,29n,134p,587b,690s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntxsups_ot1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-rm.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/doublestroke/dsrom8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ntxsups-Regular.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexas.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/txsya.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmbi.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on docmathmodel7_en.pdf (42 pages, 2873613 bytes).
+Output written on docmathmodel7_en.pdf (42 pages, 2866868 bytes).
 PDF statistics:
- 924 PDF objects out of 1000 (max. 8388607)
- 776 compressed objects within 8 object streams
- 192 named destinations out of 1000 (max. 500000)
- 331 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 886 PDF objects out of 1000 (max. 8388607)
+ 738 compressed objects within 8 object streams
+ 175 named destinations out of 1000 (max. 500000)
+ 315 words of extra memory for PDF output out of 10000 (max. 10000000)
 

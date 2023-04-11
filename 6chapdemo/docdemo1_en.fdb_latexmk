@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1681123656 "/Users/vuekawa/repos/book_final_en/6chapdemo/docdemo1_en.tex" "docdemo1_en.pdf" "docdemo1_en" 1681123657
+["pdflatex"] 1681182100 "/Users/vuekawa/repos/book_final_en/6chapdemo/docdemo1_en.tex" "docdemo1_en.pdf" "docdemo1_en" 1681182101
   "../settings.tex" 1679390848 4637 64bfcd699477039358df9c9d282abe33 ""
-  "/Users/vuekawa/repos/book_final_en/6chapdemo/docdemo1_en.tex" 1681123655 35377 7d8bc3a43c17a717365637062bb17b9f ""
+  "/Users/vuekawa/repos/book_final_en/6chapdemo/docdemo1_en.tex" 1681182099 35450 f9754e9f7055c0911694526b3b6e2a68 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc" 1422827479 2083 60e36f8eac802fcaf19eabe2633b406e ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc" 1529098226 3124 3813fd4c981d99822890a2861b0d274c ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -170,9 +170,9 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1668484045 2826445 cf7d7340e9c2a7d1df78c5cafc645348 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "docdemo1_en.aux" 1681123657 6365 db90e742b4fc4190b373a2a2f0e26f5e "pdflatex"
-  "docdemo1_en.out" 1681123657 3786 d283c69bdc313d2d0449733b576ffbb3 "pdflatex"
-  "docdemo1_en.tex" 1681123655 35377 7d8bc3a43c17a717365637062bb17b9f ""
+  "docdemo1_en.aux" 1681182101 6365 db90e742b4fc4190b373a2a2f0e26f5e "pdflatex"
+  "docdemo1_en.out" 1681182101 3786 d283c69bdc313d2d0449733b576ffbb3 "pdflatex"
+  "docdemo1_en.tex" 1681182099 35450 f9754e9f7055c0911694526b3b6e2a68 ""
   "dsfont.sty" 1671778083 230 7bc61880b468bfd38aedc173be7c3486 ""
   "eclbkbox.sty" 1671778083 2338 aa5837e82377ed2acc7ee21c1d523b1d ""
   "figs/Epolar.pdf" 1671778090 187378 36d74938d71f0e335a22e9f58ea59d7b ""
@@ -186,7 +186,7 @@
   "figs/WavrWagcL.pdf" 1671778090 160453 e78ae246fa3a71d909b41e5d5c731e87 ""
   "figs/boxplotgen.pdf" 1671778090 87800 77bdcceb3c57105157706dd6a6846061 ""
   "figs/boxplotload.pdf" 1671778091 88992 7432efb8e92bd59a225844ece2af772e ""
-  "svmult.cls" 1680259181 92907 aacf8249f5e2da6b404dc32f7d0db239 ""
+  "svmult.cls" 1681124837 92904 1619f3ba1a7995422e601ae7ee2b50a9 ""
   (generated)
   "docdemo1_en.aux"
   "docdemo1_en.log"

@@ -1246,15 +1246,7 @@ INPUT ./figs/loadbus.pdf
 INPUT figs/loadbus.pdf
 INPUT ./figs/loadbus.pdf
 INPUT ./figs/loadbus.pdf
-INPUT ./docmathmodel7_en.bbl
-INPUT docmathmodel7_en.bbl
-INPUT ./docmathmodel7_en.bbl
-INPUT docmathmodel7_en.bbl
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntx-Italic-tlf-ot1.tfm
 OUTPUT docmathmodel7_en.thm
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/vf/public/newtx/ntx-Italic-tlf-ot1.vf
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/NewTXMI.tfm
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntx-Italic-tlf-ot1r.tfm
 INPUT docmathmodel7_en.aux
 INPUT ./docmathmodel7_en.out
 INPUT ./docmathmodel7_en.out

@@ -1,0 +1,252 @@
+\begin{thebibliography}{10}
+
+\bibitem{sadamoto2019dynamic}
+T.~Sadamoto, A.~Chakrabortty, T.~Ishizaki, and J.-i. Imura.
+\newblock Dynamic modeling, stability, and control of power systems with
+  distributed energy resources: Handling faults using two control methods in
+  tandem.
+\newblock {\em IEEE Control Systems Magazine}, Vol.~39, No.~2, pp. 34--65,
+  2019.
+
+\bibitem{mesbahi2010graph}
+M.~Mesbahi and M.~Egerstedt.
+\newblock {\em Graph theoretic methods in multiagent networks}.
+\newblock Princeton University Press, 2010.
+
+\bibitem{sauer2017power}
+P.~W. Sauer, M.~A. Pai, and J.~H. Chow.
+\newblock {\em Power system dynamics and stability: with synchrophasor
+  measurement and power system toolbox}.
+\newblock John Wiley \& Sons, 2017.
+
+\bibitem{anderson2008power}
+P.~M. Anderson and A.~A. Fouad.
+\newblock {\em Power system control and stability}.
+\newblock John Wiley \& Sons, 2008.
+
+\bibitem{kuramoto1975self}
+Y.~Kuramoto.
+\newblock Self-entrainment of a population of coupled non-linear oscillators.
+\newblock In {\em International symposium on mathematical problems in
+  theoretical physics}, pp. 420--422. Springer, 1975.
+
+\bibitem{kuramoto2003chemical}
+Y.~Kuramoto.
+\newblock {\em Chemical oscillations, waves, and turbulence}.
+\newblock Courier Corporation, 2003.
+
+\bibitem{dorfler2012synchronization}
+F.~Dorfler and F.~Bullo.
+\newblock Synchronization and transient stability in power networks and
+  nonuniform {Kuramoto} oscillators.
+\newblock {\em SIAM Journal on Control and Optimization}, Vol.~50, No.~3, pp.
+  1616--1642, 2012.
+
+\bibitem{dorfler2013synchronization}
+F.~D{\"o}rfler, M.~Chertkov, and F.~Bullo.
+\newblock Synchronization in complex oscillator networks and smart grids.
+\newblock {\em Proceedings of the National Academy of Sciences}, Vol. 110,
+  No.~6, pp. 2005--2010, 2013.
+
+\bibitem{nagata2014node}
+M.~Nagata, N.~Fujiwara, G.~Tanaka, H.~Suzuki, E.~Kohda, and K.~Aihara.
+\newblock Node-wise robustness against fluctuations of power consumption in
+  power grids.
+\newblock {\em The European Physical Journal Special Topics}, Vol. 223, No.~12,
+  pp. 2549--2559, 2014.
+
+\bibitem{nishikawa2015comparative}
+T.~Nishikawa and A.~E. Motter.
+\newblock Comparative analysis of existing models for power-grid
+  synchronization.
+\newblock {\em New Journal of Physics}, Vol.~17, No.~1, p. 015012, 2015.
+
+\bibitem{tsolas1985structure}
+N.~Tsolas, A.~Arapostathis, and P.~Varaiya.
+\newblock A structure preserving energy function for power system transient
+  stability analysis.
+\newblock {\em IEEE Transactions on Circuits and Systems}, Vol.~32, No.~10, pp.
+  1041--1049, 1985.
+
+\bibitem{varaiya1985direct}
+P.~Varaiya, F.~F. Wu, and R.-L. Chen.
+\newblock Direct methods for transient stability analysis of power systems:
+  Recent results.
+\newblock {\em Proceedings of the IEEE}, Vol.~73, No.~12, pp. 1703--1715, 1985.
+
+\bibitem{chang1995direct}
+H.-D. Chang, C.-C. Chu, and G.~Cauley.
+\newblock Direct stability analysis of electric power systems using energy
+  functions: theory, applications, and perspective.
+\newblock {\em Proceedings of the IEEE}, Vol.~83, No.~11, pp. 1497--1529, 1995.
+
+\bibitem{chiang2011direct}
+H.-D. Chiang.
+\newblock {\em Direct methods for stability analysis of electric power systems:
+  theoretical foundation, BCU methodologies, and applications}.
+\newblock John Wiley \& Sons, 2011.
+
+\bibitem{kundur1994power}
+P.~Kundur.
+\newblock {\em Power system stability and control}.
+\newblock Tata McGraw-Hill Education, 1994.
+
+\bibitem{kron1939tensor}
+G.~Kron.
+\newblock Tensor analysis of networks.
+\newblock {\em New York}, 1939.
+
+\bibitem{dorfler2013kron}
+F.~Dorfler and F.~Bullo.
+\newblock Kron reduction of graphs with applications to electrical networks.
+\newblock {\em Circuits and Systems I: Regular Papers, IEEE Transactions on},
+  Vol.~60, No.~1, pp. 150--163, 2013.
+
+\bibitem{athay1979practical}
+T.~Athay, R.~Podmore, and S.~Virmani.
+\newblock A practical method for the direct analysis of transient stability.
+\newblock {\em IEEE Transactions on Power Apparatus and Systems}, No.~2, pp.
+  573--584, 1979.
+
+\bibitem{singh2013ieee}
+A.~K. Singh and B.~C. Pal.
+\newblock {IEEE PES} task force on benchmark systems for stability controls
+  report on the 68-bus 16-machine 5-area system.
+\newblock {\em IEEE Power Energy Soc}, Vol.~3, , 2013.
+
+\bibitem{Sandi_Metz2016}
+S.~Metz.
+\newblock
+  オブジェクト指向設計実践ガイド　～Rubyでわかる 進化しつづける柔軟なアプリケーションの育て方.
+\newblock 技術評論社, 9 2016.
+
+\bibitem{bernstein2009matrix}
+D.~S. Bernstein.
+\newblock {\em Matrix mathematics: theory, facts, and formulas}.
+\newblock Princeton University Press, 2009.
+
+\bibitem{petersen2010feedback}
+I.~R. Petersen and A.~Lanzon.
+\newblock Feedback control of negative-imaginary systems.
+\newblock {\em IEEE Control Systems Magazine}, Vol.~30, No.~5, pp. 54--72,
+  2010.
+
+\bibitem{xiong2010negative}
+J.~Xiong, I.~R. Petersen, and A.~Lanzon.
+\newblock A negative imaginary lemma and the stability of interconnections of
+  linear negative imaginary systems.
+\newblock {\em IEEE Transactions on Automatic Control}, Vol.~55, No.~10, pp.
+  2342--2347, 2010.
+
+\bibitem{kokotovic1987singular}
+P.~Kokotovi{\'c}, H.~K. Khali, and J.~O'reilly.
+\newblock {\em Singular perturbation methods in control: analysis and design},
+  Vol.~25.
+\newblock Society for Industrial Mathematics, 1987.
+
+\bibitem{antoulas2005approximation}
+A.~C. Antoulas.
+\newblock {\em Approximation of large-scale dynamical systems}.
+\newblock Society for Industrial and Applied Mathematics, Philadelphia, PA,
+  USA, 2005.
+
+\bibitem{anderson1967system}
+B.~D. Anderson.
+\newblock A system theory criterion for positive real matrices.
+\newblock {\em SIAM Journal on Control}, Vol.~5, No.~2, pp. 171--182, 1967.
+
+\bibitem{kottenstette2010relationships}
+N.~Kottenstette and P.~J. Antsaklis.
+\newblock Relationships between positive real, passive dissipative, \& positive
+  systems.
+\newblock In {\em American Control Conference (ACC), 2010}, pp. 409--416. IEEE,
+  2010.
+
+\bibitem{hines2011equilibrium}
+G.~H. Hines, M.~Arcak, and A.~K. Packard.
+\newblock Equilibrium-independent passivity: A new definition and numerical
+  certification.
+\newblock {\em Automatica}, Vol.~47, No.~9, pp. 1949--1956, 2011.
+
+\bibitem{simpson2019equilibrium}
+J.~W. Simpson-Porco.
+\newblock Equilibrium-independent dissipativity with quadratic supply rates.
+\newblock {\em IEEE Transactions on Automatic Control}, Vol.~64, No.~4, pp.
+  1440--1455, 2019.
+
+\bibitem{monshizadeh2019conditions}
+N.~Monshizadeh, P.~Monshizadeh, R.~Ortega, and A.~v.~d. Schaft.
+\newblock Conditions on shifted passivity of port-hamiltonian systems.
+\newblock {\em Systems \& Control Letters}, Vol. 123, pp. 55--61, 2019.
+
+\bibitem{bregman1967relaxation}
+L.~M. Bregman.
+\newblock The relaxation method of finding the common point of convex sets and
+  its application to the solution of problems in convex programming.
+\newblock {\em USSR computational mathematics and mathematical physics},
+  Vol.~7, No.~3, pp. 200--217, 1967.
+
+\bibitem{boyd2004convex}
+S.~Boyd and L.~Vandenberghe.
+\newblock {\em Convex optimization}.
+\newblock Cambridge university press, 2004.
+
+\bibitem{ieee2016ieee}
+I.-S.~S. Board.
+\newblock Ieee recommended practice for excitation system models for power
+  system stability studies.
+\newblock 2016.
+
+\bibitem{pal2006robust}
+B.~Pal and B.~Chaudhuri.
+\newblock {\em Robust control in power systems}.
+\newblock Springer Science \& Business Media, 2006.
+
+\bibitem{chow2004power}
+J.~H. Chow, G.~E. Boukarim, and A.~Murdoch.
+\newblock Power system stabilizers as undergraduate control design projects.
+\newblock {\em IEEE Transactions on power systems}, Vol.~19, No.~1, pp.
+  144--151, 2004.
+
+\bibitem{ishizaki2018retrofit}
+T.~Ishizaki, T.~Sadamoto, J.-i. Imura, H.~Sandberg, and K.~H. Johansson.
+\newblock Retrofit control: Localization of controller design and
+  implementation.
+\newblock {\em Automatica}, Vol.~95, pp. 336--346, 2018.
+
+\bibitem{sadamoto2018retrofit}
+T.~Sadamoto, A.~Chakrabortty, T.~Ishizaki, and J.-i. Imura.
+\newblock Retrofit control of wind-integrated power systems.
+\newblock {\em Power Systems, IEEE Transactions on}, Vol.~33, No.~3, pp.
+  2804--2815, 2018.
+
+\bibitem{sasahara2019damping}
+H.~Sasahara, T.~Ishizaki, T.~Sadamoto, T.~Masuta, Y.~Ueda, H.~Sugihara,
+  N.~Yamaguchi, and J.-i. Imura.
+\newblock Damping performance improvement for {PV}-integrated power grids via
+  retrofit control.
+\newblock {\em Control Engineering Practice}, Vol.~84, pp. 92--101, 2019.
+
+\bibitem{ishizaki2019retrofit}
+T.~Ishizaki, T.~Kawaguchi, H.~Sasahara, and J.-i. Imura.
+\newblock Retrofit control with approximate environment modeling.
+\newblock {\em Automatica}, Vol. 107, pp. 442--453, 2019.
+
+\bibitem{ishizaki2021modularity}
+T.~Ishizaki, H.~Sasahara, M.~Inoue, T.~Kawaguchi, and J.-i. Imura.
+\newblock Modularity-in-design of dynamical network systems: Retrofit control
+  approach.
+\newblock {\em IEEE Transactions on Automatic Control}, 2021.
+
+\bibitem{fairman1998linear}
+F.~W. Fairman.
+\newblock {\em Linear control theory: the state space approach}.
+\newblock John Wiley \& Sons, 1998.
+
+\bibitem{ljung1998system}
+L.~Ljung.
+\newblock System identification.
+\newblock In {\em Signal analysis and prediction}, pp. 163--173. Springer,
+  1998.
+
+\end{thebibliography}

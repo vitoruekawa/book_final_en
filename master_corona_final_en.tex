@@ -1,27 +1,20 @@
 \RequirePackage{plautopatch}
-\documentclass[tombow,dvipdfmx]{corona-a5-1.1}
-
-
-\input{settings_en}
+\documentclass[graybox, envcountchap]{svmult}
+\input{settings}
 \usepackage{docmute}
 
 
 \title{{\Huge \textbf{Power System System Control Engineering}} \\  \normalsize{Measurement / control selection series} }
 \author{Takayuki Ishizaki, Takahiro Kawaguchi, Kenichi Kawabe}
-\date{}
 
 
-\makeindex
+%\makeindex
 \begin{document}
 
 \maketitle
-
 \input{preface_en}
 
-
-\newpage
 \mbox{}\thispagestyle{empty}
-\clearpage
 \tableofcontents
 
 \input{1chapintro/docintro1_en}
@@ -31,26 +24,8 @@
 \input{5chapcontrolsyn/doccontrolsyn4_en}
 \input{6chapdemo/docdemo1_en}
 
-
-
 \bibliographystyle{myjunsrt}		% bib style
-\bibliography{reference,referencejp,reference_corona,reference_CREST,reference_kawaguchi}	% your bib database
-%\bibliography{reference}	% your bib database
+\bibliography{reference,reference_corona,reference_CREST,reference_kawaguchi}
 
-%\begin{appendix}
-%%\input{chapappendixsystem/docappendixsystem1.3}
-%%\input{chapappendixcontrol/docappendixcontrol1.1}
-%\input{chapappendixmath/docappendixmath3.1}
-%\input{chapappendixsimulator/chapappendixsimulator1.0}
-%\end{appendix}
-
-%\input{chapter01}
-%
-%\input{chapter02}
-%\input{chapter03}
-%\input{appendix}
-%\input{bibliography.tex}
-%\input{answer.tex}
-
-\printindex
+%\printindex
 \end{document}

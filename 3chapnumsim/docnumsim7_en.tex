@@ -454,17 +454,6 @@ More precisely, Step B in Section \ref{sec:numstep} is used to calculate the
 equilibrium point of the internal state of the system of differential-algebraic
 equations. The calculation of Step B is described in Section \ref{sec:paradef}.
 
-%exampleえば，\ref{sec:loadpr}節における負荷の定インピーダンスモデルは，$(P_i,Q_i)$と$|\bm{V}_i|$の間に
-%\begin{align*}
-%P_i + \bm{j} Q_i = -\frac{1}{\overline{\bm{z}}_{{\rm load}i}} |\bm{V}_i|^2
-%\end{align*}
-%という代数的な関係を与える。
-%すなわち，$\bm{z}_{{\rm load}i}$が所与の定数である場合には，2本の方程式が式\ref{eq:PQVgen}に追加されることを意味している。
-%負荷が定電流モデルや定電力モデルで記述されている場合も同様である。
-%\red{しかしながら....　なぜそうしない？データシートで与えられているのが普通PQだから？}
-%ただし，式(\ref{eq:gendynVI})の発電機の定常状態は機械入力$P_{{\rm mech}i}$と界磁入力$V_{{\rm field}i}$という別の2変数にも依存するため，発電機の動特性に由来する方程式を潮流計算で考慮する必要はない。
-%このことは\ref{sec:stagen}節で後述する。
-
 \subsection{Numerical Search Method for Steady-State Power Flow}
 
 Generally, the standard models of the Institute of Electrical Engineers in Japan
@@ -536,7 +525,7 @@ are treated as load buses with zero consumed active and reactive power.
 %\end{figure}
 
 
-\begin{table}[h]
+\begin{table}[ht]
 \medskip
 \caption{\textbf{Data sheet and power flow calculation results (1)}} \label{table:pflow1}
  \centering
@@ -579,7 +568,7 @@ are treated as load buses with zero consumed active and reactive power.
 \end{table}
 
 
-\begin{table}[h]
+\begin{table}[ht]
 \medskip
 \caption{\textbf{Data sheet and power flow calculation results (2)}} \label{table:pflow2}
  \centering
@@ -696,7 +685,7 @@ selection of equilibrium points and stability in Chapters \ref{sec:staana} and
 \ref{ch:stabcont}.
 
 \subsection{The relationship between the admittance matrix and transmission
-loss\advanced}
+loss}
 
 The following derivation provides a mathematical expression for transmission
 losses in any power flow distribution for a general power network consisting of
@@ -1084,7 +1073,7 @@ By setting these parameter values in the load model, the steady-state flow state
 obtained by power flow calculation can be achieved.
 
 \subsection{mathematical relationship between generator internal state and
-input/output\advanced}\label{sec:gensspq}
+input/output}\label{sec:gensspq}
 
 In the following, we mathematically analyze the internal state of the generator,
 the active and reactive power provided to the bus bar, and voltage phasor of the
@@ -1093,7 +1082,7 @@ However, for ease of notation, we omit the subscript $i$ and use the model as
 follows:
 
 \begin{equation}\label{eq:gendif}
-  \simode{
+  \begin{aligned}
     \dot{\delta}&= \omega_0  \Delta \omega\\
     M   \Delta \dot{\omega}&= 
     - D \Delta\omega  
@@ -1107,7 +1096,7 @@ follows:
     \right)
     |\bm{V}| \sfcos (\delta - \angle \bm{V} ) 
     + V_{{\rm field}}
-  }
+  \end{aligned}
 \end{equation}
 
 When the output is given as active and reactive power, we have:
@@ -1535,7 +1524,7 @@ generators, the internal states of the power system model will asymptotically
 converge to the original steady-state values. We confirm this fact in the
 following example.
 
-\begin{table}[h]
+\begin{table}[ht]
 \medskip
  \caption{\textbf{Steady-state values of generators for flow calculation results of Table \ref{table:pflow1}}}
  \label{table:genst13a}
@@ -1550,7 +1539,7 @@ $i$ &  $P_{{\rm mech}i}^{\star}$~[pu] & $V_{{\rm filed}i}^{\star}$~[pu] & $\delt
   \end{tabular}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[ht]
 \medskip
  \caption{\textbf{Steady-state values of generators for flow calculation results of Table \ref{table:pflow2}}}
  \label{table:genst13b}
@@ -1619,7 +1608,7 @@ system frequency was set to 60 [Hz], a frequency deviation of $0.015$ [pu] is
 equal to 0.9 [Hz].
 \end{example}
 
-\begin{table}[h] \medskip
+\begin{table}[ht] \medskip
  \centering
   {
   \begin{minipage}{0.49\linewidth}
@@ -1648,7 +1637,7 @@ equal to 0.9 [Hz].
    Decreased load & 1.3092 & 0 \\
    \hline
   \end{tabular}
-   \subcaption{Results of power flow calculation for Table \ref{table:pflow2}}
+  \subcaption{Results of power flow calculation for Table \ref{table:pflow2}}
   \end{minipage}
   }
 \end{table}
@@ -1852,7 +1841,7 @@ time according to following differential equations for $t\in [0, t_0)$, where
 $|\bm{V}{1}(t)|$ is set to 0. 
 
 \begin{equation}\label{eq:gendynVIfN}
-  \simode{
+  \begin{aligned}
     \dot{\delta}_1&= \omega_0  \Delta \omega_1\\
     M_1   \Delta \dot{\omega}_1 &= 
     - D_1 \Delta\omega_1  
@@ -1861,7 +1850,7 @@ $|\bm{V}{1}(t)|$ is set to 0.
     \taud_1 \dot{E}_1 & = 
     - \tfrac{ \Xs_1 }{ \Xt_1 }E_1
     + V_{{\rm field}1}
-  }
+  \end{aligned}
 \end{equation}
 
 In this case, current phasor $\bm{I}_{1}(t)$ is given with the following as an
@@ -2029,7 +2018,7 @@ control, which will be discussed in Sections \ref{sec:agcover} and
 automatically synchronize in the steady-state power flow condition, and control
 algorithms are constructed accordingly.
 
-\section{Synchronization of bus bar voltage in a steady power flow distribution\advanced}\label{sec:phsync}
+\section{Synchronization of bus bar voltage in a steady power flow distribution}\label{sec:phsync}
 
 In this section, we mathematically investigate the frequency synchronization
 phenomenon observed in Section \ref{sec:numsimtr} from the perspective of the
@@ -3406,7 +3395,7 @@ end
 \end{lstlisting}
 
 As a result, when \verb|ode45| is executed and the ordinary differential
-equation system is solved, the Program \nobreak\ref{program: main_ode1} becomes:
+equation system is solved, the Program \nobreak\ref{program:main_ode1} becomes:
 
 
 \begin{lstlisting}[language=Matlab, caption=main\_RLC\_ode.m, label={program:main_ode1}]
@@ -3424,11 +3413,11 @@ tspan = [0 30];
 plot(t, x)
 \end{lstlisting}
 
-The output variable \verb|x| in the program \nobreak\ref{program: main_ode1} is
+The output variable \verb|x| in the program \nobreak\ref{program:main_ode1} is
 a matrix in which the time series of $i_L$ and $v_C$ are arranged vertically.
 Therefore, note that the time series of other variables such as $i_C$ and $i_R$
 need to be additionally calculated using the algebraic equation of the Equation
-(\ref{eq: ex_ae}).
+\ref{eq:ex_ae}.
 
 Next, consider directly finding the solution of the system of differential
 algebra equations without going through Kron reduction. In this case, since the
@@ -3442,7 +3431,7 @@ described in the following format.
   M\dot{x} = f(t, x)
 \end{align}
 
-Applying the expression (\ref{eq: ex_de}) and the expression (\ref{eq: ex_ae}):
+Applying the expression (\ref{eq:ex_de}) and the expression (\ref{eq:ex_ae}):
 \[
 \underbrace{
 \mat{
@@ -3468,7 +3457,7 @@ Applying the expression (\ref{eq: ex_de}) and the expression (\ref{eq: ex_ae}):
 \]
 Note that the order in which the elements on the 3rd to 6th lines on the right
 side are placed is arbitrary. Implementing this right-hand side results in a
-Program \ref{program: func_DAE1}.
+Program \ref{program:func_DAE1}.
 
 
 \begin{lstlisting}[language=Matlab, caption=func\_RLC\_dae.m, label={program:func_DAE1}]
@@ -3494,7 +3483,7 @@ end
 \end{lstlisting}
 
 This function can be used to solve a system of differential algebraic equations
-such as in Program \nobreak\ref{program: DAE1}.
+such as in Program \nobreak\ref{program:DAE1}.
 
 \begin{lstlisting}[language=Matlab, caption=main\_RLC\_dae.m, label={program:DAE1}]
 function dx = func_RLC_dae(x, R, C, L, E)
@@ -3518,7 +3507,7 @@ function dx = func_RLC_dae(x, R, C, L, E)
 end
 \end{lstlisting}
 
-In this program, $M$ of the expression \ref{eq: numDAE} is set in the option on
+In this program, $M$ of the expression \ref{eq:numDAE} is set in the option on
 the 13th line. Also, the initial value of the state is set in the 10th line,
 but only the state of the differential equation, that is, the 2nd and 6th
 elements, has meaning. The state of the algebraic equation does not need to be
@@ -4042,7 +4031,7 @@ end
 \end{lstlisting}
 
 
-\begin{lstlisting}[language=Matlab, caption=generator.m, label={program:generator3}]
+\begin{lstlisting}[language=Matlab, caption=load\_impedance.m, label={program:load2}]
 classdef load_impedance < handle
   
 (Same as lines 3-5 in program 3-24)
@@ -4547,79 +4536,6 @@ case, since $\\omega_1$,$\omega_2$,$\omega_3$ are non-zero, the Equation
   =0
 \end{equation*}
 \end{proof}
-
-
-\end{document}
-%\red{（以下、不要かも）}
-%
-%さいごに，以上の議論から導かれるつぎの事実を示す。
-%
-%\begin{theorem}[母線変数の計測による母線同期の判定]
-%\label{cor:PQsync}
-%式\ref{eq:PQVgen}の連立方程式によって機器群が結合された電力系統モデルを考える。
-%電力系統は定常潮流状態にあるものと仮定する。
-%このとき，次数2の母線$i$に対して
-%\begin{align}\label{eq:PQnot2}
-%P_i \neq \real[\bm{Y}_{ii}] |\bm{V}_i|^2
-%\qquad
-%{\rm または}
-%\qquad
-%Q_i \neq - \imag [\bm{Y}_{ii}] |\bm{V}_i|^2
-%\end{align}
-%が成り立つ，もしくは，その隣接母線に対して
-%\begin{align}\label{eq:VYnot2}
-%\spliteq{
-%& |\bm{V}_{j_1}| |\bm{Y}_{ij_1}| \neq 
-%|\bm{V}_{j_2}| |\bm{Y}_{ij_2}|
-%\qquad
-%{\rm または} \\
-%& |\angle \bm{V}_{j_1} - \angle \bm{V}_{j_2} - \angle \bm{Y}_{ij_1} + \angle \bm{Y}_{ij_2} | \neq \pi
-%}
-%\end{align}
-%が成り立つならば，式\ref{eq:alloms}が成り立つ。
-%ただし，$\mathcal{N}_i = \{j_1,j_2\}$である。
-%また，次数3の母線$i$に対して，$\Omega_i = \Omega_{j_3}$を満たす$j_3 \in \mathcal{N}_i$が存在するものとする。
-%このとき，母線$i$に対して
-%\begin{align}\label{eq:PQnot3}
-%\spliteq{
-% P_i  &\neq \real[\bm{Y}_{ii}] |\bm{V}_i|^2  + |\bm{Y}_{ij_3}| |\bm{V}_i| |\bm{V}_{j_3}| 
-%\sfcos (\angle \bm{V}_i - \angle \bm{V}_{j_3} - \angle \bm{Y}_{ij_3}) \\
-%& \hspace{6em} {\rm または} 
-%\\
-%Q_i & \neq - \imag [\bm{Y}_{ii}] |\bm{V}_i|^2  + |\bm{Y}_{ij_3}| |\bm{V}_i| |\bm{V}_{j_3}| 
-%\sfsin (\angle \bm{V}_i - \angle \bm{V}_{j_3} - \angle \bm{Y}_{ij_3})
-%}
-%\end{align}
-%が成り立つ，もしくは，その隣接母線に対して式\ref{eq:VYnot2}が成り立つならば，式\ref{eq:alloms}が成り立つ。
-%ただし，$ \mathcal{N}_i \setminus \{j_3\}=\{j_1,j_2\}$である。
-%\end{theorem}
-%
-%\begin{proof}
-%次数2の母線に関する題意を対偶により示す。
-%すなわち，式\ref{eq:alloms}の否定，すなわち，式\ref{eq:N2sing}が成り立つならば，式\ref{eq:PQnot2}や式\ref{eq:VYnot2}の否定が成り立つことを示す。
-%まず，式\ref{eq:VYnot2}の否定は，式\ref{eq:N2sing}の中央と右そのものであることから，後者の含意は明らかである。
-%つぎに，式\ref{eq:N2sing}が成り立つとき，式\ref{eq:sumcirc}の$\bm{c}_i$は0であることが導かれる。
-%これは，式\ref{eq:PQnot2}の否定，すなわち
-%\begin{align*}
-%P_i = \real[\bm{Y}_{ii}] |\bm{V}_i|^2
-%,\qquad
-%Q_i = - \imag [\bm{Y}_{ii}] |\bm{V}_i|^2
-%\end{align*}
-%を意味する。
-%以上より，次数2の母線に関する題意が示される。
-%次数3の母線に関する題意も同様に示される。
-%\end{proof}
-%
-%
-%theorem\ref{cor:PQsync}により，有効電力や無効電力，電圧フェーザを実際に計測することによって，グラフ構造だけでは判断できなかった母線の同期を示すことが可能となる。
-%exampleえば，Figure \ref{fig:hony}(b)のハニカム構造をもつ送電網に対して，定常潮流状態において適当な母線の有効電力や無効電力，電圧フェーザを計測し，いずれかの赤と青の母線の同期を示すことができれば，送電網全体での母線の同期が結論できる。
-%
-
-
-
-
-%\bibliographystyle{myjunsrt}		% bib style
-%\bibliography{reference_corona,referencejp}	% your bib database
 
 
 \newpage

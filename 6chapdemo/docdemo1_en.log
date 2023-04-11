@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  10 APR 2023 19:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  11 APR 2023 12:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -882,93 +882,61 @@ Package pdftex.def Info: figs/WavrWagcL.pdf  used on input line 121.
 LaTeX Warning: Reference `sec:avrov' on page 3 undefined on input line 137.
 
 
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 144.
-
-
 LaTeX Warning: Reference `sec:pssintro' on page 3 undefined on input line 148.
-
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 157.
-
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 165.
 
 [3]
 
-LaTeX Warning: Reference `sec:broadPI' on page 4 undefined on input line 180.
+LaTeX Warning: Reference `sec:broadPI' on page 4 undefined on input line 179.
 
 [4 <./figs/WOavrWOagc.pdf> <./figs/WavrWOagc.pdf> <./figs/WavrWagc.pdf> <./figs/WavrWagcL.pdf>]
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 190.
-
 <figs/Epolar.pdf, id=146, 514.92375pt x 481.8pt>
 File: figs/Epolar.pdf Graphic file (type pdf)
 <use figs/Epolar.pdf>
-Package pdftex.def Info: figs/Epolar.pdf  used on input line 222.
+Package pdftex.def Info: figs/Epolar.pdf  used on input line 221.
 (pdftex.def)             Requested size: 146.8083pt x 137.35854pt.
 <figs/Vpolar.pdf, id=147, 514.92375pt x 481.8pt>
 File: figs/Vpolar.pdf Graphic file (type pdf)
 <use figs/Vpolar.pdf>
-Package pdftex.def Info: figs/Vpolar.pdf  used on input line 228.
+Package pdftex.def Info: figs/Vpolar.pdf  used on input line 227.
 (pdftex.def)             Requested size: 146.8083pt x 137.35854pt.
 <figs/Ipolar.pdf, id=148, 514.92375pt x 481.8pt>
 File: figs/Ipolar.pdf Graphic file (type pdf)
 <use figs/Ipolar.pdf>
-Package pdftex.def Info: figs/Ipolar.pdf  used on input line 234.
+Package pdftex.def Info: figs/Ipolar.pdf  used on input line 233.
 (pdftex.def)             Requested size: 146.8083pt x 137.35854pt.
 <figs/PQpolar.pdf, id=149, 514.92375pt x 481.8pt>
 File: figs/PQpolar.pdf Graphic file (type pdf)
 <use figs/PQpolar.pdf>
-Package pdftex.def Info: figs/PQpolar.pdf  used on input line 240.
+Package pdftex.def Info: figs/PQpolar.pdf  used on input line 239.
 (pdftex.def)             Requested size: 146.8083pt x 137.35854pt.
-LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 261.
-(/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
+LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 260.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 261.
+(Font)              scaled to size 10.0pt on input line 260.
  [5] [6 <./figs/Epolar.pdf> <./figs/Vpolar.pdf> <./figs/Ipolar.pdf> <./figs/PQpolar.pdf>]
 <figs/boxplotgen.pdf, id=190, 583.18378pt x 421.91125pt>
 File: figs/boxplotgen.pdf Graphic file (type pdf)
 <use figs/boxplotgen.pdf>
-Package pdftex.def Info: figs/boxplotgen.pdf  used on input line 321.
+Package pdftex.def Info: figs/boxplotgen.pdf  used on input line 320.
 (pdftex.def)             Requested size: 163.12146pt x 118.01202pt.
 <figs/boxplotload.pdf, id=191, 583.18378pt x 421.91125pt>
 File: figs/boxplotload.pdf Graphic file (type pdf)
 <use figs/boxplotload.pdf>
-Package pdftex.def Info: figs/boxplotload.pdf  used on input line 326.
+Package pdftex.def Info: figs/boxplotload.pdf  used on input line 325.
 (pdftex.def)             Requested size: 163.12146pt x 118.01202pt.
 
 
-LaTeX Warning: Reference `sec:retrofit' on page 7 undefined on input line 350.
+LaTeX Warning: Reference `sec:retrofit' on page 7 undefined on input line 349.
 
 
-LaTeX Warning: Reference `ex:modelingV' on page 7 undefined on input line 353.
+LaTeX Warning: Reference `ex:modelingV' on page 7 undefined on input line 352.
 
 
-LaTeX Warning: Reference `sec:designret' on page 7 undefined on input line 358.
+LaTeX Warning: Reference `sec:designret' on page 7 undefined on input line 357.
 
-[7 <./figs/boxplotgen.pdf> <./figs/boxplotload.pdf>]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[8]
+[7 <./figs/boxplotgen.pdf> <./figs/boxplotload.pdf>] [8]
 \tf@thm=\write5
 \openout5 = `docdemo1_en.thm'.
 
@@ -986,9 +954,9 @@ Here is how much of TeX's memory you used:
  36412 multiletter control sequences out of 15000+600000
  542430 words of font info for 184 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,17n,134p,570b,695s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 88i,16n,134p,570b,695s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb>
-Output written on docdemo1_en.pdf (11 pages, 1054108 bytes).
+Output written on docdemo1_en.pdf (11 pages, 1053474 bytes).
 PDF statistics:
  292 PDF objects out of 1000 (max. 8388607)
  229 compressed objects within 3 object streams

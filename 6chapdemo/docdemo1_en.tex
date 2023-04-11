@@ -138,10 +138,10 @@ described in Section \ref{sec:avrov}.  Specifically, for all generator buses
 $i$, it is set to:
 
 \begin{equation*}
-  \simode{
+  \begin{aligned}
     0.015 \dot{V}_{{\rm tr}i} & = - V_{{\rm tr} i} +  |\bm{V}_i|  \\
     V_{{\rm field}i} &= 20 ( V_{{\rm ref}i}^{\star} + V_{{\rm pss}i}- V_{{\rm tr}i} )
-  }
+  \end{aligned}
 \end{equation*}
 
 In addition, the power system stabilizer is set to the IEEE PSS1 model described
@@ -149,20 +149,19 @@ in Section \ref{sec:pssintro}. Specifically, for all generator buses $i$, it is
 set to:
 
 \begin{equation*}
-  \simode{
+  \begin{aligned}
     1.4 \dot{\xi}_{{\rm ws}i} &=
     - \xi_{{\rm ws}i}
     + 9.5 \Delta \omega_i \\
     v_{{\rm ws}i} &= 9.5 \Delta \omega_i - \xi_{{\rm ws}i}
-  }
-  \qquad
-  \simode{
+  \end{aligned}
+  \begin{aligned}
     0.033 \dot{\xi}_{i} &=
     - \xi_{i}
     + 0.79 %\tfrac{ 0.033 }{ 0.154 }
     v_{{\rm ws}i} \\
     V_{{\rm pss}i} &= 4.67 ( v_{{\rm ws}i} - \xi_{i} )
-  }
+  \end{aligned}
 \end{equation*}
 
 The time response of the frequency deviation in this case is shown in Figure
@@ -182,12 +181,12 @@ index set of generator buses in area $l$. Then, for the automatic generator
 control in area $l$, we set:
 
 \begin{equation*}
-  \simode{
+  \begin{aligned}
     \dot{\xi}^{(l)}&=  \Delta \omega_{\rm ave}^{(l)}\\
     P_{{\rm mech}i} &= P_{i}^{\star} 
     - \tfrac{ P_{i}^{\star} }{ P_{{\rm ave}}^{{\star}} } \left(  100 \Delta \omega_{\rm ave}^{(l)} +  500  \xi^{(l)} \right),
     \qquad i \in \mathcal{I}^{(l)}_{\rm G}
-  }
+  \end{aligned}
 \end{equation*}
 where we define the average of the deviation of angular frequency and the
 average of the active power in steady-state for the generators in area $l$ as
@@ -365,7 +364,7 @@ generators from generator 1 to generator $i$. From these results, we can see
 that the transient stability gradually improves as the number of retrofit
 controllers incorporated increases.
 
-\begin{table}[h]
+\begin{table}[ht]
 \medskip
 \caption{\textbf{Physical constants of transmission lines}} \label{table:ieee68lines}
  \centering
@@ -480,7 +479,7 @@ $i$--$j$ & $r_{ij}$  &  $x_{ij}$ & $c_{ij}$ \\
 \end{table}
 
 
-\begin{table}[h]
+\begin{table}[ht]
 \medskip
 \caption{\textbf{Physical constants of generators}} \label{table:ieee68genpara}
  \centering
@@ -514,7 +513,7 @@ $i$--$j$ & $r_{ij}$  &  $x_{ij}$ & $c_{ij}$ \\
 
 
 
-\begin{table}[h]
+\begin{table}[ht]
 \medskip
 \caption{\textbf{Datasheet for tidal current calculations (generator bus bar)}} \label{table:ieee68datag}
  \centering
@@ -571,7 +570,7 @@ $i$ & $P_i^{\star}$  &  $|\bm{V}_i^{\star} |$ \\
 \end{table}
  
  
-\begin{table}[h]
+\begin{table}[ht]
 \medskip
 \caption{\textbf{Datasheet used for tidal current calculations (load bus bar)}} \label{table:ieee68datal}
  \centering
@@ -669,7 +668,7 @@ $i$ & $P_i^{\star}$  &  $Q_i^{\star}$ \\
 
 
 
-\begin{table}[h]
+\begin{table}[ht]
 \medskip
 \caption{\textbf{Load impedance}} \label{table:ieee68loads}
  \centering
@@ -760,6 +759,7 @@ $i$ & $r_{{\rm load}i}$  &  $x_{{\rm load}i}$ \\
   \end{minipage}
   }
 \end{table}
+
 
 \newpage
 %\printindex

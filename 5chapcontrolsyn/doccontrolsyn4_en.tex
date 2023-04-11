@@ -89,7 +89,7 @@ characteristics of the generator are restated as follows:
 
 \begin{subequations}\label{eq:gendifagc}
 \begin{equation}
-  \simode{
+  \begin{aligned}
     \dot{\delta}_i&= \omega_0  \Delta \omega_i \\
     M_i   \Delta \dot{\omega}_i&= 
     - D_i \Delta\omega_i  
@@ -103,7 +103,7 @@ characteristics of the generator are restated as follows:
     \right)
     |\bm{V}_i| \sfcos (\delta_i - \angle \bm{V}_i ) 
     + V_{{\rm field}i}
-  }
+  \end{aligned}
 \end{equation}
 
 When considering active power and reactive power as outputs, we have:
@@ -158,13 +158,13 @@ system using a differential-algebraic equation (DAE) model, as shown in the
 algebraic equation system:
 
 \begin{equation}\label{eq:PQVgenagc}
-\simode{
-P_1 + \bm{j} Q_1 &= 
-\sum_{j=1}^{N} \overline{\bm{Y}}_{1j} |\bm{V}_1| |\bm{V}_j | e^{\bm{j} (\angle \bm{V}_1 - \angle \bm{V}_j )} \\ 
-& \; \;  \vdots \\
-P_N + \bm{j} Q_N &= 
-\sum_{j=1}^{N} \overline{\bm{Y}}_{Nj} |\bm{V}_N| |\bm{V}_j | e^{\bm{j} (\angle \bm{V}_N - \angle \bm{V}_j )}
-}
+  \begin{aligned}
+    P_1 + \bm{j} Q_1 &= 
+    \sum_{j=1}^{N} \overline{\bm{Y}}_{1j} |\bm{V}_1| |\bm{V}_j | e^{\bm{j} (\angle \bm{V}_1 - \angle \bm{V}_j )} \\ 
+    & \; \;  \vdots \\
+    P_N + \bm{j} Q_N &= 
+    \sum_{j=1}^{N} \overline{\bm{Y}}_{Nj} |\bm{V}_N| |\bm{V}_j | e^{\bm{j} (\angle \bm{V}_N - \angle \bm{V}_j )}
+  \end{aligned}
 \end{equation}
 where the generator bus indices are denoted by the set $\mathcal{I}{\rm G}$ and
 the load bus indices are denoted by the set $\mathcal{I}{\rm L}$, and without
@@ -224,10 +224,10 @@ generators (Figure \ref{fig:bcAGC}). Note that Equation \ref{eq:agccona} can be
 expressed as a differential equation as follows:
 
 \begin{equation}
-  \simode{
-  \dot{\xi}&=  \Delta \omega_{\rm sum} \\
-  P_{{\rm mech}i} &= P_{{\rm mech}i}^{\star} - \alpha_i \left(k_{\rm P} \Delta \omega_{\rm sum} +  k_{\rm I} \xi \right)
-  }
+  \begin{aligned}
+    \dot{\xi}&=  \Delta \omega_{\rm sum} \\
+    P_{{\rm mech}i} &= P_{{\rm mech}i}^{\star} - \alpha_i \left(k_{\rm P} \Delta \omega_{\rm sum} +  k_{\rm I} \xi \right)
+  \end{aligned}
 \end{equation}
 \end{subequations}
 
@@ -323,7 +323,7 @@ generation control.
 \medskip
 \end{figure}
 
-\begin{table}[h]
+\begin{table}[ht]
 \medskip
  \caption{\textbf{Controller Parameter Setting}}
  \label{table:agcpara}
@@ -409,9 +409,9 @@ not necessarily a highly stable equilibrium point, so it is important to
 carefully consider trade-offs between economic efficiency and stability. 
 
 \section{Mathematical stability analysis of frequency stabilization control
-system\advanced}\label{sec:mathnpas}
+system}\label{sec:mathnpas}
 
-\subsection{Power system model under consideration\advanced}\label{sec:objmod}
+\subsection{Power system model under consideration}\label{sec:objmod}
 
 \smallskip
 \subsubsection{Assumptions on Power System Model and Automatic Generation Control}
@@ -478,17 +478,17 @@ representing the power system model as a feedback system consisting of two
 subsystems. The first subsystem is described by the following equations:
 \begin{equation}\label{eq:sys1}
   \mathds{F}:
-  \simode{
-  M \Delta \dot{\omega}&= 
-  - 
-  D
-  \Delta\omega 
-  + 
-  u_{\mathds{F}}
-  +P_{{\rm mech}}^{\star}
-  \\
-  y_{\mathds{F}}&= \omega_0 \Delta\omega 
-  }
+  \begin{aligned}
+    M \Delta \dot{\omega}&= 
+    - 
+    D
+    \Delta\omega 
+    + 
+    u_{\mathds{F}}
+    +P_{{\rm mech}}^{\star}
+    \\
+    y_{\mathds{F}}&= \omega_0 \Delta\omega 
+  \end{aligned}
 \end{equation}
 
 However, $\Delta\omega$ is a vector composed of $\Delta\omega_i$ stacked
@@ -503,7 +503,7 @@ in Section \ref{sec:linpasana}, given by:
 \begin{subequations}\label{eq:sys2G}
 \begin{equation}\label{eq:sys2}
   \mathds{G}_i : 
-  \simode{ 
+  \begin{aligned}
     \dot{\delta}_i &= u_{\mathds{G}_i}
     \\
     \taudi \dot{E}_i & = 
@@ -515,20 +515,21 @@ in Section \ref{sec:linpasana}, given by:
     + V_{{\rm field}i}^{\star}
     \\
     y_{\mathds{G}_i}&= \tfrac{E_i |\bm{V}_i|}{ \Xti} \sfsin (\delta_i - \angle \bm{V}_i)
-  }
+  \end{aligned}
 \end{equation}
 
 The voltage phasor of the bus in Equation \ref{eq:sys2} satisfies a set of
 simultaneous equations for all generator buses as follows:
 
 \begin{equation}\label{eq:gVeq}
-  \simode{
+  \begin{aligned}
     P_i &=
     \sum_{j=1}^{N} B_{ij} |\bm{V}_i| |\bm{V}_j| \sfsin(\angle \bm{V}_i -\angle \bm{V}_j)
     \\
     Q_i &= 
     -\sum_{j=1}^{N} B_{ij} |\bm{V}_i| |\bm{V}_j| \sfcos(\angle \bm{V}_i -\angle \bm{V}_j)
-  }\qquad
+  \end{aligned}
+  \qquad
   i \in \mathcal{I}_{\rm G}
 \end{equation}
 and a set of coupled equations for all load bus bars given by:
@@ -596,7 +597,7 @@ as load consumption power and transmission line admittance.
 
 
 
-\subsection{Equilibrium-independent passivity of power system models\advanced}
+\subsection{Equilibrium-independent passivity of power system models}
 
 \smallskip
 \subsubsection{Equilibrium-independent passivity}
@@ -1188,7 +1189,7 @@ definite function, that is, the region where the potential energy function
 $U_{\mathds{G}}(x_{\mathds{G}})$ in Equation \ref{eq:potWx} is a convex
 function. This will be discussed in the next section.
 
-\subsection{Stability analysis of frequency stabilization control system\advanced}\label{sec:potconv}
+\subsection{Stability analysis of frequency stabilization control system}\label{sec:potconv}
 
 \smallskip
 \subsubsection{Stability analysis of unknown equilibrium points based on passivity}
@@ -1283,7 +1284,7 @@ Similarly, the internal states of the electrical subsystem $\mathds{G}$ and the
 voltage phase variables of the busbars in Equation \ref{eq:sys2G} also converge
 to unknown values asymptotically.
 
-\begin{table}[h]
+\begin{table}[ht]
 \medskip
 \caption{\textbf{Temporal change of accumulated energy}} \label{table:pflownl}
  \centering
@@ -1839,7 +1840,7 @@ values of each parameter are summarized in \ref{table:AVRpara1} and
 \ref{table:AVRpara2}. The unit of the time constant is [s] while other units are
 [pu].
 
-\begin{table}[h]
+\begin{table}[ht]
 \medskip
  \caption{\textbf{Parameter example of IEEE DC1 type model}}
  \label{table:AVRpara1}
@@ -1854,7 +1855,7 @@ values of each parameter are summarized in \ref{table:AVRpara1} and
   \end{tabular}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[ht]
 \medskip
  \caption{\textbf{Parameter example of IEEE DC1 type model (continued)}}
  \label{table:AVRpara2}
@@ -1934,7 +1935,7 @@ Table \ref{table:AVRparast1}.
   }
 \end{equation}
 
-\begin{table}[h]
+\begin{table}[ht]
 \medskip
  \caption{\textbf{IEEE ST1 type model parameter example}}
  \label{table:AVRparast1}
@@ -2067,7 +2068,7 @@ Here, $\bm{Y}{\rm Kron}$ is the admittance matrix obtained by Kron reduction of
 the load bus defined in equation \ref{eq:Kron}. The value of the reference
 signal $V_{{\rm ref}i}^{\star}$ is determined by equation \ref{eq:avrref}.
 
-\begin{table}[h]
+\begin{table}[ht]
 \medskip
  \caption{\textbf{Steady value of rotor declination that stabilizes the state} 
  \\ \centering(AVR: automatic voltage regulator, PSS: system stabilizer)}
@@ -2333,7 +2334,7 @@ parameters based on classical control theory using the one-machine infinite-bus
 system model are presented.  In \cite{chow2004power}, design guidelines based on
 modern control theory are also explained.
 
-\begin{table}[h]
+\begin{table}[ht]
 \medskip
  \caption{\textbf{IEEE PSS1 type model parameter example}}
  \label{table:psspara}
@@ -2390,9 +2391,9 @@ expanded by incorporating the power system stabilization device.
 \medskip
 \end{figure}
 
-\section{PSS based on the retrofit control theory\advanced}\label{sec:retrofit}
+\section{PSS based on the retrofit control theory}\label{sec:retrofit}
 
-\subsection{Power system model used in the design of PSS\advanced}
+\subsection{Power system model used in the design of PSS}
 
 \smallskip
 \subsubsection{Features of PSS based on the retrofit control theory}
@@ -2583,11 +2584,11 @@ model $\overline{\mathit{\Theta}}$ with the model of a local linear subsystem
 $G$ as shown in Figure \ref{fig:explocalG}. Specifically, it is given by:
 
 \begin{equation}\label{eq:Gplus}
-  G^+: \simode{
+  G^+: \begin{aligned} 
     \dot{\hat{\xi}} &=  \left( A+L \overline{\mathit{\Theta}} 
     \mathit{\Gamma} \right) \hat{\xi} + B \hat{u} \\
     \hat{y} & = C \hat{\xi}
-  }
+  \end{aligned}
 \end{equation}
 
 Here, $\hat{u}$ and $\hat{y}$ are virtual input-output signals used for
@@ -2605,7 +2606,7 @@ $\hat{\xi}$ of $G^+$.
 \medskip
 \end{figure}
 
-\subsection{PSS design based on the retrofit control theory\advanced}\label{sec:designret}
+\subsection{PSS design based on the retrofit control theory}\label{sec:designret}
 
 \smallskip
 \subsubsection{Design method of retrofit controller}
@@ -2657,12 +2658,12 @@ $\hat{K}(\overline{\mathit{\Theta}})$ in Equation \ref{eq:locKhat}, the retrofit
 controller is constructed as follows:
 
 \begin{equation}\label{eq:retroK}
-K: \simode{
-\dot{\hat{x}} &=  A \hat{x} + L \left\{
-v - \overline{\mathit{\Theta}} (w- \mathit{\Gamma} \hat{x}) 
-\right\}\\
-u &= \hat{K}(\overline{\mathit{\Theta}}) (y - C\hat{x})
-}
+K: \begin{aligned}
+  \dot{\hat{x}} &=  A \hat{x} + L \left\{
+  v - \overline{\mathit{\Theta}} (w- \mathit{\Gamma} \hat{x}) 
+  \right\}\\
+  u &= \hat{K}(\overline{\mathit{\Theta}}) (y - C\hat{x})
+  \end{aligned} 
 \end{equation}
 
 Based on this retrofit control theory, the system stabilization device has the

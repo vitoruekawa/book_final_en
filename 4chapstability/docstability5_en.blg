@@ -1,0 +1,52 @@
+This is pBibTeX, Version 0.99d-j0.34 (utf8.euc) (TeX Live 2022)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: docstability5_en.aux
+The style file: myjunsrt.bst
+Database file #1: ../reference.bib
+Database file #2: ../reference_corona.bib
+Database file #3: ../reference_CREST.bib
+Database file #4: ../reference_kawaguchi.bib
+Warning--I didn't find a database entry for "kato2017electric"
+You've used 7 entries,
+            2270 wiz_defined-function locations,
+            587 strings with 5313 characters,
+and the built_in function-call counts, 2289 in all, are:
+= -- 191
+> -- 46
+< -- 11
++ -- 20
+- -- 13
+* -- 109
+:= -- 268
+add.period$ -- 22
+call.type$ -- 7
+change.case$ -- 4
+chr.to.int$ -- 0
+cite$ -- 7
+duplicate$ -- 157
+empty$ -- 231
+format.name$ -- 26
+if$ -- 573
+int.to.chr$ -- 0
+int.to.str$ -- 7
+missing$ -- 10
+newline$ -- 38
+num.names$ -- 7
+pop$ -- 52
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 119
+stack$ -- 0
+substring$ -- 128
+swap$ -- 51
+text.length$ -- 11
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 19
+width$ -- 8
+write$ -- 79
+is.kanji.str$ -- 74
+(There was 1 warning)

@@ -1081,7 +1081,7 @@ passing it to article class \MessageBreak
 \def\corollaryname{Corollary}%
 \def\definitionname{Definition}%
 \def\emailname{e-mail}%
-\def\examplename{Example}%
+% \def\examplename{Example}%
 \def\exercisename{Exercise}%
 \def\figurename{Fig.}%
 \def\forewordname{Foreword}%
@@ -1706,7 +1706,7 @@ to\z@{\kern0.55\wd0\vrule\@height0.45\ht0\hss}\box0}}}}
 \spn@wtheorem{conjecture}{Conjecture}{\itshape}{\rmfamily}
 \spn@wtheorem{corollary}{Corollary}{\bfseries}{\itshape}
 \spn@wtheorem{definition}{Definition}{\bfseries}{\rmfamily}
-\spn@wtheorem{example}{Example}{\itshape}{\rmfamily}
+% \spn@wtheorem{example}{Example}{\itshape}{\rmfamily}
 \spn@wtheorem{exercise}{Exercise}{\bfseries}{\rmfamily}
 \spn@wtheorem{lemma}{Lemma}{\bfseries}{\itshape}
 \spn@wtheorem{note}{Note}{\itshape}{\rmfamily}
@@ -2155,12 +2155,12 @@ to\z@{\kern0.55\wd0\vrule\@height0.45\ht0\hss}\box0}}}}
   \setcounter{table}{0}
   \setcounter{equation}{0}
   \setcounter{footnote}{0}%
-  \if@numart
-     \stepcounter{chapter}%
-     \addtocounter{chapter}{-1}%
-  \else
-     \refstepcounter{chapter}%
-  \fi
+  % \if@numart
+  %    \stepcounter{chapter}%
+  %    \addtocounter{chapter}{-1}%
+  % \else
+  %    \refstepcounter{chapter}%
+  % \fi
   \stepcounter{contribution}%
   \immediate\write\@auxout{\string\immediate\string\closeout\string\minitoc}%
   \immediate\write\@auxout{\let\MiniTOC=N}%
@@ -2195,13 +2195,13 @@ to\z@{\kern0.55\wd0\vrule\@height0.45\ht0\hss}\box0}}}}
     \def\thanks##1{\unskip{}}\def\fnmsep{\unskip}%
     \instindent=\hsize
     \advance\instindent by-\headlineindent
-    \if@numart % keine Nummer
-        \if!\the\toctitle!\addcontentsline{toc}{title}{\@title}\else
-        \addcontentsline{toc}{title}{\the\toctitle}\fi
-    \else
-        \if!\the\toctitle!\addcontentsline{toc}{titlech}{\protect\numberline{\thechapter\thechapterend}\@title}\else
-        \addcontentsline{toc}{titlech}{\protect\numberline{\thechapter\thechapterend}\the\toctitle}\fi
-    \fi
+    % \if@numart % keine Nummer
+    %     \if!\the\toctitle!\addcontentsline{toc}{title}{\@title}\else
+    %     \addcontentsline{toc}{title}{\the\toctitle}\fi
+    % \else
+    %     \if!\the\toctitle!\addcontentsline{toc}{titlech}{\protect\numberline{\thechapter\thechapterend}\@title}\else
+    %     \addcontentsline{toc}{titlech}{\protect\numberline{\thechapter\thechapterend}\the\toctitle}\fi
+    % \fi
     \if@runhead
        \if!\the\titlerunning!\else
          \edef\@title{\the\titlerunning}%
@@ -2228,11 +2228,11 @@ to\z@{\kern0.55\wd0\vrule\@height0.45\ht0\hss}\box0}}}}
       \protected@xdef\toc@uthor{\scratch}%
     \fi
     \addtocontents{toc}{\noexpand\protect\noexpand\authcount{\the\c@auco}}%
-    \if@numart
-       \addcontentsline{toc}{author}{\toc@uthor}%
-    \else
-       \addcontentsline{toc}{authorch}{\toc@uthor}%
-    \fi
+    %\if@numart
+    %   \addcontentsline{toc}{author}{\toc@uthor}%
+    %\else
+    %   \addcontentsline{toc}{authorch}{\toc@uthor}%
+    %\fi
     \if@runhead
        \if!\the\authorrunning!
          \value{@inst}=\value{@auth}%
@@ -2379,7 +2379,7 @@ to\z@{\kern0.55\wd0\vrule\@height0.45\ht0\hss}\box0}}}}
 \RequirePackage[x11names]{xcolor}
 
 \definecolor{trailer}{gray}{0.9}
-\definecolor{example}{gray}{0.85}
+% \definecolor{example}{gray}{0.85}
 \definecolor{question}{gray}{0.8}
 \definecolor{important}{gray}{0.75}
 \definecolor{warning}{gray}{0.7}
@@ -2404,8 +2404,8 @@ to\z@{\kern0.55\wd0\vrule\@height0.45\ht0\hss}\box0}}}}
 \newenvironment{trailer}[1]{\ignorespaces\def\stmtopen##1{##1}%
 \formtmp{trailer}{#1}}{\par\noindent\textcolor{trailer}{\rule{\columnwidth}{1pt}}\vskip2pt\par\addvspace{\baselineskip}}%
 
-\renewenvironment{example}[1]{\ignorespaces\def\stmtopen##1{##1}%
-\formtmp{example}{#1}}{\par\noindent\textcolor{example}{\rule{\columnwidth}{1pt}}\vskip2pt\par\addvspace{\baselineskip}}%
+% \renewenvironment{example}[1]{\ignorespaces\def\stmtopen##1{##1}%
+% \formtmp{example}{#1}}{\par\noindent\textcolor{example}{\rule{\columnwidth}{1pt}}\vskip2pt\par\addvspace{\baselineskip}}%
 
 \renewenvironment{question}[1]{\ignorespaces\def\stmtopen##1{##1}%
 \formtmp{question}{\ \circledmark[white]{\textcolor{black}{\sf\bfseries?}}{\kern6pt}#1}}{\par\noindent\textcolor{question}{\rule{\columnwidth}{1pt}}\vskip2pt\par\addvspace{\baselineskip}}%
@@ -2621,6 +2621,42 @@ to\z@{\kern0.55\wd0\vrule\@height0.45\ht0\hss}\box0}}}}
 \theoremsymbol{\ensuremath{\square}}
 \newtheorem{proof}{Proof} 
 \gdef\NoneSymbol{}
+
+
+\def\itembox{\@ifnextchar[{\@itembox}{\@itembox[c]}}
+\def\@itembox[#1]#2{%
+  \@savetbaselineshift\tbaselineshift\tbaselineshift\z@
+  \par\vspace{.3\baselineskip}%
+  \setbox\@iboxstr=\hbox{#2}\@itemh\ht\@iboxstr\advance\@itemh\dp\@iboxstr
+  \vspace{.5\@itemh}\bgroup\@scw\linewidth
+  \advance\@scw-20pt\@iboxpos={#1}%
+  \setbox\scb@x=\hbox\bgroup\begin{minipage}{\@scw}%
+  \tbaselineshift\@savetbaselineshift% (KN:1998/02/27)
+  \vspace*{.5\@itemh}}%
+\def\enditembox{\end{minipage}\egroup%
+  \setbox\scscb@x=\hbox to\linewidth{\hfil\vbox{\offinterlineskip%
+  \thicklines\setlength{\unitlength}{1pt}%
+  \hbox to\@scw{\if l\the\@iboxpos\else\@hleader\fi
+    \space\vbox to.8pt{\vss\hbox{\box\@iboxstr}\vss}%
+    \space\if r\the\@iboxpos\else \@hleader\fi}\kern9.6pt
+  \@hobox{tl}{tr}{20}\kern-10pt\box\scb@x\@hobox{bl}{br}{20}%
+  \kern-.8pt\hrule height.8pt}\hfil}\dimen0=\ht\scscb@x%
+  \noindent\hbox to\linewidth{\hbox to.6pt{\vbox to\dimen0{\@vrf@{10pt}{.8pt}}%
+  \hss}\box\scscb@x\hbox to.6pt{\hss\vbox to\dimen0{\@vrf@{10pt}{.9pt}}}%
+  \hss}\egroup}
+%%
+
+\spn@wtheorem{examplebox}{Example}{\bfseries}{\rmfamily}
+\@addtoreset{examplebox}{chapter}
+\newenvironment{example}
+  {\medskip\hrule\smallskip\begin{examplebox}}
+  {\end{examplebox}\smallskip\hrule\medskip}
+
+
+\newcounter{EXECUTION}[chapter]
+\renewcommand{\theEXECUTION}{\thechapter.\@arabic\c@EXECUTION}
+
+\newenvironment{execution}{\footnotesize\refstepcounter{EXECUTION}\begin{itembox}{{\small\bfseries execution\theEXECUTION}}}{\end{itembox}}
 
 \endinput
 %end of file svmult.cls

@@ -2658,6 +2658,5 @@ to\z@{\kern0.55\wd0\vrule\@height0.45\ht0\hss}\box0}}}}
 
 \newenvironment{execution}{\footnotesize\refstepcounter{EXECUTION}\begin{itembox}{{\small\bfseries execution\theEXECUTION}}}{\end{itembox}}
 
-
 \endinput
 %end of file svmult.cls

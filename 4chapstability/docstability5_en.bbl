@@ -1,0 +1,45 @@
+\begin{thebibliography}{1}
+
+\bibitem{bernstein2009matrix}
+D.~S. Bernstein.
+\newblock {\em Matrix mathematics: theory, facts, and formulas}.
+\newblock Princeton University Press, 2009.
+
+\bibitem{petersen2010feedback}
+I.~R. Petersen and A.~Lanzon.
+\newblock Feedback control of negative-imaginary systems.
+\newblock {\em IEEE Control Systems Magazine}, Vol.~30, No.~5, pp. 54--72,
+  2010.
+
+\bibitem{xiong2010negative}
+J.~Xiong, I.~R. Petersen, and A.~Lanzon.
+\newblock A negative imaginary lemma and the stability of interconnections of
+  linear negative imaginary systems.
+\newblock {\em IEEE Transactions on Automatic Control}, Vol.~55, No.~10, pp.
+  2342--2347, 2010.
+
+\bibitem{kokotovic1987singular}
+P.~Kokotovi{\'c}, H.~K. Khali, and J.~O'reilly.
+\newblock {\em Singular perturbation methods in control: analysis and design},
+  Vol.~25.
+\newblock Society for Industrial Mathematics, 1987.
+
+\bibitem{antoulas2005approximation}
+A.~C. Antoulas.
+\newblock {\em Approximation of large-scale dynamical systems}.
+\newblock Society for Industrial and Applied Mathematics, Philadelphia, PA,
+  USA, 2005.
+
+\bibitem{anderson1967system}
+B.~D. Anderson.
+\newblock A system theory criterion for positive real matrices.
+\newblock {\em SIAM Journal on Control}, Vol.~5, No.~2, pp. 171--182, 1967.
+
+\bibitem{kottenstette2010relationships}
+N.~Kottenstette and P.~J. Antsaklis.
+\newblock Relationships between positive real, passive dissipative, \& positive
+  systems.
+\newblock In {\em American Control Conference (ACC), 2010}, pp. 409--416. IEEE,
+  2010.
+
+\end{thebibliography}

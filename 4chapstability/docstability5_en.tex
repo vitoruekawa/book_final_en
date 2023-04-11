@@ -71,7 +71,7 @@ Kron-reduced differential equation system model discussed in Section
 flow state. The differential equation system model is given by:
 
 \begin{equation}\label{eq:krondyn_}
-  \simode{
+  \begin{aligned}
     \dot{\delta}_i&= \omega_0  \Delta \omega_i\\
     M_i   \Delta \dot{\omega}_i&= %\textstyle
     - D_i \Delta\omega_i   
@@ -84,7 +84,7 @@ flow state. The differential equation system model is given by:
     \right)
     g_i \left( \delta,E \right)
     + V_{{\rm field}i}
-  }
+  \end{aligned}
   \qquad
   i \in \mathcal{I}_{\rm G}
 \end{equation}
@@ -200,7 +200,7 @@ vector $(\delta_i^{\star})_{i \in \mathcal{I}_{\rm G} }$. With these
 steady-state values, we can write the following system of equations:
 
 \begin{equation}\label{eq:kronss}
-  \simode{
+  \begin{aligned}
     0 &= %\textstyle
     - f_i \left( \delta^{\star} , E^{\star}  \right)
     +P_{{\rm mech}i}^{\star}
@@ -211,7 +211,7 @@ steady-state values, we can write the following system of equations:
     \right)
     g_i \left( \delta^{\star} ,E^{\star} \right)
     + V_{{\rm field}i}^{\star}
-  }
+  \end{aligned}
   \qquad
   i \in \mathcal{I}_{\rm G}
 \end{equation}
@@ -993,7 +993,6 @@ $B_0$. Specifically,
 
 \begin{equation}
   \begin{aligned}
-    \spliteq{
     G_0 &=
     \mat{
     1.3652 &  -1.3652 &     0 \\
@@ -1005,7 +1004,6 @@ $B_0$. Specifically,
     -11.6041  & 11.6041    &    0 \\
       11.6041 &  -22.1148  &  10.5107 \\
       0  &  10.5107 &  -10.5107
-    }
     }
   \end{aligned}
 \end{equation}
@@ -1060,7 +1058,7 @@ is below approximately $76^\circ$. We also find that as $\theta_2$ increases to
 approximate linear model decreases.
 \end{example}
 
-\begin{table}[h]
+\begin{table}[ht]
 \medskip
  \caption{\textbf{Parameter settings to compare}}
  \label{table:parasetcom}
@@ -1117,9 +1115,9 @@ approximate linear model decreases.
 \section{Mathematical stability analysis of the linearized
 model\advanced}\label{sec:linmathana}
 
-\subsection{Small signal stability of the linearized model\advanced}
+\subsection{Small signal stability of the linearized model}
 In this section, we mathematically analyze the stability of the linearized model
-given in equation \ref{eq:lindynu0}. The stability is characterized by the
+given in Equation \ref{eq:lindynu0}. The stability is characterized by the
 eigenvalues of the matrix $\Psi$. However, as discussed in section
 \ref{sec:numlinsta}, $\Psi$ is not regular and the eigenspace for the zero
 eigenvalue is given by
@@ -1271,7 +1269,7 @@ $A$ is called \textbf{stable}\index{stable} or \textbf{asymptotically
 stable}\index{asymptotically stable}.
 \end{definition}
 
-\subsection{Passivity of approximate linear models\advanced}\label{sec:linpasana}
+\subsection{Passivity of approximate linear models}\label{sec:linpasana}
 
 \smallskip
 \subsubsection{Representation of Approximate Linear Models with Feedback}
@@ -1815,20 +1813,20 @@ $V(x)$ along the solution trajectory of $\Sigma$ satisfies
 then the solution trajectory $x(t)$ converges asymptotically to zero for any initial state.
 Such a function $V(x)$ is called a \textbf{Lyapunov function} \index{Lyapunov function}.
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width = .35\linewidth]{figs/cone}
-  \caption{\textbf{Monotonically decreasing values along the solution trajectory of the Lyapunov function}}
-  \label{fig:conelyap}
-  \medskip
-\end{figure}
-
 The fact that the value of the Lyapunov function decreases monotonically along
 the solution trajectory of the system can be interpreted as a type of energy
 dissipation over time (Figure \ref{fig:conelyap}). Similar stability analyses
 based on Lyapunov functions can also be applied to nonlinear systems.
 
 \end{COLUMN}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width = .35\linewidth]{figs/cone}
+  \caption{\textbf{Monotonically decreasing values along the solution trajectory of the Lyapunov function}}
+  \label{fig:conelyap}
+  \medskip
+\end{figure}
 
 On the one hand, it is not possible to deduce from the above discussion whether
 the internal state of the electric subsystem $G$ in Equation \ref{eq:Gss}
@@ -3329,4 +3327,5 @@ symmetric and there exists a positive definite symmetric matrix $P$ such that:
 \end{lemma}
 
 The proof can be found in \cite[Lemma 7]{xiong2010negative}, among others.
+
 \end{document}

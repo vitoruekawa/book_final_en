@@ -1,8 +1,8 @@
-PWD /Users/vuekawa/Documents/Tokyo Tech/book_final_en/1chapintro
+PWD /Users/vuekawa/repos/book_final_en/1chapintro
 INPUT /usr/local/texlive/2022/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/vuekawa/Documents/Tokyo Tech/book_final_en/1chapintro/docintro1_en.tex
+INPUT /Users/vuekawa/repos/book_final_en/1chapintro/docintro1_en.tex
 OUTPUT docintro1_en.log
 INPUT ./svmult.cls
 INPUT ./svmult.cls
@@ -321,7 +321,19 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/kastrup/binhex.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/kastrup/binhex.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/kastrup/binhex.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/kastrup/binhex.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/ntheorem/ntheorem.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsmath.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/graphics/graphicx.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/graphics/graphicx.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/graphics/graphicx.sty
@@ -383,7 +395,6 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/makeidx.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/makeidx.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/makeidx.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/makeidx.sty
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/ntheorem/ntheorem.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/ascmac/ascmac.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/ascmac/ascmac.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/ascmac/ascmac.sty
@@ -760,6 +771,27 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/caption/ltcaption.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/caption/ltcaption.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/caption/ltcaption.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/caption/ltcaption.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/xcolor/xcolor.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/newtx/ot1ntxtlf.fd
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/newtx/ot1ntxtlf.fd
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/newtx/ot1ntxtlf.fd

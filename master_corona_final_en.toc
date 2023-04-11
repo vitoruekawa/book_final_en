@@ -1,0 +1,138 @@
+\authcount {1}
+\contentsline {chapter}{\numberline {1}Introduction}{9}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Control of electrical power system}{9}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Importance of interdisciplinary integration aimed at power system reform}{9}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Objective of this book}{10}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Characteristics of this book}{11}{subsection.1.1.3}%
+\contentsline {section}{\numberline {1.2}How to use this book}{11}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Overall structure}{11}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Published numerical simulation codes and supplementary material}{12}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Mathematical notations}{12}{subsection.1.2.3}%
+\contentsline {chapter}{\numberline {2}Mathematical model of electrical power systems}{15}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Foundation of AC circuit theory}{15}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Circuit elements}{15}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Instantaneous value and effective value}{16}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Phasor representation}{17}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Impedance and admittance}{18}{subsection.2.1.4}%
+\contentsline {section}{\numberline {2.2}Admittance matrix: representation of interaction between connected devices}{19}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Fundamentals of modeling of power grids}{19}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Power grid model with capacitance to ground}{23}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Mathematical properties of the admittance matrix}{24}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}Mathematical model of synchronous generators}{25}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Classification of generator models based on the level of detail}{25}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Mathematical expression of the one-axis model}{26}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Kron reduction of a generator bus}{30}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Derivation of the Kuramoto-type oscillator model}{37}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}Single machine infinite bus system model}{40}{subsection.2.3.5}%
+\contentsline {subsection}{\numberline {2.3.6}Mathematical properties of the admittance matrix with reduced generator bus}{41}{subsection.2.3.6}%
+\contentsline {subsection}{\numberline {2.3.7}Mathematical model of salient pole synchronous generators}{42}{subsection.2.3.7}%
+\contentsline {section}{\numberline {2.4}Mathematical model of load}{46}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Relational expression of current and voltage according to load characteristics}{46}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Kron reduction of load bus bar}{47}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Mathematical properties of the admittance matrix with reduced load bus bar}{49}{subsection.2.4.3}%
+\contentsline {section}{Mathematical Supplement}{52}{section*.20}%
+\contentsline {chapter}{\numberline {3}Numerical simulation of the electrical power system model}{57}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Calculation of time response of an electrical power system}{57}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Challenges in calculating time response}{57}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Calculation steps}{58}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Numerical analysis of steady-state in power flow calculation}{59}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Outline of the power flow calculation}{60}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Numerical Search Method for Steady-State Power Flow}{63}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}The relationship between the admittance matrix and transmission loss}{66}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}The steady state of generators achieving desired power supply}{68}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}The steady state of generators that achieves a desired supply of electric power}{69}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Load Parameters for Achieving Desired Power Consumption}{70}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}mathematical relationship between generator internal state and input/output}{71}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Time Response Calculation of Power System Model}{76}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Initial Value Response}{77}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Response to Parameter Variations of the Load Model}{79}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Response to ground fault}{80}{subsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.3.1}What is ground fault?}{80}{subsubsection.3.4.3.1}%
+\contentsline {subsubsection}{\numberline {3.4.3.2}Formulation of bus bar ground fault}{81}{subsubsection.3.4.3.2}%
+\contentsline {section}{\numberline {3.5}Synchronization of bus bar voltage in a steady power flow distribution}{84}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Implementation of Power Flow Calculation}{92}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Solving Algebraic Equations}{92}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Simple implementation of power flow calculation}{94}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Implementation of Power Flow Calculation using Separated Modules}{97}{subsection.3.6.3}%
+\contentsline {section}{\numberline {3.7}Implementation method for time response calculation of power system models}{103}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Simple implementation of time response calculations for power system models}{107}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}Implementation method for time response calculation using a group of partitioned modules}{110}{subsection.3.7.2}%
+\contentsline {section}{Mathematical Appendix}{123}{section*.38}%
+\contentsline {chapter}{\numberline {4}Steady-state stability analysis of power system models}{125}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Stability analysis based on linear approximation}{126}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Approximate linearization of the power system model}{126}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Stability analysis of approximate linear models}{129}{subsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.2.1}Stability of approximate linear models}{129}{subsubsection.4.1.2.1}%
+\contentsline {subsubsection}{\numberline {4.1.2.2}Stability analysis based on eigenvalues of the system matrix}{129}{subsubsection.4.1.2.2}%
+\contentsline {section}{\numberline {4.2}stability analysis of approximate linear models using numerical calculations}{131}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Implementation of approximate linearization using a group of partitioned modules}{131}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Numerical analysis of small signal stability}{136}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Mathematical stability analysis of the linearized model$^{\ddag }$}{139}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Small signal stability of the linearized model}{139}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Passivity of approximate linear models}{141}{subsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.1}Representation of Approximate Linear Models with Feedback}{141}{subsubsection.4.3.2.1}%
+\contentsline {subsubsection}{\numberline {4.3.2.2}Passivity of the mechanical subsystem}{142}{subsubsection.4.3.2.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.3}Passivity of the electrical subsystem}{144}{subsubsection.4.3.2.3}%
+\contentsline {subsection}{\numberline {4.3.3}Analysis of small signal stability based on passivity$^{\ddag }$}{147}{subsection.4.3.3}%
+\contentsline {subsubsection}{\numberline {4.3.3.1}Stability analysis of feedback systems}{147}{subsubsection.4.3.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.3.2}Basis transformation for separating unobservable state variables}{151}{subsubsection.4.3.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3.3}Small signal stability analysis based on passivity}{155}{subsubsection.4.3.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Necessary conditions for the approxiamte linear model to be passive$^{\ddag }$}{156}{subsection.4.3.4}%
+\contentsline {subsubsection}{\numberline {4.3.4.1}Passivity and positive realness}{156}{subsubsection.4.3.4.1}%
+\contentsline {subsubsection}{\numberline {4.3.4.2}Necessary condition for the transfer function of the electrical subsystem to be positive-real}{158}{subsubsection.4.3.4.2}%
+\contentsline {subsection}{\numberline {4.3.5}Necessary condition for the steady-state stability of the approximate linear model $^{\ddag }$}{165}{subsection.4.3.5}%
+\contentsline {section}{Mathematical Appendix}{169}{section*.52}%
+\contentsline {chapter}{\numberline {5}Stabilization control of power system models}{171}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Frequency stabilization control}{171}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Automatic generation control using broadcast-type PI controller}{171}{subsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.1.1}Overview of Automatic Generation Control}{171}{subsubsection.5.1.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.1.2}Formulation of automatic generation control}{172}{subsubsection.5.1.1.2}%
+\contentsline {subsection}{\numberline {5.1.2}Numerical simulation of frequency stabilization control}{175}{subsection.5.1.2}%
+\contentsline {section}{\numberline {5.2}Mathematical stability analysis of frequency stabilization control system}{178}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Power system model under consideration}{178}{subsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.1.1}Assumptions on Power System Model and Automatic Generation Control}{178}{subsubsection.5.2.1.1}%
+\contentsline {subsubsection}{\numberline {5.2.1.2}Representation of power system with automatic generation control as a feedback system}{179}{subsubsection.5.2.1.2}%
+\contentsline {subsection}{\numberline {5.2.2}Equilibrium-independent passivity of power system models}{180}{subsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.1}Equilibrium-independent passivity}{180}{subsubsection.5.2.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2.2}Analysis of the mechanical subsystem}{183}{subsubsection.5.2.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.3}Analysis of feedback system for mechanical subsystem and automatic power generation controller}{185}{subsubsection.5.2.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.2.4}Analysis of the electrical subsystem}{186}{subsubsection.5.2.2.4}%
+\contentsline {subsection}{\numberline {5.2.3}Stability analysis of frequency stabilization control system}{188}{subsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.3.1}Stability analysis of unknown equilibrium points based on passivity}{188}{subsubsection.5.2.3.1}%
+\contentsline {subsubsection}{\numberline {5.2.3.2}The range where the potential energy function is convex}{190}{subsubsection.5.2.3.2}%
+\contentsline {section}{\numberline {5.3}Transient stability control}{194}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Decentralized control of generators with excitation system}{194}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Standard Automatic Voltage Regulator model}{194}{subsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.2.1}Voltage transformer}{195}{subsubsection.5.3.2.1}%
+\contentsline {subsubsection}{\numberline {5.3.2.2}Comparator}{196}{subsubsection.5.3.2.2}%
+\contentsline {subsubsection}{\numberline {5.3.2.3}Amplifier}{196}{subsubsection.5.3.2.3}%
+\contentsline {subsubsection}{\numberline {5.3.2.4}Exciter}{196}{subsubsection.5.3.2.4}%
+\contentsline {subsubsection}{\numberline {5.3.2.5}Stabilizing circuit}{197}{subsubsection.5.3.2.5}%
+\contentsline {subsection}{\numberline {5.3.3}Control effectiveness of AVR}{199}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Power System Stabilizer}{202}{subsection.5.3.4}%
+\contentsline {subsubsection}{\numberline {5.3.4.1}Washout filter}{202}{subsubsection.5.3.4.1}%
+\contentsline {subsubsection}{\numberline {5.3.4.2}Phase-lead compensator}{203}{subsubsection.5.3.4.2}%
+\contentsline {subsection}{\numberline {5.3.5}Control Effect of Power System Stabilization Device}{204}{subsection.5.3.5}%
+\contentsline {section}{\numberline {5.4}PSS based on the retrofit control theory}{205}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Power system model used in the design of PSS}{205}{subsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.1.1}Features of PSS based on the retrofit control theory}{205}{subsubsection.5.4.1.1}%
+\contentsline {subsubsection}{\numberline {5.4.1.2}Localized linear subsystem}{206}{subsubsection.5.4.1.2}%
+\contentsline {subsubsection}{\numberline {5.4.1.3}Environment and approximate linear environment model}{207}{subsubsection.5.4.1.3}%
+\contentsline {subsection}{\numberline {5.4.2}PSS design based on the retrofit control theory}{209}{subsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.2.1}Design method of retrofit controller}{209}{subsubsection.5.4.2.1}%
+\contentsline {subsubsection}{\numberline {5.4.2.2}Construction method of approximate linear environmental model}{210}{subsubsection.5.4.2.2}%
+\contentsline {chapter}{\numberline {6}Numerical simulation examples of a large-scale model}{215}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Power system model under consideration}{215}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}IEEE68 bus system model}{215}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Data sheet for power flow calculation}{216}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Load model}{216}{subsection.6.1.3}%
+\contentsline {section}{\numberline {6.2}Frequency stability analysis for load fluctuations}{217}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Load fluctuation settings}{217}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}When the machine input and field input of the generator are constant}{217}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Case where the Mechanical Input is Constant}{217}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.2.4}Case where machine input is controlled by an automatic generation controller}{219}{subsection.6.2.4}%
+\contentsline {section}{\numberline {6.3}Transient stability analysis for bus ground faults}{220}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Setting of ground fault}{220}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Effect of power system stabilizers bassed on retrofit control theory}{221}{subsection.6.3.2}%
+\contentsline {section}{References}{223}{section*.85}%
+\contentsline {section}{References}{223}{section*.85}%

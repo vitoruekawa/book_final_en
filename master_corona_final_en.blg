@@ -1,0 +1,61 @@
+This is pBibTeX, Version 0.99d-j0.34 (utf8.euc) (TeX Live 2022)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: master_corona_final_en.aux
+The style file: myjunsrt.bst
+Database file #1: reference.bib
+Database file #2: reference_corona.bib
+Database file #3: reference_CREST.bib
+Database file #4: reference_kawaguchi.bib
+Warning--I didn't find a database entry for "taniguchi2011power"
+Warning--I didn't find a database entry for "kato2017electric"
+Warning--I didn't find a database entry for "ieejstandardmodel"
+Warning--I didn't find a database entry for "Kamisaka2011"
+Warning--I didn't find a database entry for "Kitamura2016"
+Warning--I didn't find a database entry for "Kobayashi2020"
+Warning--I didn't find a database entry for "Hirasawa2021"
+Warning--I didn't find a database entry for "kodama1981system"
+Warning--there's a number but no volume in athay1979practical
+Warning--empty journal in ieee2016ieee
+You've used 42 entries,
+            2270 wiz_defined-function locations,
+            794 strings with 11293 characters,
+and the built_in function-call counts, 14189 in all, are:
+= -- 1174
+> -- 354
+< -- 66
++ -- 146
+- -- 104
+* -- 704
+:= -- 1658
+add.period$ -- 129
+call.type$ -- 42
+change.case$ -- 29
+chr.to.int$ -- 0
+cite$ -- 44
+duplicate$ -- 945
+empty$ -- 1361
+format.name$ -- 208
+if$ -- 3535
+int.to.chr$ -- 0
+int.to.str$ -- 42
+missing$ -- 55
+newline$ -- 213
+num.names$ -- 42
+pop$ -- 280
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 754
+stack$ -- 0
+substring$ -- 831
+swap$ -- 324
+text.length$ -- 66
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 2
+while$ -- 115
+width$ -- 44
+write$ -- 452
+is.kanji.str$ -- 469
+(There were 10 warnings)
