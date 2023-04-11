@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  11 APR 2023 12:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  11 APR 2023 12:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -984,23 +984,11 @@ File: figs/Y0.01D0.01.pdf Graphic file (type pdf)
 <use figs/Y0.01D0.01.pdf>
 Package pdftex.def Info: figs/Y0.01D0.01.pdf  used on input line 1103.
 (pdftex.def)             Requested size: 146.8083pt x 109.83755pt.
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1116.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 1116.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1116.
-
 [14] [15 <./figs/Y1D1.pdf> <./figs/Y1D0.01.pdf> <./figs/Y0.01D1.pdf> <./figs/Y0.01D0.01.pdf>] [16]
 
 LaTeX Warning: Reference `eq:defL0' on page 17 undefined on input line 1227.
 
-<figs/FandG.pdf, id=444, 620.25023pt x 374.95282pt>
+<figs/FandG.pdf, id=443, 620.25023pt x 374.95282pt>
 File: figs/FandG.pdf Graphic file (type pdf)
 <use figs/FandG.pdf>
 Package pdftex.def Info: figs/FandG.pdf  used on input line 1279.
@@ -1045,33 +1033,21 @@ LaTeX Warning: Reference `eq:defL0' on page 22 undefined on input line 1656.
 
 [22]
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1672.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 1672.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1672.
-
-
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 1702.
 
 [23] [24]
-<figs/cone.pdf, id=574, 462.72874pt x 448.67625pt>
+<figs/cone.pdf, id=573, 462.72874pt x 448.67625pt>
 File: figs/cone.pdf Graphic file (type pdf)
 <use figs/cone.pdf>
 Package pdftex.def Info: figs/cone.pdf  used on input line 1825.
 (pdftex.def)             Requested size: 116.51605pt x 112.97664pt.
-<figs/losslessW.pdf, id=580, 685.90654pt x 526.19284pt>
+<figs/losslessW.pdf, id=579, 685.90654pt x 526.19284pt>
 File: figs/losslessW.pdf Graphic file (type pdf)
 <use figs/losslessW.pdf>
 Package pdftex.def Info: figs/losslessW.pdf  used on input line 1864.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
-<figs/lossyW.pdf, id=581, 685.90654pt x 526.19284pt>
+<figs/lossyW.pdf, id=580, 685.90654pt x 526.19284pt>
 File: figs/lossyW.pdf Graphic file (type pdf)
 <use figs/lossyW.pdf>
 Package pdftex.def Info: figs/lossyW.pdf  used on input line 1870.
@@ -1085,7 +1061,7 @@ LaTeX Warning: Reference `eq:defL0' on page 25 undefined on input line 1897.
 LaTeX Warning: Citation `bernstein2009matrix' on page 28 undefined on input line 2127.
 
 [28]
-<figs/orthogonal.pdf, id=645, 425.85901pt x 185.1688pt>
+<figs/orthogonal.pdf, id=644, 425.85901pt x 185.1688pt>
 File: figs/orthogonal.pdf Graphic file (type pdf)
 <use figs/orthogonal.pdf>
 Package pdftex.def Info: figs/orthogonal.pdf  used on input line 2145.
@@ -1100,7 +1076,7 @@ Package amsmath Warning: Cannot use `split' here;
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 2210.
 
-<figs/FandGe2.pdf, id=663, 805.49431pt x 374.79323pt>
+<figs/FandGe2.pdf, id=662, 805.49431pt x 374.79323pt>
 File: figs/FandGe2.pdf Graphic file (type pdf)
 <use figs/FandGe2.pdf>
 Package pdftex.def Info: figs/FandGe2.pdf  used on input line 2241.
@@ -1111,18 +1087,6 @@ Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 2262.
 
 [31]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2409.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 2409.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2409.
-
 
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 2428.
@@ -1142,12 +1106,12 @@ LaTeX Warning: Citation `petersen2010feedback' on page 34 undefined on input lin
 LaTeX Warning: Citation `xiong2010negative' on page 34 undefined on input line 2550.
 
 [34]
-<figs/PRdom.pdf, id=751, 260.975pt x 260.975pt>
+<figs/PRdom.pdf, id=750, 260.975pt x 260.975pt>
 File: figs/PRdom.pdf Graphic file (type pdf)
 <use figs/PRdom.pdf>
 Package pdftex.def Info: figs/PRdom.pdf  used on input line 2589.
 (pdftex.def)             Requested size: 106.02794pt x 106.0288pt.
-<figs/NIdom.pdf, id=752, 260.975pt x 260.975pt>
+<figs/NIdom.pdf, id=751, 260.975pt x 260.975pt>
 File: figs/NIdom.pdf Graphic file (type pdf)
 <use figs/NIdom.pdf>
 Package pdftex.def Info: figs/NIdom.pdf  used on input line 2595.
@@ -1161,12 +1125,12 @@ Package hyperref Info: bookmark level for unknown proof defaults to 0 on input l
 LaTeX Warning: Reference `eq:defL0' on page 36 undefined on input line 2707.
 
 [36] [37]
-<figs/eigG.pdf, id=807, 690.50171pt x 526.19284pt>
+<figs/eigG.pdf, id=806, 690.50171pt x 526.19284pt>
 File: figs/eigG.pdf Graphic file (type pdf)
 <use figs/eigG.pdf>
 Package pdftex.def Info: figs/eigG.pdf  used on input line 2857.
 (pdftex.def)             Requested size: 163.12146pt x 124.30568pt.
-<figs/eigH.pdf, id=808, 691.15312pt x 526.19284pt>
+<figs/eigH.pdf, id=807, 691.15312pt x 526.19284pt>
 File: figs/eigH.pdf Graphic file (type pdf)
 <use figs/eigH.pdf>
 Package pdftex.def Info: figs/eigH.pdf  used on input line 2863.
@@ -1200,20 +1164,7 @@ File: figs/Pspa.pdf Graphic file (type pdf)
 <use figs/Pspa.pdf>
 Package pdftex.def Info: figs/Pspa.pdf  used on input line 2984.
 (pdftex.def)             Requested size: 163.12146pt x 125.1407pt.
- [40 <./figs/Domegaspa.pdf> <./figs/deltaspa.pdf> <./figs/Espa.pdf> <./figs/Pspa.pdf>]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 3036.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 3036.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 3036.
-
-[41] [42] [43]
+ [40 <./figs/Domegaspa.pdf> <./figs/deltaspa.pdf> <./figs/Espa.pdf> <./figs/Pspa.pdf>] [41] [42] [43]
 <figs/Y1D1X.pdf, id=926, 693.31825pt x 518.72395pt>
 File: figs/Y1D1X.pdf Graphic file (type pdf)
 <use figs/Y1D1X.pdf>
@@ -1255,18 +1206,18 @@ LaTeX Warning: Citation `xiong2010negative' on page 45 undefined on input line 3
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `docstability5_en.out' has not changed.
-(rerunfilecheck)             Checksum: D8F8B07E7F9BF7E73CDFA875F889761B;4924.
+(rerunfilecheck)             Checksum: 489B81C9CD6E66B601699267292A0EB3;4892.
  ) 
 Here is how much of TeX's memory you used:
- 20261 strings out of 478268
- 305571 string characters out of 5846346
- 1087615 words of memory out of 5000000
- 37742 multiletter control sequences out of 15000+600000
- 593921 words of font info for 265 fonts, out of 8000000 for 9000
+ 20209 strings out of 478268
+ 304733 string characters out of 5846346
+ 1087599 words of memory out of 5000000
+ 37694 multiletter control sequences out of 15000+600000
+ 570123 words of font info for 214 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,23n,134p,626b,2621s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 88i,23n,134p,618b,2621s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntxsups_ot1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-rm.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXBMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ntxsups-Regular.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txbmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txbsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexas.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/txsya.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/txfonts/txtt.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmbi.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on docstability5_en.pdf (45 pages, 1874060 bytes).
+Output written on docstability5_en.pdf (45 pages, 1871853 bytes).
 PDF statistics:
  1132 PDF objects out of 1200 (max. 8388607)
  969 compressed objects within 10 object streams

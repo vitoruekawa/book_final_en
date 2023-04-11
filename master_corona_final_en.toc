@@ -67,20 +67,20 @@
 \contentsline {section}{\numberline {4.2}stability analysis of approximate linear models using numerical calculations}{131}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Implementation of approximate linearization using a group of partitioned modules}{131}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Numerical analysis of small signal stability}{136}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Mathematical stability analysis of the linearized model$^{\ddag }$}{139}{section.4.3}%
+\contentsline {section}{\numberline {4.3}Mathematical stability analysis of the linearized model}{139}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Small signal stability of the linearized model}{139}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}Passivity of approximate linear models}{141}{subsection.4.3.2}%
 \contentsline {subsubsection}{\numberline {4.3.2.1}Representation of Approximate Linear Models with Feedback}{141}{subsubsection.4.3.2.1}%
 \contentsline {subsubsection}{\numberline {4.3.2.2}Passivity of the mechanical subsystem}{142}{subsubsection.4.3.2.2}%
 \contentsline {subsubsection}{\numberline {4.3.2.3}Passivity of the electrical subsystem}{144}{subsubsection.4.3.2.3}%
-\contentsline {subsection}{\numberline {4.3.3}Analysis of small signal stability based on passivity$^{\ddag }$}{147}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.3}Analysis of small signal stability based on passivity}{147}{subsection.4.3.3}%
 \contentsline {subsubsection}{\numberline {4.3.3.1}Stability analysis of feedback systems}{147}{subsubsection.4.3.3.1}%
 \contentsline {subsubsection}{\numberline {4.3.3.2}Basis transformation for separating unobservable state variables}{151}{subsubsection.4.3.3.2}%
 \contentsline {subsubsection}{\numberline {4.3.3.3}Small signal stability analysis based on passivity}{155}{subsubsection.4.3.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Necessary conditions for the approxiamte linear model to be passive$^{\ddag }$}{156}{subsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.3.4}Necessary conditions for the approxiamte linear model to be passive}{156}{subsection.4.3.4}%
 \contentsline {subsubsection}{\numberline {4.3.4.1}Passivity and positive realness}{156}{subsubsection.4.3.4.1}%
 \contentsline {subsubsection}{\numberline {4.3.4.2}Necessary condition for the transfer function of the electrical subsystem to be positive-real}{158}{subsubsection.4.3.4.2}%
-\contentsline {subsection}{\numberline {4.3.5}Necessary condition for the steady-state stability of the approximate linear model $^{\ddag }$}{165}{subsection.4.3.5}%
+\contentsline {subsection}{\numberline {4.3.5}Necessary condition for the steady-state stability of the approximate linear model }{165}{subsection.4.3.5}%
 \contentsline {section}{Mathematical Appendix}{169}{section*.52}%
 \contentsline {chapter}{\numberline {5}Stabilization control of power system models}{171}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Frequency stabilization control}{171}{section.5.1}%

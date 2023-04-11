@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1681182090 "/Users/vuekawa/repos/book_final_en/4chapstability/docstability5_en.tex" "docstability5_en.pdf" "docstability5_en" 1681182091
+["pdflatex"] 1681183622 "/Users/vuekawa/repos/book_final_en/4chapstability/docstability5_en.tex" "docstability5_en.pdf" "docstability5_en" 1681183623
   "../settings.tex" 1679390848 4637 64bfcd699477039358df9c9d282abe33 ""
-  "/Users/vuekawa/repos/book_final_en/4chapstability/docstability5_en.tex" 1681182087 117066 370986bb54e040fc60b6394b06f1f879 ""
+  "/Users/vuekawa/repos/book_final_en/4chapstability/docstability5_en.tex" 1681183620 117030 316406793e7b2db53cc9a4d2a95f1c26 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc" 1422827479 2083 60e36f8eac802fcaf19eabe2633b406e ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/newtx/ntxsups_ot1.enc" 1583272976 2856 9c183bd297dcc12b554656ec0c79f350 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/tex-gyre/q-rm.enc" 1529098226 2409 c64dab22331c83731e970f6020b4448b ""
@@ -94,7 +94,6 @@
   "/usr/local/texlive/2022/texmf-dist/fonts/vf/public/newtx/ntxbmi05.vf" 1622581641 1828 5b569d926e287993ad619631bf50d6a5 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/vf/public/newtx/ntxbmi07.vf" 1622581641 2704 f24366a1f9e5868553c9c8f1d3bd66d7 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/vf/public/newtx/ntxbmia.vf" 1635022465 2056 7fcb14567f820a2dd5d0795f76fc891e ""
-  "/usr/local/texlive/2022/texmf-dist/fonts/vf/public/newtx/ntxbsy.vf" 1634244313 1812 9ddbd3f0dbbba4236866fefaa66cc76e ""
   "/usr/local/texlive/2022/texmf-dist/fonts/vf/public/newtx/ntxbsy7.vf" 1634244313 1884 b6c92dadacf1a666fb6c5dcf3c7e980c ""
   "/usr/local/texlive/2022/texmf-dist/fonts/vf/public/newtx/ntxexa.vf" 1487028062 576 6ffe6b42c20f7fbf4391e66fec9eda3f ""
   "/usr/local/texlive/2022/texmf-dist/fonts/vf/public/newtx/ntxexx.vf" 1471383769 1648 0d93cbefa82585faadc39ecd0ea4f212 ""
@@ -210,9 +209,9 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1668484045 2826445 cf7d7340e9c2a7d1df78c5cafc645348 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "docstability5_en.aux" 1681182091 20337 81f2344c4cd984889777599b5cb27c9b "pdflatex"
-  "docstability5_en.out" 1681182091 4924 d8f8b07e7f9bf7e73cdfa875f889761b "pdflatex"
-  "docstability5_en.tex" 1681182087 117066 370986bb54e040fc60b6394b06f1f879 ""
+  "docstability5_en.aux" 1681183623 20192 360d0ac5db7af21a4cb6b35a8f238852 "pdflatex"
+  "docstability5_en.out" 1681183623 4892 489b81c9cd6e66b601699267292a0eb3 "pdflatex"
+  "docstability5_en.tex" 1681183620 117030 316406793e7b2db53cc9a4d2a95f1c26 ""
   "dsfont.sty" 1671778083 230 7bc61880b468bfd38aedc173be7c3486 ""
   "eclbkbox.sty" 1671778083 2338 aa5837e82377ed2acc7ee21c1d523b1d ""
   "figs/Domegalin.pdf" 1671778086 115219 68f035c967c6e276b040367ec4cec03f ""

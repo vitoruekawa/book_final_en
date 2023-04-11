@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.15)  11 APR 2023 12:14
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.11.15)  11 APR 2023 12:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1497,68 +1497,7 @@ File: figs/Y0.01D1.pdf Graphic file (type pdf)
 <use figs/Y0.01D1.pdf>
 File: figs/Y0.01D0.01.pdf Graphic file (type pdf)
 <use figs/Y0.01D0.01.pdf>
-Requested font "ntx-Bold-tlf-ot1" at 12.0pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-ot1.tfm
-Requested font "ntx-Bold-tlf-ot1" at 8.8pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-ot1.tfm
-Requested font "ntx-Bold-tlf-ot1" at 6.6pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-ot1.tfm
-Requested font "ntxbmi0" at 12.0pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbmi0.tfm
-Requested font "ntxbmi0" at 8.8pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbmi0.tfm
-Requested font "ntxbmi07" at 6.6pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbmi07.tfm
-Requested font "ntxbsy" at 12.0pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsy.tfm
-Requested font "ntxbsy" at 8.8pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsy.tfm
-Requested font "ntxbsy7" at 6.6pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsy7.tfm
-Requested font "ntxbexx" at 12.0pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbexx.tfm
-Requested font "ntxbexx" at 8.8pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbexx.tfm
-Requested font "ntxbexx" at 6.6pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbexx.tfm
-Requested font "ntxbmia" at 12.0pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbmia.tfm
-Requested font "ntxbmia" at 8.8pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbmia.tfm
-Requested font "ntxbmia" at 6.6pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbmia.tfm
-Requested font "ntxbsym" at 12.0pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsym.tfm
-Requested font "ntxbsym" at 8.8pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsym.tfm
-Requested font "ntxbsym" at 6.6pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsym.tfm
-Requested font "ntxbsyc" at 12.0pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsyc.tfm
-Requested font "ntxbsyc" at 8.8pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsyc.tfm
-Requested font "ntxbsyc" at 6.6pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsyc.tfm
-Requested font "ntxbexa" at 12.0pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbexa.tfm
-Requested font "ntxbexa" at 8.8pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbexa.tfm
-Requested font "ntxbexa" at 6.6pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbexa.tfm
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1116.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 1116.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1116.
-
-[138] [139] [140]
+ [138] [139] [140]
 
 LaTeX Warning: Reference `eq:defL0' on page 141 undefined on input line 1227.
 
@@ -1599,67 +1538,6 @@ Overfull \hbox (26.07585pt too wide) in paragraph at lines 1646--1654
 LaTeX Warning: Reference `eq:defL0' on page 146 undefined on input line 1656.
 
 [146]
-Requested font "ntx-Bold-tlf-ot1" at 10.95pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-ot1.tfm
-Requested font "ntx-Bold-tlf-ot1" at 8.0pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-ot1.tfm
-Requested font "ntx-Bold-tlf-ot1" at 6.1pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-ot1.tfm
-Requested font "ntxbmi0" at 10.95pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbmi0.tfm
-Requested font "ntxbmi07" at 8.0pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbmi07.tfm
-Requested font "ntxbmi05" at 6.1pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbmi05.tfm
-Requested font "ntxbsy" at 10.95pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsy.tfm
-Requested font "ntxbsy7" at 8.0pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsy7.tfm
-Requested font "ntxbsy5" at 6.1pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsy5.tfm
-Requested font "ntxbexx" at 10.95pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbexx.tfm
-Requested font "ntxbexx" at 8.0pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbexx.tfm
-Requested font "ntxbexx" at 6.1pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbexx.tfm
-Requested font "ntxbmia" at 10.95pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbmia.tfm
-Requested font "ntxbmia" at 8.0pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbmia.tfm
-Requested font "ntxbmia" at 6.1pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbmia.tfm
-Requested font "ntxbsym" at 10.95pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsym.tfm
-Requested font "ntxbsym" at 8.0pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsym.tfm
-Requested font "ntxbsym" at 6.1pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsym.tfm
-Requested font "ntxbsyc" at 10.95pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsyc.tfm
-Requested font "ntxbsyc" at 8.0pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsyc.tfm
-Requested font "ntxbsyc" at 6.1pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbsyc.tfm
-Requested font "ntxbexa" at 10.95pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbexa.tfm
-Requested font "ntxbexa" at 8.0pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbexa.tfm
-Requested font "ntxbexa" at 6.1pt
- -> /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/newtx/ntxbexa.tfm
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1672.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 1672.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1672.
-
 
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 1702.
@@ -1697,18 +1575,6 @@ Package amsmath Warning: Cannot use `split' here;
 
 [155]
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2409.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 2409.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2409.
-
-
 Package amsmath Warning: Cannot use `split' here;
 (amsmath)                trying to recover with `aligned' on input line 2428.
 
@@ -1740,20 +1606,7 @@ File: figs/Espa.pdf Graphic file (type pdf)
 <use figs/Espa.pdf>
 File: figs/Pspa.pdf Graphic file (type pdf)
 <use figs/Pspa.pdf>
- [164]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 3036.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 3036.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 3036.
-
-[165] [166] [167]
+ [164] [165] [166] [167]
 File: figs/Y1D1X.pdf Graphic file (type pdf)
 <use figs/Y1D1X.pdf>
 File: figs/Y1D0.01X.pdf Graphic file (type pdf)
@@ -1936,18 +1789,9 @@ Requested font "ntx-Italic-tlf-ot1" at 5.5pt
 File: figs/retconsys2.pdf Graphic file (type pdf)
 <use figs/retconsys2.pdf>
  [207]
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 2591.
-
 File: figs/explocalG2.pdf Graphic file (type pdf)
 <use figs/explocalG2.pdf>
-[208]
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 2666.
-
-[209] [210] [211]
+ [208] [209] [210] [211]
 File: figs/timedeltamodel.pdf Graphic file (type pdf)
 <use figs/timedeltamodel.pdf>
 Requested font "ntx-Italic-tlf-ot1" at 8.5pt
@@ -2055,15 +1899,15 @@ Missing character: There is no 社 (U+793E) in font [TeXGyreTermesX-Regular.otf]
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `master_corona_final_en.out' has not changed.
-(rerunfilecheck)             Checksum: 261A079D16FF7B67ADC260DDC5B74AA0;31436.
+(rerunfilecheck)             Checksum: 2927DFBBCDDDCEFAB95A0C9617EEB2B4;31404.
  ) 
 Here is how much of TeX's memory you used:
- 23030 strings out of 476179
- 411912 string characters out of 5809543
- 1220529 words of memory out of 5000000
- 43273 multiletter control sequences out of 15000+600000
- 543816 words of font info for 229 fonts, out of 8000000 for 9000
+ 22982 strings out of 476179
+ 411104 string characters out of 5809543
+ 1220513 words of memory out of 5000000
+ 43225 multiletter control sequences out of 15000+600000
+ 520462 words of font info for 181 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  93i,29n,134p,629b,1909s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on master_corona_final_en.xdv (227 pages, 4739408 bytes).
+Output written on master_corona_final_en.xdv (227 pages, 4739176 bytes).
